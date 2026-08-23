@@ -37,6 +37,7 @@ const Home = lazy(() => import("@/pages/home"));
 const Editor = lazy(() => import("@/pages/editor"));
 const TemplatesPage = lazy(() => import("@/components/editor/scenariy"));
 const NotFound = lazy(() => import("@/pages/not-found"));
+const AdminPanel = lazy(() => import("@/pages/admin"));
 
 /**
  * @brief Компонент индикатора загрузки
@@ -113,20 +114,36 @@ function ProjectsGuard({ children }: { children: React.ReactNode }) {
 function Router() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
-      <SetupGuard>
-        <TerminalAutoRegister />
-        <ProjectsChangedListener />
-        <ProjectsGuard>
-          <Switch>
-            <Route path="/projects" component={Home} />
-            <Route path="/templates" component={TemplatesPage} />
-            <Route path="/editor/:id" component={Editor} />
-            <Route path="/projects/:id" component={Editor} />
-            <Route path="/" component={Editor} />
-            <Route component={NotFound} />
-          </Switch>
-        </ProjectsGuard>
-      </SetupGuard>
+      <Switch>
+        <Route path="/admin/settings" component={AdminPanel} />
+        <Route path="/admin/docs/:viewer" component={AdminPanel} />
+        <Route path="/admin/docs" component={AdminPanel} />
+        <Route path="/admin/schema/:tableName" component={AdminPanel} />
+        <Route path="/admin/schema" component={AdminPanel} />
+        <Route path="/admin/api-docs/:slug" component={AdminPanel} />
+        <Route path="/admin/api-docs" component={AdminPanel} />
+        <Route path="/admin/health" component={AdminPanel} />
+        <Route path="/admin/openapi" component={AdminPanel} />
+        <Route path="/admin/live-db" component={AdminPanel} />
+        <Route path="/admin/maintenance" component={AdminPanel} />
+        <Route path="/admin" component={AdminPanel} />
+        <Route>
+          <SetupGuard>
+            <TerminalAutoRegister />
+            <ProjectsChangedListener />
+            <ProjectsGuard>
+              <Switch>
+                <Route path="/projects" component={Home} />
+                <Route path="/templates" component={TemplatesPage} />
+                <Route path="/editor/:id" component={Editor} />
+                <Route path="/projects/:id" component={Editor} />
+                <Route path="/" component={Editor} />
+                <Route component={NotFound} />
+              </Switch>
+            </ProjectsGuard>
+          </SetupGuard>
+        </Route>
+      </Switch>
     </Suspense>
   );
 }

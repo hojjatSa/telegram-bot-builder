@@ -154,6 +154,7 @@ export function setupSwagger(app: Express): void {
       basePath: "/admin/docs",
       specPath: "/admin/openapi.json",
       protect: requireAdminAuth,
+      skipHub: true,
     });
   }
 

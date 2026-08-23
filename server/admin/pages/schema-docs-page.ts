@@ -31,14 +31,39 @@ function toJsonScript(value: string): string {
 }
 
 /**
+ * Параметры HTML-страницы документации схемы
+ */
+interface SchemaDocsHtmlOptions {
+  /** Режим встраивания во фрейм (без шапки Admin) */
+  embedMode?: boolean;
+  /** Базовый путь ссылок на таблицы */
+  linkBase?: string;
+}
+
+/**
  * Отдаёт HTML-оболочку с рендером markdown (marked + mermaid).
  * @param res - Ответ Express
  * @param title - Заголовок страницы
  * @param markdown - Содержимое markdown
- * @param backHref - Ссылка «назад»
+ * @param options - Режим embed и базовый путь ссылок
  * @returns void
  */
-function sendSchemaDocsHtml(res: Response, title: string, markdown: string, backHref: string): void {
+function sendSchemaDocsHtml(
+  res: Response,
+  title: string,
+  markdown: string,
+  options: SchemaDocsHtmlOptions = {},
+): void {
+  const embedMode = options.embedMode ?? false;
+  const linkBase = options.linkBase ?? "/admin/schema";
+  const bar = embedMode
+    ? ""
+    : `<div class="bar">
+    <a href="/admin">← Admin</a>
+    <h1>${title}</h1>
+    <a href="/admin/schema">Все таблицы</a>
+  </div>`;
+
   res.type("html").send(`<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -63,11 +88,7 @@ function sendSchemaDocsHtml(res: Response, title: string, markdown: string, back
   </style>
 </head>
 <body>
-  <div class="bar">
-    <a href="${backHref}">← Admin</a>
-    <h1>${title}</h1>
-    <a href="/admin/schema">Все таблицы</a>
-  </div>
+  ${bar}
   <main id="content"></main>
   <script id="md" type="application/json">${toJsonScript(markdown)}</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -75,10 +96,11 @@ function sendSchemaDocsHtml(res: Response, title: string, markdown: string, back
   <script>
     (async () => {
       const md = JSON.parse(document.getElementById("md").textContent);
+      const linkBase = ${JSON.stringify(linkBase)};
       marked.use({
         walkTokens(token) {
           if (token.type === "link" && /^\\.\\/([a-z][a-z0-9_]*)\\.md$/.test(token.href)) {
-            token.href = "/admin/schema/" + token.href.slice(2, -3);
+            token.href = linkBase + "/" + token.href.slice(2, -3);
           }
         },
       });
@@ -112,7 +134,27 @@ export function serveSchemaDocsIndex(_req: Request, res: Response): void {
     sendDbDocsMissingPage(res);
     return;
   }
-  sendSchemaDocsHtml(res, "Database Schema", simplifyMermaidErInMarkdown(markdown), "/admin");
+  sendSchemaDocsHtml(res, "Database Schema", simplifyMermaidErInMarkdown(markdown), {
+    linkBase: "/admin/schema",
+  });
+}
+
+/**
+ * Embed-индекс схемы БД для iframe React-панели.
+ * @param _req - Запрос Express
+ * @param res - Ответ Express
+ * @returns void
+ */
+export function serveSchemaDocsEmbedIndex(_req: Request, res: Response): void {
+  const markdown = readDbDocFile(DB_DOCS_INDEX);
+  if (!markdown) {
+    sendDbDocsMissingPage(res);
+    return;
+  }
+  sendSchemaDocsHtml(res, "Database Schema", simplifyMermaidErInMarkdown(markdown), {
+    embedMode: true,
+    linkBase: "/admin/schema/embed",
+  });
 }
 
 /**
@@ -134,5 +176,30 @@ export function serveSchemaDocsTable(req: Request, res: Response): void {
     return;
   }
 
-  sendSchemaDocsHtml(res, tableName, markdown, "/admin/schema");
+  sendSchemaDocsHtml(res, tableName, markdown, { linkBase: "/admin/schema" });
+}
+
+/**
+ * Embed-страница одной таблицы для iframe React-панели.
+ * @param req - Запрос Express
+ * @param res - Ответ Express
+ * @returns void
+ */
+export function serveSchemaDocsEmbedTable(req: Request, res: Response): void {
+  const tableName = req.params.tableName ?? "";
+  if (!isSafeDbDocTableName(tableName)) {
+    res.status(400).send("Некорректное имя таблицы");
+    return;
+  }
+
+  const markdown = readDbDocFile(`${tableName}.md`);
+  if (!markdown) {
+    res.status(404).type("html").send(`<p>Таблица <code>${tableName}</code> не найдена в docs/database/</p>`);
+    return;
+  }
+
+  sendSchemaDocsHtml(res, tableName, markdown, {
+    embedMode: true,
+    linkBase: "/admin/schema/embed",
+  });
 }

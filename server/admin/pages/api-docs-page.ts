@@ -30,14 +30,39 @@ function toJsonScript(value: string): string {
 }
 
 /**
+ * Параметры HTML-страницы справочника API
+ */
+interface ApiDocsHtmlOptions {
+  /** Режим встраивания во фрейм (без шапки Admin) */
+  embedMode?: boolean;
+  /** Базовый путь ссылок на разделы */
+  linkBase?: string;
+}
+
+/**
  * Отдаёт HTML с рендером markdown через marked.
  * @param res - Ответ Express
  * @param title - Заголовок
  * @param markdown - Markdown-текст
- * @param backHref - Ссылка назад
+ * @param options - Режим embed и базовый путь ссылок
  * @returns void
  */
-function sendApiDocsHtml(res: Response, title: string, markdown: string, backHref: string): void {
+function sendApiDocsHtml(
+  res: Response,
+  title: string,
+  markdown: string,
+  options: ApiDocsHtmlOptions = {},
+): void {
+  const embedMode = options.embedMode ?? false;
+  const linkBase = options.linkBase ?? "/admin/api-docs";
+  const bar = embedMode
+    ? ""
+    : `<div class="bar">
+    <a href="/admin">← Admin</a>
+    <h1>${title}</h1>
+    <a href="/admin/api-docs">Все разделы</a>
+  </div>`;
+
   res.type("html").send(`<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -61,21 +86,18 @@ function sendApiDocsHtml(res: Response, title: string, markdown: string, backHre
   </style>
 </head>
 <body>
-  <div class="bar">
-    <a href="${backHref}">← Admin</a>
-    <h1>${title}</h1>
-    <a href="/admin/api-docs">Все разделы</a>
-  </div>
+  ${bar}
   <main id="content"></main>
   <script id="md" type="application/json">${toJsonScript(markdown)}</script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script>
     (async () => {
       const md = JSON.parse(document.getElementById("md").textContent);
+      const linkBase = ${JSON.stringify(linkBase)};
       marked.use({
         walkTokens(token) {
           if (token.type === "link" && /^\\.\\/([a-z][a-z0-9_-]*)\\.md$/.test(token.href)) {
-            token.href = "/admin/api-docs/" + token.href.slice(2, -3);
+            token.href = linkBase + "/" + token.href.slice(2, -3);
           }
         },
       });
@@ -98,7 +120,25 @@ export function serveApiDocsIndex(_req: Request, res: Response): void {
     sendApiDocsMissingPage(res);
     return;
   }
-  sendApiDocsHtml(res, "API Reference", markdown, "/admin");
+  sendApiDocsHtml(res, "API Reference", markdown, { linkBase: "/admin/api-docs" });
+}
+
+/**
+ * Embed-индекс справочника API для iframe React-панели.
+ * @param _req - Запрос Express
+ * @param res - Ответ Express
+ * @returns void
+ */
+export function serveApiDocsEmbedIndex(_req: Request, res: Response): void {
+  const markdown = readApiDocFile(API_DOCS_INDEX);
+  if (!markdown) {
+    sendApiDocsMissingPage(res);
+    return;
+  }
+  sendApiDocsHtml(res, "API Reference", markdown, {
+    embedMode: true,
+    linkBase: "/admin/api-docs/embed",
+  });
 }
 
 /**
@@ -120,5 +160,30 @@ export function serveApiDocsTag(req: Request, res: Response): void {
     return;
   }
 
-  sendApiDocsHtml(res, slug, markdown, "/admin/api-docs");
+  sendApiDocsHtml(res, slug, markdown, { linkBase: "/admin/api-docs" });
+}
+
+/**
+ * Embed-страница раздела справочника для iframe React-панели.
+ * @param req - Запрос Express
+ * @param res - Ответ Express
+ * @returns void
+ */
+export function serveApiDocsEmbedTag(req: Request, res: Response): void {
+  const slug = req.params.slug ?? "";
+  if (!isSafeApiDocSlug(slug)) {
+    res.status(400).send("Некорректное имя раздела");
+    return;
+  }
+
+  const markdown = readApiDocFile(`${slug}.md`);
+  if (!markdown) {
+    res.status(404).type("html").send(`<p>Раздел <code>${slug}</code> не найден в docs/api/</p>`);
+    return;
+  }
+
+  sendApiDocsHtml(res, slug, markdown, {
+    embedMode: true,
+    linkBase: "/admin/api-docs/embed",
+  });
 }

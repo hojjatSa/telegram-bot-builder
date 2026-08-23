@@ -18,6 +18,8 @@ export interface DocsMountOptions {
   specPath?: string;
   /** Middleware защиты (admin auth) */
   protect?: RequestHandler;
+  /** Не регистрировать HTML hub — страницу отдаёт React-панель */
+  skipHub?: boolean;
 }
 
 /** OpenAPI document для монтирования UI */
@@ -46,14 +48,19 @@ export function setupDocsUis(app: Express, document: OpenApiDocument, options: D
     });
   }
 
-  app.get(basePath, createDocsHubHandler(basePath, specPath));
+  if (!options.skipHub) {
+    app.get(basePath, createDocsHubHandler(basePath, specPath));
+  }
+
+  /** При skipHub UI монтируется под /embed — оболочку с меню рисует React */
+  const uiBase = options.skipHub ? `${basePath}/embed` : basePath;
 
   // Не передаём swaggerDoc inline: swagger-ui-express делает
   // `.replace('<% swaggerOptions %>', json)`, а в JSON из описаний
   // встречается последовательность `$`` (regex + markdown) — она ломает
   // replacement patterns JS и даёт белый экран. Spec грузим по URL.
   app.use(
-    `${basePath}/swagger`,
+    `${uiBase}/swagger`,
     swaggerUi.serve,
     swaggerUi.setup(undefined, {
       customSiteTitle: "Telegram Bot Builder API — Swagger",
@@ -68,7 +75,7 @@ export function setupDocsUis(app: Express, document: OpenApiDocument, options: D
   );
 
   app.use(
-    `${basePath}/scalar`,
+    `${uiBase}/scalar`,
     apiReference({
       url: specPath,
       pageTitle: "Telegram Bot Builder API — Scalar",
@@ -81,7 +88,7 @@ export function setupDocsUis(app: Express, document: OpenApiDocument, options: D
   );
 
   app.get(
-    `${basePath}/redoc`,
+    `${uiBase}/redoc`,
     redocExpressMiddleware({
       title: "Telegram Bot Builder API — Redoc",
       specUrl: specPath,
@@ -93,7 +100,7 @@ export function setupDocsUis(app: Express, document: OpenApiDocument, options: D
     }),
   );
 
-  app.get(`${basePath}/rapidoc`, createRapidocHandler(specPath));
+  app.get(`${uiBase}/rapidoc`, createRapidocHandler(specPath));
 }
 
 /** Пути публичной документации (dev) */
@@ -107,6 +114,10 @@ export const ADMIN_DOCS_PATHS = [
   "/admin/docs/scalar",
   "/admin/docs/redoc",
   "/admin/docs/rapidoc",
+  "/admin/docs/embed/swagger",
+  "/admin/docs/embed/scalar",
+  "/admin/docs/embed/redoc",
+  "/admin/docs/embed/rapidoc",
 ] as const;
 
 /** Все пути документации */

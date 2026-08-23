@@ -17,11 +17,16 @@ import {
   adminRecreateTemplatesHandler,
   adminRefreshTemplatesHandler,
 } from "./handlers/template-seed-handlers";
-import { serveApiDocsIndex, serveApiDocsTag } from "./pages/api-docs-page";
-import { serveAdminHubPage } from "./pages/hub-page";
+import { ADMIN_CLIENT_PAGES, passAdminPageToClient } from "./admin-client-pages";
+import {
+  serveApiDocsEmbedIndex,
+  serveApiDocsEmbedTag,
+} from "./pages/api-docs-page";
 import { serveAdminLoginPage } from "./pages/login-page";
-import { serveAdminSettingsPage } from "./pages/settings-page";
-import { serveSchemaDocsIndex, serveSchemaDocsTable } from "./pages/schema-docs-page";
+import {
+  serveSchemaDocsEmbedIndex,
+  serveSchemaDocsEmbedTable,
+} from "./pages/schema-docs-page";
 import { isAdminEnabled, resolveAdminApiKey } from "./resolve-admin-key";
 import { isConfigured } from "../services/app-settings.service";
 
@@ -88,13 +93,17 @@ export function setupAdminRoutes(app: Express): void {
     adminCleanupOrphanedBotFoldersHandler,
   );
 
-  app.get("/admin/settings", requireAdminAuth, serveAdminSettingsPage);
+  for (const pagePath of ADMIN_CLIENT_PAGES) {
+    app.get(pagePath, passAdminPageToClient);
+  }
 
-  app.get("/admin", requireAdminAuth, serveAdminHubPage);
-  app.get("/admin/schema", requireAdminAuth, serveSchemaDocsIndex);
-  app.get("/admin/schema/:tableName", requireAdminAuth, serveSchemaDocsTable);
-  app.get("/admin/api-docs", requireAdminAuth, serveApiDocsIndex);
-  app.get("/admin/api-docs/:slug", requireAdminAuth, serveApiDocsTag);
+  app.get("/admin/schema/embed", requireAdminAuth, serveSchemaDocsEmbedIndex);
+  app.get("/admin/schema/embed/:tableName", requireAdminAuth, serveSchemaDocsEmbedTable);
+  app.get("/admin/api-docs/embed", requireAdminAuth, serveApiDocsEmbedIndex);
+  app.get("/admin/api-docs/embed/:slug", requireAdminAuth, serveApiDocsEmbedTag);
+
+  app.get("/admin/schema/:tableName", passAdminPageToClient);
+  app.get("/admin/api-docs/:slug", passAdminPageToClient);
 }
 
 /**
