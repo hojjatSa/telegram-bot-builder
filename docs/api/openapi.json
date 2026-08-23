@@ -5318,7 +5318,7 @@
           "projects"
         ],
         "summary": "Полный список проектов (со сценарием data)",
-        "description": "Сырые записи `bot_projects` владельца/коллаборатора, **включая** `data` (весь сценарий). Может содержать устаревшее поле `botToken`.\n\n**Параметры:** path/query/body нет. Auth — cookie или Bearer PAT.\n\n**Клиент:** сайдбар редактора (`use-projects-query`), canvas, bot-queries.\n\nДля списков в UI предпочтительнее `GET /api/projects/list`; полный сценарий — `GET /api/projects/{id}`.\n\n```bash\ncurl -s http://localhost:5000/api/projects -b cookies.txt\n```",
+        "description": "Сырые записи `bot_projects` владельца/коллаборатора, **включая** `data` (весь сценарий). Может содержать устаревшее поле `botToken`.\n\n**Query:** `archived=false|true` (default false). Поле `isArchivedForMe` в каждом элементе.\n\n**Клиент:** сайдбар редактора (`use-projects-query`), canvas, bot-queries.\n\nДля списков в UI предпочтительнее `GET /api/projects/list`; полный сценарий — `GET /api/projects/{id}`.\n\n```bash\ncurl -s http://localhost:5000/api/projects -b cookies.txt\n```",
         "security": [
           {
             "cookieAuth": []
@@ -5328,6 +5328,22 @@
           }
         ],
         "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "description": "false — активные проекты (default), true — личный архив",
+              "example": "false"
+            },
+            "required": false,
+            "description": "Фильтр личного архива текущего пользователя",
+            "example": "false",
+            "name": "archived",
+            "in": "query"
+          },
           {
             "schema": {
               "type": "string",
@@ -5374,7 +5390,8 @@
                         "sortOrder": 0,
                         "adminIds": null,
                         "createdAt": "2026-08-01T10:00:00.000Z",
-                        "updatedAt": "2026-08-11T12:00:00.000Z"
+                        "updatedAt": "2026-08-11T12:00:00.000Z",
+                        "isArchivedForMe": false
                       }
                     ]
                   },
@@ -5507,7 +5524,8 @@
                   "sortOrder": 0,
                   "adminIds": null,
                   "createdAt": "2026-08-01T10:00:00.000Z",
-                  "updatedAt": "2026-08-11T12:00:00.000Z"
+                  "updatedAt": "2026-08-11T12:00:00.000Z",
+                  "isArchivedForMe": false
                 }
               }
             }
@@ -5764,7 +5782,8 @@
                   "sortOrder": 0,
                   "adminIds": null,
                   "createdAt": "2026-08-01T10:00:00.000Z",
-                  "updatedAt": "2026-08-11T12:00:00.000Z"
+                  "updatedAt": "2026-08-11T12:00:00.000Z",
+                  "isArchivedForMe": false
                 }
               }
             }
@@ -5938,7 +5957,8 @@
                   "sortOrder": 0,
                   "adminIds": null,
                   "createdAt": "2026-08-01T10:00:00.000Z",
-                  "updatedAt": "2026-08-11T12:00:00.000Z"
+                  "updatedAt": "2026-08-11T12:00:00.000Z",
+                  "isArchivedForMe": false
                 }
               }
             }
@@ -6329,6 +6349,115 @@
                 "example": {
                   "message": "Ошибка удаления администратора",
                   "error": "Error: ..."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{id}/archive": {
+      "post": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Поместить проект в личный архив",
+        "description": "Скрывает проект только у текущего пользователя (владелец или коллаборатор). Боты **не останавливаются**. Другие участники проекта не затрагиваются.\n\n**Auth:** cookie / Bearer PAT + `requireProjectAccess`.\n\n```bash\ncurl -s -X POST http://localhost:5000/api/projects/42/archive -b cookies.txt\n```",
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "agentToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "Числовой ID проекта",
+              "example": "42"
+            },
+            "required": true,
+            "description": "Числовой ID проекта",
+            "example": "42",
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Bearer PAT агента (`mcp_…`). Альтернатива cookie connect.sid. Без обоих — 401.",
+              "example": "Bearer mcp_xxxxxxxx"
+            },
+            "required": false,
+            "description": "Authorization: Bearer mcp_… — PAT агента (альтернатива cookie)",
+            "example": "Bearer mcp_xxxxxxxx",
+            "name": "Authorization",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Session cookie после login. Не нужна, если передан Authorization Bearer PAT.",
+              "example": "s%3Axxxx.yyyy"
+            },
+            "required": false,
+            "description": "Session cookie после login. Не нужна при Authorization: Bearer mcp_…",
+            "example": "s%3Axxxx.yyyy",
+            "name": "connect.sid",
+            "in": "cookie"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Проект заархивирован для текущего пользователя",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectArchiveSuccess"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Нет авторизации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Требуется авторизация через Telegram"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет доступа к проекту",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Нет прав доступа к проекту"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка БД",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Не удалось заархивировать проект"
                 }
               }
             }
@@ -7147,7 +7276,8 @@
                   "createdAt": "2026-08-01T10:00:00.000Z",
                   "updatedAt": "2026-08-11T12:00:00.000Z",
                   "nodeCount": 12,
-                  "sheetsCount": 2
+                  "sheetsCount": 2,
+                  "isArchivedForMe": false
                 }
               }
             }
@@ -11004,6 +11134,115 @@
         }
       }
     },
+    "/api/projects/{id}/unarchive": {
+      "post": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Вернуть проект из личного архива",
+        "description": "Убирает личную запись архива для текущего пользователя. Проект снова появляется в активных списках и переключателе.\n\n**Auth:** cookie / Bearer PAT + `requireProjectAccess`.\n\n```bash\ncurl -s -X POST http://localhost:5000/api/projects/42/unarchive -b cookies.txt\n```",
+        "security": [
+          {
+            "cookieAuth": []
+          },
+          {
+            "agentToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "description": "Числовой ID проекта",
+              "example": "42"
+            },
+            "required": true,
+            "description": "Числовой ID проекта",
+            "example": "42",
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Bearer PAT агента (`mcp_…`). Альтернатива cookie connect.sid. Без обоих — 401.",
+              "example": "Bearer mcp_xxxxxxxx"
+            },
+            "required": false,
+            "description": "Authorization: Bearer mcp_… — PAT агента (альтернатива cookie)",
+            "example": "Bearer mcp_xxxxxxxx",
+            "name": "Authorization",
+            "in": "header"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "description": "Session cookie после login. Не нужна, если передан Authorization Bearer PAT.",
+              "example": "s%3Axxxx.yyyy"
+            },
+            "required": false,
+            "description": "Session cookie после login. Не нужна при Authorization: Bearer mcp_…",
+            "example": "s%3Axxxx.yyyy",
+            "name": "connect.sid",
+            "in": "cookie"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Проект возвращён из архива для текущего пользователя",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectArchiveSuccess"
+                },
+                "example": {
+                  "success": true
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Нет авторизации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Требуется авторизация через Telegram"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нет доступа к проекту",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Нет прав доступа к проекту"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Ошибка БД",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageError"
+                },
+                "example": {
+                  "message": "Не удалось вернуть проект из архива"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/projects/{id}/users": {
       "delete": {
         "tags": [
@@ -12808,7 +13047,8 @@
                   "sortOrder": 0,
                   "adminIds": null,
                   "createdAt": "2026-08-01T10:00:00.000Z",
-                  "updatedAt": "2026-08-11T12:00:00.000Z"
+                  "updatedAt": "2026-08-11T12:00:00.000Z",
+                  "isArchivedForMe": false
                 }
               }
             }
@@ -21256,7 +21496,7 @@
           "projects"
         ],
         "summary": "Лёгкий список проектов (без секретов и data)",
-        "description": "Метаданные проектов владельца и коллаборатора: id, name, sortOrder, `nodeCount` / `sheetsCount`. **Без** `data`, `botToken`, `sessionId` (whitelist DTO `toProjectListItem`).\n\n**Параметры:** path/query/body нет. Auth — cookie `connect.sid` или Bearer PAT.\n\n**Клиент:** `App`, home, `use-project-loader`, MCP `db_list_projects`.\n\nПредпочтительнее тяжёлого `GET /api/projects` для списков в UI.\n\n```bash\ncurl -s http://localhost:5000/api/projects/list -b cookies.txt\n```",
+        "description": "Метаданные проектов владельца и коллаборатора: id, name, sortOrder, `nodeCount` / `sheetsCount`. **Без** `data`, `botToken`, `sessionId` (whitelist DTO `toProjectListItem`).\n\n**Query:** `archived=false|true` (default false).\n\n**Клиент:** `App`, home, `use-project-loader`, MCP `db_list_projects`.\n\nПредпочтительнее тяжёлого `GET /api/projects` для списков в UI.\n\n```bash\ncurl -s http://localhost:5000/api/projects/list -b cookies.txt\n```",
         "security": [
           {
             "cookieAuth": []
@@ -21266,6 +21506,22 @@
           }
         ],
         "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "description": "false — активные проекты (default), true — личный архив",
+              "example": "false"
+            },
+            "required": false,
+            "description": "Фильтр личного архива текущего пользователя",
+            "example": "false",
+            "name": "archived",
+            "in": "query"
+          },
           {
             "schema": {
               "type": "string",
@@ -21302,7 +21558,8 @@
                         "createdAt": "2026-08-01T10:00:00.000Z",
                         "updatedAt": "2026-08-11T12:00:00.000Z",
                         "nodeCount": 12,
-                        "sheetsCount": 2
+                        "sheetsCount": 2,
+                        "isArchivedForMe": false
                       }
                     ]
                   },
@@ -24908,6 +25165,10 @@
           "sheetsCount": {
             "type": "number",
             "example": 2
+          },
+          "isArchivedForMe": {
+            "type": "boolean",
+            "example": false
           }
         },
         "required": [
@@ -24916,7 +25177,8 @@
           "name",
           "description",
           "nodeCount",
-          "sheetsCount"
+          "sheetsCount",
+          "isArchivedForMe"
         ]
       },
       "ProjectList": {
@@ -25035,6 +25297,10 @@
               }
             ],
             "example": "2026-08-11T12:00:00.000Z"
+          },
+          "isArchivedForMe": {
+            "type": "boolean",
+            "example": false
           }
         },
         "required": [
@@ -25250,6 +25516,18 @@
             "example": "Мой бот (копия)"
           }
         }
+      },
+      "ProjectArchiveSuccess": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "required": [
+          "success"
+        ]
       },
       "AdminIdItem": {
         "type": "object",

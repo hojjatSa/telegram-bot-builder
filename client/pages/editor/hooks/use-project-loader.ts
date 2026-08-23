@@ -8,6 +8,8 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { BotProject } from '@shared/schema';
 import { useTelegramAuth } from '@/components/editor/header/hooks/use-telegram-auth';
+import { apiRequest } from '@/queryClient';
+import type { BotProjectWithArchive } from '@/components/editor/sidebar/hooks/use-projects-query';
 
 /** Параметры хука загрузки проекта */
 interface UseProjectLoaderOptions {
@@ -18,11 +20,11 @@ interface UseProjectLoaderOptions {
 /** Результат работы хука загрузки проекта */
 interface UseProjectLoaderResult {
   /** Данные текущего проекта */
-  currentProject: BotProject | undefined;
+  currentProject: BotProjectWithArchive | undefined;
   /** Данные первого проекта из списка */
-  firstProject: BotProject | undefined;
-  /** Список проектов (только метаданные) */
-  projectsList: Array<Omit<BotProject, 'data'>> | undefined;
+  firstProject: BotProjectWithArchive | undefined;
+  /** Список активных проектов (только метаданные) */
+  projectsList: Array<Omit<BotProject, 'data'> & { isArchivedForMe?: boolean }> | undefined;
   /** Эффективный ID проекта (из URL или первый в списке) */
   effectiveProjectId: number | undefined;
   /** Флаг ошибки загрузки проекта */
@@ -43,15 +45,15 @@ export function useProjectLoader({
   const queryClient = useQueryClient();
 
   // Загрузка проекта по ID из URL — ждём сессии
-  const { data: currentProject, isError: projectNotFound } = useQuery<BotProject>({
+  const { data: currentProject, isError: projectNotFound } = useQuery<BotProjectWithArchive>({
     queryKey: [`/api/projects/${projectId}`],
     enabled: !!projectId && sessionReady,
     staleTime: 30000,
   });
 
-  // Загрузка списка проектов — ждём готовности серверной сессии
-  const { data: projectsList } = useQuery<Array<Omit<BotProject, 'data'>>>({
-    queryKey: ['/api/projects/list'],
+  const { data: projectsList } = useQuery<Array<Omit<BotProject, 'data'> & { isArchivedForMe?: boolean }>>({
+    queryKey: ['/api/projects/list', 'active'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=false'),
     enabled: !projectId && sessionReady,
     staleTime: 30000,
   });
@@ -60,7 +62,7 @@ export function useProjectLoader({
   const effectiveProjectId = projectId || projectsList?.[0]?.id;
 
   // Загрузка первого проекта если нет ID в URL
-  const { data: firstProject } = useQuery<BotProject>({
+  const { data: firstProject } = useQuery<BotProjectWithArchive>({
     queryKey: [`/api/projects/${effectiveProjectId}`],
     enabled: !projectId && !!effectiveProjectId && sessionReady,
     staleTime: 30000,

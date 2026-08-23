@@ -406,9 +406,35 @@ export interface IStorage {
   /**
    * Получить проекты ботов пользователя
    * @param ownerId - ID владельца
+   * @param options - Фильтр личного архива
    * @returns Массив проектов ботов пользователя
    */
-  getUserBotProjects(ownerId: number): Promise<BotProject[]>;
+  getUserBotProjects(
+    ownerId: number,
+    options?: { archived?: boolean; ignoreArchive?: boolean },
+  ): Promise<BotProject[]>;
+
+  /**
+   * Помещает проект в личный архив пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   */
+  archiveProjectForUser(userId: number, projectId: number): Promise<void>;
+
+  /**
+   * Убирает проект из личного архива пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   */
+  unarchiveProjectForUser(userId: number, projectId: number): Promise<void>;
+
+  /**
+   * Проверяет, находится ли проект в личном архиве пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   * @returns true, если проект заархивирован для пользователя
+   */
+  isProjectArchivedForUser(userId: number, projectId: number): Promise<boolean>;
 
   /**
    * Получить гостевые проекты ботов (без владельца)

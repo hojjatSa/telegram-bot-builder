@@ -7,6 +7,7 @@
 import { Button } from '@/components/ui/button';
 import { LayoutButtons } from '@/components/layout/layout-buttons';
 import { X } from 'lucide-react';
+import { ProjectsViewToggle, type ProjectsViewMode } from './projects-view-toggle';
 
 /**
  * Пропсы компонента заголовка
@@ -34,6 +35,10 @@ export interface SidebarHeaderProps {
   onShowFullLayout?: () => void;
   /** Колбэк для закрытия панели */
   onClose?: () => void;
+  /** Режим списка проектов (активные / архив) */
+  projectsView?: ProjectsViewMode;
+  /** Смена режима списка проектов */
+  onProjectsViewChange?: (view: ProjectsViewMode) => void;
 }
 
 /**
@@ -53,6 +58,8 @@ export function SidebarHeader({
   onToggleProperties,
   onShowFullLayout,
   onClose,
+  projectsView = 'active',
+  onProjectsViewChange,
 }: SidebarHeaderProps) {
   return (
     <div className="p-4 border-b border-border/30 bg-gradient-to-r from-slate-50/50 dark:from-slate-900/30 to-transparent">
@@ -109,6 +116,11 @@ export function SidebarHeader({
           Проекты
         </button>
       </div>
+      {currentTab === 'projects' && onProjectsViewChange && (
+        <div className="mt-3">
+          <ProjectsViewToggle value={projectsView} onChange={onProjectsViewChange} />
+        </div>
+      )}
     </div>
   );
 }

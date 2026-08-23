@@ -62,8 +62,11 @@ export class EnhancedDatabaseStorage extends DatabaseStorage {
    * @param ownerId - ID пользователя
    * @returns Массив проектов ботов пользователя
    */
-  async getUserBotProjects(ownerId: number): Promise<BotProject[]> {
-    return await super.getUserBotProjects(ownerId);
+  async getUserBotProjects(
+    ownerId: number,
+    options?: { archived?: boolean; ignoreArchive?: boolean },
+  ): Promise<BotProject[]> {
+    return await super.getUserBotProjects(ownerId, options);
   }
 
   async getUserBotTokens(ownerId: number, projectId?: number): Promise<BotToken[]> {

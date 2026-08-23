@@ -538,7 +538,7 @@ export async function registerRoutes(app: Express, httpServer?: Server): Promise
       if (ownerId === null) {
         return res.json([]);
       }
-      const ownProjects = await storage.getUserBotProjects(ownerId);
+      const ownProjects = await storage.getUserBotProjects(ownerId, { ignoreArchive: true });
       const ownProjectIds = new Set(ownProjects.map(p => p.id));
       const scoped = instances
         .filter((inst) => ownProjectIds.has(inst.projectId))

@@ -63,6 +63,8 @@ import { AgentTokensPanel } from '@/components/editor/agent';
 import { UserDetailsPanel } from '@/components/editor/database/user-details/user-details-panel';
 import { ProjectNotFound } from '@/components/editor/project-not-found';
 import { AdaptiveHeader } from '@/components/editor/header/adaptive-header';
+import { useArchiveProjectMutation } from '@/components/editor/sidebar/hooks/use-archive-project-mutation';
+import type { BotProjectWithArchive } from '@/components/editor/sidebar/hooks/use-projects-query';
 import { AdaptiveLayout } from '@/components/layout/adaptive-layout';
 import { FlexibleLayout } from '@/components/layout/flexible/flexible-layout';
 import { LayoutManager, useLayoutManager } from '@/components/layout/layout-manager';
@@ -1492,11 +1494,24 @@ export default function Editor() {
     />
   ) : null;
 
-  // Загрузка всех проектов для передачи в CodePanel
-  const { data: allProjects = [] } = useQuery<BotProject[]>({
-    queryKey: ['/api/projects'],
+  // Загрузка активных проектов для переключателя (без личного архива)
+  const { data: allProjects = [] } = useQuery<BotProjectWithArchive[]>({
+    queryKey: ['/api/projects', 'active'],
+    queryFn: () => apiRequest('GET', '/api/projects?archived=false'),
     staleTime: 30000,
   });
+
+  const { unarchiveProject, isPending: isUnarchivePending } = useArchiveProjectMutation();
+
+  const isCurrentProjectArchived = Boolean(
+    (activeProject as BotProjectWithArchive | undefined)?.isArchivedForMe,
+  );
+
+  const handleUnarchiveCurrentProject = useCallback(() => {
+    if (activeProject?.id) {
+      unarchiveProject(activeProject.id);
+    }
+  }, [activeProject?.id, unarchiveProject]);
 
   // Определяем содержимое панели кода
   const codeContent = activeProject ? (
@@ -1572,6 +1587,9 @@ export default function Editor() {
         codeEditorVisible={codeEditorVisible}
         onOpenMobileSidebar={() => setShowMobileSidebar(true)}
         onOpenMobileProperties={() => setShowMobileProperties(true)}
+        isCurrentProjectArchived={isCurrentProjectArchived}
+        onUnarchiveCurrentProject={handleUnarchiveCurrentProject}
+        isUnarchivePending={isUnarchivePending}
       />
     );
 
@@ -2051,6 +2069,9 @@ export default function Editor() {
               codeEditorVisible={codeEditorVisible}
               onOpenMobileSidebar={() => setShowMobileSidebar(true)}
               onOpenMobileProperties={() => setShowMobileProperties(true)}
+              isCurrentProjectArchived={isCurrentProjectArchived}
+              onUnarchiveCurrentProject={handleUnarchiveCurrentProject}
+              isUnarchivePending={isUnarchivePending}
             />
           }
           sidebar={

@@ -37,6 +37,8 @@ export interface ProjectListItem {
     nodeCount: number;
     /** Количество листов проекта */
     sheetsCount: number;
+    /** Заархивирован ли проект для текущего пользователя */
+    isArchivedForMe: boolean;
 }
 
 /**
@@ -44,12 +46,14 @@ export interface ProjectListItem {
  * @param project - Запись проекта из хранилища
  * @param nodeCount - Количество узлов, вычисленное из data
  * @param sheetsCount - Количество листов, вычисленное из data
+ * @param isArchivedForMe - Флаг личного архива для запросившего пользователя
  * @returns Объект только с безопасными полями (без botToken и sessionId)
  */
 export function toProjectListItem(
     project: BotProject,
     nodeCount: number,
     sheetsCount: number,
+    isArchivedForMe = false,
 ): ProjectListItem {
     return {
         id: project.id,
@@ -63,5 +67,6 @@ export function toProjectListItem(
         updatedAt: project.updatedAt,
         nodeCount,
         sheetsCount,
+        isArchivedForMe,
     };
 }

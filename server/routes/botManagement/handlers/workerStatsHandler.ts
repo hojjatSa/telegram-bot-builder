@@ -48,7 +48,7 @@ export async function handleWorkerStats(req: Request, res: Response): Promise<vo
     const stats = workerManager.getStats();
 
     // Множество projectId, доступных владельцу/коллаборатору
-    const ownerProjects = await storage.getUserBotProjects(ownerId);
+    const ownerProjects = await storage.getUserBotProjects(ownerId, { ignoreArchive: true });
     const ownedProjectIds = new Set(ownerProjects.map((project) => project.id));
 
     // Оставляем только воркеры проектов владельца и убираем внутренний pid из выдачи

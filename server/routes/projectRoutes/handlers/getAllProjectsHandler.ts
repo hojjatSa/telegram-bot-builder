@@ -10,25 +10,26 @@
 import type { Request, Response } from "express";
 import { storage } from "../../../storages/storage";
 import { getOwnerIdFromRequest } from "../../../telegram/auth-middleware";
+import { parseArchivedQuery } from "../parse-archived-query";
 
 /**
  * Обрабатывает запрос на получение всех проектов
- *
- * @function getAllProjectsHandler
- * @param {Request} req - Объект запроса
- * @param {Response} res - Объект ответа
- * @returns {Promise<void>}
+ * @param req - Объект запроса
+ * @param res - Объект ответа
  */
 export async function getAllProjectsHandler(req: Request, res: Response): Promise<void> {
     try {
         const ownerId = getOwnerIdFromRequest(req);
-        // Личность гарантирована requireApiAuth; без владельца — пустой список (defense-in-depth)
+        const archived = parseArchivedQuery(req);
         const projects = ownerId !== null
-            ? await storage.getUserBotProjects(ownerId)
+            ? await storage.getUserBotProjects(ownerId, { archived })
             : [];
 
-        res.json(projects);
-    } catch (error) {
+        res.json(projects.map((project) => ({
+            ...project,
+            isArchivedForMe: archived,
+        })));
+    } catch {
         res.status(500).json({ message: "Не удалось получить проекты" });
     }
 }

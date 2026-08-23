@@ -25,6 +25,8 @@ import { pruneProjectVersionsHandler } from "./projectRoutes/handlers/pruneProje
 import { reorderProjectsHandler } from "./projectRoutes/handlers/reorderProjectsHandler";
 import { exportProjectHandler } from "./projectRoutes/handlers/exportProjectHandler";
 import { duplicateProjectHandler } from "./projectRoutes/handlers/duplicateProjectHandler";
+import { archiveProjectHandler } from "./projectRoutes/handlers/archiveProjectHandler";
+import { unarchiveProjectHandler } from "./projectRoutes/handlers/unarchiveProjectHandler";
 import { listBotTokensHandler } from "./projectRoutes/handlers/listBotTokensHandler";
 import { uploadImageHandler } from "./projectManagement/handlers/uploadImageHandler";
 import { handleGenerateCode } from "./projects/generateCode";
@@ -64,6 +66,10 @@ export function setupProjectRoutes(app: Express, requireDbReady: (_req: any, res
 
     // Дублирование проекта (полная копия без токена)
     app.post("/api/projects/:id/duplicate", requireDbReady, requireProjectAccess, duplicateProjectHandler);
+
+    // Личный архив проекта (не останавливает ботов)
+    app.post("/api/projects/:id/archive", requireDbReady, requireProjectAccess, archiveProjectHandler);
+    app.post("/api/projects/:id/unarchive", requireDbReady, requireProjectAccess, unarchiveProjectHandler);
 
     // Генерация Python кода
     app.post("/api/projects/:id/generate", requireDbReady, requireProjectAccess, handleGenerateCode);

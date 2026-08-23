@@ -19,6 +19,7 @@ export const BOT_PROJECT_EXAMPLE = {
   adminIds: null,
   createdAt: "2026-08-01T10:00:00.000Z",
   updatedAt: "2026-08-11T12:00:00.000Z",
+  isArchivedForMe: false,
 };
 
 /** Элемент безопасного списка GET /api/projects/list */
@@ -34,6 +35,7 @@ export const PROJECT_LIST_ITEM_EXAMPLE = {
   updatedAt: "2026-08-11T12:00:00.000Z",
   nodeCount: 12,
   sheetsCount: 2,
+  isArchivedForMe: false,
 };
 
 /** Тело POST /api/projects (минимальное) */

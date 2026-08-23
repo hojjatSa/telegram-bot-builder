@@ -61,6 +61,9 @@ export type { BotLaunchHistory, InsertBotLaunchHistory } from "./schema/tables/b
 export { projectCollaborators } from "./schema/tables/project-collaborators";
 export type { ProjectCollaborator, InsertProjectCollaborator } from "./schema/tables/project-collaborators";
 
+export { userProjectArchives } from "./schema/tables/user-project-archives";
+export type { UserProjectArchive, InsertUserProjectArchive } from "./schema/tables/user-project-archives";
+
 export { appSettings } from "./schema/tables/app-settings";
 export type { AppSetting, InsertAppSetting } from "./schema/tables/app-settings";
 

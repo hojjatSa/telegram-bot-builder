@@ -4,7 +4,7 @@
  */
 
 import { BotProject } from '@shared/schema';
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import {
   handleProjectDragStart,
@@ -26,6 +26,8 @@ import { useSidebarImportHandler } from './hooks/use-sidebar-import-handler';
 import { useSidebarTouch } from './hooks/use-sidebar-touch';
 import { useSidebarFileUpload } from './hooks/use-sidebar-file-upload';
 import { useProjectsQuery } from './hooks/use-projects-query';
+import { useArchiveProjectMutation } from './hooks/use-archive-project-mutation';
+import type { ProjectsViewMode } from './components/projects-view-toggle';
 import { useCreateProjectMutation } from './hooks/use-create-project-mutation';
 import { useDeleteProjectMutation } from './hooks/use-delete-project-mutation';
 import { useDuplicateProjectMutation } from './hooks/use-duplicate-project-mutation';
@@ -75,6 +77,7 @@ export function ComponentsSidebar({
 }: ComponentsSidebarProps) {
   // Хук управления вкладками
   const { currentTab, setCurrentTab } = useSidebarTabs();
+  const [projectsView, setProjectsView] = useState<ProjectsViewMode>('active');
 
   // Хук управления drag-and-drop
   const {
@@ -158,7 +161,8 @@ export function ComponentsSidebar({
    * Загрузка списка проектов с сервера
    * Данные всегда считаются устаревшими для немедленного обновления
    */
-  const { projects, isLoading } = useProjectsQuery();
+  const { projects, isLoading } = useProjectsQuery(projectsView === 'archived');
+  const { archiveProject, unarchiveProject, isPending: isArchivePending } = useArchiveProjectMutation();
 
   // Хук обработки импорта проектов
   const { handleImportProject } = useSidebarImportHandler({
@@ -329,6 +333,8 @@ export function ComponentsSidebar({
         onToggleProperties={onToggleProperties}
         onShowFullLayout={onShowFullLayout}
         onClose={onClose}
+        projectsView={projectsView}
+        onProjectsViewChange={setProjectsView}
       />
 
       {/* Components List — скролл-контейнер без padding-top, чтобы sticky-заголовки прилипали вплотную к табам */}
@@ -402,12 +408,20 @@ export function ComponentsSidebar({
                 <div className="bg-muted/30 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <Home className="h-8 w-8 text-muted-foreground" />
                 </div>
-                <h4 className="text-sm font-medium text-foreground mb-2">Нет проектов</h4>
-                <p className="text-xs text-muted-foreground mb-4">Создайте первый проект для начала работы</p>
+                <h4 className="text-sm font-medium text-foreground mb-2">
+                  {projectsView === 'archived' ? 'Архив пуст' : 'Нет проектов'}
+                </h4>
+                <p className="text-xs text-muted-foreground mb-4">
+                  {projectsView === 'archived'
+                    ? 'Здесь появятся проекты, которые вы отправите в архив'
+                    : 'Создайте первый проект для начала работы'}
+                </p>
+                {projectsView === 'active' && (
                 <Button size="default" onClick={handleCreateProject} disabled={isCreatingProject} className="h-10 px-6">
                   <Plus className="h-4 w-4 mr-2" />
                   {isCreatingProject ? 'Создание...' : 'Создать проект'}
                 </Button>
+                )}
               </div>
             ) : (
               <div
@@ -550,6 +564,10 @@ export function ComponentsSidebar({
                     onBulkMoveNodes={(sourceSheetId, nodeIds, targetSheetId) =>
                       handleBulkMoveNodes(project.id, sourceSheetId, nodeIds, targetSheetId)
                     }
+                    isArchivedView={projectsView === 'archived'}
+                    onArchiveProject={archiveProject}
+                    onUnarchiveProject={unarchiveProject}
+                    isArchivePending={isArchivePending}
                   />
                 ))}
               </div>

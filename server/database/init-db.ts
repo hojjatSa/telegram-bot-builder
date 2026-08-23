@@ -844,6 +844,28 @@ export async function initializeDatabaseTables() {
       console.log('⚠️ Ошибка при миграции token_id в bot_groups:', error);
     }
 
+    // Миграция: личный архив проектов пользователя
+    try {
+      await executeWithRetry(db, sql`
+        CREATE TABLE IF NOT EXISTS user_project_archives (
+          user_id BIGINT NOT NULL REFERENCES telegram_users(id) ON DELETE CASCADE,
+          project_id INTEGER NOT NULL REFERENCES bot_projects(id) ON DELETE CASCADE,
+          archived_at TIMESTAMP NOT NULL DEFAULT NOW(),
+          PRIMARY KEY (user_id, project_id)
+        );
+      `, "Миграция: создание таблицы user_project_archives");
+      await executeWithRetry(db, sql`
+        CREATE INDEX IF NOT EXISTS idx_user_project_archives_user
+          ON user_project_archives(user_id);
+      `, "Миграция: индекс idx_user_project_archives_user");
+      await executeWithRetry(db, sql`
+        CREATE INDEX IF NOT EXISTS idx_user_project_archives_project
+          ON user_project_archives(project_id);
+      `, "Миграция: индекс idx_user_project_archives_project");
+    } catch (error) {
+      console.log('⚠️ Ошибка при миграции user_project_archives:', error);
+    }
+
     console.log('✅ Таблицы базы данных успешно инициализированы!');
     return true;
   } catch (error) {

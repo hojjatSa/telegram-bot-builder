@@ -10,12 +10,15 @@ import { apiRequest } from '@/queryClient';
 import type { BotProject } from '@shared/schema';
 import { useTelegramAuth } from '@/components/editor/header/hooks/use-telegram-auth';
 
+/** Проект с флагом личного архива из API */
+export type BotProjectWithArchive = BotProject & { isArchivedForMe?: boolean };
+
 /**
  * Результат работы хука загрузки проектов
  */
 export interface UseProjectsQueryResult {
   /** Список проектов */
-  projects: BotProject[];
+  projects: BotProjectWithArchive[];
   /** Индикатор загрузки */
   isLoading: boolean;
   /** Функция для принудительного обновления данных */
@@ -27,21 +30,22 @@ export interface UseProjectsQueryResult {
  * Ожидает готовности серверной сессии перед первым запросом,
  * чтобы не получить пустой список до авторизации.
  *
+ * @param archived - true — только архивные проекты, false — только активные
  * @returns Объект с данными о проектах и состоянием
  */
-export function useProjectsQuery(): UseProjectsQueryResult {
+export function useProjectsQuery(archived = false): UseProjectsQueryResult {
   const { sessionReady, user } = useTelegramAuth();
   const userId =
     user && 'id' in user ? user.id : 'anon';
+  const viewKey = archived ? 'archived' : 'active';
 
-  const { data, isLoading, refetch } = useQuery<BotProject[]>({
-    queryKey: ['/api/projects', userId],
-    queryFn: () => apiRequest('GET', '/api/projects'),
-    staleTime: 0, // Данные всегда считаются устаревшими
-    enabled: sessionReady, // Ждём готовности серверной сессии
+  const { data, isLoading, refetch } = useQuery<BotProjectWithArchive[]>({
+    queryKey: ['/api/projects', userId, viewKey],
+    queryFn: () => apiRequest('GET', `/api/projects?archived=${archived}`),
+    staleTime: 0,
+    enabled: sessionReady,
   });
 
-  // Рефетч при появлении sessionReady — подхватывает проекты созданные автоматически
   useEffect(() => {
     if (sessionReady) {
       refetch();

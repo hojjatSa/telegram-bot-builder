@@ -21,6 +21,8 @@ export interface ProjectSwitcherProps {
   projects: Array<{ id: number; name: string }>;
   /** ID текущего активного проекта */
   currentProjectId: number;
+  /** Имя текущего проекта (если его нет в списке, например в архиве) */
+  currentProjectName?: string;
   /** Обработчик выбора проекта */
   onSelect: (id: number) => void;
 }
@@ -30,18 +32,24 @@ export interface ProjectSwitcherProps {
  * @param props - Свойства компонента
  * @returns JSX элемент
  */
-export function ProjectSwitcher({ projects, currentProjectId, onSelect }: ProjectSwitcherProps) {
+export function ProjectSwitcher({
+  projects,
+  currentProjectId,
+  currentProjectName,
+  onSelect,
+}: ProjectSwitcherProps) {
   const current = projects.find((p) => p.id === currentProjectId);
+  const displayName = current?.name ?? currentProjectName ?? 'Проект';
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          title={current?.name ?? 'Проект'}
+          title={displayName}
           className="h-8 min-w-0 max-w-[min(100%,18rem)] gap-1 border-none px-1.5 text-sm font-medium shadow-none focus-visible:ring-0 sm:max-w-72 md:max-w-80 xl:max-w-96"
         >
-          <span className="truncate">{current?.name ?? 'Проект'}</span>
+          <span className="truncate">{displayName}</span>
           <ChevronDown className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>

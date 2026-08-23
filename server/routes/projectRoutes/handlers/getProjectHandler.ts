@@ -11,6 +11,7 @@
 import type { Request, Response } from "express";
 import { storage } from "../../../storages/storage";
 import { normalizeProjectData } from "../../../utils/normalizeProjectData";
+import { getOwnerIdFromRequest } from "../../../telegram/auth-middleware";
 
 /**
  * Обрабатывает запрос на получение проекта
@@ -43,7 +44,15 @@ export async function getProjectHandler(req: Request, res: Response): Promise<vo
         }
 
         const normalizedProject = normalizeProjectData(project);
-        res.json(normalizedProject);
+        const userId = getOwnerIdFromRequest(req);
+        const isArchivedForMe = userId !== null
+            ? await storage.isProjectArchivedForUser(userId, id)
+            : false;
+
+        res.json({
+            ...normalizedProject,
+            isArchivedForMe,
+        });
     } catch (error) {
         res.status(500).json({ message: "Не удалось получить проект" });
     }

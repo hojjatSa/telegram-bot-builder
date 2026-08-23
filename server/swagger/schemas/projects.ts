@@ -67,6 +67,8 @@ export const BotProjectSchema = z
     updatedAt: z.union([z.string(), z.date()]).nullable().optional().openapi({
       example: "2026-08-11T12:00:00.000Z",
     }),
+    /** Заархивирован ли проект для текущего пользователя (GET /api/projects) */
+    isArchivedForMe: z.boolean().optional().openapi({ example: false }),
   })
   .openapi("BotProject");
 
@@ -142,6 +144,8 @@ export const ProjectListItemSchema = z
     nodeCount: z.number().openapi({ example: 12 }),
     /** Количество листов */
     sheetsCount: z.number().openapi({ example: 2 }),
+    /** Заархивирован ли проект для текущего пользователя */
+    isArchivedForMe: z.boolean().openapi({ example: false }),
   })
   .openapi("ProjectListItem");
 

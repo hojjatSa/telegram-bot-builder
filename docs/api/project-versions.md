@@ -235,7 +235,8 @@ curl -s -X POST http://localhost:5000/api/projects/42/versions/7/restore \
   "sortOrder": 0,
   "adminIds": null,
   "createdAt": "2026-08-01T10:00:00.000Z",
-  "updatedAt": "2026-08-11T12:00:00.000Z"
+  "updatedAt": "2026-08-11T12:00:00.000Z",
+  "isArchivedForMe": false
 }
 ```
 

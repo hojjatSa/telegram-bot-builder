@@ -11,6 +11,7 @@ import { MobileHeaderControls } from './components/mobile-header-controls';
 import { MobileMenu } from './components/mobile-menu';
 import { Logo } from './components/logo';
 import { ProjectSwitcher } from './components/project-switcher';
+import { ProjectArchiveBadge } from './components/project-archive-badge';
 
 export function AdaptiveHeader({
   config,
@@ -37,7 +38,10 @@ export function AdaptiveHeader({
   codeVisible,
   codeEditorVisible,
   onOpenMobileSidebar,
-  onOpenMobileProperties
+  onOpenMobileProperties,
+  isCurrentProjectArchived = false,
+  onUnarchiveCurrentProject,
+  isUnarchivePending = false,
 }: AdaptiveHeaderProps) {
 
   // Проверка авторизации пользователя
@@ -112,7 +116,15 @@ export function AdaptiveHeader({
             <ProjectSwitcher
               projects={projects}
               currentProjectId={currentProjectId}
+              currentProjectName={projectName}
               onSelect={onProjectChange}
+            />
+          )}
+
+          {isCurrentProjectArchived && onUnarchiveCurrentProject && (
+            <ProjectArchiveBadge
+              onUnarchive={onUnarchiveCurrentProject}
+              disabled={isUnarchivePending}
             />
           )}
 

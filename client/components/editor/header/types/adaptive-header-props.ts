@@ -65,4 +65,10 @@ export interface AdaptiveHeaderProps {
   onOpenMobileSidebar?: () => void;
   /** Функция открытия мобильной панели свойств */
   onOpenMobileProperties?: () => void;
+  /** Текущий проект в личном архиве пользователя */
+  isCurrentProjectArchived?: boolean;
+  /** Вернуть текущий проект из архива */
+  onUnarchiveCurrentProject?: () => void;
+  /** Блокировка кнопки возврата из архива */
+  isUnarchivePending?: boolean;
 }

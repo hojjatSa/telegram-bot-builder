@@ -69,6 +69,7 @@ import { registerProjectsCollaboratorsInfoPaths } from "./paths/projects-collabo
 import { registerProjectsCreateGetPaths } from "./paths/projects-create-get-paths";
 import { registerProjectsDeletePaths } from "./paths/projects-delete-paths";
 import { registerProjectsDuplicatePaths } from "./paths/projects-duplicate-paths";
+import { registerProjectsArchivePaths } from "./paths/projects-archive-paths";
 import { registerProjectsExportPaths } from "./paths/projects-export-paths";
 import { registerProjectsGeneratePaths } from "./paths/projects-generate-paths";
 import { registerProjectsLaunchesAllPaths } from "./paths/projects-launches-all-paths";
@@ -133,6 +134,7 @@ registerProjectsCreateGetPaths(documentedRegistry, cookieSecurity);
 registerProjectsUpdatePaths(documentedRegistry, cookieSecurity);
 registerProjectsDeletePaths(documentedRegistry, cookieSecurity);
 registerProjectsDuplicatePaths(documentedRegistry, cookieSecurity);
+registerProjectsArchivePaths(documentedRegistry, cookieSecurity);
 registerProjectsAdminIdsPaths(documentedRegistry, cookieSecurity);
 registerProjectsReorderPaths(documentedRegistry, cookieSecurity);
 registerProjectsGeneratePaths(documentedRegistry, cookieSecurity);

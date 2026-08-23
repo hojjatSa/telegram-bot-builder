@@ -47,6 +47,7 @@ import { useSheetSearchState } from '../hooks/use-sheet-search-state';
 import { HighlightText } from './highlight-text';
 import { useNodeSelection } from '../hooks/use-node-selection';
 import { DeleteProjectDialog } from './delete-project-dialog';
+import { ProjectCardArchiveButton } from './project-card-archive-button';
 
 /**
  * Состояние drag-and-drop для проектов и листов
@@ -166,6 +167,14 @@ export interface ProjectCardProps {
   onNodeFocus?: (nodeId: string, buttonId?: string) => void;
   /** Колбэк массового перемещения узлов между листами */
   onBulkMoveNodes?: (sourceSheetId: string, nodeIds: string[], targetSheetId: string) => void;
+  /** true — список архивных проектов */
+  isArchivedView?: boolean;
+  /** Поместить проект в архив */
+  onArchiveProject?: (projectId: number) => void;
+  /** Вернуть проект из архива */
+  onUnarchiveProject?: (projectId: number) => void;
+  /** Блокировка кнопок архива */
+  isArchivePending?: boolean;
 }
 
 /**
@@ -452,6 +461,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   onTouchEnd,
   onNodeFocus,
   onBulkMoveNodes,
+  isArchivedView = false,
+  onArchiveProject,
+  onUnarchiveProject,
+  isArchivePending = false,
 }) => {
   // Используем пропсы для совместимости интерфейса
   // onSheetRename вызывается через onSaveSheetName в родительском компоненте
@@ -740,6 +753,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           >
             {project.ownerId === null ? '👥' : '👤'}
           </span>
+          {(onArchiveProject || onUnarchiveProject) && (
+            <ProjectCardArchiveButton
+              isArchivedView={isArchivedView}
+              disabled={isArchivePending}
+              onArchive={() => onArchiveProject?.(project.id)}
+              onUnarchive={() => onUnarchiveProject?.(project.id)}
+            />
+          )}
           <Button
             variant="ghost"
             size="sm"

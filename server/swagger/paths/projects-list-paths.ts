@@ -4,6 +4,7 @@
  */
 
 import type { OpenAPIRegistry } from "@asteasolutions/zod-to-openapi";
+import { z } from "zod";
 import { MessageErrorSchema, UnauthorizedSchema } from "../schemas/common";
 import {
   BotProjectListSchema,
@@ -16,6 +17,22 @@ import {
   PROJECTS_ALL_ERROR_EXAMPLE,
   PROJECTS_LIST_ERROR_EXAMPLE,
 } from "./projects-examples";
+
+/** Query ?archived=false|true */
+const ProjectsArchivedQuerySchema = z.object({
+  /** false — активные (по умолчанию), true — только личный архив */
+  archived: z
+    .enum(["true", "false"])
+    .optional()
+    .openapi({
+      example: "false",
+      description: "false — активные проекты (default), true — личный архив",
+      param: {
+        description: "Фильтр личного архива текущего пользователя",
+        example: "false",
+      },
+    }),
+});
 
 /**
  * Регистрирует лёгкий и полный списки проектов.
@@ -36,12 +53,12 @@ export function registerProjectsListPaths(
       "Метаданные проектов владельца и коллаборатора: id, name, sortOrder, " +
       "`nodeCount` / `sheetsCount`. **Без** `data`, `botToken`, `sessionId` " +
       "(whitelist DTO `toProjectListItem`).\n\n" +
-      "**Параметры:** path/query/body нет. Auth — cookie `connect.sid` или Bearer PAT.\n\n" +
+      "**Query:** `archived=false|true` (default false).\n\n" +
       "**Клиент:** `App`, home, `use-project-loader`, MCP `db_list_projects`.\n\n" +
       "Предпочтительнее тяжёлого `GET /api/projects` для списков в UI.\n\n" +
       "```bash\ncurl -s http://localhost:5000/api/projects/list -b cookies.txt\n```",
     security: cookieSecurity,
-    request: { cookies: ProjectsCookiesSchema },
+    request: { cookies: ProjectsCookiesSchema, query: ProjectsArchivedQuerySchema },
     responses: {
       200: {
         description: "Массив ProjectListItem (может быть пустым)",
@@ -87,13 +104,13 @@ export function registerProjectsListPaths(
     description:
       "Сырые записи `bot_projects` владельца/коллаборатора, **включая** `data` " +
       "(весь сценарий). Может содержать устаревшее поле `botToken`.\n\n" +
-      "**Параметры:** path/query/body нет. Auth — cookie или Bearer PAT.\n\n" +
+      "**Query:** `archived=false|true` (default false). Поле `isArchivedForMe` в каждом элементе.\n\n" +
       "**Клиент:** сайдбар редактора (`use-projects-query`), canvas, bot-queries.\n\n" +
       "Для списков в UI предпочтительнее `GET /api/projects/list`; полный сценарий — " +
       "`GET /api/projects/{id}`.\n\n" +
       "```bash\ncurl -s http://localhost:5000/api/projects -b cookies.txt\n```",
     security: cookieSecurity,
-    request: { cookies: ProjectsCookiesSchema },
+    request: { cookies: ProjectsCookiesSchema, query: ProjectsArchivedQuerySchema },
     responses: {
       200: {
         description: "Массив полных BotProject",

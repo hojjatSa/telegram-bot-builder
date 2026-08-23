@@ -2,7 +2,7 @@
  * @fileoverview Базовая реализация storage поверх Drizzle для серверной части конструктора
  */
 
-import { type BotGroup, botGroups, type BotInstance, botInstances, type BotMessage, type BotMessageMedia, botMessageMedia, botMessages, type BotProject, botProjects, type BotTemplate, botTemplates, type BotToken, botTokens, type BotUser, botUsers, type GroupMember, groupMembers, type MediaFile, mediaFiles, type TelegramUserDB, telegramUsers, botLogs, type BotLog, botLaunchHistory, type BotLaunchHistory, projectCollaborators, type ProjectCollaborator, broadcasts, broadcastResults, broadcastCampaigns, type Broadcast, type BroadcastResult, type BroadcastFilters, type BroadcastCampaign, botEnvVariables, type BotEnvVariable, botTables, botTableColumns, botTableRows, type BotTable, type BotTableColumn, type BotTableRow, workerProcesses, type WorkerProcess, projectVersions, type ProjectVersion, agentTokens, type AgentToken } from "@shared/schema";
+import { type BotGroup, botGroups, type BotInstance, botInstances, type BotMessage, type BotMessageMedia, botMessageMedia, botMessages, type BotProject, botProjects, type BotTemplate, botTemplates, type BotToken, botTokens, type BotUser, botUsers, type GroupMember, groupMembers, type MediaFile, mediaFiles, type TelegramUserDB, telegramUsers, botLogs, type BotLog, botLaunchHistory, type BotLaunchHistory, projectCollaborators, type ProjectCollaborator, userProjectArchives, broadcasts, broadcastResults, broadcastCampaigns, type Broadcast, type BroadcastResult, type BroadcastFilters, type BroadcastCampaign, botEnvVariables, type BotEnvVariable, botTables, botTableColumns, botTableRows, type BotTable, type BotTableColumn, type BotTableRow, workerProcesses, type WorkerProcess, projectVersions, type ProjectVersion, agentTokens, type AgentToken } from "@shared/schema";
 import { and, asc, desc, eq, ilike, inArray, isNull, notInArray, or, sql } from "drizzle-orm";
 import { IStorage } from "../storages/storage";
 import type { StorageBotGroupInput, StorageBotGroupUpdate, StorageBotInstanceInput, StorageBotInstanceUpdate, StorageBotLaunchHistoryInput, StorageBotLaunchHistoryUpdate, StorageBotLogInput, StorageBotMessageInput, StorageBotMessageMediaInput, StorageBotProjectInput, StorageBotProjectUpdate, StorageBotTemplateInput, StorageBotTemplateUpdate, StorageBotTokenInput, StorageBotTokenUpdate, StorageGroupMemberInput, StorageGroupMemberUpdate, StorageMediaFileInput, StorageMediaFileUpdate, StorageTelegramUserInput, StorageBroadcastInput, StorageBroadcastUpdate, StorageBroadcastResultInput, StorageBroadcastCampaignInput, StorageBroadcastCampaignUpdate, StorageBotEnvVariableInput, StorageBotEnvVariableUpdate, StorageBotTableInput, StorageBotTableColumnInput, StorageBotTableRowInput, StorageWorkerProcessInput } from "../storages/storageTypes";
@@ -535,29 +535,111 @@ export class DatabaseStorage implements IStorage {
   /**
    * Получить проекты ботов пользователя: где он владелец или коллаборатор
    * @param ownerId - ID пользователя
+   * @param options - Фильтр личного архива (по умолчанию — только активные)
    * @returns Массив проектов ботов пользователя (владелец + коллаборатор)
    */
-  async getUserBotProjects(ownerId: number): Promise<BotProject[]> {
+  async getUserBotProjects(
+    ownerId: number,
+    options?: { archived?: boolean; ignoreArchive?: boolean },
+  ): Promise<BotProject[]> {
     const collaboratorProjects = this.db
       .select({ projectId: projectCollaborators.projectId })
       .from(projectCollaborators)
       .where(eq(projectCollaborators.userId, ownerId));
 
-    // Сначала проверяем коллабораторов отдельно для диагностики
-    // const collabRows = await this.db
-    //   .select({ projectId: projectCollaborators.projectId })
-    //   .from(projectCollaborators)
-    //   .where(eq(projectCollaborators.userId, ownerId));
-    // console.log(`[getUserBotProjects] ownerId=${ownerId} typeof=${typeof ownerId} collabRows=${JSON.stringify(collabRows)}`);
+    const accessCondition = or(
+      eq(botProjects.ownerId, ownerId),
+      inArray(botProjects.id, collaboratorProjects),
+    );
 
-    const result = await this.db.select().from(botProjects)
-      .where(or(
-        eq(botProjects.ownerId, ownerId),
-        inArray(botProjects.id, collaboratorProjects)
-      ))
+    if (options?.ignoreArchive) {
+      return await this.db.select().from(botProjects)
+        .where(accessCondition)
+        .orderBy(desc(botProjects.createdAt));
+    }
+
+    const showArchived = options?.archived ?? false;
+
+    if (showArchived) {
+      const rows = await this.db
+        .select({ project: botProjects })
+        .from(botProjects)
+        .innerJoin(
+          userProjectArchives,
+          and(
+            eq(userProjectArchives.projectId, botProjects.id),
+            eq(userProjectArchives.userId, ownerId),
+          ),
+        )
+        .where(accessCondition)
+        .orderBy(desc(botProjects.createdAt));
+      return rows.map((row) => row.project);
+    }
+
+    const rows = await this.db
+      .select({ project: botProjects })
+      .from(botProjects)
+      .leftJoin(
+        userProjectArchives,
+        and(
+          eq(userProjectArchives.projectId, botProjects.id),
+          eq(userProjectArchives.userId, ownerId),
+        ),
+      )
+      .where(and(accessCondition, isNull(userProjectArchives.userId)))
       .orderBy(desc(botProjects.createdAt));
-    // console.log(`[getUserBotProjects] result.length=${result.length} ids=${result.map(p => p.id)}`);
-    return result;
+    return rows.map((row) => row.project);
+  }
+
+  /**
+   * Помещает проект в личный архив пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   */
+  async archiveProjectForUser(userId: number, projectId: number): Promise<void> {
+    await this.db
+      .insert(userProjectArchives)
+      .values({ userId, projectId })
+      .onConflictDoUpdate({
+        target: [userProjectArchives.userId, userProjectArchives.projectId],
+        set: { archivedAt: sql`now()` },
+      });
+  }
+
+  /**
+   * Убирает проект из личного архива пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   */
+  async unarchiveProjectForUser(userId: number, projectId: number): Promise<void> {
+    await this.db
+      .delete(userProjectArchives)
+      .where(
+        and(
+          eq(userProjectArchives.userId, userId),
+          eq(userProjectArchives.projectId, projectId),
+        ),
+      );
+  }
+
+  /**
+   * Проверяет, находится ли проект в личном архиве пользователя
+   * @param userId - ID пользователя Telegram
+   * @param projectId - ID проекта
+   * @returns true, если проект заархивирован для пользователя
+   */
+  async isProjectArchivedForUser(userId: number, projectId: number): Promise<boolean> {
+    const [row] = await this.db
+      .select({ userId: userProjectArchives.userId })
+      .from(userProjectArchives)
+      .where(
+        and(
+          eq(userProjectArchives.userId, userId),
+          eq(userProjectArchives.projectId, projectId),
+        ),
+      )
+      .limit(1);
+    return Boolean(row);
   }
 
   /**
@@ -1652,6 +1734,15 @@ export class DatabaseStorage implements IStorage {
    * @returns true, если запись была удалена
    */
   async removeCollaborator(projectId: number, userId: number): Promise<boolean> {
+    await this.db
+      .delete(userProjectArchives)
+      .where(
+        and(
+          eq(userProjectArchives.projectId, projectId),
+          eq(userProjectArchives.userId, userId),
+        ),
+      );
+
     const result = await this.db
       .delete(projectCollaborators)
       .where(

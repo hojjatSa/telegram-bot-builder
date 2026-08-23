@@ -1,6 +1,6 @@
 # projects
 
-Эндпоинтов: **16**
+Эндпоинтов: **18**
 
 ### `GET` /api/projects
 
@@ -10,7 +10,7 @@
 
 Сырые записи `bot_projects` владельца/коллаборатора, **включая** `data` (весь сценарий). Может содержать устаревшее поле `botToken`.
 
-**Параметры:** path/query/body нет. Auth — cookie или Bearer PAT.
+**Query:** `archived=false|true` (default false). Поле `isArchivedForMe` в каждом элементе.
 
 **Клиент:** сайдбар редактора (`use-projects-query`), canvas, bot-queries.
 
@@ -24,6 +24,7 @@ curl -s http://localhost:5000/api/projects -b cookies.txt
 
 | Имя | In | Обязательный | Описание | Пример |
 |-----|-----|--------------|----------|--------|
+| `archived` | query | нет | Фильтр личного архива текущего пользователя | `"false"` |
 | `connect.sid` | cookie | нет | Session cookie после login. Не нужна при Authorization: Bearer mcp_… | `"s%3Axxxx.yyyy"` |
 
 #### Ответы
@@ -59,7 +60,8 @@ curl -s http://localhost:5000/api/projects -b cookies.txt
     "sortOrder": 0,
     "adminIds": null,
     "createdAt": "2026-08-01T10:00:00.000Z",
-    "updatedAt": "2026-08-11T12:00:00.000Z"
+    "updatedAt": "2026-08-11T12:00:00.000Z",
+    "isArchivedForMe": false
   }
 ]
 ```
@@ -144,7 +146,8 @@ curl -s -X POST http://localhost:5000/api/projects -b cookies.txt \
   "sortOrder": 0,
   "adminIds": null,
   "createdAt": "2026-08-01T10:00:00.000Z",
-  "updatedAt": "2026-08-11T12:00:00.000Z"
+  "updatedAt": "2026-08-11T12:00:00.000Z",
+  "isArchivedForMe": false
 }
 ```
 
@@ -248,7 +251,8 @@ curl -s http://localhost:5000/api/projects/42 -b cookies.txt
   "sortOrder": 0,
   "adminIds": null,
   "createdAt": "2026-08-01T10:00:00.000Z",
-  "updatedAt": "2026-08-11T12:00:00.000Z"
+  "updatedAt": "2026-08-11T12:00:00.000Z",
+  "isArchivedForMe": false
 }
 ```
 
@@ -323,7 +327,8 @@ curl -s -X PUT http://localhost:5000/api/projects/42 -b cookies.txt \
   "sortOrder": 0,
   "adminIds": null,
   "createdAt": "2026-08-01T10:00:00.000Z",
-  "updatedAt": "2026-08-11T12:00:00.000Z"
+  "updatedAt": "2026-08-11T12:00:00.000Z",
+  "isArchivedForMe": false
 }
 ```
 
@@ -480,6 +485,45 @@ curl -s -X POST http://localhost:5000/api/projects/42/admin-ids/remove \
 }
 ```
 
+### `POST` /api/projects/{id}/archive
+
+Поместить проект в личный архив
+
+**Авторизация:** Cookie (`connect.sid`) или Bearer PAT
+
+Скрывает проект только у текущего пользователя (владелец или коллаборатор). Боты **не останавливаются**. Другие участники проекта не затрагиваются.
+
+**Auth:** cookie / Bearer PAT + `requireProjectAccess`.
+
+```bash
+curl -s -X POST http://localhost:5000/api/projects/42/archive -b cookies.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `id` | path | да | Числовой ID проекта | `"42"` |
+| `Authorization` | header | нет | Authorization: Bearer mcp_… — PAT агента (альтернатива cookie) | `"Bearer mcp_xxxxxxxx"` |
+| `connect.sid` | cookie | нет | Session cookie после login. Не нужна при Authorization: Bearer mcp_… | `"s%3Axxxx.yyyy"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Проект заархивирован для текущего пользователя |
+| 401 | Нет авторизации |
+| 403 | Нет доступа к проекту |
+| 500 | Ошибка БД |
+
+#### Пример ответа `200`
+
+```json
+{
+  "success": true
+}
+```
+
 ### `POST` /api/projects/{id}/duplicate
 
 Дублировать проект
@@ -542,7 +586,8 @@ curl -s -X POST http://localhost:5000/api/projects/42/duplicate \
   "createdAt": "2026-08-01T10:00:00.000Z",
   "updatedAt": "2026-08-11T12:00:00.000Z",
   "nodeCount": 12,
-  "sheetsCount": 2
+  "sheetsCount": 2,
+  "isArchivedForMe": false
 }
 ```
 
@@ -762,6 +807,45 @@ curl -s 'http://localhost:5000/api/projects/42/logs/all?limit=200&tokenId=7' \
 ]
 ```
 
+### `POST` /api/projects/{id}/unarchive
+
+Вернуть проект из личного архива
+
+**Авторизация:** Cookie (`connect.sid`) или Bearer PAT
+
+Убирает личную запись архива для текущего пользователя. Проект снова появляется в активных списках и переключателе.
+
+**Auth:** cookie / Bearer PAT + `requireProjectAccess`.
+
+```bash
+curl -s -X POST http://localhost:5000/api/projects/42/unarchive -b cookies.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `id` | path | да | Числовой ID проекта | `"42"` |
+| `Authorization` | header | нет | Authorization: Bearer mcp_… — PAT агента (альтернатива cookie) | `"Bearer mcp_xxxxxxxx"` |
+| `connect.sid` | cookie | нет | Session cookie после login. Не нужна при Authorization: Bearer mcp_… | `"s%3Axxxx.yyyy"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Проект возвращён из архива для текущего пользователя |
+| 401 | Нет авторизации |
+| 403 | Нет доступа к проекту |
+| 500 | Ошибка БД |
+
+#### Пример ответа `200`
+
+```json
+{
+  "success": true
+}
+```
+
 ### `GET` /api/projects/{projectId}/collaborators
 
 Участники проекта (владелец + коллабораторы)
@@ -822,7 +906,7 @@ curl -s http://localhost:5000/api/projects/42/collaborators -b cookies.txt
 
 Метаданные проектов владельца и коллаборатора: id, name, sortOrder, `nodeCount` / `sheetsCount`. **Без** `data`, `botToken`, `sessionId` (whitelist DTO `toProjectListItem`).
 
-**Параметры:** path/query/body нет. Auth — cookie `connect.sid` или Bearer PAT.
+**Query:** `archived=false|true` (default false).
 
 **Клиент:** `App`, home, `use-project-loader`, MCP `db_list_projects`.
 
@@ -836,6 +920,7 @@ curl -s http://localhost:5000/api/projects/list -b cookies.txt
 
 | Имя | In | Обязательный | Описание | Пример |
 |-----|-----|--------------|----------|--------|
+| `archived` | query | нет | Фильтр личного архива текущего пользователя | `"false"` |
 | `connect.sid` | cookie | нет | Session cookie после login. Не нужна при Authorization: Bearer mcp_… | `"s%3Axxxx.yyyy"` |
 
 #### Ответы
@@ -861,7 +946,8 @@ curl -s http://localhost:5000/api/projects/list -b cookies.txt
     "createdAt": "2026-08-01T10:00:00.000Z",
     "updatedAt": "2026-08-11T12:00:00.000Z",
     "nodeCount": 12,
-    "sheetsCount": 2
+    "sheetsCount": 2,
+    "isArchivedForMe": false
   }
 ]
 ```
