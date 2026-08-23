@@ -1,23 +1,23 @@
 /**
- * @fileoverview     (Memory Leaks)
+ * @fileoverview Ã”Ã Ã§Ã  â€” Ã“Ã²Ã¥Ã·ÃªÃ¨ Ã¯Ã Ã¬Ã¿Ã²Ã¨ (Memory Leaks)
  *
- *     :
+ * Ã’Ã¥Ã±Ã²Ã¨Ã°Ã³Ã¥Ã² Ã²Ã°Ã¨ Ã¨Ã±Ã¯Ã°Ã Ã¢Ã«Ã¥Ã­Ã¨Ã¿ Ã³Ã²Ã¥Ã·Ã¥Ãª Ã¯Ã Ã¬Ã¿Ã²Ã¨:
  *  1. USER_DATA_TTL + _user_last_seen + cleanup_user_data (utils.py.jinja2)
- *  2. asyncio.create_task(cleanup_user_data())  main() (main.py.jinja2)
- *  3. signal_handler  loop.stop()  sys.exit(0) (main.py.jinja2)
- *  4. templateCache  MAX_CACHE_SIZE = 100 (template-renderer.ts)
+ *  2. asyncio.create_task(cleanup_user_data()) Ã¢ main() (main.py.jinja2)
+ *  3. signal_handler Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã² loop.stop() Ã¢Ã¬Ã¥Ã±Ã²Ã® sys.exit(0) (main.py.jinja2)
+ *  4. templateCache Ã®Ã£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­ MAX_CACHE_SIZE = 100 (template-renderer.ts)
  *
- * :
- *  A. USER_DATA_TTL  (10 )
- *  B. _user_last_seen  (10 )
- *  C. cleanup_user_data  (15 )
- *  D. asyncio.create_task(cleanup_user_data())  main() (10 )
- *  E. signal_handler  loop.stop()  sys.exit() (15 )
- *  F. finally      (10 )
- *  G. templateCache  (10 )
- *  H.     (15 )
- *  I.      (10 )
- *  J.   (10 )
+ * ÃÃ«Ã®ÃªÃ¨:
+ *  A. USER_DATA_TTL ÃªÃ®Ã­Ã±Ã²Ã Ã­Ã²Ã  (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  B. _user_last_seen Ã±Ã«Ã®Ã¢Ã Ã°Ã¼ (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  C. cleanup_user_data Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ (15 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  D. asyncio.create_task(cleanup_user_data()) Ã¢ main() (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  E. signal_handler â€” loop.stop() Ã¢Ã¬Ã¥Ã±Ã²Ã® sys.exit() (15 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  F. finally Ã¡Ã«Ã®Ãª â€” ÃªÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã®Ã¥ Ã§Ã ÃªÃ°Ã»Ã²Ã¨Ã¥ Ã±Ã®Ã¥Ã¤Ã¨Ã­Ã¥Ã­Ã¨Ã© (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  G. templateCache Ã®Ã£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­Ã¨Ã¥ (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  H. ÃŠÃ®Ã¬Ã¡Ã¨Ã­Ã Ã¶Ã¨Ã¨ â€” Ã¯Ã®Ã«Ã­Ã»Ã¥ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã» (15 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  I. ÃÃ¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿ â€” Ã±Ã²Ã Ã°Ã»Ã¥ Ã¯Ã Ã²Ã²Ã¥Ã°Ã­Ã» Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã² (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
+ *  J. ÃƒÃ°Ã Ã­Ã¨Ã·Ã­Ã»Ã¥ Ã±Ã«Ã³Ã·Ã Ã¨ (10 Ã²Ã¥Ã±Ã²Ã®Ã¢)
  */
 
 import fs from 'fs';
@@ -25,27 +25,27 @@ import { execSync } from 'child_process';
 import { generatePythonCode } from '../bot-generator.ts';
 import { renderPartialTemplate } from '../templates/template-renderer.ts';
 
-// ---   ----------------------------------------------------
+// --- Ã‚Ã±Ã¯Ã®Ã¬Ã®Ã£Ã Ã²Ã¥Ã«Ã¼Ã­Ã»Ã¥ Ã³Ã§Ã«Ã» ----------------------------------------------------
 
 /**
- *    start
- * @param id -  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  start
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
  */
 function makeStartNode(id = 'start1') {
   return {
     id,
     type: 'start',
     position: { x: 0, y: 0 },
-    data: { command: '/start', messageText: '', keyboardType: 'none', buttons: [] },
+    data: { command: '/start', messageText: 'ÃÃ°Ã¨Ã¢Ã¥Ã²', keyboardType: 'none', buttons: [] },
   };
 }
 
 /**
- *    message
- * @param id -  
- * @param text -  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  message
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
+ * @param text - Ã’Ã¥ÃªÃ±Ã² Ã±Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¿
  */
-function makeMessageNode(id: string, text = '') {
+function makeMessageNode(id: string, text = 'ÃÃ²Ã¢Ã¥Ã²') {
   return {
     id,
     type: 'message',
@@ -55,10 +55,10 @@ function makeMessageNode(id: string, text = '') {
 }
 
 /**
- *    command_trigger
- * @param id -  
- * @param command -  
- * @param targetId - ID  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  command_trigger
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
+ * @param command - ÃŠÃ®Ã¬Ã Ã­Ã¤Ã  Ã¡Ã®Ã²Ã 
+ * @param targetId - ID Ã¶Ã¥Ã«Ã¥Ã¢Ã®Ã£Ã® Ã³Ã§Ã«Ã 
  */
 function makeCommandTriggerNode(id: string, command: string, targetId: string) {
   return {
@@ -67,7 +67,7 @@ function makeCommandTriggerNode(id: string, command: string, targetId: string) {
     position: { x: 0, y: 0 },
     data: {
       command,
-      description: '',
+      description: 'ÃŠÃ®Ã¬Ã Ã­Ã¤Ã ',
       showInMenu: true,
       adminOnly: false,
       requiresAuth: false,
@@ -79,10 +79,10 @@ function makeCommandTriggerNode(id: string, command: string, targetId: string) {
 }
 
 /**
- *    text_trigger
- * @param id -  
- * @param synonyms -  
- * @param targetId - ID  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  text_trigger
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
+ * @param synonyms - Ã‘Ã¯Ã¨Ã±Ã®Ãª Ã±Ã¨Ã­Ã®Ã­Ã¨Ã¬Ã®Ã¢
+ * @param targetId - ID Ã¶Ã¥Ã«Ã¥Ã¢Ã®Ã£Ã® Ã³Ã§Ã«Ã 
  */
 function makeTextTriggerNode(id: string, synonyms: string[], targetId: string) {
   return {
@@ -102,10 +102,10 @@ function makeTextTriggerNode(id: string, synonyms: string[], targetId: string) {
 }
 
 /**
- *    condition
- * @param id -  
- * @param variable -  
- * @param branches -  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  condition
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
+ * @param variable - ÃÃ¥Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã Ã¿ Ã³Ã±Ã«Ã®Ã¢Ã¨Ã¿
+ * @param branches - Ã‚Ã¥Ã²ÃªÃ¨ Ã³Ã±Ã«Ã®Ã¢Ã¨Ã¿
  */
 function makeConditionNode(id: string, variable: string, branches: any[]) {
   return {
@@ -117,9 +117,9 @@ function makeConditionNode(id: string, variable: string, branches: any[]) {
 }
 
 /**
- *    media
- * @param id -  
- * @param media -  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã³Ã§Ã¥Ã« Ã²Ã¨Ã¯Ã  media
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã³Ã§Ã«Ã 
+ * @param media - Ã‘Ã¯Ã¨Ã±Ã®Ãª Ã¬Ã¥Ã¤Ã¨Ã Ã´Ã Ã©Ã«Ã®Ã¢
  */
 function makeMediaNode(id: string, media: string[]) {
   return {
@@ -130,12 +130,12 @@ function makeMediaNode(id: string, media: string[]) {
   };
 }
 
-// ---   -------------------------------------------------------
+// --- Ã“Ã²Ã¨Ã«Ã¨Ã²Ã» Ã£Ã¥Ã­Ã¥Ã°Ã Ã¶Ã¨Ã¨ -------------------------------------------------------
 
 /**
- *   project.json   
- * @param nodes -  
- * @param userDatabaseEnabled -  
+ * Ã‘Ã®Ã§Ã¤Ã Â¸Ã² Ã¬Ã¨Ã­Ã¨Ã¬Ã Ã«Ã¼Ã­Ã»Ã© project.json Ã± Ã§Ã Ã¤Ã Ã­Ã­Ã»Ã¬Ã¨ Ã³Ã§Ã«Ã Ã¬Ã¨
+ * @param nodes - ÃŒÃ Ã±Ã±Ã¨Ã¢ Ã³Ã§Ã«Ã®Ã¢
+ * @param userDatabaseEnabled - Ã‚ÃªÃ«Ã¾Ã·Ã¨Ã²Ã¼ ÃÃ„
  */
 function makeCleanProject(nodes: any[], userDatabaseEnabled = false) {
   return {
@@ -144,7 +144,7 @@ function makeCleanProject(nodes: any[], userDatabaseEnabled = false) {
     userDatabaseEnabled,
     sheets: [{
       id: 'sheet-ml',
-      name: ' ',
+      name: 'ÃÃ±Ã­Ã®Ã¢Ã­Ã®Ã© Ã¯Ã®Ã²Ã®Ãª',
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       viewState: { zoom: 1, position: { x: 0, y: 0 } },
@@ -154,10 +154,10 @@ function makeCleanProject(nodes: any[], userDatabaseEnabled = false) {
 }
 
 /**
- *  Python-  
- * @param project -  
- * @param label -    
- * @param userDatabaseEnabled -  
+ * ÃƒÃ¥Ã­Ã¥Ã°Ã¨Ã°Ã³Ã¥Ã² Python-ÃªÃ®Ã¤ Ã¨Ã§ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã 
+ * @param project - ÃÃ¡ÃºÃ¥ÃªÃ² Ã¯Ã°Ã®Ã¥ÃªÃ²Ã 
+ * @param label - ÃŒÃ¥Ã²ÃªÃ  Ã¤Ã«Ã¿ Ã¨Ã¬Ã¥Ã­Ã¨ Ã¡Ã®Ã²Ã 
+ * @param userDatabaseEnabled - Ã‚ÃªÃ«Ã¾Ã·Ã¨Ã²Ã¼ ÃÃ„
  */
 function gen(project: any, label: string, userDatabaseEnabled = false): string {
   return generatePythonCode(project, {
@@ -167,9 +167,9 @@ function gen(project: any, label: string, userDatabaseEnabled = false): string {
 }
 
 /**
- *  Python-   
- * @param project -  
- * @param label -    
+ * ÃƒÃ¥Ã­Ã¥Ã°Ã¨Ã°Ã³Ã¥Ã² Python-ÃªÃ®Ã¤ Ã± Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­Ã­Ã®Ã© ÃÃ„
+ * @param project - ÃÃ¡ÃºÃ¥ÃªÃ² Ã¯Ã°Ã®Ã¥ÃªÃ²Ã 
+ * @param label - ÃŒÃ¥Ã²ÃªÃ  Ã¤Ã«Ã¿ Ã¨Ã¬Ã¥Ã­Ã¨ Ã¡Ã®Ã²Ã 
  */
 function genDB(project: any, label: string): string {
   return generatePythonCode(project, {
@@ -179,9 +179,9 @@ function genDB(project: any, label: string): string {
 }
 
 /**
- *   Python-  py_compile
- * @param code - Python-
- * @param label -    
+ * ÃÃ°Ã®Ã¢Ã¥Ã°Ã¿Ã¥Ã² Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python-ÃªÃ®Ã¤Ã  Ã·Ã¥Ã°Ã¥Ã§ py_compile
+ * @param code - Python-ÃªÃ®Ã¤
+ * @param label - ÃŒÃ¥Ã²ÃªÃ  Ã¤Ã«Ã¿ Ã¢Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã£Ã® Ã´Ã Ã©Ã«Ã 
  */
 function checkSyntax(code: string, label: string): { ok: boolean; error?: string } {
   const tmp = `_tmp_ml_${label}.py`;
@@ -197,17 +197,17 @@ function checkSyntax(code: string, label: string): { ok: boolean; error?: string
   }
 }
 
-// --- - -------------------------------------------------------------
+// --- Ã’Ã¥Ã±Ã²-Ã°Ã Ã­Ã­Ã¥Ã° -------------------------------------------------------------
 
-/**    */
+/** ÃÃ¥Ã§Ã³Ã«Ã¼Ã²Ã Ã² Ã®Ã¤Ã­Ã®Ã£Ã® Ã²Ã¥Ã±Ã²Ã  */
 type Result = { id: string; name: string; passed: boolean; note: string };
 const results: Result[] = [];
 
 /**
- *      
- * @param id -  
- * @param name -  
- * @param fn -  
+ * Ã‡Ã Ã¯Ã³Ã±ÃªÃ Ã¥Ã² Ã®Ã¤Ã¨Ã­ Ã²Ã¥Ã±Ã² Ã¨ Ã§Ã Ã¯Ã¨Ã±Ã»Ã¢Ã Ã¥Ã² Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²
+ * @param id - ÃˆÃ¤Ã¥Ã­Ã²Ã¨Ã´Ã¨ÃªÃ Ã²Ã®Ã° Ã²Ã¥Ã±Ã²Ã 
+ * @param name - ÃÃ Ã§Ã¢Ã Ã­Ã¨Ã¥ Ã²Ã¥Ã±Ã²Ã 
+ * @param fn - Ã’Ã¥Ã«Ã® Ã²Ã¥Ã±Ã²Ã 
  */
 function test(id: string, name: string, fn: () => void) {
   try {
@@ -221,263 +221,263 @@ function test(id: string, name: string, fn: () => void) {
 }
 
 /**
- *       
- * @param cond - 
- * @param msg -   
+ * Ã“Ã²Ã¢Ã¥Ã°Ã¦Ã¤Ã¥Ã­Ã¨Ã¥ â€” Ã¡Ã°Ã®Ã±Ã Ã¥Ã² Ã®Ã¸Ã¨Ã¡ÃªÃ³ Ã¥Ã±Ã«Ã¨ Ã³Ã±Ã«Ã®Ã¢Ã¨Ã¥ Ã«Ã®Ã¦Ã­Ã®
+ * @param cond - Ã“Ã±Ã«Ã®Ã¢Ã¨Ã¥
+ * @param msg - Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã®Ã¡ Ã®Ã¸Ã¨Ã¡ÃªÃ¥
  */
 function ok(cond: boolean, msg: string) {
   if (!cond) throw new Error(msg);
 }
 
 /**
- *   Python     
- * @param code - Python-
- * @param label -    
+ * ÃÃ°Ã®Ã¢Ã¥Ã°Ã¿Ã¥Ã² Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python Ã¨ Ã¡Ã°Ã®Ã±Ã Ã¥Ã² Ã®Ã¸Ã¨Ã¡ÃªÃ³ Ã¯Ã°Ã¨ Ã­Ã¥Ã³Ã¤Ã Ã·Ã¥
+ * @param code - Python-ÃªÃ®Ã¤
+ * @param label - ÃŒÃ¥Ã²ÃªÃ  Ã¤Ã«Ã¿ Ã¢Ã°Ã¥Ã¬Ã¥Ã­Ã­Ã®Ã£Ã® Ã´Ã Ã©Ã«Ã 
  */
 function syntax(code: string, label: string) {
   const r = checkSyntax(code, label);
-  ok(r.ok, `  Python:\n${r.error}`);
+  ok(r.ok, `Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã·Ã¥Ã±ÃªÃ Ã¿ Ã®Ã¸Ã¨Ã¡ÃªÃ  Python:\n${r.error}`);
 }
 
-// ---    ---------------------------------------------------
+// --- Ã—Ã¥Ã²Ã»Ã°Ã¥ ÃªÃ«Ã¾Ã·Ã¥Ã¢Ã»Ãµ Ã´Ã¨ÃªÃ±Ã  ---------------------------------------------------
 
-/**          */
+/** ÃÃ°Ã®Ã¢Ã¥Ã°Ã¿Ã¥Ã² Ã­Ã Ã«Ã¨Ã·Ã¨Ã¥ Ã¢Ã±Ã¥Ãµ Ã·Ã¥Ã²Ã»Ã°Â¸Ãµ Ã¨Ã±Ã¯Ã°Ã Ã¢Ã«Ã¥Ã­Ã¨Ã© Ã³Ã²Ã¥Ã·Ã¥Ãª Ã¯Ã Ã¬Ã¿Ã²Ã¨ Ã¢ ÃªÃ®Ã¤Ã¥ */
 function hasFourFixes(code: string): void {
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL ');
-  ok(code.includes('cleanup_user_data'), 'cleanup_user_data ');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'asyncio.create_task(cleanup_user_data()) ');
-  ok(code.includes('_stop_event.set()'), 'asyncio.get_running_loop().stop() ');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
+  ok(code.includes('cleanup_user_data'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'asyncio.create_task(cleanup_user_data()) Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
+  ok(code.includes('_stop_event.set()'), 'asyncio.get_running_loop().stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
 }
 
 // ===============================================================================
-//  A: USER_DATA_TTL 
+// ÃÃ‹ÃÃŠ A: USER_DATA_TTL ÃªÃ®Ã­Ã±Ã²Ã Ã­Ã²Ã 
 // ===============================================================================
 
-console.log('\n==============================================================');
-console.log('           (Memory Leaks)                   ');
+console.log('\nÃ£==============================================================Â¬');
+console.log('Â¦       Ã”Ã Ã§Ã  â€” Ã“Ã²Ã¥Ã·ÃªÃ¨ Ã¯Ã Ã¬Ã¿Ã²Ã¨ (Memory Leaks)                   Â¦');
 console.log('L==============================================================-\n');
 
-console.log('--  A: USER_DATA_TTL  -----------------------------');
+console.log('-- ÃÃ«Ã®Ãª A: USER_DATA_TTL ÃªÃ®Ã­Ã±Ã²Ã Ã­Ã²Ã  -----------------------------');
 
-test('A01', 'USER_DATA_TTL = 3600   ', () => {
+test('A01', 'USER_DATA_TTL = 3600 Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ ÃªÃ®Ã¤Ã¥', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'A01');
-  ok(code.includes('USER_DATA_TTL = 3600'), 'USER_DATA_TTL = 3600  ');
+  ok(code.includes('USER_DATA_TTL = 3600'), 'USER_DATA_TTL = 3600 Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('A02', 'USER_DATA_TTL   userDatabaseEnabled: true', () => {
+test('A02', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ userDatabaseEnabled: true', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'A02');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   DB=true');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=true');
 });
 
-test('A03', 'USER_DATA_TTL   userDatabaseEnabled: false', () => {
+test('A03', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ userDatabaseEnabled: false', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'A03');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   DB=false');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=false');
 });
 
-test('A04', 'USER_DATA_TTL     inline ', () => {
+test('A04', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± inline ÃªÃ­Ã®Ã¯ÃªÃ Ã¬Ã¨', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'A04');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   inline ');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('A05', 'USER_DATA_TTL     reply ', () => {
+test('A05', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± reply ÃªÃ­Ã®Ã¯ÃªÃ Ã¬Ã¨', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'reply',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŒÃ¥Ã­Ã¾', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'A05');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   reply ');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ reply ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('A06', 'USER_DATA_TTL     command_trigger', () => {
+test('A06', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± command_trigger', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/help', 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'A06');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   command_trigger');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger');
 });
 
-test('A07', 'USER_DATA_TTL     text_trigger', () => {
+test('A07', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± text_trigger', () => {
   const p = makeCleanProject([
-    makeTextTriggerNode('txt1', ['', 'hello'], 'msg1'),
+    makeTextTriggerNode('txt1', ['Ã¯Ã°Ã¨Ã¢Ã¥Ã²', 'hello'], 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'A07');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   text_trigger');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ text_trigger');
 });
 
-test('A08', 'USER_DATA_TTL     condition', () => {
+test('A08', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± condition', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeConditionNode('cond1', 'user_name', [
       { value: 'admin', targetNodeId: 'msg1' },
       { value: '__else__', targetNodeId: 'msg2' },
     ]),
-    makeMessageNode('msg1', ', admin!'),
-    makeMessageNode('msg2', '!'),
+    makeMessageNode('msg1', 'ÃÃ°Ã¨Ã¢Ã¥Ã², admin!'),
+    makeMessageNode('msg2', 'ÃÃ°Ã¨Ã¢Ã¥Ã²!'),
   ]);
   const code = gen(p, 'A08');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   condition');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ condition');
 });
 
-test('A09', 'USER_DATA_TTL     media ', () => {
+test('A09', 'USER_DATA_TTL Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± media Ã³Ã§Ã«Ã®Ã¬', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeMediaNode('media1', ['photo_id_123']),
   ]);
   const code = gen(p, 'A09');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL   media ');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ media Ã³Ã§Ã«Ã¥');
 });
 
-test('A10', ' Python OK   USER_DATA_TTL', () => {
+test('A10', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ USER_DATA_TTL', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'A10');
-  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL ');
+  ok(code.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'A10');
 });
 
 // ===============================================================================
-//  B: _user_last_seen 
+// ÃÃ‹ÃÃŠ B: _user_last_seen Ã±Ã«Ã®Ã¢Ã Ã°Ã¼
 // ===============================================================================
 
-console.log('\n--  B: _user_last_seen  -----------------------------');
+console.log('\n-- ÃÃ«Ã®Ãª B: _user_last_seen Ã±Ã«Ã®Ã¢Ã Ã°Ã¼ -----------------------------');
 
-test('B01', '_user_last_seen: dict[int, float] = {}   ', () => {
+test('B01', '_user_last_seen: dict[int, float] = {} Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ ÃªÃ®Ã¤Ã¥', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B01');
-  ok(code.includes('_user_last_seen: dict[int, float] = {}'), '_user_last_seen: dict[int, float] = {}  ');
+  ok(code.includes('_user_last_seen: dict[int, float] = {}'), '_user_last_seen: dict[int, float] = {} Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('B02', '_user_last_seen   DB ', () => {
+test('B02', '_user_last_seen Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'B02');
-  ok(code.includes('_user_last_seen'), '_user_last_seen   DB=true');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=true');
 });
 
-test('B03', '_user_last_seen   DB ', () => {
+test('B03', '_user_last_seen Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢Ã»ÃªÃ«Ã¾Ã·Ã¥Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'B03');
-  ok(code.includes('_user_last_seen'), '_user_last_seen   DB=false');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=false');
 });
 
-test('B04', '_user_last_seen[user_id] = time.monotonic()   init_user_variables', () => {
+test('B04', '_user_last_seen[user_id] = time.monotonic() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ init_user_variables', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B04');
-  ok(code.includes('_user_last_seen[user_id] = time.monotonic()'), '_user_last_seen[user_id] = time.monotonic()  ');
+  ok(code.includes('_user_last_seen[user_id] = time.monotonic()'), '_user_last_seen[user_id] = time.monotonic() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('B05', '_user_last_seen    init_user_variables', () => {
+test('B05', '_user_last_seen Ã®Ã¡Ã­Ã®Ã¢Ã«Ã¿Ã¥Ã²Ã±Ã¿ Ã¢ Ã²Ã¥Ã«Ã¥ init_user_variables', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B05');
   const initIdx = code.indexOf('async def init_user_variables');
-  ok(initIdx !== -1, 'init_user_variables  ');
+  ok(initIdx !== -1, 'init_user_variables Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const afterInit = code.slice(initIdx, initIdx + 600);
-  ok(afterInit.includes('_user_last_seen'), '_user_last_seen     init_user_variables');
+  ok(afterInit.includes('_user_last_seen'), '_user_last_seen Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­ Ã¢ Ã²Ã¥Ã«Ã¥ init_user_variables');
 });
 
-test('B06', '_user_last_seen.items()   cleanup_user_data', () => {
+test('B06', '_user_last_seen.items() Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã²Ã±Ã¿ Ã¢ cleanup_user_data', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B06');
-  ok(code.includes('_user_last_seen.items()'), '_user_last_seen.items()  ');
+  ok(code.includes('_user_last_seen.items()'), '_user_last_seen.items() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('B07', '_user_last_seen.pop(uid, None) ', () => {
+test('B07', '_user_last_seen.pop(uid, None) Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B07');
-  ok(code.includes('_user_last_seen.pop(uid, None)'), '_user_last_seen.pop(uid, None)  ');
+  ok(code.includes('_user_last_seen.pop(uid, None)'), '_user_last_seen.pop(uid, None) Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('B08', '_user_last_seen     adminOnly', () => {
+test('B08', '_user_last_seen Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± adminOnly', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/admin', 'msg1');
   cmd.data = { ...cmd.data, adminOnly: true } as any;
   const p = makeCleanProject([cmd, makeMessageNode('msg1')]);
   const code = gen(p, 'B08');
-  ok(code.includes('_user_last_seen'), '_user_last_seen   adminOnly');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ adminOnly');
 });
 
-test('B09', '_user_last_seen     requiresAuth', () => {
+test('B09', '_user_last_seen Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± requiresAuth', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/profile', 'msg1');
   cmd.data = { ...cmd.data, requiresAuth: true } as any;
   const p = makeCleanProject([cmd, makeMessageNode('msg1')]);
   const code = gen(p, 'B09');
-  ok(code.includes('_user_last_seen'), '_user_last_seen   requiresAuth');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ requiresAuth');
 });
 
-test('B10', ' Python OK   _user_last_seen', () => {
+test('B10', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ _user_last_seen', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'B10');
-  ok(code.includes('_user_last_seen'), '_user_last_seen ');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'B10');
 });
 
 // ===============================================================================
-//  C: cleanup_user_data 
+// ÃÃ‹ÃÃŠ C: cleanup_user_data Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿
 // ===============================================================================
 
-console.log('\n--  C: cleanup_user_data  ---------------------------');
+console.log('\n-- ÃÃ«Ã®Ãª C: cleanup_user_data Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ ---------------------------');
 
-test('C01', 'async def cleanup_user_data() ', () => {
+test('C01', 'async def cleanup_user_data() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C01');
-  ok(code.includes('async def cleanup_user_data()'), 'async def cleanup_user_data()  ');
+  ok(code.includes('async def cleanup_user_data()'), 'async def cleanup_user_data() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('C02', 'cleanup_user_data  while True:', () => {
+test('C02', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² while True:', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C02');
   const fnIdx = code.indexOf('async def cleanup_user_data()');
-  ok(fnIdx !== -1, 'cleanup_user_data  ');
+  ok(fnIdx !== -1, 'cleanup_user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const fnBody = code.slice(fnIdx, fnIdx + 800);
-  ok(fnBody.includes('while True:'), 'while True:    cleanup_user_data');
+  ok(fnBody.includes('while True:'), 'while True: Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ cleanup_user_data');
 });
 
-test('C03', 'cleanup_user_data  await asyncio.sleep(USER_DATA_TTL)', () => {
+test('C03', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² await asyncio.sleep(USER_DATA_TTL)', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C03');
-  ok(code.includes('await asyncio.sleep(USER_DATA_TTL)'), 'await asyncio.sleep(USER_DATA_TTL)  ');
+  ok(code.includes('await asyncio.sleep(USER_DATA_TTL)'), 'await asyncio.sleep(USER_DATA_TTL) Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('C04', 'cleanup_user_data  time.monotonic()', () => {
+test('C04', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² time.monotonic()', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C04');
   const fnIdx = code.indexOf('async def cleanup_user_data()');
-  ok(fnIdx !== -1, 'cleanup_user_data  ');
+  ok(fnIdx !== -1, 'cleanup_user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const fnBody = code.slice(fnIdx, fnIdx + 800);
-  ok(fnBody.includes('time.monotonic()'), 'time.monotonic()    cleanup_user_data');
+  ok(fnBody.includes('time.monotonic()'), 'time.monotonic() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ cleanup_user_data');
 });
 
-test('C05', 'cleanup_user_data  user_data.pop(uid, None)', () => {
+test('C05', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² user_data.pop(uid, None)', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C05');
-  ok(code.includes('user_data.pop(uid, None)'), 'user_data.pop(uid, None)  ');
+  ok(code.includes('user_data.pop(uid, None)'), 'user_data.pop(uid, None) Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('C06', 'cleanup_user_data  _user_last_seen.pop(uid, None)', () => {
+test('C06', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² _user_last_seen.pop(uid, None)', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C06');
-  ok(code.includes('_user_last_seen.pop(uid, None)'), '_user_last_seen.pop(uid, None)  ');
+  ok(code.includes('_user_last_seen.pop(uid, None)'), '_user_last_seen.pop(uid, None) Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('C07', 'cleanup_user_data  logging.debug', () => {
+test('C07', 'cleanup_user_data Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² logging.debug', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C07');
   const fnIdx = code.indexOf('async def cleanup_user_data()');
-  ok(fnIdx !== -1, 'cleanup_user_data  ');
+  ok(fnIdx !== -1, 'cleanup_user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const fnBody = code.slice(fnIdx, fnIdx + 800);
-  ok(fnBody.includes('logging.debug'), 'logging.debug    cleanup_user_data');
+  ok(fnBody.includes('logging.debug'), 'logging.debug Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ cleanup_user_data');
 });
 
 test('C08', 'cleanup_user_data uses USER_DATA_TTL and _user_last_seen', () => {
@@ -489,176 +489,176 @@ test('C08', 'cleanup_user_data uses USER_DATA_TTL and _user_last_seen', () => {
   ok(cleanupBody.includes('USER_DATA_TTL') && cleanupBody.includes('_user_last_seen'), 'TTL cleanup logic missing');
 });
 
-test('C09', 'cleanup_user_data   DB ', () => {
+test('C09', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'C09');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   DB=true');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=true');
 });
 
-test('C10', 'cleanup_user_data   DB ', () => {
+test('C10', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢Ã»ÃªÃ«Ã¾Ã·Ã¥Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'C10');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   DB=false');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=false');
 });
 
-test('C11', 'cleanup_user_data     inline ', () => {
+test('C11', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± inline ÃªÃ­Ã®Ã¯ÃªÃ Ã¬Ã¨', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'Ã„Ã Ã«Ã¥Ã¥', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'C11');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   inline ');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('C12', 'cleanup_user_data     10 ', () => {
+test('C12', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± 10 Ã³Ã§Ã«Ã Ã¬Ã¨', () => {
   const nodes: any[] = [makeStartNode()];
   for (let i = 1; i <= 9; i++) {
-    nodes.push(makeMessageNode(`msg${i}`, ` ${i}`));
+    nodes.push(makeMessageNode(`msg${i}`, `Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ ${i}`));
   }
   const p = makeCleanProject(nodes);
   const code = gen(p, 'C12');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   10 ');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ 10 Ã³Ã§Ã«Ã Ãµ');
 });
 
-test('C13', 'cleanup_user_data     command_trigger + message', () => {
+test('C13', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± command_trigger + message', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/start', 'msg1'),
-    makeMessageNode('msg1', '!'),
+    makeMessageNode('msg1', 'ÃÃ°Ã¨Ã¢Ã¥Ã²!'),
   ]);
   const code = gen(p, 'C13');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   command_trigger');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger');
 });
 
-test('C14', 'cleanup_user_data     condition', () => {
+test('C14', 'cleanup_user_data Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± condition', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeConditionNode('cond1', 'score', [
       { value: '100', targetNodeId: 'msg1' },
       { value: '__else__', targetNodeId: 'msg2' },
     ]),
-    makeMessageNode('msg1', '!'),
-    makeMessageNode('msg2', ' '),
+    makeMessageNode('msg1', 'ÃÃ®Ã¡Ã¥Ã¤Ã !'),
+    makeMessageNode('msg2', 'ÃÃ®Ã¯Ã°Ã®Ã¡Ã³Ã© Ã¥Ã¹Â¸'),
   ]);
   const code = gen(p, 'C14');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data   condition');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ condition');
 });
 
-test('C15', ' Python OK   cleanup_user_data', () => {
+test('C15', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ cleanup_user_data', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'C15');
-  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data ');
+  ok(code.includes('async def cleanup_user_data()'), 'cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'C15');
 });
 
 // ===============================================================================
-//  D: asyncio.create_task(cleanup_user_data())  main()
+// ÃÃ‹ÃÃŠ D: asyncio.create_task(cleanup_user_data()) Ã¢ main()
 // ===============================================================================
 
-console.log('\n--  D: asyncio.create_task(cleanup_user_data())  main() ---');
+console.log('\n-- ÃÃ«Ã®Ãª D: asyncio.create_task(cleanup_user_data()) Ã¢ main() ---');
 
-test('D01', 'asyncio.create_task(cleanup_user_data())   ', () => {
+test('D01', 'asyncio.create_task(cleanup_user_data()) Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ ÃªÃ®Ã¤Ã¥', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'D01');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'asyncio.create_task(cleanup_user_data())  ');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'asyncio.create_task(cleanup_user_data()) Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('D02', '   async def main()', () => {
+test('D02', 'Ã‚Ã»Ã§Ã®Ã¢ Ã­Ã ÃµÃ®Ã¤Ã¨Ã²Ã±Ã¿ Ã¢Ã­Ã³Ã²Ã°Ã¨ async def main()', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'D02');
   const mainIdx = code.indexOf('async def main()');
-  ok(mainIdx !== -1, 'async def main()  ');
+  ok(mainIdx !== -1, 'async def main() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const mainBody = code.slice(mainIdx);
-  ok(mainBody.includes('asyncio.create_task(cleanup_user_data())'), 'create_task    main()');
+  ok(mainBody.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­ Ã¢Ã­Ã³Ã²Ã°Ã¨ main()');
 });
 
-test('D03', '   DB ', () => {
+test('D03', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'D03');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   DB=true');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=true');
 });
 
-test('D04', '   DB ', () => {
+test('D04', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢Ã»ÃªÃ«Ã¾Ã·Ã¥Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'D04');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   DB=false');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=false');
 });
 
-test('D05', '     inline ', () => {
+test('D05', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± inline ÃªÃ­Ã®Ã¯ÃªÃ Ã¬Ã¨', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'D05');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   inline ');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('D06', '     command_trigger', () => {
+test('D06', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± command_trigger', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/help', 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'D06');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   command_trigger');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger');
 });
 
-test('D07', '     text_trigger', () => {
+test('D07', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± text_trigger', () => {
   const p = makeCleanProject([
-    makeTextTriggerNode('txt1', ['', ''], 'msg1'),
+    makeTextTriggerNode('txt1', ['Ã¤Ã ', 'Ã­Ã¥Ã²'], 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'D07');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   text_trigger');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ text_trigger');
 });
 
-test('D08', '     adminOnly', () => {
+test('D08', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± adminOnly', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/admin', 'msg1');
   cmd.data = { ...cmd.data, adminOnly: true } as any;
   const p = makeCleanProject([cmd, makeMessageNode('msg1')]);
   const code = gen(p, 'D08');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   adminOnly');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ adminOnly');
 });
 
-test('D09', '     requiresAuth', () => {
+test('D09', 'Ã‚Ã»Ã§Ã®Ã¢ Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± requiresAuth', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/profile', 'msg1');
   cmd.data = { ...cmd.data, requiresAuth: true } as any;
   const p = makeCleanProject([cmd, makeMessageNode('msg1')]);
   const code = gen(p, 'D09');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task   requiresAuth');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ requiresAuth');
 });
 
-test('D10', ' Python OK   create_task', () => {
+test('D10', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ create_task', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'D10');
-  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task ');
+  ok(code.includes('asyncio.create_task(cleanup_user_data())'), 'create_task Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'D10');
 });
 
 // ===============================================================================
-//  E: signal_handler  loop.stop()  sys.exit()
+// ÃÃ‹ÃÃŠ E: signal_handler â€” loop.stop() Ã¢Ã¬Ã¥Ã±Ã²Ã® sys.exit()
 // ===============================================================================
 
-console.log('\n--  E: signal_handler  loop.stop()  sys.exit() -----');
+console.log('\n-- ÃÃ«Ã®Ãª E: signal_handler â€” loop.stop() Ã¢Ã¬Ã¥Ã±Ã²Ã® sys.exit() -----');
 
-test('E01', 'asyncio.get_running_loop().stop()   ', () => {
+test('E01', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ ÃªÃ®Ã¤Ã¥', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'E01');
-  ok(code.includes('_stop_event.set()'), 'asyncio.get_running_loop().stop()  ');
+  ok(code.includes('_stop_event.set()'), 'asyncio.get_running_loop().stop() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('E02', 'sys.exit(0)    signal_handler', () => {
+test('E02', 'sys.exit(0) ÃÃ… Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ signal_handler', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'E02');
   const handlerIdx = code.indexOf('def signal_handler');
-  ok(handlerIdx !== -1, 'signal_handler  ');
-  //    (  def    )
+  ok(handlerIdx !== -1, 'signal_handler Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­');
+  // ÃÃ¥Ã°Â¸Ã¬ Ã²Ã¥Ã«Ã® Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨ (Ã¤Ã® Ã±Ã«Ã¥Ã¤Ã³Ã¾Ã¹Ã¥Ã© def Ã­Ã  Ã²Ã®Ã¬ Ã¦Ã¥ Ã³Ã°Ã®Ã¢Ã­Ã¥)
   const handlerBody = code.slice(handlerIdx, handlerIdx + 400);
-  ok(!handlerBody.includes('sys.exit(0)'), 'sys.exit(0)   signal_handler  !');
+  ok(!handlerBody.includes('sys.exit(0)'), 'sys.exit(0) Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ signal_handler â€” Ã°Ã¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿!');
 });
 
 test('E03', 'request_bot_stop() present for worker pool', () => {
@@ -686,194 +686,194 @@ test('E05', 'main() awaits _stop_event.wait()', () => {
   ok(mainBody.includes('await _stop_event.wait()'), 'await _stop_event.wait() not found in main()');
 });
 
-test('E06', 'signal.signal(signal.SIGTERM, signal_handler) ', () => {
+test('E06', 'signal.signal(signal.SIGTERM, signal_handler) Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'E06');
-  ok(code.includes('signal.signal(signal.SIGTERM, signal_handler)'), 'SIGTERM   ');
+  ok(code.includes('signal.signal(signal.SIGTERM, signal_handler)'), 'SIGTERM Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¿ Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
 });
 
-test('E07', 'signal.signal(signal.SIGINT, signal_handler) ', () => {
+test('E07', 'signal.signal(signal.SIGINT, signal_handler) Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'E07');
-  ok(code.includes('signal.signal(signal.SIGINT, signal_handler)'), 'SIGINT   ');
+  ok(code.includes('signal.signal(signal.SIGINT, signal_handler)'), 'SIGINT Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¿ Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
 });
 
-test('E08', 'signal_handler   DB ', () => {
+test('E08', 'signal_handler Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'E08');
-  ok(code.includes('def signal_handler'), 'signal_handler   DB=true');
+  ok(code.includes('def signal_handler'), 'signal_handler Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=true');
 });
 
-test('E09', 'signal_handler   DB ', () => {
+test('E09', 'signal_handler Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB Ã¢Ã»ÃªÃ«Ã¾Ã·Ã¥Ã­', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'E09');
-  ok(code.includes('def signal_handler'), 'signal_handler   DB=false');
+  ok(code.includes('def signal_handler'), 'signal_handler Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ DB=false');
 });
 
-test('E10', 'asyncio.get_running_loop().stop()   inline ', () => {
+test('E10', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'E10');
-  ok(code.includes('_stop_event.set()'), 'loop.stop()   inline ');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('E11', 'asyncio.get_running_loop().stop()   command_trigger', () => {
+test('E11', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/start', 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'E11');
-  ok(code.includes('_stop_event.set()'), 'loop.stop()   command_trigger');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger');
 });
 
-test('E12', 'asyncio.get_running_loop().stop()   text_trigger', () => {
+test('E12', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ text_trigger', () => {
   const p = makeCleanProject([
-    makeTextTriggerNode('txt1', ['', 'stop'], 'msg1'),
+    makeTextTriggerNode('txt1', ['Ã±Ã²Ã®Ã¯', 'stop'], 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'E12');
-  ok(code.includes('_stop_event.set()'), 'loop.stop()   text_trigger');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ text_trigger');
 });
 
-test('E13', 'asyncio.get_running_loop().stop()   condition', () => {
+test('E13', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ condition', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeConditionNode('cond1', 'level', [
       { value: '1', targetNodeId: 'msg1' },
       { value: '__else__', targetNodeId: 'msg2' },
     ]),
-    makeMessageNode('msg1', ' 1'),
-    makeMessageNode('msg2', ' '),
+    makeMessageNode('msg1', 'Ã“Ã°Ã®Ã¢Ã¥Ã­Ã¼ 1'),
+    makeMessageNode('msg2', 'Ã„Ã°Ã³Ã£Ã®Ã© Ã³Ã°Ã®Ã¢Ã¥Ã­Ã¼'),
   ]);
   const code = gen(p, 'E13');
-  ok(code.includes('_stop_event.set()'), 'loop.stop()   condition');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ condition');
 });
 
-test('E14', 'asyncio.get_running_loop().stop()   media', () => {
+test('E14', 'asyncio.get_running_loop().stop() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ media', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeMediaNode('media1', ['AgACAgIAAxkBAAIBcmJ']),
   ]);
   const code = gen(p, 'E14');
-  ok(code.includes('_stop_event.set()'), 'loop.stop()   media');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ media');
 });
 
-test('E15', ' Python OK   signal_handler  loop.stop()', () => {
+test('E15', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ signal_handler Ã± loop.stop()', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'E15');
-  ok(code.includes('_stop_event.set()'), 'loop.stop() ');
+  ok(code.includes('_stop_event.set()'), 'loop.stop() Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'E15');
 });
 
 // ===============================================================================
-//  F: finally     
+// ÃÃ‹ÃÃŠ F: finally Ã¡Ã«Ã®Ãª â€” ÃªÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã®Ã¥ Ã§Ã ÃªÃ°Ã»Ã²Ã¨Ã¥ Ã±Ã®Ã¥Ã¤Ã¨Ã­Ã¥Ã­Ã¨Ã©
 // ===============================================================================
 
-console.log('\n--  F: finally      -------');
+console.log('\n-- ÃÃ«Ã®Ãª F: finally Ã¡Ã«Ã®Ãª â€” ÃªÃ®Ã°Ã°Ã¥ÃªÃ²Ã­Ã®Ã¥ Ã§Ã ÃªÃ°Ã»Ã²Ã¨Ã¥ Ã±Ã®Ã¥Ã¤Ã¨Ã­Ã¥Ã­Ã¨Ã© -------');
 
-test('F01', 'finally:   main()', () => {
+test('F01', 'finally: Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ main()', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'F01');
   const mainIdx = code.indexOf('async def main()');
-  ok(mainIdx !== -1, 'async def main()  ');
+  ok(mainIdx !== -1, 'async def main() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const mainBody = code.slice(mainIdx);
-  ok(mainBody.includes('finally:'), 'finally:    main()');
+  ok(mainBody.includes('finally:'), 'finally: Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ main()');
 });
 
-test('F02', 'await bot.session.close()   finally', () => {
+test('F02', 'await bot.session.close() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ finally', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'F02');
-  ok(code.includes('await bot.session.close()'), 'await bot.session.close()  ');
+  ok(code.includes('await bot.session.close()'), 'await bot.session.close() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
 });
 
-test('F03', ' DB : await db_pool.close()   finally', () => {
+test('F03', 'ÃÃ°Ã¨ DB Ã¢ÃªÃ«Ã¾Ã·Â¸Ã­: await db_pool.close() Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ finally', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'F03');
-  ok(code.includes('await db_pool.close()'), 'await db_pool.close()    DB=true');
+  ok(code.includes('await db_pool.close()'), 'await db_pool.close() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¯Ã°Ã¨ DB=true');
 });
 
-test('F04', ' DB : db_pool.close()  ', () => {
+test('F04', 'ÃÃ°Ã¨ DB Ã¢Ã»ÃªÃ«Ã¾Ã·Ã¥Ã­: db_pool.close() ÃÃ… Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], false);
   const code = gen(p, 'F04');
-  ok(!code.includes('db_pool.close()'), 'db_pool.close()   DB=false   ');
+  ok(!code.includes('db_pool.close()'), 'db_pool.close() Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¯Ã°Ã¨ DB=false â€” Ã«Ã¨Ã¸Ã­Ã¨Ã© ÃªÃ®Ã¤');
 });
 
-test('F05', 'finally   except  ( )', () => {
+test('F05', 'finally Ã¨Ã¤Â¸Ã² ÃÃÃ‘Ã‹Ã… except Ã¡Ã«Ã®ÃªÃ®Ã¢ (Ã¯Ã®Ã°Ã¿Ã¤Ã®Ãª Ã¨Ã­Ã¤Ã¥ÃªÃ±Ã®Ã¢)', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'F05');
   const exceptIdx = code.indexOf('except KeyboardInterrupt:');
   const finallyIdx = code.indexOf('finally:');
-  ok(exceptIdx !== -1, 'except KeyboardInterrupt:  ');
-  ok(finallyIdx !== -1, 'finally:  ');
-  ok(finallyIdx > exceptIdx, 'finally    except');
+  ok(exceptIdx !== -1, 'except KeyboardInterrupt: Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
+  ok(finallyIdx !== -1, 'finally: Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã®');
+  ok(finallyIdx > exceptIdx, 'finally Ã¤Ã®Ã«Ã¦Ã¥Ã­ Ã¨Ã¤Ã²Ã¨ Ã¯Ã®Ã±Ã«Ã¥ except');
 });
 
-test('F06', 'finally     inline ', () => {
+test('F06', 'finally Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± inline ÃªÃ­Ã®Ã¯ÃªÃ Ã¬Ã¨', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   const code = gen(p, 'F06');
   const mainBody = code.slice(code.indexOf('async def main()'));
-  ok(mainBody.includes('finally:'), 'finally:   inline ');
+  ok(mainBody.includes('finally:'), 'finally: Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ inline ÃªÃ­Ã®Ã¯ÃªÃ Ãµ');
 });
 
-test('F07', 'finally     command_trigger', () => {
+test('F07', 'finally Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± command_trigger', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/start', 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'F07');
   const mainBody = code.slice(code.indexOf('async def main()'));
-  ok(mainBody.includes('finally:'), 'finally:   command_trigger');
+  ok(mainBody.includes('finally:'), 'finally: Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ command_trigger');
 });
 
-test('F08', 'finally     text_trigger', () => {
+test('F08', 'finally Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± text_trigger', () => {
   const p = makeCleanProject([
-    makeTextTriggerNode('txt1', [''], 'msg1'),
+    makeTextTriggerNode('txt1', ['Ã¯Ã°Ã¨Ã¢Ã¥Ã²'], 'msg1'),
     makeMessageNode('msg1'),
   ]);
   const code = gen(p, 'F08');
   const mainBody = code.slice(code.indexOf('async def main()'));
-  ok(mainBody.includes('finally:'), 'finally:   text_trigger');
+  ok(mainBody.includes('finally:'), 'finally: Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ text_trigger');
 });
 
-test('F09', 'finally     adminOnly', () => {
+test('F09', 'finally Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ Ã± adminOnly', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/admin', 'msg1');
   cmd.data = { ...cmd.data, adminOnly: true } as any;
   const p = makeCleanProject([cmd, makeMessageNode('msg1')]);
   const code = gen(p, 'F09');
   const mainBody = code.slice(code.indexOf('async def main()'));
-  ok(mainBody.includes('finally:'), 'finally:   adminOnly');
+  ok(mainBody.includes('finally:'), 'finally: Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¯Ã°Ã¨ adminOnly');
 });
 
-test('F10', ' Python OK   finally ', () => {
+test('F10', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¯Ã°Ã¨ Ã­Ã Ã«Ã¨Ã·Ã¨Ã¨ finally Ã¡Ã«Ã®ÃªÃ ', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   const code = genDB(p, 'F10');
-  ok(code.includes('finally:'), 'finally: ');
+  ok(code.includes('finally:'), 'finally: Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²');
   syntax(code, 'F10');
 });
 
 // ===============================================================================
-//  G: templateCache 
+// ÃÃ‹ÃÃŠ G: templateCache Ã®Ã£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­Ã¨Ã¥
 // ===============================================================================
 
-console.log('\n--  G: templateCache  ---------------------------');
+console.log('\n-- ÃÃ«Ã®Ãª G: templateCache Ã®Ã£Ã°Ã Ã­Ã¨Ã·Ã¥Ã­Ã¨Ã¥ ---------------------------');
 
-test('G01', 'MAX_CACHE_SIZE = 100    template-renderer.ts', () => {
+test('G01', 'MAX_CACHE_SIZE = 100 Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ Ã¨Ã±ÃµÃ®Ã¤Ã­Ã¨ÃªÃ¥ template-renderer.ts', () => {
   const src = fs.readFileSync('lib/templates/template-renderer.ts', 'utf-8');
-  ok(src.includes('MAX_CACHE_SIZE = 100'), 'MAX_CACHE_SIZE = 100    template-renderer.ts');
+  ok(src.includes('MAX_CACHE_SIZE = 100'), 'MAX_CACHE_SIZE = 100 Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ template-renderer.ts');
 });
 
-test('G02', 'renderPartialTemplate 5      ', () => {
+test('G02', 'renderPartialTemplate 5 Ã°Ã Ã§ Ã± Ã°Ã Ã§Ã­Ã»Ã¬Ã¨ Ã¸Ã Ã¡Ã«Ã®Ã­Ã Ã¬Ã¨ Ã­Ã¥ Ã¯Ã Ã¤Ã Ã¥Ã²', () => {
   const templates = [
     ['utils/utils.py.jinja2', { adminOnly: false, userDatabaseEnabled: false }],
     ['utils/utils.py.jinja2', { adminOnly: true, userDatabaseEnabled: false }],
@@ -883,28 +883,28 @@ test('G02', 'renderPartialTemplate 5      ', () => {
   ] as const;
   for (const [tmpl, ctx] of templates) {
     const result = renderPartialTemplate(tmpl, ctx as any);
-    ok(typeof result === 'string' && result.length > 0, `renderPartialTemplate(${tmpl})   `);
+    ok(typeof result === 'string' && result.length > 0, `renderPartialTemplate(${tmpl}) Ã¢Ã¥Ã°Ã­Ã³Ã« Ã¯Ã³Ã±Ã²Ã®Ã© Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²`);
   }
 });
 
-test('G03', 'renderPartialTemplate       ', () => {
+test('G03', 'renderPartialTemplate Ã± Ã®Ã¤Ã­Ã¨Ã¬ Ã¸Ã Ã¡Ã«Ã®Ã­Ã®Ã¬ Ã¤Ã¢Ã Ã¦Ã¤Ã» Ã¢Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã² Ã®Ã¤Ã¨Ã­Ã ÃªÃ®Ã¢Ã»Ã© Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²', () => {
   const ctx = { adminOnly: false, userDatabaseEnabled: false };
   const r1 = renderPartialTemplate('utils/utils.py.jinja2', ctx);
   const r2 = renderPartialTemplate('utils/utils.py.jinja2', ctx);
-  ok(r1 === r2, '       ');
+  ok(r1 === r2, 'Ã„Ã¢Ã  Ã¢Ã»Ã§Ã®Ã¢Ã  Ã± Ã®Ã¤Ã¨Ã­Ã ÃªÃ®Ã¢Ã»Ã¬ ÃªÃ®Ã­Ã²Ã¥ÃªÃ±Ã²Ã®Ã¬ Ã¢Ã¥Ã°Ã­Ã³Ã«Ã¨ Ã°Ã Ã§Ã­Ã»Ã¥ Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²Ã»');
 });
 
-test('G04', 'renderPartialTemplate utils/utils.py.jinja2  cleanup_user_data', () => {
+test('G04', 'renderPartialTemplate utils/utils.py.jinja2 Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² cleanup_user_data', () => {
   const result = renderPartialTemplate('utils/utils.py.jinja2', { adminOnly: false, userDatabaseEnabled: false });
-  ok(result.includes('cleanup_user_data'), 'cleanup_user_data    utils.py.jinja2');
+  ok(result.includes('cleanup_user_data'), 'cleanup_user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ utils.py.jinja2');
 });
 
-test('G05', 'renderPartialTemplate utils/utils.py.jinja2  adminOnly:true  is_admin', () => {
+test('G05', 'renderPartialTemplate utils/utils.py.jinja2 Ã± adminOnly:true Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² is_admin', () => {
   const result = renderPartialTemplate('utils/utils.py.jinja2', { adminOnly: true, userDatabaseEnabled: false });
-  ok(result.includes('is_admin'), 'is_admin    adminOnly:true');
+  ok(result.includes('is_admin'), 'is_admin Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¯Ã°Ã¨ adminOnly:true');
 });
 
-test('G06', 'renderPartialTemplate main/main.py.jinja2  cleanup_user_data', () => {
+test('G06', 'renderPartialTemplate main/main.py.jinja2 Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² cleanup_user_data', () => {
   const result = renderPartialTemplate('main/main.py.jinja2', {
     userDatabaseEnabled: false,
     menuCommands: [],
@@ -912,10 +912,10 @@ test('G06', 'renderPartialTemplate main/main.py.jinja2  cleanup_user_dat
     incomingMessageTriggerMiddlewares: [],
     hasInlineButtons: false,
   });
-  ok(result.includes('cleanup_user_data'), 'cleanup_user_data    main.py.jinja2');
+  ok(result.includes('cleanup_user_data'), 'cleanup_user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ main.py.jinja2');
 });
 
-test('G07', 'renderPartialTemplate main/main.py.jinja2  asyncio.get_running_loop().stop()', () => {
+test('G07', 'renderPartialTemplate main/main.py.jinja2 Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² asyncio.get_running_loop().stop()', () => {
   const result = renderPartialTemplate('main/main.py.jinja2', {
     userDatabaseEnabled: false,
     menuCommands: [],
@@ -923,10 +923,10 @@ test('G07', 'renderPartialTemplate main/main.py.jinja2  asyncio.get_runn
     incomingMessageTriggerMiddlewares: [],
     hasInlineButtons: false,
   });
-  ok(result.includes('_stop_event.set()'), 'loop.stop()    main.py.jinja2');
+  ok(result.includes('_stop_event.set()'), 'loop.stop() ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ main.py.jinja2');
 });
 
-test('G08', 'renderPartialTemplate main/main.py.jinja2   sys.exit(0)', () => {
+test('G08', 'renderPartialTemplate main/main.py.jinja2 ÃÃ… Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² sys.exit(0)', () => {
   const result = renderPartialTemplate('main/main.py.jinja2', {
     userDatabaseEnabled: false,
     menuCommands: [],
@@ -934,31 +934,31 @@ test('G08', 'renderPartialTemplate main/main.py.jinja2   sys.exit(0)',
     incomingMessageTriggerMiddlewares: [],
     hasInlineButtons: false,
   });
-  ok(!result.includes('sys.exit(0)'), 'sys.exit(0)   main.py.jinja2  !');
+  ok(!result.includes('sys.exit(0)'), 'sys.exit(0) Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ main.py.jinja2 â€” Ã°Ã¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿!');
 });
 
-test('G09', 'renderPartialTemplate utils/utils.py.jinja2  USER_DATA_TTL', () => {
+test('G09', 'renderPartialTemplate utils/utils.py.jinja2 Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² USER_DATA_TTL', () => {
   const result = renderPartialTemplate('utils/utils.py.jinja2', { adminOnly: false, userDatabaseEnabled: false });
-  ok(result.includes('USER_DATA_TTL'), 'USER_DATA_TTL    utils.py.jinja2');
+  ok(result.includes('USER_DATA_TTL'), 'USER_DATA_TTL Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ utils.py.jinja2');
 });
 
-test('G10', 'renderPartialTemplate utils/utils.py.jinja2  _user_last_seen', () => {
+test('G10', 'renderPartialTemplate utils/utils.py.jinja2 Ã±Ã®Ã¤Ã¥Ã°Ã¦Ã¨Ã² _user_last_seen', () => {
   const result = renderPartialTemplate('utils/utils.py.jinja2', { adminOnly: false, userDatabaseEnabled: false });
-  ok(result.includes('_user_last_seen'), '_user_last_seen    utils.py.jinja2');
+  ok(result.includes('_user_last_seen'), '_user_last_seen Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ utils.py.jinja2');
 });
 
 // ===============================================================================
-//  H:    
+// ÃÃ‹ÃÃŠ H: ÃŠÃ®Ã¬Ã¡Ã¨Ã­Ã Ã¶Ã¨Ã¨ â€” Ã¯Ã®Ã«Ã­Ã»Ã¥ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã»
 // ===============================================================================
 
-console.log('\n--  H:     -------------------------');
+console.log('\n-- ÃÃ«Ã®Ãª H: ÃŠÃ®Ã¬Ã¡Ã¨Ã­Ã Ã¶Ã¨Ã¨ â€” Ã¯Ã®Ã«Ã­Ã»Ã¥ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã» -------------------------');
 
-test('H01', ': start + message >  4  ', () => {
+test('H01', 'ÃÃ°Ã®Ã¥ÃªÃ²: start + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   hasFourFixes(gen(p, 'H01'));
 });
 
-test('H02', ': command_trigger + message >  4  ', () => {
+test('H02', 'ÃÃ°Ã®Ã¥ÃªÃ²: command_trigger + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/start', 'msg1'),
     makeMessageNode('msg1'),
@@ -966,55 +966,55 @@ test('H02', ': command_trigger + message >  4  ', () =
   hasFourFixes(gen(p, 'H02'));
 });
 
-test('H03', ': text_trigger + message >  4  ', () => {
+test('H03', 'ÃÃ°Ã®Ã¥ÃªÃ²: text_trigger + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
-    makeTextTriggerNode('txt1', ['', 'hi'], 'msg1'),
+    makeTextTriggerNode('txt1', ['Ã¯Ã°Ã¨Ã¢Ã¥Ã²', 'hi'], 'msg1'),
     makeMessageNode('msg1'),
   ]);
   hasFourFixes(gen(p, 'H03'));
 });
 
-test('H04', ': start + condition + message >  4  ', () => {
+test('H04', 'ÃÃ°Ã®Ã¥ÃªÃ²: start + condition + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeConditionNode('cond1', 'age', [
       { value: '18', targetNodeId: 'msg1' },
       { value: '__else__', targetNodeId: 'msg2' },
     ]),
-    makeMessageNode('msg1', ''),
-    makeMessageNode('msg2', ''),
+    makeMessageNode('msg1', 'Ã‚Ã§Ã°Ã®Ã±Ã«Ã»Ã©'),
+    makeMessageNode('msg2', 'ÃÃ¥Ã±Ã®Ã¢Ã¥Ã°Ã¸Ã¥Ã­Ã­Ã®Ã«Ã¥Ã²Ã­Ã¨Ã©'),
   ]);
   hasFourFixes(gen(p, 'H04'));
 });
 
-test('H05', ': start + inline keyboard + message >  4  ', () => {
+test('H05', 'ÃÃ°Ã®Ã¥ÃªÃ²: start + inline keyboard + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'Ã„Ã Ã«Ã¥Ã¥', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   hasFourFixes(gen(p, 'H05'));
 });
 
-test('H06', ': start + reply keyboard + message >  4  ', () => {
+test('H06', 'ÃÃ°Ã®Ã¥ÃªÃ²: start + reply keyboard + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'reply',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŒÃ¥Ã­Ã¾', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')]);
   hasFourFixes(gen(p, 'H06'));
 });
 
-test('H07', '  DB: start + message >  4  ', () => {
+test('H07', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± DB: start + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true);
   hasFourFixes(genDB(p, 'H07'));
 });
 
-test('H08', '  DB: command_trigger + message >  4  ', () => {
+test('H08', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± DB: command_trigger + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
     makeCommandTriggerNode('cmd1', '/start', 'msg1'),
     makeMessageNode('msg1'),
@@ -1022,35 +1022,35 @@ test('H08', '  DB: command_trigger + message >  4  ',
   hasFourFixes(genDB(p, 'H08'));
 });
 
-test('H09', '  DB + inline: start + message >  4  ', () => {
+test('H09', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± DB + inline: start + message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'msg1' }],
   } as any;
   const p = makeCleanProject([start, makeMessageNode('msg1')], true);
   hasFourFixes(genDB(p, 'H09'));
 });
 
-test('H10', ': 5 command_trigger + 5 message >  4  ', () => {
+test('H10', 'ÃÃ°Ã®Ã¥ÃªÃ²: 5 command_trigger + 5 message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const nodes: any[] = [];
   for (let i = 1; i <= 5; i++) {
     nodes.push(makeCommandTriggerNode(`cmd${i}`, `/cmd${i}`, `msg${i}`));
-    nodes.push(makeMessageNode(`msg${i}`, `   ${i}`));
+    nodes.push(makeMessageNode(`msg${i}`, `ÃÃ²Ã¢Ã¥Ã² Ã­Ã  ÃªÃ®Ã¬Ã Ã­Ã¤Ã³ ${i}`));
   }
   const p = makeCleanProject(nodes);
   hasFourFixes(gen(p, 'H10'));
 });
 
-test('H11', ': adminOnly + requiresAuth >  4  ', () => {
+test('H11', 'ÃÃ°Ã®Ã¥ÃªÃ²: adminOnly + requiresAuth > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const cmd = makeCommandTriggerNode('cmd1', '/secret', 'msg1');
   cmd.data = { ...cmd.data, adminOnly: true, requiresAuth: true } as any;
-  const p = makeCleanProject([cmd, makeMessageNode('msg1', ' ')]);
+  const p = makeCleanProject([cmd, makeMessageNode('msg1', 'Ã‘Ã¥ÃªÃ°Ã¥Ã²Ã­Ã»Ã© Ã°Ã Ã§Ã¤Ã¥Ã«')]);
   hasFourFixes(gen(p, 'H11'));
 });
 
-test('H12', ': media  >  4  ', () => {
+test('H12', 'ÃÃ°Ã®Ã¥ÃªÃ²: media Ã³Ã§Ã¥Ã« > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
     makeStartNode(),
     makeMediaNode('media1', ['photo_id_abc123']),
@@ -1058,7 +1058,7 @@ test('H12', ': media  >  4  ', () => {
   hasFourFixes(gen(p, 'H12'));
 });
 
-test('H13', ': forward_message >  4  ', () => {
+test('H13', 'ÃÃ°Ã®Ã¥ÃªÃ²: forward_message > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const fwd = {
     id: 'fwd1',
     type: 'forward_message',
@@ -1069,7 +1069,7 @@ test('H13', ': forward_message >  4  ', () => {
   hasFourFixes(gen(p, 'H13'));
 });
 
-test('H14', ': incoming_message_trigger >  4  ', () => {
+test('H14', 'ÃÃ°Ã®Ã¥ÃªÃ²: incoming_message_trigger > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const trigger = {
     id: 'imt1',
     type: 'incoming_message_trigger',
@@ -1080,26 +1080,26 @@ test('H14', ': incoming_message_trigger >  4  ', () =>
   hasFourFixes(gen(p, 'H14'));
 });
 
-test('H15', ':     >  OK +  4 ', () => {
+test('H15', 'ÃÃ°Ã®Ã¥ÃªÃ²: Ã¢Ã±Ã¥ Ã²Ã¨Ã¯Ã» Ã³Ã§Ã«Ã®Ã¢ Ã¢Ã¬Ã¥Ã±Ã²Ã¥ > Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± OK + Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã ', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'Ã„Ã Ã«Ã¥Ã¥', action: 'goto', target: 'msg1' }],
   } as any;
   const nodes: any[] = [
     start,
-    makeMessageNode('msg1', '!'),
+    makeMessageNode('msg1', 'ÃÃ°Ã¨Ã¢Ã¥Ã²!'),
     makeCommandTriggerNode('cmd1', '/help', 'msg2'),
-    makeMessageNode('msg2', ''),
-    makeTextTriggerNode('txt1', [''], 'msg3'),
-    makeMessageNode('msg3', ''),
+    makeMessageNode('msg2', 'ÃÃ®Ã¬Ã®Ã¹Ã¼'),
+    makeTextTriggerNode('txt1', ['Ã±Ã²Ã®Ã¯'], 'msg3'),
+    makeMessageNode('msg3', 'Ã‘Ã²Ã®Ã¯'),
     makeConditionNode('cond1', 'score', [
       { value: '10', targetNodeId: 'msg4' },
       { value: '__else__', targetNodeId: 'msg5' },
     ]),
-    makeMessageNode('msg4', ''),
-    makeMessageNode('msg5', ''),
+    makeMessageNode('msg4', 'ÃÃ®Ã¡Ã¥Ã¤Ã '),
+    makeMessageNode('msg5', 'ÃÃ°Ã®Ã¨Ã£Ã°Ã»Ã¸'),
     makeMediaNode('media1', ['photo_id_xyz']),
   ];
   const p = makeCleanProject(nodes, true);
@@ -1109,102 +1109,102 @@ test('H15', ':     >  OK +  4 ', () => 
 });
 
 // ===============================================================================
-//  I:     
+// ÃÃ‹ÃÃŠ I: ÃÃ¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿ â€” Ã±Ã²Ã Ã°Ã»Ã¥ Ã¯Ã Ã²Ã²Ã¥Ã°Ã­Ã» Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²
 // ===============================================================================
 
-console.log('\n--  I:      -------------');
+console.log('\n-- ÃÃ«Ã®Ãª I: ÃÃ¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿ â€” Ã±Ã²Ã Ã°Ã»Ã¥ Ã¯Ã Ã²Ã²Ã¥Ã°Ã­Ã» Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã² -------------');
 
-test('I01', 'sys.exit(0)      ', () => {
+test('I01', 'sys.exit(0) ÃÃ… Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã­Ã¨Ã£Ã¤Ã¥ Ã¢ Ã±Ã£Ã¥Ã­Ã¥Ã°Ã¨Ã°Ã®Ã¢Ã Ã­Ã­Ã®Ã¬ ÃªÃ®Ã¤Ã¥', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I01');
-  ok(!code.includes('sys.exit(0)'), 'sys.exit(0)     !');
+  ok(!code.includes('sys.exit(0)'), 'sys.exit(0) Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ ÃªÃ®Ã¤Ã¥ â€” Ã°Ã¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿!');
 });
 
-test('I02', 'import sys  signal_handler  ', () => {
+test('I02', 'import sys Ã¢Ã­Ã³Ã²Ã°Ã¨ signal_handler ÃÃ… Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã²', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I02');
   const handlerIdx = code.indexOf('def signal_handler');
-  ok(handlerIdx !== -1, 'signal_handler  ');
+  ok(handlerIdx !== -1, 'signal_handler Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­');
   const handlerBody = code.slice(handlerIdx, handlerIdx + 400);
-  ok(!handlerBody.includes('import sys'), 'import sys   signal_handler  !');
+  ok(!handlerBody.includes('import sys'), 'import sys Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢Ã­Ã³Ã²Ã°Ã¨ signal_handler â€” Ã°Ã¥Ã£Ã°Ã¥Ã±Ã±Ã¨Ã¿!');
 });
 
-test('I03', 'user_data    _user_last_seen (  )', () => {
+test('I03', 'user_data Ã­Ã¥ Ã¨Ã±Ã¯Ã®Ã«Ã¼Ã§Ã³Ã¥Ã²Ã±Ã¿ Ã¡Ã¥Ã§ _user_last_seen (Ã­Ã¥Ã² Ã¡Ã¥Ã±ÃªÃ®Ã­Ã¥Ã·Ã­Ã®Ã£Ã® Ã°Ã®Ã±Ã²Ã )', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I03');
-  ok(code.includes('user_data'), 'user_data    ');
-  ok(code.includes('_user_last_seen'), '_user_last_seen       ');
+  ok(code.includes('user_data'), 'user_data Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® Ã¢ ÃªÃ®Ã¤Ã¥');
+  ok(code.includes('_user_last_seen'), '_user_last_seen Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã® â€” Ã­Ã¥Ã² Ã§Ã Ã¹Ã¨Ã²Ã» Ã®Ã² Ã³Ã²Ã¥Ã·ÃªÃ¨');
 });
 
-test('I04', 'cleanup_user_data       5  ', () => {
+test('I04', 'cleanup_user_data ÃÃ… Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã­Ã¨ Ã¢ Ã®Ã¤Ã­Ã®Ã¬ Ã¨Ã§ 5 Ã°Ã Ã§Ã­Ã»Ãµ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã®Ã¢', () => {
   const projects = [
     makeCleanProject([makeStartNode(), makeMessageNode('msg1')]),
     makeCleanProject([makeCommandTriggerNode('cmd1', '/start', 'msg1'), makeMessageNode('msg1')]),
-    makeCleanProject([makeTextTriggerNode('txt1', [''], 'msg1'), makeMessageNode('msg1')]),
+    makeCleanProject([makeTextTriggerNode('txt1', ['Ã¯Ã°Ã¨Ã¢Ã¥Ã²'], 'msg1'), makeMessageNode('msg1')]),
     makeCleanProject([makeStartNode(), makeMediaNode('media1', ['photo_id'])]),
     makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true),
   ];
   for (let i = 0; i < projects.length; i++) {
     const code = i === 4 ? genDB(projects[i], `I04_${i}`) : gen(projects[i], `I04_${i}`);
-    ok(code.includes('cleanup_user_data'), `cleanup_user_data    #${i + 1}`);
+    ok(code.includes('cleanup_user_data'), `cleanup_user_data Ã®Ã²Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¥Ã² Ã¢ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã¥ #${i + 1}`);
   }
 });
 
-test('I05', 'asyncio.create_task   1   main()', () => {
+test('I05', 'asyncio.create_task Ã¢Ã»Ã§Ã»Ã¢Ã Ã¥Ã²Ã±Ã¿ Ã°Ã®Ã¢Ã­Ã® 1 Ã°Ã Ã§ Ã¢ main()', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I05');
   const mainIdx = code.indexOf('async def main()');
-  ok(mainIdx !== -1, 'async def main()  ');
+  ok(mainIdx !== -1, 'async def main() Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã ');
   const mainBody = code.slice(mainIdx);
   const count = (mainBody.match(/asyncio\.create_task\(cleanup_user_data\(\)\)/g) || []).length;
-  ok(count === 1, `asyncio.create_task(cleanup_user_data())  ${count} (),  1`);
+  ok(count === 1, `asyncio.create_task(cleanup_user_data()) Ã¢Ã»Ã§Ã»Ã¢Ã Ã¥Ã²Ã±Ã¿ ${count} Ã°Ã Ã§(Ã ), Ã®Ã¦Ã¨Ã¤Ã Ã¥Ã²Ã±Ã¿ 1`);
 });
 
-test('I06', 'signal_handler   1 ', () => {
+test('I06', 'signal_handler Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ Ã°Ã®Ã¢Ã­Ã® 1 Ã°Ã Ã§', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I06');
   const count = (code.match(/def signal_handler/g) || []).length;
-  ok(count === 1, `signal_handler  ${count} (),  1`);
+  ok(count === 1, `signal_handler Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ ${count} Ã°Ã Ã§(Ã ), Ã®Ã¦Ã¨Ã¤Ã Ã¥Ã²Ã±Ã¿ 1`);
 });
 
-test('I07', 'USER_DATA_TTL   1 ', () => {
+test('I07', 'USER_DATA_TTL Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ Ã°Ã®Ã¢Ã­Ã® 1 Ã°Ã Ã§', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I07');
   const count = (code.match(/USER_DATA_TTL = 3600/g) || []).length;
-  ok(count === 1, `USER_DATA_TTL = 3600  ${count} (),  1`);
+  ok(count === 1, `USER_DATA_TTL = 3600 Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ ${count} Ã°Ã Ã§(Ã ), Ã®Ã¦Ã¨Ã¤Ã Ã¥Ã²Ã±Ã¿ 1`);
 });
 
-test('I08', '_user_last_seen   1 ', () => {
+test('I08', '_user_last_seen Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ Ã°Ã®Ã¢Ã­Ã® 1 Ã°Ã Ã§', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I08');
   const count = (code.match(/_user_last_seen: dict\[int, float\] = \{\}/g) || []).length;
-  ok(count === 1, `_user_last_seen: dict[int, float] = {}  ${count} (),  1`);
+  ok(count === 1, `_user_last_seen: dict[int, float] = {} Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ ${count} Ã°Ã Ã§(Ã ), Ã®Ã¦Ã¨Ã¤Ã Ã¥Ã²Ã±Ã¿ 1`);
 });
 
-test('I09', 'cleanup_user_data   1 ', () => {
+test('I09', 'cleanup_user_data Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ Ã°Ã®Ã¢Ã­Ã® 1 Ã°Ã Ã§', () => {
   const p = makeCleanProject([makeStartNode(), makeMessageNode('msg1')]);
   const code = gen(p, 'I09');
   const count = (code.match(/async def cleanup_user_data\(\)/g) || []).length;
-  ok(count === 1, `async def cleanup_user_data()  ${count} (),  1`);
+  ok(count === 1, `async def cleanup_user_data() Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Â¸Ã­ ${count} Ã°Ã Ã§(Ã ), Ã®Ã¦Ã¨Ã¤Ã Ã¥Ã²Ã±Ã¿ 1`);
 });
 
-test('I10', ' Python OK  10   ', () => {
+test('I10', 'Ã‘Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± Python OK Ã¤Ã«Ã¿ 10 Ã°Ã Ã§Ã­Ã»Ãµ Ã¯Ã°Ã®Ã¥ÃªÃ²Ã®Ã¢ Ã¯Ã®Ã¤Ã°Ã¿Ã¤', () => {
   const projects = [
     makeCleanProject([makeStartNode(), makeMessageNode('msg1')]),
     makeCleanProject([makeCommandTriggerNode('cmd1', '/start', 'msg1'), makeMessageNode('msg1')]),
-    makeCleanProject([makeTextTriggerNode('txt1', [''], 'msg1'), makeMessageNode('msg1')]),
+    makeCleanProject([makeTextTriggerNode('txt1', ['Ã¯Ã°Ã¨Ã¢Ã¥Ã²'], 'msg1'), makeMessageNode('msg1')]),
     makeCleanProject([makeStartNode(), makeMediaNode('media1', ['photo_id'])]),
     makeCleanProject([makeStartNode(), makeMessageNode('msg1')], true),
     makeCleanProject([makeCommandTriggerNode('cmd1', '/help', 'msg1'), makeMessageNode('msg1')], true),
     makeCleanProject([
       makeStartNode(),
       makeConditionNode('cond1', 'x', [{ value: '1', targetNodeId: 'msg1' }, { value: '__else__', targetNodeId: 'msg2' }]),
-      makeMessageNode('msg1', ''),
-      makeMessageNode('msg2', ''),
+      makeMessageNode('msg1', 'Ã„Ã '),
+      makeMessageNode('msg2', 'ÃÃ¥Ã²'),
     ]),
-    makeCleanProject([makeTextTriggerNode('txt1', ['', 'stop', ''], 'msg1'), makeMessageNode('msg1')]),
-    makeCleanProject([makeStartNode(), makeMessageNode('msg1', '?? !')]),
-    makeCleanProject([makeStartNode(), makeMessageNode('msg1', '  ""  \'\'')]),
+    makeCleanProject([makeTextTriggerNode('txt1', ['Ã±Ã²Ã®Ã¯', 'stop', 'Ã¢Ã»ÃµÃ®Ã¤'], 'msg1'), makeMessageNode('msg1')]),
+    makeCleanProject([makeStartNode(), makeMessageNode('msg1', '?? ÃÃ°Ã¨Ã¢Ã¥Ã²!')]),
+    makeCleanProject([makeStartNode(), makeMessageNode('msg1', 'Ã’Ã¥ÃªÃ±Ã² Ã± "ÃªÃ Ã¢Ã»Ã·ÃªÃ Ã¬Ã¨" Ã¨ \'Ã Ã¯Ã®Ã±Ã²Ã°Ã®Ã´Ã Ã¬Ã¨\'')]),
   ];
   for (let i = 0; i < projects.length; i++) {
     const code = i === 4 || i === 5 ? genDB(projects[i], `I10_${i}`) : gen(projects[i], `I10_${i}`);
@@ -1213,31 +1213,31 @@ test('I10', ' Python OK  10   ', () => {
 });
 
 // ===============================================================================
-//  J:  
+// ÃÃ‹ÃÃŠ J: ÃƒÃ°Ã Ã­Ã¨Ã·Ã­Ã»Ã¥ Ã±Ã«Ã³Ã·Ã Ã¨
 // ===============================================================================
 
-console.log('\n--  J:   ------------------------------------');
+console.log('\n-- ÃÃ«Ã®Ãª J: ÃƒÃ°Ã Ã­Ã¨Ã·Ã­Ã»Ã¥ Ã±Ã«Ã³Ã·Ã Ã¨ ------------------------------------');
 
-test('J01', '  ( ) >  4  ', () => {
+test('J01', 'ÃÃ³Ã±Ã²Ã®Ã© Ã¯Ã°Ã®Ã¥ÃªÃ² (Ã­Ã¥Ã² Ã³Ã§Ã«Ã®Ã¢) > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([]);
   hasFourFixes(gen(p, 'J01'));
 });
 
-test('J02', '   keyboard  >  4  ', () => {
+test('J02', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã²Ã®Ã«Ã¼ÃªÃ® Ã± keyboard Ã³Ã§Ã«Ã®Ã¬ > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const kbd = {
     id: 'kbd1',
     type: 'keyboard',
     position: { x: 0, y: 0 },
-    data: { keyboardType: 'reply', buttons: [{ id: 'b1', text: '', action: 'goto', target: 'kbd1' }] },
+    data: { keyboardType: 'reply', buttons: [{ id: 'b1', text: 'ÃŠÃ­Ã®Ã¯ÃªÃ ', action: 'goto', target: 'kbd1' }] },
   };
   const p = makeCleanProject([kbd]);
   hasFourFixes(gen(p, 'J02'));
 });
 
-test('J03', '  20  >  OK +  4 ', () => {
+test('J03', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± 20 Ã³Ã§Ã«Ã Ã¬Ã¨ > Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± OK + Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã ', () => {
   const nodes: any[] = [makeStartNode()];
   for (let i = 1; i <= 19; i++) {
-    nodes.push(makeMessageNode(`msg${i}`, `  ${i}`));
+    nodes.push(makeMessageNode(`msg${i}`, `Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ Ã­Ã®Ã¬Ã¥Ã° ${i}`));
   }
   const p = makeCleanProject(nodes);
   const code = gen(p, 'J03');
@@ -1245,53 +1245,53 @@ test('J03', '  20  >  OK +  4 ', () => {
   syntax(code, 'J03');
 });
 
-test('J04', '  Unicode   >  4  ', () => {
+test('J04', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± Unicode Ã¢ Ã²Ã¥ÃªÃ±Ã²Ã Ãµ > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = makeCleanProject([
     makeStartNode(),
-    makeMessageNode('msg1', '?? ! ?? ????? ?? Nono'),
+    makeMessageNode('msg1', '?? ÃÃ°Ã¨Ã¢Ã¥Ã²! ?? ????? ?? Nono'),
     makeMessageNode('msg2', '????????????'),
   ]);
   hasFourFixes(gen(p, 'J04'));
 });
 
-test('J05', '    ID  >  4  ', () => {
+test('J05', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± Ã®Ã·Ã¥Ã­Ã¼ Ã¤Ã«Ã¨Ã­Ã­Ã»Ã¬Ã¨ ID Ã³Ã§Ã«Ã®Ã¢ > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const longId1 = 'node_' + 'a'.repeat(50);
   const longId2 = 'node_' + 'b'.repeat(50);
   const p = makeCleanProject([
     makeStartNode(longId1),
-    makeMessageNode(longId2, ''),
+    makeMessageNode(longId2, 'ÃÃ²Ã¢Ã¥Ã²'),
   ]);
   hasFourFixes(gen(p, 'J05'));
 });
 
-test('J06', '  adminOnly    >  4  ', () => {
+test('J06', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± adminOnly Ã­Ã  Ã¢Ã±Ã¥Ãµ Ã³Ã§Ã«Ã Ãµ > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const cmd1 = makeCommandTriggerNode('cmd1', '/admin1', 'msg1');
   const cmd2 = makeCommandTriggerNode('cmd2', '/admin2', 'msg2');
   cmd1.data = { ...cmd1.data, adminOnly: true } as any;
   cmd2.data = { ...cmd2.data, adminOnly: true } as any;
   const p = makeCleanProject([
-    cmd1, makeMessageNode('msg1', ' 1'),
-    cmd2, makeMessageNode('msg2', ' 2'),
+    cmd1, makeMessageNode('msg1', 'ÃÃ Ã§Ã¤Ã¥Ã« 1'),
+    cmd2, makeMessageNode('msg2', 'ÃÃ Ã§Ã¤Ã¥Ã« 2'),
   ]);
   hasFourFixes(gen(p, 'J06'));
 });
 
-test('J07', '  requiresAuth    >  4  ', () => {
+test('J07', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± requiresAuth Ã­Ã  Ã¢Ã±Ã¥Ãµ Ã³Ã§Ã«Ã Ãµ > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const cmd1 = makeCommandTriggerNode('cmd1', '/profile', 'msg1');
   const cmd2 = makeCommandTriggerNode('cmd2', '/settings', 'msg2');
   cmd1.data = { ...cmd1.data, requiresAuth: true } as any;
   cmd2.data = { ...cmd2.data, requiresAuth: true } as any;
   const p = makeCleanProject([
-    cmd1, makeMessageNode('msg1', ''),
-    cmd2, makeMessageNode('msg2', ''),
+    cmd1, makeMessageNode('msg1', 'ÃÃ°Ã®Ã´Ã¨Ã«Ã¼'),
+    cmd2, makeMessageNode('msg2', 'ÃÃ Ã±Ã²Ã°Ã®Ã©ÃªÃ¨'),
   ]);
   hasFourFixes(gen(p, 'J07'));
 });
 
-test('J08', '  DB + 10  >  OK +  4 ', () => {
+test('J08', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± DB + 10 Ã³Ã§Ã«Ã®Ã¢ > Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± OK + Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã ', () => {
   const nodes: any[] = [makeStartNode()];
   for (let i = 1; i <= 9; i++) {
-    nodes.push(makeMessageNode(`msg${i}`, ` ${i}`));
+    nodes.push(makeMessageNode(`msg${i}`, `Ã‘Ã®Ã®Ã¡Ã¹Ã¥Ã­Ã¨Ã¥ ${i}`));
   }
   const p = makeCleanProject(nodes, true);
   const code = genDB(p, 'J08');
@@ -1299,7 +1299,7 @@ test('J08', '  DB + 10  >  OK +  4 ', () => {
   syntax(code, 'J08');
 });
 
-test('J09', '  multi-sheet ( ) >  4  ', () => {
+test('J09', 'ÃÃ°Ã®Ã¥ÃªÃ² Ã± multi-sheet (Ã­Ã¥Ã±ÃªÃ®Ã«Ã¼ÃªÃ® Ã«Ã¨Ã±Ã²Ã®Ã¢) > Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã  Ã¯Ã°Ã¨Ã±Ã³Ã²Ã±Ã²Ã¢Ã³Ã¾Ã²', () => {
   const p = {
     version: 2,
     activeSheetId: 'sheet1',
@@ -1307,31 +1307,31 @@ test('J09', '  multi-sheet ( ) >  4  '
     sheets: [
       {
         id: 'sheet1',
-        name: ' 1',
+        name: 'Ã‹Ã¨Ã±Ã² 1',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         viewState: { zoom: 1, position: { x: 0, y: 0 } },
-        nodes: [makeStartNode(), makeMessageNode('msg1', ' 1')],
+        nodes: [makeStartNode(), makeMessageNode('msg1', 'Ã‹Ã¨Ã±Ã² 1')],
       },
       {
         id: 'sheet2',
-        name: ' 2',
+        name: 'Ã‹Ã¨Ã±Ã² 2',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         viewState: { zoom: 1, position: { x: 0, y: 0 } },
-        nodes: [makeCommandTriggerNode('cmd1', '/help', 'msg2'), makeMessageNode('msg2', '')],
+        nodes: [makeCommandTriggerNode('cmd1', '/help', 'msg2'), makeMessageNode('msg2', 'ÃÃ®Ã¬Ã®Ã¹Ã¼')],
       },
     ],
   };
   hasFourFixes(gen(p, 'J09'));
 });
 
-test('J10', ' :   + DB + adminOnly + requiresAuth >  OK +  4 ', () => {
+test('J10', 'Ã”Ã¨Ã­Ã Ã«Ã¼Ã­Ã»Ã© Ã¬Ã¥Ã£Ã Ã²Ã¥Ã±Ã²: Ã¢Ã±Ã¥ Ã²Ã¨Ã¯Ã» + DB + adminOnly + requiresAuth > Ã±Ã¨Ã­Ã²Ã ÃªÃ±Ã¨Ã± OK + Ã¢Ã±Ã¥ 4 Ã´Ã¨ÃªÃ±Ã ', () => {
   const start = makeStartNode();
   start.data = {
     ...start.data,
     keyboardType: 'inline',
-    buttons: [{ id: 'b1', text: '', action: 'goto', target: 'msg1' }],
+    buttons: [{ id: 'b1', text: 'Ã„Ã Ã«Ã¥Ã¥', action: 'goto', target: 'msg1' }],
   } as any;
   const cmdAdmin = makeCommandTriggerNode('cmd_admin', '/admin', 'msg_admin');
   cmdAdmin.data = { ...cmdAdmin.data, adminOnly: true } as any;
@@ -1339,19 +1339,19 @@ test('J10', ' :   + DB + adminOnly + requiresAuth > 
   cmdAuth.data = { ...cmdAuth.data, requiresAuth: true } as any;
   const nodes: any[] = [
     start,
-    makeMessageNode('msg1', ' ! ??'),
+    makeMessageNode('msg1', 'Ã„Ã®Ã¡Ã°Ã® Ã¯Ã®Ã¦Ã Ã«Ã®Ã¢Ã Ã²Ã¼! ??'),
     cmdAdmin,
-    makeMessageNode('msg_admin', ' '),
+    makeMessageNode('msg_admin', 'ÃÃ Ã­Ã¥Ã«Ã¼ Ã Ã¤Ã¬Ã¨Ã­Ã¨Ã±Ã²Ã°Ã Ã²Ã®Ã°Ã '),
     cmdAuth,
-    makeMessageNode('msg_auth', ' '),
-    makeTextTriggerNode('txt1', ['', 'help', '?'], 'msg_help'),
-    makeMessageNode('msg_help', '  '),
+    makeMessageNode('msg_auth', 'Ã‚Ã Ã¸ Ã¯Ã°Ã®Ã´Ã¨Ã«Ã¼'),
+    makeTextTriggerNode('txt1', ['Ã¯Ã®Ã¬Ã®Ã¹Ã¼', 'help', '?'], 'msg_help'),
+    makeMessageNode('msg_help', 'Ã‘Ã¯Ã°Ã Ã¢ÃªÃ  Ã¯Ã® Ã¡Ã®Ã²Ã³'),
     makeConditionNode('cond1', 'user_level', [
       { value: 'vip', targetNodeId: 'msg_vip' },
       { value: '__else__', targetNodeId: 'msg_regular' },
     ]),
-    makeMessageNode('msg_vip', '? VIP-'),
-    makeMessageNode('msg_regular', ' '),
+    makeMessageNode('msg_vip', '? VIP-Ã°Ã Ã§Ã¤Ã¥Ã«'),
+    makeMessageNode('msg_regular', 'ÃÃ¡Ã»Ã·Ã­Ã»Ã© Ã°Ã Ã§Ã¤Ã¥Ã«'),
     makeMediaNode('media1', ['photo_id_welcome_banner']),
   ];
   const p = makeCleanProject(nodes, true);
@@ -1360,20 +1360,20 @@ test('J10', ' :   + DB + adminOnly + requiresAuth > 
   syntax(code, 'J10');
 });
 
-// ---  --------------------------------------------------------------------
+// --- ÃˆÃ²Ã®Ã£ --------------------------------------------------------------------
 
 const passed = results.filter(r => r.passed).length;
 const failed = results.filter(r => !r.passed).length;
 const total = results.length;
 
-console.log('\n==============================================================');
-const summary = `  : ${passed}/${total}   |  : ${failed}`;
+console.log('\nÃ£==============================================================Â¬');
+const summary = `  ÃˆÃ²Ã®Ã£: ${passed}/${total} Ã¯Ã°Ã®Ã©Ã¤Ã¥Ã­Ã®  |  ÃÃ°Ã®Ã¢Ã Ã«Ã¥Ã­Ã®: ${failed}`;
 const padding = ' '.repeat(Math.max(0, 62 - summary.length));
-console.log(`${summary}${padding}`);
+console.log(`Â¦${summary}${padding}Â¦`);
 console.log('L==============================================================-');
 
 if (failed > 0) {
-  console.log('\n :');
+  console.log('\nÃÃ°Ã®Ã¢Ã Ã«Ã¨Ã¢Ã¸Ã¨Ã¥Ã±Ã¿ Ã²Ã¥Ã±Ã²Ã»:');
   results.filter(r => !r.passed).forEach(r => {
     console.log(`  ? ${r.id}. ${r.name}`);
     console.log(`     ${r.note}`);
