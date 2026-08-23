@@ -58,8 +58,20 @@ export function useProjectLoader({
     staleTime: 30000,
   });
 
-  // Эффективный ID проекта
-  const effectiveProjectId = projectId || projectsList?.[0]?.id;
+  const needArchivedFallback = !projectId && sessionReady && projectsList !== undefined && projectsList.length === 0;
+
+  const { data: archivedProjectsList } = useQuery<Array<Omit<BotProject, 'data'> & { isArchivedForMe?: boolean }>>({
+    queryKey: ['/api/projects/list', 'archived'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=true'),
+    enabled: needArchivedFallback,
+    staleTime: 30000,
+  });
+
+  // Эффективный ID: активный первый, иначе первый из архива
+  const effectiveProjectId =
+    projectId ||
+    projectsList?.[0]?.id ||
+    archivedProjectsList?.[0]?.id;
 
   // Загрузка первого проекта если нет ID в URL
   const { data: firstProject } = useQuery<BotProjectWithArchive>({

@@ -61,22 +61,39 @@ export default function Home() {
     defaultValues: { name: '', description: '' },
   });
 
-  // Загрузка списка проектов
-  const { data: projects = [], isLoading } = useQuery<BotProject[]>({
-    queryKey: ['/api/projects/list'],
-    queryFn: () => apiRequest('GET', '/api/projects/list'),
-    enabled: !isGuestUser,
+  // Загрузка активных проектов для списка на главной
+  const { data: projects = [], isLoading: isLoadingActive } = useQuery<BotProject[]>({
+    queryKey: ['/api/projects/list', 'active'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=false'),
+    enabled: !isGuestUser && sessionReady,
   });
 
+  const needArchivedCheck = !isGuestUser && sessionReady && !isLoadingActive && projects.length === 0;
+
+  const { data: archivedProjects = [], isLoading: isLoadingArchived } = useQuery<BotProject[]>({
+    queryKey: ['/api/projects/list', 'archived'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=true'),
+    enabled: needArchivedCheck,
+  });
+
+  const isLoading = isLoadingActive || (needArchivedCheck && isLoadingArchived);
+
   /**
-   * Редирект на страницу 404 если авторизованный пользователь не имеет проектов.
-   * Срабатывает только после завершения загрузки авторизации и данных проектов.
+   * Если активных нет, но есть архивные — открываем первый архивный в редакторе.
+   * На /not-found уходим только когда проектов нет вообще.
    */
   useEffect(() => {
-    if (sessionReady && !isLoading && !isGuestUser && projects.length === 0) {
-      setLocation('/not-found');
+    if (!sessionReady || isLoading || isGuestUser) return;
+
+    if (projects.length === 0 && archivedProjects.length > 0) {
+      setLocation(`/editor/${archivedProjects[0].id}`);
+      return;
     }
-  }, [sessionReady, isLoading, isGuestUser, projects.length, setLocation]);
+
+    if (projects.length === 0 && archivedProjects.length === 0) {
+      setLocation('/');
+    }
+  }, [sessionReady, isLoading, isGuestUser, projects.length, archivedProjects, setLocation]);
 
   // Создание нового проекта
   const createProjectMutation = useMutation({

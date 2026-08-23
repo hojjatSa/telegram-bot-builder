@@ -73,9 +73,9 @@ function LoadingSpinner() {
 }
 
 /**
- * Гард проектов: если авторизованный пользователь не имеет проектов — показывает NoProjectsScreen.
+ * Гард проектов: если у пользователя нет ни активных, ни архивных проектов — NoProjectsScreen.
+ * Проекты только в личном архиве не блокируют доступ к редактору.
  * Не срабатывает на страницах /templates и /not-found.
- * Во время загрузки не рендерит ничего — предотвращает мигание между страницами.
  */
 function ProjectsGuard({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -87,16 +87,29 @@ function ProjectsGuard({ children }: { children: React.ReactNode }) {
     location.startsWith('/templates') ||
     location.startsWith('/not-found');
 
-  const { data: projects = [], isLoading } = useQuery({
-    queryKey: ['/api/projects/list', isGuestUser ? 'anon' : (user as { id: number }).id],
-    queryFn: () => apiRequest('GET', '/api/projects/list'),
-    enabled: sessionReady && !isGuestUser && !isExcluded,
+  const userId = isGuestUser ? 'anon' : (user as { id: number }).id;
+  const guardEnabled = sessionReady && !isGuestUser && !isExcluded;
+
+  const { data: activeProjects = [], isLoading: isLoadingActive } = useQuery({
+    queryKey: ['/api/projects/list', userId, 'active'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=false'),
+    enabled: guardEnabled,
   });
 
-  // Пока сессия не готова или идёт загрузка — не рендерим ничего, чтобы не было мигания
+  const needArchivedCheck = guardEnabled && !isLoadingActive && activeProjects.length === 0;
+
+  const { data: archivedProjects = [], isLoading: isLoadingArchived } = useQuery({
+    queryKey: ['/api/projects/list', userId, 'archived'],
+    queryFn: () => apiRequest('GET', '/api/projects/list?archived=true'),
+    enabled: needArchivedCheck,
+  });
+
+  const isLoading = isLoadingActive || (needArchivedCheck && isLoadingArchived);
+
   if (!isExcluded && !isGuestUser && (!sessionReady || isLoading)) return null;
 
-  const showNoProjects = sessionReady && !isLoading && !isGuestUser && !isExcluded && projects.length === 0;
+  const hasAnyProjects = activeProjects.length > 0 || archivedProjects.length > 0;
+  const showNoProjects = sessionReady && !isLoading && !isGuestUser && !isExcluded && !hasAnyProjects;
 
   if (showNoProjects) return <NoProjectsScreen />;
 
