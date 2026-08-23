@@ -41,6 +41,8 @@ import {
   listBotTokensInDb,
   createProjectInDb,
   duplicateProjectInDb,
+  archiveProjectInDb,
+  unarchiveProjectInDb,
   renameProjectInDb,
   reorderProjectsInDb,
   exportProjectInDb,
@@ -494,9 +496,17 @@ export function registerMcpTools(server: McpServer, options: RegisterMcpToolsOpt
   server.registerTool(
     'db_list_projects',
     {
-      description: 'Список проектов владельца токена из БД живого приложения: id, name, число нод/листов, дата. БЕЗ project_id — единственный тул для дискавери: по нему узнаёшь id проектов для остальных db_-тулов. Read-only.',
+      description:
+        'Список проектов владельца токена из БД живого приложения: id, name, число нод/листов, isArchivedForMe. '
+        + 'БЕЗ project_id — единственный тул для дискавери. archived: false — активные (default), true — личный архив. Read-only.',
+      inputSchema: {
+        archived: z
+          .boolean()
+          .optional()
+          .describe('false — активные проекты (по умолчанию), true — только личный архив'),
+      },
     },
-    async () => textResult(await listProjectsInDb()),
+    async ({ archived }) => textResult(await listProjectsInDb({ archived: archived ?? false })),
   );
 
   server.registerTool(
@@ -518,6 +528,31 @@ export function registerMcpTools(server: McpServer, options: RegisterMcpToolsOpt
       },
     },
     async ({ source_project_id, name }) => textResult(await duplicateProjectInDb(source_project_id, { name })),
+  );
+
+  server.registerTool(
+    'db_archive_project',
+    {
+      description:
+        'Поместить проект в личный архив владельца токена. Скрывает проект только у этого пользователя; '
+        + 'коллабораторы не затрагиваются, боты не останавливаются. Эквивалент POST /api/projects/:id/archive.',
+      inputSchema: {
+        project_id: z.number().describe('Числовой ID проекта из URL редактора'),
+      },
+    },
+    async ({ project_id }) => textResult(await archiveProjectInDb(project_id)),
+  );
+
+  server.registerTool(
+    'db_unarchive_project',
+    {
+      description:
+        'Вернуть проект из личного архива владельца токена. Эквивалент POST /api/projects/:id/unarchive.',
+      inputSchema: {
+        project_id: z.number().describe('Числовой ID проекта из URL редактора'),
+      },
+    },
+    async ({ project_id }) => textResult(await unarchiveProjectInDb(project_id)),
   );
 
   server.registerTool(

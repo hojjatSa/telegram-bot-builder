@@ -29,6 +29,8 @@ export interface ProjectMetaDto {
   sortOrder: number | null;
   /** Дата последнего обновления (ISO-строка) */
   updatedAt: string | null;
+  /** Заархивирован ли проект для владельца токена */
+  isArchivedForMe: boolean;
 }
 
 /** Сырой элемент ответа GET /api/projects/list (после серверного DTO, без секретов) */
@@ -47,21 +49,28 @@ interface RawProjectListItem {
   sortOrder?: number | null;
   /** Дата обновления */
   updatedAt?: string | null;
+  /** Личный архив для владельца токена */
+  isArchivedForMe?: boolean;
 }
 
 /**
  * Возвращает список проектов владельца токена из живой БД (read-only).
  * Единственный db-тул без project_id — нужен для дискавери: по нему агент узнаёт
  * id проектов для остальных тулов. Отдаёт только лёгкие безопасные поля.
- * @param options - Опции чтения (URL API)
- * @returns Число проектов и массив лёгких метаданных, либо ошибка
+ * @param options - Опции: URL API и фильтр archived (false — активные, true — архив)
+ * @returns Число проектов, фильтр и массив метаданных, либо ошибка
  */
 export async function listProjectsInDb(
-  options?: ReadDbOptions,
-): Promise<{ total: number; projects: ProjectMetaDto[] } | { error: string }> {
+  options?: ReadDbOptions & { archived?: boolean },
+): Promise<
+  { total: number; archived: boolean; projects: ProjectMetaDto[] } | { error: string }
+> {
+  const archived = options?.archived ?? false;
+  const query = archived ? '?archived=true' : '?archived=false';
+
   let res: Response;
   try {
-    res = await apiFetch('/api/projects/list', { apiBaseUrl: options?.apiBaseUrl });
+    res = await apiFetch(`/api/projects/list${query}`, { apiBaseUrl: options?.apiBaseUrl });
   } catch (err) {
     return { error: `Не удалось соединиться с сервером: ${(err as Error).message}` };
   }
@@ -86,9 +95,10 @@ export async function listProjectsInDb(
     sheetsCount: p.sheetsCount ?? 0,
     sortOrder: p.sortOrder ?? null,
     updatedAt: p.updatedAt ?? null,
+    isArchivedForMe: p.isArchivedForMe ?? archived,
   }));
 
-  return { total: projects.length, projects };
+  return { total: projects.length, archived, projects };
 }
 
 /**
@@ -388,4 +398,62 @@ export async function duplicateProjectInDb(
   if (typeof body.id !== 'number') return { error: 'В ответе сервера нет id копии' };
 
   return { ok: true, projectId: body.id, name: body.name ?? '', sourceProjectId };
+}
+
+/**
+ * Помещает проект в личный архив владельца токена (боты не останавливаются).
+ * @param projectId - Числовой ID проекта
+ * @param options - Опции запроса (URL API)
+ * @returns Признак успеха либо ошибка
+ */
+export async function archiveProjectInDb(
+  projectId: number,
+  options?: ReadDbOptions,
+): Promise<{ ok: true; projectId: number; isArchivedForMe: true } | { error: string }> {
+  let res: Response;
+  try {
+    res = await apiFetch(`/api/projects/${projectId}/archive`, {
+      apiBaseUrl: options?.apiBaseUrl,
+      method: 'POST',
+    });
+  } catch (err) {
+    return { error: `Не удалось соединиться с сервером: ${(err as Error).message}` };
+  }
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    if (res.status === 404) return { error: `HTTP 404: проект не найден${body ? `: ${body}` : ''}` };
+    return { error: body ? `HTTP ${res.status}: ${body}` : `HTTP ${res.status}` };
+  }
+
+  return { ok: true, projectId, isArchivedForMe: true };
+}
+
+/**
+ * Возвращает проект из личного архива владельца токена.
+ * @param projectId - Числовой ID проекта
+ * @param options - Опции запроса (URL API)
+ * @returns Признак успеха либо ошибка
+ */
+export async function unarchiveProjectInDb(
+  projectId: number,
+  options?: ReadDbOptions,
+): Promise<{ ok: true; projectId: number; isArchivedForMe: false } | { error: string }> {
+  let res: Response;
+  try {
+    res = await apiFetch(`/api/projects/${projectId}/unarchive`, {
+      apiBaseUrl: options?.apiBaseUrl,
+      method: 'POST',
+    });
+  } catch (err) {
+    return { error: `Не удалось соединиться с сервером: ${(err as Error).message}` };
+  }
+
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    if (res.status === 404) return { error: `HTTP 404: проект не найден${body ? `: ${body}` : ''}` };
+    return { error: body ? `HTTP ${res.status}: ${body}` : `HTTP ${res.status}` };
+  }
+
+  return { ok: true, projectId, isArchivedForMe: false };
 }

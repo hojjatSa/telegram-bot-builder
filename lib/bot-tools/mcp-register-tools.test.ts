@@ -29,6 +29,8 @@ describe('registerMcpTools', () => {
     expect(names).not.toContain('load_project');
     expect(names).not.toContain('save_project');
     expect(names).toContain('db_list_projects');
+    expect(names).toContain('db_archive_project');
+    expect(names).toContain('db_unarchive_project');
     expect(names).toContain('update_project_db');
   });
 
