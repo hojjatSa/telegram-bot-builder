@@ -4,6 +4,7 @@
  */
 
 import { cn } from '@/utils/utils';
+import { CLIENT_APP_VERSION } from '@/lib/app-version';
 
 /**
  * Пропсы компонента SidebarBrand
@@ -32,7 +33,7 @@ export function SidebarBrand({ isCollapsed }: SidebarBrandProps) {
             BotCraft Studio
           </span>
           <span className="text-[10px] text-muted-foreground/70 font-medium">
-            v2.2.0.9
+            v{CLIENT_APP_VERSION}
           </span>
         </div>
       )}

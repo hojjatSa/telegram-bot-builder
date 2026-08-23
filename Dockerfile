@@ -42,6 +42,7 @@ COPY scripts ./scripts
 COPY tsconfig*.json ./
 COPY drizzle.config.ts* ./
 COPY migrations ./migrations
+COPY version.json ./version.json
 
 # Документация для /admin/schema и /admin/api-docs (генерируется на build-stage)
 COPY --from=builder /app/docs/database ./docs/database

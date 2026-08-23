@@ -17,6 +17,10 @@ import {
   adminRecreateTemplatesHandler,
   adminRefreshTemplatesHandler,
 } from "./handlers/template-seed-handlers";
+import {
+  handleGetAdminUpdateCheck,
+  handleGetAdminVersion,
+} from "./handlers/version-handlers";
 import { ADMIN_CLIENT_PAGES, passAdminPageToClient } from "./admin-client-pages";
 import {
   serveApiDocsEmbedIndex,
@@ -76,6 +80,9 @@ export function setupAdminRoutes(app: Express): void {
   app.get("/admin/api/status", (req, res) => {
     res.json({ authenticated: isAdminAuthenticated(req), adminEnabled: true });
   });
+
+  app.get("/admin/api/version", requireAdminAuth, handleGetAdminVersion);
+  app.get("/admin/api/update-check", requireAdminAuth, handleGetAdminUpdateCheck);
 
   app.get("/admin/api/app-settings", requireAdminAuth, handleGetAdminAppSettings);
   app.put("/admin/api/app-settings", requireAdminAuth, handlePutAdminAppSettings);

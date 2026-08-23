@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Loader2 } from 'lucide-react';
 import { useAdminSettings } from '../hooks/use-admin-settings';
 import { getAdminDocNavItems } from '../sidebar/nav-items';
+import { AdminVersionCard } from './admin-version-card';
 
 /**
  * Сводка состояния платформы и быстрые переходы
@@ -39,6 +40,8 @@ export function AdminOverview() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
+        <AdminVersionCard />
+
         <Card>
           <CardHeader className="pb-2">
             <CardDescription>Способ входа</CardDescription>

@@ -43,6 +43,30 @@ export interface AdminStatus {
   adminEnabled: boolean;
 }
 
+/** Ответ GET /admin/api/version */
+export interface AdminVersionInfo {
+  /** Установленная версия */
+  version: string;
+  /** Дата релиза или null */
+  releasedAt: string | null;
+  /** Ссылка на release notes или null */
+  notesUrl: string | null;
+}
+
+/** Ответ GET /admin/api/update-check */
+export interface AdminUpdateCheckResult {
+  /** Текущая установленная версия */
+  current: { version: string; releasedAt: string | null };
+  /** Эталон с GitHub или null */
+  latest: { version: string; releasedAt: string | null; notesUrl: string | null } | null;
+  /** Есть более новая версия */
+  updateAvailable: boolean;
+  /** Не удалось связаться с GitHub */
+  checkFailed: boolean;
+  /** Инструкция по деплою на VPS */
+  deployGuideUrl: string;
+}
+
 /** Значения формы настроек приложения */
 export interface AdminSettingsFormValues {
   /** Режим входа */
