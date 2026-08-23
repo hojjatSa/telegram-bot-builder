@@ -39,7 +39,7 @@ export function AdminOverview() {
         <p className="text-muted-foreground mt-1">Состояние платформы и быстрые переходы</p>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 items-start">
         <AdminVersionCard />
 
         <Card>

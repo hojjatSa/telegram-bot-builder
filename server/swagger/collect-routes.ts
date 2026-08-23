@@ -21,7 +21,8 @@ export interface CollectedRoute {
 const TAG_DESCRIPTIONS: Record<string, string> = {
   admin:
     "Платформенная админка (`/admin/*`): вход по `ADMIN_API_KEY` → cookie `admin_auth` " +
-    "(Path=/admin, 7 дней). Настройки Studio, seed/featured сценариев, cleanup `bots/`. " +
+    "(Path=/admin, 7 дней). Настройки Studio, аккаунты платформы, проверка версии, " +
+    "seed/featured сценариев, cleanup `bots/`. " +
     "User cookie / Bearer PAT **не** работают. Не путать с `projects` …/admin-ids " +
     "(админы бота) и с `/api/bot/*`.",
   auth:

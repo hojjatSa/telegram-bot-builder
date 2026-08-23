@@ -14,6 +14,63 @@ import { apiRequest } from '@/queryClient';
 import type { AdminUpdateCheckResult, AdminVersionInfo } from '../types';
 
 /**
+ * Рендерит результат проверки обновлений
+ * @param result - Ответ /admin/api/update-check
+ * @returns JSX блока статуса
+ */
+function UpdateCheckAlert({ result }: { result: AdminUpdateCheckResult }) {
+  if (result.checkFailed) {
+    return (
+      <Alert variant="destructive">
+        <AlertTitle>Не удалось проверить</AlertTitle>
+        <AlertDescription>
+          Нет доступа к GitHub или version.json на main. Показана только локальная версия.
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
+  if (result.updateAvailable && result.latest) {
+    return (
+      <Alert>
+        <AlertTitle>Доступно обновление</AlertTitle>
+        <AlertDescription className="space-y-2">
+          <p>
+            У вас <Badge variant="secondary">v{result.current.version}</Badge>, на GitHub{' '}
+            <Badge>v{result.latest.version}</Badge>
+          </p>
+          <div className="flex flex-wrap gap-2 pt-1">
+            {result.latest.notesUrl && (
+              <a href={result.latest.notesUrl} target="_blank" rel="noopener noreferrer">
+                <Button variant="link" size="sm" className="h-auto p-0 gap-1">
+                  Что нового
+                  <ExternalLink className="h-3 w-3" />
+                </Button>
+              </a>
+            )}
+            <a href={result.deployGuideUrl} target="_blank" rel="noopener noreferrer">
+              <Button variant="link" size="sm" className="h-auto p-0 gap-1">
+                Как обновить
+                <ExternalLink className="h-3 w-3" />
+              </Button>
+            </a>
+          </div>
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
+  return (
+    <Alert>
+      <AlertTitle>Актуальная версия</AlertTitle>
+      <AlertDescription>
+        Установлена последняя версия ({result.current.version}).
+      </AlertDescription>
+    </Alert>
+  );
+}
+
+/**
  * Блок версии приложения и кнопка проверки обновлений
  * @returns JSX элемент карточки версии
  */
@@ -52,12 +109,17 @@ export function AdminVersionCard() {
         <CardDescription>Версия приложения</CardDescription>
         <CardTitle className="text-lg">v{version.version}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3">
         {version.releasedAt && (
-          <p className="text-sm text-muted-foreground">Сборка от {version.releasedAt}</p>
+          <p className="text-sm text-muted-foreground -mt-1">Сборка от {version.releasedAt}</p>
         )}
-
-        <Button variant="outline" size="sm" className="gap-2" onClick={handleCheck} disabled={checking}>
+        <Button
+          variant="outline"
+          size="sm"
+          className="w-full gap-2"
+          onClick={handleCheck}
+          disabled={checking}
+        >
           {checking ? (
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
@@ -65,52 +127,7 @@ export function AdminVersionCard() {
           )}
           Проверить обновления
         </Button>
-
-        {checkResult && !checkResult.checkFailed && !checkResult.updateAvailable && (
-          <Alert>
-            <AlertTitle>Актуальная версия</AlertTitle>
-            <AlertDescription>
-              Установлена последняя версия ({checkResult.current.version}).
-            </AlertDescription>
-          </Alert>
-        )}
-
-        {checkResult?.updateAvailable && checkResult.latest && (
-          <Alert>
-            <AlertTitle>Доступно обновление</AlertTitle>
-            <AlertDescription className="space-y-2">
-              <p>
-                У вас <Badge variant="secondary">v{checkResult.current.version}</Badge>, на GitHub{' '}
-                <Badge>v{checkResult.latest.version}</Badge>
-              </p>
-              <div className="flex flex-wrap gap-2 pt-1">
-                {checkResult.latest.notesUrl && (
-                  <a href={checkResult.latest.notesUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="link" size="sm" className="h-auto p-0 gap-1">
-                      Что нового
-                      <ExternalLink className="h-3 w-3" />
-                    </Button>
-                  </a>
-                )}
-                <a href={checkResult.deployGuideUrl} target="_blank" rel="noopener noreferrer">
-                  <Button variant="link" size="sm" className="h-auto p-0 gap-1">
-                    Как обновить
-                    <ExternalLink className="h-3 w-3" />
-                  </Button>
-                </a>
-              </div>
-            </AlertDescription>
-          </Alert>
-        )}
-
-        {checkResult?.checkFailed && (
-          <Alert variant="destructive">
-            <AlertTitle>Не удалось проверить</AlertTitle>
-            <AlertDescription>
-              Нет доступа к GitHub или version.json на main. Показана только локальная версия.
-            </AlertDescription>
-          </Alert>
-        )}
+        {checkResult && <UpdateCheckAlert result={checkResult} />}
       </CardContent>
     </Card>
   );

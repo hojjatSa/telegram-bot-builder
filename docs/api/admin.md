@@ -1,6 +1,6 @@
 # admin
 
-Эндпоинтов: **9**
+Эндпоинтов: **13**
 
 ### `GET` /admin/api/app-settings
 
@@ -447,5 +447,224 @@ curl -s -X POST http://localhost:5000/admin/api/templates/refresh -b admin.txt
 {
   "message": "Templates refreshed successfully",
   "timestamp": "2026-08-08T19:00:00.000Z"
+}
+```
+
+### `GET` /admin/api/update-check
+
+Проверка обновлений на GitHub
+
+**Авторизация:** Admin cookie
+
+Сравнивает локальный `version.json` с `main` на GitHub. `?refresh=1` сбрасывает кеш проверки.
+
+**Auth:** cookie `admin_auth`. **UI:** кнопка «Проверить обновления» на `/admin`.
+
+```bash
+curl -s -c admin.txt -X POST http://localhost:5000/admin/api/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'key=YOUR_ADMIN_API_KEY'
+curl -s 'http://localhost:5000/admin/api/update-check?refresh=1' -b admin.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `refresh` | query | нет | — | `"1"` |
+| `admin_auth` | cookie | нет | Admin cookie после `/admin/login` (`ADMIN_API_KEY`). Без неё — 401 ADMIN_UNAUTHORIZED. | `"eyJib2R5IjoiLi4uIiwic2lnIjoiLi4uIn0"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Результат сравнения версий |
+| 401 | Нет admin-сессии |
+
+#### Пример ответа `200`
+
+```json
+{
+  "current": {
+    "version": "2.2.0.9",
+    "releasedAt": "2026-08-20"
+  },
+  "latest": {
+    "version": "2.2.0.9",
+    "releasedAt": "2026-08-20",
+    "notesUrl": null
+  },
+  "updateAvailable": false,
+  "checkFailed": false,
+  "deployGuideUrl": "https://github.com/org/telegram-bot-builder"
+}
+```
+
+### `GET` /admin/api/users
+
+Список аккаунтов платформы
+
+**Авторизация:** Admin cookie
+
+Все записи `telegram_users` с числом проектов во владении и участий. Поиск по имени, @username и числовому Telegram ID. Только чтение.
+
+**Auth:** cookie `admin_auth`. Сессия Studio (`connect.sid`) **не** подходит.
+
+**UI:** `/admin/users`.
+
+```bash
+curl -s -c admin.txt -X POST http://localhost:5000/admin/api/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'key=YOUR_ADMIN_API_KEY'
+curl -s 'http://localhost:5000/admin/api/users?search=ivan&page=1&perPage=25' -b admin.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `search` | query | нет | — | `"ivan"` |
+| `page` | query | нет | — | `1` |
+| `perPage` | query | нет | — | `25` |
+| `admin_auth` | cookie | нет | Admin cookie после `/admin/login` (`ADMIN_API_KEY`). Без неё — 401 ADMIN_UNAUTHORIZED. | `"eyJib2R5IjoiLi4uIiwic2lnIjoiLi4uIn0"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Страница списка аккаунтов |
+| 401 | Нет admin-сессии |
+| 500 | Внутренняя ошибка |
+
+#### Пример ответа `200`
+
+```json
+{
+  "items": [
+    {
+      "id": 123456789,
+      "firstName": "Иван",
+      "lastName": "Петров",
+      "username": "ivan_bot",
+      "photoUrl": null,
+      "createdAt": "2026-01-01T08:00:00.000Z",
+      "updatedAt": "2026-03-10T09:15:00.000Z",
+      "ownedCount": 2,
+      "sharedCount": 1
+    }
+  ],
+  "total": 1,
+  "page": 1,
+  "perPage": 25
+}
+```
+
+### `GET` /admin/api/users/{id}
+
+Карточка аккаунта платформы
+
+**Авторизация:** Admin cookie
+
+Профиль `telegram_users` и списки проектов во владении / участия. Из `bot_projects` отдаются только `id`, `name`, даты — без `data`, `bot_token`, `session_id`.
+
+**Auth:** cookie `admin_auth`.
+
+**UI:** `/admin/users/{id}`.
+
+```bash
+curl -s -c admin.txt -X POST http://localhost:5000/admin/api/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'key=YOUR_ADMIN_API_KEY'
+curl -s http://localhost:5000/admin/api/users/123456789 -b admin.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `id` | path | да | — | `"123456789"` |
+| `admin_auth` | cookie | нет | Admin cookie после `/admin/login` (`ADMIN_API_KEY`). Без неё — 401 ADMIN_UNAUTHORIZED. | `"eyJib2R5IjoiLi4uIiwic2lnIjoiLi4uIn0"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Карточка аккаунта |
+| 400 | Неверный id |
+| 401 | Нет admin-сессии |
+| 404 | Аккаунт не найден |
+| 500 | Внутренняя ошибка |
+
+#### Пример ответа `200`
+
+```json
+{
+  "user": {
+    "id": 123456789,
+    "firstName": "Иван",
+    "lastName": "Петров",
+    "username": "ivan_bot",
+    "photoUrl": null,
+    "createdAt": "2026-01-01T08:00:00.000Z",
+    "updatedAt": "2026-03-10T09:15:00.000Z"
+  },
+  "ownedProjects": [
+    {
+      "id": 42,
+      "name": "Мой бот",
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-03-01T12:30:00.000Z"
+    }
+  ],
+  "sharedProjects": [
+    {
+      "id": 7,
+      "name": "Командный проект",
+      "createdAt": "2026-02-01T11:00:00.000Z",
+      "updatedAt": "2026-02-28T16:00:00.000Z",
+      "ownerId": 987654321,
+      "ownerDisplayName": "@team_lead"
+    }
+  ]
+}
+```
+
+### `GET` /admin/api/version
+
+Установленная версия приложения
+
+**Авторизация:** Admin cookie
+
+Читает `version.json` из образа/рабочей копии. Без обращения к GitHub.
+
+**Auth:** cookie `admin_auth`. **UI:** карточка на `/admin`.
+
+```bash
+curl -s -c admin.txt -X POST http://localhost:5000/admin/api/login \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'key=YOUR_ADMIN_API_KEY'
+curl -s http://localhost:5000/admin/api/version -b admin.txt
+```
+
+#### Параметры
+
+| Имя | In | Обязательный | Описание | Пример |
+|-----|-----|--------------|----------|--------|
+| `admin_auth` | cookie | нет | Admin cookie после `/admin/login` (`ADMIN_API_KEY`). Без неё — 401 ADMIN_UNAUTHORIZED. | `"eyJib2R5IjoiLi4uIiwic2lnIjoiLi4uIn0"` |
+
+#### Ответы
+
+| Код | Описание |
+|-----|----------|
+| 200 | Текущая версия |
+| 401 | Нет admin-сессии |
+
+#### Пример ответа `200`
+
+```json
+{
+  "version": "2.2.0.9",
+  "releasedAt": "2026-08-20",
+  "notesUrl": null
 }
 ```

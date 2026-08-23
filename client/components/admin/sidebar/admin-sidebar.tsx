@@ -31,8 +31,8 @@ export function AdminSidebar() {
     >
       <div
         className={cn(
-          'h-14 px-3 flex items-center flex-shrink-0 border-b border-border/50',
-          isCollapsed ? 'justify-center' : 'justify-between',
+          'h-14 flex items-center flex-shrink-0 border-b border-border/50 relative',
+          isCollapsed ? 'justify-center px-0' : 'justify-between px-3',
         )}
       >
         <AdminSidebarBrand isCollapsed={isCollapsed} />
@@ -42,6 +42,7 @@ export function AdminSidebar() {
           className={cn(
             'flex-shrink-0 h-6 w-6 rounded flex items-center justify-center',
             'text-muted-foreground hover:bg-muted/60 transition-colors',
+            isCollapsed && 'absolute right-0.5 top-1/2 -translate-y-1/2',
           )}
           aria-label={isCollapsed ? 'Развернуть меню' : 'Свернуть меню'}
         >

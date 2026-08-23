@@ -18,6 +18,7 @@ export const ADMIN_CLIENT_PAGES = [
   "/admin/health",
   "/admin/openapi",
   "/admin/live-db",
+  "/admin/users",
   ...ADMIN_DOCS_VIEWER_PAGES,
 ] as const;
 

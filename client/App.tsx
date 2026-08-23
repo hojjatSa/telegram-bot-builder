@@ -125,6 +125,8 @@ function Router() {
         <Route path="/admin/health" component={AdminPanel} />
         <Route path="/admin/openapi" component={AdminPanel} />
         <Route path="/admin/live-db" component={AdminPanel} />
+        <Route path="/admin/users/:id" component={AdminPanel} />
+        <Route path="/admin/users" component={AdminPanel} />
         <Route path="/admin/maintenance" component={AdminPanel} />
         <Route path="/admin" component={AdminPanel} />
         <Route>

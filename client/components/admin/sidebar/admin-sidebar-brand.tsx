@@ -22,7 +22,7 @@ interface AdminSidebarBrandProps {
  */
 export function AdminSidebarBrand({ isCollapsed }: AdminSidebarBrandProps) {
   return (
-    <div className={cn('flex items-center gap-2 min-w-0', isCollapsed && 'justify-center')}>
+    <div className={cn('flex items-center gap-2 min-w-0', isCollapsed && 'w-full justify-center')}>
       <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-sm">
         <Shield className="text-white h-4 w-4" />
       </div>

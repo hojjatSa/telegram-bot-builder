@@ -4,8 +4,8 @@
  */
 
 import { Link, useParams } from 'wouter';
-import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { AdminEmbedFrame } from '../admin-embed-frame';
 import { DOCS_UI_OPTIONS, getDocsEmbedPath } from '../docs/docs-ui-options';
 
 /**
@@ -28,22 +28,11 @@ export function AdminDocsViewerPage() {
   }
 
   return (
-    <div className="-m-6 md:-m-8 flex flex-col">
-      <div className="flex items-center gap-3 px-6 py-3 border-b border-border/50 bg-background">
-        <Link href="/admin/docs">
-          <Button variant="ghost" size="sm" className="gap-2 h-8">
-            <ArrowLeft className="h-4 w-4" />
-            Все варианты
-          </Button>
-        </Link>
-        <h1 className="text-sm font-semibold">{option.title}</h1>
-      </div>
-      <iframe
-        title={option.title}
-        src={getDocsEmbedPath(option.suffix)}
-        className="w-full border-0 bg-background"
-        style={{ height: 'calc(100vh - 7rem)' }}
-      />
-    </div>
+    <AdminEmbedFrame
+      title={option.title}
+      embedSrc={getDocsEmbedPath(option.suffix)}
+      backHref="/admin/docs"
+      backLabel="Все варианты"
+    />
   );
 }

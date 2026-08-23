@@ -21,6 +21,10 @@ import {
   handleGetAdminUpdateCheck,
   handleGetAdminVersion,
 } from "./handlers/version-handlers";
+import {
+  handleGetAdminPlatformUser,
+  handleGetAdminPlatformUsers,
+} from "./handlers/platform-users-handlers";
 import { ADMIN_CLIENT_PAGES, passAdminPageToClient } from "./admin-client-pages";
 import {
   serveApiDocsEmbedIndex,
@@ -84,6 +88,9 @@ export function setupAdminRoutes(app: Express): void {
   app.get("/admin/api/version", requireAdminAuth, handleGetAdminVersion);
   app.get("/admin/api/update-check", requireAdminAuth, handleGetAdminUpdateCheck);
 
+  app.get("/admin/api/users", requireAdminAuth, handleGetAdminPlatformUsers);
+  app.get("/admin/api/users/:id", requireAdminAuth, handleGetAdminPlatformUser);
+
   app.get("/admin/api/app-settings", requireAdminAuth, handleGetAdminAppSettings);
   app.put("/admin/api/app-settings", requireAdminAuth, handlePutAdminAppSettings);
 
@@ -111,6 +118,7 @@ export function setupAdminRoutes(app: Express): void {
 
   app.get("/admin/schema/:tableName", passAdminPageToClient);
   app.get("/admin/api-docs/:slug", passAdminPageToClient);
+  app.get("/admin/users/:id", passAdminPageToClient);
 }
 
 /**
