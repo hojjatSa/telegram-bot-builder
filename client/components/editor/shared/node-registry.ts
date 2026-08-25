@@ -334,6 +334,13 @@ export const nodeRegistry: Record<string, NodeMeta> = {
     color: 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
     canvasColor: 'bg-gradient-to-br from-amber-50 to-yellow-100 dark:from-amber-900/30 dark:to-yellow-900/30 text-amber-600 dark:text-amber-400 border-2 border-amber-300 dark:border-amber-700/50 shadow-lg shadow-amber-500/20',
   },
+  // Логика — произвольный Python
+  code: {
+    name: 'Python-код',
+    icon: 'fas fa-code',
+    color: 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400',
+    canvasColor: 'bg-gradient-to-br from-slate-50 to-indigo-100 dark:from-slate-900/40 dark:to-indigo-900/30 text-indigo-600 dark:text-indigo-400 border-2 border-indigo-300 dark:border-indigo-700/50 shadow-lg shadow-indigo-500/20',
+  },
   // Юзербот
   userbot_message: {
     name: 'Сообщение (юзербот)',

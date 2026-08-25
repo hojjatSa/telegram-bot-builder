@@ -18,7 +18,7 @@ const MANAGEMENT_TYPES = new Set<string>([
   'ban_user', 'unban_user', 'mute_user', 'unmute_user', 'kick_user',
   'promote_user', 'demote_user', 'admin_rights', 'broadcast', 'client_auth',
   'create_forum_topic', 'http_request', 'get_managed_bot_token', 'set_variable',
-  'psql_query', 'convert_file', 'loop', 'bot_table', 'delay',
+  'psql_query', 'convert_file', 'loop', 'bot_table', 'delay', 'code',
   'userbot_message', 'userbot_click_button', 'userbot_inline_query', 'parallel_split', 'comment',
 ]);
 

@@ -1,0 +1,108 @@
+{#
+  Шаблон узлов code: полный Python + Telethon userbot_client
+
+  @fileoverview Генерирует хелпер _run_code_node и callback-обработчики
+  @param {array} codeEntries - Массив { nodeId, code, autoTransitionTo }
+#}
+import textwrap as _code_textwrap
+import copy as _code_copy
+import types as _code_types
+import math
+import datetime as _datetime_mod
+import json
+try:
+    from telethon.tl.custom import Button
+except Exception:
+    Button = None
+
+_code_node_lock = asyncio.Lock()
+_CODE_NODE_TIMEOUT = 180
+_CODE_SKIP_KEYS = {
+    'client', 'userbot_client', 'callback_query', 'state', 'user_id', 'user_data',
+    'all_user_data', 'bot', 'set_user_var',
+    'asyncio', 'json', 're', 'math', 'datetime', 'logging', 'Button', 'events',
+    '__code_entry', '__builtins__',
+}
+
+async def _run_code_node(user_id, source, callback_query=None, state=None, node_id=""):
+    """Выполняет пользовательский async-код узла code с таймаутом и записью переменных."""
+    _ub = globals().get('userbot_client')
+    if _ub is None:
+        logging.warning(f"⚠️ code [{node_id}]: userbot_client недоступен (нет USERBOT_* )")
+    _all_vars = await init_all_user_vars(user_id)
+    if user_id not in user_data:
+        user_data[user_id] = {}
+    _snap = _code_copy.deepcopy(_all_vars)
+    _ns = dict(_all_vars)
+    _ns.update({
+        'user_id': user_id,
+        'user_data': user_data.get(user_id, {}),
+        'all_user_data': user_data,
+        'bot': globals().get('bot'),
+        'set_user_var': set_user_var,
+        'client': _ub,
+        'userbot_client': _ub,
+        'callback_query': callback_query,
+        'state': state,
+        'asyncio': asyncio,
+        'json': json,
+        're': re,
+        'math': math,
+        'datetime': _datetime_mod,
+        'logging': logging,
+        'Button': Button,
+        'events': globals().get('events'),
+    })
+    _src = (source or '').strip()
+    if _src:
+        try:
+            # Оборачиваем пользовательский код в async-функцию.
+            # После выполнения записываем все локальные переменные обратно в _ns
+            # через явный вызов _ns.update(locals()) в конце тела функции.
+            _lines = _src.split('\n')
+            _body = '\n'.join('    ' + _l for _l in _lines)
+            _wrapped = (
+                "async def __code_entry():\n"
+                + _body + "\n"
+                + "    __locals = dict(locals())\n"
+                + "    for __k, __v in __locals.items():\n"
+                + "        if not __k.startswith('__') and __k != '_ns':\n"
+                + "            _ns[__k] = __v\n"
+            )
+            _ns['_ns'] = _ns
+            exec(compile(_wrapped, f"<code:{node_id}>", "exec"), _ns, _ns)
+            async with _code_node_lock:
+                await asyncio.wait_for(_ns["__code_entry"](), timeout=_CODE_NODE_TIMEOUT)
+        except asyncio.TimeoutError:
+            logging.error(f"❌ code [{node_id}]: таймаут {_CODE_NODE_TIMEOUT}с")
+        except Exception as _code_err:
+            logging.error(f"❌ code [{node_id}]: {_code_err}")
+    for _k, _v in list(_ns.items()):
+        if _k in _CODE_SKIP_KEYS or str(_k).startswith('_'):
+            continue
+        if isinstance(_v, (_code_types.ModuleType, _code_types.FunctionType, _code_types.MethodType, _code_types.BuiltinFunctionType)):
+            continue
+        if _k not in _snap or _snap[_k] != _v:
+            try:
+                await set_user_var(user_id, _k, _v)
+            except Exception as _sv_err:
+                logging.error(f"❌ code [{node_id}]: не удалось сохранить '{_k}': {_sv_err}")
+
+# Обработчики узлов code
+{% for entry in codeEntries %}
+{%- set sanitized_node_id = entry.nodeId | safe_name %}
+@dp.callback_query(lambda c: c.data == "{{ entry.nodeId }}")
+async def handle_callback_{{ sanitized_node_id }}(callback_query: types.CallbackQuery, state: FSMContext = None):
+    """Узел code: выполняет пользовательский Python (Telethon client в namespace)."""
+    user_id = callback_query.from_user.id
+    logging.info(f"💻 code [{{ entry.nodeId }}]: запуск для {user_id}")
+    try:
+        await callback_query.answer()
+    except Exception:
+        pass
+    await _run_code_node(user_id, {{ entry.code | tojson }}, callback_query, state, "{{ entry.nodeId }}")
+{%- if entry.autoTransitionTo %}
+    await handle_callback_{{ entry.autoTransitionTo | safe_name }}(callback_query, state=state)
+{%- endif %}
+
+{% endfor %}

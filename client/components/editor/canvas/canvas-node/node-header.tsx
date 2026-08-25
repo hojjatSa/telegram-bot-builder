@@ -165,6 +165,13 @@ export function NodeHeader({ node, onMove }: NodeHeaderProps) {
             {getNodeName('delay')}
           </span>
         );
+      /** Заголовок узла Python-кода */
+      case 'code' as any:
+        return (
+          <span className="font-semibold text-indigo-700 dark:text-indigo-300">
+            {getNodeName('code')}
+          </span>
+        );
       default:
         return null;
     }

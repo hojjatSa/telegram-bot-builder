@@ -131,7 +131,8 @@ export { createGenerationContext, createGenerationContextFromNodes } from './bot
 export type { SectionContext } from './bot-generator/core/generation-context';
 export { createSectionContext } from './bot-generator/core/generation-context';
 
-export { DEFAULT_GENERATION_OPTIONS, normalizeGenerationOptions } from './bot-generator/core/generation-options.types';
+/** Экспорт шаблона Python-кода (Telethon) */
+export { generateCodeHandlers, collectCodeEntries } from './templates/code';
 
 // Ядро: централизованное логирование
 export { createLogger, generatorLogger } from './bot-generator/core/generator-logger';

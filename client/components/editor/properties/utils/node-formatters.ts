@@ -83,6 +83,10 @@ function getNodeContent(node: Node): string {
     return assignments.slice(0, 2).map(a => `${a.variable}=${a.value}`).join(', ').slice(0, 50);
   }
 
+  if ((node.type as any) === 'code') {
+    return (((node.data as any).code || '') as string).replace(/\s+/g, ' ').trim().slice(0, 50);
+  }
+
   if (node.type === 'media') {
     return (((node.data as any).mediaItems || [])[0]?.url || '').slice(0, 50);
   }

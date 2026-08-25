@@ -327,6 +327,15 @@ export function hasDelayNodes(nodes: Node[]): boolean {
 }
 
 /**
+ * Проверяет наличие узлов code
+ * @param nodes - Массив узлов
+ * @returns true если есть хотя бы один узел code
+ */
+export function hasCodeNodes(nodes: Node[]): boolean {
+  return nodes.filter(n => n != null).some(node => (node.type as string) === 'code');
+}
+
+/**
  * Проверяет наличие узлов parallel_split в массиве узлов
  * @param nodes - Массив узлов для проверки
  * @returns true если есть хотя бы один узел типа parallel_split

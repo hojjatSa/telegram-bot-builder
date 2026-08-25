@@ -904,6 +904,76 @@ parallel_split → ветка N: … → set_variable (done = int({done}) + 1, m
 }
 ```
 
+### code — произвольный Python (Telethon)
+
+Пишите **тело async-функции** с `await` (без своего `async def`). Переменные пользователя доступны по имени. `client` и `userbot_client` — тот же Telethon-клиент, что у узлов юзербота.
+
+```json
+{
+  "type": "code",
+  "data": {
+    "code": "msgs = await client.get_messages(entity, limit=1)\nresult_text = msgs[0].message if msgs else \"\"",
+    "autoTransitionTo": "next_node_id",
+    "enableAutoTransition": true
+  }
+}
+```
+
+| Поле | Описание |
+|------|----------|
+| `code` | Async-тело Python |
+| `autoTransitionTo` | ID следующего узла |
+| `enableAutoTransition` | Обязательно `true` вместе с autoTransitionTo |
+
+#### Что доступно в namespace
+
+| Имя | Что это |
+|-----|---------|
+| `client`, `userbot_client` | Telethon-клиент юзербота (тот же, что у userbot-узлов) |
+| `bot` | Экземпляр aiogram `Bot` — можно править сообщения самого бота |
+| `user_id` | ID текущего пользователя |
+| `user_data` | Словарь переменных **текущего** пользователя |
+| `all_user_data` | Словарь всех пользователей: `all_user_data[user_id]` |
+| `set_user_var` | Функция записи переменной пользователя |
+| `callback_query`, `state` | Объекты aiogram текущего апдейта (могут быть `None`) |
+| `asyncio`, `json`, `re`, `math`, `datetime`, `logging`, `Button`, `events` | Предзагруженные модули |
+
+Переменные пользователя доступны просто по имени, без `user_data[...]`.
+
+#### Как возвращать результат
+
+Присвойте значение переменной на верхнем уровне кода — она автоматически запишется в переменные пользователя:
+
+```python
+lucky_payment = 8942
+```
+
+Внутри **вложенных функций** присваивание в локальную переменную наружу не попадёт. Пишите напрямую в `_ns`:
+
+```python
+async def _worker():
+    _ns['lucky_payment'] = 8942   # так значение сохранится
+```
+
+`set_user_var` внутри вложенных функций вызывать нельзя — используйте `_ns[...]`.
+
+#### Прогрессбар из кода
+
+`bot` в namespace позволяет обновлять сообщение по ходу выполнения — удобно для долгих опросов:
+
+```python
+await bot.edit_message_text('Опрашиваю… 3/15', chat_id=chat_id,
+                            message_id=progress_msg_id, parse_mode='HTML')
+```
+
+#### Ограничения
+
+- Таймаут 180 с на весь код узла.
+- Вызовы Telethon требуют `USERBOT_*` в окружении.
+- RestrictedPython нет (self-hosted) — код исполняется как есть.
+- Имена, начинающиеся с `_`, и предзагруженные модули в переменные пользователя не пишутся.
+- `asyncio.wait_for` начинает отсчёт сразу: если задачи стоят в очереди семафора, таймаут выгорит на ожидании. Ставьте `wait_for` **внутри** воркера, а не вокруг всей очереди.
+
 ### comment — заметка на холсте
 
 Текстовая заметка-стикер для пояснений к сценарию. **Не влияет на логику бота** — игнорируется при генерации Python-кода. Не имеет портов, связей и автоперехода.
@@ -1369,6 +1439,14 @@ parallel_split → ветка N: … → set_variable (done = int({done}) + 1, m
 
 Доступные функции: `round`, `abs`, `int`, `float`, `min`, `max`, `str`, `reversed`, `thousands`.
 
+Доступные методы строк: `replace`, `strip`, `lstrip`, `rstrip`, `lower`, `upper`, `startswith`, `endswith`, `split`, `join`, `count`, `find`, `format`, а также проверки `isdigit`, `isnumeric`, `isdecimal`, `isalpha`, `isalnum`, `isspace`.
+
+Генераторы и comprehension **не поддерживаются** — выражение вроде `''.join(c for c in x if c.isdigit())` молча вернётся как текст. Для защиты от нечислового ввода используйте `isdigit`:
+
+```
+float('{amount}'.replace(',', '.')) if '{amount}'.replace(',', '.').replace('.', '', 1).isdigit() else 0
+```
+
 Пример разворота порядка слов: `{=' '.join(reversed('{user_message}'.split()))}` → «Привет как дела» станет «дела как Привет». Разворот символов проще делать срезом: `{='{user_message}'[::-1]}`.
 
 Переменные внутри `{=...}` пишутся **без** фигурных скобок: `{=thousands(user_amount)}`, не `{=thousands({user_amount})}`.
@@ -1412,7 +1490,7 @@ HTTP-узел с `httpRequestResponseFormat: "file"` сохраняет отве
 - `data.branches[].target: "nodeId"` — переход по ветке условия
 - `data.afterLoopTo: "nodeId"` — переход после завершения цикла
 
-> ⚠️ **Важно:** для нетриггерных нод (message, set_variable, bot_table, delete_message, delay, psql_query, convert_file, http_request и др.) при использовании `autoTransitionTo` **обязательно** добавлять `"enableAutoTransition": true`. Без этого флага связь не отрисуется на канвасе. Триггеры (command_trigger, text_trigger, schedule_trigger и др.) не нуждаются в этом флаге — их связи обрабатываются отдельно.
+> ⚠️ **Важно:** для нетриггерных нод (message, set_variable, bot_table, delete_message, delay, code, psql_query, convert_file, http_request и др.) при использовании `autoTransitionTo` **обязательно** добавлять `"enableAutoTransition": true`. Без этого флага связь не отрисуется на канвасе. Триггеры (command_trigger, text_trigger, schedule_trigger и др.) не нуждаются в этом флаге — их связи обрабатываются отдельно.
 
 ---
 

@@ -37,6 +37,11 @@ export function MessagePreview({ node }: MessagePreviewProps) {
     return null;
   }
 
+  // Python-код имеет собственный превью
+  if ((node.type as string) === 'code') {
+    return null;
+  }
+
   const saveMessageIdTo: string = (node.data as any)?.saveMessageIdTo || '';
 
   return (

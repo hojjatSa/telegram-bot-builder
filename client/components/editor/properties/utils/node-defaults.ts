@@ -508,6 +508,14 @@ export function getNodeDefaults(type: Node['type']): any {
       /** Включить автопереход */
       enableAutoTransition: false,
     },
+    code: {
+      /** Python-код пользователя */
+      code: '',
+      /** ID следующего узла */
+      autoTransitionTo: '',
+      /** Включить автопереход */
+      enableAutoTransition: false,
+    },
     userbot_edit_trigger: {
       /** Сущность (чат/канал) для отслеживания */
       userbotEntity: '',

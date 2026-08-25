@@ -56,7 +56,7 @@ export interface SheetSummary {
  */
 function buildSummary(node: RawNode): string {
   const d = node.data ?? {};
-  const raw = d.messageText ?? d.command ?? d.inputPrompt ?? d.variable ?? d.label ?? '';
+  const raw = d.messageText ?? d.command ?? d.inputPrompt ?? d.variable ?? d.label ?? d.code ?? '';
   const s = String(raw).replace(/\s+/g, ' ').trim();
   return s.length > 60 ? `${s.slice(0, 60)}…` : s;
 }
@@ -79,6 +79,7 @@ function buildSearchText(node: RawNode): string {
     'label',
     'text',
     'name',
+    'code',
   ] as const;
   const parts: string[] = [node.id ?? '', node.type ?? ''];
   for (const key of fields) {

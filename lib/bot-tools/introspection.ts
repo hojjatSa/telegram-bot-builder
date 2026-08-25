@@ -88,6 +88,11 @@ export function getNodeSchema(type: string) {
     ],
     command_trigger: ['data.command — текст команды, например "/start"'],
     message: ['data.messageText — текст сообщения', 'data.buttons — массив кнопок'],
+    code: [
+      'data.code — Python-скрипт (переменные пользователя доступны по имени)',
+      'data.autoTransitionTo — ID следующего узла',
+      'data.enableAutoTransition — включить переход после выполнения',
+    ],
   };
 
   return {
