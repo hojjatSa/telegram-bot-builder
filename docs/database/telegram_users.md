@@ -8,7 +8,7 @@
 
 | Name | Type | Default | Nullable | Children | Parents | Comment |
 |------|------|---------|----------|----------|---------|---------|
-| **id** | bigint | - | NO | [agent_tokens.owner_id](./agent_tokens.md), [bot_projects.owner_id](./bot_projects.md), [bot_templates.owner_id](./bot_templates.md), [bot_tokens.owner_id](./bot_tokens.md), [media_files.uploaded_by](./media_files.md), [project_collaborators.user_id](./project_collaborators.md), [project_collaborators.invited_by](./project_collaborators.md), [project_versions.author_id](./project_versions.md) | - | Уникальный идентификатор пользователя в Telegram |
+| **id** | bigint | - | NO | [agent_tokens.owner_id](./agent_tokens.md), [bot_projects.owner_id](./bot_projects.md), [bot_templates.owner_id](./bot_templates.md), [bot_tokens.owner_id](./bot_tokens.md), [media_files.uploaded_by](./media_files.md), [project_collaborators.user_id](./project_collaborators.md), [project_collaborators.invited_by](./project_collaborators.md), [project_versions.author_id](./project_versions.md), [user_project_archives.user_id](./user_project_archives.md) | - | Уникальный идентификатор пользователя в Telegram |
 | first_name | text | - | NO | - | - | Имя пользователя |
 | last_name | text | - | YES | - | - | Фамилия пользователя |
 | username | text | - | YES | - | - | Имя пользователя в Telegram (username) |
@@ -29,3 +29,4 @@
 | **[telegram_users.id](./telegram_users.md)** | [project_collaborators.user_id](./project_collaborators.md) | Many to One |
 | **[telegram_users.id](./telegram_users.md)** | [project_collaborators.invited_by](./project_collaborators.md) | Many to One |
 | **[telegram_users.id](./telegram_users.md)** | [project_versions.author_id](./project_versions.md) | Many to One |
+| **[telegram_users.id](./telegram_users.md)** | [user_project_archives.user_id](./user_project_archives.md) | Many to One |
