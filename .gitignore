@@ -10,6 +10,8 @@ uv.lock
 tools/bot-scripts/
 tools/compare_bots/
 tools/_*
+tools/test-exchangers.py
+tools/test-sites-rates.py
 *_nodes.txt
 
 # Development files
