@@ -31,7 +31,7 @@
       "bot-json-prompt"
     ],
     "folder_titles": {},
-    "updated_at": "2026-08-12T06:27:23+03:00",
+    "updated_at": "2026-08-25T23:31:04+03:00",
     "tags": [],
     "author": ""
   },
@@ -58,14 +58,14 @@
     "folder_titles": {
       "api": "Api"
     },
-    "updated_at": "2026-08-18T17:25:44+03:00",
+    "updated_at": "2026-08-23T22:51:09+03:00",
     "tags": [],
     "author": ""
   },
   {
     "path": "api/admin",
     "title": "admin",
-    "excerpt": "Эндпоинтов: **9**",
+    "excerpt": "Эндпоинтов: **13**",
     "parts": [
       "api",
       "admin"
@@ -73,7 +73,7 @@
     "folder_titles": {
       "api": "Api"
     },
-    "updated_at": "2026-08-12T01:35:20+03:00",
+    "updated_at": "2026-08-23T22:30:49+03:00",
     "tags": [],
     "author": ""
   },
@@ -358,14 +358,14 @@
     "folder_titles": {
       "api": "Api"
     },
-    "updated_at": "2026-08-12T00:53:11+03:00",
+    "updated_at": "2026-08-23T22:51:09+03:00",
     "tags": [],
     "author": ""
   },
   {
     "path": "api/projects",
     "title": "projects",
-    "excerpt": "Эндпоинтов: **16**",
+    "excerpt": "Эндпоинтов: **18**",
     "parts": [
       "api",
       "projects"
@@ -373,7 +373,7 @@
     "folder_titles": {
       "api": "Api"
     },
-    "updated_at": "2026-08-12T00:53:11+03:00",
+    "updated_at": "2026-08-23T22:51:09+03:00",
     "tags": [],
     "author": ""
   },
@@ -1093,7 +1093,7 @@
     "folder_titles": {
       "features": "🧩 Возможности"
     },
-    "updated_at": "2026-08-12T06:27:23+03:00",
+    "updated_at": "2026-08-25T23:31:04+03:00",
     "tags": [],
     "author": ""
   },
@@ -1952,7 +1952,7 @@
   {
     "path": "futures/nodes/code-node",
     "title": "Нода `code` — произвольный Python-код",
-    "excerpt": "Пользователь пишет Python-код прямо в редакторе конструктора. Код имеет доступ к переменным пользователя, может их читать и менять. Аналог б",
+    "excerpt": "Пользователь пишет **тело async-функции** в редакторе. Переменные пользователя доступны по имени. В том же пространстве имён — `client` / `u",
     "parts": [
       "futures",
       "nodes",
@@ -1962,7 +1962,7 @@
       "futures": "🔮 Планы развития",
       "nodes": "🧩 Новые ноды"
     },
-    "updated_at": "2026-06-23T14:36:15+03:00",
+    "updated_at": "2026-08-25T23:31:04+03:00",
     "tags": [],
     "author": ""
   },
