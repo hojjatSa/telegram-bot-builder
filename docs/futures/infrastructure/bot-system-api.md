@@ -12,7 +12,7 @@
 | Уровень | Видимость | Кто создаёт | Пример |
 |---|---|---|---|
 | **Системные** | Скрытые (не на холсте) | Генератор автоматически | `/api/send-message`, `/api/broadcast` |
-| **Пользовательские** | Нода `webhook_trigger` на холсте | Пользователь | `/payment`, `/notify` |
+| **Пользовательские** | Нода `api_trigger` на холсте | Пользователь | `/payment`, `/notify` |
 
 Системные эндпоинты — как middleware сейчас: пользователь не видит `message_logging_middleware` на холсте, но оно работает. Так же и API — не видно, но Node.js использует.
 
@@ -292,16 +292,16 @@ asyncio.create_task(start_system_api(port=BOT_API_PORT))
 
 ---
 
-## Связь с `webhook_trigger` (нода на холсте)
+## Связь с `api_trigger` (нода на холсте)
 
-`webhook_trigger` — это **пользовательские** эндпоинты. Пользователь сам создаёт путь, выбирает переменные, строит цепочку.
+`api_trigger` — это **пользовательские** эндпоинты. Пользователь сам создаёт путь, выбирает переменные, строит цепочку.
 
-Системные эндпоинты и `webhook_trigger` используют **один HTTP-сервер** (один порт). Разница:
+Системные эндпоинты и `api_trigger` используют **один HTTP-сервер** (один порт). Разница:
 - Системные: путь начинается с `/api/...`, авторизация по secret
 - Пользовательские: путь задаётся пользователем (`/payment`, `/notify`), авторизация по `secretToken` ноды
 
 ```python
 # Один aiohttp app, два типа роутов:
 app.router.add_post("/api/send-message", handle_system_send_message)  # системный
-app.router.add_post("/payment", handle_webhook_node_abc)              # пользовательский
+app.router.add_post("/payment", handle_api_trigger_node_abc)           # пользовательский
 ```

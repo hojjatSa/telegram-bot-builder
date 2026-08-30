@@ -372,7 +372,7 @@ Loop вызывает `await handle_callback_xxx()` — стандартный c
 ### Что НЕ имеет смысла внутри loop
 
 - `command_trigger`, `text_trigger`, `schedule_trigger` — точки входа, не действия
-- `webhook_trigger` — точка входа
+- `api_trigger` — точка входа
 
 ---
 

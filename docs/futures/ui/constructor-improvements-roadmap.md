@@ -42,5 +42,5 @@
 Эти идеи уже описаны в других документах и сюда не входят:
 
 - Виртуализация нод, мини-карта, snap-гайды, align/distribute, общая валидация — см. [`canvas-improvements.md`](canvas-improvements.md).
-- Ноды `webhook_trigger`, `api_response`, `delay`, `http_request_multi`, `try_catch`, `random`, `template`, `aggregate` — см. [`FUTURE_NODES.md`](FUTURE_NODES.md).
+- Ноды `api_trigger`, `api_response`, `delay`, `http_request_multi`, `try_catch`, `random`, `template`, `aggregate` — см. [`FUTURE_NODES.md`](FUTURE_NODES.md).
 - Мульти-выделение рамкой и комментарии на холсте — **уже реализованы**.
