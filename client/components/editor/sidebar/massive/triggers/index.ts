@@ -5,6 +5,7 @@
 
 export { managedBotUpdatedTrigger } from './managed-bot-updated-trigger';
 export { scheduleTrigger } from './schedule-trigger';
+export { apiTrigger } from './api-trigger';
 export { commandTrigger } from './command-trigger';
 export { textTrigger } from './text-trigger';
 export { anyMessageTrigger } from './any-message-trigger';

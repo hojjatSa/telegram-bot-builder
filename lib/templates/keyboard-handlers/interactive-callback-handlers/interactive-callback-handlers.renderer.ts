@@ -34,6 +34,8 @@ const NODE_TYPES_WITH_DEDICATED_HANDLERS = new Set<string>([
   'loop', // собственный обработчик генерируется шаблоном loop.py.jinja2
   'parallel_split', // собственный обработчик генерируется шаблоном parallel-split.py.jinja2
   'schedule_trigger', // собственный обработчик генерируется шаблоном schedule-trigger.py.jinja2
+  'api_trigger', // HTTP-роуты в api-trigger.py.jinja2
+  'api_response', // api-response.py.jinja2
   'answer_callback_query', // собственный обработчик генерируется шаблоном answer-callback-query.py.jinja2
   'bot_table', // собственный обработчик генерируется шаблоном bot-table.py.jinja2
   'delay', // собственный обработчик генерируется шаблоном delay.py.jinja2

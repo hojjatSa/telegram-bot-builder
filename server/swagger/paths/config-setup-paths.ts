@@ -53,6 +53,7 @@ export function registerConfigSetupPaths(
               telegramClientId: 12345678,
               telegramBotUsername: "my_bot",
               skipAuth: false,
+              apiBaseUrl: "https://example.com",
             },
           },
         },

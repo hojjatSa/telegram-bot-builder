@@ -111,6 +111,36 @@ keyboard (кнопка с customCallbackData: "approve_{user_id}")
 
 ---
 
+### 🔌 API-триггер (`api_trigger`)
+
+Принимает HTTP-запрос от внешней системы (платёжка, CRM, backend) и запускает цепочку.
+
+| Настройка | Описание |
+|-----------|----------|
+| Метод | GET, POST, PUT, PATCH, DELETE |
+| Путь | `/payment`, `/webhook/order` и т.д. |
+| Secret | Обязателен; заголовок `X-Api-Secret` или `Authorization: Bearer` |
+| Сохранить body/query/headers | Имена переменных для данных запроса |
+| Публичный URL | `{API_BASE_URL}/api/hooks/{projectId}{apiPath}` |
+
+Ограничения MVP: max body 1 MB; rate limit на Node; бот офлайн → `503 bot_offline`.
+
+---
+
+### 📤 Ответ API (`api_response`)
+
+Завершает HTTP-запрос, инициированный `api_trigger`.
+
+| Настройка | Описание |
+|-----------|----------|
+| HTTP статус | Код ответа (200, 400, …) |
+| Content-Type | `application/json`, `text/plain`, `text/html` |
+| Тело | JSON/текст с `{переменными}` |
+
+Без `api_response` в цепочке клиент получит `200 {"ok":true}`; таймаут 30 с → `504`.
+
+---
+
 ## 💬 Сообщения и контент
 
 ### 📝 Текстовое сообщение (`message`)
@@ -242,7 +272,6 @@ keyboard (кнопка с customCallbackData: "approve_{user_id}")
 
 `{имя}` подставляется из переменных сценария и **env бота** (вкладка Бот → env у токена). При конфликте имён побеждают переменные сценария/FSM. Пример Bearer: `httpRequestAuthBearerToken: "{API_TOKEN}"`.
 
----
 
 ### 🗄️ Таблица данных (`bot_table`)
 

@@ -1,0 +1,165 @@
+{# Шаблон генерации Python-кода для api_trigger и api_response #}
+# ═══ API Trigger / Response (HTTP hooks) ═══
+import contextvars
+import uuid
+
+_api_request_id_var: contextvars.ContextVar[str | None] = contextvars.ContextVar("_api_request_id", default=None)
+_api_pending_responses: dict[str, asyncio.Future] = {}
+_api_user_id_seq = 0
+_API_MAX_BODY_BYTES = 1_048_576
+_API_TIMEOUT_SECONDS = 30
+
+
+def _api_extract_secret(request) -> str:
+    """Извлекает secret из заголовков запроса (без логирования значения)."""
+    header = request.headers.get("X-Api-Secret", "").strip()
+    if header:
+        return header
+    auth = request.headers.get("Authorization", "").strip()
+    if auth.lower().startswith("bearer "):
+        return auth[7:].strip()
+    return ""
+
+
+def _api_json_response(status: int, payload: dict):
+    """Формирует JSON-ответ aiohttp."""
+    from aiohttp import web
+    return web.json_response(payload, status=status)
+
+
+async def _api_wait_response(request_id: str):
+    """Ожидает ответ от api_response или возвращает дефолт."""
+    from aiohttp import web
+    future = _api_pending_responses.get(request_id)
+    if future is None:
+        return _api_json_response(500, {"error": "internal_error"})
+    try:
+        result = await asyncio.wait_for(future, timeout=_API_TIMEOUT_SECONDS)
+    except asyncio.TimeoutError:
+        return _api_json_response(504, {"error": "timeout"})
+    except Exception:
+        logging.exception("api_trigger: ошибка ожидания ответа")
+        return _api_json_response(500, {"error": "internal_error"})
+    finally:
+        _api_pending_responses.pop(request_id, None)
+
+    status = int(result.get("status", 200))
+    body = result.get("body", "")
+    content_type = result.get("content_type", "application/json")
+    extra_headers = result.get("headers") or {}
+    headers = {"Content-Type": content_type}
+    if isinstance(extra_headers, dict):
+        for hk, hv in extra_headers.items():
+            if hk and hv is not None:
+                headers[str(hk)] = str(hv)
+    return web.Response(text=str(body) if body is not None else "", status=status, headers=headers)
+
+
+{% for entry in entries %}
+async def _api_handler_{{ entry.safeName }}(request):
+    """HTTP-обработчик api_trigger {{ entry.nodeId }} ({{ entry.method }} {{ entry.path }})."""
+    from aiohttp import web
+
+    _secret = _api_extract_secret(request)
+    if not _secret or _secret != {{ entry.secretToken | tojson }}:
+        return _api_json_response(401, {"error": "invalid_secret"})
+
+    if request.method.upper() != {{ entry.method | tojson }}:
+        return _api_json_response(405, {"error": "method_not_allowed"})
+
+    global _api_user_id_seq
+    _api_user_id_seq -= 1
+    _api_user_id = _api_user_id_seq
+  {% if entry.method == 'GET' %}
+    _raw_body = None
+  {% else %}
+    try:
+        _raw_body = await request.read()
+    except Exception:
+        return _api_json_response(400, {"error": "bad_request"})
+    if _raw_body and len(_raw_body) > _API_MAX_BODY_BYTES:
+        return _api_json_response(413, {"error": "payload_too_large"})
+  {% endif %}
+
+    _query = {str(k): v for k, v in request.query.items()}
+    _headers = {str(k): v for k, v in request.headers.items() if k.lower() not in ("x-api-secret", "authorization")}
+
+    _parsed_body = None
+  {% if entry.method != 'GET' %}
+    {% if entry.parseJson %}
+    if _raw_body:
+        try:
+            import json as _json_api
+            _parsed_body = _json_api.loads(_raw_body.decode("utf-8"))
+        except Exception:
+            _parsed_body = _raw_body.decode("utf-8", errors="replace")
+    {% else %}
+    _parsed_body = _raw_body.decode("utf-8", errors="replace") if _raw_body else None
+    {% endif %}
+  {% endif %}
+
+    if _api_user_id not in user_data:
+        user_data[_api_user_id] = {}
+  {% if entry.saveBodyTo %}
+    await set_user_var(_api_user_id, {{ entry.saveBodyTo | tojson }}, _parsed_body)
+  {% endif %}
+  {% if entry.saveQueryTo %}
+    await set_user_var(_api_user_id, {{ entry.saveQueryTo | tojson }}, _query)
+  {% endif %}
+  {% if entry.saveHeadersTo %}
+    await set_user_var(_api_user_id, {{ entry.saveHeadersTo | tojson }}, _headers)
+  {% endif %}
+
+    _request_id = str(uuid.uuid4())
+    _api_request_id_var.set(_request_id)
+    _loop = asyncio.get_running_loop()
+    _future = _loop.create_future()
+    _api_pending_responses[_request_id] = _future
+
+    _start = __import__("time").monotonic()
+    logging.info(
+        f"🔌 api_trigger [{{ entry.nodeId }}]: {{ entry.method }} {{ entry.path }} | status=pending"
+    )
+
+    try:
+        class _ApiCb{{ entry.safeName }}:
+            def __init__(self):
+                self.data = "{{ entry.targetNodeId }}"
+                self.from_user = types.User(id=_api_user_id, is_bot=False, first_name="_api")
+                self.message = None
+                self._is_fake = True
+            async def answer(self, *a, **kw):
+                pass
+
+        try:
+            await handle_callback_{{ entry.targetNodeId | safe_name }}(_ApiCb{{ entry.safeName }}(), state=None)
+        except Exception:
+            logging.exception(f"api_trigger [{{ entry.nodeId }}]: ошибка цепочки")
+            if not _future.done():
+                _future.set_result({"status": 500, "body": '{"error":"internal_error"}', "content_type": "application/json"})
+
+        if not _future.done():
+            _future.set_result({"status": 200, "body": '{"ok":true}', "content_type": "application/json"})
+
+        _resp = await _api_wait_response(_request_id)
+        _duration_ms = int((__import__("time").monotonic() - _start) * 1000)
+        logging.info(
+            f"🔌 api_trigger [{{ entry.nodeId }}]: завершено за {_duration_ms}мс | status={_resp.status}"
+        )
+        return _resp
+    finally:
+        _api_request_id_var.set(None)
+        user_data.pop(_api_user_id, None)
+
+
+{% endfor %}
+
+def register_api_trigger_routes(app):
+    """Регистрирует HTTP-роуты api_trigger на aiohttp Application."""
+{% for entry in entries %}
+    _route_path = {{ entry.path | tojson }}
+    if not _route_path.startswith("/"):
+        _route_path = "/" + _route_path
+    app.router.add_{{ entry.method | lower }}(_route_path, _api_handler_{{ entry.safeName }})
+    logging.info(f"🔌 API route: {{ entry.method }} {_route_path} → {{ entry.nodeId }}")
+{% endfor %}

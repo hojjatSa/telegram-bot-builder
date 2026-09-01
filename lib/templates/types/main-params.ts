@@ -21,6 +21,8 @@ export interface MainTemplateParams {
   groupMessageTriggerHandlers?: string[];
   /** Есть ли schedule_trigger ноды (для graceful shutdown) */
   hasScheduleTrigger?: boolean;
+  /** Есть ли api_trigger ноды (HTTP-сервер на WEBHOOK_PORT) */
+  hasApiTrigger?: boolean;
   /** URL вебхука (если задан — включается webhook режим) */
   webhookUrl?: string | null;
   /** Порт aiohttp сервера для webhook режима */

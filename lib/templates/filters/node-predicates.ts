@@ -309,6 +309,26 @@ export function hasScheduleTriggerNodes(nodes: Node[]): boolean {
 }
 
 /**
+ * Проверяет наличие узлов api_trigger в массиве узлов
+ * @param nodes - Массив узлов для проверки
+ * @returns true если есть хотя бы один узел типа api_trigger
+ */
+export function hasApiTriggerNodes(nodes: Node[]): boolean {
+  if (!nodes || nodes.length === 0) return false;
+  return nodes.filter(n => n != null).some(node => (node.type as string) === 'api_trigger');
+}
+
+/**
+ * Проверяет наличие узлов api_response в массиве узлов
+ * @param nodes - Массив узлов для проверки
+ * @returns true если есть хотя бы один узел типа api_response
+ */
+export function hasApiResponseNodes(nodes: Node[]): boolean {
+  if (!nodes || nodes.length === 0) return false;
+  return nodes.filter(n => n != null).some(node => (node.type as string) === 'api_response');
+}
+
+/**
  * Проверяет наличие узлов bot_table в массиве узлов
  * @param nodes - Массив узлов для проверки
  * @returns true если есть хотя бы один узел типа bot_table

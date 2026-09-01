@@ -58,6 +58,7 @@ import {
 } from "./botUsers/dialogListKind";
 import { setupBotIntegrationRoutes } from "./setupBotIntegrationRoutes";
 import { setupWebhookRoutes } from './setupWebhookRoutes';
+import { setupHooksRoutes } from './hooks/setupHooksRoutes';
 import { getRedisPublisher, waitForRedisInit } from "../redis/redisClient";
 import { setupProjectRoutes } from "./setupProjectRoutes";
 import { setupUserProjectAndTokenRoutes } from "./setupUserProjectAndTokenRoutes";
@@ -3405,6 +3406,9 @@ export async function registerRoutes(app: Express, httpServer?: Server): Promise
 
   // Webhook роут: приём апдейтов от Telegram и проксирование в Python-процесс бота
   setupWebhookRoutes(app);
+
+  // HTTP hooks: внешние интеграции → Python api_trigger
+  setupHooksRoutes(app);
 
   // OpenAPI / Swagger UI — после всех маршрутов, до Vite catch-all
   setupSwagger(app);

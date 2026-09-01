@@ -72,6 +72,8 @@
 | `group_message_trigger` | Сообщение в группе |
 | `managed_bot_updated_trigger` | Обновление управляемого бота |
 | `schedule_trigger` | Запуск по расписанию (интервал / cron) |
+| `api_trigger` | Входящий HTTP-запрос от внешней системы |
+| `api_response` | HTTP-ответ на api_trigger |
 
 ### Catch-all обработчики (`CATCH_ALL_HANDLERS`)
 
@@ -205,6 +207,46 @@
 - `"daily"` — ежедневно в указанное время (`hour`, `minute`)
 - `"weekly"` — по дням недели (`weekdays: [0-6]`, `hour`, `minute`)
 - `"cron"` — cron-выражение (`cronExpression`)
+
+### Поля api_trigger
+
+```json
+{
+  "type": "api_trigger",
+  "data": {
+    "apiMethod": "POST",
+    "apiPath": "/payment",
+    "apiSecretToken": "сгенерированный-secret",
+    "apiSaveBodyTo": "body",
+    "apiSaveQueryTo": "",
+    "apiSaveHeadersTo": "",
+    "apiParseJson": true,
+    "autoTransitionTo": "nodeId"
+  }
+}
+```
+
+- Публичный URL: `{API_BASE_URL}/api/hooks/{projectId}{apiPath}`
+- Secret только в заголовке `X-Api-Secret` или `Authorization: Bearer`
+- Уникальность пары `(apiMethod, apiPath)` в проекте
+- Запрещены пути с `/api/`, `/webhook`, `..`
+
+### Поля api_response
+
+```json
+{
+  "type": "api_response",
+  "data": {
+    "apiResponseStatusCode": 200,
+    "apiResponseBody": "{\"ok\":true}",
+    "apiResponseContentType": "application/json",
+    "apiResponseHeaders": [],
+    "autoTransitionTo": ""
+  }
+}
+```
+
+Завершает HTTP-запрос, инициированный `api_trigger`. Без этой ноды — ответ `200 {"ok":true}`, таймаут 30 с → `504`.
 
 ---
 

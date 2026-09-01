@@ -21,6 +21,7 @@ const PUBLIC_PREFIXES = [
   "/setup",
   "/config",
   "/webhook/",
+  "/hooks/",
 ];
 
 /**

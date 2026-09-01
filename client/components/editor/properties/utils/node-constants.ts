@@ -38,6 +38,7 @@ export const MANAGEMENT_NODE_TYPES = [
   'client_auth',
   'create_forum_topic',
   'http_request',
+  'api_response' as any,
   'get_managed_bot_token' as any,
   'set_variable' as any,
   'psql_query' as any,
@@ -81,6 +82,7 @@ export const TRIGGER_NODE_TYPES = [
   'outgoing_message_trigger' as any,
   'managed_bot_updated_trigger' as any,
   'schedule_trigger' as any,
+  'api_trigger' as any,
   'userbot_edit_trigger' as any,
 ] as const;
 

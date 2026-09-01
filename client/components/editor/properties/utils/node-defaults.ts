@@ -357,6 +357,23 @@ export function getNodeDefaults(type: Node['type']): any {
       enabled: true,
       maxConcurrent: 1,
     },
+    api_trigger: {
+      apiMethod: 'POST',
+      apiPath: '/hook',
+      apiSecretToken: '',
+      apiSaveBodyTo: 'body',
+      apiSaveQueryTo: '',
+      apiSaveHeadersTo: '',
+      apiParseJson: true,
+      autoTransitionTo: '',
+    },
+    api_response: {
+      apiResponseStatusCode: 200,
+      apiResponseBody: '{"ok":true}',
+      apiResponseContentType: 'application/json',
+      apiResponseHeaders: [],
+      autoTransitionTo: '',
+    },
     get_managed_bot_token: {
       botIdSource: 'variable',
       botIdVariable: 'bot_id',

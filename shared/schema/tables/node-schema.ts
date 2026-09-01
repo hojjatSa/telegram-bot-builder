@@ -64,7 +64,7 @@ export const nodeSchema = z.object({
    * @deprecated Canonical content node is `message`.
    * `start` and `command` are kept only for backward compatibility with legacy projects.
    */
-  type: z.enum(['start', 'message', 'command', 'command_trigger', 'text_trigger', 'incoming_message_trigger', 'incoming_callback_trigger', 'outgoing_message_trigger', 'group_message_trigger', 'callback_trigger', 'managed_bot_updated_trigger', 'schedule_trigger', 'sticker', 'voice', 'animation', 'location', 'contact', 'pin_message', 'unpin_message', 'delete_message', 'forward_message', 'ban_user', 'unban_user', 'mute_user', 'unmute_user', 'kick_user', 'promote_user', 'demote_user', 'admin_rights', 'photo', 'video', 'audio', 'document', 'keyboard', 'input', 'condition', 'broadcast', 'client_auth', 'media', 'create_forum_topic', 'http_request', 'get_managed_bot_token', 'answer_callback_query', 'edit_message', 'set_variable', 'psql_query', 'convert_file', 'loop', 'bot_table', 'delay', 'userbot_message', 'userbot_click_button', 'userbot_inline_query', 'userbot_edit_trigger', 'parallel_split', 'code', 'comment']),
+  type: z.enum(['start', 'message', 'command', 'command_trigger', 'text_trigger', 'incoming_message_trigger', 'incoming_callback_trigger', 'outgoing_message_trigger', 'group_message_trigger', 'callback_trigger', 'managed_bot_updated_trigger', 'schedule_trigger', 'api_trigger', 'sticker', 'voice', 'animation', 'location', 'contact', 'pin_message', 'unpin_message', 'delete_message', 'forward_message', 'ban_user', 'unban_user', 'mute_user', 'unmute_user', 'kick_user', 'promote_user', 'demote_user', 'admin_rights', 'photo', 'video', 'audio', 'document', 'keyboard', 'input', 'condition', 'broadcast', 'client_auth', 'media', 'create_forum_topic', 'http_request', 'get_managed_bot_token', 'answer_callback_query', 'edit_message', 'set_variable', 'psql_query', 'convert_file', 'loop', 'bot_table', 'delay', 'api_response', 'userbot_message', 'userbot_click_button', 'userbot_inline_query', 'userbot_edit_trigger', 'parallel_split', 'code', 'comment']),
   /** Позиция узла на холсте */
   position: z.object({
     /** Координата X */
@@ -781,6 +781,33 @@ export const nodeSchema = z.object({
     convertFileOutputVariable: z.string().default(''),
     /** Python-код узла code */
     code: z.string().optional().default(''),
+    /** HTTP-метод входящего API (api_trigger) */
+    apiMethod: z.enum(['GET', 'POST', 'PUT', 'PATCH', 'DELETE']).default('POST').optional(),
+    /** Путь эндпоинта, например /payment */
+    apiPath: z.string().default('').optional(),
+    /** Secret-токен для заголовка X-Api-Secret / Authorization */
+    apiSecretToken: z.string().default('').optional(),
+    /** Переменная для сохранения тела запроса */
+    apiSaveBodyTo: z.string().default('').optional(),
+    /** Переменная для сохранения query-параметров */
+    apiSaveQueryTo: z.string().default('').optional(),
+    /** Переменная для сохранения заголовков */
+    apiSaveHeadersTo: z.string().default('').optional(),
+    /** Автопарсинг JSON body */
+    apiParseJson: z.boolean().default(true).optional(),
+    /** HTTP-статус ответа (api_response) */
+    apiResponseStatusCode: z.number().default(200).optional(),
+    /** Тело HTTP-ответа с {переменными} */
+    apiResponseBody: z.string().default('{"ok":true}').optional(),
+    /** Content-Type ответа */
+    apiResponseContentType: z.enum(['application/json', 'text/plain', 'text/html']).default('application/json').optional(),
+    /** Дополнительные заголовки ответа */
+    apiResponseHeaders: z.array(z.object({
+      /** Имя заголовка */
+      key: z.string(),
+      /** Значение заголовка */
+      value: z.string(),
+    })).default([]).optional(),
   }),
 });
 

@@ -9,7 +9,8 @@ import { textMessage, mediaMessage, keyboardMessage, saveAnswerNode } from './ma
 import { allCommandPresets } from './massive/commands';
 import type { CommandPreset } from './massive/commands';
 import { broadcastNode } from '@/components/editor/canvas/canvas-node/broadcast-node';
-import { commandTrigger, textTrigger, anyMessageTrigger, groupMessageTrigger, callbackTrigger, incomingCallbackTrigger, outgoingMessageTrigger, managedBotUpdatedTrigger, scheduleTrigger } from './massive/triggers';
+import { commandTrigger, textTrigger, anyMessageTrigger, groupMessageTrigger, callbackTrigger, incomingCallbackTrigger, outgoingMessageTrigger, managedBotUpdatedTrigger, scheduleTrigger, apiTrigger } from './massive/triggers';
+import { apiResponseNode } from './massive/api-response/api-response-node';
 import { conditionNode, setVariableNode, loopNode, delayNode, codeNode, parallelSplitNode } from './massive/logic';
 import { forwardMessage, createForumTopicNode, deleteMessage } from './massive/content-management';
 import { httpRequestNode } from './massive/http-request';
@@ -47,6 +48,10 @@ export const componentCategories: Array<{
   {
     title: 'Автоматизация',
     components: [scheduleTrigger]
+  },
+  {
+    title: 'Внешний API',
+    components: [apiTrigger, apiResponseNode]
   },
   {
     title: 'Интеграции',

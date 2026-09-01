@@ -17,6 +17,8 @@ export interface AppConfig {
   telegramBotUsername: string;
   /** Dev-login по умолчанию; SKIP_AUTH=false — Telegram Login Widget */
   skipAuth?: boolean;
+  /** Публичный базовый URL API (из API_BASE_URL или origin запроса) */
+  apiBaseUrl?: string;
 }
 
 /**

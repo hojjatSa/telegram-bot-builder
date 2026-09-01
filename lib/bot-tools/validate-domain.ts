@@ -35,7 +35,10 @@ export function validateDomainRules(project: Record<string, unknown>): Validatio
     validateConditionNode(node, sheetId, issues);
     validateForbiddenConditionFormat(node, issues);
     validateMessageInlineKeyboard(node, issues);
+    validateApiTriggerNode(node, sheetId, issues);
   }
+
+  validateApiTriggerDuplicates(entries, issues);
 
   for (const [id, count] of idCounts) {
     if (count > 1) {
@@ -175,5 +178,99 @@ function validateMessageInlineKeyboard(node: Node, issues: ValidationIssue[]): v
       message: `У message-ноды ${node.id} инлайн-кнопки будут вынесены в отдельную keyboard-ноду`,
       code: 'inline_keyboard_will_hoist',
     });
+  }
+}
+
+/** Допустимые HTTP-методы api_trigger */
+const API_TRIGGER_METHODS = new Set(['GET', 'POST', 'PUT', 'PATCH', 'DELETE']);
+
+/**
+ * Проверяет api_trigger: path, method, зарезервированные префиксы
+ * @param node - Узел
+ * @param sheetId - ID листа
+ * @param issues - Массив проблем
+ */
+function validateApiTriggerNode(node: Node, sheetId: string, issues: ValidationIssue[]): void {
+  if ((node.type as string) !== 'api_trigger') return;
+  const data = node.data as Record<string, unknown>;
+  const method = String(data.apiMethod ?? 'POST').toUpperCase();
+  const path = String(data.apiPath ?? '').trim();
+
+  if (!API_TRIGGER_METHODS.has(method)) {
+    issues.push({
+      severity: 'error',
+      path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiMethod`,
+      message: `Недопустимый apiMethod: ${method}`,
+      code: 'api_trigger_invalid_method',
+    });
+  }
+
+  if (!path || path === '/') {
+    issues.push({
+      severity: 'error',
+      path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiPath`,
+      message: 'api_trigger: укажите путь, например /payment',
+      code: 'api_trigger_empty_path',
+    });
+    return;
+  }
+
+  if (!path.startsWith('/')) {
+    issues.push({
+      severity: 'error',
+      path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiPath`,
+      message: 'apiPath должен начинаться с /',
+      code: 'api_trigger_path_format',
+    });
+  }
+
+  if (path.includes('..') || /\s/.test(path)) {
+    issues.push({
+      severity: 'error',
+      path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiPath`,
+      message: 'apiPath не должен содержать .. или пробелы',
+      code: 'api_trigger_path_unsafe',
+    });
+  }
+
+  const lower = path.toLowerCase();
+  if (lower.startsWith('/api/') || lower.startsWith('/webhook')) {
+    issues.push({
+      severity: 'error',
+      path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiPath`,
+      message: 'Зарезервированный префикс пути: /api/ и /webhook',
+      code: 'api_trigger_reserved_path',
+    });
+  }
+}
+
+/**
+ * Уникальность пары (apiMethod, apiPath) в проекте
+ * @param entries - Все узлы
+ * @param issues - Массив проблем
+ */
+function validateApiTriggerDuplicates(
+  entries: Array<{ node: Node; sheetId: string }>,
+  issues: ValidationIssue[],
+): void {
+  const seen = new Map<string, string>();
+  for (const { node, sheetId } of entries) {
+    if ((node.type as string) !== 'api_trigger') continue;
+    const data = node.data as Record<string, unknown>;
+    const method = String(data.apiMethod ?? 'POST').toUpperCase();
+    const path = String(data.apiPath ?? '').trim();
+    if (!path) continue;
+    const key = `${method} ${path}`;
+    const prev = seen.get(key);
+    if (prev) {
+      issues.push({
+        severity: 'error',
+        path: `sheets[${sheetId}].nodes[id=${node.id}].data.apiPath`,
+        message: `Дублирующийся api_trigger: ${key} (уже есть у ноды ${prev})`,
+        code: 'api_trigger_duplicate',
+      });
+    } else {
+      seen.set(key, node.id);
+    }
   }
 }

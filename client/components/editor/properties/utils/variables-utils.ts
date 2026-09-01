@@ -508,6 +508,52 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
     }
   });
 
+  // Добавляем переменные от api_trigger нод
+  allNodes.forEach(node => {
+    if ((node.type as string) !== 'api_trigger') return;
+    const data = node.data as Record<string, unknown>;
+    const method = String(data.apiMethod ?? 'POST');
+    const path = String(data.apiPath ?? '');
+    const label = `${method} ${path || '/'}`;
+
+    if (data.apiSaveBodyTo) {
+      const varName = String(data.apiSaveBodyTo);
+      const key = `api_body__${node.id}`;
+      if (!variablesMap.has(key)) {
+        variablesMap.set(key, {
+          name: varName,
+          nodeId: node.id,
+          nodeType: 'api_trigger' as any,
+          description: `Тело HTTP-запроса (${label})`,
+        });
+      }
+    }
+    if (data.apiSaveQueryTo) {
+      const varName = String(data.apiSaveQueryTo);
+      const key = `api_query__${node.id}`;
+      if (!variablesMap.has(key)) {
+        variablesMap.set(key, {
+          name: varName,
+          nodeId: node.id,
+          nodeType: 'api_trigger' as any,
+          description: `Query-параметры HTTP-запроса (${label})`,
+        });
+      }
+    }
+    if (data.apiSaveHeadersTo) {
+      const varName = String(data.apiSaveHeadersTo);
+      const key = `api_headers__${node.id}`;
+      if (!variablesMap.has(key)) {
+        variablesMap.set(key, {
+          name: varName,
+          nodeId: node.id,
+          nodeType: 'api_trigger' as any,
+          description: `Заголовки HTTP-запроса (${label})`,
+        });
+      }
+    }
+  });
+
   // Добавляем системные переменные
   SYSTEM_VARIABLES.forEach(v => { 
     if (!variablesMap.has(v.name)) {

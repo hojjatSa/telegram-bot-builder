@@ -425,10 +425,10 @@ export async function startBot(
       }
 
       try {
-        await workerManager.startBot(projectId, token, tokenId, mainFile, effectiveWebhookUrl ? {
-          webhookUrl: effectiveWebhookUrl,
+        await workerManager.startBot(projectId, token, tokenId, mainFile, {
+          webhookUrl: effectiveWebhookUrl ?? undefined,
           webhookPort: 9000 + tokenId,
-        } : undefined);
+        });
         console.log(`🏭 [WorkerPool] Бот ${projectId}/${tokenId} отправлен в воркер`);
       } catch (workerError) {
         console.error(`🏭 [WorkerPool] Ошибка запуска бота через воркер:`, workerError);
@@ -495,10 +495,11 @@ export async function startBot(
         // Прокидываем REDIS_URL из окружения сервера в процесс бота
         // На Railway задаётся через переменную окружения сервиса
         ...(process.env.REDIS_URL ? { REDIS_URL: process.env.REDIS_URL } : {}),
+        // Порт aiohttp для webhook и/или api_trigger (9000 + tokenId)
+        WEBHOOK_PORT: String(9000 + tokenId),
         // Webhook режим: из настроек токена или глобального env
         ...(effectiveWebhookUrl ? {
           WEBHOOK_URL: effectiveWebhookUrl,
-          WEBHOOK_PORT: String(9000 + tokenId),
         } : {})
       }
     });

@@ -1,0 +1,39 @@
+{#
+  @fileoverview Шаблон узла api_response — завершает HTTP-запрос api_trigger
+#}
+{% for entry in entries %}
+@dp.callback_query(lambda c: c.data == "{{ entry.nodeId }}")
+async def handle_callback_{{ entry.safeName }}(callback_query: types.CallbackQuery, state: FSMContext = None):
+    """Отправляет HTTP-ответ для api_trigger ({{ entry.nodeId }})."""
+    user_id = callback_query.from_user.id
+    _all_vars = await init_all_user_vars(user_id)
+
+    _body_tpl = {{ entry.body | tojson }}
+    _body = replace_variables_in_text(_body_tpl, _all_vars, {})
+    _status = {{ entry.statusCode }}
+    _content_type = {{ entry.contentType | tojson }}
+
+    _request_id = _api_request_id_var.get()
+    if _request_id and _request_id in _api_pending_responses:
+        _future = _api_pending_responses.get(_request_id)
+        if _future and not _future.done():
+            _future.set_result({
+                "status": _status,
+                "body": _body,
+                "content_type": _content_type,
+                "headers": {},
+            })
+            logging.info(f"📤 api_response [{{ entry.nodeId }}]: status={_status}")
+    else:
+        logging.warning(f"⚠️ api_response [{{ entry.nodeId }}]: нет активного HTTP-запроса")
+
+    try:
+        await callback_query.answer()
+    except Exception:
+        pass
+
+{% if entry.autoTransitionTo and entry.autoTransitionTargetExists %}
+    await handle_callback_{{ entry.autoTransitionTo | safe_name }}(callback_query, state=state)
+{% endif %}
+
+{% endfor %}

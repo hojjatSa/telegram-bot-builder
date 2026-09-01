@@ -24,6 +24,11 @@ export const PublicConfigSchema = z
       example: false,
       description: "true при auth_login_mode=dev_login; false при telegram_widget",
     }),
+    /** Публичный базовый URL API (hooks, превью); из API_BASE_URL или origin запроса */
+    apiBaseUrl: z.string().url().openapi({
+      example: "https://example.com",
+      description: "Базовый URL для публичных эндпоинтов; приоритет — API_BASE_URL на сервере",
+    }),
   })
   .openapi("PublicConfig");
 

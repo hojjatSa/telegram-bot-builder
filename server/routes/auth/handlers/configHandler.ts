@@ -13,6 +13,22 @@ import { getSetting } from "../../../services/app-settings.service";
 import { isSkipAuthEnabled } from "../utils/isSkipAuthEnabled";
 
 /**
+ * Возвращает публичный базовый URL API для UI (hooks, превью).
+ * Приоритет: API_BASE_URL из env → заголовки прокси → host запроса.
+ * @param req - Объект запроса
+ * @returns Базовый URL без завершающего слэша
+ */
+function resolvePublicApiBaseUrl(req: Request): string {
+  const fromEnv = process.env.API_BASE_URL?.trim();
+  if (fromEnv) {
+    return fromEnv.replace(/\/$/, "");
+  }
+  const proto = (req.get("x-forwarded-proto") || req.protocol || "http").split(",")[0].trim();
+  const host = (req.get("x-forwarded-host") || req.get("host") || "localhost:5000").split(",")[0].trim();
+  return `${proto}://${host}`.replace(/\/$/, "");
+}
+
+/**
  * Возвращает публичную конфигурацию приложения.
  * Порядок поиска: БД (app_settings) → process.env (fallback).
  *
@@ -20,7 +36,7 @@ import { isSkipAuthEnabled } from "../utils/isSkipAuthEnabled";
  * @param res - Объект ответа
  * @returns Promise<void>
  */
-export async function handlePublicConfig(_req: Request, res: Response): Promise<void> {
+export async function handlePublicConfig(req: Request, res: Response): Promise<void> {
   const clientId = await getSetting("telegram_client_id");
   const botUsername = await getSetting("telegram_bot_username");
 
@@ -31,5 +47,7 @@ export async function handlePublicConfig(_req: Request, res: Response): Promise<
     telegramBotUsername: botUsername || "",
     /** Dev-login по умолчанию; SKIP_AUTH=false — Telegram Login Widget */
     skipAuth: isSkipAuthEnabled(),
+    /** Публичный базовый URL API (API_BASE_URL или origin запроса) */
+    apiBaseUrl: resolvePublicApiBaseUrl(req),
   });
 }

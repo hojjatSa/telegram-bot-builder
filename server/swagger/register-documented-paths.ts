@@ -88,6 +88,7 @@ import { registerStorageConfigPaths } from "./paths/storage-config-paths";
 import { registerTemplatePaths } from "./paths/template-paths";
 import { registerWorkerPaths } from "./paths/worker-paths";
 import { registerWebhookPaths } from "./paths/webhook-paths";
+import { registerHooksPaths } from "./paths/hooks-paths";
 import { registerServerPaths } from "./paths/server-paths";
 
 /** Реестр Zod-схем и paths для генерации OpenAPI */
@@ -188,6 +189,7 @@ registerStorageConfigPaths(documentedRegistry, cookieSecurity);
 registerTemplatePaths(documentedRegistry, cookieSecurity);
 registerWorkerPaths(documentedRegistry, cookieSecurity);
 registerWebhookPaths(documentedRegistry, publicSecurity);
+registerHooksPaths(documentedRegistry, publicSecurity);
 registerServerPaths(documentedRegistry, cookieSecurity);
 registerDatabasePaths(documentedRegistry, cookieSecurity);
 registerProjectTablesMutatePaths(documentedRegistry, cookieSecurity);

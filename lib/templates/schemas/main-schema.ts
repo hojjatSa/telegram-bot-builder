@@ -17,8 +17,14 @@ export const mainParamsSchema = z.object({
   autoRegisterUsers: z.boolean().optional().default(false),
   /** Список имён middleware функций для incoming_message_trigger */
   incomingMessageTriggerMiddlewares: z.array(z.string()).optional().default([]),
+  /** Список имён middleware функций для managed_bot_updated_trigger */
+  managedBotUpdatedTriggerMiddlewares: z.array(z.string()).optional().default([]),
   /** Список имён обработчиков для group_message_trigger */
   groupMessageTriggerHandlers: z.array(z.string()).optional().default([]),
+  /** Есть ли schedule_trigger ноды (для graceful shutdown) */
+  hasScheduleTrigger: z.boolean().optional().default(false),
+  /** Есть ли api_trigger ноды (HTTP-сервер на WEBHOOK_PORT) */
+  hasApiTrigger: z.boolean().optional().default(false),
   /** URL вебхука (если задан — включается webhook режим) */
   webhookUrl: z.string().nullable().optional().default(null),
   /** Порт aiohttp сервера для webhook режима */

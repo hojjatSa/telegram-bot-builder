@@ -9,7 +9,7 @@ import type { Node } from '@shared/schema';
 const TRIGGER_TYPES = new Set<string>([
   'command_trigger', 'text_trigger', 'incoming_message_trigger', 'group_message_trigger',
   'callback_trigger', 'incoming_callback_trigger', 'outgoing_message_trigger',
-  'managed_bot_updated_trigger', 'schedule_trigger', 'userbot_edit_trigger',
+  'managed_bot_updated_trigger', 'schedule_trigger', 'api_trigger', 'userbot_edit_trigger',
 ]);
 
 /** Management / logic — без полей сообщения */
@@ -18,7 +18,7 @@ const MANAGEMENT_TYPES = new Set<string>([
   'ban_user', 'unban_user', 'mute_user', 'unmute_user', 'kick_user',
   'promote_user', 'demote_user', 'admin_rights', 'broadcast', 'client_auth',
   'create_forum_topic', 'http_request', 'get_managed_bot_token', 'set_variable',
-  'psql_query', 'convert_file', 'loop', 'bot_table', 'delay', 'code',
+  'psql_query', 'convert_file', 'loop', 'bot_table', 'delay', 'api_response', 'code',
   'userbot_message', 'userbot_click_button', 'userbot_inline_query', 'parallel_split', 'comment',
 ]);
 

@@ -54,14 +54,22 @@
 - В [future-nodes.md](../futures/nodes/future-nodes.md) — черновое описание полей `api_trigger` и `api_response`
 - В [bot-system-api.md](../futures/infrastructure/bot-system-api.md) — архитектура `aiohttp` в polling/webhook режимах
 
-## Ещё не реализовано ❌
+## Реализовано (MVP) ✅
 
 - Типы нод `api_trigger`, `api_response` в палитре конструктора
-- Генерация роутов и handler'ов в `bot.py`
-- Публичный URL для пользовательских эндпоинтов (прокси с Node.js или прямой доступ)
-- UI настройки: путь, метод, secret, маппинг body → переменные
-- MCP: `list_node_types`, `get_node_schema`, валидация, примеры
-- Документация для пользователя + тесты генератора
+- Генерация роутов aiohttp и handler'ов в `bot.py`
+- Публичный URL `/api/hooks/{projectId}{apiPath}` (Node → `9000+tokenId`)
+- UI: путь, метод, secret, переменные, curl-preview
+- MCP: schema, presets, валидация дублей path
+- Документация: `NODE_TYPES.md`, `bot-json-prompt.md`, `docs/api/hooks.md`, Swagger
+- Тесты: unit + `test-phase73-api-trigger.ts`
+
+## Ещё не реализовано (после MVP) ❌
+
+- Логи входящих API-запросов в UI (отдельный фильтр)
+- Режим «ответить и продолжить в фоне»
+- CORS, OpenAPI-экспорт проекта, шаблоны интеграций
+- IP allowlist, HMAC body (фаза C+)
 
 ---
 
@@ -267,27 +275,9 @@ api_trigger  GET /health
 
 ## Фазы реализации
 
-### Фаза A — Схема и генератор 🔴
+### Фаза A — Схема и генератор ✅
 
-- Типы в `shared/schema/tables/node-schema.ts`
-- Палитра конструктора + иконки + панель свойств
-- `validate_bot_project`: уникальность path, зарезервированные префиксы
-- Jinja2: регистрация роутов в `aiohttp` при старте бота
-- Handler: парсинг → переменные → `autoTransitionTo`
-- Базовый `api_response` handler
-- Unit-тесты генератора (как `test-phase28-schedule-trigger.ts`)
-
-**Критерий:** локальный `curl POST http://localhost:8081/test` запускает цепочку и возвращает JSON.
-
-### Фаза B — Прокси и UI 🔴
-
-- `POST/GET .../api/hooks/{projectId}/...` на Node.js
-- Discovery: порт бота из `bot_instances` / Redis
-- Панель ноды: URL, curl, secret generate
-- Логи входящих API-запросов (вкладка «Логи» или отдельный фильтр)
-- MCP: schema, example, `list_node_types`
-
-**Критерий:** пользователь создаёт ноду в браузере, копирует URL, внешний POST доходит до сценария.
+### Фаза B — Прокси и UI ✅
 
 ### Фаза C — Надёжность 🟡
 

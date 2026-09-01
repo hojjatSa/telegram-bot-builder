@@ -184,6 +184,18 @@ export const nodeRegistry: Record<string, NodeMeta> = {
     color: 'bg-teal-100 text-teal-600 dark:bg-teal-900/30 dark:text-teal-400',
     canvasColor: 'bg-gradient-to-br from-teal-50 to-cyan-100 dark:from-teal-900/30 dark:to-cyan-900/30 text-teal-600 dark:text-teal-400 border-2 border-teal-300 dark:border-teal-700/50 shadow-lg shadow-teal-500/20',
   },
+  api_trigger: {
+    name: 'API триггер',
+    icon: 'fas fa-plug',
+    color: 'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400',
+    canvasColor: 'bg-gradient-to-br from-violet-50 to-purple-100 dark:from-violet-900/30 dark:to-purple-900/30 text-violet-600 dark:text-violet-400 border-2 border-violet-300 dark:border-violet-700/50 shadow-lg shadow-violet-500/20',
+  },
+  api_response: {
+    name: 'Ответ API',
+    icon: 'fas fa-reply',
+    color: 'bg-violet-100 text-violet-600 dark:bg-violet-900/30 dark:text-violet-400',
+    canvasColor: 'bg-gradient-to-br from-violet-50 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 text-violet-600 dark:text-violet-400 border border-violet-200 dark:border-violet-800',
+  },
   // Управление контентом
   pin_message: {
     name: 'Закрепить сообщение',

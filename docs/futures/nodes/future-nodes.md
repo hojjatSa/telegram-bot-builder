@@ -14,41 +14,17 @@
 
 ---
 
-### `api_trigger`
+### ~~`api_trigger`~~ ✅ РЕАЛИЗОВАНО
 **Запуск цепочки при входящем HTTP запросе от внешней системы.**
 
-Поля:
-- `apiMethod` — GET / POST / PUT / PATCH / DELETE
-- `apiPath` — путь эндпоинта, например `/notify`
-- `apiSaveBodyTo` — переменная для тела запроса
-- `apiSaveHeadersTo` — переменная для заголовков (опционально)
-- `apiSecretToken` — токен для верификации запроса
-- `autoTransitionTo` — ID следующей ноды
-
-Пример использования:
-```
-api_trigger (POST /payment)
-  → set_variable (извлечь user_id, amount из {payment})
-    → psql_query (обновить баланс)
-      → message (уведомить пользователя)
-```
-
-Реализация: `aiohttp.web` сервер на отдельном порту внутри `bot.py`.
-Сложность: средняя (~100 строк).
-
-> Роадмап: [api-trigger-api-response-roadmap.md](../../roadmaps/api-trigger-api-response-roadmap.md)
+> Реализовано. См. `docs/features/NODE_TYPES.md` (секция API-триггер) и `docs/api/hooks.md`.
 
 ---
 
-### `api_response`
+### ~~`api_response`~~ ✅ РЕАЛИЗОВАНО
 **Ответить на входящий API-запрос. Пара к `api_trigger`.**
 
-Поля:
-- `statusCode` — HTTP статус ответа (200, 400, 500)
-- `body` — тело ответа, поддерживает `{переменные}`
-- `contentType` — `application/json` / `text/plain`
-
-Сложность: низкая (~30 строк).
+> Реализовано. См. `docs/features/NODE_TYPES.md` (секция Ответ API).
 
 ---
 
@@ -189,8 +165,8 @@ http_request (GET cryptobar.cc/...xml, responseFormat=text)
 2. ~~json_extract~~              — ❌ НЕ НУЖНА (dot-notation уже работает)
 3. delay                         — быстро, часто нужен
 4. ~~schedule_trigger~~          — ✅ РЕАЛИЗОВАНО
-5. api_trigger                   — разблокирует интеграции с внешними системами
-6. api_response                  — пара к api_trigger
+5. ~~api_trigger~~ ✅
+6. ~~api_response~~ ✅
 7. http_request_multi            — агрегация источников за один шаг
 8. ~~loop~~                      — ✅ РЕАЛИЗОВАНО
 9. try_catch                     — улучшает надёжность

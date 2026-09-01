@@ -117,12 +117,11 @@ def apply_bot_env(token: str, token_id: int, webhook_url: Optional[str], webhook
     prev = {k: os.environ.get(k) for k in keys}
     os.environ["BOT_TOKEN"] = token
     os.environ["TOKEN_ID"] = str(token_id)
+    os.environ["WEBHOOK_PORT"] = str(webhook_port or (9000 + token_id))
     if webhook_url:
         os.environ["WEBHOOK_URL"] = webhook_url
-        os.environ["WEBHOOK_PORT"] = str(webhook_port or (9000 + token_id))
     else:
         os.environ.pop("WEBHOOK_URL", None)
-        os.environ.pop("WEBHOOK_PORT", None)
     return prev
 
 
@@ -145,9 +144,9 @@ def inject_bot_constants(
     """Принудительно проставляет BOT_TOKEN/TOKEN_ID в namespace модуля после exec."""
     module.__dict__["BOT_TOKEN"] = token
     module.__dict__["TOKEN_ID"] = token_id
+    module.__dict__["WEBHOOK_PORT"] = webhook_port or (9000 + token_id)
     if webhook_url:
         module.__dict__["WEBHOOK_URL"] = webhook_url
-        module.__dict__["WEBHOOK_PORT"] = webhook_port or (9000 + token_id)
     # Подмодуль config, если загружен
     cfg = module.__dict__.get("config")
     if cfg is not None and hasattr(cfg, "__dict__"):

@@ -29,6 +29,7 @@ import { IncomingCallbackTriggerConfiguration } from '../trigger/IncomingCallbac
 import { OutgoingMessageTriggerConfiguration } from '../trigger/OutgoingMessageTriggerConfiguration';
 import { ManagedBotUpdatedTriggerConfiguration } from '../trigger/ManagedBotUpdatedTriggerConfiguration';
 import { ScheduleTriggerConfiguration } from '../trigger/ScheduleTriggerConfiguration';
+import { ApiTriggerConfiguration } from '../trigger/ApiTriggerConfiguration';
 import { ConditionNodeConfiguration } from '../condition/ConditionNodeConfiguration';
 import { ParallelSplitConfiguration } from '../parallel-split/ParallelSplitConfiguration';
 import { PropertiesFooterWrapper } from './properties-footer-wrapper';
@@ -63,6 +64,7 @@ import { BroadcastNodeProperties } from '../broadcast/broadcast-properties';
 import { ClientAuthProperties } from '../client-auth/client-auth-properties';
 import { MediaNodeProperties } from './media-node-properties';
 import { HttpRequestConfiguration } from '../configuration/http-request-configuration';
+import { ApiResponseConfiguration } from '../configuration/api-response-configuration';
 import { GetManagedBotTokenConfiguration } from '../configuration/get-managed-bot-token-configuration';
 import { AnswerCallbackQueryConfiguration } from '../action/AnswerCallbackQueryConfiguration';
 import { EditMessageConfiguration } from '../action/EditMessageConfiguration';
@@ -444,7 +446,7 @@ export function PropertiesPanel({
         <div className="space-y-0">
 
           {/* Basic Settings Section - СЃРєСЂС‹С‚Рѕ РґР»СЏ СѓР·Р»Р° СЂР°СЃСЃС‹Р»РєР°, client_auth, С‚СЂРёРіРіРµСЂРѕРІ, СѓСЃР»РѕРІРёСЏ Рё РјРµРґРёР°-РЅРѕРґС‹ */}
-          {selectedNode.type !== 'broadcast' && selectedNode.type !== 'client_auth' && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'delete_message' && (selectedNode.type as any) !== 'kick_user' && (selectedNode.type as any) !== 'set_variable' && (selectedNode.type as any) !== 'psql_query' && (selectedNode.type as any) !== 'convert_file' && (selectedNode.type as any) !== 'loop' && (selectedNode.type as any) !== 'bot_table' && (selectedNode.type as any) !== 'delay' && (selectedNode.type as any) !== 'code' && (selectedNode.type as any) !== 'userbot_message' && (selectedNode.type as any) !== 'userbot_click_button' && (selectedNode.type as any) !== 'userbot_inline_query' && (selectedNode.type as any) !== 'parallel_split' && (selectedNode.type as any) !== 'comment' && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && (
+          {selectedNode.type !== 'broadcast' && selectedNode.type !== 'client_auth' && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'api_response' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'delete_message' && (selectedNode.type as any) !== 'kick_user' && (selectedNode.type as any) !== 'set_variable' && (selectedNode.type as any) !== 'psql_query' && (selectedNode.type as any) !== 'convert_file' && (selectedNode.type as any) !== 'loop' && (selectedNode.type as any) !== 'bot_table' && (selectedNode.type as any) !== 'delay' && (selectedNode.type as any) !== 'code' && (selectedNode.type as any) !== 'userbot_message' && (selectedNode.type as any) !== 'userbot_click_button' && (selectedNode.type as any) !== 'userbot_inline_query' && (selectedNode.type as any) !== 'parallel_split' && (selectedNode.type as any) !== 'comment' && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && (
             <BasicSettingsSection
               selectedNode={selectedNode}
               projectId={projectId}
@@ -566,6 +568,26 @@ export function PropertiesPanel({
                 <HttpRequestConfiguration
                   selectedNode={selectedNode}
                   onNodeUpdate={onNodeUpdate}
+                />
+              </div>
+            </div>
+          )}
+
+          {(selectedNode.type as any) === 'api_response' && (
+            <div className="w-full bg-gradient-to-br from-violet-50/40 to-indigo-50/20 dark:from-violet-950/30 dark:to-indigo-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-violet-200/40 dark:border-violet-800/40 backdrop-blur-sm">
+              <SectionHeader
+                title="Ответ API"
+                description="HTTP-ответ на запрос API-триггера"
+                isOpen={true}
+                onToggle={() => {}}
+                icon="reply"
+                iconGradient="from-violet-100 to-indigo-100 dark:from-violet-900/50 dark:to-indigo-900/50"
+                iconColor="text-violet-600 dark:text-violet-400"
+              />
+              <div className="mt-3 sm:mt-4">
+                <ApiResponseConfiguration
+                  selectedNode={selectedNode}
+                  onUpdateNode={onNodeUpdate}
                 />
               </div>
             </div>
@@ -824,6 +846,15 @@ export function PropertiesPanel({
               formatNodeDisplay={formatNodeDisplay}
             />
           )}
+          {isTriggerNode(selectedNode.type) && (selectedNode.type as any) === 'api_trigger' && (
+            <ApiTriggerConfiguration
+              selectedNode={selectedNode}
+              projectId={projectId}
+              onUpdateNode={onNodeUpdate}
+              getAllNodesFromAllSheets={getAllNodesFromAllSheets}
+              formatNodeDisplay={formatNodeDisplay}
+            />
+          )}
           {isTriggerNode(selectedNode.type) && (selectedNode.type as any) === 'userbot_edit_trigger' && (
             <UserbotEditTriggerConfiguration
               selectedNode={selectedNode}
@@ -854,7 +885,7 @@ export function PropertiesPanel({
           )}
 
           {/* Message Content - скрыто для узлов управления, триггеров, условия и медиа-нодов */}
-          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
+          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'api_response' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
             <MessageContentSection
               selectedNode={selectedNode}
               allNodes={allNodes}
@@ -872,7 +903,7 @@ export function PropertiesPanel({
             />
           )}
           {/* Media File Section - скрыто для узлов управления, триггеров, условия и медиа-нодов */}
-          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
+          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'api_response' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
             <MediaFileSection
               projectId={projectId}
               selectedNode={selectedNode}
@@ -884,7 +915,7 @@ export function PropertiesPanel({
           )}
 
           {/* Keyboard Section - скрыто для узлов управления, триггеров, условия и медиа-нодов */}
-          {selectedNode.type !== 'message' && !isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
+          {selectedNode.type !== 'message' && !isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'api_response' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
             <div className="w-full bg-gradient-to-br from-amber-50/40 to-yellow-50/20 dark:from-amber-950/30 dark:to-yellow-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-amber-200/40 dark:border-amber-800/40 backdrop-blur-sm">
               <KeyboardSectionHeader
                 selectedNode={selectedNode}
@@ -1028,7 +1059,7 @@ export function PropertiesPanel({
         )}
 
         {/* Universal User Input Collection - скрыто для узлов управления, триггеров, условия и медиа-нодов */}
-          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
+          {!isManagementNode(selectedNode.type) && !isTriggerNode(selectedNode.type) && !isConditionNode(selectedNode.type) && selectedNode.type !== 'media' && (selectedNode.type as any) !== 'http_request' && (selectedNode.type as any) !== 'api_response' && (selectedNode.type as any) !== 'get_managed_bot_token' && (selectedNode.type as any) !== 'answer_callback_query' && (selectedNode.type as any) !== 'edit_message' && (selectedNode.type as any) !== 'set_variable' && (
             <UserInputSettingsSection
               selectedNode={selectedNode}
               getAllNodesFromAllSheets={getAllNodesFromAllSheets}

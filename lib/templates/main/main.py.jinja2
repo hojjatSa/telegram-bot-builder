@@ -202,6 +202,9 @@ async def main():
             app = web.Application()
             SimpleRequestHandler(dispatcher=dp, bot=bot).register(app, path="/webhook")
             setup_application(app, dp, bot=bot)
+{%- if hasApiTrigger %}
+            register_api_trigger_routes(app)
+{%- endif %}
 
             runner = web.AppRunner(app)
             await runner.setup()
@@ -218,6 +221,17 @@ async def main():
         else:
             # Polling режим — с backoff при Telegram Conflict (два getUpdates)
             logging.info("🔄 Polling режим")
+{%- if hasApiTrigger %}
+            from aiohttp import web
+            _api_app = web.Application()
+            register_api_trigger_routes(_api_app)
+            _api_runner = web.AppRunner(_api_app)
+            await _api_runner.setup()
+            _api_site = web.TCPSite(_api_runner, host="0.0.0.0", port=WEBHOOK_PORT)
+            await _api_site.start()
+            _webhook_runner = _api_runner
+            logging.info(f"✅ API сервер запущен на порту {WEBHOOK_PORT}")
+{%- endif %}
             _conflict_attempt = 0
             _max_conflict_retries = 6
             while _conflict_attempt < _max_conflict_retries:

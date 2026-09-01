@@ -59,6 +59,7 @@ export function getVariableIcon(nodeType: string): string {
     'managed_bot_updated_trigger': 'robot',
     'get_managed_bot_token': 'key',
     'http_request': 'globe',
+    'api_trigger': 'plug',
     'input': 'keyboard',
     'table': 'table',
   };
@@ -78,6 +79,7 @@ export function getVariableColor(nodeType: string): string {
     'managed_bot_updated_trigger': 'from-indigo-400 to-indigo-500',
     'get_managed_bot_token': 'from-indigo-400 to-violet-500',
     'http_request': 'from-sky-400 to-blue-500',
+    'api_trigger': 'from-violet-400 to-purple-500',
     'input': 'from-cyan-400 to-cyan-500',
     'table': 'from-amber-400 to-orange-500',
   };
@@ -96,6 +98,7 @@ export function getVariableBadge(nodeType: string): string {
     'managed_bot_updated_trigger': 'Управляемый бот',
     'get_managed_bot_token': 'Токен бота',
     'http_request': 'HTTP',
+    'api_trigger': 'API',
     'input': 'Ввод',
     'table': '📊 Таблица',
   };
