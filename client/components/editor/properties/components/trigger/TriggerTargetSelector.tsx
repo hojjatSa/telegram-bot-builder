@@ -24,7 +24,7 @@ export function TriggerTargetSelector({
 
   return (
     <div className="space-y-2">
-      <Label>Следующий узел</Label>
+      <Label>Next node</Label>
       <Select
         value={autoTransitionTo || ''}
         onValueChange={(value) => onNodeUpdate(selectedNode.id, { autoTransitionTo: value })}
@@ -38,13 +38,13 @@ export function TriggerTargetSelector({
           {availableNodes.map(({ node, sheetId, sheetName }) => (
             <SelectItem key={`${sheetId || 'sheet'}-${node.id}`} value={node.id}>
               <span className="text-xs font-mono text-sky-700 dark:text-sky-300 truncate">
-                {formatNodeDisplay(node, sheetName || 'Лист 1')}
+                {formatNodeDisplay(node, sheetName || 'Sheet 1')}
               </span>
             </SelectItem>
           ))}
           {availableNodes.length === 0 && (
             <SelectItem value="no-nodes" disabled>
-              Создайте другие узлы
+              Create another node first
             </SelectItem>
           )}
         </SelectContent>
