@@ -1,5 +1,5 @@
 /**
- * @fileoverview Пункты бокового меню панели управления
+ * @fileoverview Admin panel sidebar navigation items
  * @module components/admin/sidebar/nav-items
  */
 
@@ -15,37 +15,37 @@ import {
   Users,
 } from 'lucide-react';
 
-/** Внутренний раздел панели */
+/** Internal admin panel section */
 export interface AdminNavItem {
-  /** Путь относительно /admin */
+  /** Path relative to /admin */
   href: string;
-  /** Подпись в меню */
+  /** Menu label */
   label: string;
-  /** Иконка пункта */
+  /** Menu item icon */
   icon: React.ComponentType<{ className?: string }>;
 }
 
-/** Разделы внутри React-панели */
+/** Main sections inside the admin panel */
 export const ADMIN_NAV_ITEMS: AdminNavItem[] = [
-  { href: '/', label: 'Сводка', icon: LayoutDashboard },
-  { href: '/users', label: 'Аккаунты', icon: Users },
-  { href: '/settings', label: 'Настройки', icon: Settings },
-  { href: '/docs', label: 'Документация API', icon: BookOpen },
-  { href: '/maintenance', label: 'Обслуживание', icon: Wrench },
+  { href: '/', label: 'Overview', icon: LayoutDashboard },
+  { href: '/users', label: 'Accounts', icon: Users },
+  { href: '/settings', label: 'Settings', icon: Settings },
+  { href: '/docs', label: 'API Documentation', icon: BookOpen },
+  { href: '/maintenance', label: 'Maintenance', icon: Wrench },
 ];
 
-/** Документация и служебные страницы внутри панели */
+/** Documentation and service pages inside the admin panel */
 export const ADMIN_DOC_NAV_ITEMS: AdminNavItem[] = [
-  { href: '/live-db', label: 'База данных (живая)', icon: Database },
-  { href: '/schema', label: 'Схема базы данных', icon: Database },
-  { href: '/api-docs', label: 'Справочник API', icon: FileText },
-  { href: '/health', label: 'Проверка работы', icon: HeartPulse },
+  { href: '/live-db', label: 'Live Database', icon: Database },
+  { href: '/schema', label: 'Database Schema', icon: Database },
+  { href: '/api-docs', label: 'API Reference', icon: FileText },
+  { href: '/health', label: 'Health Check', icon: HeartPulse },
   { href: '/openapi', label: 'OpenAPI JSON', icon: Braces },
 ];
 
 /**
- * Возвращает пункты документации с учётом окружения разработки.
- * @returns Список пунктов для бокового меню
+ * Returns documentation items based on the current environment.
+ * @returns Sidebar navigation items
  */
 export function getAdminDocNavItems(): AdminNavItem[] {
   return ADMIN_DOC_NAV_ITEMS.filter(
@@ -54,10 +54,10 @@ export function getAdminDocNavItems(): AdminNavItem[] {
 }
 
 /**
- * Проверяет, активен ли пункт меню для текущего URL.
- * @param location - Текущий путь
- * @param href - Путь пункта относительно /admin
- * @returns true, если раздел активен
+ * Checks whether a menu item is active for the current URL.
+ * @param location - Current path
+ * @param href - Item path relative to /admin
+ * @returns true when the section is active
  */
 export function isAdminNavItemActive(location: string, href: string): boolean {
   const path = href === '/' ? '/admin' : `/admin${href}`;
@@ -77,4 +77,3 @@ export function isAdminNavItemActive(location: string, href: string): boolean {
 
   return location === path || location === `${path}/`;
 }
-
