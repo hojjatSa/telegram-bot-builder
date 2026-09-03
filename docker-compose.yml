@@ -65,6 +65,7 @@ services:
       HOST: "${HOST}"
       REDIS_URL: "${REDIS_URL}"
       # Optional Telegram relays for restricted networks. Empty = official Telegram endpoints.
+      TELEGRAM_API_BASE_URL: "${TELEGRAM_API_BASE_URL:-}"
       TELEGRAM_PROXY_URL: "${TELEGRAM_PROXY_URL:-}"
       TELEGRAM_JWKS_URL: "${TELEGRAM_JWKS_URL:-}"
     ports:
