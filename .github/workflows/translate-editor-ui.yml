@@ -1,0 +1,408 @@
+name: Translate Editor UI
+
+on:
+  push:
+    branches:
+      - golnoor
+    paths:
+      - .github/workflows/translate-editor-ui.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: golnoor
+          fetch-depth: 0
+
+      - name: Translate common visible UI strings
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          root = Path('client')
+          translations = {
+            'Ошибка': 'Error',
+            '❌ Ошибка': '❌ Error',
+            'Ошибка загрузки': 'Load failed',
+            'Ошибка сохранения': 'Save failed',
+            'Ошибка удаления': 'Delete failed',
+            'Ошибка создания': 'Create failed',
+            'Ошибка обновления': 'Update failed',
+            'Ошибка входа': 'Sign-in failed',
+            'Сетевая ошибка': 'Network error',
+            'Неизвестная ошибка': 'Unknown error',
+            'Не удалось сохранить': 'Could not save',
+            'Не удалось создать проект': 'Could not create project',
+            'Не удалось сохранить проект': 'Could not save project',
+            'Невалидный JSON': 'Invalid JSON',
+            'Готово': 'Done',
+            'Сохранено': 'Saved',
+            'Настройка сохранена': 'Setting saved',
+            'Не указано': 'Not specified',
+            'Все': 'All',
+            'Поиск': 'Search',
+            'Обновить': 'Refresh',
+            'Сохранить': 'Save',
+            'Создать': 'Create',
+            'Удалить': 'Delete',
+            'Редактировать': 'Edit',
+            'Дублировать': 'Duplicate',
+            'Отмена': 'Cancel',
+            'Закрыть': 'Close',
+            'Назад': 'Back',
+            'Далее': 'Next',
+            'Показать': 'Show',
+            'Скрыть': 'Hide',
+            'Развернуть': 'Expand',
+            'Свернуть': 'Collapse',
+            'Копировать': 'Copy',
+            'Скачать': 'Download',
+            'Импорт': 'Import',
+            'Экспорт': 'Export',
+            'Загрузка...': 'Loading...',
+            'Загрузка проекта...': 'Loading project...',
+            'Сохранение…': 'Saving…',
+            'Создание...': 'Creating...',
+            'Удаление...': 'Deleting...',
+            'Поиск...': 'Search...',
+            'Не выбрано': 'Not selected',
+            '⊘ Не выбрано': '⊘ Not selected',
+            'Без названия': 'Untitled',
+            'Пользователь': 'User',
+            'Пользователи': 'Users',
+            'Гость': 'Guest',
+            'Проект': 'Project',
+            'Проекты': 'Projects',
+            'Настройки': 'Settings',
+            'Действия': 'Actions',
+            'Статус': 'Status',
+            'Имя': 'Name',
+            'Название': 'Name',
+            'Описание': 'Description',
+            'Значение': 'Value',
+            'Тип': 'Type',
+            'Дата': 'Date',
+            'Время': 'Time',
+            'Размер': 'Size',
+            'Колонка': 'Column',
+            'Таблица': 'Table',
+            'Таблицы': 'Tables',
+            'Файл': 'File',
+            'Файлы': 'Files',
+            'Папка': 'Folder',
+            'Переменные': 'Variables',
+            'Переменная': 'Variable',
+            'Сообщение': 'Message',
+            'Сообщения': 'Messages',
+            'Команда': 'Command',
+            'Условие': 'Condition',
+            'Бот': 'Bot',
+            'Группа': 'Group',
+            'Канал': 'Channel',
+            'Язык': 'Language',
+            'Языки': 'Languages',
+            'Активность': 'Activity',
+            'Аналитика': 'Analytics',
+            'Терминал': 'Terminal',
+            'Код': 'Code',
+            'Свойства': 'Properties',
+            'Холст': 'Canvas',
+            'Компоненты': 'Components',
+            'Шапка': 'Header',
+            'Боковая панель': 'Sidebar',
+            'Редактор кода': 'Code Editor',
+            'Диалог': 'Dialog',
+            'Детали пользователя': 'User Details',
+            'Проводник файлов': 'File Explorer',
+            'Фото': 'Photo',
+            'Видео': 'Video',
+            'Аудио': 'Audio',
+            'Голосовое': 'Voice',
+            'Голосовое сообщение': 'Voice Message',
+            'Видеосообщение': 'Video Message',
+            'Документ': 'Document',
+            'Стикер': 'Sticker',
+            'Обложка': 'Cover',
+            'Медиа': 'Media',
+            'Медиафайл': 'Media File',
+            'Местоположение': 'Location',
+            'Геолокация': 'Location',
+            'Контакт': 'Contact',
+            'Анимация': 'Animation',
+            'GIF анимация': 'GIF Animation',
+            'Имя файла': 'File name',
+            'MIME тип': 'MIME type',
+            'Размер файла (байт)': 'File size (bytes)',
+            'Длительность (сек)': 'Duration (sec)',
+            'Ширина (px)': 'Width (px)',
+            'Высота (px)': 'Height (px)',
+            'Обложка (file_id)': 'Cover (file_id)',
+            'Уникальный ID файла': 'Unique file ID',
+            'Перетащи файл или вставь ссылку': 'Drop a file or paste a link',
+            'Файл отклонен': 'File rejected',
+            'Файл загружен': 'File uploaded',
+            'Файл прикреплён к ноде': 'File attached to node',
+            'Фото с камеры': 'Camera photo',
+            'камера': 'camera',
+            'Из буфера': 'From clipboard',
+            'Все типы': 'All types',
+            'Все сотрудники': 'All collaborators',
+            'Все хранилища': 'All storage',
+            'Название файла': 'File name',
+            'Поиск по имени': 'Search by name',
+            'Тип файла': 'File type',
+            'Сотрудник': 'Collaborator',
+            'Хранилище': 'Storage',
+            'Изменить хранилище': 'Change storage',
+            'Только file_id — прямое скачивание недоступно': 'file_id only — direct download is unavailable',
+            'Отметить, чтобы прикрепить к ноде': 'Select to attach to a node',
+            'Прикреплённые файлы': 'Attachments',
+            'Старт': 'Start',
+            'Текстовое сообщение': 'Text Message',
+            'Сохранить ответ': 'Save Answer',
+            'Клавиатура': 'Keyboard',
+            'Рассылка': 'Broadcast',
+            'Авторизация Client API': 'Client API Authentication',
+            'Триггер команды': 'Command Trigger',
+            'Текстовый триггер': 'Text Trigger',
+            'Триггер входящего сообщения': 'Incoming Message Trigger',
+            'Триггер сообщения в группе': 'Group Message Trigger',
+            'Триггер inline-кнопки': 'Inline Button Trigger',
+            'Триггер нажатия кнопки': 'Button Click Trigger',
+            'Триггер исходящего сообщения': 'Outgoing Message Trigger',
+            'Триггер обновления бота': 'Bot Update Trigger',
+            'Запуск по таймеру': 'Scheduled Trigger',
+            'API триггер': 'API Trigger',
+            'Ответ API': 'API Response',
+            'Закрепить сообщение': 'Pin Message',
+            'Открепить сообщение': 'Unpin Message',
+            'Удалить сообщение': 'Delete Message',
+            'Переслать сообщение': 'Forward Message',
+            'Создать топик форума': 'Create Forum Topic',
+            'Редактировать сообщение': 'Edit Message',
+            'Заблокировать пользователя': 'Ban User',
+            'Разблокировать пользователя': 'Unban User',
+            'Ограничить пользователя': 'Restrict User',
+            'Снять ограничения': 'Remove Restrictions',
+            'Исключить пользователя': 'Kick User',
+            'Назначить администратором': 'Promote Administrator',
+            'Снять с администратора': 'Demote Administrator',
+            'Права администратора': 'Administrator Rights',
+            'HTTP запрос': 'HTTP Request',
+            'Получить токен бота': 'Get Bot Token',
+            'Конвертер файлов': 'File Converter',
+            'Уведомление inline кнопки': 'Inline Button Notification',
+            'Параллельная группа': 'Parallel Group',
+            'Сообщение (юзербот)': 'Message (Userbot)',
+            'Нажать кнопку (юзербот)': 'Click Button (Userbot)',
+            'Inline-запрос (юзербот)': 'Inline Query (Userbot)',
+            'Редактирование (юзербот)': 'Edit (Userbot)',
+            'Цикл (Loop)': 'Loop',
+            'Задержка': 'Delay',
+            'Python-код': 'Python Code',
+            'Комментарий': 'Comment',
+            'Новая кнопка': 'New button',
+            'Без перехода': 'No transition',
+            'Последний ответ': 'Last answer',
+            'Вставить переменную': 'Insert variable',
+            'Или введите ID узла вручную': 'Or enter a node ID manually',
+            'или ID вручную': 'or enter an ID manually',
+            'Новое сообщение': 'New message',
+            'Создать топик': 'Create topic',
+            'Множественный выбор': 'Multiple choice',
+            'Дублировать лист': 'Duplicate sheet',
+            'Удалить лист': 'Delete sheet',
+            'Поиск узлов...': 'Search nodes...',
+            'Свойства элемента': 'Element Properties',
+            'Развернуть всё': 'Expand all',
+            'Свернуть всё': 'Collapse all',
+            'Вывод': 'Output',
+            'Ошибки': 'Errors',
+            'Увеличить': 'Zoom in',
+            'Уменьшить': 'Zoom out',
+            'Очистить': 'Clear',
+            'Копировать в формате': 'Copy as',
+            'Загрузить в формате': 'Download as',
+            'Обычный текст': 'Plain text',
+            'Детали лога': 'Log Details',
+            'Предыдущая строка': 'Previous line',
+            'Следующая строка': 'Next line',
+            'Показать в контексте': 'Show in context',
+            'Строка показана в контексте': 'Line shown in context',
+            'JSON скопирован': 'JSON copied',
+            'Не удалось скопировать JSON': 'Could not copy JSON',
+            'Скопировать JSON': 'Copy JSON',
+            'Ссылка на лог скопирована': 'Log link copied',
+            'Не удалось скопировать ссылку': 'Could not copy link',
+            'Скопировать ссылку': 'Copy link',
+            'Метаданные': 'Metadata',
+            'Уровень': 'Level',
+            'Онлайн': 'Online',
+            'Офлайн': 'Offline',
+            'Запуск': 'Run',
+            'История': 'History',
+            'История версий': 'Version History',
+            'Сохранить чекпоинт': 'Save checkpoint',
+            'Версия восстановлена': 'Version restored',
+            'Проект откатан к выбранной версии. Изменения видны на холсте.': 'Project restored to the selected version. Changes are visible on the canvas.',
+            'Ошибка восстановления': 'Restore failed',
+            'Не удалось восстановить версию проекта': 'Could not restore project version',
+            'Список обновлён': 'List refreshed',
+            'Восстановить': 'Restore',
+            'Входящие': 'Incoming',
+            'Исходящие': 'Outgoing',
+            'Обычные': 'Standard',
+            'Всего пользователей': 'Total Users',
+            'Источники трафика': 'Traffic Sources',
+            'Количество': 'Count',
+            'Сумма': 'Sum',
+            'Среднее': 'Average',
+            'Минимум': 'Minimum',
+            'Максимум': 'Maximum',
+            'Все пользователи': 'All users',
+            'По дате регистрации': 'By registration date',
+            'По активности': 'By activity',
+            'Выбрать вручную': 'Select manually',
+            'Название рассылки': 'Broadcast name',
+            'необязательно': 'optional',
+            'Аудитория': 'Audience',
+            'Также отправить в группы': 'Also send to groups',
+            'Получателей:': 'Recipients:',
+            'Фамилия': 'Last name',
+            'Супергруппа': 'Supergroup',
+            'Текст рассылки...': 'Broadcast message...',
+            'Подтверждение': 'Confirmation',
+            'Новая рассылка': 'New Broadcast',
+            'Запуск...': 'Starting...',
+            '✅ Рассылка завершена': '✅ Broadcast completed',
+            '⏸ Рассылка остановлена': '⏸ Broadcast stopped',
+            'Доставлено': 'Delivered',
+            'Остановлена': 'Stopped',
+            'Рассылка остановлена': 'Broadcast stopped',
+            'Не удалось остановить рассылку': 'Could not stop broadcast',
+            'Рассылка удалена': 'Broadcast deleted',
+            'Не удалось удалить рассылку': 'Could not delete broadcast',
+            'Заблокировал бота': 'Blocked the bot',
+            'Текст сообщения': 'Message text',
+            'Вставить переменную:': 'Insert variable:',
+            'Добавить Telegram file_id': 'Add Telegram file_id',
+            'Инлайн-кнопки (необязательно)': 'Inline buttons (optional)',
+            '← Назад': '← Back',
+            'Далее →': 'Next →',
+            'Все категории': 'All categories',
+            'Официальные': 'Official',
+            'Пользовательские': 'User templates',
+            'Сообщество': 'Community',
+            'Бизнес': 'Business',
+            'Развлечения': 'Entertainment',
+            'Образование': 'Education',
+            'Утилиты': 'Utilities',
+            'Игры': 'Games',
+            'Пользовательский': 'Custom',
+            'Официальный': 'Official',
+            'Сортировка': 'Sort',
+            'Системные (токен)': 'System (token)',
+            'Пользовательские (проект)': 'Custom (project)',
+            'Контент (авто)': 'Content (auto)',
+            'Имя таблицы': 'Table name',
+            'Нет таблиц': 'No tables',
+            'Создать первую': 'Create first table',
+            'Все таблицы': 'All tables',
+            'База данных': 'Database',
+            'Ответ': 'Response',
+            'Нет сообщений': 'No messages',
+            'Сообщение отправлено': 'Message sent',
+            'Фото ответ': 'Photo response',
+            '[Фото]': '[Photo]',
+            '[Видео]': '[Video]',
+            '[Аудио]': '[Audio]',
+            '[Голосовое]': '[Voice]',
+            '[Документ]': '[Document]',
+            '[Стикер]': '[Sticker]',
+            '📷 Фото': '📷 Photo',
+            '📎 Медиа': '📎 Media',
+            '[медиа]': '[media]',
+            'Произошла ошибка': 'Something went wrong',
+            'Произошла непредвиденная ошибка. Пожалуйста, обновите страницу.': 'An unexpected error occurred. Please refresh the page.',
+            'Обновить страницу': 'Refresh page',
+            'Сервер готов к работе!': 'Server is ready!',
+            'Загрузка сервера...': 'Starting server...',
+            'Некоторые функции могут быть временно недоступны': 'Some features may be temporarily unavailable',
+            'Привет! Я ваш новый бот.': 'Hello! I am your new bot.',
+            'Привет! Я ваш новый бот. Нажмите /help для получения помощи.': 'Hello! I am your new bot. Use /help for assistance.',
+            'Введите ответ': 'Enter a response',
+            'Введите сообщение...': 'Enter a message...',
+            'Введите текст сообщения...': 'Enter message text...',
+            'Нарушение правил группы': 'Violation of group rules',
+            'Перезапустите бота, чтобы применить изменения': 'Restart the bot to apply changes',
+            'Сохранять входящие фото': 'Save incoming photos',
+            'Токен не найден': 'Token not found',
+            'Аккаунт удалён': 'Account deleted',
+            'Не удалось удалить сценарий': 'Could not delete template',
+            'Не удалось загрузить изображение': 'Could not load image',
+            'Файл ${index + 1}': 'File ${index + 1}',
+            'Бот #${token.id}': 'Bot #${token.id}',
+            'Бот ${token.id}': 'Bot ${token.id}',
+            'Проект ${index + 1}': 'Project ${index + 1}',
+          }
+
+          string_pattern = re.compile(r"(?P<q>['\"`])(?P<body>(?:\\.|(?!\1).)*?)(?P=q)", re.S)
+          extensions = {'.ts', '.tsx', '.js', '.jsx', '.html'}
+          changed = []
+
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix not in extensions:
+                  continue
+              path_text = str(path)
+              if '/tests/' in path_text or '.test.' in path.name:
+                  continue
+
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              original = text
+
+              def replace_string(match):
+                  body = match.group('body')
+                  translated = translations.get(body)
+                  if translated is None:
+                      return match.group(0)
+                  quote = match.group('q')
+                  return f'{quote}{translated}{quote}'
+
+              text = string_pattern.sub(replace_string, text)
+
+              for source, target in sorted(translations.items(), key=lambda item: -len(item[0])):
+                  if '<' in source or '>' in source:
+                      continue
+                  text = re.sub(
+                      r'(>\s*)' + re.escape(source) + r'(\s*<)',
+                      lambda match, value=target: match.group(1) + value + match.group(2),
+                      text,
+                  )
+
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path))
+
+          print(f'Translated {len(changed)} client files')
+          for path in changed:
+              print(path)
+
+      - name: Commit translation pass
+        run: |
+          if git diff --quiet -- client; then
+            echo "No translation changes to commit"
+            exit 0
+          fi
+          git config user.name "hojjat saadatmand"
+          git config user.email "hojjat.sa@gmail.com"
+          git add client
+          git commit -m "feat(i18n): translate editor UI strings to English"
+          git push origin golnoor
