@@ -10,7 +10,16 @@
 import { createPublicKey, createVerify } from "crypto";
 
 /** URL публичных ключей Telegram JWKS (OIDC) */
-const JWKS_URL = "https://oauth.telegram.org/.well-known/jwks.json";
+const DEFAULT_JWKS_URL = "https://oauth.telegram.org/.well-known/jwks.json";
+
+/**
+ * Возвращает endpoint JWKS.
+ * TELEGRAM_JWKS_URL позволяет использовать доверенный relay/proxy в сетях,
+ * где oauth.telegram.org недоступен. Без переменной поведение не меняется.
+ */
+function getJwksUrl(): string {
+    return process.env.TELEGRAM_JWKS_URL?.trim() || DEFAULT_JWKS_URL;
+}
 
 /** Время жизни кэша ключей в миллисекундах (1 час) */
 const CACHE_TTL_MS = 60 * 60 * 1000;
@@ -90,7 +99,7 @@ export async function fetchJwks(): Promise<JwkKey[]> {
         return jwksCache.keys;
     }
 
-    const res = await fetch(JWKS_URL);
+    const res = await fetch(getJwksUrl());
     if (!res.ok) throw new Error(`JWKS fetch failed: ${res.status}`);
 
     const raw = await res.text();
