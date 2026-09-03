@@ -1,5 +1,5 @@
 /**
- * @fileoverview Поля настроек Telegram OIDC
+ * @fileoverview Telegram OIDC settings fields
  * @module components/admin/settings/telegram-fields
  */
 
@@ -15,24 +15,19 @@ import {
 import { Input } from '@/components/ui/input';
 import type { AdminSettingsSchemaValues } from './settings-schema';
 
-/**
- * Пропсы компонента TelegramFields
- */
 interface TelegramFieldsProps {
-  /** Управление формой react-hook-form */
+  /** react-hook-form control */
   control: Control<AdminSettingsSchemaValues>;
-  /** Client Secret уже сохранён на сервере */
+  /** Client Secret is already stored on the server */
   clientSecretConfigured: boolean;
-  /** Bot Token уже сохранён на сервере */
+  /** Bot Token is already stored on the server */
   botTokenConfigured: boolean;
-  /** Выбран режим Telegram Widget */
+  /** Telegram Widget mode is selected */
   widgetMode: boolean;
 }
 
 /**
- * Поля Client ID, Secret, username и token бота
- * @param props - Свойства компонента
- * @returns JSX блок полей Telegram
+ * Client ID, Client Secret, bot username and bot token fields.
  */
 export function TelegramFields({
   control,
@@ -43,11 +38,11 @@ export function TelegramFields({
   return (
     <div className="space-y-4">
       <div>
-        <h3 className="text-base font-semibold">Данные Telegram (для виджета)</h3>
+        <h3 className="text-base font-semibold">Telegram credentials</h3>
         <p className="text-sm text-muted-foreground mt-1">
           {widgetMode
-            ? 'Обязательно: Client ID, Secret и username из BotFather.'
-            : 'Не обязательно при dev-login. Заполните перед переключением на Telegram Widget.'}
+            ? 'Required: Client ID, Client Secret and bot username from BotFather.'
+            : 'Optional for dev login. Fill these in before switching to Telegram Login Widget.'}
         </p>
       </div>
 
@@ -56,12 +51,12 @@ export function TelegramFields({
         name="clientId"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Client ID {widgetMode && '(обязательно)'}</FormLabel>
+            <FormLabel>Client ID {widgetMode && '(required)'}</FormLabel>
             <FormControl>
-              <Input {...field} placeholder="Числовой Client ID из BotFather → Web Login" />
+              <Input {...field} placeholder="Numeric Client ID from BotFather → Web Login" />
             </FormControl>
             <FormDescription>
-              Скопируйте из @BotFather → Login Widget → OpenID (см. инструкцию справа).
+              Copy it from @BotFather → Login Widget → OpenID. See the instructions on the right.
             </FormDescription>
             <FormMessage />
           </FormItem>
@@ -74,7 +69,7 @@ export function TelegramFields({
         render={({ field }) => (
           <FormItem>
             <FormLabel>
-              Client Secret {widgetMode && !clientSecretConfigured && '(обязательно при первой настройке)'}
+              Client Secret {widgetMode && !clientSecretConfigured && '(required for initial setup)'}
             </FormLabel>
             <FormControl>
               <Input
@@ -83,8 +78,8 @@ export function TelegramFields({
                 autoComplete="new-password"
                 placeholder={
                   clientSecretConfigured
-                    ? 'Задан — оставьте пустым, чтобы не менять'
-                    : 'Из BotFather → Web Login (не bot token!)'
+                    ? 'Configured — leave blank to keep the current value'
+                    : 'From BotFather → Web Login (not the bot token)'
                 }
               />
             </FormControl>
@@ -98,9 +93,9 @@ export function TelegramFields({
         name="botUsername"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Bot Username (опционально)</FormLabel>
+            <FormLabel>Bot Username (optional)</FormLabel>
             <FormControl>
-              <Input {...field} placeholder="my_bot — без @, или из Bot Token" />
+              <Input {...field} placeholder="my_bot — without @, or derived from Bot Token" />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -112,7 +107,7 @@ export function TelegramFields({
         name="botToken"
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Bot Token (опционально)</FormLabel>
+            <FormLabel>Bot Token (optional)</FormLabel>
             <FormControl>
               <Input
                 {...field}
@@ -120,13 +115,13 @@ export function TelegramFields({
                 autoComplete="new-password"
                 placeholder={
                   botTokenConfigured
-                    ? 'Задан — оставьте пустым, чтобы не менять'
-                    : 'Опционально — Mini App в Telegram, не для виджета'
+                    ? 'Configured — leave blank to keep the current value'
+                    : 'Optional — used for Telegram Mini App, not browser login'
                 }
               />
             </FormControl>
             <FormDescription>
-              Не путать с Client Secret. Для Mini App (initData) и username. Виджет в браузере — без токена.
+              This is different from Client Secret. It is used for Telegram Mini App initData and bot username lookup. Browser login does not require it.
             </FormDescription>
             <FormMessage />
           </FormItem>
