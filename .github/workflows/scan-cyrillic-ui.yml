@@ -66,3 +66,9 @@ jobs:
         with:
           name: cyrillic-ui-inventory
           path: cyrillic-ui-inventory.txt
+
+      - name: Upload client source
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-source
+          path: client
