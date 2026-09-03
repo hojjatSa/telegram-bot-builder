@@ -10,31 +10,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-/**
- * Пропсы компонента DeepLinkSection
- */
 interface DeepLinkSectionProps {
-  /** Режим совпадения: точное или по префиксу */
   deepLinkMatchMode: 'exact' | 'startsWith';
-  /** Параметр deep link, например "ref" или "ref_" */
   deepLinkParam: string;
-  /** Сохранять значение параметра в переменную */
   deepLinkSaveToVar: boolean;
-  /** Имя переменной для сохранения значения */
   deepLinkVarName: string;
-  /** Обработчик изменения любого поля */
   onChange: (updates: Partial<DeepLinkSectionProps>) => void;
 }
 
-/**
- * Секция настроек Deep Link
- *
- * Показывается только для команды /start. Позволяет задать
- * параметр ссылки, режим совпадения и переменную для сохранения.
- *
- * @param props - Свойства компонента
- * @returns JSX элемент секции Deep Link
- */
 export function DeepLinkSection({
   deepLinkMatchMode,
   deepLinkParam,
@@ -42,15 +25,14 @@ export function DeepLinkSection({
   deepLinkVarName,
   onChange,
 }: DeepLinkSectionProps) {
-  const preview = deepLinkParam ? `t.me/bot?start=${deepLinkParam}` : 't.me/bot?start=<значение>';
+  const preview = deepLinkParam ? `t.me/bot?start=${deepLinkParam}` : 't.me/bot?start=<value>';
 
   return (
     <div className="space-y-3 rounded-lg border border-sky-300/40 dark:border-sky-700/40 p-3">
       <Label className="text-sm font-semibold text-sky-700 dark:text-sky-300">Deep Link</Label>
 
-      {/* Режим совпадения */}
       <div className="space-y-1">
-        <Label className="text-xs text-muted-foreground">Режим совпадения</Label>
+        <Label className="text-xs text-muted-foreground">Match mode</Label>
         <Select
           value={deepLinkMatchMode}
           onValueChange={(value) =>
@@ -61,15 +43,14 @@ export function DeepLinkSection({
             <SelectValue />
           </SelectTrigger>
           <SelectContent className="bg-gradient-to-br from-sky-50/95 to-blue-50/90 dark:from-slate-900/95 dark:to-slate-800/95">
-            <SelectItem value="exact">Точное совпадение</SelectItem>
+            <SelectItem value="exact">Exact match</SelectItem>
             <SelectItem value="startsWith">Starts with</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      {/* Параметр */}
       <div className="space-y-1">
-        <Label className="text-xs text-muted-foreground">Параметр</Label>
+        <Label className="text-xs text-muted-foreground">Parameter</Label>
         <Input
           value={deepLinkParam}
           onChange={(e) => onChange({ deepLinkParam: e.target.value })}
@@ -79,13 +60,11 @@ export function DeepLinkSection({
         <p className="text-xs text-muted-foreground font-mono">{preview}</p>
       </div>
 
-      {/* Сохранить в переменную */}
       <button
         type="button"
         onClick={() => onChange({ deepLinkSaveToVar: !deepLinkSaveToVar })}
         className="flex items-center gap-2 w-full text-left group"
       >
-        {/* Toggle */}
         <div className={`relative w-8 h-4 rounded-full transition-colors flex-shrink-0 ${
           deepLinkSaveToVar
             ? 'bg-sky-500'
@@ -96,14 +75,13 @@ export function DeepLinkSection({
           }`} />
         </div>
         <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-          Сохранить в переменную
+          Save to variable
         </span>
       </button>
 
-      {/* Имя переменной */}
       {deepLinkSaveToVar && (
         <div className="space-y-1">
-          <Label className="text-xs text-muted-foreground">Имя переменной</Label>
+          <Label className="text-xs text-muted-foreground">Variable name</Label>
           <Input
             value={deepLinkVarName}
             onChange={(e) => onChange({ deepLinkVarName: e.target.value })}
