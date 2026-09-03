@@ -1368,6 +1368,36 @@
     "author": ""
   },
   {
+    "path": "fork-customizations/telegram-api-base-url",
+    "title": "Telegram Bot API base URL override",
+    "excerpt": "This fork supports an optional reverse gateway for Telegram Bot API traffic without changing the upstream default behavior.",
+    "parts": [
+      "fork-customizations",
+      "telegram-api-base-url"
+    ],
+    "folder_titles": {
+      "fork-customizations": "Fork customizations"
+    },
+    "updated_at": "2026-09-03T22:10:44+03:30",
+    "tags": [],
+    "author": ""
+  },
+  {
+    "path": "fork-customizations/telegram-gateway-diagnostics",
+    "title": "Telegram Gateway diagnostics",
+    "excerpt": "This fork adds an admin-only diagnostic card for the optional `TELEGRAM_API_BASE_URL` integration.",
+    "parts": [
+      "fork-customizations",
+      "telegram-gateway-diagnostics"
+    ],
+    "folder_titles": {
+      "fork-customizations": "Fork customizations"
+    },
+    "updated_at": "2026-09-03T22:35:28+03:30",
+    "tags": [],
+    "author": ""
+  },
+  {
     "path": "futures/docs/docs-restructuring-plan",
     "title": "Реструктуризация документации: идеальная структура docs/",
     "excerpt": "| Проблема | Описание | Влияние |",

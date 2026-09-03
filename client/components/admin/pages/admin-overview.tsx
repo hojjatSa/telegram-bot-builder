@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useAdminSettings } from '../hooks/use-admin-settings';
 import { getAdminDocNavItems } from '../sidebar/nav-items';
 import { AdminVersionCard } from './admin-version-card';
+import { ForkAdminOverviewExtensions } from '@/fork/admin/fork-admin-overview-extensions';
 
 export function AdminOverview() {
   const { data: settings, isLoading } = useAdminSettings();
@@ -63,6 +64,8 @@ export function AdminOverview() {
           </CardContent>
         </Card>
       </div>
+
+      <ForkAdminOverviewExtensions />
 
       <Card>
         <CardHeader>
