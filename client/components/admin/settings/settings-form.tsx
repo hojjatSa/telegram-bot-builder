@@ -1,5 +1,5 @@
 /**
- * @fileoverview Форма настроек приложения в панели управления
+ * @fileoverview Application settings form in the admin panel
  * @module components/admin/settings/settings-form
  */
 
@@ -19,8 +19,8 @@ import { TelegramFields } from './telegram-fields';
 import { adminSettingsSchema, type AdminSettingsSchemaValues } from './settings-schema';
 
 /**
- * Форма настроек входа и данных Telegram
- * @returns JSX элемент формы настроек
+ * Login and Telegram settings form.
+ * @returns Settings form JSX
  */
 export function SettingsForm() {
   const { toast } = useToast();
@@ -56,11 +56,11 @@ export function SettingsForm() {
       onSuccess: () => {
         form.setValue('clientSecret', '');
         form.setValue('botToken', '');
-        toast({ title: 'Настройки сохранены' });
+        toast({ title: 'Settings saved' });
       },
       onError: (error: Error & { error?: string }) => {
         toast({
-          title: 'Ошибка сохранения',
+          title: 'Failed to save settings',
           description: error.error || error.message,
           variant: 'destructive',
         });
@@ -93,7 +93,7 @@ export function SettingsForm() {
                 botTokenConfigured={settings.providers.telegram.botTokenConfigured}
               />
               <Button type="submit" disabled={saveMutation.isPending}>
-                {saveMutation.isPending ? 'Сохранение…' : 'Сохранить'}
+                {saveMutation.isPending ? 'Saving…' : 'Save'}
               </Button>
             </form>
           </Form>
