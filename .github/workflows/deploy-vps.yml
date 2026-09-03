@@ -19,7 +19,8 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: fedorabakumets/telegram-bot-builder
+  # Fork-owned image. Keep lowercase for OCI/GHCR compatibility.
+  IMAGE_NAME: hojjatsa/telegram-bot-builder
 
 jobs:
   build-and-push:
