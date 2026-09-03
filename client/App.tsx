@@ -1,16 +1,9 @@
 /**
  * @file App.tsx
- * @brief Главный компонент приложения Telegram Bot Builder
+ * @brief Main Telegram Bot Builder application component
  *
- * Этот файл содержит основной компонент приложения, который управляет:
- * - Роутингом между различными страницами
- * - Ленивой загрузкой компонентов для оптимизации производительности
- * - Обработкой авторизации через Telegram
- * - Предоставлением контекста и провайдеров для всего приложения
- *
- * @author Telegram Bot Builder Team
- * @version 1.0
- * @date 2026
+ * Handles application routing, lazy-loaded pages, Telegram authentication,
+ * and global providers used throughout the app.
  */
 
 import { Switch, Route, useLocation } from "wouter";
@@ -32,37 +25,25 @@ import { useTelegramAuth } from "@/components/editor/header/hooks/use-telegram-a
 import { isGuest } from "@/types/telegram-user";
 import { apiRequest } from "@/queryClient";
 
-// Ленивая загрузка страниц для улучшения производительности
 const Home = lazy(() => import("@/pages/home"));
 const Editor = lazy(() => import("@/pages/editor"));
 const TemplatesPage = lazy(() => import("@/components/editor/scenariy"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 const AdminPanel = lazy(() => import("@/pages/admin"));
 
-/**
- * @brief Компонент индикатора загрузки
- *
- * Отображает визуальный индикатор загрузки при ленивой загрузке компонентов.
- * Содержит анимированный спиннер и текст информирующий пользователя о процессе загрузки.
- *
- * @returns JSX.Element Компонент индикатора загрузки
- */
 function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-background">
       <div className="flex flex-col items-center space-y-6">
-        {/* Логотип или иконка */}
         <div className="relative">
           <div className="w-16 h-16 rounded-full border-4 border-primary/20"></div>
           <Loader2 className="h-16 w-16 animate-spin text-primary absolute inset-0" />
         </div>
 
-        {/* Текст загрузки */}
         <div className="text-center space-y-2">
           <h3 className="text-lg font-medium text-foreground">Telegram Bot Builder</h3>
-          <p className="text-sm text-muted-foreground">Загружаем интерфейс...</p>
+          <p className="text-sm text-muted-foreground">Loading interface...</p>
 
-          {/* Индикатор прогресса */}
           <div className="w-48 h-1 bg-muted rounded-full overflow-hidden">
             <div className="h-full bg-primary rounded-full animate-pulse"></div>
           </div>
@@ -73,16 +54,13 @@ function LoadingSpinner() {
 }
 
 /**
- * Гард проектов: если у пользователя нет ни активных, ни архивных проектов — NoProjectsScreen.
- * Проекты только в личном архиве не блокируют доступ к редактору.
- * Не срабатывает на страницах /templates и /not-found.
+ * Shows the empty-projects screen when the signed-in user has no active or archived projects.
  */
 function ProjectsGuard({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
   const { user, sessionReady } = useTelegramAuth();
   const isGuestUser = !user || isGuest(user);
 
-  // На этих страницах гард не блокирует
   const isExcluded =
     location.startsWith('/templates') ||
     location.startsWith('/not-found');
@@ -116,14 +94,6 @@ function ProjectsGuard({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-/**
- * @brief Компонент маршрутизации приложения
- *
- * Определяет маршруты приложения и сопоставляет их с соответствующими компонентами.
- * Использует Suspense для обработки ленивой загрузки компонентов.
- *
- * @returns JSX.Element Компонент маршрутизации
- */
 function Router() {
   return (
     <Suspense fallback={<LoadingSpinner />}>
@@ -163,16 +133,6 @@ function Router() {
   );
 }
 
-/**
- * @brief Главный компонент приложения
- *
- * Основной компонент приложения, который:
- * - Обрабатывает события авторизации через Telegram
- * - Предоставляет провайдеры темы, запросов, тостов и подсказок
- * - Отображает статус сервера и маршрутизацию
- *
- * @returns JSX.Element Главный компонент приложения
- */
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="telegram-bot-builder-theme">
@@ -191,9 +151,4 @@ function App() {
   );
 }
 
-/**
- * @brief Экспорт главного компонента приложения
- *
- * Экспортирует компонент App по умолчанию для использования в других модулях
- */
 export default App;
