@@ -12,6 +12,7 @@ import { Loader2 } from 'lucide-react';
 import { useAdminSettings } from '../hooks/use-admin-settings';
 import { getAdminDocNavItems } from '../sidebar/nav-items';
 import { AdminVersionCard } from './admin-version-card';
+import { ForkAdminOverviewExtensions } from '@/fork/admin/fork-admin-overview-extensions';
 
 /**
  * Сводка состояния платформы и быстрые переходы
@@ -68,6 +69,8 @@ export function AdminOverview() {
           </CardContent>
         </Card>
       </div>
+
+      <ForkAdminOverviewExtensions />
 
       <Card>
         <CardHeader>

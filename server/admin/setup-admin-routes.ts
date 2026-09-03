@@ -37,6 +37,7 @@ import {
 } from "./pages/schema-docs-page";
 import { isAdminEnabled, resolveAdminApiKey } from "./resolve-admin-key";
 import { isConfigured } from "../services/app-settings.service";
+import { registerForkExtensions } from "../fork";
 
 /** Префикс защищённых admin-маршрутов */
 export const ADMIN_PATHS_PREFIX = "/admin";
@@ -48,6 +49,9 @@ export const ADMIN_PATHS_PREFIX = "/admin";
  */
 export function setupAdminRoutes(app: Express): void {
   if (!isAdminEnabled()) return;
+
+  // Fork-only functionality is mounted through one isolated registry.
+  registerForkExtensions(app);
 
   app.get("/admin/login", (req, res) => {
     if (isAdminAuthenticated(req)) {
