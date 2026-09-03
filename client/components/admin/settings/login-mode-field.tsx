@@ -1,5 +1,5 @@
 /**
- * @fileoverview Блок выбора режима входа на сайте
+ * @fileoverview Login mode selector for the site
  * @module components/admin/settings/login-mode-field
  */
 
@@ -15,17 +15,17 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import type { AdminSettingsSchemaValues } from './settings-schema';
 
 /**
- * Пропсы компонента LoginModeField
+ * LoginModeField component props.
  */
 interface LoginModeFieldProps {
-  /** Управление формой react-hook-form */
+  /** react-hook-form control */
   control: Control<AdminSettingsSchemaValues>;
 }
 
 /**
- * Переключатели dev-login и Telegram Login Widget
- * @param props - Свойства компонента
- * @returns JSX элемент выбора режима входа
+ * Dev-login and Telegram Login Widget selector.
+ * @param props - Component properties
+ * @returns Login mode selector JSX
  */
 export function LoginModeField({ control }: LoginModeFieldProps) {
   return (
@@ -34,7 +34,7 @@ export function LoginModeField({ control }: LoginModeFieldProps) {
       name="loginMode"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Режим входа на сайте</FormLabel>
+          <FormLabel>Site login mode</FormLabel>
           <FormControl>
             <RadioGroup
               value={field.value}
@@ -44,15 +44,15 @@ export function LoginModeField({ control }: LoginModeFieldProps) {
               <label className="flex gap-3 rounded-lg border border-border/60 p-3 cursor-pointer hover:bg-muted/40">
                 <RadioGroupItem value="dev_login" className="mt-0.5" />
                 <span className="text-sm leading-relaxed">
-                  <strong className="block text-foreground">Dev-login</strong>
-                  Ввод Telegram ID на странице входа. Для локальной работы без BotFather.
+                  <strong className="block text-foreground">Dev login</strong>
+                  Enter a Telegram ID on the login page. Useful for local development without BotFather.
                 </span>
               </label>
               <label className="flex gap-3 rounded-lg border border-border/60 p-3 cursor-pointer hover:bg-muted/40">
                 <RadioGroupItem value="telegram_widget" className="mt-0.5" />
                 <span className="text-sm leading-relaxed">
                   <strong className="block text-foreground">Telegram Login Widget</strong>
-                  Кнопка «Войти через Telegram». Нужно перед деплоем и ссылкой для других людей.
+                  Adds a “Log in with Telegram” button. Use this before production deployment or sharing access with other users.
                 </span>
               </label>
             </RadioGroup>
