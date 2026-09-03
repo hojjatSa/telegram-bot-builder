@@ -1,0 +1,19 @@
+{#
+  Optional Telegram Bot API reverse-gateway support.
+
+  When TELEGRAM_API_BASE_URL is unset, aiogram keeps its normal production
+  session exactly as upstream expects. When set, both Bot API methods and file
+  downloads are generated from the custom base via TelegramAPIServer.from_base.
+#}
+TELEGRAM_API_BASE_URL = os.getenv("TELEGRAM_API_BASE_URL", "").strip().rstrip("/")
+
+if TELEGRAM_API_BASE_URL:
+    from aiogram.client.session.aiohttp import AiohttpSession
+    from aiogram.client.telegram import TelegramAPIServer
+
+    _telegram_session = AiohttpSession(
+        api=TelegramAPIServer.from_base(TELEGRAM_API_BASE_URL)
+    )
+    bot = Bot(token=BOT_TOKEN, session=_telegram_session)
+else:
+    bot = Bot(token=BOT_TOKEN)

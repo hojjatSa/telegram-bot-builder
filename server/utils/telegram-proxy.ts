@@ -6,6 +6,7 @@
  */
 
 import { ProxyAgent, Agent, fetch as undiciFetch } from 'undici';
+import { rewriteTelegramApiUrl } from './telegram-api-base';
 
 /** Агент для прямого подключения (без системного прокси) */
 const directAgent = new Agent();
@@ -52,6 +53,7 @@ export const getTelegramProxyAgent = getProxyAgent;
 
 /**
  * Выполняет HTTP-запрос через настроенный прокси или напрямую.
+ * TELEGRAM_API_BASE_URL, если задан, переписывает только официальный Telegram Bot API URL.
  * Явно использует undici Agent, чтобы обойти системный прокси Windows.
  * @param url - URL для запроса
  * @param options - Опции fetch (метод, заголовки, тело и т.д.)
@@ -61,9 +63,10 @@ export async function fetchWithProxy(url: string, options?: RequestInit): Promis
   initProxy();
 
   const dispatcher = proxyAgent ?? directAgent;
+  const requestUrl = rewriteTelegramApiUrl(url);
 
   try {
-    return await undiciFetch(url, { ...options, dispatcher } as any) as unknown as Response;
+    return await undiciFetch(requestUrl, { ...options, dispatcher } as any) as unknown as Response;
   } catch (error) {
     const label = proxyAgent ? 'через прокси' : 'напрямую (без прокси)';
     console.error(`[Proxy] fetch ${label} не удался:`, error instanceof Error ? error.message : error);
