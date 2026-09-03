@@ -24,7 +24,7 @@ jobs:
           from pathlib import Path
           import re
 
-          # Translation audit: report remaining Cyrillic UI candidates.
+          # Translation audit pass 2: report remaining Cyrillic UI candidates.
           roots = [Path('client')]
           extensions = {'.ts', '.tsx', '.js', '.jsx', '.html'}
           cyr = re.compile(r'[А-Яа-яЁё]')
