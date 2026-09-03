@@ -36,30 +36,30 @@ interface ConditionBranchItemProps {
 
 /** Метки операторов для отображения в выпадающем списке */
 const OPERATOR_LABELS: Record<ConditionOperator, string> = {
-  'filled': 'Если переменная введена',
-  'empty': 'Если переменная не введена',
-  'equals': 'Если переменная равна',
-  'not_equals': 'Не равно',
-  'contains': 'Если переменная содержит',
-  'not_contains': 'Не содержит',
-  'starts_with': 'Начинается с',
-  'ends_with': 'Заканчивается на',
-  'matches_regex': 'Соответствует регулярке',
-  'greater_than': 'Если переменная больше',
-  'less_than': 'Если переменная меньше',
-  'between': 'Если переменная в диапазоне',
-  'is_even': 'Чётное число',
-  'is_odd': 'Нечётное число',
-  'divisible_by': 'Делится на',
-  'is_private': 'Если приватный чат',
-  'is_group': 'Если групповой чат',
-  'is_channel': 'Если канал',
-  'is_admin': 'Если пользователь — администратор бота',
-  'is_premium': 'Если пользователь — Telegram Premium',
-  'is_bot': 'Если пользователь — бот',
-  'is_subscribed': 'Если пользователь подписан на канал / состоит в группе',
-  'is_not_subscribed': 'Если пользователь не подписан на канал / не состоит в группе',
-  'else': 'Во всех остальных случаях',
+  'filled': 'If variable is set',
+  'empty': 'If variable is empty',
+  'equals': 'If variable equals',
+  'not_equals': 'Does not equal',
+  'contains': 'If variable contains',
+  'not_contains': 'Does not contain',
+  'starts_with': 'Starts with',
+  'ends_with': 'Ends with',
+  'matches_regex': 'Matches regex',
+  'greater_than': 'If variable is greater than',
+  'less_than': 'If variable is less than',
+  'between': 'If variable is in range',
+  'is_even': 'Even number',
+  'is_odd': 'Odd number',
+  'divisible_by': 'Divisible by',
+  'is_private': 'If private chat',
+  'is_group': 'If group chat',
+  'is_channel': 'If channel',
+  'is_admin': 'If user is a bot administrator',
+  'is_premium': 'If user has Telegram Premium',
+  'is_bot': 'If user is a bot',
+  'is_subscribed': 'If user is subscribed to the channel / belongs to the group',
+  'is_not_subscribed': 'If user is not subscribed to the channel / does not belong to the group',
+  'else': 'In all other cases',
 };
 
 /** Операторы, доступные для выбора пользователем */
@@ -87,29 +87,29 @@ export function getSelectedLabel(
   value2?: string,
   subscriptionMode?: 'all' | 'any',
 ): string {
-  const varName = variable.replace(/[{}]/g, '').trim() || 'переменная';
+  const varName = variable.replace(/[{}]/g, '').trim() || 'variable';
   switch (operator) {
-    case 'filled':       return `Если переменная "${varName}" введена`;
-    case 'empty':        return `Если переменная "${varName}" не введена`;
-    case 'equals':       return `Если переменная "${varName}" равна "${value || '...'}"`;
-    case 'not_equals':   return `Если переменная "${varName}" не равна "${value || '...'}"`;
-    case 'contains':     return `Если переменная "${varName}" содержит "${value || '...'}"`;
-    case 'not_contains': return `Если переменная "${varName}" не содержит "${value || '...'}"`;
-    case 'starts_with':  return `Если переменная "${varName}" начинается с "${value || '...'}"`;
-    case 'ends_with':    return `Если переменная "${varName}" заканчивается на "${value || '...'}"`;
-    case 'matches_regex':return `Если переменная "${varName}" соответствует регулярке "${value || '...'}"`;
-    case 'greater_than': return `Если переменная "${varName}" больше ${value || '...'}`;
-    case 'less_than':    return `Если переменная "${varName}" меньше ${value || '...'}`;
-    case 'between':      return `Если переменная "${varName}" от ${value || '...'} до ${value2 || '...'}`;
-    case 'is_even':      return `Если переменная "${varName}" — чётное число`;
-    case 'is_odd':       return `Если переменная "${varName}" — нечётное число`;
-    case 'divisible_by': return `Если переменная "${varName}" делится на ${value || '...'}`;
-    case 'is_private':   return 'Если приватный чат';
-    case 'is_group':     return 'Если групповой чат';
-    case 'is_channel':   return 'Если канал';
-    case 'is_admin':     return 'Если пользователь — администратор бота';
-    case 'is_premium':   return 'Если пользователь — Telegram Premium';
-    case 'is_bot':       return 'Если пользователь — бот';
+    case 'filled':       return `If variable "${varName}" is set`;
+    case 'empty':        return `If variable "${varName}" is empty`;
+    case 'equals':       return `If variable "${varName}" equals "${value || '...'}"`;
+    case 'not_equals':   return `If variable "${varName}" does not equal "${value || '...'}"`;
+    case 'contains':     return `If variable "${varName}" contains "${value || '...'}"`;
+    case 'not_contains': return `If variable "${varName}" does not contain "${value || '...'}"`;
+    case 'starts_with':  return `If variable "${varName}" starts with "${value || '...'}"`;
+    case 'ends_with':    return `If variable "${varName}" ends with "${value || '...'}"`;
+    case 'matches_regex':return `If variable "${varName}" matches regex "${value || '...'}"`;
+    case 'greater_than': return `If variable "${varName}" is greater than ${value || '...'}`;
+    case 'less_than':    return `If variable "${varName}" is less than ${value || '...'}`;
+    case 'between':      return `If variable "${varName}" is between ${value || '...'} and ${value2 || '...'}`;
+    case 'is_even':      return `If variable "${varName}" is even`;
+    case 'is_odd':       return `If variable "${varName}" is odd`;
+    case 'divisible_by': return `If variable "${varName}" is divisible by ${value || '...'}`;
+    case 'is_private':   return 'If private chat';
+    case 'is_group':     return 'If group chat';
+    case 'is_channel':   return 'If channel';
+    case 'is_admin':     return 'If user is a bot administrator';
+    case 'is_premium':   return 'If user has Telegram Premium';
+    case 'is_bot':       return 'If user is a bot';
     case 'is_subscribed':     return buildSubscriptionLabel(value, subscriptionMode, false);
     case 'is_not_subscribed': return buildSubscriptionLabel(value, subscriptionMode, true);
     default:             return OPERATOR_LABELS[operator];
@@ -125,22 +125,22 @@ export function getSelectedLabel(
  */
 function buildSubscriptionLabel(value: string, mode: 'all' | 'any' | undefined, negated: boolean): string {
   const channels = value ? value.split(',').map(c => c.trim()).filter(Boolean) : [];
-  if (channels.length === 0) return negated ? 'Если пользователь не подписан на канал / не состоит в группе' : 'Если пользователь подписан на канал / состоит в группе';
+  if (channels.length === 0) return negated ? 'If user is not subscribed to the channel / does not belong to the group' : 'If user is subscribed to the channel / belongs to the group';
   if (channels.length === 1) {
     return negated
-      ? `Не подписан на ${channels[0]}`
-      : `Подписан на ${channels[0]}`;
+      ? `Not subscribed to ${channels[0]}`
+      : `Subscribed to ${channels[0]}`;
   }
   const list = channels.join(', ');
   if (mode === 'any') {
     return negated
-      ? `Не подписан ни на один из: ${list}`
-      : `Подписан хотя бы на один из: ${list}`;
+      ? `Not subscribed to any of: ${list}`
+      : `Subscribed to at least one of: ${list}`;
   }
   // mode === 'all' (по умолчанию)
   return negated
-    ? `Не подписан на все: ${list}`
-    : `Подписан на все: ${list}`;
+    ? `Not subscribed to all of: ${list}`
+    : `Subscribed to all: ${list}`;
 }
 
 /**
@@ -180,7 +180,7 @@ export function ConditionBranchItem({ branch, variable, messageNode, onChange, o
       size="sm"
       onClick={() => onDelete(branch.id)}
       className="h-7 w-7 p-0 text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 shrink-0"
-      title="Удалить ветку"
+      title="Delete branch"
     >
       <Trash2 className="h-3.5 w-3.5" />
     </Button>
@@ -215,7 +215,7 @@ export function ConditionBranchItem({ branch, variable, messageNode, onChange, o
           <Input
             value={branch.value}
             onChange={e => onChange(branch.id, 'value', e.target.value)}
-            placeholder={isBetween ? 'от (или {переменная})' : 'значение или {переменная}'}
+            placeholder={isBetween ? 'from (or {variable})' : 'value or {variable}'}
             className="text-sm h-7 flex-1"
           />
           <VariableSelector
@@ -227,7 +227,7 @@ export function ConditionBranchItem({ branch, variable, messageNode, onChange, o
               <Input
                 value={branch.value2 ?? ''}
                 onChange={e => onChange(branch.id, 'value2', e.target.value)}
-                placeholder="до (или {переменная})"
+                placeholder="to (or {variable})"
                 className="text-sm h-7 flex-1"
               />
               <VariableSelector
@@ -268,7 +268,7 @@ export function ConditionBranchItem({ branch, variable, messageNode, onChange, o
             ))}
             {availableTargets.length === 0 && (
               <SelectItem value="no-nodes" disabled>
-                <span className="text-muted-foreground text-xs">Нет доступных узлов</span>
+                <span className="text-muted-foreground text-xs">No available nodes</span>
               </SelectItem>
             )}
           </SelectContent>
@@ -287,11 +287,11 @@ export function ConditionBranchItem({ branch, variable, messageNode, onChange, o
           <Textarea
             value={messageText}
             onChange={e => handleMessageTextChange(e.target.value)}
-            placeholder="Текст сообщения для этой ветки..."
+            placeholder="Message text for this branch..."
             className="text-xs min-h-[60px] resize-none"
           />
           <p className="text-xs text-gray-400 dark:text-gray-500">
-            Текст сообщения, отправляемого по этой ветке
+            Message sent through this branch
           </p>
         </div>
       )}

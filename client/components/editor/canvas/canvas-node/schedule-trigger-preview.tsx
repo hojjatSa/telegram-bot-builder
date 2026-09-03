@@ -22,7 +22,7 @@ function formatRule(rule: any): string {
     case 'interval': {
       const unit = rule.intervalUnit || 'minutes';
       const val = rule.intervalValue || rule.intervalMinutes || 5;
-      const labels: Record<string, string> = { seconds: 'сек', minutes: 'мин', hours: 'ч', days: 'дн' };
+      const labels: Record<string, string> = { seconds: 'сек', minutes: 'min', hours: 'ч', days: 'дн' };
       if (unit === 'minutes' && !rule.intervalUnit) return `Каждые ${val} мин`;
       return `Каждые ${val} ${labels[unit] || 'мин'}`;
     }

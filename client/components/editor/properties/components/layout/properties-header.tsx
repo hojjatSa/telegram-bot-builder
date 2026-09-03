@@ -70,7 +70,7 @@ export function PropertiesHeader({
                 <i className={`${nodeIcon} text-base sm:text-lg`}></i>
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Текущий элемент</p>
+                <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 mb-1">Current element</p>
                 <div className="flex items-center gap-2 mt-2 w-full">
                   <Select
                     value={selectedNode.type}
@@ -109,45 +109,45 @@ export function PropertiesHeader({
                       {nodeTitle}
                     </SelectTrigger>
                     <SelectContent className="z-50 bg-gradient-to-br from-slate-50/95 to-slate-100/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-60 overflow-y-auto">
-                      <SelectItem value="message">📝 Текстовое сообщение</SelectItem>
-                      <SelectItem value="start">🚀 Старт</SelectItem>
-                      <SelectItem value="command">⌨️ Команда</SelectItem>
-                      <SelectItem value="keyboard">⌨️ Клавиатура</SelectItem>
-                      <SelectItem value="sticker">😀 Стикер</SelectItem>
-                      <SelectItem value="voice">🎤 Голосовое сообщение</SelectItem>
-                      <SelectItem value="animation">🎞️ GIF анимация</SelectItem>
-                      <SelectItem value="location">📍 Геолокация</SelectItem>
-                      <SelectItem value="contact">📞 Контакт</SelectItem>
-                      <SelectItem value="command_trigger">⚡ Триггер команды</SelectItem>
-                      <SelectItem value="text_trigger">💬 Текстовый триггер</SelectItem>
-                      <SelectItem value="pin_message">📌 Закрепить сообщение</SelectItem>
-                      <SelectItem value="unpin_message">📌❌ Открепить сообщение</SelectItem>
-                      <SelectItem value="delete_message">🗑️ Удалить сообщение</SelectItem>
-                      <SelectItem value="forward_message">↗️ Переслать сообщение</SelectItem>
-                      <SelectItem value="ban_user">🚫 Заблокировать пользователя</SelectItem>
-                      <SelectItem value="unban_user">✅ Разблокировать пользователя</SelectItem>
-                      <SelectItem value="mute_user">🔇 Ограничить пользователя</SelectItem>
-                      <SelectItem value="unmute_user">🔊 Снять ограничения</SelectItem>
-                      <SelectItem value="kick_user">👢 Исключить пользователя</SelectItem>
-                      <SelectItem value="promote_user">👑 Назначить администратором</SelectItem>
-                      <SelectItem value="demote_user">👤 Снять с администратора</SelectItem>
-                      <SelectItem value="admin_rights">⚡ Права администратора</SelectItem>
-                      <SelectItem value="broadcast">📢 Рассылка</SelectItem>
-                      <SelectItem value="input">Сохранить ответ в переменную</SelectItem>
-                      <SelectItem value="media">🖼️ Медиафайл</SelectItem>
-                      <SelectItem value="loop">🔄 Цикл (Loop)</SelectItem>
+                      <SelectItem value="message">📝 Text Message</SelectItem>
+                      <SelectItem value="start">🚀 Start</SelectItem>
+                      <SelectItem value="command">⌨️ Command</SelectItem>
+                      <SelectItem value="keyboard">⌨️ Keyboard</SelectItem>
+                      <SelectItem value="sticker">😀 Sticker</SelectItem>
+                      <SelectItem value="voice">🎤 Voice Message</SelectItem>
+                      <SelectItem value="animation">🎞️ GIF Animation</SelectItem>
+                      <SelectItem value="location">📍 Location</SelectItem>
+                      <SelectItem value="contact">📞 Contact</SelectItem>
+                      <SelectItem value="command_trigger">⚡ Command Trigger</SelectItem>
+                      <SelectItem value="text_trigger">💬 Text Trigger</SelectItem>
+                      <SelectItem value="pin_message">📌 Pin Message</SelectItem>
+                      <SelectItem value="unpin_message">📌❌ Unpin Message</SelectItem>
+                      <SelectItem value="delete_message">🗑️ Delete Message</SelectItem>
+                      <SelectItem value="forward_message">↗️ Forward Message</SelectItem>
+                      <SelectItem value="ban_user">🚫 Ban User</SelectItem>
+                      <SelectItem value="unban_user">✅ Unban User</SelectItem>
+                      <SelectItem value="mute_user">🔇 Restrict User</SelectItem>
+                      <SelectItem value="unmute_user">🔊 Remove Restrictions</SelectItem>
+                      <SelectItem value="kick_user">👢 Kick User</SelectItem>
+                      <SelectItem value="promote_user">👑 Promote Administrator</SelectItem>
+                      <SelectItem value="demote_user">👤 Demote Administrator</SelectItem>
+                      <SelectItem value="admin_rights">⚡ Administrator Rights</SelectItem>
+                      <SelectItem value="broadcast">📢 Broadcast</SelectItem>
+                      <SelectItem value="input">Save answer to variable</SelectItem>
+                      <SelectItem value="media">🖼️ Media File</SelectItem>
+                      <SelectItem value="loop">🔄 Loop</SelectItem>
                     </SelectContent>
                   </Select>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(displayNodeId);
                       toast({
-                        title: "✅ ID скопирован!",
-                        description: `"${displayNodeId}" в буфер обмена`,
+                        title: "✅ ID copied!",
+                        description: `"${displayNodeId}" copied to clipboard`,
                       });
                     }}
                     className="flex items-center gap-2 px-3 py-2.5 bg-gradient-to-r from-blue-500/15 to-cyan-500/15 dark:from-blue-600/20 dark:to-cyan-600/20 hover:from-blue-500/25 hover:to-cyan-500/25 dark:hover:from-blue-600/30 dark:hover:to-cyan-600/30 border border-blue-300/40 dark:border-blue-600/40 hover:border-blue-400/60 dark:hover:border-blue-500/60 rounded-lg transition-all duration-200 group shadow-sm hover:shadow-md w-1/2 min-w-0"
-                    title="Нажмите, чтобы скопировать ID"
+                    title="Click to copy ID"
                     data-testid="button-copy-node-id"
                   >
                     <code className="text-sm font-mono font-semibold text-blue-700 dark:text-blue-300 truncate group-hover:text-blue-800 dark:group-hover:text-blue-200 transition-colors w-full overflow-hidden text-left">
@@ -164,7 +164,7 @@ export function PropertiesHeader({
                 variant="ghost"
                 className="h-8 w-8 flex-shrink-0"
                 onClick={onClose}
-                title="Закрыть панель свойств"
+                title="Close properties panel"
                 data-testid="button-close-properties"
               >
                 <X className="w-4 h-4" />

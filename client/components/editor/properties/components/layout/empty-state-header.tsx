@@ -34,7 +34,7 @@ export function EmptyStateHeader({ onClose }: EmptyStateHeaderProps) {
             variant="ghost"
             className="h-8 w-8 flex-shrink-0"
             onClick={onClose}
-            title="Закрыть панель свойств"
+            title="Close properties panel"
             data-testid="button-close-properties-empty"
           >
             <X className="w-4 h-4" />

@@ -62,7 +62,7 @@ export function DeepLinkSection({
           </SelectTrigger>
           <SelectContent className="bg-gradient-to-br from-sky-50/95 to-blue-50/90 dark:from-slate-900/95 dark:to-slate-800/95">
             <SelectItem value="exact">Точное совпадение</SelectItem>
-            <SelectItem value="startsWith">Начинается с</SelectItem>
+            <SelectItem value="startsWith">Starts with</SelectItem>
           </SelectContent>
         </Select>
       </div>

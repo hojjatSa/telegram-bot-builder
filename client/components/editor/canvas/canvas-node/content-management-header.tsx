@@ -93,7 +93,7 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
             <span className="text-[10px] text-slate-400">сообщение:</span>
             <span className="text-[10px] text-amber-300/90 font-mono">
               {sourceIdSource === 'variable'
-                ? ((node.data as any).sourceMessageVariableName || 'переменная')
+                ? ((node.data as any).sourceMessageVariableName || 'variable')
                 : sourceLabel[sourceIdSource] ?? sourceIdSource}
             </span>
           </span>

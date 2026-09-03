@@ -124,7 +124,7 @@ export function DialogList({
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-baseline justify-between gap-2">
-                <span className="text-sm font-medium truncate">📢 Рассылка</span>
+                <span className="text-sm font-medium truncate">📢 Broadcast</span>
                 {broadcastProgress}
               </div>
               <p className="text-xs text-muted-foreground truncate mt-0.5">{broadcastPreview}</p>

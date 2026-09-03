@@ -10,7 +10,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const loopNode: ComponentDefinition = {
   id: 'loop-node',
-  name: '🔄 Цикл (Loop)',
+  name: '🔄 Loop',
   description: 'Цикл по массиву — выполнить цепочку для каждого элемента',
   icon: 'fas fa-sync-alt',
   color: 'bg-violet-100 text-violet-600',

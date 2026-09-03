@@ -219,7 +219,7 @@ ToastTitle.displayName = ToastPrimitives.Title.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <ToastDescription>Файл успешно загружен</ToastDescription>
+ * <ToastDescription>File uploaded successfully</ToastDescription>
  *
  * @returns {JSX.Element} Описание тоста
  */

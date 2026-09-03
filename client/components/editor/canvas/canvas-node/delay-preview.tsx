@@ -18,7 +18,7 @@ interface DelayPreviewProps {
 function formatDelay(value: string, unit: string): string {
   const labels: Record<string, string> = {
     seconds: 'сек',
-    minutes: 'мин',
+    minutes: 'min',
     hours: 'ч',
     days: 'дн',
     weeks: 'нед',

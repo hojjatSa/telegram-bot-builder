@@ -50,7 +50,7 @@ async function updateUserbotSettings(
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
-  if (!res.ok) throw new Error('Ошибка сохранения настроек юзербота');
+  if (!res.ok) throw new Error('Could not save userbot settings');
 }
 
 /**
@@ -104,7 +104,7 @@ export function BotUserbotSettings({
   /** Шаг 1: отправка кода на телефон */
   async function handleSendCode() {
     if (!apiId || !apiHash || !phone) {
-      setError('Заполните все поля');
+      setError('Fill in all fields');
       return;
     }
     setError('');
@@ -120,9 +120,9 @@ export function BotUserbotSettings({
 
       if (data.ok) {
         setStep('code');
-        toast({ title: 'Код отправлен', description: 'Проверьте Telegram или SMS' });
+        toast({ title: 'Code sent', description: 'Check Telegram or SMS' });
       } else {
-        setError(data.message || 'Ошибка отправки кода');
+        setError(data.message || 'Could not send code');
       }
     } catch (e: any) {
       setError(e.message || 'Network error');
@@ -134,7 +134,7 @@ export function BotUserbotSettings({
   /** Шаг 2: ввод кода */
   async function handleSignIn() {
     if (!code) {
-      setError('Введите код');
+      setError('Enter the code');
       return;
     }
     setError('');
@@ -151,11 +151,11 @@ export function BotUserbotSettings({
       if (data.ok && data.session_string) {
         setStep('done');
         queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
-        toast({ title: 'Авторизация успешна!', description: 'Session string сохранён' });
+        toast({ title: 'Authorization successful!', description: 'Session string saved' });
       } else if (data.ok && data.needs_2fa) {
         setStep('2fa');
       } else {
-        setError(data.message || 'Неверный код');
+        setError(data.message || 'Invalid code');
       }
     } catch (e: any) {
       setError(e.message || 'Network error');
@@ -167,7 +167,7 @@ export function BotUserbotSettings({
   /** Шаг 3: ввод 2FA пароля */
   async function handleSign2fa() {
     if (!password) {
-      setError('Введите пароль');
+      setError('Enter password');
       return;
     }
     setError('');
@@ -184,9 +184,9 @@ export function BotUserbotSettings({
       if (data.ok && data.session_string) {
         setStep('done');
         queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
-        toast({ title: 'Авторизация успешна!', description: 'Session string сохранён' });
+        toast({ title: 'Authorization successful!', description: 'Session string saved' });
       } else {
-        setError(data.message || 'Неверный пароль');
+        setError(data.message || 'Invalid password');
       }
     } catch (e: any) {
       setError(e.message || 'Network error');
@@ -223,8 +223,8 @@ export function BotUserbotSettings({
           </Label>
           <p className="mt-0.5 text-xs text-muted-foreground">
             {enabled
-              ? 'Юзербот работает параллельно с основным ботом'
-              : 'Подключить аккаунт пользователя через Telethon'}
+              ? 'Userbot runs alongside the main bot'
+              : 'Connect a user account through Telethon'}
           </p>
         </div>
         <Switch
@@ -246,7 +246,7 @@ export function BotUserbotSettings({
               rel="noopener noreferrer"
               className="underline hover:text-foreground transition-colors"
             >
-              Получить API ID и Hash на my.telegram.org
+              Get API ID and Hash at my.telegram.org
             </a>
           </div>
 
@@ -281,7 +281,7 @@ export function BotUserbotSettings({
           {/* Шаг: ввод телефона */}
           {(step === 'idle' || step === 'phone') && (
             <div className="space-y-2">
-              <Label htmlFor={`ub-phone-${tokenId}`} className="text-xs">Номер телефона</Label>
+              <Label htmlFor={`ub-phone-${tokenId}`} className="text-xs">Phone number</Label>
               <div className="flex gap-2">
                 <Input
                   id={`ub-phone-${tokenId}`}
@@ -296,7 +296,7 @@ export function BotUserbotSettings({
                   disabled={loading || !apiId || !apiHash || !phone}
                   className="h-8 text-xs"
                 >
-                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Отправить код'}
+                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Send code'}
                 </Button>
               </div>
             </div>
@@ -306,7 +306,7 @@ export function BotUserbotSettings({
           {step === 'code' && (
             <div className="space-y-2">
               <Label htmlFor={`ub-code-${tokenId}`} className="text-xs">
-                Код из Telegram / SMS
+                Code from Telegram / SMS
               </Label>
               <div className="flex gap-2">
                 <Input
@@ -323,7 +323,7 @@ export function BotUserbotSettings({
                   disabled={loading || !code}
                   className="h-8 text-xs"
                 >
-                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Подтвердить'}
+                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Confirm'}
                 </Button>
               </div>
             </div>
@@ -333,7 +333,7 @@ export function BotUserbotSettings({
           {step === '2fa' && (
             <div className="space-y-2">
               <Label htmlFor={`ub-2fa-${tokenId}`} className="text-xs">
-                Пароль двухфакторной аутентификации
+                Two-factor authentication password
               </Label>
               <div className="flex gap-2">
                 <Input
@@ -341,7 +341,7 @@ export function BotUserbotSettings({
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Ваш 2FA пароль"
+                  placeholder="Your 2FA password"
                   className="h-8 text-xs flex-1"
                   autoFocus
                 />
@@ -351,7 +351,7 @@ export function BotUserbotSettings({
                   disabled={loading || !password}
                   className="h-8 text-xs"
                 >
-                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Войти'}
+                  {loading ? <Loader2 className="h-3 w-3 animate-spin" /> : 'Sign in'}
                 </Button>
               </div>
             </div>
@@ -363,7 +363,7 @@ export function BotUserbotSettings({
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300">
-                  Аккаунт авторизован
+                  Account authorized
                 </span>
               </div>
               <Button
@@ -372,7 +372,7 @@ export function BotUserbotSettings({
                 onClick={handleReset}
                 className="h-6 text-xs text-muted-foreground"
               >
-                Переавторизовать
+                Reauthorize
               </Button>
             </div>
           )}

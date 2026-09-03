@@ -61,7 +61,7 @@ interface TemplateFormData {
  */
 export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: SaveTemplateModalProps) {
   const [formData, setFormData] = useState<TemplateFormData>({
-    name: projectName ? `${projectName} - Сценарий` : 'Новый сценарий',
+    name: projectName ? `${projectName} - Template` : 'New template',
     description: '',
     category: 'custom',
     isPublic: false,
@@ -147,8 +147,8 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
       queryClient.invalidateQueries({ queryKey: ['/api/templates'] });
       queryClient.invalidateQueries({ queryKey: ['/api/templates/category/custom'] });
       toast({
-        title: 'Сценарий сохранен',
-        description: 'Ваш сценарий бота успешно сохранен',
+        title: 'Template saved',
+        description: 'Your bot template was saved successfully',
       });
       onClose();
       resetForm();
@@ -156,7 +156,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Не удалось сохранить сценарий',
+        description: 'Could not save template',
         variant: 'destructive',
       });
     },
@@ -166,7 +166,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
    * Функция сброса формы к начальным значениям
    *
    * Восстанавливает все поля формы к значениям по умолчанию:
-   * - Название: "{projectName} - Сценарий" или "Новый сценарий"
+   * - Название: "{projectName} - Сценарий" или "New template"
    * - Описание: пустая строка
    * - Категория: "custom"
    * - Публичность: false
@@ -174,7 +174,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
    */
   const resetForm = () => {
     setFormData({
-      name: projectName ? `${projectName} - Сценарий` : 'Новый сценарий',
+      name: projectName ? `${projectName} - Template` : 'New template',
       description: '',
       category: 'custom',
       isPublic: false,
@@ -195,7 +195,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
     if (!formData.name.trim()) {
       toast({
         title: 'Error',
-        description: 'Название сценария обязательно',
+        description: 'Template name is required',
         variant: 'destructive',
       });
       return;
@@ -225,22 +225,22 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Save className="h-5 w-5" />
-            Сохранить как сценарий
+            Save as template
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Сохраните текущую схему бота как сценарий для повторного использования
+            Save the current bot flow as a reusable template
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6 py-4">
           {/* Название */}
           <div className="space-y-2">
-            <Label htmlFor="name">Название сценария</Label>
+            <Label htmlFor="name">Template name</Label>
             <Input
               id="name"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-              placeholder="Введите название сценария"
+              placeholder="Enter template name"
             />
           </div>
 
@@ -251,20 +251,20 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
               id="description"
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-              placeholder="Краткое описание того, для чего предназначен этот сценарий"
+              placeholder="Briefly describe what this template is for"
               rows={3}
             />
           </div>
 
           {/* Категория */}
           <div className="space-y-2">
-            <Label>Категория</Label>
+            <Label>Category</Label>
             <Select
               value={formData.category}
               onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Выберите категорию" />
+                <SelectValue placeholder="Select category" />
               </SelectTrigger>
               <SelectContent>
                 {categories.map((category) => (
@@ -287,7 +287,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
                 className="h-4 w-4"
               />
               <Label htmlFor="isPublic">
-                Сделать сценарий публичным (другие пользователи смогут его использовать)
+                Make template public (other users can use it)
               </Label>
             </div>
 
@@ -308,7 +308,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
                 className="h-4 w-4"
               />
               <Label htmlFor="isAnonymous">
-                Сохранить анонимно (скрыть мой юзернейм)
+                Save anonymously (hide my username)
               </Label>
             </div>
 
@@ -322,22 +322,22 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
 
           {/* Статистика сценария */}
           <div className="p-4 bg-muted rounded-lg">
-            <h4 className="font-medium mb-2">Информация о сценарии:</h4>
+            <h4 className="font-medium mb-2">Template information:</h4>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-muted-foreground">Узлов:</span>
+                <span className="text-muted-foreground">Nodes:</span>
                 <span className="ml-2 font-medium">{stats.nodes}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Связей:</span>
+                <span className="text-muted-foreground">Connections:</span>
                 <span className="ml-2 font-medium">{stats.connections}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Команд:</span>
+                <span className="text-muted-foreground">Commands:</span>
                 <span className="ml-2 font-medium">{stats.commands}</span>
               </div>
               <div>
-                <span className="text-muted-foreground">Кнопок:</span>
+                <span className="text-muted-foreground">Buttons:</span>
                 <span className="ml-2 font-medium">{stats.buttons}</span>
               </div>
             </div>

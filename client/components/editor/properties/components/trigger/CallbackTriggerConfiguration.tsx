@@ -209,7 +209,7 @@ export function CallbackTriggerConfiguration({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="exact">Точное совпадение</SelectItem>
-            <SelectItem value="startswith">Начинается с</SelectItem>
+            <SelectItem value="startswith">Starts with</SelectItem>
           </SelectContent>
         </Select>
       </div>

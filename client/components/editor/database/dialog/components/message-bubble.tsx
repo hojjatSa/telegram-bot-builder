@@ -290,7 +290,7 @@ export function MessageBubble({
 
           {isBot && isBroadcastMessage(message) && (
             <span className="text-xs text-muted-foreground flex items-center gap-1">
-              📢 Рассылка
+              📢 Broadcast
             </span>
           )}
         </div>

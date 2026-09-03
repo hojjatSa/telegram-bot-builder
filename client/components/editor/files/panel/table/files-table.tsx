@@ -70,7 +70,7 @@ export function FilesTable(props: FilesTableProps) {
     return <div className={EMPTY_STATE_CLASS} data-testid="files-table-loading">Загрузка…</div>;
   }
   if (files.length === 0) {
-    return <div className={EMPTY_STATE_CLASS} data-testid="files-table-empty">Файлы не найдены</div>;
+    return <div className={EMPTY_STATE_CLASS} data-testid="files-table-empty">No files found</div>;
   }
 
   /** Общие пропсы строки/карточки для каждого файла */

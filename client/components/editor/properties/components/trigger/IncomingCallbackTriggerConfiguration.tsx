@@ -85,7 +85,7 @@ export function IncomingCallbackTriggerConfiguration({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="startsWith">Начинается с</SelectItem>
+              <SelectItem value="startsWith">Starts with</SelectItem>
               <SelectItem value="equals">Равно</SelectItem>
               <SelectItem value="contains">Содержит</SelectItem>
             </SelectContent>

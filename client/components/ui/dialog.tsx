@@ -98,7 +98,7 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
  *     <DialogDescription>Description</DialogDescription>
  *   </DialogHeader>
  *   <DialogFooter>
- *     <Button>Подтвердить</Button>
+ *     <Button>Confirm</Button>
  *     <Button variant="outline">Cancel</Button>
  *   </DialogFooter>
  * </DialogContent>
@@ -176,7 +176,7 @@ DialogHeader.displayName = "DialogHeader"
  *
  * @example
  * <DialogFooter>
- *   <Button>Подтвердить</Button>
+ *   <Button>Confirm</Button>
  *   <Button variant="outline">Cancel</Button>
  * </DialogFooter>
  *

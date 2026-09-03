@@ -235,7 +235,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
   const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
     // Handle rejected files
     rejectedFiles.forEach(rejection => {
-      const error = rejection.errors[0]?.message || 'Неподдерживаемый файл';
+      const error = rejection.errors[0]?.message || 'Unsupported file';
       toast({
         title: "File rejected",
         description: `${rejection.file.name}: ${error}`,
@@ -529,7 +529,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
                 <Upload className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </div>
-              <span className="font-semibold text-sm sm:text-base break-words">Загрузить медиафайлы</span>
+              <span className="font-semibold text-sm sm:text-base break-words">Upload media files</span>
             </div>
             {uploadingFiles.length > 0 && (
               <Button
@@ -587,38 +587,38 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             {isDragActive && !isDragReject ? (
               <div>
                 <p className="text-xl font-semibold text-blue-600 dark:text-blue-400 mb-2">
-                  Отпустите файлы здесь!
+                  Drop files here!
                 </p>
                 <p className="text-sm text-blue-500">
-                  Файлы будут загружены автоматически
+                  Files will upload automatically
                 </p>
               </div>
             ) : isDragReject ? (
               <div>
                 <p className="text-xl font-semibold text-red-600 dark:text-red-400 mb-2">
-                  Неподдерживаемые файлы
+                  Unsupported files
                 </p>
                 <p className="text-sm text-red-500">
-                  Проверьте тип и размер файлов
+                  Check file type and size
                 </p>
               </div>
             ) : uploadingFiles.some(uf => uf.status === 'uploading') ? (
               <div>
                 <p className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-2">
-                  Загрузка файлов...
+                  Uploading files...
                 </p>
                 <p className="text-sm text-gray-500">
-                  Пожалуйста, подождите
+                  Please wait
                 </p>
               </div>
             ) : (
               <div>
                 <p className="text-sm sm:text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
-                  <span className="hidden sm:inline">Перетащите файлы сюда или нажмите для выбора</span>
-                  <span className="sm:hidden">Нажмите для выбора файлов</span>
+                  <span className="hidden sm:inline">Drop files here or click to browse</span>
+                  <span className="sm:hidden">Click to select files</span>
                 </p>
                 <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
-                  Изображения, видео, аудио, документы (до 50МБ)
+                  Images, video, audio, documents (up to 50MB)
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-400">
                   <div className="flex items-center gap-1">
@@ -635,7 +635,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   </div>
                   <div className="flex items-center gap-1">
                     <FileText className="w-4 h-4" />
-                    Документы
+                    Documents
                   </div>
                 </div>
               </div>
@@ -688,7 +688,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   )}
                   {uploadingFile.status === 'success' && (
                     <p className="text-xs text-green-600 dark:text-green-400 mt-1">
-                      Файл успешно загружен
+                      File uploaded successfully
                     </p>
                   )}
                 </div>
@@ -708,7 +708,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   className="flex items-center gap-2 bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-950/20 dark:to-blue-950/20 border-green-200 dark:border-green-800 hover:from-green-100 hover:to-blue-100 dark:hover:from-green-900/30 dark:hover:to-blue-900/30"
                 >
                   <Camera className="w-4 h-4 text-green-600 dark:text-green-400" />
-                  Сделать фото
+                  Take photo
                 </Button>
               )}
 
@@ -780,7 +780,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   className="flex items-center gap-2"
                 >
                   <FileText className="w-4 h-4" />
-                  Документы
+                  Documents
                 </Button>
               </div>
             </div>
@@ -880,7 +880,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
           </TabsTrigger>
           <TabsTrigger value="document" className="text-[11px] sm:text-sm px-1 sm:px-3">
             <FileText className="w-3.5 h-3.5 sm:hidden" />
-            <span className="hidden sm:inline">Документы</span>
+            <span className="hidden sm:inline">Documents</span>
           </TabsTrigger>
         </TabsList>
 
@@ -1002,9 +1002,9 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
         <Dialog open={!!editingFile} onOpenChange={() => setEditingFile(null)}>
           <DialogContent aria-describedby="edit-file-description">
             <DialogHeader>
-              <DialogTitle>Редактировать файл</DialogTitle>
+              <DialogTitle>Edit file</DialogTitle>
               <div id="edit-file-description" className="text-sm text-muted-foreground">
-                Измените описание и теги для этого медиа файла
+                Edit the description and tags for this media file
               </div>
             </DialogHeader>
             <div className="space-y-4">
@@ -1020,7 +1020,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 />
               </div>
               <div>
-                <label className="text-sm font-medium">Теги (через запятую)</label>
+                <label className="text-sm font-medium">Tags (comma-separated)</label>
                 <Input
                   value={editingFile.tags?.join(', ') || ''}
                   onChange={(e) => setEditingFile({

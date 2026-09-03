@@ -36,7 +36,7 @@ export function DesktopSaveTemplateButton({ onClick, isVertical }: DesktopSaveTe
       )}
     >
       <Bookmark className="h-3.5 w-3.5 max-sm:mx-auto" />
-      <span className="ml-1 hidden xl:inline">Сохранить сценарий</span>
+      <span className="ml-1 hidden xl:inline">Save template</span>
     </Button>
   );
 }

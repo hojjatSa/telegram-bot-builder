@@ -87,7 +87,7 @@ export function BotTableUpdatesSection({ updates, onChange }: BotTableUpdatesSec
           <Input
             value={entry.value}
             onChange={(e) => handleUpdate(i, 'value', e.target.value)}
-            placeholder="значение"
+            placeholder="value"
             className="text-xs h-7 flex-1 bg-white/60 dark:bg-slate-950/60"
           />
           <Button

@@ -117,7 +117,7 @@ export function UserbotMessageConfiguration({
               <i className="fas fa-plus mr-1" /> Добавить получателя
             </Button>
             <p className="text-[10px] text-muted-foreground/70">
-              Юзербот должен быть участником чата. Поддерживается: @username, числовой ID, телефон, {'{переменная}'}.
+              Юзербот должен быть участником чата. Поддерживается: @username, числовой ID, телефон, {'{variable}'}.
             </p>
           </div>
         )}

@@ -69,7 +69,7 @@ export function DeleteProjectDialog({
       onDelete();
       onOpenChange(false);
     } catch {
-      toast({ title: '❌ Error', description: 'Не удалось сохранить сценарий', variant: 'destructive' as any });
+      toast({ title: '❌ Error', description: 'Could not save template', variant: 'destructive' as any });
     } finally {
       setIsSaving(false);
     }

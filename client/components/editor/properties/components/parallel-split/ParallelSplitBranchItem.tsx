@@ -54,7 +54,7 @@ function TargetSelector({ value, placeholder, onChange, targets }: {
           ))}
           {targets.length === 0 && (
             <SelectItem value="no-nodes" disabled>
-              <span className="text-muted-foreground text-xs">Нет доступных узлов</span>
+              <span className="text-muted-foreground text-xs">No available nodes</span>
             </SelectItem>
           )}
         </SelectContent>
@@ -91,7 +91,7 @@ export function ParallelSplitBranchItem({ branch, index, onChange, onDelete, get
           size="sm"
           onClick={() => onDelete(branch.id)}
           className="h-7 w-7 p-0 text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 shrink-0"
-          title="Удалить ветку"
+          title="Delete branch"
         >
           <Trash2 className="h-3.5 w-3.5" />
         </Button>

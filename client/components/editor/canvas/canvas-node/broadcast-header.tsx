@@ -28,7 +28,7 @@ export function BroadcastHeader({}: BroadcastHeaderProps) {
   return (
     <span className="inline-flex items-center">
       <span className="text-purple-600 dark:text-purple-400 font-mono text-sm bg-purple-50 dark:bg-purple-900/30 px-2 py-1 rounded-lg border border-purple-200 dark:border-purple-800 mr-2">
-        📢 Рассылка
+        📢 Broadcast
       </span>
     </span>
   );

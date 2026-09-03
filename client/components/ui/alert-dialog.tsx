@@ -85,7 +85,7 @@ AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
  *   </AlertDialogHeader>
  *   <AlertDialogFooter>
  *     <AlertDialogCancel>Cancel</AlertDialogCancel>
- *     <AlertDialogAction>Подтвердить</AlertDialogAction>
+ *     <AlertDialogAction>Confirm</AlertDialogAction>
  *   </AlertDialogFooter>
  * </AlertDialogContent>
  *
@@ -152,7 +152,7 @@ AlertDialogHeader.displayName = "AlertDialogHeader"
  * @example
  * <AlertDialogFooter>
  *   <AlertDialogCancel>Cancel</AlertDialogCancel>
- *   <AlertDialogAction>Подтвердить</AlertDialogAction>
+ *   <AlertDialogAction>Confirm</AlertDialogAction>
  * </AlertDialogFooter>
  *
  * @returns {JSX.Element} Нижний колонтитул диалога предупреждения
@@ -230,14 +230,14 @@ AlertDialogDescription.displayName =
  * Компонент кнопки действия диалогового окна предупреждения
  *
  * @component
- * @description Кнопка основного действия в диалоговом окне (например, "Подтвердить").
+ * @description Кнопка основного действия в диалоговом окне (например, "Confirm").
  *
  * @param {React.Ref<React.ElementRef<typeof AlertDialogPrimitive.Action>>} ref - Ссылка на DOM-элемент
  * @param {string} className - Дополнительные CSS-классы
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <AlertDialogAction onClick={() => console.log('Подтверждено')}>Подтвердить</AlertDialogAction>
+ * <AlertDialogAction onClick={() => console.log('Подтверждено')}>Confirm</AlertDialogAction>
  *
  * @returns {JSX.Element} Кнопка действия диалога предупреждения
  */

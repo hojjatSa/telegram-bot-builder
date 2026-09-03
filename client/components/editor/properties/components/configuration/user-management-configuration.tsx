@@ -147,7 +147,7 @@ export function UserManagementConfiguration({
               <div className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
                 <i className="fas fa-hourglass text-indigo-600 dark:text-indigo-400 text-xs"></i>
               </div>
-              <Label className="text-sm font-semibold text-indigo-900 dark:text-indigo-100">Длительность</Label>
+              <Label className="text-sm font-semibold text-indigo-900 dark:text-indigo-100">Duration</Label>
             </div>
 
             <div>

@@ -61,7 +61,7 @@ export function BotEnvAddRow({ onSave, onCancel, isPending }: BotEnvAddRowProps)
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="значение"
+        placeholder="value"
         type={isSecret ? 'password' : 'text'}
         className="h-7 text-xs flex-1 min-w-0"
         disabled={isPending}

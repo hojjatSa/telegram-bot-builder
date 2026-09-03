@@ -165,7 +165,7 @@ interface SheetContentProps
  *   </SheetHeader>
  *   <div>Содержимое панели</div>
  *   <SheetFooter>
- *     <Button>Подтвердить</Button>
+ *     <Button>Confirm</Button>
  *     <Button variant="outline">Cancel</Button>
  *   </SheetFooter>
  * </SheetContent>
@@ -240,7 +240,7 @@ SheetHeader.displayName = "SheetHeader"
  *
  * @example
  * <SheetFooter>
- *   <Button>Подтвердить</Button>
+ *   <Button>Confirm</Button>
  *   <Button variant="outline">Cancel</Button>
  * </SheetFooter>
  *

@@ -70,10 +70,10 @@ export function ReplyButton({ button, allNodes }: ReplyButtonProps) {
             </div>
           )}
           {button.requestContact && (
-            <div className="mt-1.5 text-xs text-green-600 dark:text-green-400">📞 Контакт</div>
+            <div className="mt-1.5 text-xs text-green-600 dark:text-green-400">📞 Contact</div>
           )}
           {button.requestLocation && (
-            <div className="mt-1.5 text-xs text-blue-600 dark:text-blue-400">📍 Геолокация</div>
+            <div className="mt-1.5 text-xs text-blue-600 dark:text-blue-400">📍 Location</div>
           )}
           {button.action === 'request_managed_bot' && (
             <div className="mt-1.5 text-xs text-indigo-600 dark:text-indigo-400">🤖 Управляемый бот</div>

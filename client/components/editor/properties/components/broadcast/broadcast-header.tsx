@@ -34,7 +34,7 @@ export function BroadcastHeader({
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-sm sm:text-base font-bold text-orange-900 dark:text-orange-100 text-left">
-              📢 Рассылка
+              📢 Broadcast
             </h3>
             <p className="text-xs sm:text-sm text-orange-700/70 dark:text-orange-300/70 mt-0.5 text-left">
               Настройка отправки сообщений всем пользователям

@@ -153,7 +153,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
           pairs={jsonToPairs((data.httpRequestQueryParams as string) || '')}
           onChange={(pairs) => upd({ httpRequestQueryParams: pairsToJson(pairs) })}
           keyPlaceholder="param"
-          valuePlaceholder="значение"
+          valuePlaceholder="value"
         />
       </Section>
 

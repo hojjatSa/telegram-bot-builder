@@ -82,127 +82,127 @@ const MODE_CONFIGS: Record<AssignmentMode, ModeConfig> = {
   text: {
     icon: 'T',
     label: 'Текст',
-    hint: 'Подстановка строки или {переменной}',
+    hint: 'String substitution or {variable}',
     borderClass: '',
   },
   expression: {
     icon: '=',
-    label: 'Выражение',
-    hint: 'Арифметика: +, -, *, /, //, %, **',
+    label: 'Expression',
+    hint: 'Arithmetic: +, -, *, /, //, %, **',
     borderClass: 'border-amber-400 dark:border-amber-600',
   },
   random: {
     icon: '🎲',
-    label: 'Случайное число',
-    hint: 'Целое число от мин до макс',
+    label: 'Random number',
+    hint: 'Integer from min to max',
     borderClass: 'border-green-400 dark:border-green-600',
   },
   random_item: {
     icon: '🎯',
-    label: 'Случайный элемент',
-    hint: 'Из списка через запятую',
+    label: 'Random item',
+    hint: 'From a comma-separated list',
     borderClass: 'border-emerald-400 dark:border-emerald-600',
   },
   timestamp: {
     icon: '⏱',
     label: 'Timestamp',
-    hint: 'Unix время + смещение (сек)',
+    hint: 'Unix time + offset (sec)',
     borderClass: 'border-cyan-400 dark:border-cyan-600',
   },
   format_duration: {
     icon: '⏳',
-    label: 'Длительность',
-    hint: 'Секунды → MM:SS или HH:MM:SS',
+    label: 'Duration',
+    hint: 'Seconds → MM:SS or HH:MM:SS',
     borderClass: 'border-orange-400 dark:border-orange-600',
   },
   format_number: {
     icon: '#',
-    label: 'Формат числа',
-    hint: 'Число с разделителями: 5000000 → 5 000 000',
+    label: 'Number format',
+    hint: 'Number with separators: 5000000 → 5 000 000',
     borderClass: 'border-violet-400 dark:border-violet-600',
   },
   array_item: {
     icon: '📋',
-    label: 'Элемент массива',
-    hint: 'По индексу или dot-notation ключу',
+    label: 'Array item',
+    hint: 'By index or dot-notation key',
     borderClass: 'border-emerald-400 dark:border-emerald-600',
   },
   array_concat: {
     icon: '🔗',
-    label: 'Объединить массивы',
-    hint: 'Склеить два массива в один',
+    label: 'Merge arrays',
+    hint: 'Merge two arrays into one',
     borderClass: 'border-pink-400 dark:border-pink-600',
   },
   lookup: {
     icon: '🔍',
-    label: 'Поиск в таблице',
-    hint: 'Найти значение по условию',
+    label: 'Table lookup',
+    hint: 'Find a value by condition',
     borderClass: 'border-blue-400 dark:border-blue-600',
   },
   str_replace: {
     icon: '✂️',
-    label: 'Замена подстроки',
-    hint: 'Найти и заменить в строке',
+    label: 'Replace substring',
+    hint: 'Find and replace in a string',
     borderClass: 'border-purple-400 dark:border-purple-600',
   },
   regex_extract: {
     icon: '🔎',
-    label: 'Regex извлечение',
-    hint: 'Извлечь по регулярному выражению',
+    label: 'Regex extraction',
+    hint: 'Extract using a regular expression',
     borderClass: 'border-rose-400 dark:border-rose-600',
   },
   extract_number: {
     icon: '🔢',
-    label: 'Число из строки',
-    hint: 'Извлекает первое число из текста',
+    label: 'Number from string',
+    hint: 'Extracts the first number from text',
     borderClass: 'border-rose-400 dark:border-rose-600',
   },
   split_get: {
     icon: '✂️',
-    label: 'Разделить и взять',
-    hint: 'Разделить строку и взять N-й элемент',
+    label: 'Split and take',
+    hint: 'Split a string and take the Nth item',
     borderClass: 'border-indigo-400 dark:border-indigo-600',
   },
   json_get: {
     icon: '{}',
-    label: 'JSON по ключу',
-    hint: 'Значение из JSON по пути (data.user.name)',
+    label: 'JSON by key',
+    hint: 'Value from JSON path (data.user.name)',
     borderClass: 'border-sky-400 dark:border-sky-600',
   },
   substring: {
     icon: '📏',
-    label: 'Подстрока',
-    hint: 'Вырезать часть строки (start, end)',
+    label: 'Substring',
+    hint: 'Extract part of a string (start, end)',
     borderClass: 'border-teal-400 dark:border-teal-600',
   },
   conditional: {
     icon: '❓',
-    label: 'Условие (если/иначе)',
-    hint: 'Если условие → значение A, иначе → B',
+    label: 'Condition (if/else)',
+    hint: 'If condition → value A, otherwise → B',
     borderClass: 'border-amber-400 dark:border-amber-600',
   },
   lowercase: {
     icon: 'aA',
-    label: 'Нижний регистр',
-    hint: 'Все буквы строчные',
+    label: 'Lowercase',
+    hint: 'All letters lowercase',
     borderClass: 'border-slate-400 dark:border-slate-600',
   },
   uppercase: {
     icon: 'AA',
-    label: 'Верхний регистр',
-    hint: 'Все буквы заглавные',
+    label: 'Uppercase',
+    hint: 'All letters uppercase',
     borderClass: 'border-slate-400 dark:border-slate-600',
   },
   trim: {
     icon: '⌫',
-    label: 'Убрать пробелы',
-    hint: 'Удалить пробелы с начала и конца',
+    label: 'Trim whitespace',
+    hint: 'Remove leading and trailing whitespace',
     borderClass: 'border-slate-400 dark:border-slate-600',
   },
   length: {
     icon: '📐',
-    label: 'Длина',
-    hint: 'Количество символов или элементов массива',
+    label: 'Length',
+    hint: 'Number of characters or array items',
     borderClass: 'border-cyan-400 dark:border-cyan-600',
   },
 };
@@ -253,7 +253,7 @@ export function AssignmentRow({
             value={assignment.variable}
             availableVariables={textVariables}
             onChange={(val) => onChange(assignment.id, 'variable', val)}
-            placeholder="переменная"
+            placeholder="variable"
           />
         </div>
 
@@ -330,14 +330,14 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="мин"
+            placeholder="min"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
           />
           <span className="text-muted-foreground text-[10px]">...</span>
           <Input
-            placeholder="макс"
+            placeholder="max"
             value={assignment.maxValue || ''}
             onChange={(e) => onChange(assignment.id, 'maxValue', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -349,14 +349,14 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="{массив}"
+            placeholder="{array}"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
           />
           <span className="text-muted-foreground text-[10px]">[</span>
           <Input
-            placeholder="индекс или ключ"
+            placeholder="index or key"
             value={assignment.maxValue || ''}
             onChange={(e) => onChange(assignment.id, 'maxValue', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -369,7 +369,7 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="первый массив"
+            placeholder="first array"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -380,7 +380,7 @@ function renderValueInput(
           />
           <span className="text-muted-foreground text-[10px]">+</span>
           <Input
-            placeholder="второй массив"
+            placeholder="second array"
             value={assignment.concatWith || ''}
             onChange={(e) => onChange(assignment.id, 'concatWith', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -396,14 +396,14 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="искать"
+            placeholder="find"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
           />
           <span className="text-muted-foreground text-[10px]">→</span>
           <Input
-            placeholder="заменить на"
+            placeholder="replace with"
             value={assignment.replaceWith || ''}
             onChange={(e) => onChange(assignment.id, 'replaceWith', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -416,7 +416,7 @@ function renderValueInput(
         <div className="space-y-1">
           <div className="flex items-center gap-1">
             <Input
-              placeholder="{переменная} — источник"
+              placeholder="{variable} — source"
               value={assignment.value || ''}
               onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -434,7 +434,7 @@ function renderValueInput(
               className={`flex-1 ${inputClass} font-mono`}
             />
             <Input
-              placeholder="группа"
+              placeholder="group"
               value={(assignment as any).regexGroup || '0'}
               onChange={(e) => onChange(assignment.id, 'regexGroup', e.target.value)}
               className={`w-16 ${inputClass}`}
@@ -447,7 +447,7 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="{переменная} — источник"
+            placeholder="{variable} — source"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -464,7 +464,7 @@ function renderValueInput(
         <div className="space-y-1">
           <div className="flex items-center gap-1">
             <Input
-              placeholder="{переменная} — источник"
+              placeholder="{variable} — source"
               value={assignment.value || ''}
               onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -476,14 +476,14 @@ function renderValueInput(
           </div>
           <div className="flex items-center gap-1">
             <Input
-              placeholder="разделитель"
+              placeholder="separator"
               value={(assignment as any).separator || ''}
               onChange={(e) => onChange(assignment.id, 'separator', e.target.value)}
               className={`w-24 ${inputClass}`}
             />
             <span className="text-muted-foreground text-[10px]">[</span>
             <Input
-              placeholder="индекс"
+              placeholder="index"
               value={assignment.maxValue || '0'}
               onChange={(e) => onChange(assignment.id, 'maxValue', e.target.value)}
               className={`w-16 ${inputClass}`}
@@ -498,7 +498,7 @@ function renderValueInput(
         <div className="space-y-1">
           <div className="flex items-center gap-1">
             <Input
-              placeholder="{переменная} — JSON источник"
+              placeholder="{variable} — JSON source"
               value={assignment.value || ''}
               onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -509,7 +509,7 @@ function renderValueInput(
             />
           </div>
           <Input
-            placeholder="путь: data.user.name"
+            placeholder="path: data.user.name"
             value={(assignment as any).jsonPath || ''}
             onChange={(e) => onChange(assignment.id, 'jsonPath', e.target.value)}
             className={`flex-1 ${inputClass} font-mono`}
@@ -522,7 +522,7 @@ function renderValueInput(
         <div className="space-y-1">
           <div className="flex items-center gap-1">
             <Input
-              placeholder="{переменная} — источник"
+              placeholder="{variable} — source"
               value={assignment.value || ''}
               onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -541,7 +541,7 @@ function renderValueInput(
             />
             <span className="text-muted-foreground text-[10px]">:</span>
             <Input
-              placeholder="end (пусто=конец)"
+              placeholder="end (empty=end)"
               value={(assignment as any).endIndex || ''}
               onChange={(e) => onChange(assignment.id, 'endIndex', e.target.value)}
               className={`w-24 ${inputClass}`}
@@ -555,7 +555,7 @@ function renderValueInput(
         <div className="space-y-1">
           <div className="flex items-center gap-1">
             <Input
-              placeholder="{переменная}"
+              placeholder="{variable}"
               value={(assignment as any).conditionVariable || ''}
               onChange={(e) => onChange(assignment.id, 'conditionVariable', e.target.value)}
               className={`w-28 ${inputClass}`}
@@ -573,7 +573,7 @@ function renderValueInput(
               <option value="not_contains">∌</option>
             </select>
             <Input
-              placeholder="значение"
+              placeholder="value"
               value={(assignment as any).conditionValue || ''}
               onChange={(e) => onChange(assignment.id, 'conditionValue', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -582,14 +582,14 @@ function renderValueInput(
           <div className="flex items-center gap-1">
             <span className="text-[10px] text-green-500 w-6">✓</span>
             <Input
-              placeholder="если true"
+              placeholder="if true"
               value={(assignment as any).trueValue || ''}
               onChange={(e) => onChange(assignment.id, 'trueValue', e.target.value)}
               className={`flex-1 ${inputClass}`}
             />
             <span className="text-[10px] text-red-500 w-6">✗</span>
             <Input
-              placeholder="если false"
+              placeholder="if false"
               value={(assignment as any).falseValue || ''}
               onChange={(e) => onChange(assignment.id, 'falseValue', e.target.value)}
               className={`flex-1 ${inputClass}`}
@@ -605,7 +605,7 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="{переменная} — источник"
+            placeholder="{variable} — source"
             value={assignment.value || ''}
             onChange={(e) => onChange(assignment.id, 'value', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -621,14 +621,14 @@ function renderValueInput(
       return (
         <div className="flex items-center gap-1">
           <Input
-            placeholder="таблица"
+            placeholder="table"
             value={assignment.lookupTable || ''}
             onChange={(e) => onChange(assignment.id, 'lookupTable', e.target.value)}
             className={`w-[90px] ${inputClass}`}
           />
           <span className="text-muted-foreground text-[10px]">.</span>
           <Input
-            placeholder="поле"
+            placeholder="field"
             value={assignment.lookupField || ''}
             onChange={(e) => onChange(assignment.id, 'lookupField', e.target.value)}
             className={`flex-1 ${inputClass}`}
@@ -663,13 +663,13 @@ function getPlaceholder(mode: AssignmentMode): string {
     case 'expression':
       return '{a} + {b} * 2';
     case 'random_item':
-      return 'элемент1, элемент2, элемент3';
+      return 'item1, item2, item3';
     case 'timestamp':
-      return '0 = сейчас, 90 = +90 сек';
+      return '0 = now, 90 = +90 sec';
     case 'format_duration':
       return '{expires_at} - {now_ts}';
     default:
-      return 'значение или {переменная}';
+      return 'value or {variable}';
   }
 }
 
@@ -693,7 +693,7 @@ function LookupConditions({
       {conditions.map((cond, idx) => (
         <div key={idx} className="flex items-center gap-1">
           <Input
-            placeholder="поле"
+            placeholder="field"
             value={cond.field}
             onChange={(e) => {
               const updated = [...conditions];
@@ -704,7 +704,7 @@ function LookupConditions({
           />
           <span className="text-muted-foreground text-[10px]">=</span>
           <Input
-            placeholder="{переменная}"
+            placeholder="{variable}"
             value={cond.value}
             onChange={(e) => {
               const updated = [...conditions];
@@ -734,7 +734,7 @@ function LookupConditions({
           onChange(assignment.id, 'lookupWhere', [...conditions, { field: '', value: '' }]);
         }}
       >
-        + условие
+        + condition
       </Button>
     </div>
   );

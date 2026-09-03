@@ -245,7 +245,7 @@ export function UserbotClickButtonConfiguration({
                 />
               </div>
               <p className="text-[10px] text-muted-foreground/60">
-                Медиа-объект можно переслать через userbot_message в поле attachedMedia как {'{переменная}'}
+                Медиа-объект можно переслать через userbot_message в поле attachedMedia как {'{variable}'}
               </p>
             </div>
           </div>

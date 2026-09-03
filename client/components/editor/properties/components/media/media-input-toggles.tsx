@@ -51,7 +51,7 @@ export function MediaInputToggles({ selectedNode, onNodeUpdate }: MediaInputTogg
       />
 
       <ToggleGroup
-        title="Документы"
+        title="Documents"
         icon="fa-file"
         colorClasses={{ title: 'text-orange-700 dark:text-orange-300', icon: 'text-orange-600 dark:text-orange-400' }}
         configs={documentConfigs}

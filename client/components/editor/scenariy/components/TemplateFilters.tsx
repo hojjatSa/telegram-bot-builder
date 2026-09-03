@@ -37,7 +37,7 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
         <div className="flex-1 relative z-40">
           <div className="flex items-center gap-1.5 mb-2 xs:mb-0">
             <Filter className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-            <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">Категория</span>
+            <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">Category</span>
             {selectedCategory !== 'all' && (
               <Badge variant="secondary" className="ml-1 text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300">
                 {KATEGORII.find(c => c.value === selectedCategory)?.label}
