@@ -1,0 +1,300 @@
+name: Translate Cyrillic UI Pass 3
+
+on:
+  push:
+    branches:
+      - golnoor
+    paths:
+      - .github/workflows/translate-cyrillic-ui-pass3.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout Golnoor branch
+        uses: actions/checkout@v5
+        with:
+          ref: golnoor
+          fetch-depth: 0
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Translate UI-facing Cyrillic strings
+        shell: bash
+        run: |
+          cat > /tmp/translate-ui-pass3.mjs <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import ts from 'typescript';
+
+          const ROOT = path.resolve('client');
+          const CYR = /[А-Яа-яЁё]/;
+          const SOURCE_EXT = new Set(['.ts', '.tsx', '.js', '.jsx']);
+          const TRANSLATE_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
+
+          const UI_KEYS = new Set([
+            'label', 'labels', 'title', 'subtitle', 'description', 'desc', 'text', 'message',
+            'placeholder', 'tooltip', 'hint', 'help', 'helpText', 'caption', 'header', 'heading',
+            'emptyText', 'emptyMessage', 'error', 'errorMessage', 'successMessage', 'warning',
+            'statusText', 'buttonText', 'confirmText', 'cancelText', 'ariaLabel', 'alt', 'name',
+            'displayName', 'displayLabel', 'category', 'groupLabel', 'defaultText', 'defaultValue',
+            'commandDescription', 'toastTitle', 'toastDescription', 'content', 'summary',
+          ]);
+
+          const UI_ATTRS = new Set([
+            'title', 'placeholder', 'aria-label', 'alt', 'label', 'description', 'tooltip',
+            'data-tooltip', 'data-title',
+          ]);
+
+          const UI_CALLS = /^(toast|notify|notification|alert|confirm|prompt|showToast|showNotification|setToast|setError|setStatusMessage|setMessage|enqueueSnackbar)$/i;
+          const UI_VAR = /(label|title|subtitle|description|message|placeholder|tooltip|hint|help|caption|heading|empty|error|warning|status|button|option|menu|tab|category|display|text)$/i;
+          const UI_COLLECTION = /(options|items|labels|tabs|menu|menus|actions|categories|statuses|commands|filters|choices|sections)$/i;
+
+          function isExcluded(file) {
+            const normalized = file.split(path.sep).join('/');
+            return /(^|\/)(__tests__|tests?|fixtures?|mocks?)(\/|$)/i.test(normalized)
+              || /\.(test|spec)\.[jt]sx?$/.test(normalized)
+              || /\.stories\.[jt]sx?$/.test(normalized);
+          }
+
+          function getFiles(dir) {
+            const out = [];
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.join(dir, entry.name);
+              if (entry.isDirectory()) out.push(...getFiles(full));
+              else if (SOURCE_EXT.has(path.extname(entry.name)) && !isExcluded(full)) out.push(full);
+            }
+            return out;
+          }
+
+          function propName(node, sf) {
+            if (!node) return '';
+            if (ts.isIdentifier(node) || ts.isStringLiteral(node) || ts.isNumericLiteral(node)) return node.text;
+            return node.getText(sf).replace(/^['"]|['"]$/g, '');
+          }
+
+          function callName(expr) {
+            if (ts.isIdentifier(expr)) return expr.text;
+            if (ts.isPropertyAccessExpression(expr)) return expr.name.text;
+            return '';
+          }
+
+          function hasJsxExpressionAncestor(node) {
+            let p = node.parent;
+            while (p) {
+              if (ts.isJsxExpression(p)) return true;
+              if (ts.isFunctionLike(p) || ts.isSourceFile(p)) return false;
+              p = p.parent;
+            }
+            return false;
+          }
+
+          function collectionOwnerName(node, sf) {
+            const arr = node.parent;
+            if (!ts.isArrayLiteralExpression(arr)) return '';
+            const p = arr.parent;
+            if (ts.isVariableDeclaration(p) && p.name) return p.name.getText(sf);
+            if (ts.isPropertyAssignment(p)) return propName(p.name, sf);
+            return '';
+          }
+
+          function shouldTranslateString(node, sf) {
+            if (!CYR.test(node.text)) return false;
+
+            const p = node.parent;
+            if (ts.isImportDeclaration(p) || ts.isExportDeclaration(p)) return false;
+            if (ts.isPropertyAssignment(p) && p.name === node) return false;
+
+            if (ts.isJsxAttribute(p)) {
+              const attr = p.name.getText(sf);
+              return UI_ATTRS.has(attr);
+            }
+
+            if (hasJsxExpressionAncestor(node)) return true;
+
+            if (ts.isPropertyAssignment(p)) {
+              const key = propName(p.name, sf);
+              return UI_KEYS.has(key) || UI_VAR.test(key);
+            }
+
+            if (ts.isVariableDeclaration(p)) {
+              const name = p.name.getText(sf);
+              return UI_VAR.test(name) || UI_COLLECTION.test(name);
+            }
+
+            if (ts.isArrayLiteralExpression(p)) {
+              return UI_COLLECTION.test(collectionOwnerName(node, sf));
+            }
+
+            if (ts.isCallExpression(p)) {
+              return UI_CALLS.test(callName(p.expression));
+            }
+
+            if (ts.isNewExpression(p) && ts.isIdentifier(p.expression) && p.expression.text === 'Error') {
+              return true;
+            }
+
+            return false;
+          }
+
+          const candidates = [];
+          const seen = new Set();
+
+          for (const file of getFiles(ROOT)) {
+            const source = fs.readFileSync(file, 'utf8');
+            const kind = file.endsWith('.tsx') || file.endsWith('.jsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
+            const sf = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true, kind);
+
+            function add(start, end, text, type, quote = '') {
+              const trimmed = text.trim();
+              if (!trimmed || !CYR.test(trimmed)) return;
+              const key = `${file}:${start}:${end}`;
+              if (seen.has(key)) return;
+              seen.add(key);
+              candidates.push({ file, start, end, text, type, quote });
+            }
+
+            function visit(node) {
+              if (ts.isJsxText(node) && CYR.test(node.getText(sf))) {
+                const raw = node.getText(sf);
+                add(node.getStart(sf), node.getEnd(), raw, 'jsx');
+              } else if ((ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) && shouldTranslateString(node, sf)) {
+                const raw = node.getText(sf);
+                add(node.getStart(sf), node.getEnd(), node.text, 'string', raw[0] || '"');
+              }
+              ts.forEachChild(node, visit);
+            }
+            visit(sf);
+          }
+
+          const uniqueTexts = [...new Set(candidates.map(c => c.text.trim()))];
+          console.log(`UI candidates: ${candidates.length} occurrences / ${uniqueTexts.length} unique strings`);
+
+          const masks = new Map();
+          function maskText(input) {
+            let index = 0;
+            const tokens = [];
+            const patterns = [
+              /\$\{[^}]*\}/g,
+              /\{[A-Za-z_][A-Za-z0-9_.-]*\}/g,
+              /https?:\/\/[^\s]+/g,
+              /@[A-Za-z0-9_]+/g,
+              /\/[A-Za-z][A-Za-z0-9_-]*/g,
+              /\\[nrt'"`\\]/g,
+              /<\/?[A-Za-z][^>]*>/g,
+            ];
+            let value = input;
+            for (const pattern of patterns) {
+              value = value.replace(pattern, match => {
+                const token = `__TTBMASK_${index++}__`;
+                tokens.push([token, match]);
+                return token;
+              });
+            }
+            return { value, tokens };
+          }
+
+          function restoreText(input, tokens) {
+            let value = input;
+            for (const [token, original] of tokens) value = value.split(token).join(original);
+            return value;
+          }
+
+          async function translateOne(text) {
+            const masked = maskText(text);
+            const url = `${TRANSLATE_ENDPOINT}?client=gtx&sl=ru&tl=en&dt=t&q=${encodeURIComponent(masked.value)}`;
+            let lastError;
+            for (let attempt = 1; attempt <= 5; attempt++) {
+              try {
+                const res = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const data = await res.json();
+                const translated = Array.isArray(data?.[0])
+                  ? data[0].map(part => Array.isArray(part) ? (part[0] || '') : '').join('')
+                  : '';
+                if (!translated) throw new Error('Empty translation');
+                return restoreText(translated, masked.tokens);
+              } catch (error) {
+                lastError = error;
+                await new Promise(r => setTimeout(r, 500 * attempt));
+              }
+            }
+            throw lastError;
+          }
+
+          const translations = new Map();
+          let done = 0;
+          for (const text of uniqueTexts) {
+            const translated = await translateOne(text);
+            translations.set(text, translated);
+            done++;
+            if (done % 50 === 0 || done === uniqueTexts.length) {
+              console.log(`Translated ${done}/${uniqueTexts.length}`);
+            }
+            await new Promise(r => setTimeout(r, 45));
+          }
+
+          const byFile = new Map();
+          for (const c of candidates) {
+            if (!byFile.has(c.file)) byFile.set(c.file, []);
+            byFile.get(c.file).push(c);
+          }
+
+          let changedFiles = 0;
+          let changedStrings = 0;
+
+          for (const [file, edits] of byFile) {
+            let source = fs.readFileSync(file, 'utf8');
+            const sorted = edits.sort((a, b) => b.start - a.start);
+            let changed = false;
+
+            for (const edit of sorted) {
+              const key = edit.text.trim();
+              let translated = translations.get(key);
+              if (!translated || translated === key) continue;
+
+              if (edit.type === 'jsx') {
+                const leading = edit.text.match(/^\s*/)?.[0] || '';
+                const trailing = edit.text.match(/\s*$/)?.[0] || '';
+                translated = `${leading}${translated.trim()}${trailing}`;
+              } else {
+                translated = JSON.stringify(translated);
+              }
+
+              source = source.slice(0, edit.start) + translated + source.slice(edit.end);
+              changed = true;
+              changedStrings++;
+            }
+
+            if (changed) {
+              fs.writeFileSync(file, source, 'utf8');
+              changedFiles++;
+            }
+          }
+
+          console.log(`Changed ${changedStrings} UI strings in ${changedFiles} files`);
+          NODE
+
+          node /tmp/translate-ui-pass3.mjs
+
+      - name: Build translated UI
+        run: npm run build:client
+
+      - name: Commit translations
+        shell: bash
+        run: |
+          if git diff --quiet -- client; then
+            echo "No new UI translations were needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add client
+          git commit -m "feat(i18n): translate remaining Cyrillic UI strings pass 3"
+          git push origin HEAD:golnoor
