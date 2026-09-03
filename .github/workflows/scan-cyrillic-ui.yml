@@ -52,8 +52,17 @@ jobs:
                           rows.append((str(path), line_no, stripped))
                           files.add(str(path))
 
-          print(f'CYRILLIC_UI_FILES={len(files)}')
-          print(f'CYRILLIC_UI_LINES={len(rows)}')
-          print('--- CYRILLIC UI INVENTORY ---')
-          for path, line_no, text in rows:
-              print(f'{path}:{line_no}: {text}')
+          output = [
+              f'CYRILLIC_UI_FILES={len(files)}',
+              f'CYRILLIC_UI_LINES={len(rows)}',
+              '--- CYRILLIC UI INVENTORY ---',
+          ]
+          output.extend(f'{path}:{line_no}: {text}' for path, line_no, text in rows)
+          Path('cyrillic-ui-inventory.txt').write_text('\n'.join(output) + '\n', encoding='utf-8')
+          print('\n'.join(output))
+
+      - name: Upload inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: cyrillic-ui-inventory
+          path: cyrillic-ui-inventory.txt
