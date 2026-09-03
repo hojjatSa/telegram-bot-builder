@@ -1,5 +1,5 @@
 /**
- * @fileoverview Подвал бокового меню панели управления
+ * @fileoverview Admin sidebar footer
  * @module components/admin/sidebar/admin-sidebar-footer
  */
 
@@ -8,19 +8,10 @@ import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/utils';
 
-/**
- * Пропсы компонента AdminSidebarFooter
- */
 interface AdminSidebarFooterProps {
-  /** Свёрнуто ли боковое меню */
   isCollapsed?: boolean;
 }
 
-/**
- * Кнопки возврата в редактор и выхода из панели
- * @param props - Свойства компонента
- * @returns JSX элемент подвала
- */
 export function AdminSidebarFooter({ isCollapsed }: AdminSidebarFooterProps) {
   return (
     <div className={cn('flex flex-col gap-1', isCollapsed && 'items-center')}>
@@ -33,7 +24,7 @@ export function AdminSidebarFooter({ isCollapsed }: AdminSidebarFooterProps) {
           )}
         >
           <ArrowLeft className="h-4 w-4 flex-shrink-0" />
-          {!isCollapsed && <span className="text-sm">К редактору</span>}
+          {!isCollapsed && <span className="text-sm">Back to Editor</span>}
         </Button>
       </Link>
 
@@ -47,7 +38,7 @@ export function AdminSidebarFooter({ isCollapsed }: AdminSidebarFooterProps) {
           )}
         >
           <LogOut className="h-4 w-4 flex-shrink-0" />
-          {!isCollapsed && <span className="text-sm">Выйти</span>}
+          {!isCollapsed && <span className="text-sm">Log out</span>}
         </Button>
       </form>
     </div>
