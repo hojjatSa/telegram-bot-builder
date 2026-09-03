@@ -134,7 +134,8 @@ for (const file of listSourceFiles(ROOT)) {
       (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))
       && isUiFacingString(node, sourceFile)
     ) {
-      addCandidate(node.getStart(sourceFile), node.getEnd(), node.text, 'string');
+      const kind = ts.isJsxAttribute(node.parent) ? 'jsx-attr' : 'string';
+      addCandidate(node.getStart(sourceFile), node.getEnd(), node.text, kind);
     }
     ts.forEachChild(node, visit);
   }
@@ -255,8 +256,11 @@ for (const [file, edits] of editsByFile) {
       const leading = edit.text.match(/^\s*/)?.[0] || '';
       const trailing = edit.text.match(/\s*$/)?.[0] || '';
       translated = `${leading}${translated.trim()}${trailing}`;
+    } else if (edit.kind === 'jsx-attr') {
+      // Quoted JSX attributes cannot use JavaScript backslash escaping.
+      // Use an expression container so quotes/newlines are encoded safely.
+      translated = `{${JSON.stringify(translated)}}`;
     } else {
-      // JSON string syntax is valid as a JS/TS string literal and preserves escaping.
       translated = JSON.stringify(translated);
     }
 
