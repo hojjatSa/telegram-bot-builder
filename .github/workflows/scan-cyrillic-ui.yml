@@ -6,6 +6,7 @@ on:
       - golnoor
     paths:
       - .github/workflows/scan-cyrillic-ui.yml
+      - client/**
 
 permissions:
   contents: read
