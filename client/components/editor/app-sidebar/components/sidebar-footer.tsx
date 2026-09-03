@@ -1,5 +1,5 @@
 /**
- * @fileoverview Футер сайдбара: профиль пользователя и кнопка шапки
+ * @fileoverview Editor sidebar footer with user profile and header toggle
  */
 
 import { LogOut, MessageCircle, PanelTop, RefreshCw } from 'lucide-react';
@@ -9,23 +9,12 @@ import { useTelegramLogin } from '@/components/editor/header/hooks/use-telegram-
 import { cn } from '@/utils/utils';
 import { isTelegramUser } from '@/types/telegram-user';
 
-/**
- * Пропсы компонента SidebarFooter
- */
 interface SidebarFooterProps {
-  /** Свёрнут ли сайдбар */
   isCollapsed?: boolean;
-  /** Видима ли шапка */
   headerVisible?: boolean;
-  /** Переключить видимость шапки */
   onToggleHeader?: () => void;
 }
 
-/**
- * Футер сайдбара с профилем пользователя
- * @param props - Свойства компонента
- * @returns JSX элемент с профилем и кнопкой шапки
- */
 export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: SidebarFooterProps) {
   const { user, logout } = useTelegramAuth();
   const { handleTelegramLogin } = useTelegramLogin();
@@ -45,7 +34,7 @@ export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: Si
               : 'hover:bg-muted/60'
           )}
           onClick={onToggleHeader}
-          title={headerVisible ? 'Скрыть шапку' : 'Показать шапку'}
+          title={headerVisible ? 'Hide header' : 'Show header'}
         >
           <PanelTop className="h-4 w-4" />
         </Button>
@@ -69,7 +58,7 @@ export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: Si
                   size="icon"
                   className="h-7 w-7 text-muted-foreground hover:text-primary flex-shrink-0"
                   onClick={handleTelegramLogin}
-                  title="Сменить аккаунт"
+                  title="Switch account"
                 >
                   <RefreshCw className="h-4 w-4" />
                 </Button>
@@ -78,7 +67,7 @@ export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: Si
                   size="icon"
                   className="h-7 w-7 text-muted-foreground hover:text-destructive flex-shrink-0"
                   onClick={logout}
-                  title="Выйти"
+                  title="Log out"
                 >
                   <LogOut className="h-4 w-4" />
                 </Button>
@@ -91,7 +80,7 @@ export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: Si
               size="icon"
               className="h-7 w-7 text-muted-foreground hover:text-primary"
               onClick={handleTelegramLogin}
-              title="Сменить аккаунт"
+              title="Switch account"
             >
               <RefreshCw className="h-4 w-4" />
             </Button>
@@ -107,7 +96,7 @@ export function SidebarFooter({ isCollapsed, headerVisible, onToggleHeader }: Si
           onClick={handleTelegramLogin}
         >
           <MessageCircle className="h-4 w-4 flex-shrink-0" />
-          {!isCollapsed && <span className="text-sm">Войти в Telegram</span>}
+          {!isCollapsed && <span className="text-sm">Sign in with Telegram</span>}
         </Button>
       )}
     </div>
