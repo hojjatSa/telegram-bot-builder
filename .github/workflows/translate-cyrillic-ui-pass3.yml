@@ -14,7 +14,7 @@ permissions:
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     steps:
       - name: Checkout Golnoor branch
         uses: actions/checkout@v5
@@ -37,6 +37,7 @@ jobs:
           const CYR = /[А-Яа-яЁё]/;
           const SOURCE_EXT = new Set(['.ts', '.tsx', '.js', '.jsx']);
           const TRANSLATE_ENDPOINT = 'https://translate.googleapis.com/translate_a/single';
+          const CONCURRENCY = 8;
 
           const UI_KEYS = new Set([
             'label', 'labels', 'title', 'subtitle', 'description', 'desc', 'text', 'message',
@@ -106,40 +107,27 @@ jobs:
 
           function shouldTranslateString(node, sf) {
             if (!CYR.test(node.text)) return false;
-
             const p = node.parent;
             if (ts.isImportDeclaration(p) || ts.isExportDeclaration(p)) return false;
             if (ts.isPropertyAssignment(p) && p.name === node) return false;
 
             if (ts.isJsxAttribute(p)) {
-              const attr = p.name.getText(sf);
-              return UI_ATTRS.has(attr);
+              return UI_ATTRS.has(p.name.getText(sf));
             }
-
             if (hasJsxExpressionAncestor(node)) return true;
-
             if (ts.isPropertyAssignment(p)) {
               const key = propName(p.name, sf);
               return UI_KEYS.has(key) || UI_VAR.test(key);
             }
-
             if (ts.isVariableDeclaration(p)) {
               const name = p.name.getText(sf);
               return UI_VAR.test(name) || UI_COLLECTION.test(name);
             }
-
             if (ts.isArrayLiteralExpression(p)) {
               return UI_COLLECTION.test(collectionOwnerName(node, sf));
             }
-
-            if (ts.isCallExpression(p)) {
-              return UI_CALLS.test(callName(p.expression));
-            }
-
-            if (ts.isNewExpression(p) && ts.isIdentifier(p.expression) && p.expression.text === 'Error') {
-              return true;
-            }
-
+            if (ts.isCallExpression(p)) return UI_CALLS.test(callName(p.expression));
+            if (ts.isNewExpression(p) && ts.isIdentifier(p.expression) && p.expression.text === 'Error') return true;
             return false;
           }
 
@@ -226,16 +214,30 @@ jobs:
           }
 
           const translations = new Map();
+          let cursor = 0;
           let done = 0;
-          for (const text of uniqueTexts) {
-            const translated = await translateOne(text);
-            translations.set(text, translated);
-            done++;
-            if (done % 50 === 0 || done === uniqueTexts.length) {
-              console.log(`Translated ${done}/${uniqueTexts.length}`);
+          let failed = 0;
+
+          async function worker() {
+            while (true) {
+              const index = cursor++;
+              if (index >= uniqueTexts.length) return;
+              const text = uniqueTexts[index];
+              try {
+                translations.set(text, await translateOne(text));
+              } catch (error) {
+                failed++;
+                translations.set(text, text);
+                console.warn(`Translation skipped: ${text.slice(0, 100)} :: ${error?.message || error}`);
+              }
+              done++;
+              if (done % 100 === 0 || done === uniqueTexts.length) {
+                console.log(`Translated ${done}/${uniqueTexts.length}; failed=${failed}`);
+              }
             }
-            await new Promise(r => setTimeout(r, 45));
           }
+
+          await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
 
           const byFile = new Map();
           for (const c of candidates) {
@@ -245,7 +247,6 @@ jobs:
 
           let changedFiles = 0;
           let changedStrings = 0;
-
           for (const [file, edits] of byFile) {
             let source = fs.readFileSync(file, 'utf8');
             const sorted = edits.sort((a, b) => b.start - a.start);
@@ -275,7 +276,7 @@ jobs:
             }
           }
 
-          console.log(`Changed ${changedStrings} UI strings in ${changedFiles} files`);
+          console.log(`Changed ${changedStrings} UI strings in ${changedFiles} files; translation failures=${failed}`);
           NODE
 
           node ./translate-ui-pass3.mjs
