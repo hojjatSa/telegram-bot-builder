@@ -28,7 +28,7 @@ jobs:
       - name: Translate UI-facing Cyrillic strings
         shell: bash
         run: |
-          cat > /tmp/translate-ui-pass3.mjs <<'NODE'
+          cat > ./translate-ui-pass3.mjs <<'NODE'
           import fs from 'node:fs';
           import path from 'node:path';
           import ts from 'typescript';
@@ -151,22 +151,20 @@ jobs:
             const kind = file.endsWith('.tsx') || file.endsWith('.jsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
             const sf = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true, kind);
 
-            function add(start, end, text, type, quote = '') {
+            function add(start, end, text, type) {
               const trimmed = text.trim();
               if (!trimmed || !CYR.test(trimmed)) return;
               const key = `${file}:${start}:${end}`;
               if (seen.has(key)) return;
               seen.add(key);
-              candidates.push({ file, start, end, text, type, quote });
+              candidates.push({ file, start, end, text, type });
             }
 
             function visit(node) {
               if (ts.isJsxText(node) && CYR.test(node.getText(sf))) {
-                const raw = node.getText(sf);
-                add(node.getStart(sf), node.getEnd(), raw, 'jsx');
+                add(node.getStart(sf), node.getEnd(), node.getText(sf), 'jsx');
               } else if ((ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node)) && shouldTranslateString(node, sf)) {
-                const raw = node.getText(sf);
-                add(node.getStart(sf), node.getEnd(), node.text, 'string', raw[0] || '"');
+                add(node.getStart(sf), node.getEnd(), node.text, 'string');
               }
               ts.forEachChild(node, visit);
             }
@@ -176,7 +174,6 @@ jobs:
           const uniqueTexts = [...new Set(candidates.map(c => c.text.trim()))];
           console.log(`UI candidates: ${candidates.length} occurrences / ${uniqueTexts.length} unique strings`);
 
-          const masks = new Map();
           function maskText(input) {
             let index = 0;
             const tokens = [];
@@ -281,7 +278,8 @@ jobs:
           console.log(`Changed ${changedStrings} UI strings in ${changedFiles} files`);
           NODE
 
-          node /tmp/translate-ui-pass3.mjs
+          node ./translate-ui-pass3.mjs
+          rm -f ./translate-ui-pass3.mjs
 
       - name: Build translated UI
         run: npm run build:client
