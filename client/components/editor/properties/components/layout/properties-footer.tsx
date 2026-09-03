@@ -77,7 +77,7 @@ export function PropertiesFooter({
           onClick={handleReset}
         >
           <i className="fas fa-redo-alt"></i>
-          Сбросить
+          Reset
         </button>
         <ApplyButton
           onNodeUpdate={handleNodeApply}
