@@ -39,26 +39,22 @@ export function ApplyButton({ onNodeUpdate, onSaveProject, onActionLog, disabled
 
   const handleApply = () => {
     if (disabled) return;
-    // Логируем применение изменений
     if (onActionLog) {
-      onActionLog('apply', 'Применены изменения в панели свойств');
+      onActionLog('apply', 'Applied changes in the properties panel');
     }
 
-    // Вызываем обновление узла (если передано)
     if (onNodeUpdate) {
       const result = onNodeUpdate();
       if (result === false) return;
     }
 
-    // Сохраняем проект
     if (onSaveProject) {
       onSaveProject();
     }
 
-    // Показываем уведомление об успехе
     toast({
-      title: 'Изменения применены',
-      description: 'Проект сохранён',
+      title: 'Changes applied',
+      description: 'Project saved',
     });
   };
 
@@ -70,7 +66,7 @@ export function ApplyButton({ onNodeUpdate, onSaveProject, onActionLog, disabled
       disabled={disabled}
     >
       <i className="fas fa-check mr-1.5"></i>
-      Применить
+      Apply
     </UIButton>
   );
 }
