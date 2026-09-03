@@ -1,5 +1,5 @@
 /**
- * @fileoverview Карточка версии и проверки обновлений на сводке admin
+ * @fileoverview Version and update-check card on the admin overview page
  * @module components/admin/pages/admin-version-card
  */
 
@@ -13,18 +13,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { apiRequest } from '@/queryClient';
 import type { AdminUpdateCheckResult, AdminVersionInfo } from '../types';
 
-/**
- * Рендерит результат проверки обновлений
- * @param result - Ответ /admin/api/update-check
- * @returns JSX блока статуса
- */
 function UpdateCheckAlert({ result }: { result: AdminUpdateCheckResult }) {
   if (result.checkFailed) {
     return (
       <Alert variant="destructive">
-        <AlertTitle>Не удалось проверить</AlertTitle>
+        <AlertTitle>Update check failed</AlertTitle>
         <AlertDescription>
-          Нет доступа к GitHub или version.json на main. Показана только локальная версия.
+          GitHub or version.json on main could not be reached. Only the local version is shown.
         </AlertDescription>
       </Alert>
     );
@@ -33,24 +28,24 @@ function UpdateCheckAlert({ result }: { result: AdminUpdateCheckResult }) {
   if (result.updateAvailable && result.latest) {
     return (
       <Alert>
-        <AlertTitle>Доступно обновление</AlertTitle>
+        <AlertTitle>Update available</AlertTitle>
         <AlertDescription className="space-y-2">
           <p>
-            У вас <Badge variant="secondary">v{result.current.version}</Badge>, на GitHub{' '}
+            Installed <Badge variant="secondary">v{result.current.version}</Badge>, latest on GitHub{' '}
             <Badge>v{result.latest.version}</Badge>
           </p>
           <div className="flex flex-wrap gap-2 pt-1">
             {result.latest.notesUrl && (
               <a href={result.latest.notesUrl} target="_blank" rel="noopener noreferrer">
                 <Button variant="link" size="sm" className="h-auto p-0 gap-1">
-                  Что нового
+                  What's new
                   <ExternalLink className="h-3 w-3" />
                 </Button>
               </a>
             )}
             <a href={result.deployGuideUrl} target="_blank" rel="noopener noreferrer">
               <Button variant="link" size="sm" className="h-auto p-0 gap-1">
-                Как обновить
+                Update guide
                 <ExternalLink className="h-3 w-3" />
               </Button>
             </a>
@@ -62,18 +57,14 @@ function UpdateCheckAlert({ result }: { result: AdminUpdateCheckResult }) {
 
   return (
     <Alert>
-      <AlertTitle>Актуальная версия</AlertTitle>
+      <AlertTitle>Up to date</AlertTitle>
       <AlertDescription>
-        Установлена последняя версия ({result.current.version}).
+        The latest version is installed ({result.current.version}).
       </AlertDescription>
     </Alert>
   );
 }
 
-/**
- * Блок версии приложения и кнопка проверки обновлений
- * @returns JSX элемент карточки версии
- */
 export function AdminVersionCard() {
   const [checkResult, setCheckResult] = useState<AdminUpdateCheckResult | null>(null);
   const [checking, setChecking] = useState(false);
@@ -106,12 +97,12 @@ export function AdminVersionCard() {
   return (
     <Card>
       <CardHeader className="pb-2">
-        <CardDescription>Версия приложения</CardDescription>
+        <CardDescription>Application version</CardDescription>
         <CardTitle className="text-lg">v{version.version}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {version.releasedAt && (
-          <p className="text-sm text-muted-foreground -mt-1">Сборка от {version.releasedAt}</p>
+          <p className="text-sm text-muted-foreground -mt-1">Build date: {version.releasedAt}</p>
         )}
         <Button
           variant="outline"
@@ -125,7 +116,7 @@ export function AdminVersionCard() {
           ) : (
             <RefreshCw className="h-4 w-4" />
           )}
-          Проверить обновления
+          Check for updates
         </Button>
         {checkResult && <UpdateCheckAlert result={checkResult} />}
       </CardContent>
