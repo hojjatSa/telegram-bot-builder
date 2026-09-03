@@ -8,7 +8,7 @@ import { ComponentDefinition } from '@shared/schema';
 /** Создание топика в форум-группе Telegram */
 export const createForumTopicNode: ComponentDefinition = {
   id: 'create-forum-topic',
-  name: 'Создать топик',
+  name: 'Create topic',
   description: 'Создаёт топик в Telegram супергруппе с включёнными форумами',
   icon: 'fas fa-layer-group',
   color: 'bg-teal-100 text-teal-600',

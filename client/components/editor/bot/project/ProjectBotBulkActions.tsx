@@ -90,7 +90,7 @@ export function ProjectBotBulkActions({
           <Play className={`w-3 h-3 sm:mr-1 ${isStartingOffline ? 'animate-pulse' : ''}`} />
           <span className="hidden sm:inline">
             {isStartingOffline
-              ? (progressLabel ? `Запуск ${progressLabel}` : 'Запуск...')
+              ? (progressLabel ? `Запуск ${progressLabel}` : 'Starting...')
               : offlineCount > 0
                 ? `Запустить офлайн (${offlineCount})`
                 : 'Запустить офлайн'}

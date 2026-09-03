@@ -6,7 +6,7 @@ import { ComponentDefinition } from "@shared/schema";
 /** Inline-запрос через юзербот (Telethon) */
 export const userbotInlineQuery: ComponentDefinition = {
   id: 'userbot-inline-query',
-  name: 'Inline-запрос (юзербот)',
+  name: 'Inline Query (Userbot)',
   description: 'Inline-запрос к боту и отправка результата через Telethon',
   icon: 'fas fa-at',
   color: 'bg-violet-100 text-violet-600',

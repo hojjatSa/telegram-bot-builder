@@ -12,7 +12,7 @@ import { DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/di
 export function UserDetailsHeader(): React.JSX.Element {
   return (
     <DialogHeader>
-      <DialogTitle>Детали пользователя</DialogTitle>
+      <DialogTitle>User Details</DialogTitle>
       <DialogDescription>
         Подробная информация о пользователе
       </DialogDescription>

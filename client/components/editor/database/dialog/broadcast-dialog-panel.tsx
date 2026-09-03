@@ -161,7 +161,7 @@ export function BroadcastDialogPanel({ projectId, selectedTokenId, onClose, hide
             <div className="w-8 h-8 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center">
               <Megaphone className="w-4 h-4 text-violet-600 dark:text-violet-400" />
             </div>
-            <h3 className="font-medium text-sm">Рассылка</h3>
+            <h3 className="font-medium text-sm">Broadcast</h3>
           </div>
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onClose}>
             <X className="h-4 w-4" />
@@ -215,7 +215,7 @@ export function BroadcastDialogPanel({ projectId, selectedTokenId, onClose, hide
         <CompactInlineEditor
           value={messageText}
           onChange={setMessageText}
-          placeholder="Текст рассылки..."
+          placeholder="Broadcast message..."
         />
 
         {/* Медиаселектор */}
@@ -265,7 +265,7 @@ export function BroadcastDialogPanel({ projectId, selectedTokenId, onClose, hide
               variant={showFileId ? 'secondary' : 'ghost'}
               size="sm"
               onClick={() => { setShowFileId((v) => !v); setShowMedia(false); }}
-              title="Добавить Telegram file_id"
+              title="Add Telegram file_id"
               className={showFileId ? '' : 'text-violet-500 hover:text-violet-600'}
             >
               <Hash className="w-4 h-4" />

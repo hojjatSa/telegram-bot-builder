@@ -45,7 +45,7 @@ export function formatExecutionTime(seconds: number): string {
  */
 export function getBotDisplayName(
   token: BotNameToken,
-  fallback = 'Бот',
+  fallback = 'Bot',
 ): string {
   if (token.botFirstName && token.botUsername) {
     return `${token.botFirstName} (@${token.botUsername})`;

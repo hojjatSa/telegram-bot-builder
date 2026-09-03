@@ -82,14 +82,14 @@ export function BotCatchAllToggle({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
-        title: 'Настройка сохранена',
-        description: 'Перезапустите бота, чтобы применить изменения',
+        title: 'Setting saved',
+        description: 'Restart the bot to apply changes',
       });
     },
     onError: () => {
       setLocalEnabled(catchAllHandlers !== 0);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить настройку catch-all обработчиков',
         variant: 'destructive',
       });

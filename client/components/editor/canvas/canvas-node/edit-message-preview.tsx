@@ -1,5 +1,5 @@
 /**
- * @fileoverview Превью узла "Редактировать сообщение" на канвасе
+ * @fileoverview Превью узла "Edit Message" на канвасе
  * @module components/editor/canvas/canvas-node/edit-message-preview
  */
 import { Node } from '@shared/schema';
@@ -49,7 +49,7 @@ export function EditMessagePreview({ node }: EditMessagePreviewProps) {
       <div className="flex items-center gap-2 mb-4 flex-nowrap">
         <i className="fas fa-pen text-blue-500 text-sm flex-shrink-0" />
         <span className="font-semibold text-blue-700 dark:text-blue-300 text-sm whitespace-nowrap">
-          Редактировать сообщение
+          Edit Message
         </span>
         {sourceLabel && (
           <span className="text-sm text-sky-500 dark:text-sky-400 font-mono whitespace-nowrap">

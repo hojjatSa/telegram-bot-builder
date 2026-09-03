@@ -63,7 +63,7 @@ export default function ScenariyPage() {
         <div className="text-center">
           <h2 className="text-xl font-bold text-destructive mb-2">Ошибка загрузки сценариев</h2>
           <p className="text-muted-foreground mb-4">Произошла ошибка при загрузке. Пожалуйста, обновите страницу.</p>
-          <Button onClick={() => window.location.reload()}>Обновить страницу</Button>
+          <Button onClick={() => window.location.reload()}>Refresh page</Button>
         </div>
       </div>
     );

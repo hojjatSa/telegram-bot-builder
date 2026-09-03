@@ -18,7 +18,7 @@ export const saveAnswerNode: ComponentDefinition = {
     inputTargetNodeId: '',
     appendVariable: false,
     saveToDatabase: false,
-    inputPrompt: 'Введите ответ',
+    inputPrompt: 'Enter a response',
     inputRequired: true,
   }
 };

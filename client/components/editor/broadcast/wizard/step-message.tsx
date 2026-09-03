@@ -35,8 +35,8 @@ interface StepMessageProps {
 
 /** Доступные переменные для вставки в сообщение */
 const VARIABLES = [
-  { key: '{first_name}', label: 'Имя' },
-  { key: '{last_name}', label: 'Фамилия' },
+  { key: '{first_name}', label: 'Name' },
+  { key: '{last_name}', label: 'Last name' },
   { key: '{username}', label: 'Username' },
   { key: '{user_id}', label: 'ID' },
 ];
@@ -75,7 +75,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <p className="text-sm font-medium">Текст сообщения</p>
+        <p className="text-sm font-medium">Message text</p>
         <CompactInlineEditor
           value={formData.messageText}
           onChange={(val) => onChange({ messageText: val })}
@@ -86,7 +86,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
       </div>
 
       <div className="space-y-1.5">
-        <p className="text-xs text-muted-foreground">Вставить переменную:</p>
+        <p className="text-xs text-muted-foreground">Insert variable:</p>
         <div className="flex flex-wrap gap-1.5">
           {VARIABLES.map(({ key, label }) => (
             <Button
@@ -110,8 +110,8 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
             projectId={projectId}
             value={formData.mediaUrls}
             onChange={(urls) => onChange({ mediaUrls: urls })}
-            label="Прикреплённые файлы"
-            placeholder="Перетащи файл или вставь ссылку"
+            label="Attachments"
+            placeholder="Drop a file or paste a link"
           />
 
           {/* Кнопка переключения блока ввода Telegram file_id */}
@@ -122,7 +122,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
             onClick={() => setShowFileId((v) => !v)}
           >
             <Hash className="w-3.5 h-3.5 mr-1" />
-            Добавить Telegram file_id
+            Add Telegram file_id
           </Button>
 
           {/* Блок ввода Telegram file_id */}
@@ -144,7 +144,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
 
       {/* Инлайн-кнопки — переиспользуем DialogButtonsEditor из диалога */}
       <div className="space-y-2">
-        <p className="text-sm font-medium">Инлайн-кнопки (необязательно)</p>
+        <p className="text-sm font-medium">Inline buttons (optional)</p>
         <div className="rounded-xl border border-blue-200/40 dark:border-blue-800/40 bg-gradient-to-br from-blue-50/40 to-violet-50/20 dark:from-blue-950/30 dark:to-violet-900/20 p-3">
           <DialogButtonsEditor
             buttons={formData.buttons ?? []}
@@ -167,13 +167,13 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
       <BroadcastValidationAlerts validation={validation} />
 
       <div className="flex justify-between pt-2">
-        <Button variant="ghost" onClick={onBack}>← Назад</Button>
+        <Button variant="ghost" onClick={onBack}>← Back</Button>
         <Button
           onClick={onNext}
           disabled={!validation.isValid}
           className="bg-gradient-to-r from-blue-500 to-violet-500 text-white hover:from-blue-600 hover:to-violet-600"
         >
-          Далее →
+          Next →
         </Button>
       </div>
     </div>

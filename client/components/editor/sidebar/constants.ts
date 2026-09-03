@@ -34,11 +34,11 @@ export const componentCategories: Array<{
   components: ComponentDefinition[];
 }> = [
   {
-    title: 'Сообщения',
+    title: 'Messages',
     components: [commandTrigger, textTrigger, anyMessageTrigger, outgoingMessageTrigger, textMessage, mediaMessage, saveAnswerNode, editMessageNode, deleteMessage, forwardMessage]
   },
   {
-    title: 'Клавиатура',
+    title: 'Keyboard',
     components: [callbackTrigger, incomingCallbackTrigger, keyboardMessage, answerCallbackQueryNode]
   },
   {
@@ -62,7 +62,7 @@ export const componentCategories: Array<{
     components: [userbotMessage, userbotClickButton, userbotInlineQuery, userbotEditTrigger]
   },
   {
-    title: 'Утилиты',
+    title: 'Utilities',
     components: [commentNode]
   }
 ];

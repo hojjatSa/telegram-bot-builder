@@ -27,7 +27,7 @@ export function ConditionalActionInput({
     return (
       <Select value={button.target || ''} onValueChange={onUpdate}>
         <SelectTrigger className="h-9 text-sm bg-white/60 dark:bg-slate-950/60 border border-sky-300/40 dark:border-sky-700/40 hover:border-sky-400/60 focus:border-sky-500 focus:ring-2 focus:ring-sky-400/30 rounded-lg text-sky-900 dark:text-sky-50">
-          <SelectValue placeholder="⊘ Не выбрано">
+          <SelectValue placeholder="⊘ Not selected">
             {selectedTarget ? getNodeTypeLabel(selectedTarget.node.type) : undefined}
           </SelectValue>
         </SelectTrigger>

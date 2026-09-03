@@ -35,9 +35,9 @@ export function VariableDropdown({ nodeId, button, onButtonUpdate, textVariables
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="h-7 text-xs gap-1" title="Вставить переменную">
+        <Button variant="outline" className="h-7 text-xs gap-1" title="Insert variable">
           <Plus className="h-3 w-3" />
-          <span className="hidden sm:inline">Переменная</span>
+          <span className="hidden sm:inline">Variable</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64 sm:w-80 md:w-96 bg-gradient-to-br from-purple-50/95 to-pink-50/90 dark:from-slate-900/95 dark:to-slate-800/95 border border-purple-200/50 dark:border-purple-800/50 shadow-xl">

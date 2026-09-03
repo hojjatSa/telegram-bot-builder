@@ -58,7 +58,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
   const isEdit = Boolean(draft.configId);
   const isS3 = draft.backend === 's3';
   const HeaderIcon = isEdit ? Pencil : isS3 ? Cloud : HardDrive;
-  const title = isEdit ? 'Изменить хранилище' : 'Новое хранилище';
+  const title = isEdit ? 'Change storage' : 'Новое хранилище';
   const subtitle = isS3
     ? 'Подключение к S3-совместимому хранилищу (MinIO, AWS и др.)'
     : 'Файлы сохраняются в локальную папку на сервере';
@@ -85,7 +85,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
         <div className="max-h-[55vh] space-y-4 overflow-auto px-6 py-4">
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-1.5">
-              <Label htmlFor="storage-name">Имя</Label>
+              <Label htmlFor="storage-name">Name</Label>
               <Input
                 id="storage-name"
                 value={draft.name}
@@ -95,7 +95,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
               />
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="storage-backend">Тип</Label>
+              <Label htmlFor="storage-backend">Type</Label>
               <Select
                 value={draft.backend}
                 onValueChange={(v) => setField('backend', v as StorageBackendKind)}
@@ -169,10 +169,10 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
           </Button>
           <div className="flex gap-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Отмена
+              Cancel
             </Button>
             <Button type="button" onClick={handleSave} disabled={isSaving} data-testid="storage-save-button">
-              {isSaving ? 'Сохранение…' : isEdit ? 'Сохранить' : 'Создать'}
+              {isSaving ? 'Saving…' : isEdit ? 'Save' : 'Create'}
             </Button>
           </div>
         </DialogFooter>

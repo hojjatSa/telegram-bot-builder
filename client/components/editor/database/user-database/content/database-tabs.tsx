@@ -42,7 +42,7 @@ export function DatabaseTabs(props: DatabaseTabsProps): React.JSX.Element {
     <Tabs defaultValue="users" className="w-full pb-4">
       <TabsList className="grid w-full grid-cols-2 flex-shrink-0 bg-muted/80 backdrop-blur-sm">
         <TabsTrigger value="users" className="text-sm font-medium">
-          Пользователи
+          Users
         </TabsTrigger>
         <TabsTrigger value="responses" className="text-sm font-medium">
           Ответы пользователей

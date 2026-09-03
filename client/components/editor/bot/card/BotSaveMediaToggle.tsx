@@ -80,14 +80,14 @@ export function BotSaveMediaToggle({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
-        title: 'Настройка сохранена',
-        description: 'Перезапустите бота, чтобы применить изменения',
+        title: 'Setting saved',
+        description: 'Restart the bot to apply changes',
       });
     },
     onError: () => {
       setLocalEnabled(saveIncomingMedia === 1);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить настройку сохранения медиа',
         variant: 'destructive',
       });
@@ -102,14 +102,14 @@ export function BotSaveMediaToggle({
   return (
     <SettingCard
       icon={ImageIcon}
-      title="Сохранять входящие фото"
+      title="Save incoming photos"
       description={<IncomingMediaStorageHint projectId={projectId} enabled={localEnabled} />}
       active={localEnabled}
       className={className}
       action={
         <Switch
           id={`save-media-${tokenId}`}
-          aria-label="Сохранять входящие фото"
+          aria-label="Save incoming photos"
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);

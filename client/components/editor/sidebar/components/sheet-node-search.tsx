@@ -33,7 +33,7 @@ export function SheetNodeSearch({ value, onChange }: SheetNodeSearchProps) {
         onChange={(e) => onChange(e.target.value)}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => e.stopPropagation()}
-        placeholder="Поиск узлов..."
+        placeholder="Search nodes..."
         className="h-6 text-xs pl-6 pr-2 py-0"
       />
     </div>

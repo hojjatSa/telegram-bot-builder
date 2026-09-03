@@ -509,7 +509,7 @@ export function PropertiesPanel({
           {selectedNode.type === 'forward_message' && (
             <div className="w-full bg-gradient-to-br from-orange-50/40 to-amber-50/20 dark:from-orange-950/30 dark:to-amber-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-orange-200/40 dark:border-orange-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="Переслать сообщение"
+                title="Forward Message"
                 description="Настройки источника сообщения и чата назначения"
                 isOpen={isForwardMessageSectionOpen}
                 onToggle={() => setIsForwardMessageSectionOpen((prev) => !prev)}
@@ -534,7 +534,7 @@ export function PropertiesPanel({
           {selectedNode.type === 'create_forum_topic' && (
             <div className="w-full bg-gradient-to-br from-teal-50/40 to-cyan-50/20 dark:from-teal-950/30 dark:to-cyan-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-teal-200/40 dark:border-teal-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="Создать топик"
+                title="Create topic"
                 description="Создание топика в форум-группе Telegram"
                 isOpen={true}
                 onToggle={() => {}}
@@ -556,7 +556,7 @@ export function PropertiesPanel({
           {(selectedNode.type as any) === 'http_request' && (
             <div className="w-full bg-gradient-to-br from-cyan-50/40 to-blue-50/20 dark:from-cyan-950/30 dark:to-blue-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-cyan-200/40 dark:border-cyan-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="HTTP запрос"
+                title="HTTP Request"
                 description="Настройки запроса к внешнему API"
                 isOpen={true}
                 onToggle={() => {}}
@@ -576,7 +576,7 @@ export function PropertiesPanel({
           {(selectedNode.type as any) === 'api_response' && (
             <div className="w-full bg-gradient-to-br from-violet-50/40 to-indigo-50/20 dark:from-violet-950/30 dark:to-indigo-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-violet-200/40 dark:border-violet-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="Ответ API"
+                title="API Response"
                 description="HTTP-ответ на запрос API-триггера"
                 isOpen={true}
                 onToggle={() => {}}
@@ -597,7 +597,7 @@ export function PropertiesPanel({
           {(selectedNode.type as any) === 'get_managed_bot_token' && (
             <div className="w-full bg-gradient-to-br from-indigo-50/40 to-violet-50/20 dark:from-indigo-950/30 dark:to-violet-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-indigo-200/40 dark:border-indigo-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="Получить токен бота"
+                title="Get Bot Token"
                 description="getManagedBotToken — Bot API 9.6"
                 isOpen={true}
                 onToggle={() => {}}

@@ -36,7 +36,7 @@ export function CanvasViewToggle({ value, onChange }: CanvasViewToggleProps) {
         )}
       >
         <PenLine className="h-3 w-3" />
-        Холст
+        Canvas
       </button>
       <button
         type="button"

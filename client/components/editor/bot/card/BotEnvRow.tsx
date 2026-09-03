@@ -157,7 +157,7 @@ export function BotEnvRow({
       )}
 
       {/* Кнопка копирования */}
-      <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover/row:opacity-100" onClick={() => navigator.clipboard.writeText(revealed ?? actualValue)} title="Копировать">
+      <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover/row:opacity-100" onClick={() => navigator.clipboard.writeText(revealed ?? actualValue)} title="Copy">
         <Copy className="h-3 w-3" />
       </Button>
 

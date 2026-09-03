@@ -95,11 +95,11 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
  * <DialogContent>
  *   <DialogHeader>
  *     <DialogTitle>Заголовок</DialogTitle>
- *     <DialogDescription>Описание</DialogDescription>
+ *     <DialogDescription>Description</DialogDescription>
  *   </DialogHeader>
  *   <DialogFooter>
  *     <Button>Подтвердить</Button>
- *     <Button variant="outline">Отмена</Button>
+ *     <Button variant="outline">Cancel</Button>
  *   </DialogFooter>
  * </DialogContent>
  *
@@ -146,7 +146,7 @@ DialogContent.displayName = DialogPrimitive.Content.displayName
  * @example
  * <DialogHeader>
  *   <DialogTitle>Заголовок</DialogTitle>
- *   <DialogDescription>Описание</DialogDescription>
+ *   <DialogDescription>Description</DialogDescription>
  * </DialogHeader>
  *
  * @returns {JSX.Element} Заголовок диалога
@@ -177,7 +177,7 @@ DialogHeader.displayName = "DialogHeader"
  * @example
  * <DialogFooter>
  *   <Button>Подтвердить</Button>
- *   <Button variant="outline">Отмена</Button>
+ *   <Button variant="outline">Cancel</Button>
  * </DialogFooter>
  *
  * @returns {JSX.Element} Нижний колонтитул диалога

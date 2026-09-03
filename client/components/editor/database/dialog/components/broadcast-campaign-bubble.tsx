@@ -114,7 +114,7 @@ export function BroadcastCampaignBubble({
         {editMode ? (
           <div className="rounded-lg px-3 py-2 bg-gradient-to-br from-violet-100 to-fuchsia-50 dark:from-violet-900/50 dark:to-fuchsia-900/30">
             <div className="flex flex-col gap-1 min-w-[260px]">
-              <CompactInlineEditor value={editText} onChange={setEditText} placeholder="Текст рассылки..." />
+              <CompactInlineEditor value={editText} onChange={setEditText} placeholder="Broadcast message..." />
               <p className="text-[10px] text-muted-foreground">
                 Текст изменится у получателей всех {botCount} {pluralizeBots(botCount)}
               </p>
@@ -126,7 +126,7 @@ export function BroadcastCampaignBubble({
                   disabled={!editText.trim() || editMutation.isPending}
                 >
                   {editMutation.isPending ? <Loader2 className="h-3 w-3 animate-spin" /> : <Check className="h-3 w-3" />}
-                  <span className="ml-1">Сохранить</span>
+                  <span className="ml-1">Save</span>
                 </Button>
                 <Button
                   size="sm"
@@ -136,7 +136,7 @@ export function BroadcastCampaignBubble({
                   disabled={editMutation.isPending}
                 >
                   <X className="h-3 w-3" />
-                  <span className="ml-1">Отмена</span>
+                  <span className="ml-1">Cancel</span>
                 </Button>
               </div>
             </div>

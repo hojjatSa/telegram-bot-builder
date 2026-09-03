@@ -37,7 +37,7 @@ export function PropertiesViewToggle({ value, onChange }: PropertiesViewTogglePr
         data-testid="properties-view-form"
       >
         <SlidersHorizontal className="h-3 w-3 shrink-0" />
-        <span className="truncate">Настройки</span>
+        <span className="truncate">Settings</span>
       </button>
       <button
         type="button"

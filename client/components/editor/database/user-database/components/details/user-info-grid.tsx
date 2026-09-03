@@ -35,11 +35,11 @@ export function UserInfoGrid({
         <div className="mt-2 space-y-2">
           <div>
             <span className="text-sm text-muted-foreground">Имя:</span>{' '}
-            {selectedUser.firstName || 'Не указано'}
+            {selectedUser.firstName || 'Not specified'}
           </div>
           <div>
             <span className="text-sm text-muted-foreground">Username:</span>{' '}
-            {selectedUser.userName ? `@${selectedUser.userName}` : 'Не указано'}
+            {selectedUser.userName ? `@${selectedUser.userName}` : 'Not specified'}
           </div>
           <div>
             <span className="text-sm text-muted-foreground">Telegram ID:</span>{' '}

@@ -66,7 +66,7 @@ export function useUpdateUser(params: UseUpdateUserParams) {
     },
     onError: () => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить статус пользователя',
         variant: 'destructive',
       });

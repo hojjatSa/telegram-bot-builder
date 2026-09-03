@@ -69,7 +69,7 @@ function RecipientCard({
           onClick={onRemove}
         >
           <i className="fas fa-trash text-xs mr-1" />
-          Удалить
+          Delete
         </Button>
       </div>
 

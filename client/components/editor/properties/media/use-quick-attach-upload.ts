@@ -52,7 +52,7 @@ export function useQuickAttachUpload(
         if (urls.length > 0) {
           onAttached(urls);
           toast({
-            title: urls.length === 1 ? 'Файл прикреплён к ноде' : `Прикреплено файлов: ${urls.length}`,
+            title: urls.length === 1 ? 'File attached to node' : `Прикреплено файлов: ${urls.length}`,
           });
         }
         if (failed > 0) {

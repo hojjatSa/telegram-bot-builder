@@ -56,7 +56,7 @@ export function MultipleSelectionSettings({
           </div>
           <div className="min-w-0">
             <Label className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-100 cursor-pointer block">
-              Множественный выбор
+              Multiple choice
             </Label>
             <div className="text-xs text-blue-700/70 dark:text-blue-300/70 leading-snug">
               {description}
@@ -74,7 +74,7 @@ export function MultipleSelectionSettings({
                 if (!hasCompleteButton) {
                   const completeButton = {
                     id: Date.now().toString(),
-                    text: 'Готово',
+                    text: 'Done',
                     action: 'complete' as const,
                     buttonType: 'complete' as const,
                     target: '',

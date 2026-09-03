@@ -25,11 +25,11 @@ export function getCampaignStatusBadge(status: string): StatusBadge {
     case 'running':
       return { className: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300', label: 'Отправка...' };
     case 'stopped':
-      return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Остановлена' };
+      return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Stopped' };
     case 'partial':
       return { className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300', label: 'Частично' };
     case 'failed':
-      return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Ошибка' };
+      return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Error' };
     case 'pending':
       return { className: 'bg-muted text-muted-foreground', label: 'В очереди' };
     default:

@@ -105,7 +105,7 @@ export function useCollaborators(projectId: number): UseCollaboratorsResult {
       await fetchCollaborators();
       invalidateProfiles();
     } catch {
-      toast({ title: 'Ошибка', description: 'Не удалось добавить владельца', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Не удалось добавить владельца', variant: 'destructive' });
     } finally {
       setIsAdding(false);
     }
@@ -127,7 +127,7 @@ export function useCollaborators(projectId: number): UseCollaboratorsResult {
       await fetchCollaborators();
       invalidateProfiles();
     } catch {
-      toast({ title: 'Ошибка', description: 'Не удалось удалить владельца', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Не удалось удалить владельца', variant: 'destructive' });
     } finally {
       setIsRemoving(false);
     }

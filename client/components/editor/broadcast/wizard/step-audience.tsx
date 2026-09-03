@@ -40,10 +40,10 @@ interface StepAudienceProps {
 
 /** Варианты аудитории с иконками */
 const AUDIENCE_OPTIONS = [
-  { value: 'all', label: 'Все пользователи', icon: Users },
-  { value: 'date', label: 'По дате регистрации', icon: Calendar },
-  { value: 'activity', label: 'По активности', icon: Activity },
-  { value: 'manual', label: 'Выбрать вручную', icon: UserCheck },
+  { value: 'all', label: 'All users', icon: Users },
+  { value: 'date', label: 'By registration date', icon: Calendar },
+  { value: 'activity', label: 'By activity', icon: Activity },
+  { value: 'manual', label: 'Select manually', icon: UserCheck },
 ] as const;
 
 /**
@@ -120,8 +120,8 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
       <div className="space-y-1.5">
         <Label className="flex items-center gap-1.5">
           <Tag className="w-3.5 h-3.5 text-blue-500" />
-          Название рассылки
-          <span className="text-xs font-normal text-muted-foreground">необязательно</span>
+          Broadcast name
+          <span className="text-xs font-normal text-muted-foreground">optional</span>
         </Label>
         <Input
           value={formData.name}
@@ -142,7 +142,7 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
       <div className="space-y-2">
         <Label className="flex items-center gap-1.5">
           <Users className="w-3.5 h-3.5 text-blue-500" />
-          Аудитория
+          Audience
         </Label>
         <AudienceContextHint projectId={projectId} tokenId={tokenId} selectedTokenIds={tokenIds} />
         <RadioGroup
@@ -192,7 +192,7 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
       <div className="rounded-xl border border-violet-200/50 dark:border-violet-800/40 bg-gradient-to-r from-violet-500/5 to-fuchsia-500/5 p-3 space-y-2">
         <Label className="flex items-center gap-1.5">
           <Users className="w-3.5 h-3.5 text-violet-500" />
-          Также отправить в группы
+          Also send to groups
         </Label>
         <BroadcastGroupsByBots
           projectId={projectId}
@@ -205,7 +205,7 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
       {/* Счётчик получателей */}
       <div className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-500/10 to-violet-500/10 border border-blue-200/40 dark:border-blue-800/40 p-3">
         <Users className="w-5 h-5 text-blue-500" />
-        <span className="text-sm text-muted-foreground">Получателей:</span>
+        <span className="text-sm text-muted-foreground">Recipients:</span>
         <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-violet-600 bg-clip-text text-transparent">
           {audienceType === 'manual' ? recipientCount.toLocaleString('ru-RU') : (isLoading ? '...' : count.toLocaleString('ru-RU'))}
         </span>
@@ -215,13 +215,13 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
 
       {/* Кнопки навигации */}
       <div className="flex justify-between pt-2">
-        <Button variant="ghost" onClick={onCancel}>Отмена</Button>
+        <Button variant="ghost" onClick={onCancel}>Cancel</Button>
         <Button
           onClick={onNext}
           disabled={tokenIds.length === 0}
           className="bg-gradient-to-r from-blue-500 to-violet-500 text-white hover:from-blue-600 hover:to-violet-600"
         >
-          Далее →
+          Next →
         </Button>
       </div>
     </div>

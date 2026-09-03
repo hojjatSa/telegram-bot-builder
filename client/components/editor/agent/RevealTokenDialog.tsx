@@ -57,7 +57,7 @@ export function RevealTokenDialog({ token, onClose }: RevealTokenDialogProps) {
           <code className="flex-1 select-all break-all rounded-md bg-muted p-3 font-mono text-sm">
             {token}
           </code>
-          <Button variant="outline" size="icon" onClick={handleCopy} aria-label="Копировать">
+          <Button variant="outline" size="icon" onClick={handleCopy} aria-label="Copy">
             <Copy className="h-4 w-4" />
           </Button>
         </div>
@@ -65,7 +65,7 @@ export function RevealTokenDialog({ token, onClose }: RevealTokenDialogProps) {
         {token && <McpConfigSnippet token={token} />}
 
         <DialogFooter>
-          <Button onClick={onClose}>Готово</Button>
+          <Button onClick={onClose}>Done</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

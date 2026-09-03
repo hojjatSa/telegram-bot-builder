@@ -29,7 +29,7 @@ export function buildLocalCanvasActor(
 
   if (user && !isGuest(user)) {
     const displayName = [user.firstName, user.lastName].filter(Boolean).join(' ')
-      || (user.username ? `@${user.username}` : 'Пользователь');
+      || (user.username ? `@${user.username}` : 'User');
     return {
       kind: 'user',
       id: String(user.id),
@@ -43,7 +43,7 @@ export function buildLocalCanvasActor(
   return {
     kind: 'guest',
     id: `guest-${tabId}`,
-    displayName: 'Гость',
+    displayName: 'Guest',
     clientId: tabId,
   };
 }

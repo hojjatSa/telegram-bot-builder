@@ -59,7 +59,7 @@ export function useDeleteUser(params: UseDeleteUserParams) {
     onError: (error) => {
       console.error('User deletion failed:', error);
       toast({
-        title: 'Ошибка удаления',
+        title: 'Delete failed',
         description: 'Не удалось удалить пользователя. Проверьте консоль для подробностей.',
         variant: 'destructive',
       });

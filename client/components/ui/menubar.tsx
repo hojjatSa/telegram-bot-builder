@@ -16,12 +16,12 @@ import { type CheckedState } from "@radix-ui/react-checkbox"
  *
  * @example
  * <MenubarMenu>
- *   <MenubarTrigger>Файл</MenubarTrigger>
+ *   <MenubarTrigger>File</MenubarTrigger>
  *   <MenubarContent>
  *     <MenubarItem>Новый</MenubarItem>
  *     <MenubarItem>Открыть</MenubarItem>
  *     <MenubarSeparator />
- *     <MenubarItem>Сохранить</MenubarItem>
+ *     <MenubarItem>Save</MenubarItem>
  *   </MenubarContent>
  * </MenubarMenu>
  *
@@ -106,7 +106,7 @@ function MenubarSub({
  * @example
  * <Menubar>
  *   <MenubarMenu>
- *     <MenubarTrigger>Файл</MenubarTrigger>
+ *     <MenubarTrigger>File</MenubarTrigger>
  *     <MenubarContent>
  *       <MenubarItem>Новый</MenubarItem>
  *       <MenubarItem>Открыть</MenubarItem>
@@ -142,7 +142,7 @@ Menubar.displayName = MenubarPrimitive.Root.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <MenubarTrigger>Файл</MenubarTrigger>
+ * <MenubarTrigger>File</MenubarTrigger>
  *
  * @returns {JSX.Element} Триггер строки меню
  */
@@ -250,7 +250,7 @@ MenubarSubContent.displayName = MenubarPrimitive.SubContent.displayName
  *   <MenubarItem>Новый</MenubarItem>
  *   <MenubarItem>Открыть</MenubarItem>
  *   <MenubarSeparator />
- *   <MenubarItem>Сохранить</MenubarItem>
+ *   <MenubarItem>Save</MenubarItem>
  * </MenubarContent>
  *
  * @returns {JSX.Element} Содержимое меню строки меню
@@ -292,7 +292,7 @@ MenubarContent.displayName = MenubarPrimitive.Content.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <MenubarItem>Сохранить</MenubarItem>
+ * <MenubarItem>Save</MenubarItem>
  *
  * @returns {JSX.Element} Элемент строки меню
  */
@@ -411,7 +411,7 @@ MenubarRadioItem.displayName = MenubarPrimitive.RadioItem.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <MenubarLabel>Настройки</MenubarLabel>
+ * <MenubarLabel>Settings</MenubarLabel>
  *
  * @returns {JSX.Element} Метка в строке меню
  */

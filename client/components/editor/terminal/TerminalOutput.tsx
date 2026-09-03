@@ -109,8 +109,8 @@ export function TerminalOutput({
           'text-[10px] font-medium uppercase tracking-wide text-muted-foreground/80 select-none',
         ].join(' ')}
       >
-        <span>Время</span>
-        <span>Уровень</span>
+        <span>Time</span>
+        <span>Level</span>
         <span>Данные</span>
       </div>
       <div

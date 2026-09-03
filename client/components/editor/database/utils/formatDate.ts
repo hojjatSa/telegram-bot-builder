@@ -7,7 +7,7 @@
  * Форматирует дату в удобочитаемый формат
  * @param date - Дата для форматирования
  * @param options - Опции форматирования
- * @returns Отформатированная строка или 'Не указано'
+ * @returns Отформатированная строка или 'Not specified'
  */
 export function formatDate(
   date: unknown,
@@ -19,7 +19,7 @@ export function formatDate(
 ): string {
   const {
     timeZone = 'Europe/Moscow',
-    fallback = 'Не указано'
+    fallback = 'Not specified'
   } = options ?? {};
 
   if (!date) return fallback;

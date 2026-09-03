@@ -1,6 +1,6 @@
 /**
  * @fileoverview Мобильный layout для панели кода с переключением вкладок
- * @description По образцу BotLayout — вкладки "Панель" / "Код".
+ * @description По образцу BotLayout — вкладки "Панель" / "Code".
  * На мобильных показывает табы, на десктопе рендерит оба компонента рядом через ResizablePanelGroup.
  * Оба компонента остаются в DOM (через hidden) чтобы не терять состояние Monaco Editor.
  */
@@ -25,7 +25,7 @@ interface CodeMobileLayoutProps {
 
 /**
  * Мобильный layout для панели кода
- * На мобильных (< 768px) показывает переключаемые вкладки "Панель" / "Код".
+ * На мобильных (< 768px) показывает переключаемые вкладки "Панель" / "Code".
  * На десктопе рендерит оба компонента рядом с resizable-разделителем.
  * @param props - Свойства компонента
  * @returns JSX элемент
@@ -79,10 +79,10 @@ export function CodeMobileLayout({ panelContent, editorContent }: CodeMobileLayo
               ? 'text-foreground border-b-2 border-primary'
               : 'text-muted-foreground hover:text-foreground',
           ].join(' ')}
-          aria-label="Редактор кода"
+          aria-label="Code Editor"
         >
           <i className="fas fa-code w-4 h-4" />
-          Код
+          Code
         </button>
       </div>
 

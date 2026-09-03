@@ -5,8 +5,8 @@
 
 /** Известные тексты Telegram → понятная подпись */
 const TELEGRAM_REASON_LABELS: Array<[RegExp, string]> = [
-  [/blocked by the user|user is blocked|bot was blocked/i, 'Заблокировал бота'],
-  [/user is deactivated|deleted account/i, 'Аккаунт удалён'],
+  [/blocked by the user|user is blocked|bot was blocked/i, 'Blocked the bot'],
+  [/user is deactivated|deleted account/i, 'Account deleted'],
   [/chat not found|peer_id_invalid/i, 'Чат или пользователь не найден'],
   [/retry after|too many requests|flood/i, 'Слишком частые запросы'],
   [/message is too long/i, 'Сообщение слишком длинное'],
@@ -38,8 +38,8 @@ export function formatDeliveryErrorReason(
   status: string,
   errorMessage?: string | null,
 ): string {
-  if (status === 'blocked') return 'Заблокировал бота';
-  if (status === 'not_found') return 'Аккаунт удалён';
+  if (status === 'blocked') return 'Blocked the bot';
+  if (status === 'not_found') return 'Account deleted';
   const raw = errorMessage?.trim();
   if (raw) {
     const translated = translateTelegramMessage(raw);

@@ -109,7 +109,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
             <img
               key={idx}
               src={m.url}
-              alt="Фото"
+              alt="Photo"
               className="w-full h-auto rounded-lg cursor-zoom-in"
               data-testid={`dialog-photo-${m.messageId}-${idx}`}
               onClick={() => setLightboxSrc(m.url)}
@@ -135,7 +135,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
         <div className="group relative rounded-lg overflow-hidden max-w-[200px]">
           <img
             src={proxyUrl}
-            alt="Фото"
+            alt="Photo"
             className="w-full h-auto rounded-lg cursor-zoom-in"
             onClick={() => setLightboxSrc(proxyUrl)}
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -212,7 +212,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
         >
           <span className="text-lg">📎</span>
           <span className="flex-1 truncate text-xs">
-            {document.file_name || 'Документ'}
+            {document.file_name || 'Document'}
             {sizeStr && <span className="text-muted-foreground ml-1">({sizeStr})</span>}
           </span>
         </a>
@@ -255,7 +255,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
         <div className="group relative max-w-[120px]">
           <img
             src={stickerUrl}
-            alt={sticker.emoji || 'Стикер'}
+            alt={sticker.emoji || 'Sticker'}
             className="w-full h-auto cursor-zoom-in"
             onClick={() => setLightboxSrc(stickerUrl)}
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -275,12 +275,12 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
   // Fallback: медиа есть в данных, но показать нельзя (нет projectId или file_id) — показываем плейсхолдер
   /** Метки для каждого типа медиа */
   const MEDIA_TYPE_LABELS: Record<string, string> = {
-    photo: '[Фото]',
-    video: '[Видео]',
-    audio: '[Аудио]',
-    voice: '[Голосовое]',
-    document: '[Документ]',
-    sticker: '[Стикер]',
+    photo: '[Photo]',
+    video: '[Video]',
+    audio: '[Audio]',
+    voice: '[Voice]',
+    document: '[Document]',
+    sticker: '[Sticker]',
   };
   const data = messageData as Record<string, unknown> | null;
   if (data) {
@@ -354,7 +354,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
       >
         <span className="text-lg">📎</span>
         <span className="text-xs truncate">
-          {broadcastMediaType === 'document' ? 'Документ' : 'Файл рассылки'}
+          {broadcastMediaType === 'document' ? 'Document' : 'Файл рассылки'}
         </span>
       </a>
     );

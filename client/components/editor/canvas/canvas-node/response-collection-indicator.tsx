@@ -89,7 +89,7 @@ export function ResponseCollectionIndicator({ node }: ResponseCollectionIndicato
 
       {/* Multi-Select Variable */}
       {!hasButtonResponses && multiSelectVariable && allowMultipleSelection && (
-        <ResponseItem type="multi-select" variableName={multiSelectVariable} label="Множественный выбор" />
+        <ResponseItem type="multi-select" variableName={multiSelectVariable} label="Multiple choice" />
       )}
     </div>
   );

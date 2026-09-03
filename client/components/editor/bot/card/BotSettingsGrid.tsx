@@ -91,7 +91,7 @@ export function BotSettingsGrid({
 
   return (
     <div className="space-y-6">
-      <SettingsSection title="Запуск">
+      <SettingsSection title="Run">
         <BotTokenSettings
           projectId={projectId}
           tokenId={tokenId}

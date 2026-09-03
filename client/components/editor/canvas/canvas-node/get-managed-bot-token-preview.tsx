@@ -31,7 +31,7 @@ export function GetManagedBotTokenPreview({ node }: GetManagedBotTokenPreviewPro
       <div className="flex items-center gap-2">
         <span className="text-base">🔑</span>
         <span className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">
-          Получить токен бота
+          Get Bot Token
         </span>
       </div>
       <div className="text-xs text-muted-foreground">

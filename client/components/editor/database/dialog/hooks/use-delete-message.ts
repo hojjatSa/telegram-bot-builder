@@ -68,7 +68,7 @@ export function useDeleteMessage({
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error((errorData as { message?: string }).message ?? 'Ошибка удаления');
+        throw new Error((errorData as { message?: string }).message ?? 'Delete failed');
       }
 
       return response.json() as Promise<DeleteMessageResponse>;
@@ -91,7 +91,7 @@ export function useDeleteMessage({
       // Восстанавливаем сообщение при ошибке
       onRollback(messageId);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось удалить сообщение',
         variant: 'destructive',
       });

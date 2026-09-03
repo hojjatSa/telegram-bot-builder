@@ -34,12 +34,12 @@ export function TemplateDeleteDialog({ template, onConfirm, onCancel }: Template
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={onCancel}>Отмена</AlertDialogCancel>
+          <AlertDialogCancel onClick={onCancel}>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            Удалить
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

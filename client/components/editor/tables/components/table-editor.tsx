@@ -278,7 +278,7 @@ export function TableEditor({
                     <div className="flex items-center gap-1">
                       <Input
                         autoFocus
-                        placeholder="Имя"
+                        placeholder="Name"
                         value={newColName}
                         onChange={(e) => setNewColName(e.target.value)}
                         onKeyDown={(e) => {

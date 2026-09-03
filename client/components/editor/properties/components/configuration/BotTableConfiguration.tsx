@@ -36,14 +36,14 @@ interface BotTableConfigurationProps {
 const OPERATION_LABELS: Record<string, string> = {
   read: 'Прочитать',
   insert: 'Вставить',
-  update: 'Обновить',
+  update: 'Refresh',
   upsert: 'Создать или обновить',
-  delete: 'Удалить',
+  delete: 'Delete',
   count: 'Подсчитать',
-  sum: 'Сумма',
-  max: 'Максимум',
-  min: 'Минимум',
-  avg: 'Среднее',
+  sum: 'Sum',
+  max: 'Maximum',
+  min: 'Minimum',
+  avg: 'Average',
   distinct: 'Уникальные значения',
   delete_all: 'Очистить таблицу',
 };
@@ -131,7 +131,7 @@ export function BotTableConfiguration({
       {/* Имя таблицы */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Таблица
+          Table
         </Label>
         <Select
           value={tableName || 'no-table'}
@@ -305,7 +305,7 @@ export function BotTableConfiguration({
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Сортировка
+              Sort
             </Label>
             <Input
               value={orderBy}
@@ -388,10 +388,10 @@ export function BotTableConfiguration({
           }
         >
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60 border border-amber-300/40 dark:border-amber-700/40">
-            <SelectValue placeholder="Без перехода" />
+            <SelectValue placeholder="No transition" />
           </SelectTrigger>
           <SelectContent className="max-h-48 overflow-y-auto">
-            <SelectItem value="no-transition">Без перехода</SelectItem>
+            <SelectItem value="no-transition">No transition</SelectItem>
             {availableTargets.map(({ node, sheetName }) => (
               <SelectItem key={node.id} value={node.id}>
                 <span className="text-xs font-mono truncate">
@@ -410,7 +410,7 @@ export function BotTableConfiguration({
             })
           }
           className="text-xs h-8 mt-1.5 bg-white/60 dark:bg-slate-950/60 border border-amber-300/40 dark:border-amber-700/40"
-          placeholder="или ID вручную"
+          placeholder="or enter an ID manually"
         />
       </div>
     </div>

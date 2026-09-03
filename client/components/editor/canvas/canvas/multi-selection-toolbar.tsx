@@ -62,7 +62,7 @@ export function MultiSelectionToolbar({
         title="Удалить выделенные узлы (Delete)"
       >
         <i className="fas fa-trash text-xs" />
-        Удалить
+        Delete
       </button>
 
       {/* Копировать */}
@@ -72,7 +72,7 @@ export function MultiSelectionToolbar({
         title="Копировать выделенные узлы в буфер (Ctrl+Shift+C)"
       >
         <i className="fas fa-clipboard text-xs" />
-        Копировать
+        Copy
       </button>
 
       {/* В лист ▾ */}

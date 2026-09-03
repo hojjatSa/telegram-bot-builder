@@ -48,7 +48,7 @@ interface WorkerPoolStatusProps {
  * @returns Имя проекта или нейтральный fallback
  */
 function getProjectName(projectId: number, projects?: Array<{ id: number; name: string }>): string {
-  return projects?.find(p => p.id === projectId)?.name ?? 'Проект';
+  return projects?.find(p => p.id === projectId)?.name ?? 'Project';
 }
 
 /**

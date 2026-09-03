@@ -373,7 +373,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
             <Label className="text-sm font-medium">Размеры панелей (%)</Label>
             <div className="grid grid-cols-3 gap-4">
               <div className="space-y-2">
-                <Label className="text-xs">Боковая панель</Label>
+                <Label className="text-xs">Sidebar</Label>
                 <div className="flex items-center gap-2">
                   <input
                     type="range"
@@ -389,7 +389,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                 </div>
               </div>
               <div className="space-y-2">
-                <Label className="text-xs">Холст</Label>
+                <Label className="text-xs">Canvas</Label>
                 <div className="flex items-center gap-2">
                   <input
                     type="range"
@@ -450,7 +450,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                 variant="outline"
                 onClick={() => setIsVisible(false)}
               >
-                Отмена
+                Cancel
               </Button>
               <Button
                 onClick={() => {

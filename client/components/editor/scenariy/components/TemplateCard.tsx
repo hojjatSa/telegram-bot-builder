@@ -30,7 +30,7 @@ export function TemplateCard({ template, onUse, showDelete, onDelete }: Template
               {template.ownerId === null ? (
                 <>
                   <Badge variant="default" className="bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-semibold shadow-sm">
-                    <Globe className="w-2.5 h-2.5 mr-1 hidden xs:inline" />Официальный
+                    <Globe className="w-2.5 h-2.5 mr-1 hidden xs:inline" />Official
                   </Badge>
                   <Badge variant="outline" className="text-xs font-medium border-blue-200/50 dark:border-blue-800/50 bg-blue-50/50 dark:bg-blue-950/20 text-blue-700 dark:text-blue-300">
                     {getCategoryLabel(template.category ?? 'official')}

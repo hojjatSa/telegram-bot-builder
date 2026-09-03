@@ -237,7 +237,7 @@ export function normalizeProjectData(projectData: BotDataWithSheets): BotDataWit
           node.data.saveToDatabase = false;
         }
         if (node.data.inputPrompt === undefined) {
-          node.data.inputPrompt = 'Введите ответ';
+          node.data.inputPrompt = 'Enter a response';
         }
         if (node.data.inputRequired === undefined) {
           node.data.inputRequired = true;

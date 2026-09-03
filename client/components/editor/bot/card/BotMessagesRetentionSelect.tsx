@@ -89,7 +89,7 @@ export function BotMessagesRetentionSelect({
     onError: () => {
       setLocalDays(normalizeRetentionDays(messagesRetentionDays));
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить срок хранения',
         variant: 'destructive',
       });

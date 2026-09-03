@@ -99,7 +99,7 @@ export function BotLogLevelSelect({ projectId, tokenId, logLevel, onPendingChang
         disabled={mutation.isPending}
       >
         <SelectTrigger className="h-7 w-full text-xs">
-          <SelectValue placeholder="Уровень" />
+          <SelectValue placeholder="Level" />
         </SelectTrigger>
         <SelectContent>
           {LOG_LEVELS.map(({ value, label }) => (

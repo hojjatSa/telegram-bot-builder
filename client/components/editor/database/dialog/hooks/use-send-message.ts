@@ -119,7 +119,7 @@ export function useSendMessage({
 
     onSuccess: () => {
       toast({
-        title: 'Сообщение отправлено',
+        title: 'Message sent',
         description: 'Сообщение успешно отправлено пользователю',
       });
       onSent?.();
@@ -132,7 +132,7 @@ export function useSendMessage({
         tempIdRef.current = null;
       }
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось отправить сообщение',
         variant: 'destructive',
       });

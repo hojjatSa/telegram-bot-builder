@@ -129,7 +129,7 @@ export function MediaPreviewItem({ urlOrFileId, projectId, tokenId }: MediaPrevi
       return (
         <img
           src={src}
-          alt="Фото"
+          alt="Photo"
           className="max-h-40 object-cover rounded-lg"
           onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
         />
@@ -169,7 +169,7 @@ export function MediaPreviewItem({ urlOrFileId, projectId, tokenId }: MediaPrevi
     return (
       <img
         src={urlOrFileId}
-        alt="Медиа"
+        alt="Media"
         className="max-h-40 object-cover rounded-lg"
         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
       />

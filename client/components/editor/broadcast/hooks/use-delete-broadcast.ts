@@ -37,7 +37,7 @@ export function useDeleteBroadcast({ projectId, refetch }: UseDeleteBroadcastPar
     },
     onSuccess: (data) => {
       toast({
-        title: 'Рассылка удалена',
+        title: 'Broadcast deleted',
         description: `Сообщений удалено у получателей: ${data?.deleted ?? 0}`,
       });
       refetch?.();
@@ -45,8 +45,8 @@ export function useDeleteBroadcast({ projectId, refetch }: UseDeleteBroadcastPar
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
-        description: error.message || 'Не удалось удалить рассылку',
+        title: 'Error',
+        description: error.message || 'Could not delete broadcast',
         variant: 'destructive',
       });
     },

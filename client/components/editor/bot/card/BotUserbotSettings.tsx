@@ -125,7 +125,7 @@ export function BotUserbotSettings({
         setError(data.message || 'Ошибка отправки кода');
       }
     } catch (e: any) {
-      setError(e.message || 'Сетевая ошибка');
+      setError(e.message || 'Network error');
     } finally {
       setLoading(false);
     }
@@ -158,7 +158,7 @@ export function BotUserbotSettings({
         setError(data.message || 'Неверный код');
       }
     } catch (e: any) {
-      setError(e.message || 'Сетевая ошибка');
+      setError(e.message || 'Network error');
     } finally {
       setLoading(false);
     }
@@ -189,7 +189,7 @@ export function BotUserbotSettings({
         setError(data.message || 'Неверный пароль');
       }
     } catch (e: any) {
-      setError(e.message || 'Сетевая ошибка');
+      setError(e.message || 'Network error');
     } finally {
       setLoading(false);
     }

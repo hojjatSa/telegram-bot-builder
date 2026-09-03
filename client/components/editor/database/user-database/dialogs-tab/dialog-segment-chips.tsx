@@ -8,7 +8,7 @@ import type { DialogKind } from './dialog-kind';
 
 /** Пункты сегмента */
 const SEGMENTS: ReadonlyArray<{ id: DialogKind; label: string }> = [
-  { id: 'all', label: 'Все' },
+  { id: 'all', label: 'All' },
   { id: 'users', label: 'Личные' },
   { id: 'groups', label: 'Группы' },
   { id: 'channels', label: 'Каналы' },

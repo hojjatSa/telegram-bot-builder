@@ -87,7 +87,7 @@ export function DialogButtonsEditor({ buttons, onChange, availableNodes, buttons
   const handleAdd = () => {
     onChange([
       ...buttons,
-      { id: generateButtonId(), text: 'Новая кнопка', action: 'url', url: '' } as Button,
+      { id: generateButtonId(), text: 'New button', action: 'url', url: '' } as Button,
     ]);
   };
 

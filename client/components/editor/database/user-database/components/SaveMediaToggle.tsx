@@ -68,14 +68,14 @@ export function SaveMediaToggle({ projectId, tokenId, saveIncomingMedia }: SaveM
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
-        title: 'Настройка сохранена',
-        description: 'Перезапустите бота, чтобы применить изменения',
+        title: 'Setting saved',
+        description: 'Restart the bot to apply changes',
       });
     },
     onError: () => {
       setLocalEnabled(saveIncomingMedia === 1);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить настройку сохранения медиа',
         variant: 'destructive',
       });
@@ -94,7 +94,7 @@ export function SaveMediaToggle({ projectId, tokenId, saveIncomingMedia }: SaveM
           htmlFor={`save-media-db-${tokenId}`}
           className="text-sm font-medium cursor-pointer"
         >
-          {localEnabled ? 'Сохранять входящие фото' : 'Фото не сохраняются'}
+          {localEnabled ? 'Save incoming photos' : 'Фото не сохраняются'}
         </Label>
         <IncomingMediaStorageHint
           projectId={projectId}

@@ -153,7 +153,7 @@ export function AllTablesActions({ projectId, onImportTable }: AllTablesActionsP
 
           <DialogFooter>
             <Button variant="outline" onClick={handleClose}>
-              Отмена
+              Cancel
             </Button>
             <Button onClick={handleImport} disabled={parsed.length === 0 || importing}>
               {importing ? 'Импорт...' : 'Импортировать все'}

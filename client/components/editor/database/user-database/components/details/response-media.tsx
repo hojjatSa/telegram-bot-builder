@@ -57,7 +57,7 @@ function getMediaType(url: string, type?: string): 'audio' | 'video' | 'image' |
  * Компонент документа
  */
 function DocumentFile({ url, onError }: { url: string; onError: () => void }): React.JSX.Element {
-  const fileName = url.split('/').pop() || 'Файл';
+  const fileName = url.split('/').pop() || 'File';
   const extension = fileName.split('.').pop()?.toUpperCase() || 'FILE';
 
   return (
@@ -165,7 +165,7 @@ export function ResponseMedia({
       <div className="rounded-lg overflow-hidden max-w-md">
         <img
           src={responseData.photoUrl}
-          alt="Фото ответ"
+          alt="Photo response"
           className="w-full h-auto rounded-lg border border-border"
           onError={() => setMediaError(true)}
         />
@@ -190,7 +190,7 @@ export function ResponseMedia({
         <div className="rounded-lg overflow-hidden max-w-md">
           <img
             src={normalizedValue}
-            alt="Фото ответ"
+            alt="Photo response"
             className="w-full h-auto rounded-lg border border-border"
             onError={() => setMediaError(true)}
           />
@@ -204,7 +204,7 @@ export function ResponseMedia({
         <div className="rounded-lg overflow-hidden max-w-md">
           <img
             src={photoUrl}
-            alt="Фото ответ"
+            alt="Photo response"
             className="w-full h-auto rounded-lg border border-border"
             onError={() => setMediaError(true)}
           />
@@ -301,7 +301,7 @@ export function ResponseMedia({
         <div className="rounded-lg overflow-hidden max-w-md">
           <img
             src={photoUrl}
-            alt="Фото ответ"
+            alt="Photo response"
             className="w-full h-auto rounded-lg border border-border"
             onError={() => setMediaError(true)}
           />
@@ -324,7 +324,7 @@ export function ResponseMedia({
       <div className="rounded-lg overflow-hidden max-w-md">
         <img
           src={answerValue}
-          alt="Ответ"
+          alt="Response"
           className="w-full h-auto rounded-lg"
           onError={() => setMediaError(true)}
         />

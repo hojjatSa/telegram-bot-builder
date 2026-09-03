@@ -101,7 +101,7 @@ export function FileStorageHeader(props: FileStorageHeaderProps): React.JSX.Elem
             <div className="rounded-lg bg-primary/10 p-1.5 shrink-0">
               <FolderOpen className="h-3.5 w-3.5 text-primary" />
             </div>
-            <h2 className="text-sm font-semibold leading-none">Файлы</h2>
+            <h2 className="text-sm font-semibold leading-none">Files</h2>
           </div>
           <HeaderSelectors {...props} />
           <div className="ml-auto flex shrink-0 items-center gap-1.5">{actions}</div>
@@ -119,7 +119,7 @@ export function FileStorageHeader(props: FileStorageHeaderProps): React.JSX.Elem
       <TabHeader
         className="border-b-0 bg-transparent pb-1"
         icon={<FolderOpen className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="Файлы"
+        title="Files"
         actions={actions}
       >
         <HeaderSelectors {...props} />

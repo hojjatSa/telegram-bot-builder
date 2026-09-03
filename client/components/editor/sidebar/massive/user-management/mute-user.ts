@@ -18,7 +18,7 @@ export const muteUser: ComponentDefinition = {
     userIdSource: 'last_message',
     userVariableName: '',
     duration: 3600,
-    reason: 'Нарушение правил группы',
+    reason: 'Violation of group rules',
     canSendMessages: false,
     canSendMediaMessages: false,
     canSendPolls: false,

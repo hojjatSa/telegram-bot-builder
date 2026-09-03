@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 /** Триггер входящего callback_query — срабатывает на каждое нажатие инлайн-кнопки */
 export const incomingCallbackTrigger: ComponentDefinition = {
   id: 'incoming-callback-trigger',
-  name: 'Триггер нажатия кнопки',
+  name: 'Button Click Trigger',
   description: 'Срабатывает на каждое нажатие инлайн-кнопки пользователем. Работает параллельно с основным потоком.',
   icon: 'fas fa-hand-pointer',
   color: 'bg-orange-100 text-orange-600',

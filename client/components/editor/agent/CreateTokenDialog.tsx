@@ -85,7 +85,7 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
 
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <Label htmlFor="agent-token-label">Название</Label>
+            <Label htmlFor="agent-token-label">Name</Label>
             <Input
               id="agent-token-label"
               placeholder="Например, Cursor на ноуте"
@@ -111,10 +111,10 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
 
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Отмена
+            Cancel
           </Button>
           <Button onClick={handleSubmit} disabled={createToken.isPending}>
-            {createToken.isPending ? "Создаём…" : "Создать"}
+            {createToken.isPending ? "Создаём…" : "Create"}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -51,7 +51,7 @@ export function useSendNode(
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: error.message || 'Не удалось отправить узел',
         variant: 'destructive',
       });

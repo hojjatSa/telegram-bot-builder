@@ -151,7 +151,7 @@ export function BotCard({
             {viewMode === 'settings' ? (
               <BotSettingsGrid
                 projectId={project.id} tokenId={token.id}
-                botName={token.name ?? `Бот ${token.id}`}
+                botName={token.name ?? `Bot ${token.id}`}
                 userDatabaseEnabled={project.userDatabaseEnabled}
                 token={token}
                 toggleDatabaseMutation={toggleDatabaseMutation}

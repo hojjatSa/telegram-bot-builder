@@ -47,7 +47,7 @@ export function MobileSheets(props: MobileSheetsProps) {
       <Sheet open={showMobileSidebar} onOpenChange={setShowMobileSidebar}>
         <SheetContent side="left" className="p-0 w-80">
           <SheetHeader className="px-4 py-3 border-b">
-            <SheetTitle>Компоненты</SheetTitle>
+            <SheetTitle>Components</SheetTitle>
           </SheetHeader>
           <div className="h-full overflow-auto">
             {sidebarContent}
@@ -59,7 +59,7 @@ export function MobileSheets(props: MobileSheetsProps) {
       <Sheet open={showMobileProperties} onOpenChange={setShowMobileProperties}>
         <SheetContent side="right" className="p-0 w-full max-w-full sm:w-96 sm:max-w-md">
           <SheetHeader className="px-4 py-3 border-b bg-background/95 backdrop-blur-sm sticky top-0 z-10">
-            <SheetTitle className="text-lg font-semibold">Свойства элемента</SheetTitle>
+            <SheetTitle className="text-lg font-semibold">Element Properties</SheetTitle>
           </SheetHeader>
           <div className="h-[calc(100vh-60px)] overflow-auto pb-safe">
             {propertiesContent}

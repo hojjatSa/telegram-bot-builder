@@ -183,10 +183,10 @@ export function useTelegramLogin() {
           if (data.success && data.user) {
             await acceptSession(data.user, Boolean(data.switched));
           } else {
-            toast({ title: 'Ошибка входа', description: data.error, variant: 'destructive' });
+            toast({ title: 'Sign-in failed', description: data.error, variant: 'destructive' });
           }
         } catch {
-          toast({ title: 'Ошибка входа', description: 'Не удалось выполнить dev-login', variant: 'destructive' });
+          toast({ title: 'Sign-in failed', description: 'Не удалось выполнить dev-login', variant: 'destructive' });
         }
       };
 

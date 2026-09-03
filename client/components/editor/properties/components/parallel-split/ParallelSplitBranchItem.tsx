@@ -63,7 +63,7 @@ function TargetSelector({ value, placeholder, onChange, targets }: {
         value={value}
         onChange={e => onChange(e.target.value)}
         className="text-xs bg-white/60 dark:bg-slate-950/60 border border-rose-300/40 dark:border-rose-700/40 text-rose-900 dark:text-rose-50 placeholder:text-rose-500/50 dark:placeholder:text-rose-400/50 focus:border-rose-500 focus:ring-2 focus:ring-rose-400/30"
-        placeholder="Или введите ID узла вручную"
+        placeholder="Or enter a node ID manually"
       />
     </div>
   );

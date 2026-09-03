@@ -37,7 +37,7 @@ interface GroupDef {
 const GROUP_DEFS: GroupDef[] = [
   { key: 'custom', label: '✏️ Пользовательские', tabLabel: '✏️ Свои' },
   { key: 'system', label: '⚙️ Системные', tabLabel: '⚙️ Системные' },
-  { key: 'media', label: '📎 Медиа', tabLabel: '📎 Медиа' },
+  { key: 'media', label: '📎 Media', tabLabel: '📎 Media' },
   { key: 'tables', label: '📊 Таблицы', tabLabel: '📊 Таблицы' }
 ];
 
@@ -125,7 +125,7 @@ export function VariableListContent({
 
   /** Набор вкладок: «Все» + по одной на каждую непустую группу */
   const tabs: TabDef[] = [
-    { key: 'all', label: 'Все' },
+    { key: 'all', label: 'All' },
     ...GROUP_DEFS.filter((g) => nonEmptyGroupKeys.includes(g.key)).map((g) => ({
       key: g.key,
       label: g.tabLabel

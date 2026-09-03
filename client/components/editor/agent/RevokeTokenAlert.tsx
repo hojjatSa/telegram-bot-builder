@@ -58,7 +58,7 @@ export function RevokeTokenAlert({ token, onClose }: RevokeTokenAlertProps) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Отмена</AlertDialogCancel>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleConfirm} disabled={revoke.isPending}>
             Отозвать
           </AlertDialogAction>

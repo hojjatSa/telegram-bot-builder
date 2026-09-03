@@ -460,8 +460,8 @@ export default function Editor() {
       }
 
       toast({
-        title: "Ошибка сохранения",
-        description: "Не удалось сохранить проект",
+        title: "Save failed",
+        description: "Could not save project",
         variant: "destructive",
       });
     }
@@ -489,7 +489,7 @@ export default function Editor() {
     setSelectedDatabaseTokenId(null);
   }, [activeProject?.id]);
 
-  // Загрузка пользователей для вкладки "Пользователи"
+  // Загрузка пользователей для вкладки "Users"
   const { data: users = [] } = useQuery<UserBotData[]>({
     queryKey: [`/api/projects/${activeProject?.id}/users`],
     enabled: !!activeProject?.id && currentTab === 'users',
@@ -498,7 +498,7 @@ export default function Editor() {
   });
 
   /**
-   * Эффект для сброса панелей при переключении на вкладку "Пользователи"
+   * Эффект для сброса панелей при переключении на вкладку "Users"
    * Панели открываются только по кнопке в таблице
    */
   useEffect(() => {
@@ -1552,7 +1552,7 @@ export default function Editor() {
           <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
             <i className="fas fa-spinner fa-spin text-gray-400 text-xl"></i>
           </div>
-          <p className="text-gray-600">Загрузка проекта...</p>
+          <p className="text-gray-600">Loading project...</p>
         </div>
       </div>
     );
@@ -1647,12 +1647,12 @@ export default function Editor() {
                   {areAllCollapsed ? (
                     <>
                       <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 4l4 4 4-4M4 8l4 4 4-4"/></svg>
-                      Развернуть
+                      Expand
                     </>
                   ) : (
                     <>
                       <svg className="h-3 w-3" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 6l4-4 4 4M4 10l4 4 4-4"/></svg>
-                      Свернуть
+                      Collapse
                     </>
                   )}
                 </button>
@@ -2287,7 +2287,7 @@ export default function Editor() {
       <Sheet open={showMobileSidebar && currentTab === 'editor'} onOpenChange={setShowMobileSidebar}>
         <SheetContent side="left" className="p-0 w-80 [&>button[data-testid='button-sheet-close']]:hidden" aria-describedby={undefined}>
           <SheetHeader className="sr-only">
-            <SheetTitle>Компоненты</SheetTitle>
+            <SheetTitle>Components</SheetTitle>
           </SheetHeader>
           <div className="h-full overflow-auto">
             <ComponentsSidebar

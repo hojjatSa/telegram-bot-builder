@@ -72,8 +72,8 @@ export function useProjectSave(
       }
 
       toast({
-        title: "Ошибка сохранения",
-        description: "Не удалось сохранить проект",
+        title: "Save failed",
+        description: "Could not save project",
         variant: "destructive",
       });
     }

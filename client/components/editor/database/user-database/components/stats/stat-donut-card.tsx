@@ -1,6 +1,6 @@
 /**
  * @fileoverview Карточка статистики с Donut-диаграммой (recharts PieChart)
- * @description Заменяет StatBarCard для карточек "Статус", "Источники трафика", "Языки"
+ * @description Заменяет StatBarCard для карточек "Status", "Traffic Sources", "Languages"
  */
 
 import React from 'react';

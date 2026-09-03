@@ -28,9 +28,9 @@ export function ResponsesTabTable({ users }: ResponsesTabTableProps): React.JSX.
         <Table>
           <TableHeader className="bg-muted/40 hover:bg-muted/50">
             <TableRow className="border-b border-border/50 hover:bg-transparent">
-              <TableHead className="font-semibold h-10">Пользователь</TableHead>
-              <TableHead className="font-semibold h-10">Переменная</TableHead>
-              <TableHead className="font-semibold h-10">Ответ</TableHead>
+              <TableHead className="font-semibold h-10">User</TableHead>
+              <TableHead className="font-semibold h-10">Variable</TableHead>
+              <TableHead className="font-semibold h-10">Response</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -53,9 +53,9 @@ export function ResponsesTabTable({ users }: ResponsesTabTableProps): React.JSX.
       <Table>
         <TableHeader className="bg-muted/40 hover:bg-muted/50">
           <TableRow className="border-b border-border/50 hover:bg-transparent">
-            <TableHead className="font-semibold h-10">Пользователь</TableHead>
-            <TableHead className="font-semibold h-10">Переменная</TableHead>
-            <TableHead className="font-semibold h-10">Ответ</TableHead>
+            <TableHead className="font-semibold h-10">User</TableHead>
+            <TableHead className="font-semibold h-10">Variable</TableHead>
+            <TableHead className="font-semibold h-10">Response</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

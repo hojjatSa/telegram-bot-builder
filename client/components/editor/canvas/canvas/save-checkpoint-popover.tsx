@@ -79,7 +79,7 @@ export function SaveCheckpointPopover({ onSaveWithNote, isSaving, size = 'toolba
             autoFocus
           />
           <Button onClick={handleSubmit} disabled={!note.trim() || isSaving} size="sm">
-            {isSaving ? 'Сохранение…' : 'Сохранить чекпоинт'}
+            {isSaving ? 'Saving…' : 'Save checkpoint'}
           </Button>
           <p className="text-[11px] leading-snug text-slate-500 dark:text-slate-400">
             С заметкой снимок станет постоянным чекпоинтом и не удалится при очистке истории.

@@ -137,7 +137,7 @@ export function usePropertiesView({
       JSON.parse(value);
       setJsonError(null);
     } catch (e) {
-      setJsonError(e instanceof Error ? e.message : 'Невалидный JSON');
+      setJsonError(e instanceof Error ? e.message : 'Invalid JSON');
     }
   }, []);
 
@@ -159,7 +159,7 @@ export function usePropertiesView({
       setJsonError(null);
       return true;
     } catch (e) {
-      setJsonError(e instanceof Error ? e.message : 'Невалидный JSON');
+      setJsonError(e instanceof Error ? e.message : 'Invalid JSON');
       return false;
     }
   }, [selectedNode, jsonDraft, onNodeDataReplace]);

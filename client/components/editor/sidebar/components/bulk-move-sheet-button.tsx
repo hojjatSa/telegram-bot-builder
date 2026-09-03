@@ -67,7 +67,7 @@ export function BulkMoveSheetButton({ count, sheets, onSelect }: BulkMoveSheetBu
                 onSelect(sheet.id);
               }}
             >
-              {sheet.name || 'Без названия'}
+              {sheet.name || 'Untitled'}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>

@@ -54,7 +54,7 @@ export function CommentPreview({ data }: CommentPreviewProps) {
     <div className={`px-3 py-2 text-xs space-y-1 rounded-lg ${styles.bg}`}>
       <div className="flex items-center gap-1.5">
         <i className={`fas fa-sticky-note text-[10px] ${styles.icon}`} />
-        <span className={`font-semibold text-[11px] ${styles.title}`}>Комментарий</span>
+        <span className={`font-semibold text-[11px] ${styles.title}`}>Comment</span>
       </div>
       {truncated ? (
         <div className="text-gray-700 dark:text-gray-200 text-[11px] whitespace-pre-wrap break-words leading-relaxed">

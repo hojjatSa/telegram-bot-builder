@@ -7,16 +7,16 @@ import { ComponentDefinition } from "@shared/schema";
 /** Сообщение с контактом */
 export const contactMessage: ComponentDefinition = {
   id: 'contact-message',
-  name: 'Контакт',
+  name: 'Contact',
   description: 'Поделиться контактом',
   icon: 'fas fa-address-book',
   color: 'bg-blue-100 text-blue-600',
   type: 'contact',
   defaultData: {
-    messageText: 'Контакт',
+    messageText: 'Contact',
     phoneNumber: '+7 (999) 123-45-67',
-    firstName: 'Имя',
-    lastName: 'Фамилия',
+    firstName: 'Name',
+    lastName: 'Last name',
     userId: 0,
     vcard: '',
     markdown: false,

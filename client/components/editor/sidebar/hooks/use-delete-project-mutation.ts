@@ -81,7 +81,7 @@ export function useDeleteProjectMutation(): UseDeleteProjectMutationResult {
       }
 
       toast({
-        title: "Ошибка удаления",
+        title: "Delete failed",
         description: "Не удалось удалить проект",
         variant: "destructive",
       });

@@ -10,7 +10,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const apiResponseNode: ComponentDefinition = {
   id: 'api-response',
-  name: 'Ответ API',
+  name: 'API Response',
   description: 'Завершить входящий HTTP-запрос с JSON или текстом',
   icon: 'fas fa-reply',
   color: 'bg-violet-100 text-violet-600',

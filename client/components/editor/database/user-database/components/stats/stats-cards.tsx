@@ -27,7 +27,7 @@ const STATS_DATA = [
   {
     icon: Users,
     label: 'Всего',
-    fullLabel: 'Всего пользователей',
+    fullLabel: 'Total Users',
     gradient: 'from-blue-500 to-blue-600',
     bg: 'bg-blue-50 dark:bg-blue-950/40',
     ring: 'ring-blue-200 dark:ring-blue-800',
@@ -52,7 +52,7 @@ const STATS_DATA = [
   },
   {
     icon: BarChart3,
-    label: 'Среднее',
+    label: 'Average',
     fullLabel: 'Сообщений на пользователя',
     gradient: 'from-indigo-500 to-indigo-600',
     bg: 'bg-indigo-50 dark:bg-indigo-950/40',

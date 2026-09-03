@@ -36,8 +36,8 @@ export function resolveBotCanvasStatus(input: BotCanvasStatusInput): BotCanvasSt
  * @returns Текст для бейджа
  */
 export function botCanvasStatusLabel(status: BotCanvasStatus): string {
-  if (status === 'online') return 'Онлайн';
+  if (status === 'online') return 'Online';
   if (status === 'invalid') return 'Токен недействителен';
   if (status === 'failed') return 'Запуск с ошибкой';
-  return 'Офлайн';
+  return 'Offline';
 }

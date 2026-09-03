@@ -76,7 +76,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
       <CompactInlineEditor
         value={messageText}
         onChange={setMessageText}
-        placeholder="Введите сообщение..."
+        placeholder="Enter a message..."
       />
 
       {/* Медиаселектор — показывается при нажатии на скрепку, ограничен по высоте */}
@@ -139,7 +139,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
             variant={showFileId ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => { setShowFileId((v) => !v); setShowMedia(false); setShowButtons(false); }}
-            title="Добавить Telegram file_id"
+            title="Add Telegram file_id"
             className={showFileId ? '' : 'text-violet-500 hover:text-violet-600'}
           >
             <Hash className="w-4 h-4" />

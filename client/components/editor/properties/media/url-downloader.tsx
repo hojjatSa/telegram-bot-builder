@@ -344,7 +344,7 @@ export function UrlDownloader({
       updateUrlField(urlData.id, 'progress', 100);
 
       toast({
-        title: "Файл загружен",
+        title: "File uploaded",
         description: `${result.fileName} успешно загружен`,
       });
 
@@ -356,11 +356,11 @@ export function UrlDownloader({
 
     } catch (error) {
       updateUrlField(urlData.id, 'status', 'error');
-      updateUrlField(urlData.id, 'error', error instanceof Error ? error.message : 'Ошибка загрузки');
+      updateUrlField(urlData.id, 'error', error instanceof Error ? error.message : 'Load failed');
 
       toast({
-        title: "Ошибка загрузки",
-        description: error instanceof Error ? error.message : 'Неизвестная ошибка',
+        title: "Load failed",
+        description: error instanceof Error ? error.message : 'Unknown error',
         variant: "destructive",
       });
     }
@@ -412,7 +412,7 @@ export function UrlDownloader({
           updateUrlField(urlData.id, 'progress', 100);
         } else {
           updateUrlField(urlData.id, 'status', 'error');
-          updateUrlField(urlData.id, 'error', error?.error || 'Неизвестная ошибка');
+          updateUrlField(urlData.id, 'error', error?.error || 'Unknown error');
         }
       });
 
@@ -444,7 +444,7 @@ export function UrlDownloader({
 
       toast({
         title: "Ошибка пакетной загрузки",
-        description: error instanceof Error ? error.message : 'Неизвестная ошибка',
+        description: error instanceof Error ? error.message : 'Unknown error',
         variant: "destructive",
       });
     } finally {
@@ -656,7 +656,7 @@ export function UrlDownloader({
               {urlData.status === 'valid' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <Label htmlFor={`fileName-${urlData.id}`}>Имя файла</Label>
+                    <Label htmlFor={`fileName-${urlData.id}`}>File name</Label>
                     <Input
                       id={`fileName-${urlData.id}`}
                       placeholder="Оставьте пустым для автоопределения"
@@ -665,7 +665,7 @@ export function UrlDownloader({
                     />
                   </div>
                   <div className="space-y-1">
-                    <Label htmlFor={`description-${urlData.id}`}>Описание</Label>
+                    <Label htmlFor={`description-${urlData.id}`}>Description</Label>
                     <Input
                       id={`description-${urlData.id}`}
                       placeholder="Индивидуальное описание файла"
@@ -719,7 +719,7 @@ export function UrlDownloader({
         
         {onClose && (
           <Button variant="outline" onClick={onClose}>
-            Закрыть
+            Close
           </Button>
         )}
       </div>

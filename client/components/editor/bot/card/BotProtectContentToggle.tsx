@@ -56,14 +56,14 @@ export function BotProtectContentToggle({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
-        title: 'Настройка сохранена',
+        title: 'Setting saved',
         description: 'Перезапустите бота, чтобы применить защиту контента',
       });
     },
     onError: () => {
       setLocalEnabled(protectContent === 1);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить защиту контента',
         variant: 'destructive',
       });

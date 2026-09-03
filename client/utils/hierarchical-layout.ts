@@ -351,7 +351,7 @@ function inferConnectionsFromNodes(
       });
     }
 
-    // afterLoopTo — дополнительное соединение для узла loop (выход "Далее")
+    // afterLoopTo — дополнительное соединение для узла loop (выход "Next")
     if ((node.type as any) === 'loop' && typeof data.afterLoopTo === 'string' && data.afterLoopTo) {
       pushConnection({
         fromId: node.id,

@@ -128,7 +128,7 @@ export function useSidebarSheetDrag({
       // Проверяем что оба проекта в новом формате
       if (!sourceData?.sheets || !targetData?.sheets) {
         toast({
-          title: "❌ Ошибка",
+          title: "❌ Error",
           description: "Оба проекта должны быть в новом формате с листами",
           variant: "destructive",
         });

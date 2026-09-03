@@ -1,5 +1,5 @@
 /**
- * @fileoverview Публичный API поддомена "Терминал"
+ * @fileoverview Публичный API поддомена "Terminal"
  * @module bot/terminal
  */
 export { Terminal } from './Terminal';

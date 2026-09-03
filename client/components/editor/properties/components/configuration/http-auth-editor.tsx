@@ -98,7 +98,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Значение</Label>
+            <Label className="text-xs text-muted-foreground">Value</Label>
             <Input
               value={(data.httpRequestAuthHeaderValue as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthHeaderValue: e.target.value })}
@@ -121,7 +121,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Значение</Label>
+            <Label className="text-xs text-muted-foreground">Value</Label>
             <Input
               value={(data.httpRequestAuthQueryValue as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthQueryValue: e.target.value })}

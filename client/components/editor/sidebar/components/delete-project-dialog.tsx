@@ -69,7 +69,7 @@ export function DeleteProjectDialog({
       onDelete();
       onOpenChange(false);
     } catch {
-      toast({ title: '❌ Ошибка', description: 'Не удалось сохранить сценарий', variant: 'destructive' as any });
+      toast({ title: '❌ Error', description: 'Не удалось сохранить сценарий', variant: 'destructive' as any });
     } finally {
       setIsSaving(false);
     }
@@ -105,7 +105,7 @@ export function DeleteProjectDialog({
           </Button>
           <Button variant="outline" onClick={() => onOpenChange(false)} className="w-full gap-2">
             <X className="h-4 w-4" />
-            Отмена
+            Cancel
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -14,7 +14,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const setVariableNode: ComponentDefinition = {
   id: 'set-variable-node',
-  name: 'Переменные',
+  name: 'Variables',
   description: 'Вычисления, присваивания и работа с данными',
   icon: 'fas fa-calculator',
   color: 'bg-emerald-100 text-emerald-600',

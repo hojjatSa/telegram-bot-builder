@@ -63,7 +63,7 @@ export function AutoTransitionSection({
       <div className="flex items-start gap-2.5 sm:gap-3 w-full hover:opacity-75 transition-opacity duration-200 group" onClick={onToggle}>
         <button
           className="flex items-start gap-2.5 sm:gap-3 w-full"
-          title={isOpen ? 'Свернуть' : 'Развернуть'}
+          title={isOpen ? 'Collapse' : 'Expand'}
         >
           <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-lg bg-gradient-to-br from-emerald-100 to-teal-100 dark:from-emerald-900/50 dark:to-teal-900/50 flex items-center justify-center flex-shrink-0 pt-0.5">
             <i className="fas fa-bolt text-emerald-600 dark:text-emerald-400 text-sm sm:text-base"></i>
@@ -141,7 +141,7 @@ export function AutoTransitionSection({
               value={selectedNode.data.autoTransitionTo || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { autoTransitionTo: e.target.value })}
               className="flex-1 text-xs sm:text-sm bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-teal-900 dark:text-teal-50 placeholder:text-teal-500/50 dark:placeholder:text-teal-400/50 p-0"
-              placeholder="Или введите ID узла вручную"
+              placeholder="Or enter a node ID manually"
             />
           </div>
 

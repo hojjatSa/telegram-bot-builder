@@ -164,7 +164,7 @@ const FormItemContext = React.createContext<FormItemContextValue>(
  *
  * @example
  * <FormItem>
- *   <FormLabel>Имя</FormLabel>
+ *   <FormLabel>Name</FormLabel>
  *   <FormControl>
  *     <Input placeholder="Введите имя" />
  *   </FormControl>

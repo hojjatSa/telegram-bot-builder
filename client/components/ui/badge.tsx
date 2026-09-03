@@ -67,7 +67,7 @@ export interface BadgeProps
  *
  * @example
  * // Пример с разрушительным стилем
- * <Badge variant="destructive">Ошибка</Badge>
+ * <Badge variant="destructive">Error</Badge>
  *
  * @returns {JSX.Element} Бейдж
  */

@@ -141,7 +141,7 @@ export function useTelegramAuth() {
       if (!data.success) {
         console.error('Ошибка создания серверной сессии:', data.error);
         toast({
-          title: 'Ошибка входа',
+          title: 'Sign-in failed',
           description: data.error || 'Не удалось войти',
           variant: 'destructive',
         });
@@ -165,7 +165,7 @@ export function useTelegramAuth() {
     } catch (e) {
       console.error('Ошибка POST /api/auth/telegram:', e);
       toast({
-        title: 'Ошибка входа',
+        title: 'Sign-in failed',
         description: 'Не удалось выполнить вход',
         variant: 'destructive',
       });

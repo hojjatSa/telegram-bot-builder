@@ -39,7 +39,7 @@ export function InlineStatsBadges({ stats }: InlineStatsBadgesProps): React.JSX.
   return (
     <div className="flex items-center gap-2 text-xs text-muted-foreground">
       {/* Всего пользователей */}
-      <span className="inline-flex items-center gap-0.5" title="Всего пользователей">
+      <span className="inline-flex items-center gap-0.5" title="Total Users">
         <Users className="w-3 h-3" />
         <span className="tabular-nums">{formatCompact(stats.totalUsers)}</span>
       </span>

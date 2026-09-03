@@ -19,7 +19,7 @@ interface OutgoingMessageTriggerPreviewProps {
 export function OutgoingMessageTriggerPreview({ node: _ }: OutgoingMessageTriggerPreviewProps) {
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-xs text-purple-300 font-medium">Триггер исходящего сообщения</span>
+      <span className="text-xs text-purple-300 font-medium">Outgoing Message Trigger</span>
     </div>
   );
 }

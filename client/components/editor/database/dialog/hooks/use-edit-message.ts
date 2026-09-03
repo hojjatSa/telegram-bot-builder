@@ -107,7 +107,7 @@ export function useEditMessage({
       // Восстанавливаем оригинальный текст при ошибке
       onRollback(messageId, originalText);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось отредактировать сообщение',
         variant: 'destructive',
       });

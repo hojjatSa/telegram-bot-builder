@@ -15,14 +15,14 @@ import { formatUserName } from '../utils';
  * Маппинг текстовых плейсхолдеров медиа на читаемый вид с эмодзи
  */
 const MEDIA_MAP: Record<string, string> = {
-  '[Фото]': '📷 Фото',
-  '[Photo]': '📷 Фото',
-  '[Видео]': '🎬 Видео',
-  '[Аудио]': '🎵 Аудио',
-  '[Голосовое]': '🎤 Голосовое',
-  '[Документ]': '📄 Документ',
-  '[Стикер]': '🎭 Стикер',
-  '[медиа]': '📎 Медиа',
+  '[Photo]': '📷 Photo',
+  '[Photo]': '📷 Photo',
+  '[Video]': '🎬 Видео',
+  '[Audio]': '🎵 Аудио',
+  '[Voice]': '🎤 Голосовое',
+  '[Document]': '📄 Документ',
+  '[Sticker]': '🎭 Стикер',
+  '[media]': '📎 Media',
 };
 
 /**
@@ -45,9 +45,9 @@ type DialogWithMeta = UserBotData & {
  * @returns Отформатированный текст превью
  */
 function formatPreview(raw: string | null | undefined): string {
-  if (!raw) return 'Нет сообщений';
+  if (!raw) return 'No messages';
   const stripped = raw.replace(/<[^>]*>/g, '').trim();
-  return MEDIA_MAP[stripped] ?? (stripped || 'Нет сообщений');
+  return MEDIA_MAP[stripped] ?? (stripped || 'No messages');
 }
 
 /**
@@ -57,9 +57,9 @@ function formatPreview(raw: string | null | undefined): string {
  */
 function formatChatType(chatType?: string): string {
   switch (chatType) {
-    case 'channel': return 'Канал';
-    case 'supergroup': return 'Супергруппа';
-    default: return 'Группа';
+    case 'channel': return 'Channel';
+    case 'supergroup': return 'Supergroup';
+    default: return 'Group';
   }
 }
 
@@ -96,7 +96,7 @@ export function DialogListItem({
   const [groupAvatarError, setGroupAvatarError] = useState(false);
   const preview = formatPreview(entry.lastMessageText);
   const timestamp = formatRelativeTime(entry.lastMessageAt ?? user.lastInteraction);
-  const name = entry.isGroup ? (user.firstName ?? 'Группа') : formatUserName(user);
+  const name = entry.isGroup ? (user.firstName ?? 'Group') : formatUserName(user);
   const isChannel = entry.chatType === 'channel';
   /** URL аватарки группы из bot_groups.avatar_url (заполняется после синка) */
   const groupAvatarUrl = entry.isGroup ? (user.avatarUrl ?? null) : null;

@@ -32,7 +32,7 @@ export function useIspolzovatStsenary() {
       toast({ title: '✅ Успешно!', description: 'Сценарий добавлен в ваши проекты и коллекцию' });
     },
     onError: () => {
-      toast({ title: '❌ Ошибка', description: 'Не удалось использовать сценарий', variant: 'destructive' });
+      toast({ title: '❌ Error', description: 'Не удалось использовать сценарий', variant: 'destructive' });
     },
   });
 
@@ -67,7 +67,7 @@ export function useUdalitStsenary() {
         method: 'DELETE',
         credentials: 'include',
       });
-      if (!response.ok) throw new Error('Не удалось удалить сценарий');
+      if (!response.ok) throw new Error('Could not delete template');
       return response.json();
     },
     onSuccess: () => {
@@ -76,7 +76,7 @@ export function useUdalitStsenary() {
       toast({ title: '✅ Сценарий удалён', description: 'Ваш сценарий успешно удалён' });
     },
     onError: () => {
-      toast({ title: '❌ Ошибка', description: 'Не удалось удалить сценарий', variant: 'destructive' });
+      toast({ title: '❌ Error', description: 'Could not delete template', variant: 'destructive' });
     },
   });
 

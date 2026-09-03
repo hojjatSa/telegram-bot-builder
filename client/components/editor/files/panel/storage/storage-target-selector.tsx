@@ -72,7 +72,7 @@ export function StorageTargetSelector({
   return (
     <Select value={value} onValueChange={onChange} disabled={disabled}>
       <SelectTrigger className="h-8 w-auto min-w-[160px]" data-testid="storage-target-selector">
-        <SelectValue placeholder="Хранилище" />
+        <SelectValue placeholder="Storage" />
       </SelectTrigger>
       <SelectContent>
         {writable.map((storage) => (

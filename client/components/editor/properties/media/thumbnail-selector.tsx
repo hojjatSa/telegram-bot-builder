@@ -144,7 +144,7 @@ export function ThumbnailSelector({
       {previewUrl && (
         <MediaFileCard
           url={previewUrl}
-          fileName={thumbFile?.fileName ?? 'Обложка'}
+          fileName={thumbFile?.fileName ?? 'Cover'}
           fileType={thumbFile?.fileType ?? 'photo'}
           telegramFileId={thumbFile?.telegramFileId ?? null}
           projectId={projectId}

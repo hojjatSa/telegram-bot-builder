@@ -27,14 +27,14 @@ export function getLaunchStatusMeta(
 ): LaunchStatusMeta {
   if (status === 'running') {
     return {
-      label: 'Онлайн',
+      label: 'Online',
       badgeClass: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
       footer: 'Бот работает',
     };
   }
   if (status === 'error') {
     return {
-      label: 'Ошибка',
+      label: 'Error',
       badgeClass: 'bg-red-500/15 text-red-400 border-red-500/30',
       footer: errorMessage?.trim() || 'Запуск завершился с ошибкой',
     };

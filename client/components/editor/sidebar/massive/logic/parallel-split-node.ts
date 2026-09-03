@@ -14,7 +14,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const parallelSplitNode: ComponentDefinition = {
   id: 'parallel-split-node',
-  name: 'Параллельная группа',
+  name: 'Parallel Group',
   description: 'Одновременный запуск нескольких веток',
   icon: 'fas fa-sitemap',
   color: 'bg-rose-100 text-rose-600',

@@ -67,7 +67,7 @@ export function AdminRightsEditor({ selectedNode, onNodeUpdate }: AdminRightsEdi
         <div className="w-6 h-6 rounded-full bg-yellow-100 dark:bg-yellow-900/50 flex items-center justify-center">
           <i className="fas fa-crown text-yellow-600 dark:text-yellow-400 text-xs"></i>
         </div>
-        <Label className="text-sm font-semibold text-yellow-900 dark:text-yellow-100">Права администратора</Label>
+        <Label className="text-sm font-semibold text-yellow-900 dark:text-yellow-100">Administrator Rights</Label>
       </div>
 
       <div className="grid grid-cols-1 gap-3">

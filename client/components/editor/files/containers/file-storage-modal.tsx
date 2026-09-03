@@ -69,7 +69,7 @@ export function FileStorageModal({
       >
         {/* Заголовок для доступности: видимый текст уже есть в шапке панели (Req 1.3) */}
         <DialogHeader className="sr-only">
-          <DialogTitle>Файлы</DialogTitle>
+          <DialogTitle>Files</DialogTitle>
         </DialogHeader>
 
         <FileStoragePanel

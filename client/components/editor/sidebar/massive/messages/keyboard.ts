@@ -10,7 +10,7 @@ import { normalizeDynamicButtonsConfig } from '@/components/editor/properties/ut
 /** Клавиатура как отдельный узел редактора */
 export const keyboardMessage: ComponentDefinition = {
   id: 'keyboard-message',
-  name: 'Клавиатура',
+  name: 'Keyboard',
   description: 'Отдельная нода для кнопок и раскладок',
   icon: 'fas fa-keyboard',
   color: 'bg-amber-100 text-amber-600',

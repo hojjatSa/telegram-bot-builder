@@ -36,13 +36,13 @@ export function useStopBroadcastCampaign({ projectId, refetch }: UseStopBroadcas
       );
     },
     onSuccess: () => {
-      toast({ title: 'Рассылка остановлена', description: 'Отправка остановлена у всех ботов' });
+      toast({ title: 'Broadcast stopped', description: 'Отправка остановлена у всех ботов' });
       refetch?.();
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
-        description: error.message || 'Не удалось остановить рассылку',
+        title: 'Error',
+        description: error.message || 'Could not stop broadcast',
         variant: 'destructive',
       });
     },

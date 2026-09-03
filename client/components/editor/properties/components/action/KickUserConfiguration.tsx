@@ -1,5 +1,5 @@
 /**
- * @fileoverview Панель свойств узла "Исключить пользователя"
+ * @fileoverview Панель свойств узла "Kick User"
  * @module properties/components/action/KickUserConfiguration
  */
 import { useMemo } from 'react';

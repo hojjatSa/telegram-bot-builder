@@ -262,7 +262,7 @@ export function ComponentsSidebar({
         }
       } catch (error: any) {
         toast({
-          title: "❌ Ошибка",
+          title: "❌ Error",
           description: error.message,
           variant: "destructive",
         });
@@ -314,7 +314,7 @@ export function ComponentsSidebar({
       const targetSheet = data.sheets.find((s: any) => s.id === targetSheetId);
       toast({ title: '✅ Узлы перемещены', description: `${movedNodes.length} узл. → "${targetSheet?.name || targetSheetId}"` });
     } catch (error: any) {
-      toast({ title: '❌ Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: '❌ Error', description: error.message, variant: 'destructive' });
     }
   }, [projects, queryClient, toast]);
 
@@ -373,7 +373,7 @@ export function ComponentsSidebar({
                     data-testid="button-import-project"
                   >
                     <i className="fas fa-upload text-xs" />
-                    <span>Импорт</span>
+                    <span>Import</span>
                   </Button>
                 </div>
               </div>
@@ -401,7 +401,7 @@ export function ComponentsSidebar({
                 <div className="w-6 h-6 bg-muted rounded-lg flex items-center justify-center mx-auto mb-2">
                   <i className="fas fa-spinner fa-spin text-muted-foreground text-xs"></i>
                 </div>
-                <p className="text-xs text-muted-foreground">Загрузка...</p>
+                <p className="text-xs text-muted-foreground">Loading...</p>
               </div>
             ) : !isLoading && projects.length === 0 ? (
               <div className="text-center py-8">
@@ -419,7 +419,7 @@ export function ComponentsSidebar({
                 {projectsView === 'active' && (
                 <Button size="default" onClick={handleCreateProject} disabled={isCreatingProject} className="h-10 px-6">
                   <Plus className="h-4 w-4 mr-2" />
-                  {isCreatingProject ? 'Создание...' : 'Создать проект'}
+                  {isCreatingProject ? 'Creating...' : 'Создать проект'}
                 </Button>
                 )}
               </div>
@@ -537,7 +537,7 @@ export function ComponentsSidebar({
                         });
                       } catch (error: any) {
                         toast({
-                          title: "❌ Ошибка",
+                          title: "❌ Error",
                           description: error.message,
                           variant: "destructive",
                         });
@@ -558,7 +558,7 @@ export function ComponentsSidebar({
                         queryClient.setQueryData(['/api/projects'], updatedProjects);
                         queryClient.setQueryData([`/api/projects/${projectId}`], { ...proj, data: newData });
                       } catch (error: any) {
-                        toast({ title: "❌ Ошибка", description: error.message, variant: "destructive" });
+                        toast({ title: "❌ Error", description: error.message, variant: "destructive" });
                       }
                     }}
                     onBulkMoveNodes={(sourceSheetId, nodeIds, targetSheetId) =>

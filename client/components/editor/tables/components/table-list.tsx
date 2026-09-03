@@ -49,7 +49,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
       {/* Заголовок */}
       <div className="px-3 py-3 border-b border-border/50 flex items-center justify-between">
         <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Таблицы
+          Tables
         </span>
         <Button
           size="icon"
@@ -67,7 +67,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
         {tables.filter((t) => t.id.startsWith('_system_')).length > 0 && (
           <>
             <span className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-wider px-2 pt-2">
-              Системные (токен)
+              System (token)
             </span>
             {tables
               .filter((t) => t.id.startsWith('_system_'))
@@ -90,7 +90,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
                 </div>
               ))}
             <span className="text-[10px] font-medium text-muted-foreground/60 uppercase tracking-wider px-2 pt-3">
-              Пользовательские (проект)
+              Custom (project)
             </span>
           </>
         )}
@@ -116,7 +116,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
                 <Table2 className="h-3.5 w-3.5 flex-shrink-0" />
               )}
               <span className="truncate flex-1">
-                {table.name === '_content' ? 'Контент (авто)' : table.name}
+                {table.name === '_content' ? 'Content (auto)' : table.name}
               </span>
               {table.name !== '_content' && (
                 <Button
@@ -139,7 +139,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
           <div className="mt-1 flex flex-col gap-1">
             <Input
               autoFocus
-              placeholder="Имя таблицы"
+              placeholder="Table name"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               onKeyDown={(e) => {
@@ -150,10 +150,10 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
             />
             <div className="flex gap-1">
               <Button size="sm" className="h-6 text-xs flex-1" onClick={handleCreate}>
-                Создать
+                Create
               </Button>
               <Button size="sm" variant="ghost" className="h-6 text-xs" onClick={() => setIsCreating(false)}>
-                Отмена
+                Cancel
               </Button>
             </div>
           </div>
@@ -163,7 +163,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
         {tables.filter((t) => !t.id.startsWith('_system_')).length === 0 && !isCreating && (
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <Table2 className="h-8 w-8 text-muted-foreground/40 mb-2" />
-            <p className="text-xs text-muted-foreground">Нет таблиц</p>
+            <p className="text-xs text-muted-foreground">No tables</p>
             <Button
               size="sm"
               variant="outline"
@@ -171,7 +171,7 @@ export function TableList({ tables, selectedTableId, onSelect, onCreate, onDelet
               onClick={() => setIsCreating(true)}
             >
               <Plus className="h-3 w-3 mr-1" />
-              Создать первую
+              Create first table
             </Button>
           </div>
         )}

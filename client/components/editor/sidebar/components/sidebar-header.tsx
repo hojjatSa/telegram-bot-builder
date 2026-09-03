@@ -65,7 +65,7 @@ export function SidebarHeader({
     <div className="p-4 border-b border-border/30 bg-gradient-to-r from-slate-50/50 dark:from-slate-900/30 to-transparent">
       <div className="flex items-center justify-between gap-2 mb-4">
         <h2 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-400 dark:to-cyan-300 bg-clip-text text-transparent">
-          Компоненты
+          Components
         </h2>
         <div className="flex items-center gap-1">
           {showLayoutButtons && (
@@ -113,7 +113,7 @@ export function SidebarHeader({
               : 'text-muted-foreground hover:text-foreground hover:bg-white/40 dark:hover:bg-slate-700/30'
           }`}
         >
-          Проекты
+          Projects
         </button>
       </div>
       {currentTab === 'projects' && onProjectsViewChange && (

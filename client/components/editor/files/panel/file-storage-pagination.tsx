@@ -35,7 +35,7 @@ export function FileStoragePagination({
       <span>{total} файлов • стр. {page}/{totalPages}</span>
       <div className="flex gap-1">
         <Button variant="ghost" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
-          Назад
+          Back
         </Button>
         <Button variant="ghost" size="sm" disabled={page >= totalPages} onClick={() => onPageChange(page + 1)}>
           Вперёд

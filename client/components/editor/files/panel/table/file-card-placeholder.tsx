@@ -51,7 +51,7 @@ export function FileCardPlaceholder({
         checked={selected}
         onCheckedChange={onToggle}
         className={cn('mt-1', FILE_CHECKBOX_CLASS)}
-        title="Отметить, чтобы прикрепить к ноде"
+        title="Select to attach to a node"
       />
       <div className="w-10 h-10 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden">
         {showThumb ? (
@@ -82,10 +82,10 @@ export function FileCardPlaceholder({
       <div className="flex flex-col gap-1 shrink-0">
         {downloadHref ? (
           <a href={downloadHref} download={file.fileName ?? 'file'}>
-            <Button variant="ghost" size="icon" className="h-6 w-6" title="Скачать"><Download className="h-3 w-3" /></Button>
+            <Button variant="ghost" size="icon" className="h-6 w-6" title="Download"><Download className="h-3 w-3" /></Button>
           </a>
         ) : (
-          <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground/40" disabled title="Только file_id — прямое скачивание недоступно">
+          <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground/40" disabled title="file_id only — direct download is unavailable">
             <Download className="h-3 w-3" />
           </Button>
         )}
@@ -95,7 +95,7 @@ export function FileCardPlaceholder({
           </Button>
         )}
         {onDelete && (
-          <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => onDelete(file.id)} title="Удалить">
+          <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => onDelete(file.id)} title="Delete">
             <Trash2 className="h-3 w-3" />
           </Button>
         )}

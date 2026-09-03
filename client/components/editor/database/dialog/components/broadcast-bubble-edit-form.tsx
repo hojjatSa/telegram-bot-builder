@@ -38,15 +38,15 @@ export function BroadcastBubbleEditForm({
   return (
     <div className="rounded-lg bg-gradient-to-br from-violet-100 to-fuchsia-50 px-3 py-2 dark:from-violet-900/50 dark:to-fuchsia-900/30">
       <div className="flex min-w-[260px] flex-col gap-1">
-        <CompactInlineEditor value={value} onChange={onChange} placeholder="Текст рассылки..." />
+        <CompactInlineEditor value={value} onChange={onChange} placeholder="Broadcast message..." />
         <div className="flex justify-end gap-1">
           <Button size="sm" className="h-6 px-2 text-xs" onClick={onSave} disabled={!value.trim() || isSaving}>
             {isSaving ? <Loader2 className="h-3 w-3 animate-spin" /> : <Check className="h-3 w-3" />}
-            <span className="ml-1">Сохранить</span>
+            <span className="ml-1">Save</span>
           </Button>
           <Button size="sm" variant="ghost" className="h-6 px-2 text-xs" onClick={onCancel} disabled={isSaving}>
             <X className="h-3 w-3" />
-            <span className="ml-1">Отмена</span>
+            <span className="ml-1">Cancel</span>
           </Button>
         </div>
       </div>

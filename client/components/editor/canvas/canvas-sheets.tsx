@@ -280,7 +280,7 @@ export function CanvasSheets({
                     e.stopPropagation();
                     onSheetDuplicate(sheet.id);
                   }}
-                  title="Дублировать лист"
+                  title="Duplicate sheet"
                 >
                   <Copy className="h-3 w-3" />
                 </Button>
@@ -300,7 +300,7 @@ export function CanvasSheets({
                       e.stopPropagation();
                       onSheetDelete(sheet.id);
                     }}
-                    title="Удалить лист"
+                    title="Delete sheet"
                   >
                     <X className="h-3 w-3" />
                   </Button>

@@ -84,7 +84,7 @@ export function BroadcastPanel({ projectId, selectedTokenId, onSelectToken, allP
         actions={
           <Button size="sm" className="gap-1.5" onClick={() => setModalOpen(true)}>
             <Plus className="h-4 w-4" />
-            <span className="hidden sm:inline">Новая рассылка</span>
+            <span className="hidden sm:inline">New Broadcast</span>
             <span className="sm:hidden">Новая</span>
           </Button>
         }

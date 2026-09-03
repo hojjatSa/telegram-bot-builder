@@ -25,7 +25,7 @@ export function TerminalLogNotFound({ logId, onClose }: TerminalLogNotFoundProps
       <div className="flex items-center gap-2 px-3 py-2 border-b border-border shrink-0">
         <AlertCircle className="h-4 w-4 text-amber-500 shrink-0" />
         <span className="text-sm font-medium flex-1">Строка не найдена</span>
-        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onClose} title="Закрыть">
+        <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onClose} title="Close">
           <X className="h-4 w-4" />
         </Button>
       </div>

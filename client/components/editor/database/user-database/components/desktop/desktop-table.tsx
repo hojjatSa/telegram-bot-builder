@@ -114,7 +114,7 @@ export function DesktopTable(props: DesktopTableProps): React.JSX.Element {
       {/* Sentinel-элемент для определения момента подгрузки следующей страницы */}
       <div ref={sentinelRef} className="h-4" />
       {isFetchingNextPage && (
-        <div className="text-center py-2 text-muted-foreground text-sm">Загрузка...</div>
+        <div className="text-center py-2 text-muted-foreground text-sm">Loading...</div>
       )}
     </div>
   );

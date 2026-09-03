@@ -128,7 +128,7 @@ export function useMoveNodesToProject({
         description: `${movingNodes.length} узл. → "${targetProject.name}"`,
       });
     } catch (error: any) {
-      toast({ title: '❌ Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: '❌ Error', description: error.message, variant: 'destructive' });
     }
   }, [botData, onBotDataUpdate, projectId, projects, toast]);
 

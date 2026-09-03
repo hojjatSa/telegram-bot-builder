@@ -115,7 +115,7 @@ export function useSidebarImportHandler({
                 setImportError(apiError.message || 'Ошибка при создании проекта');
                 toast({
                   title: "❌ Ошибка создания проекта",
-                  description: apiError.message || 'Не удалось создать проект',
+                  description: apiError.message || 'Could not create project',
                   variant: "destructive",
                 });
               });
@@ -123,7 +123,7 @@ export function useSidebarImportHandler({
               setImportError(error.message || 'Ошибка при импорте проекта');
               toast({
                 title: "❌ Ошибка импорта",
-                description: error.message || 'Не удалось создать проект',
+                description: error.message || 'Could not create project',
                 variant: "destructive",
               });
             }

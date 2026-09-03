@@ -60,7 +60,7 @@ export function AddBotDialogActions({
         className="text-sm sm:text-base"
         data-testid="button-cancel-add-bot"
       >
-        Отмена
+        Cancel
       </Button>
       <Button
         onClick={handleAddBot}

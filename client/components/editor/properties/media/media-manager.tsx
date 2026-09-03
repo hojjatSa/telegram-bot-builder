@@ -237,7 +237,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
     rejectedFiles.forEach(rejection => {
       const error = rejection.errors[0]?.message || 'Неподдерживаемый файл';
       toast({
-        title: "Файл отклонен",
+        title: "File rejected",
         description: `${rejection.file.name}: ${error}`,
         variant: "destructive",
       });
@@ -249,7 +249,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
       const validationError = validateFile(file);
       if (validationError) {
         toast({
-          title: "Файл отклонен",
+          title: "File rejected",
           description: `${file.name}: ${validationError}`,
           variant: "destructive",
         });
@@ -287,7 +287,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             )
           );
           toast({
-            title: "Файл загружен",
+            title: "File uploaded",
             description: `${file.name} успешно загружен`,
           });
           // Переключаем вкладку на тип загруженного файла
@@ -310,7 +310,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             )
           );
           toast({
-            title: "Ошибка загрузки",
+            title: "Load failed",
             description: error.message,
             variant: "destructive",
           });
@@ -623,15 +623,15 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-xs text-gray-400">
                   <div className="flex items-center gap-1">
                     <Image className="w-4 h-4" />
-                    Фото
+                    Photo
                   </div>
                   <div className="flex items-center gap-1">
                     <Play className="w-4 h-4" />
-                    Видео
+                    Video
                   </div>
                   <div className="flex items-center gap-1">
                     <Volume2 className="w-4 h-4" />
-                    Аудио
+                    Audio
                   </div>
                   <div className="flex items-center gap-1">
                     <FileText className="w-4 h-4" />
@@ -734,7 +734,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   className="flex items-center gap-2"
                 >
                   <Image className="w-4 h-4" />
-                  Фото
+                  Photo
                 </Button>
 
                 <input
@@ -757,7 +757,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   className="flex items-center gap-2"
                 >
                   <Play className="w-4 h-4" />
-                  Видео
+                  Video
                 </Button>
 
                 <input
@@ -852,7 +852,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 className="h-6 px-2"
               >
                 <X className="w-3 h-3" />
-                Очистить
+                Clear
               </Button>
             </div>
           )}
@@ -864,19 +864,19 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
       <Tabs value={currentTab} onValueChange={setCurrentTab} ref={filesSectionRef}>
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="all" className="text-[11px] sm:text-sm px-1 sm:px-3">
-            Все
+            All
           </TabsTrigger>
           <TabsTrigger value="photo" className="text-[11px] sm:text-sm px-1 sm:px-3">
             <Image className="w-3.5 h-3.5 sm:hidden" />
-            <span className="hidden sm:inline">Фото</span>
+            <span className="hidden sm:inline">Photo</span>
           </TabsTrigger>
           <TabsTrigger value="video" className="text-[11px] sm:text-sm px-1 sm:px-3">
             <Play className="w-3.5 h-3.5 sm:hidden" />
-            <span className="hidden sm:inline">Видео</span>
+            <span className="hidden sm:inline">Video</span>
           </TabsTrigger>
           <TabsTrigger value="audio" className="text-[11px] sm:text-sm px-1 sm:px-3">
             <Volume2 className="w-3.5 h-3.5 sm:hidden" />
-            <span className="hidden sm:inline">Аудио</span>
+            <span className="hidden sm:inline">Audio</span>
           </TabsTrigger>
           <TabsTrigger value="document" className="text-[11px] sm:text-sm px-1 sm:px-3">
             <FileText className="w-3.5 h-3.5 sm:hidden" />
@@ -1009,7 +1009,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             </DialogHeader>
             <div className="space-y-4">
               <div>
-                <label className="text-sm font-medium">Описание</label>
+                <label className="text-sm font-medium">Description</label>
                 <Textarea
                   value={editingFile.description || ''}
                   onChange={(e) => setEditingFile({
@@ -1032,13 +1032,13 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
               </div>
               <div className="flex justify-end gap-2">
                 <Button variant="outline" onClick={() => setEditingFile(null)}>
-                  Отмена
+                  Cancel
                 </Button>
                 <Button onClick={() => handleUpdateFile(editingFile, {
                   description: editingFile.description,
                   tags: editingFile.tags || []
                 })}>
-                  Сохранить
+                  Save
                 </Button>
               </div>
             </div>
@@ -1103,7 +1103,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 )
               );
               toast({
-                title: "Ошибка загрузки",
+                title: "Load failed",
                 description: error.message,
                 variant: "destructive",
               });

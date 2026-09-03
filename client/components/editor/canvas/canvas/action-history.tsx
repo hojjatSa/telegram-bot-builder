@@ -94,7 +94,7 @@ export function ActionHistory({
         <div className="flex items-center justify-between px-3 py-2.5 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
           <div className="flex items-center gap-2">
             <i className="fas fa-clock-rotate-left text-slate-400 dark:text-slate-500 text-xs" />
-            <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">История</span>
+            <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">History</span>
             {actionHistory.length > 0 && (
               <span className="text-xs text-slate-400 dark:text-slate-500 tabular-nums">
                 {actionHistory.length}

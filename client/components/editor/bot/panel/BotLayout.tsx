@@ -3,7 +3,7 @@
  *
  * На десктопе (md+): горизонтальный resizable split, боты слева, терминал справа.
  * В режиме холста — только панель ботов (терминал внутри detail-панели).
- * На мобильных: вкладки "Боты" / "Терминал" с переключением.
+ * На мобильных: вкладки "Боты" / "Terminal" с переключением.
  *
  * Важно: одновременно должен монтироваться только один layout.
  */
@@ -97,7 +97,7 @@ export function BotLayout({ projectId, projectName, allProjects, onProjectChange
                 ? 'text-foreground border-b-2 border-primary'
                 : 'text-muted-foreground hover:text-foreground',
             ].join(' ')}
-            aria-label="Терминал"
+            aria-label="Terminal"
           >
             <Terminal className="w-4 h-4" />
             Терминал

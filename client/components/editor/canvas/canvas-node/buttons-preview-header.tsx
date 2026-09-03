@@ -16,7 +16,7 @@ export function ButtonsPreviewHeader({
 }: ButtonsPreviewHeaderProps) {
   const getKeyboardLabel = () => {
     if (isDynamicMode) return 'Dynamic inline';
-    if (isMultiSelect) return 'Множественный выбор';
+    if (isMultiSelect) return 'Multiple choice';
     if (keyboardType === 'inline') return 'Inline кнопки';
     if (keyboardType === 'reply') return 'Reply кнопки';
     return 'Кнопки';

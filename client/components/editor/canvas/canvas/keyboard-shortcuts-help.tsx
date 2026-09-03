@@ -78,7 +78,7 @@ export function KeyboardShortcutsHelp() {
           </div>
 
           <div className="border-t border-gray-200 dark:border-slate-600 pt-3">
-            <h4 className="font-medium text-sm mb-2">История</h4>
+            <h4 className="font-medium text-sm mb-2">History</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Отменить:</span>
@@ -110,7 +110,7 @@ export function KeyboardShortcutsHelp() {
           </div>
 
           <div className="border-t border-gray-200 dark:border-slate-600 pt-3">
-            <h4 className="font-medium text-sm mb-2">Файл</h4>
+            <h4 className="font-medium text-sm mb-2">File</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
                 <span className="text-gray-600 dark:text-gray-400">Сохранить:</span>

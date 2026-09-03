@@ -45,7 +45,7 @@ export function HeaderActions({
             className="h-9 sm:h-10 px-3 sm:px-4 rounded-xl border-2 border-rose-200 dark:border-rose-800 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/50"
           >
             <Trash2 className="w-4 h-4" />
-            <span className="hidden sm:inline ml-2">Очистить</span>
+            <span className="hidden sm:inline ml-2">Clear</span>
           </Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
@@ -56,7 +56,7 @@ export function HeaderActions({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={onDeleteAll}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"

@@ -36,11 +36,11 @@ export function BotCardViewToggle({ mode, onModeChange }: BotCardViewToggleProps
       <TabsList className="h-8 w-full grid grid-cols-2 bg-muted/60">
         <TabsTrigger value="settings" className="h-6 text-xs gap-1.5 px-2">
           <Settings className="h-3.5 w-3.5" />
-          <span>Настройки</span>
+          <span>Settings</span>
         </TabsTrigger>
         <TabsTrigger value="variables" className="h-6 text-xs gap-1.5 px-2">
           <Braces className="h-3.5 w-3.5" />
-          <span>Переменные</span>
+          <span>Variables</span>
         </TabsTrigger>
       </TabsList>
     </Tabs>

@@ -53,7 +53,7 @@ const PopoverTrigger = PopoverPrimitive.Trigger
  * @example
  * <PopoverContent>
  *   <h4 className="font-medium leading-none">Заголовок</h4>
- *   <p className="text-sm text-muted-foreground">Описание</p>
+ *   <p className="text-sm text-muted-foreground">Description</p>
  * </PopoverContent>
  *
  * @returns {JSX.Element} Содержимое всплывающего окна

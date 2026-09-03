@@ -48,7 +48,7 @@ export function FileIdInputPanel({
           size="icon"
           className="h-7 w-7 text-violet-800 hover:bg-violet-200/80 hover:text-violet-950 dark:text-violet-200 dark:hover:bg-violet-800/60 dark:hover:text-white"
           onClick={onClose}
-          title="Закрыть"
+          title="Close"
           aria-label="Закрыть ввод file_id"
           data-testid="file-id-input-close"
         >

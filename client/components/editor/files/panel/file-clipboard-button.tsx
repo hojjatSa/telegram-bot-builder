@@ -130,7 +130,7 @@ export function FileClipboardButton({
       >
         <ClipboardPaste className={compact ? 'h-4 w-4' : 'h-3.5 w-3.5 sm:mr-1.5'} />
         {!compact && (
-          <span className="hidden sm:inline">{awaitingPaste ? 'Ctrl+V / М' : 'Из буфера'}</span>
+          <span className="hidden sm:inline">{awaitingPaste ? 'Ctrl+V / М' : 'From clipboard'}</span>
         )}
       </Button>
     </>

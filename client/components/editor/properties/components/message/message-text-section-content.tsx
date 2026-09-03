@@ -55,7 +55,7 @@ export function MessageTextSectionContent({
       <InlineRichEditor
         value={messageText}
         onChange={(value: string) => onNodeUpdate(nodeId, { messageText: value })}
-        placeholder="Введите текст сообщения..."
+        placeholder="Enter message text..."
         enableMarkdown={markdown}
         onFormatModeChange={(newFormatMode: FormatMode) => onNodeUpdate(nodeId, { formatMode: newFormatMode })}
         availableVariables={availableVariables as Variable[]}

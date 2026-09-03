@@ -62,7 +62,7 @@ export function MediaSelector({
   onChange,
   fileType,
   placeholder = "Выберите файл или введите URL",
-  label = "Медиафайл",
+  label = "Media File",
   nodeName = "node",
   nodeId,
   onSwitchToFilesTab,
@@ -131,16 +131,16 @@ export function MediaSelector({
         onChange(pathToUse);
       } else {
         toast({
-          title: 'Ошибка загрузки',
-          description: result.error || 'Не удалось загрузить изображение',
+          title: 'Load failed',
+          description: result.error || 'Could not load image',
           variant: 'destructive',
         });
         onChange(url);
       }
     } catch (error) {
       toast({
-        title: 'Ошибка',
-        description: 'Не удалось загрузить изображение',
+        title: 'Error',
+        description: 'Could not load image',
         variant: 'destructive',
       });
       onChange(url);
@@ -208,7 +208,7 @@ export function MediaSelector({
                   variant="ghost"
                   onClick={handleClearSelection}
                   className="h-8 sm:h-9 w-8 sm:w-9 p-0 hover:bg-red-200/50 dark:hover:bg-red-800/50 transition-colors"
-                  title="Удалить"
+                  title="Delete"
                 >
                   <X className="w-4 h-4 text-red-600 dark:text-red-400" />
                 </Button>

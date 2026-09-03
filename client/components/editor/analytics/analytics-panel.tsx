@@ -123,8 +123,8 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
 
   /** Multi-line данные для графика активности: входящие + исходящие (только в режиме split) */
   const activityMultiLine = activitySplitMode === 'split' ? [
-    { name: 'Входящие', data: messagePoints, color: '#10b981' },
-    { name: 'Исходящие', data: outgoingPoints, color: '#6366f1' },
+    { name: 'Incoming', data: messagePoints, color: '#10b981' },
+    { name: 'Outgoing', data: outgoingPoints, color: '#6366f1' },
   ] : undefined;
 
   const total = stats.totalUsers ?? 0;
@@ -138,7 +138,7 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
   /** Элементы для donut-карточки Premium / не Premium */
   const statusItems = [
     { label: 'Premium', count: stats.premiumUsers ?? 0, percentage: pct(stats.premiumUsers ?? 0, total) },
-    { label: 'Обычные', count: Math.max(0, total - (stats.premiumUsers ?? 0)), percentage: pct(Math.max(0, total - (stats.premiumUsers ?? 0)), total) },
+    { label: 'Standard', count: Math.max(0, total - (stats.premiumUsers ?? 0)), percentage: pct(Math.max(0, total - (stats.premiumUsers ?? 0)), total) },
   ];
 
   return (
@@ -146,11 +146,11 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
       {/* Шапка */}
       <TabHeader
         icon={<BarChart2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="Аналитика"
+        title="Analytics"
         actions={
           <Button size="sm" variant="outline" className="gap-1.5" onClick={() => refetchStats()}>
             <RefreshCw className="h-4 w-4" />
-            <span className="hidden sm:inline">Обновить</span>
+            <span className="hidden sm:inline">Refresh</span>
           </Button>
         }
       >
@@ -177,7 +177,7 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
           {/* Строка 1: прирост пользователей + активность сообщений */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             <StatMetricCard
-              title="Всего пользователей"
+              title="Total Users"
               value={stats.totalUsers}
               sparklineData={sourceMode === 'total' ? growthPoints : undefined}
               multiLineData={sourceMode === 'by-source' ? multiLineData : undefined}
@@ -203,7 +203,7 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
               }
             />
             <StatMetricCard
-              title="Активность"
+              title="Activity"
               value={stats.totalInteractions}
               sparklineData={activitySplitMode === 'total' ? messagePoints : undefined}
               multiLineData={activityMultiLine}
@@ -233,7 +233,7 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
               projectId={projectId}
               selectedTokenId={selectedTokenId}
             />
-            <StatDonutCard title="Источники трафика" items={sourceItems} maxItems={null} className="h-full" />
+            <StatDonutCard title="Traffic Sources" items={sourceItems} maxItems={null} className="h-full" />
           </div>
 
           {/* Строка: топ-10 популярных кнопок */}
@@ -244,7 +244,7 @@ export function AnalyticsPanel({ projectId, selectedTokenId, onSelectToken, allP
           {/* Строка 3: Premium + языки */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
             <StatDonutCard title="Premium" items={statusItems} className="h-full" />
-            <StatDonutCard title="Языки" items={languageItems} className="h-full" />
+            <StatDonutCard title="Languages" items={languageItems} className="h-full" />
           </div>
 
           {/* Строка: конструктор графика по таблице */}

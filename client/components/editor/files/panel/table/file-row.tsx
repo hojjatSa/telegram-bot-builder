@@ -81,7 +81,7 @@ export function FileRow({
           checked={selected}
           onCheckedChange={onToggle}
           className={FILE_CHECKBOX_CLASS}
-          title="Отметить, чтобы прикрепить к ноде"
+          title="Select to attach to a node"
         />
       </td>
       {/* 2. Превью + название (закреплён) */}
@@ -108,7 +108,7 @@ export function FileRow({
       {/* 10. Удалить */}
       <td className="p-2 text-center">
         {onDelete && (
-          <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => onDelete(file.id)} title="Удалить">
+          <Button variant="ghost" size="icon" className="h-6 w-6 text-destructive" onClick={() => onDelete(file.id)} title="Delete">
             <Trash2 className="h-3 w-3" />
           </Button>
         )}
@@ -117,7 +117,7 @@ export function FileRow({
       <td className="p-2 text-center">
         {downloadHref ? (
           <a href={downloadHref} download={file.fileName ?? 'file'}>
-            <Button variant="ghost" size="icon" className="h-6 w-6" title="Скачать"><Download className="h-3 w-3" /></Button>
+            <Button variant="ghost" size="icon" className="h-6 w-6" title="Download"><Download className="h-3 w-3" /></Button>
           </a>
         ) : (
           <Button
@@ -125,7 +125,7 @@ export function FileRow({
             size="icon"
             className="h-6 w-6 text-muted-foreground/40"
             disabled
-            title="Только file_id — прямое скачивание недоступно"
+            title="file_id only — direct download is unavailable"
           >
             <Download className="h-3 w-3" />
           </Button>

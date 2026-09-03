@@ -76,7 +76,7 @@ export function KeyValueEditor({
   pairs,
   onChange,
   keyPlaceholder = 'Ключ',
-  valuePlaceholder = 'Значение',
+  valuePlaceholder = 'Value',
 }: KeyValueEditorProps) {
   /** Обновляет поле пары по id */
   const update = (id: string, field: 'key' | 'value', val: string) => {

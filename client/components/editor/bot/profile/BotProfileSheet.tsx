@@ -73,7 +73,7 @@ export function BotProfileSheet({
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: error.message || 'Не удалось обновить профиль',
         variant: 'destructive',
       });
@@ -113,11 +113,11 @@ export function BotProfileSheet({
           <div className="flex gap-2 justify-end">
             <Button variant="outline" onClick={onClose} disabled={saveMutation.isPending}>
               <X className="h-4 w-4 mr-2" />
-              Отмена
+              Cancel
             </Button>
             <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending || !tokenId}>
               <Check className="h-4 w-4 mr-2" />
-              {saveMutation.isPending ? 'Сохранение...' : 'Сохранить'}
+              {saveMutation.isPending ? 'Сохранение...' : 'Save'}
             </Button>
           </div>
         </div>

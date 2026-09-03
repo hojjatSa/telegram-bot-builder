@@ -35,7 +35,7 @@ export function ToggleSidebarButton({ sidebarVisible, onClick }: ToggleSidebarBu
       data-testid="button-mobile-toggle-sidebar"
     >
       <Sidebar className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{sidebarVisible ? 'Скрыть' : 'Показать'} панель</span>
+      <span className="sm:hidden">{sidebarVisible ? 'Hide' : 'Show'} панель</span>
     </Button>
   );
 }

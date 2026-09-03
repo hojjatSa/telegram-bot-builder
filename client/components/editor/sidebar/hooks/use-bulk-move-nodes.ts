@@ -84,7 +84,7 @@ export function useBulkMoveNodes(params: UseBulkMoveNodesParams): UseBulkMoveNod
         description: `${movedNodes.length} узл. → "${targetSheet?.name || targetSheetId}"`,
       });
     } catch (error: any) {
-      toast({ title: '❌ Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: '❌ Error', description: error.message, variant: 'destructive' });
     }
   }, [projectId, queryClient, toast]);
 

@@ -41,7 +41,7 @@ export function MediaQuickAddRow({
   projectId,
   nodeId,
   nodeName,
-  placeholder = 'Перетащи файл или вставь ссылку',
+  placeholder = 'Drop a file or paste a link',
   multiple = true,
   onAttached,
 }: MediaQuickAddRowProps): React.JSX.Element {
@@ -69,7 +69,7 @@ export function MediaQuickAddRow({
     try {
       const result = await uploadImageFromUrl(raw, projectId, nodeName);
       onAttached([result.success ? (result.localPath || result.imageUrl || raw) : raw]);
-      if (result.success) toast({ title: 'Файл прикреплён к ноде', description: result.message });
+      if (result.success) toast({ title: 'File attached to node', description: result.message });
     } catch {
       onAttached([raw]);
     } finally {

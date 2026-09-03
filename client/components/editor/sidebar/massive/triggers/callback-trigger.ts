@@ -11,7 +11,7 @@ import { ComponentDefinition } from "@shared/schema";
 /** Триггер inline-кнопки — точка входа по нажатию кнопки */
 export const callbackTrigger: ComponentDefinition = {
   id: 'callback-trigger',
-  name: 'Триггер inline-кнопки',
+  name: 'Inline Button Trigger',
   description: 'Срабатывает когда пользователь нажимает inline-кнопку с заданным callback_data',
   icon: 'fas fa-hand-pointer',
   color: 'bg-orange-100 text-orange-600',

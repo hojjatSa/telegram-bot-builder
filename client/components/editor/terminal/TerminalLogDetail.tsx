@@ -86,19 +86,19 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
       {/* Заголовок и сгруппированные действия */}
       <div className="flex h-11 shrink-0 items-center gap-2 border-b border-border bg-muted/20 px-3">
         <span className="min-w-0 flex-1 truncate text-sm font-medium text-foreground">
-          Детали лога
+          Log Details
         </span>
         <div className="flex shrink-0 items-center divide-x divide-border/60 overflow-hidden rounded-md border border-border/60 bg-background">
-          <Button variant="ghost" size="icon" className="h-7 w-7 rounded-none" onClick={onPrev} title="Предыдущая строка">
+          <Button variant="ghost" size="icon" className="h-7 w-7 rounded-none" onClick={onPrev} title="Previous line">
             <ChevronUp className="h-3.5 w-3.5" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-7 w-7 rounded-none" onClick={onNext} title="Следующая строка">
+          <Button variant="ghost" size="icon" className="h-7 w-7 rounded-none" onClick={onNext} title="Next line">
             <ChevronDown className="h-3.5 w-3.5" />
           </Button>
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground" title="Действия">
+            <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground" title="Actions">
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -106,24 +106,24 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
             <DropdownMenuItem
               onClick={() => {
                 onScrollToLine();
-                toast({ title: 'Строка показана в контексте' });
+                toast({ title: 'Line shown in context' });
               }}
             >
               <Eye className="mr-2 h-4 w-4" />
-              Показать в контексте
+              Show in context
             </DropdownMenuItem>
             <DropdownMenuItem
               onClick={async () => {
                 try {
                   await copyAsJson(line);
-                  toast({ title: 'JSON скопирован' });
+                  toast({ title: 'JSON copied' });
                 } catch {
-                  toast({ title: 'Не удалось скопировать JSON', variant: 'destructive' });
+                  toast({ title: 'Could not copy JSON', variant: 'destructive' });
                 }
               }}
             >
               <FileJson className="mr-2 h-4 w-4" />
-              Скопировать JSON
+              Copy JSON
             </DropdownMenuItem>
             <DropdownMenuItem
               disabled={!tokenId}
@@ -131,14 +131,14 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
                 if (!tokenId) return;
                 try {
                   await copyPermalink(line, tokenId);
-                  toast({ title: 'Ссылка на лог скопирована' });
+                  toast({ title: 'Log link copied' });
                 } catch {
-                  toast({ title: 'Не удалось скопировать ссылку', variant: 'destructive' });
+                  toast({ title: 'Could not copy link', variant: 'destructive' });
                 }
               }}
             >
               <Link className="mr-2 h-4 w-4" />
-              Скопировать ссылку
+              Copy link
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -147,7 +147,7 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
           size="icon"
           className="h-7 w-7 shrink-0 text-muted-foreground hover:text-foreground"
           onClick={onClose}
-          title="Закрыть"
+          title="Close"
         >
           <X className="h-3.5 w-3.5" />
         </Button>
@@ -157,7 +157,7 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
       <div className="px-4 py-3 border-b border-border flex-1 min-h-0 overflow-auto">
         <div className="mb-2 flex items-center gap-2">
           <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">
-            Сообщение
+            Message
           </span>
           <span className="h-px flex-1 bg-border/60" />
         </div>
@@ -168,24 +168,24 @@ export function TerminalLogDetail({ line, tokenId, onClose, onPrev, onNext, onSc
       <div className="px-4 py-3 shrink-0">
         <div className="mb-2 flex items-center gap-2">
           <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground/70">
-            Метаданные
+            Metadata
           </span>
           <span className="h-px flex-1 bg-border/60" />
         </div>
         <table className="w-full text-sm">
           <thead>
             <tr className="text-xs text-muted-foreground border-b border-border">
-              <th className="text-left py-1 font-medium">Имя</th>
-              <th className="text-left py-1 font-medium">Значение</th>
+              <th className="text-left py-1 font-medium">Name</th>
+              <th className="text-left py-1 font-medium">Value</th>
             </tr>
           </thead>
           <tbody>
             <tr className="border-b border-border/50">
-              <td className="py-1.5 text-muted-foreground">Уровень</td>
+              <td className="py-1.5 text-muted-foreground">Level</td>
               <td className="py-1.5 font-mono">{line.type === 'stderr' ? 'error' : 'info'}</td>
             </tr>
             <tr>
-              <td className="py-1.5 text-muted-foreground">Время</td>
+              <td className="py-1.5 text-muted-foreground">Time</td>
               <td className="py-1.5 text-left text-xs tabular-nums text-foreground">
                 {formatFullDate(line.timestamp)}
               </td>

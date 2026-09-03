@@ -45,7 +45,7 @@ export function SortFilter({
           <div className="w-6 h-6 rounded-md bg-indigo-500/10 flex items-center justify-center">
             <ArrowUpDown className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
           </div>
-          <SelectValue placeholder="Сортировка" />
+          <SelectValue placeholder="Sort" />
         </div>
       </SelectTrigger>
       <SelectContent>

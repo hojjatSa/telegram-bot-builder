@@ -97,9 +97,9 @@ export function ResponsesTableWithPagination({
           <Table className="w-full min-w-[600px] max-w-full text-[9px] xs:text-[10px] sm:text-xs">
             <TableHeader>
               <TableRow className="hover:bg-transparent">
-                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Пользователь</TableHead>
-                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Переменная</TableHead>
-                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Ответ</TableHead>
+                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">User</TableHead>
+                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Variable</TableHead>
+                <TableHead className="font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Response</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

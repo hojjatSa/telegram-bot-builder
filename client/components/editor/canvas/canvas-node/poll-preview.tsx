@@ -42,7 +42,7 @@ export function PollPreview({ node }: PollPreviewProps) {
             </div>
           )}
           {node.data.allowsMultipleAnswers && (
-            <div className="text-xs text-violet-500 dark:text-violet-400">Множественный выбор</div>
+            <div className="text-xs text-violet-500 dark:text-violet-400">Multiple choice</div>
           )}
         </div>
       </div>

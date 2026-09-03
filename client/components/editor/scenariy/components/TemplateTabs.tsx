@@ -47,7 +47,7 @@ export function TemplateTabs({ currentTab, onTabChange, templates, isLoading, is
     <Tabs value={currentTab} onValueChange={(v) => onTabChange(v as typeof currentTab)}>
       <TabsList className="grid grid-cols-4 gap-1.5 xs:gap-2 bg-background/50 dark:bg-background/30 p-1.5 xs:p-2 h-auto rounded-xl border border-border/40 backdrop-blur-sm hover:border-border/60 transition-all">
         <TabsTrigger value="all" className={`${BAZOVYE_KLASSY} ${AKTIVNYE_KLASSY.all}`}>
-          <Layers className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Все</span>
+          <Layers className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>All</span>
         </TabsTrigger>
         <TabsTrigger value="featured" className={`${BAZOVYE_KLASSY} ${AKTIVNYE_KLASSY.featured}`}>
           <Sparkles className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Рекомендуемые</span>

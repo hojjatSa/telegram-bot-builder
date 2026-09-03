@@ -50,12 +50,12 @@ export function BroadcastDeleteConfirm({ open, onOpenChange, botCount, onConfirm
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Отмена</AlertDialogCancel>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
           >
-            Удалить
+            Delete
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

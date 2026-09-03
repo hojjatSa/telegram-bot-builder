@@ -10,7 +10,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const httpRequestNode: ComponentDefinition = {
   id: 'http-request',
-  name: 'HTTP запрос',
+  name: 'HTTP Request',
   description: 'Отправка запроса к внешнему API и сохранение ответа',
   icon: 'fas fa-globe',
   color: 'bg-cyan-100 text-cyan-600',

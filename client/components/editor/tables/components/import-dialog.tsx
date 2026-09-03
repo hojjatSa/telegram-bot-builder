@@ -116,7 +116,7 @@ export function ImportDialog({
   /** Подтверждение импорта */
   const handleImport = () => {
     if (mode === 'new') {
-      onImportNew(fileName || 'Импорт', columns, rows);
+      onImportNew(fileName || 'Import', columns, rows);
     } else {
       onImportRows(rows);
     }
@@ -232,7 +232,7 @@ export function ImportDialog({
 
         <DialogFooter>
           <Button variant="outline" onClick={handleClose}>
-            Отмена
+            Cancel
           </Button>
           <Button onClick={handleImport} disabled={!hasData}>
             Импортировать

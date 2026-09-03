@@ -292,7 +292,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">{fileStats.video || 0}</div>
-              <div className="text-muted-foreground">Видео</div>
+              <div className="text-muted-foreground">Video</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-orange-600">{formatFileSize(fileStats.totalSize || 0)}</div>
@@ -312,12 +312,12 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
           </TabsTrigger>
           <TabsTrigger value="videos" disabled={!fileStats.video}>
             <FileVideo className="w-4 h-4 mr-2" />
-            Видео
+            Video
             <Badge variant="secondary" className="ml-2">{fileStats.video || 0}</Badge>
           </TabsTrigger>
           <TabsTrigger value="audio" disabled={!fileStats.audio}>
             <FileAudio className="w-4 h-4 mr-2" />
-            Аудио
+            Audio
             <Badge variant="secondary" className="ml-2">{fileStats.audio || 0}</Badge>
           </TabsTrigger>
         </TabsList>
@@ -444,7 +444,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
       {/* Кнопки действий */}
       <div className="flex justify-end gap-3">
         <Button variant="outline" onClick={onClose} disabled={isOptimizing}>
-          Отмена
+          Cancel
         </Button>
 
         {optimizedFiles.length === 0 ? (

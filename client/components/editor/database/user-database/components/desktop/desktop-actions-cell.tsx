@@ -78,7 +78,7 @@ export function DesktopActionsCell(props: DesktopActionsCellProps): React.JSX.El
               size="sm"
               className="h-7 w-7 p-0 text-destructive hover:text-destructive"
               data-testid={`button-delete-user-${index}`}
-              title="Удалить"
+              title="Delete"
               onClick={(e) => e.stopPropagation()}
             >
               <Trash2 className="w-3.5 h-3.5" />
@@ -92,9 +92,9 @@ export function DesktopActionsCell(props: DesktopActionsCellProps): React.JSX.El
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Отмена</AlertDialogCancel>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction onClick={() => deleteUserMutation.mutate(Number(user.userId))}>
-                Удалить
+                Delete
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

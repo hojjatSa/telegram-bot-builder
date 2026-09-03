@@ -79,7 +79,7 @@ export function ApiTriggerConfiguration({
       <div className="rounded-xl bg-violet-50/60 dark:bg-violet-900/20 border border-violet-200/50 dark:border-violet-700/40 p-4 space-y-2">
         <div className="flex items-center gap-2">
           <i className="fas fa-plug text-violet-600 dark:text-violet-400 text-sm" />
-          <span className="text-sm font-medium text-violet-700 dark:text-violet-300">API триггер</span>
+          <span className="text-sm font-medium text-violet-700 dark:text-violet-300">API Trigger</span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
           Принимает HTTP-запрос от внешней системы и запускает цепочку. Secret передавайте в заголовке X-Api-Secret.

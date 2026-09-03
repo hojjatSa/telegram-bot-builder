@@ -51,14 +51,14 @@ function getMediaIcon(type: string): string {
  * Маппинг текстовых плейсхолдеров на красивый вид с иконкой
  */
 const MEDIA_PLACEHOLDER_MAP: Record<string, string> = {
-  '[Фото]': '📷 Фото',
-  '[Photo]': '📷 Фото',
-  '[Видео]': '🎬 Видео',
-  '[Аудио]': '🎵 Аудио',
-  '[Голосовое]': '🎤 Голосовое',
-  '[Документ]': '📄 Документ',
-  '[Стикер]': '🎭 Стикер',
-  '[медиа]': '📎 Медиафайл',
+  '[Photo]': '📷 Photo',
+  '[Photo]': '📷 Photo',
+  '[Video]': '🎬 Видео',
+  '[Audio]': '🎵 Аудио',
+  '[Voice]': '🎤 Голосовое',
+  '[Document]': '📄 Документ',
+  '[Sticker]': '🎭 Стикер',
+  '[media]': '📎 Медиафайл',
 };
 
 /**
@@ -99,7 +99,7 @@ export function DesktopLastMessageCell({ user, projectId }: DesktopLastMessageCe
     messageText = mediaTypes.map(getMediaIcon).join(' ') + ' Медиафайл' + (mediaTypes.length > 1 ? 'ы' : '');
   }
 
-  if (!messageText) messageText = 'Нет сообщений';
+  if (!messageText) messageText = 'No messages';
 
   const timestampValue = lastMessage?.createdAt ?? userWithMsg.lastMessageAt ?? user.lastInteraction;
   const timestamp = timestampValue != null ? formatDate(timestampValue) : '';

@@ -84,13 +84,13 @@ export function ChangesModal({ open, onClose, onSave, isSaving, actionHistory, m
         </div>
 
         <DialogFooter className="gap-2">
-          <Button variant="ghost" size="sm" onClick={onClose}>Закрыть</Button>
+          <Button variant="ghost" size="sm" onClick={onClose}>Close</Button>
           {actionHistory.length > 0 && (
             <Button size="sm" onClick={onSave} disabled={isSaving}
               className="bg-violet-600 hover:bg-violet-700 text-white">
               {isSaving
-                ? <><i className="fas fa-spinner fa-spin mr-1.5" />Сохранение…</>
-                : <><i className="fas fa-floppy-disk mr-1.5" />Сохранить</>}
+                ? <><i className="fas fa-spinner fa-spin mr-1.5" />Saving…</>
+                : <><i className="fas fa-floppy-disk mr-1.5" />Save</>}
             </Button>
           )}
         </DialogFooter>

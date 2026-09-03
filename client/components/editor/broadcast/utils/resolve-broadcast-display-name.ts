@@ -19,7 +19,7 @@ export function resolveBroadcastDisplayName(
   date?: Date | string | null,
 ): string {
   const trimmed = (name ?? "").trim();
-  if (trimmed && trimmed !== "Без названия") {
+  if (trimmed && trimmed !== "Untitled") {
     return trimmed;
   }
 

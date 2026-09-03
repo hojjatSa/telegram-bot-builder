@@ -97,10 +97,10 @@ export function BotEnvRawEditor({
       />
       <div className="flex items-center gap-2 justify-end">
         <Button variant="ghost" size="sm" className="h-7 text-xs gap-1" onClick={onClose}>
-          <X className="h-3.5 w-3.5" /> Отмена
+          <X className="h-3.5 w-3.5" /> Cancel
         </Button>
         <Button variant="default" size="sm" className="h-7 text-xs gap-1" onClick={handleSave}>
-          <Check className="h-3.5 w-3.5" /> Сохранить
+          <Check className="h-3.5 w-3.5" /> Save
         </Button>
       </div>
     </div>

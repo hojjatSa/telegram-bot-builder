@@ -32,9 +32,9 @@ export function BotViewModeToggle({ mode, onModeChange }: BotViewModeToggleProps
           <LayoutList className="h-3.5 w-3.5" />
           <span className="hidden @[560px]:inline">Список</span>
         </TabsTrigger>
-        <TabsTrigger value="canvas" className="h-7 gap-1 px-2 text-xs @[560px]:px-2.5" aria-label="Холст">
+        <TabsTrigger value="canvas" className="h-7 gap-1 px-2 text-xs @[560px]:px-2.5" aria-label="Canvas">
           <Network className="h-3.5 w-3.5" />
-          <span className="hidden @[560px]:inline">Холст</span>
+          <span className="hidden @[560px]:inline">Canvas</span>
         </TabsTrigger>
       </TabsList>
     </Tabs>

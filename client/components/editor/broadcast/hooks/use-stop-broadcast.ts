@@ -35,13 +35,13 @@ export function useStopBroadcast({ projectId, refetch }: UseStopBroadcastParams)
       );
     },
     onSuccess: () => {
-      toast({ title: 'Рассылка остановлена' });
+      toast({ title: 'Broadcast stopped' });
       refetch?.();
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
-        description: error.message || 'Не удалось остановить рассылку',
+        title: 'Error',
+        description: error.message || 'Could not stop broadcast',
         variant: 'destructive',
       });
     },

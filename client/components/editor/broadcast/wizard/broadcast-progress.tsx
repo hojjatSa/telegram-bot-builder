@@ -82,9 +82,9 @@ export function BroadcastProgress({ projectId, broadcast, refetch, onClose }: Br
       {isDone ? (
         <div className="text-center">
           <p className="text-sm text-muted-foreground mb-3">
-            {status === 'done' ? '✅ Рассылка завершена' : '⏸ Рассылка остановлена'}
+            {status === 'done' ? '✅ Broadcast completed' : '⏸ Broadcast stopped'}
           </p>
-          <Button variant="outline" onClick={onClose}>Закрыть</Button>
+          <Button variant="outline" onClick={onClose}>Close</Button>
         </div>
       ) : (
         <div className="flex justify-center">

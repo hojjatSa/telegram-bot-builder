@@ -86,7 +86,7 @@ export function PropertiesHeader({
                             inputVariable: selectedNode.data.inputVariable ?? '',
                             appendVariable: selectedNode.data.appendVariable ?? false,
                             saveToDatabase: selectedNode.data.saveToDatabase ?? false,
-                            inputPrompt: selectedNode.data.inputPrompt ?? 'Введите ответ',
+                            inputPrompt: selectedNode.data.inputPrompt ?? 'Enter a response',
                             inputRequired: selectedNode.data.inputRequired ?? true,
                           });
                           return;

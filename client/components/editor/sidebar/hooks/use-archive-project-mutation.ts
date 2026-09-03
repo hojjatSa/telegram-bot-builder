@@ -40,7 +40,7 @@ export function useArchiveProjectMutation(): UseArchiveProjectMutationResult {
     },
     onError: () => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось заархивировать проект',
         variant: 'destructive',
       });
@@ -55,7 +55,7 @@ export function useArchiveProjectMutation(): UseArchiveProjectMutationResult {
     },
     onError: () => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось вернуть проект из архива',
         variant: 'destructive',
       });

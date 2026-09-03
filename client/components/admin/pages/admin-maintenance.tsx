@@ -33,7 +33,7 @@ export function AdminMaintenancePage() {
       toast({ title: 'Шаблоны обновлены', description: data.message });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
     },
   });
 
@@ -43,7 +43,7 @@ export function AdminMaintenancePage() {
       toast({ title: 'Шаблоны пересозданы', description: data.message });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
     },
   });
 
@@ -53,7 +53,7 @@ export function AdminMaintenancePage() {
       toast({ title: data.message, description: `Удалено папок: ${data.count}` });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка', description: error.message, variant: 'destructive' });
+      toast({ title: 'Error', description: error.message, variant: 'destructive' });
     },
   });
 

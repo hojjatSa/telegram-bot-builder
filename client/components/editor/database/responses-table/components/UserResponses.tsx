@@ -98,8 +98,8 @@ export function UserResponses({ user }: UserResponsesProps): React.JSX.Element |
               <Table className="w-full min-w-[240px] text-[9px] xs:text-[10px] sm:text-xs">
                 <TableHeader>
                   <TableRow className="hover:bg-transparent">
-                    <TableHead className="w-[40%] min-w-[80px] font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Переменная</TableHead>
-                    <TableHead className="w-[60%] min-w-[120px] font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Ответ</TableHead>
+                    <TableHead className="w-[40%] min-w-[80px] font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Variable</TableHead>
+                    <TableHead className="w-[60%] min-w-[120px] font-semibold text-[9px] xs:text-[10px] sm:text-xs whitespace-nowrap px-2 xs:px-2.5 sm:px-3 py-1.5 xs:py-2">Response</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>

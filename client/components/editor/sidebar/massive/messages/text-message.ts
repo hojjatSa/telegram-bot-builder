@@ -7,13 +7,13 @@ import { ComponentDefinition } from "@shared/schema";
 /** Текстовое сообщение с поддержкой Markdown */
 export const textMessage: ComponentDefinition = {
   id: 'text-message',
-  name: 'Текстовое сообщение',
+  name: 'Text Message',
   description: 'Обычный текст или Markdown',
   icon: 'fas fa-comment',
   color: 'bg-blue-100 text-blue-600',
   type: 'message',
   defaultData: {
-    messageText: 'Новое сообщение',
+    messageText: 'New message',
     markdown: false
   }
 };

@@ -76,10 +76,10 @@ export function BotActions({
         >
           <Play className="w-3 h-3" aria-hidden="true" />
           <span className="hidden sm:inline">
-            {startBotMutation.isPending && isStartingThisBot ? 'Запуск...' : 'Запустить'}
+            {startBotMutation.isPending && isStartingThisBot ? 'Starting...' : 'Запустить'}
           </span>
           <span className="sm:hidden">
-            {startBotMutation.isPending && isStartingThisBot ? '...' : 'Запуск'}
+            {startBotMutation.isPending && isStartingThisBot ? '...' : 'Run'}
           </span>
         </Button>
       ) : (
@@ -120,7 +120,7 @@ export function BotActions({
             disabled={deletePending}
           >
             <Trash2 className="mr-2 h-4 w-4" aria-hidden="true" />
-            Удалить
+            Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -45,7 +45,7 @@ export function GroupMessageTriggerConfiguration({
           <div className="w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center">
             <i className="fas fa-comments text-violet-600 dark:text-violet-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-violet-900 dark:text-violet-100">Группа</Label>
+          <Label className="text-sm font-semibold text-violet-900 dark:text-violet-100">Group</Label>
         </div>
 
         <div className="space-y-3">

@@ -35,7 +35,7 @@ export function ToggleCanvasButton({ canvasVisible, onClick }: ToggleCanvasButto
       data-testid="button-mobile-toggle-canvas"
     >
       <Monitor className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{canvasVisible ? 'Скрыть' : 'Показать'} холст</span>
+      <span className="sm:hidden">{canvasVisible ? 'Hide' : 'Show'} холст</span>
     </Button>
   );
 }

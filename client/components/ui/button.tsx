@@ -80,7 +80,7 @@ export interface ButtonProps
  *
  * @example
  * // Пример с вариантом
- * <Button variant="destructive">Удалить</Button>
+ * <Button variant="destructive">Delete</Button>
  *
  * @example
  * // Пример с размером

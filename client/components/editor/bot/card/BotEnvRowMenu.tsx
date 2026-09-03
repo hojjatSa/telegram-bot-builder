@@ -43,12 +43,12 @@ export function BotEnvRowMenu({ envKey, canEdit, canDelete, onEdit, onDelete }: 
         </DropdownMenuItem>
         {canEdit && (
           <DropdownMenuItem onClick={onEdit}>
-            <Pencil className="h-3.5 w-3.5 mr-2" /> Редактировать
+            <Pencil className="h-3.5 w-3.5 mr-2" /> Edit
           </DropdownMenuItem>
         )}
         {canDelete && (
           <DropdownMenuItem className="text-destructive" onClick={onDelete}>
-            <Trash2 className="h-3.5 w-3.5 mr-2" /> Удалить
+            <Trash2 className="h-3.5 w-3.5 mr-2" /> Delete
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

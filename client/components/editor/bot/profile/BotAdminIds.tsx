@@ -12,7 +12,7 @@ import { useAdminIds } from './use-admin-ids';
 interface BotAdminIdsProps {
   /** ID проекта бота */
   projectId: number;
-  /** Колбэк для pending (если передан — кнопка "Сохранить" вызывает его вместо API) */
+  /** Колбэк для pending (если передан — кнопка "Save" вызывает его вместо API) */
   onPendingChange?: (key: string, value: string) => void;
 }
 

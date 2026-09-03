@@ -54,7 +54,7 @@ export function BotDetailPanel({
   const { user, isTelegramUser } = useTelegramAuth();
   const { terminals, activeTerminalId } = useActiveTerminals();
   const canManage = !!(user && isTelegramUser(user));
-  const title = token.botFirstName || token.name || `Бот ${token.id}`;
+  const title = token.botFirstName || token.name || `Bot ${token.id}`;
 
   const historyTerminal = terminals.find(
     (t) =>

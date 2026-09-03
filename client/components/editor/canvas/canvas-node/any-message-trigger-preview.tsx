@@ -15,7 +15,7 @@ interface AnyMessageTriggerPreviewProps {
 export function AnyMessageTriggerPreview({ node: _ }: AnyMessageTriggerPreviewProps) {
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-xs text-green-300 font-medium">Триггер входящего сообщения</span>
+      <span className="text-xs text-green-300 font-medium">Incoming Message Trigger</span>
     </div>
   );
 }

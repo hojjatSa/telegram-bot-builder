@@ -56,7 +56,7 @@ export function BroadcastDeliveryErrorsTable({
           <Input
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
-            placeholder="Поиск"
+            placeholder="Search"
             className="h-7 pl-7 text-xs"
             onClick={(e) => e.stopPropagation()}
           />

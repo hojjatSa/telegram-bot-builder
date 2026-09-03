@@ -11,7 +11,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const getManagedBotTokenNode: ComponentDefinition = {
   id: 'get-managed-bot-token',
-  name: 'Получить токен бота',
+  name: 'Get Bot Token',
   description: 'Получить токен управляемого бота через getManagedBotToken',
   icon: 'fas fa-key',
   color: 'bg-indigo-100 text-indigo-600',

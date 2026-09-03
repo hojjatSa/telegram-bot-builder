@@ -31,7 +31,7 @@ export function IncomingCallbackTriggerPreview({ node }: IncomingCallbackTrigger
   if (pattern) {
     return (
       <div className="flex flex-col gap-0.5">
-        <span className="text-xs text-orange-300 font-medium">Триггер inline-кнопки</span>
+        <span className="text-xs text-orange-300 font-medium">Inline Button Trigger</span>
         <span className="text-[11px] text-orange-400/80 font-mono">
           {matchLabel ? `${matchLabel} ` : ''}&quot;{pattern}&quot;
         </span>
@@ -41,7 +41,7 @@ export function IncomingCallbackTriggerPreview({ node }: IncomingCallbackTrigger
 
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-xs text-orange-300 font-medium">Триггер нажатия кнопки</span>
+      <span className="text-xs text-orange-300 font-medium">Button Click Trigger</span>
       <span className="text-[10px] text-orange-400/60">(любая)</span>
     </div>
   );

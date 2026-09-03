@@ -51,7 +51,7 @@ export function ExportMenu({ table }: ExportMenuProps) {
       <DropdownMenuTrigger asChild>
         <Button size="sm" variant="ghost" className="h-7 text-xs gap-1.5">
           <Download className="h-3.5 w-3.5" />
-          Экспорт
+          Export
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

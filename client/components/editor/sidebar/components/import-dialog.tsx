@@ -182,7 +182,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
               onClick={handleCancel}
               data-testid="button-cancel-import"
             >
-              Отмена
+              Cancel
             </Button>
             <Button
               onClick={onImport}

@@ -21,12 +21,12 @@ interface TargetNodeSelectorProps {
 interface NodeInfo { name: string; icon: string; }
 
 const NODE_INFO: Record<string, { name: string; icon: string }> = {
-  message: { name: 'Сообщение', icon: 'fas fa-comment text-blue-500' },
-  location: { name: 'Геолокация', icon: 'fas fa-map-marker-alt text-pink-500' },
-  contact: { name: 'Контакт', icon: 'fas fa-address-book text-teal-500' },
-  sticker: { name: 'Стикер', icon: 'fas fa-smile text-yellow-400' },
-  voice: { name: 'Голосовое', icon: 'fas fa-microphone text-blue-400' },
-  animation: { name: 'Анимация', icon: 'fas fa-play-circle text-green-400' }
+  message: { name: 'Message', icon: 'fas fa-comment text-blue-500' },
+  location: { name: 'Location', icon: 'fas fa-map-marker-alt text-pink-500' },
+  contact: { name: 'Contact', icon: 'fas fa-address-book text-teal-500' },
+  sticker: { name: 'Sticker', icon: 'fas fa-smile text-yellow-400' },
+  voice: { name: 'Voice', icon: 'fas fa-microphone text-blue-400' },
+  animation: { name: 'Animation', icon: 'fas fa-play-circle text-green-400' }
 };
 
 const getNodeInfo = (node: Node): NodeInfo => {
@@ -52,7 +52,7 @@ export function TargetNodeSelector({
       <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Выберите экран</Label>
       <Select value={option.target || ''} onValueChange={updateTarget}>
         <SelectTrigger className="text-xs bg-white/60 dark:bg-slate-950/60 border border-blue-300/40 dark:border-blue-700/40 hover:border-blue-400/60 focus:border-blue-500 focus:ring-blue-400/30">
-          <SelectValue placeholder="⊘ Не выбрано" />
+          <SelectValue placeholder="⊘ Not selected" />
         </SelectTrigger>
         <SelectContent className="bg-gradient-to-br from-sky-50/95 to-blue-50/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-48 overflow-y-auto">
           {getAllNodesFromAllSheets

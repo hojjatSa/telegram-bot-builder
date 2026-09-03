@@ -46,7 +46,7 @@ export function PlatformUsersPager({
           onClick={() => onPageChange(page - 1)}
         >
           <ChevronLeft className="h-4 w-4" />
-          Назад
+          Back
         </Button>
         <Button
           type="button"

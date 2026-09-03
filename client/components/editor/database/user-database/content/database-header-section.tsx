@@ -66,7 +66,7 @@ export function DatabaseHeaderSection(props: DatabaseHeaderSectionProps): React.
   return (
     <TabHeader
       icon={<Users className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />}
-      title="Пользователи"
+      title="Users"
       actions={
         handleRefresh ? (
           <Button
@@ -77,7 +77,7 @@ export function DatabaseHeaderSection(props: DatabaseHeaderSectionProps): React.
             title="Обновить данные"
           >
             <RefreshCw className="w-3.5 h-3.5 mr-1" />
-            <span className="text-xs hidden sm:inline">Обновить</span>
+            <span className="text-xs hidden sm:inline">Refresh</span>
           </Button>
         ) : undefined
       }

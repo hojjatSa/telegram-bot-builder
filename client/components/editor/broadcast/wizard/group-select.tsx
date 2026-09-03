@@ -38,9 +38,9 @@ interface GroupSelectProps {
 }
 
 const chatTypeLabels: Record<string, string> = {
-  group: 'Группа',
-  supergroup: 'Супергруппа',
-  channel: 'Канал',
+  group: 'Group',
+  supergroup: 'Supergroup',
+  channel: 'Channel',
 };
 
 /**

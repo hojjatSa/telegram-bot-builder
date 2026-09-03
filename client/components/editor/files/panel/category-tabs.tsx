@@ -40,9 +40,9 @@ interface CategoryTabDef {
 
 /** Порядок и состав табов (Req 5.1) */
 const CATEGORY_TABS: readonly CategoryTabDef[] = [
-  { value: 'all', label: 'Все', icon: Layers },
-  { value: 'incoming', label: 'Входящие', icon: Inbox },
-  { value: 'outgoing', label: 'Исходящие', icon: Send },
+  { value: 'all', label: 'All', icon: Layers },
+  { value: 'incoming', label: 'Incoming', icon: Inbox },
+  { value: 'outgoing', label: 'Outgoing', icon: Send },
   { value: 'uploaded', label: 'Загруженные', icon: Upload },
 ];
 

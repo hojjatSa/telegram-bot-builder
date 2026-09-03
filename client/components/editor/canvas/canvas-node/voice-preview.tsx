@@ -1,5 +1,5 @@
 /**
- * @fileoverview Компонент превью для узла типа "Голосовое сообщение"
+ * @fileoverview Компонент превью для узла типа "Voice Message"
  * 
  * Отображает визуальное представление голосового сообщения с иконкой,
  * статусом загрузки и продолжительностью аудио.
@@ -35,7 +35,7 @@ export function VoicePreview({ node }: VoicePreviewProps) {
         <i className="fas fa-microphone text-emerald-400 dark:text-emerald-300 text-3xl"></i>
         {node.data.voiceUrl ? (
           <div className="text-xs text-emerald-600 dark:text-emerald-400 space-y-1">
-            <div className="font-medium">Голосовое сообщение</div>
+            <div className="font-medium">Voice Message</div>
             {node.data.duration && (
               <div className="flex items-center justify-center space-x-1">
                 <i className="fas fa-clock text-xs"></i>

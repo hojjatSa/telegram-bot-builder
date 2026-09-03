@@ -34,7 +34,7 @@ export function AdminRightsHeader({ totalRights }: AdminRightsHeaderProps) {
           <i className="fas fa-user-shield text-violet-600 dark:text-violet-400 text-sm"></i>
         </div>
         <div className="text-sm font-semibold text-violet-800 dark:text-violet-200">
-          Права администратора
+          Administrator Rights
         </div>
       </div>
       <div className="text-xs text-violet-600 dark:text-violet-400 bg-violet-100 dark:bg-violet-900/50 px-2 py-1 rounded-full font-medium">

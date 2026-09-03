@@ -11,7 +11,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const apiTrigger: ComponentDefinition = {
   id: 'api-trigger',
-  name: 'API триггер',
+  name: 'API Trigger',
   description: 'Входящий HTTP API — запуск сценария извне',
   icon: 'fas fa-plug',
   color: 'bg-violet-100 text-violet-600',

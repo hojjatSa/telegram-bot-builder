@@ -33,7 +33,7 @@ export function useHandleAddButton({
   const handleAddButton = (nodeId: string) => {
     const newButton: Button = {
       id: generateButtonId(),
-      text: 'Новая кнопка',
+      text: 'New button',
       action: 'goto',
       buttonType: 'normal',
       target: '',

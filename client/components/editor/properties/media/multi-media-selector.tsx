@@ -39,7 +39,7 @@ export function MultiMediaSelector({
   projectId,
   value = [],
   onChange,
-  placeholder = "Перетащи файл или вставь ссылку",
+  placeholder = "Drop a file or paste a link",
   label = "Медиафайлы",
   nodeName = "node",
   keyboardType = "none",
@@ -88,7 +88,7 @@ export function MultiMediaSelector({
     const tokenMap = dbFile?.fileIdsByToken;
     return {
       url,
-      fileName: dbFile?.fileName ?? `Файл ${index + 1}`,
+      fileName: dbFile?.fileName ?? `File ${index + 1}`,
       fileType: dbFile?.fileType ?? getMediaTypeByUrl(url),
       telegramFileId: dbFile?.telegramFileId ?? null,
       fileIdsByToken: tokenMap && Object.keys(tokenMap).length > 0 ? tokenMap : undefined,

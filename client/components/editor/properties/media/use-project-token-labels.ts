@@ -27,7 +27,7 @@ export function useProjectTokenLabels(projectId?: number): Record<string, string
   return useMemo(() => {
     const map: Record<string, string> = {};
     for (const t of tokens) {
-      const name = t.name || 'Бот';
+      const name = t.name || 'Bot';
       map[String(t.id)] = t.botUsername ? `${name} (@${t.botUsername})` : name;
     }
     return map;

@@ -32,7 +32,7 @@ export function StatusFilter({ value, onChange }: StatusFilterProps): React.JSX.
           <div className="w-6 h-6 rounded-md bg-emerald-500/10 flex items-center justify-center">
             <Activity className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <SelectValue placeholder="Статус" />
+          <SelectValue placeholder="Status" />
         </div>
       </SelectTrigger>
       <SelectContent>

@@ -31,9 +31,9 @@ interface NavItem {
 /** Элементы навигации в шапке */
 const NAV_ITEMS: NavItem[] = [
   { key: 'editor', label: 'Редактор' },
-  { key: 'bot', label: 'Бот' },
-  { key: 'terminal', label: 'Терминал' },
-  { key: 'users', label: 'Пользователи' },
+  { key: 'bot', label: 'Bot' },
+  { key: 'terminal', label: 'Terminal' },
+  { key: 'users', label: 'Users' },
 ];
 
 /**

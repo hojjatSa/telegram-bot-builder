@@ -48,8 +48,8 @@ const alertVariants = cva(
  * // Пример с разрушительным стилем
  * <Alert variant="destructive">
  *   <XCircle className="h-4 w-4" />
- *   <AlertTitle>Ошибка</AlertTitle>
- *   <AlertDescription>Произошла ошибка</AlertDescription>
+ *   <AlertTitle>Error</AlertTitle>
+ *   <AlertDescription>Something went wrong</AlertDescription>
  * </Alert>
  *
  * @returns {JSX.Element} Элемент уведомления

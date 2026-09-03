@@ -93,8 +93,8 @@ export function getVariableColor(nodeType: string): string {
  */
 export function getVariableBadge(nodeType: string): string {
   const badges: Record<string, string> = {
-    'user-input': 'Ввод', 'system': 'Система', 'start': 'Команда',
-    'command': 'Команда', 'conditional': 'Условие',
+    'user-input': 'Ввод', 'system': 'Система', 'start': 'Command',
+    'command': 'Command', 'conditional': 'Condition',
     'managed_bot_updated_trigger': 'Управляемый бот',
     'get_managed_bot_token': 'Токен бота',
     'http_request': 'HTTP',

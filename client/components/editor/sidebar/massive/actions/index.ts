@@ -1,5 +1,5 @@
 /**
- * @fileoverview Реэкспорт компонентов категории "Действия"
+ * @fileoverview Реэкспорт компонентов категории "Actions"
  * @module components/editor/sidebar/massive/actions
  */
 

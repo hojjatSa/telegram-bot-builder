@@ -48,21 +48,21 @@ export function NodeHeader({ node, onMove }: NodeHeaderProps) {
       case 'start':
       case 'command':
       case 'message':
-        return 'Сообщение';
+        return 'Message';
       case 'keyboard':
-        return 'Клавиатура';
+        return 'Keyboard';
       case 'input':
-        return 'Сохранить ответ';
+        return 'Save Answer';
       case 'sticker':
-        return 'Стикер';
+        return 'Sticker';
       case 'voice':
-        return 'Голосовое сообщение';
+        return 'Voice Message';
       case 'animation':
-        return 'GIF анимация';
+        return 'GIF Animation';
       case 'location':
-        return 'Геолокация';
+        return 'Location';
       case 'contact':
-        return 'Контакт';
+        return 'Contact';
       case 'pin_message':
       case 'unpin_message':
       case 'delete_message':
@@ -86,7 +86,7 @@ export function NodeHeader({ node, onMove }: NodeHeaderProps) {
       case 'media':
         return (
           <span className="font-semibold text-fuchsia-700 dark:text-fuchsia-300">
-            Медиафайл
+            Media File
           </span>
         );
       case 'command_trigger':
@@ -98,7 +98,7 @@ export function NodeHeader({ node, onMove }: NodeHeaderProps) {
       case 'text_trigger':
         return (
           <span className="font-semibold text-blue-700 dark:text-blue-300">
-            Текстовый триггер
+            Text Trigger
           </span>
         );
       case 'group_message_trigger':

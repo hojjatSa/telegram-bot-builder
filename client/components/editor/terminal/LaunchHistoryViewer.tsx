@@ -29,7 +29,7 @@ interface LaunchHistoryViewerProps {
  * @returns Отформатированная строка
  */
 function formatStartedAt(startedAt: string | null): string {
-  if (!startedAt) return 'Запуск';
+  if (!startedAt) return 'Run';
   return new Date(startedAt).toLocaleString('ru-RU', {
     day: '2-digit',
     month: 'short',
@@ -85,7 +85,7 @@ export function LaunchHistoryViewer({ launchId, startedAt }: LaunchHistoryViewer
       <TerminalLogsContextBar
         title={formatStartedAt(startedAt)}
         subtitle={`#${launchId}`}
-        statusLabel="История"
+        statusLabel="History"
         statusClassName="bg-muted text-muted-foreground border-border"
       />
       <TerminalLogsToolbar

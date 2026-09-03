@@ -54,7 +54,7 @@ const DEFAULT_PROJECT_DATA = {
       type: 'message' as const,
       position: { x: 400, y: 300 },
       data: {
-        messageText: 'Привет! Я ваш новый бот. Нажмите /help для получения помощи.',
+        messageText: 'Hello! I am your new bot. Use /help for assistance.',
         keyboardType: 'none' as const,
         buttons: [],
         showInMenu: true

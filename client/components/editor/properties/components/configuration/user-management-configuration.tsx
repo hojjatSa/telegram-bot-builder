@@ -103,7 +103,7 @@ export function UserManagementConfiguration({
               value={selectedNode.data.reason || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { reason: e.target.value })}
               className="border-orange-200 dark:border-orange-700 focus:border-orange-500 focus:ring-orange-200"
-              placeholder="Нарушение правил группы"
+              placeholder="Violation of group rules"
             />
           </div>
         </div>

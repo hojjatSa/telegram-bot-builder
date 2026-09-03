@@ -38,7 +38,7 @@ export function OutgoingMessageTriggerConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-paper-plane text-purple-600 dark:text-purple-400 text-sm" />
           <span className="text-sm font-medium text-purple-700 dark:text-purple-300">
-            Триггер исходящего сообщения
+            Outgoing Message Trigger
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">

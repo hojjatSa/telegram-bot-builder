@@ -60,7 +60,7 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
         <div className="flex-1 relative z-40">
           <div className="flex items-center gap-1.5 mb-2 xs:mb-0">
             <SortAsc className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
-            <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">Сортировка</span>
+            <span className="text-xs font-semibold text-foreground/70 uppercase tracking-wide">Sort</span>
             {sortBy !== 'popular' && (
               <Badge variant="secondary" className="ml-1 text-xs bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300">
                 {METKI_SORTIROVKI[sortBy]}
@@ -71,7 +71,7 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
             <SelectTrigger className="w-full h-9 xs:h-10 text-xs xs:text-sm border border-border/60 rounded-lg bg-background/80 hover:bg-background hover:border-amber-500/40 focus:border-amber-500/60 focus:ring-amber-500/15 transition-all duration-200 shadow-sm">
               <div className="flex items-center gap-2">
                 <SortAsc className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400 hidden xs:block" />
-                <SelectValue placeholder="Сортировка" />
+                <SelectValue placeholder="Sort" />
               </div>
             </SelectTrigger>
             <SelectContent className="z-50 rounded-lg">

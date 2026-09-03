@@ -41,15 +41,15 @@ interface FallbackProps {
 const DefaultFallback: React.FC<FallbackProps> = ({ error }) => (
   <div className="min-h-screen bg-background flex items-center justify-center">
     <div className="text-center">
-      <h2 className="text-xl font-bold text-destructive mb-2">Произошла ошибка</h2>
+      <h2 className="text-xl font-bold text-destructive mb-2">Something went wrong</h2>
       <p className="text-muted-foreground mb-4">
-        {error.message || 'Произошла непредвиденная ошибка. Пожалуйста, обновите страницу.'}
+        {error.message || 'An unexpected error occurred. Please refresh the page.'}
       </p>
       <button
         className="inline-flex items-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
         onClick={() => window.location.reload()}
       >
-        Обновить страницу
+        Refresh page
       </button>
     </div>
   </div>

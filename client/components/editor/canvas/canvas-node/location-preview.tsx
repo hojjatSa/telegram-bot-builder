@@ -1,5 +1,5 @@
 /**
- * @fileoverview Компонент превью для узла типа "Геолокация"
+ * @fileoverview Компонент превью для узла типа "Location"
  * 
  * Отображает визуальное представление геолокации с иконкой,
  * названием сервиса, координатами, адресом и дополнительной информацией.
@@ -55,7 +55,7 @@ export function LocationPreview({ node }: LocationPreviewProps) {
       </div>
 
       <div className="text-xs text-green-600 dark:text-green-400 space-y-1 text-center">
-        <div className="font-medium text-sm">{node.data.title || 'Геолокация'}</div>
+        <div className="font-medium text-sm">{node.data.title || 'Location'}</div>
 
         {node.data.latitude && node.data.longitude && (
           <div className="flex items-center justify-center space-x-1">

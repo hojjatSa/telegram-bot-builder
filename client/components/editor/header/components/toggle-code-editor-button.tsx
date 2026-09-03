@@ -34,7 +34,7 @@ export function ToggleCodeEditorButton({ codeEditorVisible, onClick }: ToggleCod
       data-testid="button-mobile-toggle-code-editor"
     >
       <i className="fas fa-file-code sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{codeEditorVisible ? 'Скрыть' : 'Показать'} редактор</span>
+      <span className="sm:hidden">{codeEditorVisible ? 'Hide' : 'Show'} редактор</span>
     </Button>
   );
 }

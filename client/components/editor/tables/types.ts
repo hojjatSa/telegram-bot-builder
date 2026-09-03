@@ -1,5 +1,5 @@
 /**
- * @fileoverview Типы для вкладки "Таблицы" — клиентские модели
+ * @fileoverview Типы для вкладки "Tables" — клиентские модели
  * @module editor/tables/types
  */
 

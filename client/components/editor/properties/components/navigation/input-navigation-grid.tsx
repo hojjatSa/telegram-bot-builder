@@ -50,7 +50,7 @@ export function InputNavigationGrid({
       <div className="flex flex-col p-3 sm:p-3.5 rounded-lg bg-gradient-to-br from-cyan-50/60 to-blue-50/40 dark:from-cyan-950/30 dark:to-blue-950/20 border border-cyan-200/40 dark:border-cyan-700/40 hover:shadow-sm transition-all duration-200">
         <Label className="text-xs sm:text-sm font-semibold text-cyan-700 dark:text-cyan-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-bookmark text-xs sm:text-sm"></i>
-          Переменная
+          Variable
         </Label>
         <VariableNameInput
           value={selectedNode.data.inputVariable || ''}
@@ -102,7 +102,7 @@ export function InputNavigationGrid({
               onNodeUpdate(selectedNode.id, { inputTargetNodeId: e.target.value || '' });
             }}
             className="text-xs sm:text-sm h-7 sm:h-8 bg-white/60 dark:bg-slate-950/60 border border-violet-300/40 dark:border-violet-700/40 text-violet-900 dark:text-violet-50 placeholder:text-violet-500/50 focus:border-violet-500"
-            placeholder="или ID вручную"
+            placeholder="or enter an ID manually"
           />
         </div>
         <div className="text-xs text-violet-600 dark:text-violet-400 mt-1.5 leading-snug">

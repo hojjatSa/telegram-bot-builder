@@ -23,7 +23,7 @@ interface MessageTextSectionHeaderProps {
 export function MessageTextSectionHeader({ isOpen, onToggle }: MessageTextSectionHeaderProps) {
   return (
     <SectionHeader
-      title="Текст сообщения"
+      title="Message text"
       description="Основное содержание для отправки пользователю"
       isOpen={isOpen}
       onToggle={onToggle}

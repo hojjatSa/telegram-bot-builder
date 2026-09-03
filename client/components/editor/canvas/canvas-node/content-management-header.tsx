@@ -17,9 +17,9 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
   const labels: Record<ContentManagementType, string> = {
     pin_message: 'Управление контентом',
     unpin_message: 'Управление контентом',
-    delete_message: 'Удалить сообщение',
-    forward_message: 'Переслать сообщение',
-    create_forum_topic: 'Создать топик',
+    delete_message: 'Delete Message',
+    forward_message: 'Forward Message',
+    create_forum_topic: 'Create topic',
   };
 
   const chipClasses: Record<ContentManagementType, string> = {

@@ -30,7 +30,7 @@ export function TriggerTargetSelector({
         onValueChange={(value) => onNodeUpdate(selectedNode.id, { autoTransitionTo: value })}
       >
         <SelectTrigger className="text-sm bg-white/70 dark:bg-slate-950/60 border border-sky-300/40 dark:border-sky-700/40 hover:border-sky-400/60 dark:hover:border-sky-600/60 focus:border-sky-500 focus:ring-2 focus:ring-sky-400/30 rounded-lg text-sky-900 dark:text-sky-50">
-          <SelectValue placeholder="Не выбрано">
+          <SelectValue placeholder="Not selected">
             {selectedTarget ? getNodeTypeLabel(selectedTarget.node.type) : undefined}
           </SelectValue>
         </SelectTrigger>
@@ -53,7 +53,7 @@ export function TriggerTargetSelector({
       <Input
         value={autoTransitionTo || ''}
         onChange={(e) => onNodeUpdate(selectedNode.id, { autoTransitionTo: e.target.value })}
-        placeholder="Или введите ID узла вручную"
+        placeholder="Or enter a node ID manually"
         className="font-mono"
       />
     </div>

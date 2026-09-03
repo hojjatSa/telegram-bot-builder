@@ -39,7 +39,7 @@ export function GuestSection({ onLogin, isVertical }: GuestSectionProps) {
       )}>
         <span className="text-sm">{IS_DEV ? '🛠️' : '👤'}</span>
         <span className={cn('text-xs font-medium', IS_DEV ? 'text-amber-600 dark:text-amber-400' : 'text-muted-foreground')}>
-          {IS_DEV ? 'Dev' : 'Гость'}
+          {IS_DEV ? 'Dev' : 'Guest'}
         </span>
       </div>
 

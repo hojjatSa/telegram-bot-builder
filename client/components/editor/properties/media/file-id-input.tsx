@@ -29,10 +29,10 @@ interface FileIdInputProps {
 
 /** Варианты типов медиа для выбора */
 const MEDIA_TYPES: { value: MediaType; label: string }[] = [
-  { value: 'photo', label: 'Фото' },
-  { value: 'video', label: 'Видео' },
-  { value: 'audio', label: 'Аудио' },
-  { value: 'document', label: 'Документ' },
+  { value: 'photo', label: 'Photo' },
+  { value: 'video', label: 'Video' },
+  { value: 'audio', label: 'Audio' },
+  { value: 'document', label: 'Document' },
 ];
 
 /**

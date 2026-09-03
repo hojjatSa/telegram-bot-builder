@@ -120,7 +120,7 @@ export function StorageConfigRow({
             className="h-8 w-8 text-muted-foreground hover:text-foreground"
             disabled={isMutating}
             onClick={() => onEdit(storage.configId)}
-            title="Изменить хранилище"
+            title="Change storage"
             data-testid={`storage-edit-${storage.configId}`}
           >
             <Pencil className="h-3.5 w-3.5" />
@@ -149,12 +149,12 @@ export function StorageConfigRow({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Отмена</AlertDialogCancel>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction
                 onClick={() => onDelete(storage.configId)}
                 data-testid={`storage-confirm-delete-${storage.configId}`}
               >
-                Удалить
+                Delete
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

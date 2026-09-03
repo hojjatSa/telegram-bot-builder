@@ -35,7 +35,7 @@ export function BasicInfo({ user }: BasicInfoProps): React.JSX.Element {
           <div className="flex items-center gap-1.5 sm:gap-2">
             <span className="text-[10px] sm:text-sm text-muted-foreground min-w-[70px] sm:min-w-[100px]">Имя:</span>
             <span className="text-xs sm:text-sm font-medium break-words">
-              {user.firstName && typeof user.firstName === 'string' ? user.firstName : 'Не указано'}
+              {user.firstName && typeof user.firstName === 'string' ? user.firstName : 'Not specified'}
             </span>
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">
@@ -46,7 +46,7 @@ export function BasicInfo({ user }: BasicInfoProps): React.JSX.Element {
                   <AtSign className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                   {user.userName}
                 </span>
-              ) : 'Не указано'}
+              ) : 'Not specified'}
             </span>
           </div>
           <div className="flex items-center gap-1.5 sm:gap-2">

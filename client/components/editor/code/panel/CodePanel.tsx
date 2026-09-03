@@ -96,7 +96,7 @@ export function CodePanel({
       JSON.parse(editedContent);
       setJsonError(null);
     } catch (e) {
-      setJsonError(e instanceof Error ? e.message : 'Невалидный JSON');
+      setJsonError(e instanceof Error ? e.message : 'Invalid JSON');
     }
   }, [editedContent, selectedFormat]);
 
@@ -121,7 +121,7 @@ export function CodePanel({
    */
   const startEditing = (index: number) => {
     setEditingIndex(index);
-    setEditingValue(projectNames[index] || projectName || `Проект ${index + 1}`);
+    setEditingValue(projectNames[index] || projectName || `Project ${index + 1}`);
     setTimeout(() => inputRef.current?.select(), 0);
   };
 
@@ -198,7 +198,7 @@ export function CodePanel({
 
           {botDataArray.map((_botData, index) => {
             const content = getCurrentContent(index);
-            const currentProjectName = projectNames[index] || projectName || `Проект ${index + 1}`;
+            const currentProjectName = projectNames[index] || projectName || `Project ${index + 1}`;
             const projectIdSuffix = projectIds?.[index] ? ` (ID: ${projectIds[index]})` : '';
             const safeFileName = currentProjectName.replace(/[^a-zA-Z0-9_-]/g, '_');
 

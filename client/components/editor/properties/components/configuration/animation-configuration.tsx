@@ -79,7 +79,7 @@ export function AnimationConfiguration({
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-arrows-alt-h mr-1"></i>
-              Ширина (px)
+              Width (px)
             </Label>
             <Input
               type="number"
@@ -93,7 +93,7 @@ export function AnimationConfiguration({
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-arrows-alt-v mr-1"></i>
-              Высота (px)
+              Height (px)
             </Label>
             <Input
               type="number"
@@ -107,7 +107,7 @@ export function AnimationConfiguration({
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-clock mr-1"></i>
-              Длительность (сек)
+              Duration (sec)
             </Label>
             <Input
               type="number"
@@ -121,7 +121,7 @@ export function AnimationConfiguration({
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-file mr-1"></i>
-              Название файла
+              File name
             </Label>
             <Input
               value={selectedNode.data.fileName || ''}

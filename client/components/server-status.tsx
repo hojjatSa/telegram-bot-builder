@@ -89,7 +89,7 @@ export function ServerStatus() {
       <Alert className="fixed top-4 right-4 w-80 z-50 border-green-200 bg-green-50 dark:bg-green-950">
         <CheckCircle className="h-4 w-4 text-green-600" />
         <AlertDescription className="text-green-800 dark:text-green-200">
-          Сервер готов к работе!
+          Server is ready!
         </AlertDescription>
       </Alert>
     );
@@ -101,7 +101,7 @@ export function ServerStatus() {
       <AlertDescription>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="font-medium">Загрузка сервера...</span>
+            <span className="font-medium">Starting server...</span>
             <Button
               variant="ghost"
               size="sm"
@@ -120,7 +120,7 @@ export function ServerStatus() {
                 <Loader2 className="h-3 w-3 animate-spin text-orange-500" />
               )}
               <span className={status.database ? 'text-green-700 dark:text-green-300' : 'text-orange-600 dark:text-orange-400'}>
-                База данных
+                Database
               </span>
             </div>
 
@@ -149,7 +149,7 @@ export function ServerStatus() {
 
           {!status.ready && (
             <div className="text-xs text-muted-foreground mt-2">
-              Некоторые функции могут быть временно недоступны
+              Some features may be temporarily unavailable
             </div>
           )}
         </div>

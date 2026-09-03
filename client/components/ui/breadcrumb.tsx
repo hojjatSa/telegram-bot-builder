@@ -22,7 +22,7 @@ import { cn } from "@/utils/utils"
  *     </BreadcrumbItem>
  *     <BreadcrumbSeparator />
  *     <BreadcrumbItem>
- *       <BreadcrumbLink href="/components">Компоненты</BreadcrumbLink>
+ *       <BreadcrumbLink href="/components">Components</BreadcrumbLink>
  *     </BreadcrumbItem>
  *     <BreadcrumbSeparator />
  *     <BreadcrumbItem>
@@ -87,7 +87,7 @@ BreadcrumbList.displayName = "BreadcrumbList"
  *
  * @example
  * <BreadcrumbItem>
- *   <BreadcrumbLink href="/components">Компоненты</BreadcrumbLink>
+ *   <BreadcrumbLink href="/components">Components</BreadcrumbLink>
  * </BreadcrumbItem>
  *
  * @returns {JSX.Element} Элемент навигационной цепочки
@@ -116,7 +116,7 @@ BreadcrumbItem.displayName = "BreadcrumbItem"
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <BreadcrumbLink href="/components">Компоненты</BreadcrumbLink>
+ * <BreadcrumbLink href="/components">Components</BreadcrumbLink>
  *
  * @returns {JSX.Element} Ссылка в навигационной цепочке
  */

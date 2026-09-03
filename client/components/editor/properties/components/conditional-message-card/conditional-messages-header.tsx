@@ -32,7 +32,7 @@ export function ConditionalMessagesHeader({
     <div className="flex items-start gap-2.5 sm:gap-3 w-full hover:opacity-75 transition-opacity duration-200 group" onClick={onToggle}>
       <button
         className="flex items-start gap-2.5 sm:gap-3 w-full"
-        title={isOpen ? 'Свернуть' : 'Развернуть'}
+        title={isOpen ? 'Collapse' : 'Expand'}
       >
         <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-lg bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/50 dark:to-indigo-900/50 flex items-center justify-center flex-shrink-0 pt-0.5">
           <i className="fas fa-code-branch text-purple-600 dark:text-purple-400 text-sm sm:text-base"></i>

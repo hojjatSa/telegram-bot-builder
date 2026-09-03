@@ -88,7 +88,7 @@ export function BroadcastToggle({ selectedNode, onNodeUpdate, allNodes = [] }: B
                   <SelectItem key={node.id} value={node.id}>
                     <div className="flex items-center gap-2">
                       <span>📢</span>
-                      <span className="truncate">Рассылка</span>
+                      <span className="truncate">Broadcast</span>
                       <span className="text-xs text-muted-foreground font-mono">({node.id})</span>
                     </div>
                   </SelectItem>

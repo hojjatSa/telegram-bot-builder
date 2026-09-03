@@ -189,8 +189,8 @@ export function ZoomControls({
                   <div className="flex items-center justify-between">
                     <span>{level}%</span>
                     {level === 100 && <span className="text-xs opacity-60">По умолчанию</span>}
-                    {level === 200 && <span className="text-xs opacity-60">Максимум</span>}
-                    {level === 1 && <span className="text-xs opacity-60">Минимум</span>}
+                    {level === 200 && <span className="text-xs opacity-60">Maximum</span>}
+                    {level === 1 && <span className="text-xs opacity-60">Minimum</span>}
                   </div>
                 </button>
               ))}

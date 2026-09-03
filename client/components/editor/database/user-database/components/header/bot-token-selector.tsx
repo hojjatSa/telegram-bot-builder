@@ -48,7 +48,7 @@ function getTokenLabel(token: BotToken): string {
   }
   if (token.botFirstName) return token.botFirstName;
   if (token.botUsername) return `@${token.botUsername}`;
-  return token.name || `Бот #${token.id}`;
+  return token.name || `Bot #${token.id}`;
 }
 
 /**
@@ -104,7 +104,7 @@ export function BotTokenSelector({
         }}
       >
         <SelectTrigger className="h-8 text-xs border-border/60 bg-background min-w-[120px]">
-          <SelectValue placeholder="Бот" />
+          <SelectValue placeholder="Bot" />
         </SelectTrigger>
         <SelectContent>
           {allowAll ? <SelectItem value="all">Все боты</SelectItem> : null}

@@ -40,7 +40,7 @@ export function CodePreview({ data }: CodePreviewProps) {
       <div className="flex items-center gap-1.5">
         <i className="fas fa-code text-indigo-500 text-[10px]" />
         <span className="font-semibold text-indigo-700 dark:text-indigo-300 text-[11px]">
-          Python-код
+          Python Code
         </span>
       </div>
       {preview ? (

@@ -64,7 +64,7 @@ export function ButtonCallbackVariablePicker({
           title="Вставить переменную в callback_data"
         >
           <Pin className="h-3 w-3" />
-          <span>Переменные</span>
+          <span>Variables</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

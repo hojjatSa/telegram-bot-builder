@@ -15,7 +15,7 @@ import { normalizeDynamicButtonsConfig } from './dynamic-buttons';
 export function getNodeDefaults(type: Node['type']): any {
   const defaults: Partial<Record<Node['type'], any>> = {
     message: {
-      messageText: 'Новое сообщение',
+      messageText: 'New message',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -26,7 +26,7 @@ export function getNodeDefaults(type: Node['type']): any {
     sticker: {
       stickerUrl: '',
       stickerFileId: '',
-      messageText: 'Стикер',
+      messageText: 'Sticker',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -36,7 +36,7 @@ export function getNodeDefaults(type: Node['type']): any {
     voice: {
       voiceUrl: '',
       duration: 0,
-      messageText: 'Голосовое сообщение',
+      messageText: 'Voice Message',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -49,7 +49,7 @@ export function getNodeDefaults(type: Node['type']): any {
       width: 0,
       height: 0,
       mediaCaption: '',
-      messageText: 'Анимация',
+      messageText: 'Animation',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -63,7 +63,7 @@ export function getNodeDefaults(type: Node['type']): any {
       address: 'Москва, Россия',
       foursquareId: '',
       foursquareType: '',
-      messageText: 'Местоположение',
+      messageText: 'Location',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -72,11 +72,11 @@ export function getNodeDefaults(type: Node['type']): any {
     },
     contact: {
       phoneNumber: '+7 (999) 123-45-67',
-      firstName: 'Имя',
-      lastName: 'Фамилия',
+      firstName: 'Name',
+      lastName: 'Last name',
       userId: 0,
       vcard: '',
-      messageText: 'Контакт',
+      messageText: 'Contact',
       keyboardType: 'none',
       buttons: [],
       markdown: false,
@@ -171,7 +171,7 @@ export function getNodeDefaults(type: Node['type']): any {
     ban_user: {
       command: '/ban_user',
       synonyms: ['забанить', 'заблокировать', 'бан'],
-      reason: 'Нарушение правил группы',
+      reason: 'Violation of group rules',
       untilDate: 0,
       targetUserId: '',
       userIdSource: 'last_message',
@@ -187,7 +187,7 @@ export function getNodeDefaults(type: Node['type']): any {
     mute_user: {
       command: '/mute_user',
       synonyms: ['замутить', 'заглушить', 'мут'],
-      reason: 'Нарушение правил группы',
+      reason: 'Violation of group rules',
       duration: 3600,
       canSendMessages: false,
       canSendMediaMessages: false,
@@ -321,7 +321,7 @@ export function getNodeDefaults(type: Node['type']): any {
       inputTargetNodeId: '',
       appendVariable: false,
       saveToDatabase: false,
-      inputPrompt: 'Введите ответ',
+      inputPrompt: 'Enter a response',
       inputRequired: true
     },
     condition: {

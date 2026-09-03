@@ -48,9 +48,9 @@ export interface TerminalLogsToolbarProps {
 
 /** Кнопки фильтра потока */
 const FILTERS: Array<{ label: string; value: LogFilter }> = [
-  { label: 'Все', value: 'all' },
-  { label: 'Вывод', value: 'stdout' },
-  { label: 'Ошибки', value: 'stderr' },
+  { label: 'All', value: 'all' },
+  { label: 'Output', value: 'stdout' },
+  { label: 'Errors', value: 'stderr' },
 ];
 
 /**

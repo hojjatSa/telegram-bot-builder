@@ -88,7 +88,7 @@ export function BroadcastStatsHeader({ broadcasts }: BroadcastStatsHeaderProps) 
       />
       <StatCard
         icon={CheckCircle2}
-        label="Доставлено"
+        label="Delivered"
         value={totalDelivered}
         hint={hint}
         iconClass="text-green-600"

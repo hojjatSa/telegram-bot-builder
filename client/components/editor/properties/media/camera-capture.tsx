@@ -164,8 +164,8 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
               // Загружаем файл напрямую
               uploadMutation.mutate({
                 file,
-                description: 'Фото с камеры',
-                tags: ['камера', 'фото']
+                description: 'Camera photo',
+                tags: ['camera', 'фото']
               }, {
                 onSuccess: () => {
                   toast({
@@ -176,7 +176,7 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
                 },
                 onError: (error) => {
                   toast({
-                    title: "Ошибка загрузки",
+                    title: "Load failed",
                     description: error.message,
                     variant: "destructive",
                   });
@@ -188,7 +188,7 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
       } catch (error) {
         console.error('Ошибка сохранения фото:', error);
         toast({
-          title: "Ошибка",
+          title: "Error",
           description: "Не удалось сохранить фото",
           variant: "destructive",
         });

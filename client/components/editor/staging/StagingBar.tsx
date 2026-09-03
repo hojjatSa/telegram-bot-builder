@@ -172,8 +172,8 @@ function CanvasVariant({
         <Button size="sm" onClick={onSave} disabled={isSaving}
           className="h-7 px-2.5 text-xs bg-violet-600 hover:bg-violet-700 text-white">
           {isSaving
-            ? <><i className="fas fa-spinner fa-spin mr-1" />Сохранение…</>
-            : <><i className="fas fa-floppy-disk mr-1" />Сохранить <kbd className="ml-1 opacity-60 text-[10px] hidden sm:inline">⇧+↵</kbd></>}
+            ? <><i className="fas fa-spinner fa-spin mr-1" />Saving…</>
+            : <><i className="fas fa-floppy-disk mr-1" />Save <kbd className="ml-1 opacity-60 text-[10px] hidden sm:inline">⇧+↵</kbd></>}
         </Button>
         <SaveCheckpointPopover size="bar" onSaveWithNote={onSaveWithNote} isSaving={isSaving} />
       </div>
@@ -244,8 +244,8 @@ function JsonDirtyVariant({ onReset, onDetails, onSave, onSaveAndRestart, onSave
         <Button size="sm" onClick={onSave} disabled={isSaving}
           className="h-7 px-2.5 text-xs bg-violet-600 hover:bg-violet-700 text-white">
           {isSaving
-            ? <><i className="fas fa-spinner fa-spin mr-1" />Сохранение…</>
-            : <><i className="fas fa-floppy-disk mr-1" />Сохранить</>}
+            ? <><i className="fas fa-spinner fa-spin mr-1" />Saving…</>
+            : <><i className="fas fa-floppy-disk mr-1" />Save</>}
         </Button>
         <SaveCheckpointPopover size="bar" onSaveWithNote={onSaveWithNote} isSaving={isSaving} />
       </div>
@@ -291,7 +291,7 @@ function JsonErrorVariant({ error, onReset, onDetails }: JsonErrorVariantProps) 
       <div className="flex items-center gap-1.5">
         <span className="text-xs text-red-700 dark:text-red-300 px-1.5 max-w-xs truncate">
           <i className="fas fa-exclamation-circle text-red-500 dark:text-red-400 mr-1.5" />
-          {error ?? 'Невалидный JSON'}
+          {error ?? 'Invalid JSON'}
         </span>
         <div className="hidden sm:block w-px h-4 bg-red-200 dark:bg-slate-700" />
         <Button size="sm" variant="ghost" onClick={onDetails}

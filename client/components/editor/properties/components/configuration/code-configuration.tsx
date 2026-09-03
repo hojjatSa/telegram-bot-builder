@@ -56,7 +56,7 @@ export function CodeConfiguration({
       <div className="flex items-center gap-2">
         <i className="fas fa-code text-indigo-500 dark:text-indigo-400 text-sm" />
         <span className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
-          Python-код
+          Python Code
         </span>
       </div>
       <p className="text-[10px] text-muted-foreground leading-relaxed">
@@ -80,10 +80,10 @@ export function CodeConfiguration({
         </Label>
         <Select value={autoTransitionTo || 'no-transition'} onValueChange={applyTarget}>
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60">
-            <SelectValue placeholder="Без перехода" />
+            <SelectValue placeholder="No transition" />
           </SelectTrigger>
           <SelectContent className="max-h-48 overflow-y-auto">
-            <SelectItem value="no-transition">Без перехода</SelectItem>
+            <SelectItem value="no-transition">No transition</SelectItem>
             {availableTargets.map(({ node, sheetName }) => (
               <SelectItem key={node.id} value={node.id}>
                 <span className="text-xs font-mono truncate">
@@ -97,7 +97,7 @@ export function CodeConfiguration({
           value={autoTransitionTo && autoTransitionTo !== 'no-transition' ? autoTransitionTo : ''}
           onChange={(e) => applyTarget(e.target.value || 'no-transition')}
           className="text-xs h-8 mt-1.5 bg-white/60 dark:bg-slate-950/60"
-          placeholder="или ID вручную"
+          placeholder="or enter an ID manually"
         />
       </div>
     </div>

@@ -67,7 +67,7 @@ export function McpConfigSnippet({ token }: McpConfigSnippetProps) {
         <p className="text-sm font-medium">{label}</p>
         <Button variant="outline" size="sm" onClick={handleCopy}>
           <Copy className="h-4 w-4 mr-1" />
-          Копировать
+          Copy
         </Button>
       </div>
       <p className="text-xs text-muted-foreground">

@@ -250,10 +250,10 @@ export function DialogPanel({
             </div>
             <div className="min-w-0 flex-1">
               <h3 className="font-medium text-xs sm:text-sm truncate leading-none">
-                {user.firstName ?? 'Группа'}
+                {user.firstName ?? 'Group'}
               </h3>
               <p className="text-[10px] text-muted-foreground mt-0.5">
-                {isChannel ? 'Канал' : groupChatType === 'supergroup' ? 'Супергруппа' : 'Группа'}
+                {isChannel ? 'Channel' : groupChatType === 'supergroup' ? 'Supergroup' : 'Group'}
                 {groupChatId && ` · ${groupChatId}`}
               </p>
             </div>

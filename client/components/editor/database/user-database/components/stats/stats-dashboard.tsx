@@ -69,10 +69,10 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
   /** Текущая гранулярность графика прироста пользователей */
   const [growthGranularity, setGrowthGranularity] = useState<GrowthGranularity>('1d');
 
-  /** Режим графика "Всего пользователей": за период или накопительно */
+  /** Режим графика "Total Users": за период или накопительно */
   const [growthMode, setGrowthMode] = useState<ChartMode>('period');
 
-  /** Режим графика "Активность": за период или накопительно */
+  /** Режим графика "Activity": за период или накопительно */
   const [activityMode, setActivityMode] = useState<ChartMode>('period');
 
   /** Тип графика прироста: столбчатый или линейный */
@@ -99,8 +99,8 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
 
   /** Multi-line данные для графика активности: входящие + исходящие */
   const activityMultiLine = activitySplitMode === 'split' ? [
-    { name: 'Входящие', data: messagePoints, color: '#10b981' },
-    { name: 'Исходящие', data: outgoingPoints, color: '#6366f1' },
+    { name: 'Incoming', data: messagePoints, color: '#10b981' },
+    { name: 'Outgoing', data: outgoingPoints, color: '#6366f1' },
   ] : undefined;
 
   // Определяем тренд по недельному приросту
@@ -141,7 +141,7 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {/* Карточка: всего пользователей со sparkline */}
         <StatMetricCard
-          title="Всего пользователей"
+          title="Total Users"
           value={stats.totalUsers}
           sparklineData={sourceMode === 'total' ? points : undefined}
           multiLineData={multiLineData}
@@ -169,7 +169,7 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
 
         {/* Карточка: активность */}
         <StatMetricCard
-          title="Активность"
+          title="Activity"
           value={stats.totalInteractions}
           sparklineData={activitySplitMode === 'total' ? messagePoints : undefined}
           multiLineData={activityMultiLine}
@@ -199,7 +199,7 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
           selectedTokenId={selectedTokenId}
         />
         <StatDonutCard
-          title="Источники трафика"
+          title="Traffic Sources"
           items={sourceItems}
           maxItems={null}
           onItemClick={onSourceClick}
@@ -212,11 +212,11 @@ export function StatsDashboard(props: StatsDashboardProps): React.JSX.Element {
           title="Premium"
           items={[
             { label: 'Premium', count: stats.premiumUsers ?? 0, percentage: premiumPercent },
-            { label: 'Обычные', count: Math.max(0, total - (stats.premiumUsers ?? 0)), percentage: nonPremiumPercent },
+            { label: 'Standard', count: Math.max(0, total - (stats.premiumUsers ?? 0)), percentage: nonPremiumPercent },
           ]}
         />
         <StatDonutCard
-          title="Языки"
+          title="Languages"
           items={languageItems}
         />
       </div>

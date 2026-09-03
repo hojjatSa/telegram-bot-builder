@@ -47,7 +47,7 @@ export function GotoTargetSection({
         onValueChange={(value) => onButtonUpdate(selectedNode.id, button.id, { target: value })}
       >
         <SelectTrigger className="w-full text-xs sm:text-sm bg-white/60 dark:bg-slate-950/60 border border-sky-300/40 dark:border-sky-700/40 hover:border-sky-400/60 dark:hover:border-sky-600/60 hover:bg-white/80 dark:hover:bg-slate-900/60 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-2 focus:ring-sky-400/30 dark:focus:ring-sky-600/30 transition-all duration-200 rounded-lg text-sky-900 dark:text-sky-50">
-          <SelectValue placeholder="⊘ Не выбрано">
+          <SelectValue placeholder="⊘ Not selected">
             {selectedTarget ? getNodeTypeLabel(selectedTarget.node.type) : undefined}
           </SelectValue>
         </SelectTrigger>

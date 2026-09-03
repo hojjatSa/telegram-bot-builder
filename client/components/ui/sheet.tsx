@@ -21,7 +21,7 @@ import { cn } from "@/utils/utils"
  *   <SheetContent>
  *     <SheetHeader>
  *       <SheetTitle>Заголовок</SheetTitle>
- *       <SheetDescription>Описание</SheetDescription>
+ *       <SheetDescription>Description</SheetDescription>
  *     </SheetHeader>
  *     <div>Содержимое панели</div>
  *   </SheetContent>
@@ -55,7 +55,7 @@ const SheetTrigger = SheetPrimitive.Trigger
  * @param {React.ComponentPropsWithoutRef<typeof SheetPrimitive.Close>} props - Свойства компонента
  *
  * @example
- * <SheetClose>Закрыть</SheetClose>
+ * <SheetClose>Close</SheetClose>
  *
  * @returns {JSX.Element} Компонент закрытия боковой панели
  */
@@ -161,12 +161,12 @@ interface SheetContentProps
  * <SheetContent side="left">
  *   <SheetHeader>
  *     <SheetTitle>Заголовок</SheetTitle>
- *     <SheetDescription>Описание</SheetDescription>
+ *     <SheetDescription>Description</SheetDescription>
  *   </SheetHeader>
  *   <div>Содержимое панели</div>
  *   <SheetFooter>
  *     <Button>Подтвердить</Button>
- *     <Button variant="outline">Отмена</Button>
+ *     <Button variant="outline">Cancel</Button>
  *   </SheetFooter>
  * </SheetContent>
  *
@@ -210,7 +210,7 @@ SheetContent.displayName = SheetPrimitive.Content.displayName
  * @example
  * <SheetHeader>
  *   <SheetTitle>Заголовок</SheetTitle>
- *   <SheetDescription>Описание</SheetDescription>
+ *   <SheetDescription>Description</SheetDescription>
  * </SheetHeader>
  *
  * @returns {JSX.Element} Заголовок боковой панели
@@ -241,7 +241,7 @@ SheetHeader.displayName = "SheetHeader"
  * @example
  * <SheetFooter>
  *   <Button>Подтвердить</Button>
- *   <Button variant="outline">Отмена</Button>
+ *   <Button variant="outline">Cancel</Button>
  * </SheetFooter>
  *
  * @returns {JSX.Element} Нижний колонтитул боковой панели

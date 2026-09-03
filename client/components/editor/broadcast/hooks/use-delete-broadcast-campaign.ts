@@ -37,15 +37,15 @@ export function useDeleteBroadcastCampaign({ projectId, refetch }: UseDeleteBroa
     },
     onSuccess: (data) => {
       toast({
-        title: 'Рассылка удалена',
+        title: 'Broadcast deleted',
         description: `Сообщений удалено у получателей: ${data?.deleted ?? 0}`,
       });
       refetch?.();
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
-        description: error.message || 'Не удалось удалить рассылку',
+        title: 'Error',
+        description: error.message || 'Could not delete broadcast',
         variant: 'destructive',
       });
     },

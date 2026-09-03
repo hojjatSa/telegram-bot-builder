@@ -35,7 +35,7 @@ export function ToggleHeaderButton({ headerVisible, onClick }: ToggleHeaderButto
       data-testid="button-mobile-toggle-header"
     >
       <NavigationIcon className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{headerVisible ? 'Скрыть' : 'Показать'} шапку</span>
+      <span className="sm:hidden">{headerVisible ? 'Hide' : 'Show'} шапку</span>
     </Button>
   );
 }

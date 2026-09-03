@@ -27,7 +27,7 @@ export function UserbotEditTriggerPreview({ node }: UserbotEditTriggerPreviewPro
       <div className="flex items-center gap-1.5">
         <i className="fas fa-pen text-amber-500 text-[10px]" />
         <span className="text-xs text-amber-600 dark:text-amber-400 font-medium truncate">
-          Редактирование (юзербот)
+          Edit (Userbot)
         </span>
       </div>
       {entity && (

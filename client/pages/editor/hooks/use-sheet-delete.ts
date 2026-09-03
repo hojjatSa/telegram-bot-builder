@@ -92,7 +92,7 @@ export function useSheetDelete(params: UseSheetDeleteParams) {
       });
     } catch (error) {
       toast({
-        title: 'Ошибка удаления',
+        title: 'Delete failed',
         description: 'Не удалось удалить лист',
         variant: 'destructive',
       });

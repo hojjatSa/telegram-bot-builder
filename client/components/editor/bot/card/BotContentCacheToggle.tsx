@@ -86,14 +86,14 @@ export function BotContentCacheToggle({
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
-        title: 'Настройка сохранена',
-        description: 'Перезапустите бота, чтобы применить изменения',
+        title: 'Setting saved',
+        description: 'Restart the bot to apply changes',
       });
     },
     onError: () => {
       setLocalEnabled(contentCache === 1);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить настройку живого обновления контента',
         variant: 'destructive',
       });

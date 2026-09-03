@@ -81,10 +81,10 @@ AlertDialogOverlay.displayName = AlertDialogPrimitive.Overlay.displayName
  * <AlertDialogContent>
  *   <AlertDialogHeader>
  *     <AlertDialogTitle>Заголовок</AlertDialogTitle>
- *     <AlertDialogDescription>Описание</AlertDialogDescription>
+ *     <AlertDialogDescription>Description</AlertDialogDescription>
  *   </AlertDialogHeader>
  *   <AlertDialogFooter>
- *     <AlertDialogCancel>Отмена</AlertDialogCancel>
+ *     <AlertDialogCancel>Cancel</AlertDialogCancel>
  *     <AlertDialogAction>Подтвердить</AlertDialogAction>
  *   </AlertDialogFooter>
  * </AlertDialogContent>
@@ -121,7 +121,7 @@ AlertDialogContent.displayName = AlertDialogPrimitive.Content.displayName
  * @example
  * <AlertDialogHeader>
  *   <AlertDialogTitle>Заголовок</AlertDialogTitle>
- *   <AlertDialogDescription>Описание</AlertDialogDescription>
+ *   <AlertDialogDescription>Description</AlertDialogDescription>
  * </AlertDialogHeader>
  *
  * @returns {JSX.Element} Заголовок диалога предупреждения
@@ -151,7 +151,7 @@ AlertDialogHeader.displayName = "AlertDialogHeader"
  *
  * @example
  * <AlertDialogFooter>
- *   <AlertDialogCancel>Отмена</AlertDialogCancel>
+ *   <AlertDialogCancel>Cancel</AlertDialogCancel>
  *   <AlertDialogAction>Подтвердить</AlertDialogAction>
  * </AlertDialogFooter>
  *
@@ -257,14 +257,14 @@ AlertDialogAction.displayName = AlertDialogPrimitive.Action.displayName
  * Компонент кнопки отмены диалогового окна предупреждения
  *
  * @component
- * @description Кнопка отмены действия в диалоговом окне (например, "Отмена").
+ * @description Кнопка отмены действия в диалоговом окне (например, "Cancel").
  *
  * @param {React.Ref<React.ElementRef<typeof AlertDialogPrimitive.Cancel>>} ref - Ссылка на DOM-элемент
  * @param {string} className - Дополнительные CSS-классы
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <AlertDialogCancel onClick={() => console.log('Отменено')}>Отмена</AlertDialogCancel>
+ * <AlertDialogCancel onClick={() => console.log('Отменено')}>Cancel</AlertDialogCancel>
  *
  * @returns {JSX.Element} Кнопка отмены диалога предупреждения
  */

@@ -177,7 +177,7 @@ export function DialogsTabContent({
               onClick={() => setBroadcastModalOpen(true)}
             >
               <Megaphone className="h-3 w-3" />
-              Рассылка
+              Broadcast
             </Button>
           </div>
 
@@ -191,7 +191,7 @@ export function DialogsTabContent({
                       <div className="w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center shrink-0">
                         <Megaphone className="w-3 h-3 text-violet-600 dark:text-violet-400" />
                       </div>
-                      <span className="text-xs font-medium truncate">Рассылка</span>
+                      <span className="text-xs font-medium truncate">Broadcast</span>
                     </>
                   ) : (
                     <>
@@ -318,7 +318,7 @@ export function DialogsTabContent({
               <div className="w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center shrink-0">
                 <Megaphone className="w-3 h-3 text-violet-600 dark:text-violet-400" />
               </div>
-              <span className="text-sm font-medium truncate flex-1 min-w-0">Рассылка</span>
+              <span className="text-sm font-medium truncate flex-1 min-w-0">Broadcast</span>
               <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={handleClose}>
                 <X className="h-4 w-4" />
               </Button>

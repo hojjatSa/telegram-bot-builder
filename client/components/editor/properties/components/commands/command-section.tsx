@@ -55,7 +55,7 @@ export function CommandSection({
     <div className="space-y-2 sm:space-y-2.5">
       <Label className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-100 flex items-center gap-2">
         <i className="fas fa-terminal text-blue-600 dark:text-blue-400 text-xs sm:text-sm"></i>
-        Команда
+        Command
       </Label>
       <div className="relative">
         <Input

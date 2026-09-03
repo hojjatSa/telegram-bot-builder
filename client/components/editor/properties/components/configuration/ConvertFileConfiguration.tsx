@@ -57,7 +57,7 @@ export function ConvertFileConfiguration({
       <div className="flex items-center gap-2">
         <i className="fas fa-file-export text-emerald-500 dark:text-emerald-400 text-sm" />
         <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-          Конвертер файлов
+          File Converter
         </span>
       </div>
 
@@ -96,7 +96,7 @@ export function ConvertFileConfiguration({
       {/* Имя файла */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Имя файла
+          File name
         </Label>
         <Input
           value={fileName}
@@ -165,10 +165,10 @@ export function ConvertFileConfiguration({
           }
         >
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60 border border-emerald-300/40 dark:border-emerald-700/40">
-            <SelectValue placeholder="Без перехода" />
+            <SelectValue placeholder="No transition" />
           </SelectTrigger>
           <SelectContent className="max-h-48 overflow-y-auto">
-            <SelectItem value="no-transition">Без перехода</SelectItem>
+            <SelectItem value="no-transition">No transition</SelectItem>
             {availableTargets.map(({ node, sheetName }) => (
               <SelectItem key={node.id} value={node.id}>
                 <span className="text-xs font-mono truncate">
@@ -187,7 +187,7 @@ export function ConvertFileConfiguration({
             })
           }
           className="text-xs h-8 mt-1.5 bg-white/60 dark:bg-slate-950/60 border border-emerald-300/40 dark:border-emerald-700/40"
-          placeholder="или ID вручную"
+          placeholder="or enter an ID manually"
         />
       </div>
     </div>

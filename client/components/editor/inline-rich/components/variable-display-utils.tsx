@@ -54,7 +54,7 @@ export function getBadgeText(variable: Variable): string {
     message_id: '🆔 ID сообщения',
     http_request: '🌐 HTTP',
     input: '⌨️ Ввод',
-    media_meta: '📎 Медиа',
+    media_meta: '📎 Media',
     set_variable: '✏️ Переменная',
     psql_query: '🗄️ SQL',
     convert_file: '📄 Файл',

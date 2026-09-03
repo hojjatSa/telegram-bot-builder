@@ -76,7 +76,7 @@ export function ConditionNodeConfiguration({ selectedNode, allNodes, getAllNodes
       {/* Поле ввода переменной — скрыто если все ветки системные */}
       {!allBranchesSystemic && (
       <div className="space-y-2">
-        <Label>Переменная</Label>
+        <Label>Variable</Label>
         <VariableNameInput
           value={variable}
           availableVariables={textVariables}

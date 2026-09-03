@@ -139,7 +139,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
         requiresToken: 1,
         complexity: 1,
         estimatedTime: 5,
-        authorName: data.isAnonymous ? null : (user?.username || 'Пользователь'),
+        authorName: data.isAnonymous ? null : (user?.username || 'User'),
         data: botData,
       });
     },
@@ -155,7 +155,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
     },
     onError: () => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось сохранить сценарий',
         variant: 'destructive',
       });
@@ -194,7 +194,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
   const handleSave = () => {
     if (!formData.name.trim()) {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Название сценария обязательно',
         variant: 'destructive',
       });
@@ -213,10 +213,10 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
    * - games: Игры
    */
   const categories = [
-    { value: 'custom', label: 'Пользовательский' },
-    { value: 'business', label: 'Бизнес' },
-    { value: 'utility', label: 'Утилиты' },
-    { value: 'games', label: 'Игры' },
+    { value: 'custom', label: 'Custom' },
+    { value: 'business', label: 'Business' },
+    { value: 'utility', label: 'Utilities' },
+    { value: 'games', label: 'Games' },
   ];
 
   return (
@@ -246,7 +246,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
 
           {/* Описание */}
           <div className="space-y-2">
-            <Label htmlFor="description">Описание</Label>
+            <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
               value={formData.description}
@@ -346,7 +346,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>
-            Отмена
+            Cancel
           </Button>
           <Button
             onClick={handleSave}

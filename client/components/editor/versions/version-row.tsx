@@ -123,10 +123,10 @@ export function VersionRow({ version, projectId, versionNumber, isLatest, isRest
             className={compact ? 'h-8 w-8' : ''}
             disabled={isRestoring}
             onClick={() => onRestore(version.id)}
-            title={compact ? 'Восстановить' : undefined}
+            title={compact ? 'Restore' : undefined}
           >
             <RotateCcw className={compact ? 'h-3.5 w-3.5' : 'h-3.5 w-3.5 mr-1.5'} />
-            {!compact && (isRestoring ? 'Откат…' : 'Восстановить')}
+            {!compact && (isRestoring ? 'Откат…' : 'Restore')}
           </Button>
         </div>
       </div>

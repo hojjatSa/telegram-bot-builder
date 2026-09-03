@@ -236,7 +236,7 @@ export function createInputNodeFromMessage(messageNode: Node, index = 0): Node {
       inputTargetNodeId: data.inputTargetNodeId || data.autoTransitionTo || '',
       appendVariable: !!data.appendVariable,
       saveToDatabase: !!data.saveToDatabase,
-      inputPrompt: data.inputPrompt || defaults.inputPrompt || 'Введите ответ',
+      inputPrompt: data.inputPrompt || defaults.inputPrompt || 'Enter a response',
       inputRequired: data.inputRequired ?? defaults.inputRequired ?? true,
     },
   } as Node;

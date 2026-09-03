@@ -50,7 +50,7 @@ export function BotServiceNode({
   scale,
   onMove,
 }: BotServiceNodeProps) {
-  const title = token.botFirstName || token.name || `Бот ${token.id}`;
+  const title = token.botFirstName || token.name || `Bot ${token.id}`;
   const username = token.botUsername ? `@${token.botUsername}` : 'Telegram Bot';
   const left = position?.left ?? 0;
   const top = position?.top ?? 0;

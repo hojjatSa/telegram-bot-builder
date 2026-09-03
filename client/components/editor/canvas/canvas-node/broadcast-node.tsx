@@ -11,7 +11,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const broadcastNode: ComponentDefinition = {
   id: 'broadcast',
-  name: 'Рассылка',
+  name: 'Broadcast',
   description: 'Отправка сообщения всем пользователям из базы',
   icon: 'fas fa-bullhorn',
   color: 'bg-purple-100 text-purple-600',

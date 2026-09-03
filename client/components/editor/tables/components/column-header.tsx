@@ -91,7 +91,7 @@ export function ColumnHeader({ column, onRename, onDelete }: ColumnHeaderProps) 
         </DropdownMenuItem>
         <DropdownMenuItem className="text-destructive" onClick={onDelete}>
           <Trash2 className="h-3.5 w-3.5 mr-2" />
-          Удалить
+          Delete
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

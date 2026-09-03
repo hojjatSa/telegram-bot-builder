@@ -88,7 +88,7 @@ export function useSheetAdd(params: UseSheetAddParams) {
       });
     } catch (error) {
       toast({
-        title: 'Ошибка создания',
+        title: 'Create failed',
         description: 'Не удалось создать лист',
         variant: 'destructive',
       });

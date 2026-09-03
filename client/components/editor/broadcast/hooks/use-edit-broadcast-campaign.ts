@@ -55,7 +55,7 @@ export function useEditBroadcastCampaign({ projectId, refetch }: UseEditBroadcas
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: error.message || 'Не удалось изменить текст рассылки',
         variant: 'destructive',
       });

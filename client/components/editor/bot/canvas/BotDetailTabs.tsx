@@ -8,10 +8,10 @@ import type { BotDetailTabId } from './bot-detail-tab-context';
 
 /** Описание вкладки */
 const TABS: Array<{ id: BotDetailTabId; label: string; icon: typeof History }> = [
-  { id: 'history', label: 'История', icon: History },
-  { id: 'settings', label: 'Настройки', icon: Settings },
-  { id: 'variables', label: 'Переменные', icon: Braces },
-  { id: 'terminal', label: 'Терминал', icon: Terminal },
+  { id: 'history', label: 'History', icon: History },
+  { id: 'settings', label: 'Settings', icon: Settings },
+  { id: 'variables', label: 'Variables', icon: Braces },
+  { id: 'terminal', label: 'Terminal', icon: Terminal },
   { id: 'collaborators', label: 'Владельцы', icon: Users },
 ];
 

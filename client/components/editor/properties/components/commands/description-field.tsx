@@ -32,7 +32,7 @@ export function DescriptionField({
     <div className="space-y-2 sm:space-y-2.5">
       <Label className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-100 flex items-center gap-2">
         <i className="fas fa-align-left text-blue-600 dark:text-blue-400 text-xs sm:text-sm"></i>
-        Описание
+        Description
         <div className="relative group">
           <i className="fas fa-info-circle text-blue-500 dark:text-blue-400 text-xs sm:text-sm cursor-help"></i>
           <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-full sm:w-48 max-w-xs sm:max-w-none p-2 text-xs bg-blue-900 dark:bg-slate-800 text-blue-100 dark:text-slate-200 rounded-lg shadow-lg z-50">

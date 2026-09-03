@@ -30,13 +30,13 @@ export function KeyboardSectionHeader({
     <div className="flex items-start gap-2.5 sm:gap-3 w-full hover:opacity-75 transition-opacity duration-200 group" onClick={onToggle}>
       <button
         className="flex items-start gap-2.5 sm:gap-3 w-full"
-        title={isOpen ? 'Свернуть' : 'Развернуть'}
+        title={isOpen ? 'Collapse' : 'Expand'}
       >
         <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-lg bg-gradient-to-br from-amber-100 to-yellow-100 dark:from-amber-900/50 dark:to-yellow-900/50 flex items-center justify-center flex-shrink-0 pt-0.5">
           <i className="fas fa-keyboard text-amber-600 dark:text-amber-400 text-sm sm:text-base"></i>
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm sm:text-base font-bold text-amber-900 dark:text-amber-100 text-left">Клавиатура</h3>
+          <h3 className="text-sm sm:text-base font-bold text-amber-900 dark:text-amber-100 text-left">Keyboard</h3>
           <p className="text-xs sm:text-sm text-amber-700/70 dark:text-amber-300/70 text-left">Кнопки для взаимодействия с пользователем</p>
         </div>
       </button>

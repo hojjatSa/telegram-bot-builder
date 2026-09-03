@@ -810,7 +810,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             onChange={(e) => setGlobalSearchQuery(e.target.value)}
             onClick={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}
-            placeholder="Поиск узлов..."
+            placeholder="Search nodes..."
             className="h-7 text-xs pl-7 pr-2 py-0"
           />
         </div>
@@ -882,7 +882,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                     <button
                       className="flex-shrink-0 p-1 rounded-md hover:bg-muted/50 transition-colors"
                       onClick={(e) => toggleSheetExpanded(sheetId, e)}
-                      title={(expandedSheets.has(sheetId) || globalSearchQuery.trim()) ? 'Свернуть' : 'Развернуть'}
+                      title={(expandedSheets.has(sheetId) || globalSearchQuery.trim()) ? 'Collapse' : 'Expand'}
                     >
                       {(expandedSheets.has(sheetId) || globalSearchQuery.trim())
                         ? <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
@@ -941,7 +941,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                       }}
                       title={name}
                     >
-                      {name || 'Без названия'}
+                      {name || 'Untitled'}
                     </div>
                   )}
 
@@ -961,7 +961,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                       size="sm"
                       className="h-5 sm:h-6 w-5 sm:w-6 p-0 hover:bg-green-500/20 text-green-600 dark:text-green-400 rounded transition-all"
                       onClick={(e) => handleDuplicateSheet(e, sheetId!)}
-                      title="Дублировать лист"
+                      title="Duplicate sheet"
                     >
                       <Copy className="h-2.5 sm:h-3 w-2.5 sm:w-3" />
                     </Button>
@@ -1027,7 +1027,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                         size="sm"
                         className="h-5 sm:h-6 w-5 sm:w-6 p-0 hover:bg-red-500/20 text-red-600 dark:text-red-400 rounded transition-all"
                         onClick={(e) => handleDeleteSheet(e, sheetId)}
-                        title="Удалить лист"
+                        title="Delete sheet"
                       >
                         <Trash2 className="h-2.5 sm:h-3 w-2.5 sm:w-3" />
                       </Button>

@@ -19,16 +19,16 @@ export interface MediaTypeOption {
 
 /** Типы медиа Telegram + обложка для фильтра по типу (Req 6.4) */
 export const MEDIA_TYPE_OPTIONS: MediaTypeOption[] = [
-  { value: 'all', label: 'Все типы' },
-  { value: 'photo', label: 'Фото' },
-  { value: 'video', label: 'Видео' },
-  { value: 'audio', label: 'Аудио' },
-  { value: 'voice', label: 'Голосовое' },
-  { value: 'document', label: 'Документ' },
-  { value: 'sticker', label: 'Стикер' },
+  { value: 'all', label: 'All types' },
+  { value: 'photo', label: 'Photo' },
+  { value: 'video', label: 'Video' },
+  { value: 'audio', label: 'Audio' },
+  { value: 'voice', label: 'Voice' },
+  { value: 'document', label: 'Document' },
+  { value: 'sticker', label: 'Sticker' },
   { value: 'animation', label: 'Анимация (GIF)' },
-  { value: 'video_note', label: 'Видеосообщение' },
-  { value: 'cover', label: 'Обложка' },
+  { value: 'video_note', label: 'Video Message' },
+  { value: 'cover', label: 'Cover' },
 ];
 
 /**

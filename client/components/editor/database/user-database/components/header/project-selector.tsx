@@ -45,7 +45,7 @@ export function ProjectSelector({
         onValueChange={(value) => onSelect(Number(value))}
       >
         <SelectTrigger className="h-8 text-xs border-border/60 bg-background min-w-[120px] w-auto max-w-[280px]">
-          <SelectValue placeholder="Проект">{selectedProject?.name}</SelectValue>
+          <SelectValue placeholder="Project">{selectedProject?.name}</SelectValue>
         </SelectTrigger>
         <SelectContent className="min-w-[220px]">
           {projects.map((project) => (

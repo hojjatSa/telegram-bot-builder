@@ -1,5 +1,5 @@
 /**
- * @fileoverview Панель свойств узла "Редактировать сообщение"
+ * @fileoverview Панель свойств узла "Edit Message"
  * @module properties/components/action/EditMessageConfiguration
  */
 import { useMemo } from 'react';
@@ -128,7 +128,7 @@ export function EditMessageConfiguration({
           <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
             <i className="fas fa-keyboard text-slate-600 dark:text-slate-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Клавиатура</Label>
+          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Keyboard</Label>
         </div>
         <Select
           value={keyboardMode}

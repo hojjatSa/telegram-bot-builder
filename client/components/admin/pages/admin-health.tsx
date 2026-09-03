@@ -49,7 +49,7 @@ export function AdminHealthPage() {
   }
 
   const items = [
-    { label: 'База данных', ok: data.database },
+    { label: 'Database', ok: data.database },
     { label: 'Шаблоны', ok: data.templates },
     { label: 'Telegram', ok: data.telegram },
     { label: 'Готовность', ok: data.ready },
@@ -64,7 +64,7 @@ export function AdminHealthPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Компоненты</CardTitle>
+          <CardTitle className="text-lg">Components</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           {items.map(({ label, ok }) => (

@@ -24,7 +24,7 @@ export function EmptyStateHeader({ onClose }: EmptyStateHeaderProps) {
             <i className="fas fa-sliders-h text-muted-foreground text-sm"></i>
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-foreground">Свойства</h2>
+            <h2 className="text-sm font-semibold text-foreground">Properties</h2>
             <p className="text-xs text-muted-foreground">Выберите элемент для настройки</p>
           </div>
         </div>

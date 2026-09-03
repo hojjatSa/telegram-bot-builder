@@ -90,7 +90,7 @@ export function ResponseRow({
             if (imageError) {
               return <FileNotFound />;
             }
-            const fileName = valueStr.split('/').pop() || 'Файл';
+            const fileName = valueStr.split('/').pop() || 'File';
             const extension = fileName.split('.').pop()?.toUpperCase() || 'FILE';
             return (
               <a
@@ -146,7 +146,7 @@ export function ResponseRow({
             return (
               <img
                 src={valueStr}
-                alt="Ответ"
+                alt="Response"
                 className="w-full h-auto rounded-lg"
                 onError={() => setImageError(true)}
               />

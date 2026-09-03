@@ -49,10 +49,10 @@ export function ConditionalMessageCardHeader({
           {index + 1}
         </span>
         <span className="text-xs sm:text-sm font-medium text-foreground truncate">
-          {variableNames?.join(', ')?.slice(0, 30) || 'Условие'}
+          {variableNames?.join(', ')?.slice(0, 30) || 'Condition'}
         </span>
         {hasErrors && (
-          <div className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 flex-shrink-0 animate-pulse shadow-lg shadow-red-500/30" title="Ошибка"></div>
+          <div className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-red-500 to-red-600 flex-shrink-0 animate-pulse shadow-lg shadow-red-500/30" title="Error"></div>
         )}
         {hasWarnings && !hasErrors && (
           <div className="h-2.5 w-2.5 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600 flex-shrink-0 shadow-lg shadow-yellow-500/20" title="Предупреждение"></div>
@@ -71,7 +71,7 @@ export function ConditionalMessageCardHeader({
         <Button size="sm" variant="ghost" onClick={onDecreasePriority} className="h-6 w-6 p-0 text-muted-foreground hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-100/40 dark:hover:bg-blue-900/30 rounded transition-all hover:scale-110" title="Понизить приоритет">
           <i className="fas fa-chevron-down text-xs"></i>
         </Button>
-        <Button size="sm" variant="ghost" onClick={onDelete} className="h-6 w-6 p-0 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 hover:bg-red-100/40 dark:hover:bg-red-900/30 rounded transition-all hover:scale-110" title="Удалить">
+        <Button size="sm" variant="ghost" onClick={onDelete} className="h-6 w-6 p-0 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 hover:bg-red-100/40 dark:hover:bg-red-900/30 rounded transition-all hover:scale-110" title="Delete">
           <i className="fas fa-xmark text-xs"></i>
         </Button>
       </div>

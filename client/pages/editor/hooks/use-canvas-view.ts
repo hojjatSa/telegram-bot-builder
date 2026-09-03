@@ -68,7 +68,7 @@ export function useCanvasView({
       JSON.parse(jsonContent);
       setJsonError(null);
     } catch (e) {
-      setJsonError(e instanceof Error ? e.message : 'Невалидный JSON');
+      setJsonError(e instanceof Error ? e.message : 'Invalid JSON');
     }
   }, [jsonContent]);
 

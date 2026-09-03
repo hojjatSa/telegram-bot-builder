@@ -44,7 +44,7 @@ export function KeyboardButtonsSection({
   const handleAddCompleteButton = () => {
     const newButton: ButtonType = {
       id: generateButtonId(),
-      text: 'Готово',
+      text: 'Done',
       action: 'complete' as const,
       buttonType: 'complete' as const,
       target: '',
@@ -63,7 +63,7 @@ export function KeyboardButtonsSection({
         variant="outline"
         onClick={() => onButtonAdd(selectedNode.id, {
           id: generateButtonId(),
-          text: 'Новая кнопка',
+          text: 'New button',
           action: 'goto',
           buttonType: 'normal' as const,
           target: '',

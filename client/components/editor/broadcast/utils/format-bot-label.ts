@@ -17,7 +17,7 @@ export function formatBotLabel(token: BotToken | undefined): string {
   }
   if (token.botUsername) return `@${token.botUsername}`;
   if (token.botFirstName) return token.botFirstName;
-  return token.name || `Бот #${token.id}`;
+  return token.name || `Bot #${token.id}`;
 }
 
 /**
@@ -29,7 +29,7 @@ export function formatBotLabel(token: BotToken | undefined): string {
 export function formatBotShortLabel(token: BotToken | undefined, tokenId?: number): string {
   if (!token) return `Бот #${tokenId ?? '—'}`;
   if (token.botUsername) return `@${token.botUsername}`;
-  return token.botFirstName || token.name || `Бот #${token.id}`;
+  return token.botFirstName || token.name || `Bot #${token.id}`;
 }
 
 /**

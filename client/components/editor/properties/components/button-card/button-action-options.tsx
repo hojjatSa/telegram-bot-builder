@@ -24,7 +24,7 @@ export const ACTION_CONFIG: Record<ButtonActionType, { icon: string; color: stri
   default: { icon: 'fa-circle-dot', color: 'text-slate-500 dark:text-slate-400', label: 'Обычная кнопка' },
   contact: { icon: 'fa-phone', color: 'text-green-600 dark:text-green-400', label: 'Запрос контакта' },
   location: { icon: 'fa-location-dot', color: 'text-blue-600 dark:text-blue-400', label: 'Запрос геолокации' },
-  command: { icon: 'fa-terminal', color: 'text-orange-600 dark:text-orange-400', label: 'Команда' },
+  command: { icon: 'fa-terminal', color: 'text-orange-600 dark:text-orange-400', label: 'Command' },
   /** Копировать текст в буфер обмена (Bot API 7.11, только inline) */
   copy_text: { icon: 'fa-clipboard', color: 'text-yellow-600 dark:text-yellow-400', label: 'Копировать текст' },
   /** Открыть Telegram Mini App по URL (только inline, требует HTTPS) */

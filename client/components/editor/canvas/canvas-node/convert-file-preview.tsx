@@ -35,7 +35,7 @@ export function ConvertFilePreview({ node }: ConvertFilePreviewProps) {
       <div className="flex items-center gap-1.5">
         <i className="fas fa-file-export text-emerald-500 dark:text-emerald-400 text-xs" />
         <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-          Конвертер файлов
+          File Converter
         </span>
       </div>
 

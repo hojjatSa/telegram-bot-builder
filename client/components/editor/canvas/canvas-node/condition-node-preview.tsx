@@ -70,7 +70,7 @@ export function ConditionNodePreview({
         <div className="w-8 h-8 rounded-lg bg-violet-100 dark:bg-violet-900/40 flex items-center justify-center">
           <i className="fas fa-code-branch text-violet-600 dark:text-violet-400 text-sm" />
         </div>
-        <span className="font-semibold text-gray-800 dark:text-gray-200 text-sm">Условие</span>
+        <span className="font-semibold text-gray-800 dark:text-gray-200 text-sm">Condition</span>
       </div>
 
       {/* Переменная — только если задана */}

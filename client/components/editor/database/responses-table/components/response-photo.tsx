@@ -24,7 +24,7 @@ interface ResponsePhotoProps {
  * Компонент документа
  */
 function DocumentFile({ url, onError }: { url: string; onError: () => void }): React.JSX.Element {
-  const fileName = url.split('/').pop() || 'Файл';
+  const fileName = url.split('/').pop() || 'File';
   const extension = fileName.split('.').pop()?.toUpperCase() || 'FILE';
 
   return (
@@ -128,7 +128,7 @@ export function ResponsePhoto({
       <div className="rounded-lg overflow-hidden max-w-md">
         <img
           src={responseData.photoUrl}
-          alt="Фото ответ"
+          alt="Photo response"
           className="w-full h-auto rounded-lg border border-border"
           onError={() => setMediaError(true)}
         />
@@ -150,7 +150,7 @@ export function ResponsePhoto({
         <div className="rounded-lg overflow-hidden max-w-md">
           <img
             src={valueStr}
-            alt="Фото ответ"
+            alt="Photo response"
             className="w-full h-auto rounded-lg border border-border"
             onError={() => setMediaError(true)}
           />
@@ -164,7 +164,7 @@ export function ResponsePhoto({
         <div className="rounded-lg overflow-hidden max-w-md">
           <img
             src={photoUrl}
-            alt="Фото ответ"
+            alt="Photo response"
             className="w-full h-auto rounded-lg border border-border"
             onError={() => setMediaError(true)}
           />

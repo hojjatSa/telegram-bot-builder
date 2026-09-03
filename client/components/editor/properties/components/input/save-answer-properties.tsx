@@ -47,14 +47,14 @@ type SaveAnswerSourceValue =
 const MEDIA_INPUT_TYPES = ['photo', 'video', 'audio', 'document'];
 
 export const SAVE_ANSWER_SOURCE_OPTIONS: Array<{ value: string; label: string }> = [
-  { value: 'any', label: 'Последний ответ' },
+  { value: 'any', label: 'Last answer' },
   { value: 'text', label: 'Текстовый ответ' },
-  { value: 'photo', label: 'Фото' },
-  { value: 'video', label: 'Видео' },
-  { value: 'audio', label: 'Аудио' },
-  { value: 'document', label: 'Документ' },
-  { value: 'location', label: 'Геолокация' },
-  { value: 'contact', label: 'Контакт' },
+  { value: 'photo', label: 'Photo' },
+  { value: 'video', label: 'Video' },
+  { value: 'audio', label: 'Audio' },
+  { value: 'document', label: 'Document' },
+  { value: 'location', label: 'Location' },
+  { value: 'contact', label: 'Contact' },
   { value: 'callback', label: 'Нажатие кнопки (callback)' },
 ];
 

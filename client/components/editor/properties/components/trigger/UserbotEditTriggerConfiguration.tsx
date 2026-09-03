@@ -98,7 +98,7 @@ export function UserbotEditTriggerConfiguration({
         <p className="text-xs font-medium text-slate-600 dark:text-slate-400">Сохранить в переменные</p>
 
         <div className="space-y-1.5">
-          <Label className="text-xs text-muted-foreground">Текст сообщения</Label>
+          <Label className="text-xs text-muted-foreground">Message text</Label>
           <Input
             value={data.saveTextTo || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { saveTextTo: e.target.value })}

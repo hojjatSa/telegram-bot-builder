@@ -35,7 +35,7 @@ export function ToggleCodeButton({ codeVisible, onClick }: ToggleCodeButtonProps
       data-testid="button-mobile-toggle-code"
     >
       <Code className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{codeVisible ? 'Скрыть' : 'Показать'} код</span>
+      <span className="sm:hidden">{codeVisible ? 'Hide' : 'Show'} код</span>
     </Button>
   );
 }

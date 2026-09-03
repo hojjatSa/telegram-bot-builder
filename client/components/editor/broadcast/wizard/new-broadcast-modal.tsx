@@ -54,7 +54,7 @@ const INITIAL_FORM: NewBroadcastFormData = {
 };
 
 /** Заголовки шагов wizard */
-const STEP_TITLES = ['Аудитория', 'Сообщение', 'Подтверждение'];
+const STEP_TITLES = ['Audience', 'Message', 'Confirmation'];
 
 /**
  * Модальное окно wizard создания рассылки.
@@ -186,7 +186,7 @@ export function NewBroadcastModal({ open, onClose, projectId, tokenId, refetch, 
                 <span className="hidden h-8 w-8 items-center justify-center rounded-lg border border-border/80 bg-muted/40 sm:flex">
                   <Megaphone className="h-4 w-4 text-muted-foreground" aria-hidden />
                 </span>
-                Новая рассылка
+                New Broadcast
               </DialogTitle>
             </DialogHeader>
             <Button
@@ -194,7 +194,7 @@ export function NewBroadcastModal({ open, onClose, projectId, tokenId, refetch, 
               variant="ghost"
               size="icon"
               onClick={handleClose}
-              aria-label="Закрыть"
+              aria-label="Close"
               className="h-8 w-8 shrink-0 rounded-md text-muted-foreground hover:bg-muted hover:text-foreground sm:h-9 sm:w-9 sm:rounded-lg"
             >
               <X className="h-4 w-4" strokeWidth={2} />

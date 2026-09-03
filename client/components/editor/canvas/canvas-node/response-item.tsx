@@ -29,11 +29,11 @@ interface ResponseItemProps {
  */
 const RESPONSE_CONFIG: Record<ResponseItemType, { icon: string; color: string; label: string }> = {
   text: { icon: 'keyboard', color: 'blue', label: 'Текстовый ввод' },
-  photo: { icon: 'image', color: 'purple', label: 'Фото' },
-  video: { icon: 'video', color: 'red', label: 'Видео' },
-  audio: { icon: 'microphone', color: 'green', label: 'Аудио' },
-  document: { icon: 'file', color: 'amber', label: 'Документ' },
-  'multi-select': { icon: 'check-double', color: 'indigo', label: 'Множественный выбор' }
+  photo: { icon: 'image', color: 'purple', label: 'Photo' },
+  video: { icon: 'video', color: 'red', label: 'Video' },
+  audio: { icon: 'microphone', color: 'green', label: 'Audio' },
+  document: { icon: 'file', color: 'amber', label: 'Document' },
+  'multi-select': { icon: 'check-double', color: 'indigo', label: 'Multiple choice' }
 };
 
 /**

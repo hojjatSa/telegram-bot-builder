@@ -52,7 +52,7 @@ export function DeleteBotConfirmDialog({
   pending = false,
   onConfirm,
 }: DeleteBotConfirmDialogProps): React.JSX.Element {
-  const title = token.botFirstName || token.name || `Бот ${token.id}`;
+  const title = token.botFirstName || token.name || `Bot ${token.id}`;
   const counts = useTokenUserCounts(open ? projectId : 0, open ? [token.id] : []);
   const items = listDeleteBotImpact({
     isRunning,
@@ -99,7 +99,7 @@ export function DeleteBotConfirmDialog({
         </div>
         <AlertDialogFooter className="border-t border-border/50 bg-muted/10 px-4 py-3 sm:space-x-2">
           <AlertDialogCancel className="h-8 rounded-md text-xs" disabled={pending}>
-            Отмена
+            Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             className={buttonVariants({ variant: 'destructive', size: 'sm' }) + ' h-8 text-xs'}

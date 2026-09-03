@@ -101,7 +101,7 @@ export function LinkInputRow({
         variant="ghost"
         className="h-7 w-7 text-slate-400 hover:text-slate-300 hover:bg-slate-500/10 shrink-0"
         onClick={onClose}
-        title="Закрыть"
+        title="Close"
       >
         <X className="h-3.5 w-3.5" />
       </Button>

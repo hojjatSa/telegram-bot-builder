@@ -28,7 +28,7 @@ export function BroadcastHeader({
         className="flex items-start gap-2.5 sm:gap-3 w-full hover:opacity-75 transition-opacity duration-200 group cursor-pointer"
         onClick={onToggle}
       >
-        <button className="flex items-start gap-2.5 sm:gap-3 w-full" title="Свернуть">
+        <button className="flex items-start gap-2.5 sm:gap-3 w-full" title="Collapse">
           <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-lg bg-gradient-to-br from-orange-100 to-amber-100 dark:from-orange-900/50 dark:to-amber-900/50 flex items-center justify-center flex-shrink-0 pt-0.5">
             <i className="fas fa-broadcast-tower text-orange-600 dark:text-orange-400 text-sm sm:text-base"></i>
           </div>

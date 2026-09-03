@@ -82,7 +82,7 @@ export function MobileUserList(props: MobileUserListProps): React.JSX.Element {
       <div ref={sentinelRef} className="h-4" />
       {isFetchingNextPage && (
         <div className="text-center py-2 text-muted-foreground text-sm">
-          Загрузка...
+          Loading...
         </div>
       )}
     </div>

@@ -98,7 +98,7 @@ const toastVariants = cva(
  * <Toast open={open} onOpenChange={setOpen}>
  *   <ToastTitle>Заголовок тоста</ToastTitle>
  *   <ToastDescription>Описание тоста</ToastDescription>
- *   <ToastAction altText="Отмена">Отмена</ToastAction>
+ *   <ToastAction altText="Cancel">Cancel</ToastAction>
  * </Toast>
  *
  * @returns {JSX.Element} Тост

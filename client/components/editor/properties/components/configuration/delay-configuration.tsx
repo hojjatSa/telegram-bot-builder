@@ -56,7 +56,7 @@ export function DelayConfiguration({ selectedNode, onNodeUpdate, textVariables =
 
       {/* Значение + единицы */}
       <div className="space-y-2">
-        <Label className="text-xs font-medium">Задержка</Label>
+        <Label className="text-xs font-medium">Delay</Label>
         <div className="flex gap-2">
           <Input
             value={seconds}
@@ -87,7 +87,7 @@ export function DelayConfiguration({ selectedNode, onNodeUpdate, textVariables =
       {/* Селектор переменных */}
       {textVariables.length > 0 && (
         <div className="space-y-2">
-          <Label className="text-xs font-medium">Вставить переменную</Label>
+          <Label className="text-xs font-medium">Insert variable</Label>
           <VariableSelector
             availableVariables={textVariables}
             onSelect={handleVariableInsert}

@@ -7,7 +7,7 @@
 // Полный объект данных узла с типизацией, соответствующей схеме
 export const defaultNodeData = {
   /** Текст сообщения бота */
-  messageText: 'Привет! Я ваш новый бот. Нажмите /help для получения помощи.',
+  messageText: 'Hello! I am your new bot. Use /help for assistance.',
   /** Тип клавиатуры: "none", "inline", "reply" */
   keyboardType: 'none' as const,
   /** Массив кнопок */

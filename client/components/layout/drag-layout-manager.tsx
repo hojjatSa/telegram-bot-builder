@@ -263,7 +263,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
       {
         id: 'sidebar',
         type: 'sidebar',
-        title: 'Боковая панель',
+        title: 'Sidebar',
         position: 'left',
         size: 20,
         visible: true,
@@ -273,7 +273,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
       {
         id: 'canvas',
         type: 'canvas',
-        title: 'Холст',
+        title: 'Canvas',
         position: 'center',
         size: 50,
         visible: true,
@@ -283,7 +283,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
       {
         id: 'properties',
         type: 'properties',
-        title: 'Свойства',
+        title: 'Properties',
         position: 'right',
         size: 20,
         visible: true,
@@ -391,7 +391,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
         {
           id: 'sidebar',
           type: 'sidebar',
-          title: 'Боковая панель',
+          title: 'Sidebar',
           position: 'left',
           size: 20,
           visible: true,
@@ -401,7 +401,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
         {
           id: 'canvas',
           type: 'canvas',
-          title: 'Холст',
+          title: 'Canvas',
           position: 'center',
           size: 50,
           visible: true,
@@ -411,7 +411,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
         {
           id: 'properties',
           type: 'properties',
-          title: 'Свойства',
+          title: 'Properties',
           position: 'right',
           size: 20,
           visible: true,

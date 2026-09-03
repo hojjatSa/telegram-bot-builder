@@ -87,7 +87,7 @@ export function MobileMenuContent({
 
       {/* Действия */}
       <div className="border-t border-border/50 pt-4">
-        <h3 className="text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Действия</h3>
+        <h3 className="text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Actions</h3>
         <MobileActions
           onToggleHeader={onToggleHeader}
           onToggleSidebar={onToggleSidebar}

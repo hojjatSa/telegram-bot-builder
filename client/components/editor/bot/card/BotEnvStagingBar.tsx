@@ -45,7 +45,7 @@ export function BotEnvStagingBar({
       <Button size="sm" onClick={onSave} disabled={isSaving}
         className="h-6 px-2 text-xs bg-violet-600 hover:bg-violet-700 text-white">
         {isSaving
-          ? <><i className="fas fa-spinner fa-spin mr-1" />Сохранение…</>
+          ? <><i className="fas fa-spinner fa-spin mr-1" />Saving…</>
           : <>💾 Сохранить</>}
       </Button>
       <Button size="sm" onClick={onSaveAndRestart} disabled={isSaving}

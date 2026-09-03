@@ -14,7 +14,7 @@ import { ComponentDefinition } from '@shared/schema';
  */
 export const conditionNode: ComponentDefinition = {
   id: 'condition-node',
-  name: 'Условие',
+  name: 'Condition',
   description: 'Ветвление потока по значению переменной',
   icon: 'fas fa-code-branch',
   color: 'bg-violet-100 text-violet-600',

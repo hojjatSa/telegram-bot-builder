@@ -15,9 +15,9 @@ interface BotTablePreviewProps {
 const OPERATION_LABELS: Record<string, string> = {
   read: 'Прочитать',
   insert: 'Вставить',
-  update: 'Обновить',
+  update: 'Refresh',
   upsert: 'Создать/Обновить',
-  delete: 'Удалить',
+  delete: 'Delete',
 };
 
 /** Метки операций обновления */
@@ -63,7 +63,7 @@ export function BotTablePreview({ node }: BotTablePreviewProps) {
       {/* Таблица + операция в одну строку */}
       <div className="flex items-center gap-1 truncate">
         <span className="text-xs font-medium text-amber-700 dark:text-amber-300 truncate">
-          {tableName || 'Таблица'}
+          {tableName || 'Table'}
         </span>
         <span className="text-[10px] px-1 py-px rounded bg-amber-200/60 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 whitespace-nowrap">
           {OPERATION_LABELS[operation] || operation}

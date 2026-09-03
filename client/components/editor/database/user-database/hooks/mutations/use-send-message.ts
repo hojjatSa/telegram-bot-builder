@@ -45,7 +45,7 @@ export function useSendMessage(params: UseSendMessageParams) {
         queryKey: [buildUsersApiUrl(`/api/projects/${projectId}/users/messages`, selectedTokenId), selectedTokenId],
       });
       toast({
-        title: 'Сообщение отправлено',
+        title: 'Message sent',
         description: 'Сообщение успешно отправлено пользователю',
       });
     },

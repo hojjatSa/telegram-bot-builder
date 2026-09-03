@@ -67,8 +67,8 @@ export function useProjectManagement(): UseProjectManagementResult {
     },
     onError: () => {
       toast({
-        title: '❌ Ошибка',
-        description: 'Не удалось создать проект',
+        title: '❌ Error',
+        description: 'Could not create project',
         variant: 'destructive',
       });
     },
@@ -92,7 +92,7 @@ export function useProjectManagement(): UseProjectManagementResult {
     },
     onError: () => {
       toast({
-        title: '❌ Ошибка',
+        title: '❌ Error',
         description: 'Не удалось удалить проект',
         variant: 'destructive',
       });
@@ -119,7 +119,7 @@ export function useProjectManagement(): UseProjectManagementResult {
     },
     onError: () => {
       toast({
-        title: '❌ Ошибка',
+        title: '❌ Error',
         description: 'Не удалось переименовать проект',
         variant: 'destructive',
       });

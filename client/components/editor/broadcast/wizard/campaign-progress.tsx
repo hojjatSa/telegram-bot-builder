@@ -77,7 +77,7 @@ export function CampaignProgress({ projectId, campaignId, name, refetch, onClose
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-2">
-        <p className="text-sm font-medium truncate">{name || campaign?.name || 'Рассылка'}</p>
+        <p className="text-sm font-medium truncate">{name || campaign?.name || 'Broadcast'}</p>
         <span className="text-xs text-muted-foreground shrink-0">{percent}%</span>
       </div>
 
@@ -122,9 +122,9 @@ export function CampaignProgress({ projectId, campaignId, name, refetch, onClose
       ) : (
         <div className="text-center">
           <p className="text-sm text-muted-foreground mb-3">
-            {campaign?.status === 'stopped' ? '⏸ Рассылка остановлена' : '✅ Рассылка завершена'}
+            {campaign?.status === 'stopped' ? '⏸ Broadcast stopped' : '✅ Broadcast completed'}
           </p>
-          <Button variant="outline" onClick={onClose}>Закрыть</Button>
+          <Button variant="outline" onClick={onClose}>Close</Button>
         </div>
       )}
     </div>

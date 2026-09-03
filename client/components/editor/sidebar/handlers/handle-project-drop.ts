@@ -72,7 +72,7 @@ export const handleProjectDrop = async (
   } catch (error: any) {
     console.error('❌ Ошибка сохранения порядка:', error.message);
     toast({
-      title: '❌ Ошибка',
+      title: '❌ Error',
       description: 'Не удалось сохранить порядок проектов',
     });
   }

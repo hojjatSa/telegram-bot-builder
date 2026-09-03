@@ -1,6 +1,6 @@
 /**
  * @fileoverview Компонент кнопок действий с кодом
- * Содержит кнопки "Копировать" и "Скачать"
+ * Содержит кнопки "Copy" и "Download"
  */
 
 import { Button } from '@/components/ui/button';
@@ -63,11 +63,11 @@ export function CodeActions({ content, selectedFormat, fileName }: CodeActionsPr
     <div className="grid grid-cols-2 gap-2 xs:gap-2.5">
       <Button onClick={handleCopy} variant="outline" size="sm" className="w-full h-9 xs:h-10 text-xs xs:text-sm" data-testid="button-copy-code">
         <i className="fas fa-copy text-xs xs:text-sm"></i>
-        <span className="hidden xs:inline ml-1.5">Копировать</span>
+        <span className="hidden xs:inline ml-1.5">Copy</span>
       </Button>
       <Button onClick={handleDownload} size="sm" className="w-full h-9 xs:h-10 text-xs xs:text-sm" data-testid="button-download-code">
         <i className="fas fa-download text-xs xs:text-sm"></i>
-        <span className="hidden xs:inline ml-1.5">Скачать</span>
+        <span className="hidden xs:inline ml-1.5">Download</span>
       </Button>
     </div>
   );

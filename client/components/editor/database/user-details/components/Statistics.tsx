@@ -71,7 +71,7 @@ export function Statistics({ user, total, userSent, botSent, onOpenDialog }: Sta
             >
               <MessageSquare className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-4 sm:h-4 mr-1.5 xs:mr-2 sm:mr-2 flex-shrink-0" />
               <span className="hidden xs:inline">Открыть историю диалога</span>
-              <span className="xs:hidden">Диалог</span>
+              <span className="xs:hidden">Dialog</span>
             </Button>
           </div>
         )}

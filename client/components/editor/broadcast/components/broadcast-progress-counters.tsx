@@ -35,7 +35,7 @@ export function BroadcastProgressCounters({
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-sm">
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-green-600">{deliveredCount}</div>
-        <div className="text-xs text-muted-foreground">Доставлено</div>
+        <div className="text-xs text-muted-foreground">Delivered</div>
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-amber-600">{blockedCount}</div>
@@ -43,7 +43,7 @@ export function BroadcastProgressCounters({
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-orange-600">{deletedCount}</div>
-        <div className="text-xs text-muted-foreground">Аккаунт удалён</div>
+        <div className="text-xs text-muted-foreground">Account deleted</div>
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-red-500">{failedCount}</div>

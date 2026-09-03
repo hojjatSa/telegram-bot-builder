@@ -106,7 +106,7 @@ export function useBotMutations({
   const deleteBotMutation = useMutation({
     mutationFn: async (tokenId: number) => {
       const token = findToken(tokenId);
-      if (!token) throw new Error('Токен не найден');
+      if (!token) throw new Error('Token not found');
       return apiRequest('DELETE', `/api/projects/${token.projectId}/tokens/${tokenId}`);
     },
     onSuccess: (_, tokenId) => {
@@ -137,7 +137,7 @@ export function useBotMutations({
       });
     },
     onError: () => {
-      toast({ title: 'Ошибка', description: 'Не удалось изменить настройку базы данных', variant: 'destructive' });
+      toast({ title: 'Error', description: 'Не удалось изменить настройку базы данных', variant: 'destructive' });
     },
   });
 
@@ -191,7 +191,7 @@ export function useBotMutations({
   const updateBotInfoMutation = useMutation({
     mutationFn: async ({ tokenId, field, value }: { tokenId: number; field: string; value: string }) => {
       const token = findToken(tokenId);
-      if (!token) throw new Error('Токен не найден');
+      if (!token) throw new Error('Token not found');
       return apiRequest('PUT', `/api/projects/${token.projectId}/tokens/${tokenId}/bot-info`, { field, value });
     },
     onSuccess: (_, vars) => {
@@ -203,7 +203,7 @@ export function useBotMutations({
       toast({ title: 'Информация о боте обновлена' });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка обновления', description: error.message, variant: 'destructive' });
+      toast({ title: 'Update failed', description: error.message, variant: 'destructive' });
     },
   });
 
@@ -266,7 +266,7 @@ export function useBotMutations({
   const attachExistingTokenMutation = useMutation({
     mutationFn: async ({ tokenId, targetProjectId }: { tokenId: number; targetProjectId: number }) => {
       const source = allTokensFlatFull.find(t => t.id === tokenId);
-      if (!source) throw new Error('Токен не найден');
+      if (!source) throw new Error('Token not found');
       // Только поля insert-схемы: без id/ownerId/дат и без null в числовых флагах
       // (иначе Zod на сервере отвечает "Invalid data")
       return apiRequest('POST', `/api/projects/${targetProjectId}/tokens`, {

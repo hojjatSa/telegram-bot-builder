@@ -54,7 +54,7 @@ export function IncomingCallbackTriggerConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-hand-pointer text-orange-600 dark:text-orange-400 text-sm" />
           <span className="text-sm font-medium text-orange-700 dark:text-orange-300">
-            Триггер inline-кнопки
+            Inline Button Trigger
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">

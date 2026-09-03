@@ -39,7 +39,7 @@ export function ProjectSwitcher({
   onSelect,
 }: ProjectSwitcherProps) {
   const current = projects.find((p) => p.id === currentProjectId);
-  const displayName = current?.name ?? currentProjectName ?? 'Проект';
+  const displayName = current?.name ?? currentProjectName ?? 'Project';
 
   return (
     <DropdownMenu>

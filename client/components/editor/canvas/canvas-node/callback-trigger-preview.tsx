@@ -38,7 +38,7 @@ export function CallbackTriggerPreview({ node }: CallbackTriggerPreviewProps) {
   return (
     <div className="flex flex-col gap-1">
       <span className="text-xs font-semibold text-orange-400/80">
-        Триггер inline-кнопки
+        Inline Button Trigger
       </span>
       <span className="font-mono text-sm font-semibold text-orange-300">
         {displayText}

@@ -820,7 +820,7 @@ export function CanvasNode({ node, allNodes, isSelected, isMultiSelected, onClic
             items={[
               {
                 id: 'duplicate',
-                label: 'Дублировать',
+                label: 'Duplicate',
                 icon: 'fas fa-copy',
                 onClick: () => {
                   /**

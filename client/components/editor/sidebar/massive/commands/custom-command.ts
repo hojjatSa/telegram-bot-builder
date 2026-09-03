@@ -7,7 +7,7 @@ import type { CommandPreset } from './command-preset.types';
 /** Пресет произвольной команды — создаёт command_trigger + message на холсте */
 export const customCommand: CommandPreset = {
   id: 'custom-command',
-  name: 'Команда',
+  name: 'Command',
   description: 'Произвольная команда',
   icon: 'fas fa-terminal',
   color: 'bg-yellow-100 text-yellow-600',

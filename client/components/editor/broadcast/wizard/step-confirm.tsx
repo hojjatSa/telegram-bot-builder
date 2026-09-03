@@ -103,7 +103,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
       <div className="rounded-xl border shadow-sm divide-y text-sm overflow-hidden">
         <div className="flex items-center gap-3 px-4 py-3">
           <Tag className="w-4 h-4 text-blue-500 shrink-0" />
-          <span className="text-muted-foreground">Название</span>
+          <span className="text-muted-foreground">Name</span>
           <span className="ml-auto font-medium text-right max-w-[70%] truncate">
             {resolveBroadcastDisplayName(formData.name, formData.messageText)}
           </span>
@@ -150,7 +150,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
         <div className="px-4 py-3 space-y-2">
           <div className="flex items-center gap-2">
             <MessageSquare className="w-4 h-4 text-green-500 shrink-0" />
-            <span className="text-muted-foreground">Сообщение</span>
+            <span className="text-muted-foreground">Message</span>
           </div>
           <div className="ml-6">
             {hasMessageContent ? (
@@ -171,14 +171,14 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
 
       {/* Кнопки навигации */}
       <div className="flex justify-between pt-2">
-        <Button variant="outline" onClick={onBack} disabled={isLoading}>← Назад</Button>
+        <Button variant="outline" onClick={onBack} disabled={isLoading}>← Back</Button>
         <Button
           onClick={onConfirm}
           disabled={isLoading || recipientCount === 0 || !validation.isValid}
           className="bg-gradient-to-r from-blue-500 to-violet-500 text-white hover:from-blue-600 hover:to-violet-600 gap-1.5 px-5"
         >
           <Rocket className="w-4 h-4" />
-          {isLoading ? 'Запуск...' : 'Запустить рассылку'}
+          {isLoading ? 'Starting...' : 'Запустить рассылку'}
         </Button>
       </div>
     </div>

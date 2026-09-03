@@ -54,7 +54,7 @@ export function SpreadsheetToolbar({
       const { columns, rows } = parseClipboardTsv(text);
       if (rows.length === 0) return;
       if (columns && columns.length > 0) {
-        onImportNew('Из буфера', columns, rows);
+        onImportNew('From clipboard', columns, rows);
       } else {
         onImportRows(rows);
       }
@@ -112,7 +112,7 @@ export function SpreadsheetToolbar({
           onClick={() => setImportOpen(true)}
         >
           <Upload className="h-3.5 w-3.5" />
-          Импорт
+          Import
         </Button>
         <ExportMenu table={table} />
       </div>

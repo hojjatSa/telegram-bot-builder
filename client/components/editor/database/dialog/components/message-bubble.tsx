@@ -66,7 +66,7 @@ function isBroadcastMessage(message: BotMessageWithMedia): boolean {
 }
 
 /** Медиа-плейсхолдеры — текст который не нужно показывать если есть медиа */
-const MEDIA_PLACEHOLDERS = new Set(['[Фото]', '[медиа]', '[Photo]', '[Видео]', '[Аудио]', '[Голосовое]', '[Документ]', '[Стикер]']);
+const MEDIA_PLACEHOLDERS = new Set(['[Photo]', '[media]', '[Photo]', '[Video]', '[Audio]', '[Voice]', '[Document]', '[Sticker]']);
 
 /**
  * Проверяет есть ли медиа для отображения (локальное или через file_id)
@@ -196,7 +196,7 @@ export function MessageBubble({
               className="h-6 w-6 shrink-0 text-muted-foreground hover:text-blue-500 hover:bg-blue-500/10"
               onClick={handleOpenEdit}
               disabled={isEditing}
-              title="Редактировать сообщение"
+              title="Edit Message"
             >
               {isEditing
                 ? <Loader2 className="h-3 w-3 animate-spin" />
@@ -211,7 +211,7 @@ export function MessageBubble({
               className="h-6 w-6 shrink-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
               onClick={() => onDelete(message.id)}
               disabled={isDeleting}
-              title="Удалить сообщение"
+              title="Delete Message"
             >
               {isDeleting
                 ? <Loader2 className="h-3 w-3 animate-spin" />
@@ -241,7 +241,7 @@ export function MessageBubble({
               <CompactInlineEditor
                 value={editText}
                 onChange={setEditText}
-                placeholder="Введите текст сообщения..."
+                placeholder="Enter message text..."
               />
               {/* Редактор инлайн-кнопок — позволяет менять клавиатуру при правке */}
               <DialogButtonsEditor
@@ -260,7 +260,7 @@ export function MessageBubble({
                   disabled={isSaveDisabled || isEditing}
                 >
                   {isEditing ? <Loader2 className="h-3 w-3 animate-spin" /> : <Check className="h-3 w-3" />}
-                  <span className="ml-1">Сохранить</span>
+                  <span className="ml-1">Save</span>
                 </Button>
                 <Button
                   size="sm"
@@ -270,7 +270,7 @@ export function MessageBubble({
                   disabled={isEditing}
                 >
                   <X className="h-3 w-3" />
-                  <span className="ml-1">Отмена</span>
+                  <span className="ml-1">Cancel</span>
                 </Button>
               </div>
             </div>

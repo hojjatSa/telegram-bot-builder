@@ -42,15 +42,15 @@ function createBaseConfig(isMobile: boolean, currentTab: string): SimpleLayoutCo
   return {
     elements: [
       /** Шапка видима только на вкладках редактора и кода */
-      { id: 'header', type: 'header', name: 'Шапка', position: 'top', size: headerSize, visible: currentTab === 'editor' || currentTab === 'export' },
-      { id: 'sidebar', type: 'sidebar', name: 'Боковая панель', position: 'left', size: 20, visible: showPanels },
-      { id: 'canvas', type: 'canvas', name: 'Холст', position: 'center', size: 30, visible: showCanvas },
-      { id: 'properties', type: 'properties', name: 'Свойства', position: 'right', size: 25, visible: false },
-      { id: 'code', type: 'code', name: 'Код', position: 'left', size: 25, visible: showCodePanels },
-      { id: 'codeEditor', type: 'codeEditor', name: 'Редактор кода', position: 'center', size: 40, visible: showCodePanels },
-      { id: 'dialog', type: 'dialog', name: 'Диалог', position: 'right', size: 25, visible: currentTab === 'users' },
-      { id: 'userDetails', type: 'userDetails', name: 'Детали пользователя', position: 'left', size: 25, visible: currentTab === 'users' },
-      { id: 'fileExplorer', type: 'fileExplorer', name: 'Проводник файлов', position: 'left', size: 25, visible: false },
+      { id: 'header', type: 'header', name: 'Header', position: 'top', size: headerSize, visible: currentTab === 'editor' || currentTab === 'export' },
+      { id: 'sidebar', type: 'sidebar', name: 'Sidebar', position: 'left', size: 20, visible: showPanels },
+      { id: 'canvas', type: 'canvas', name: 'Canvas', position: 'center', size: 30, visible: showCanvas },
+      { id: 'properties', type: 'properties', name: 'Properties', position: 'right', size: 25, visible: false },
+      { id: 'code', type: 'code', name: 'Code', position: 'left', size: 25, visible: showCodePanels },
+      { id: 'codeEditor', type: 'codeEditor', name: 'Code Editor', position: 'center', size: 40, visible: showCodePanels },
+      { id: 'dialog', type: 'dialog', name: 'Dialog', position: 'right', size: 25, visible: currentTab === 'users' },
+      { id: 'userDetails', type: 'userDetails', name: 'User Details', position: 'left', size: 25, visible: currentTab === 'users' },
+      { id: 'fileExplorer', type: 'fileExplorer', name: 'File Explorer', position: 'left', size: 25, visible: false },
     ],
     compactMode: false,
     showGrid: true

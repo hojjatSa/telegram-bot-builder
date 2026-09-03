@@ -115,7 +115,7 @@ export function HttpCurlImport({ onImport }: HttpCurlImportProps) {
           />
           <DialogFooter>
             <Button variant="ghost" size="sm" onClick={() => setOpen(false)}>
-              Отмена
+              Cancel
             </Button>
             <Button size="sm" onClick={handleImport} disabled={!value.trim()}>
               Импортировать

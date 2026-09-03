@@ -17,9 +17,9 @@ interface DesktopTableHeaderProps {
  * Конфигурация колонок таблицы
  */
 const COLUMNS_CONFIG = [
-  { key: 'user', label: 'Пользователь', alwaysVisible: true },
+  { key: 'user', label: 'User', alwaysVisible: true },
   { key: 'lastMessage', label: 'Последнее сообщение', alwaysVisible: true },
-  { key: 'actions', label: 'Действия', alwaysVisible: true, align: 'right' as const },
+  { key: 'actions', label: 'Actions', alwaysVisible: true, align: 'right' as const },
 ];
 
 /**

@@ -33,15 +33,15 @@ export interface ActiveChip {
 
 /** Подписи типов медиа Telegram + обложка (Req 6.4) */
 const MEDIA_TYPE_LABELS: Record<string, string> = {
-  photo: 'Фото',
-  video: 'Видео',
+  photo: 'Photo',
+  video: 'Video',
   animation: 'GIF',
-  audio: 'Аудио',
-  voice: 'Голосовое',
-  video_note: 'Видеосообщение',
-  document: 'Документ',
-  sticker: 'Стикер',
-  cover: 'Обложка',
+  audio: 'Audio',
+  voice: 'Voice',
+  video_note: 'Video Message',
+  document: 'Document',
+  sticker: 'Sticker',
+  cover: 'Cover',
 };
 
 /**

@@ -70,7 +70,7 @@ export function CommandTriggerConfiguration({
     <div className="space-y-4 p-4">
       {/* Команда */}
       <div className="space-y-2">
-        <Label>Команда</Label>
+        <Label>Command</Label>
         <Input
           value={selectedNode.data?.command || ''}
           onChange={e => onNodeUpdate(selectedNode.id, { command: e.target.value })}

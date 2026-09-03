@@ -42,7 +42,7 @@ export function MessageInputForm({
         <Textarea
           id="message-input"
           data-testid="textarea-message-input"
-          placeholder="Введите сообщение..."
+          placeholder="Enter a message..."
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
           onKeyDown={(e) => {

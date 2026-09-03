@@ -17,27 +17,27 @@ export interface KategoriyaElement {
  * Полный список категорий сценариев для фильтрации
  */
 export const KATEGORII: KategoriyaElement[] = [
-  { value: 'all', label: 'Все категории' },
-  { value: 'official', label: 'Официальные' },
-  { value: 'userTemplates', label: 'Пользовательские' },
-  { value: 'community', label: 'Сообщество' },
-  { value: 'business', label: 'Бизнес' },
-  { value: 'entertainment', label: 'Развлечения' },
-  { value: 'education', label: 'Образование' },
-  { value: 'utility', label: 'Утилиты' },
-  { value: 'games', label: 'Игры' },
+  { value: 'all', label: 'All categories' },
+  { value: 'official', label: 'Official' },
+  { value: 'userTemplates', label: 'User templates' },
+  { value: 'community', label: 'Community' },
+  { value: 'business', label: 'Business' },
+  { value: 'entertainment', label: 'Entertainment' },
+  { value: 'education', label: 'Education' },
+  { value: 'utility', label: 'Utilities' },
+  { value: 'games', label: 'Games' },
 ];
 
 /** Словарь для быстрого поиска метки по значению категории */
 const KATEGORIYA_MAP: Record<string, string> = {
-  business: 'Бизнес',
-  community: 'Сообщество',
-  custom: 'Пользовательский',
-  entertainment: 'Развлечения',
-  education: 'Образование',
-  utility: 'Утилиты',
-  games: 'Игры',
-  official: 'Официальный',
+  business: 'Business',
+  community: 'Community',
+  custom: 'Custom',
+  entertainment: 'Entertainment',
+  education: 'Education',
+  utility: 'Utilities',
+  games: 'Games',
+  official: 'Official',
 };
 
 /**

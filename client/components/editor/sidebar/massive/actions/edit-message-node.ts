@@ -1,5 +1,5 @@
 /**
- * @fileoverview Определение узла "Редактировать сообщение"
+ * @fileoverview Определение узла "Edit Message"
  * @module components/editor/sidebar/massive/actions/edit-message-node
  */
 import type { ComponentDefinition } from '@shared/schema';
@@ -12,7 +12,7 @@ import type { ComponentDefinition } from '@shared/schema';
 export const editMessageNode: ComponentDefinition = {
   id: 'edit_message',
   type: 'edit_message' as any,
-  name: 'Редактировать сообщение',
+  name: 'Edit Message',
   description: 'Редактирует текст или кнопки уже отправленного сообщения',
   icon: 'fas fa-pen',
   color: 'bg-blue-100 text-blue-600',

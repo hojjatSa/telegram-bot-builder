@@ -99,7 +99,7 @@ export function BotLaunchHistory({
                 historyOpen ? '' : '-rotate-90',
               ].join(' ')}
             />
-            История
+            History
             <span className="ml-auto tabular-nums text-muted-foreground/70">{past.length}</span>
           </button>
           {historyOpen && (

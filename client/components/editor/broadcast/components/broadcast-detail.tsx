@@ -96,10 +96,10 @@ export function BroadcastDetail({ broadcast, projectId, onClose, refetch }: Broa
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {/* Карточки статистики */}
         <div className="grid grid-cols-2 gap-2">
-          <StatMini icon={Users} label="Аудитория" value={total} color="text-blue-600" bg="bg-blue-50 dark:bg-blue-900/20" />
-          <StatMini icon={CheckCircle2} label="Доставлено" value={delivered} color="text-green-600" bg="bg-green-50 dark:bg-green-900/20" />
+          <StatMini icon={Users} label="Audience" value={total} color="text-blue-600" bg="bg-blue-50 dark:bg-blue-900/20" />
+          <StatMini icon={CheckCircle2} label="Delivered" value={delivered} color="text-green-600" bg="bg-green-50 dark:bg-green-900/20" />
           <StatMini icon={XCircle} label="Заблокировали" value={blocked} color="text-amber-600" bg="bg-amber-50 dark:bg-amber-900/20" />
-          <StatMini icon={XCircle} label="Аккаунт удалён" value={deleted} color="text-orange-600" bg="bg-orange-50 dark:bg-orange-900/20" />
+          <StatMini icon={XCircle} label="Account deleted" value={deleted} color="text-orange-600" bg="bg-orange-50 dark:bg-orange-900/20" />
           <StatMini icon={XCircle} label="Прочие ошибки" value={failed} color="text-red-500" bg="bg-red-50 dark:bg-red-900/20" />
           <StatMini icon={Percent} label="Успех" value={`${successRate}%`} color="text-purple-600" bg="bg-purple-50 dark:bg-purple-900/20" />
         </div>
@@ -110,7 +110,7 @@ export function BroadcastDetail({ broadcast, projectId, onClose, refetch }: Broa
         {(base.messageText || (base.mediaUrls && base.mediaUrls.length > 0)) && (
           <>
             <div className="space-y-2">
-              <p className="text-sm font-medium">Сообщение</p>
+              <p className="text-sm font-medium">Message</p>
               {base.messageText && (
                 <p className="text-xs text-muted-foreground bg-muted/40 rounded p-2 whitespace-pre-wrap">
                   {base.messageText.replace(/<[^>]+>/g, '').slice(0, 150)}

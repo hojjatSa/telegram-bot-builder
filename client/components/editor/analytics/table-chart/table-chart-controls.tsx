@@ -11,11 +11,11 @@ import { TableAggregation, TableChartType } from './chart-types';
 
 /** Подписи видов агрегации */
 const AGGREGATION_LABELS: Record<TableAggregation, string> = {
-  count: 'Количество',
-  sum: 'Сумма',
-  avg: 'Среднее',
-  min: 'Минимум',
-  max: 'Максимум',
+  count: 'Count',
+  sum: 'Sum',
+  avg: 'Average',
+  min: 'Minimum',
+  max: 'Maximum',
 };
 
 /** Подписи типов графика */
@@ -80,9 +80,9 @@ export function TableChartControls(props: TableChartControlsProps): React.JSX.El
   return (
     <div className="flex flex-wrap gap-2">
       <div className="flex flex-col min-w-[130px]">
-        <FieldLabel text="Таблица" />
+        <FieldLabel text="Table" />
         <Select value={selectedTableId != null ? String(selectedTableId) : ''} onValueChange={(v) => onTableChange(Number(v))}>
-          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Таблица" /></SelectTrigger>
+          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Table" /></SelectTrigger>
           <SelectContent>
             {tables.map((t) => (
               <SelectItem key={t.id} value={String(t.id)}>{t.name}</SelectItem>
@@ -94,7 +94,7 @@ export function TableChartControls(props: TableChartControlsProps): React.JSX.El
       <div className="flex flex-col min-w-[120px]">
         <FieldLabel text="Категория (X)" />
         <Select value={xColumnId != null ? String(xColumnId) : ''} onValueChange={(v) => onXChange(Number(v))}>
-          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Колонка" /></SelectTrigger>
+          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Column" /></SelectTrigger>
           <SelectContent>
             {columns.map((c) => (
               <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>
@@ -106,7 +106,7 @@ export function TableChartControls(props: TableChartControlsProps): React.JSX.El
       <div className="flex flex-col min-w-[120px]">
         <FieldLabel text="Значение (Y)" />
         <Select value={yColumnId != null ? String(yColumnId) : ''} onValueChange={(v) => onYChange(Number(v))}>
-          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Колонка" /></SelectTrigger>
+          <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Column" /></SelectTrigger>
           <SelectContent>
             {columns.map((c) => (
               <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>

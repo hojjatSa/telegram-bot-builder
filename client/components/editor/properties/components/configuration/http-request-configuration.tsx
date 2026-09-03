@@ -200,10 +200,10 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       )}
 
       <Section>
-        <SectionLabel>Ответ</SectionLabel>
+        <SectionLabel>Response</SectionLabel>
         <div className="space-y-2">
           <div className="flex gap-2 items-center">
-            <Label className="text-xs text-muted-foreground w-24 shrink-0">Переменная</Label>
+            <Label className="text-xs text-muted-foreground w-24 shrink-0">Variable</Label>
             <Input
               placeholder="response"
               value={(data.httpRequestResponseVariable as string) || ''}

@@ -35,7 +35,7 @@ const labelVariants = cva(
  *
  * @example
  * // Пример с дополнительными классами
- * <Label className="text-lg font-bold" htmlFor="name">Имя</Label>
+ * <Label className="text-lg font-bold" htmlFor="name">Name</Label>
  * <Input id="name" type="text" />
  *
  * @returns {JSX.Element} Метка

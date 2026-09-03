@@ -13,7 +13,7 @@ import { TableChartInfo } from './table-chart-info';
 
 /** Подписи агрегаций для тултипа значения */
 const AGG_TOOLTIP: Record<TableAggregation, string> = {
-  count: 'Количество', sum: 'Сумма', avg: 'Среднее', min: 'Минимум', max: 'Максимум',
+  count: 'Count', sum: 'Sum', avg: 'Average', min: 'Minimum', max: 'Maximum',
 };
 
 /**

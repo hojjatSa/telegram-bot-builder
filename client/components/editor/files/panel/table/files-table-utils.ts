@@ -19,8 +19,8 @@ export const MEDIA_ICONS: Record<string, React.ComponentType<{ className?: strin
 
 /** Русские названия типов медиа для бейджа типа */
 export const MEDIA_TYPE_LABELS: Record<string, string> = {
-  photo: 'Фото', video: 'Видео', animation: 'GIF', audio: 'Аудио',
-  voice: 'Голосовое', video_note: 'Кружок', document: 'Документ', sticker: 'Стикер',
+  photo: 'Photo', video: 'Video', animation: 'GIF', audio: 'Audio',
+  voice: 'Voice', video_note: 'Кружок', document: 'Document', sticker: 'Sticker',
 };
 
 /** Расширения по умолчанию для типов медиа (когда нет file_name) */

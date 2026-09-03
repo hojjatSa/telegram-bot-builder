@@ -1,5 +1,5 @@
 /**
- * @fileoverview Панель свойств узла "Удалить сообщение"
+ * @fileoverview Панель свойств узла "Delete Message"
  * @module properties/components/action/DeleteMessageConfiguration
  */
 import { useMemo } from 'react';

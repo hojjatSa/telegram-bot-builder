@@ -39,7 +39,7 @@ export function useToggleDatabase(params: UseToggleDatabaseParams) {
     },
     onError: () => {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось изменить настройку базы данных',
         variant: 'destructive',
       });

@@ -76,7 +76,7 @@ export function ContentTableFilters({
       {/* Фильтр по type */}
       <div className="flex items-center gap-1 flex-wrap">
         <span className="text-[10px] text-muted-foreground mr-1">type:</span>
-        <Chip active={!selectedType} onClick={() => onTypeChange(null)}>Все</Chip>
+        <Chip active={!selectedType} onClick={() => onTypeChange(null)}>All</Chip>
         {types.map((t) => (
           <Chip key={t} active={selectedType === t} onClick={() => onTypeChange(t)}>
             {t}
@@ -87,7 +87,7 @@ export function ContentTableFilters({
       {sheets.length > 0 && (
         <div className="flex items-center gap-1 flex-wrap">
           <span className="text-[10px] text-muted-foreground mr-1">sheet:</span>
-          <Chip active={!selectedSheet} onClick={() => onSheetChange(null)}>Все</Chip>
+          <Chip active={!selectedSheet} onClick={() => onSheetChange(null)}>All</Chip>
           {sheets.map((s) => (
             <Chip key={s} active={selectedSheet === s} onClick={() => onSheetChange(s)}>
               {s}

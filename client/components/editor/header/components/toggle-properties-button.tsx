@@ -35,7 +35,7 @@ export function TogglePropertiesButton({ propertiesVisible, onClick }: TogglePro
       data-testid="button-mobile-toggle-properties"
     >
       <Sliders className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{propertiesVisible ? 'Скрыть' : 'Показать'} свойства</span>
+      <span className="sm:hidden">{propertiesVisible ? 'Hide' : 'Show'} свойства</span>
     </Button>
   );
 }

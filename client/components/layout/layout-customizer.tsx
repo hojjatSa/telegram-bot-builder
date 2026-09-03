@@ -347,7 +347,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
           
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => setIsCustomizing(false)}>
-              Отмена
+              Cancel
             </Button>
             <Button onClick={handleApplyLayout}>
               Применить расположение

@@ -42,7 +42,7 @@ export function BotFatherCard({ commands }: BotFatherCardProps) {
           title="Скопировать команды"
         >
           <i className="fas fa-copy mr-1"></i>
-          Копировать
+          Copy
         </button>
       </div>
       <pre

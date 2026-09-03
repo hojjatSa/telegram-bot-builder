@@ -82,7 +82,7 @@ export function BotEnvAddRow({ onSave, onCancel, isPending }: BotEnvAddRowProps)
         className="h-7 w-7 shrink-0 text-emerald-600"
         onClick={handleSave}
         disabled={!key.trim() || isPending}
-        title="Сохранить"
+        title="Save"
       >
         <Check className="h-3.5 w-3.5" />
       </Button>
@@ -91,7 +91,7 @@ export function BotEnvAddRow({ onSave, onCancel, isPending }: BotEnvAddRowProps)
         className="h-7 w-7 shrink-0 text-destructive"
         onClick={onCancel}
         disabled={isPending}
-        title="Отмена"
+        title="Cancel"
       >
         <X className="h-3.5 w-3.5" />
       </Button>

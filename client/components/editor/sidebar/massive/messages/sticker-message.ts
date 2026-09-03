@@ -7,13 +7,13 @@ import { ComponentDefinition } from "@shared/schema";
 /** Сообщение со стикером */
 export const stickerMessage: ComponentDefinition = {
   id: 'sticker-message',
-  name: 'Стикер',
+  name: 'Sticker',
   description: 'Анимированный стикер',
   icon: 'fas fa-laugh',
   color: 'bg-pink-100 text-pink-600',
   type: 'sticker',
   defaultData: {
-    messageText: 'Стикер',
+    messageText: 'Sticker',
     stickerUrl: '',
     stickerFileId: '',
     markdown: false,

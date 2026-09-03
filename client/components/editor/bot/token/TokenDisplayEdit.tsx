@@ -76,7 +76,7 @@ export function TokenDisplayEdit({
       onTokenUpdate();
     } catch (err: any) {
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: err.message || 'Ошибка при обновлении токена',
         variant: 'destructive',
       });

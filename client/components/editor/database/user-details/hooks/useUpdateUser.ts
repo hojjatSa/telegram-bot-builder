@@ -42,14 +42,14 @@ export function useUpdateUser(
       qClient.invalidateQueries({ queryKey: [usersQueryKey, selectedTokenId] });
       qClient.invalidateQueries({ queryKey: [statsQueryKey, selectedTokenId] });
       toast({
-        title: 'Сохранено',
+        title: 'Saved',
         description: 'Данные пользователя обновлены',
       });
     },
     onError: (error: any) => {
       console.error('Ошибка обновления пользователя:', error);
       toast({
-        title: 'Ошибка',
+        title: 'Error',
         description: 'Не удалось обновить данные',
         variant: 'destructive',
       });

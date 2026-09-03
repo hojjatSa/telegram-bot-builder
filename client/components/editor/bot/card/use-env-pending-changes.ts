@@ -80,9 +80,9 @@ export function useEnvPendingChanges(projectId: number, tokenId: number) {
       await apiRequest('PUT', batchUrl, { changes: entries });
       setChanges(new Map());
       invalidateAll();
-      toast({ title: 'Сохранено', description: `${entries.length} изменений применено` });
+      toast({ title: 'Saved', description: `${entries.length} изменений применено` });
     } catch (error: any) {
-      toast({ title: 'Ошибка', description: error.message || 'Не удалось сохранить', variant: 'destructive' });
+      toast({ title: 'Error', description: error.message || 'Could not save', variant: 'destructive' });
     } finally {
       setIsSaving(false);
     }
@@ -102,7 +102,7 @@ export function useEnvPendingChanges(projectId: number, tokenId: number) {
       invalidateBotStatusQueries(queryClient, projectId, tokenId);
       toast({ title: 'Бот перезапущен', description: 'Изменения сохранены, бот перезапущен' });
     } catch (error: any) {
-      toast({ title: 'Ошибка', description: error.message || 'Не удалось сохранить', variant: 'destructive' });
+      toast({ title: 'Error', description: error.message || 'Could not save', variant: 'destructive' });
     } finally {
       setIsSaving(false);
     }

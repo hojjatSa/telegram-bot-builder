@@ -39,7 +39,7 @@ export function MobilePropertiesSheet({
         aria-describedby={undefined}
       >
         <SheetHeader className="sr-only">
-          <SheetTitle>Свойства элемента</SheetTitle>
+          <SheetTitle>Element Properties</SheetTitle>
         </SheetHeader>
         <div className="h-full overflow-auto pb-safe">
           {children}

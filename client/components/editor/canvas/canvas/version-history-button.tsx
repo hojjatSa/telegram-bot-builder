@@ -39,8 +39,8 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
     setRestoringId(versionId);
     // Уведомление показываем первым — гарантированно, до обновления холста
     toast({
-      title: 'Версия восстановлена',
-      description: 'Проект откатан к выбранной версии. Изменения видны на холсте.',
+      title: 'Version restored',
+      description: 'Project restored to the selected version. Changes are visible on the canvas.',
     });
     restoreMutation.mutate(versionId, {
       onSuccess: () => {
@@ -53,8 +53,8 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
       },
       onError: () => {
         toast({
-          title: 'Ошибка восстановления',
-          description: 'Не удалось восстановить версию проекта',
+          title: 'Restore failed',
+          description: 'Could not restore project version',
           variant: 'destructive',
         });
       },
@@ -69,7 +69,7 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
       <PopoverTrigger asChild>
         <button
           className="flex-shrink-0 p-0 h-9 w-9 rounded-xl bg-slate-200/60 hover:bg-slate-300/80 dark:bg-slate-700/50 dark:hover:bg-slate-600/70 border border-slate-300/50 hover:border-slate-400/70 dark:border-slate-600/50 dark:hover:border-slate-500/70 transition-colors duration-200 group flex items-center justify-center"
-          title="История версий"
+          title="Version History"
         >
           <i className="fas fa-code-branch text-slate-600 dark:text-slate-400 text-sm group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors" />
         </button>
@@ -83,7 +83,7 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
         {/* Шапка */}
         <div className="flex items-center gap-2 px-3 py-2.5 border-b border-slate-200 dark:border-slate-700 flex-shrink-0">
           <i className="fas fa-code-branch text-slate-400 dark:text-slate-500 text-xs" />
-          <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">История версий</span>
+          <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Version History</span>
           {versions.length > 0 && (
             <span className="text-xs text-slate-400 dark:text-slate-500 tabular-nums">{versions.length}</span>
           )}

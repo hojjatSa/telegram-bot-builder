@@ -13,7 +13,7 @@ import { Label } from '@/components/ui/label';
  * Пропсы компонента AdminRightsInfo
  */
 interface AdminRightsInfoProps {
-  /** Заголовок секции (по умолчанию "Права администратора") */
+  /** Заголовок секции (по умолчанию "Administrator Rights") */
   title?: string;
 }
 
@@ -28,7 +28,7 @@ interface AdminRightsInfoProps {
  * @param {AdminRightsInfoProps} props - Пропсы компонента
  * @returns {JSX.Element} Информационная панель
  */
-export function AdminRightsInfo({ title = 'Права администратора' }: AdminRightsInfoProps) {
+export function AdminRightsInfo({ title = 'Administrator Rights' }: AdminRightsInfoProps) {
   return (
     <div className="bg-gradient-to-br from-violet-50/50 to-purple-50/30 dark:from-violet-950/20 dark:to-purple-950/10 border border-violet-200/30 dark:border-violet-800/30 rounded-lg p-4">
       <div className="flex items-center space-x-2 mb-3">

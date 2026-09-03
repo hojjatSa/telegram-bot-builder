@@ -7,7 +7,7 @@ import { ComponentDefinition } from "@shared/schema";
 /** Блокировка пользователя (бан) */
 export const banUser: ComponentDefinition = {
   id: 'ban-user',
-  name: 'Заблокировать пользователя',
+  name: 'Ban User',
   description: 'Забанить участника группы',
   icon: 'fas fa-ban',
   color: 'bg-red-100 text-red-600',
@@ -17,7 +17,7 @@ export const banUser: ComponentDefinition = {
     targetUserId: '',
     userIdSource: 'last_message',
     userVariableName: '',
-    reason: 'Нарушение правил группы',
+    reason: 'Violation of group rules',
     untilDate: 0
   }
 };

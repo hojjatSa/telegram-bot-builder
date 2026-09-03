@@ -78,7 +78,7 @@ export function ContactConfiguration({
             <div>
               <Label className="text-xs font-medium text-cyan-700 dark:text-cyan-300 mb-2 block">
                 <i className="fas fa-user mr-1"></i>
-                Фамилия
+                Last name
               </Label>
               <Input
                 value={selectedNode.data.lastName || ''}

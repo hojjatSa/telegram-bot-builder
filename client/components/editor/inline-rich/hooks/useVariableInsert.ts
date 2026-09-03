@@ -94,7 +94,7 @@ export function useVariableInsert({
       }, 0);
     } catch (e) {
       toast({
-        title: "Ошибка",
+        title: "Error",
         description: "Не удалось вставить переменную",
         variant: "destructive"
       });

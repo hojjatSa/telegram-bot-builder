@@ -6,7 +6,7 @@ import { ComponentDefinition } from "@shared/schema";
 /** Триггер редактирования сообщения через юзербот (Telethon) */
 export const userbotEditTrigger: ComponentDefinition = {
   id: 'userbot-edit-trigger',
-  name: 'Редактирование (юзербот)',
+  name: 'Edit (Userbot)',
   description: 'Срабатывает при редактировании сообщения в чате',
   icon: 'fas fa-pen',
   color: 'bg-amber-100 text-amber-600',

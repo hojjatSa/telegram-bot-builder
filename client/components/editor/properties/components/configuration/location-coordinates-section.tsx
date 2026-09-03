@@ -47,7 +47,7 @@ export function LocationCoordinatesSection({
         .then(locationInfo => {
           if (locationInfo) {
             onNodeUpdate(selectedNode.id, {
-              title: locationInfo.title || selectedNode.data.title || 'Местоположение',
+              title: locationInfo.title || selectedNode.data.title || 'Location',
               address: locationInfo.address || selectedNode.data.address,
               city: locationInfo.city || selectedNode.data.city,
               country: locationInfo.country || selectedNode.data.country
@@ -71,7 +71,7 @@ export function LocationCoordinatesSection({
         .then(locationInfo => {
           if (locationInfo) {
             onNodeUpdate(selectedNode.id, {
-              title: locationInfo.title || selectedNode.data.title || 'Местоположение',
+              title: locationInfo.title || selectedNode.data.title || 'Location',
               address: locationInfo.address || selectedNode.data.address,
               city: locationInfo.city || selectedNode.data.city,
               country: locationInfo.country || selectedNode.data.country

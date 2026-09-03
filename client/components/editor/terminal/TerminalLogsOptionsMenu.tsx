@@ -44,9 +44,9 @@ interface TerminalLogsOptionsMenuProps {
 
 /** Пункты фильтра в меню */
 const FILTERS: Array<{ label: string; value: LogFilter }> = [
-  { label: 'Все', value: 'all' },
-  { label: 'Вывод', value: 'stdout' },
-  { label: 'Ошибки', value: 'stderr' },
+  { label: 'All', value: 'all' },
+  { label: 'Output', value: 'stdout' },
+  { label: 'Errors', value: 'stderr' },
 ];
 
 /**
@@ -82,23 +82,23 @@ export function TerminalLogsOptionsMenu({
         <DropdownMenuSeparator />
         {onZoomIn && (
           <DropdownMenuItem onClick={onZoomIn}>
-            <ZoomIn className="mr-2 h-3.5 w-3.5" />Увеличить
+            <ZoomIn className="mr-2 h-3.5 w-3.5" />Zoom in
           </DropdownMenuItem>
         )}
         {onZoomOut && (
           <DropdownMenuItem onClick={onZoomOut}>
-            <ZoomOut className="mr-2 h-3.5 w-3.5" />Уменьшить
+            <ZoomOut className="mr-2 h-3.5 w-3.5" />Zoom out
           </DropdownMenuItem>
         )}
         {onClear && (
           <DropdownMenuItem onClick={onClear}>
-            <Trash2 className="mr-2 h-3.5 w-3.5" />Очистить
+            <Trash2 className="mr-2 h-3.5 w-3.5" />Clear
           </DropdownMenuItem>
         )}
         {onCopy && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuLabel className="text-xs">Копировать</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
@@ -107,7 +107,7 @@ export function TerminalLogsOptionsMenu({
         {onSave && (
           <>
             <DropdownMenuSeparator />
-            <DropdownMenuLabel className="text-xs">Скачать</DropdownMenuLabel>
+            <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
             <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
@@ -117,7 +117,7 @@ export function TerminalLogsOptionsMenu({
           <>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={onClose}>
-              <X className="mr-2 h-3.5 w-3.5" />Закрыть
+              <X className="mr-2 h-3.5 w-3.5" />Close
             </DropdownMenuItem>
           </>
         )}

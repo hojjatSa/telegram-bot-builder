@@ -13,7 +13,7 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
  *
  * @example
  * <Collapsible open={isOpen} onOpenChange={setIsOpen}>
- *   <CollapsibleTrigger>Развернуть</CollapsibleTrigger>
+ *   <CollapsibleTrigger>Expand</CollapsibleTrigger>
  *   <CollapsibleContent>
  *     Скрытый контент
  *   </CollapsibleContent>
@@ -33,7 +33,7 @@ const Collapsible = CollapsiblePrimitive.Root
  * @param {React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleTrigger>} props - Свойства компонента
  *
  * @example
- * <CollapsibleTrigger>Развернуть</CollapsibleTrigger>
+ * <CollapsibleTrigger>Expand</CollapsibleTrigger>
  *
  * @returns {JSX.Element} Триггер сворачивания
  */

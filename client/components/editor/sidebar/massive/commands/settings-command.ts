@@ -14,7 +14,7 @@ export const settingsCommand: CommandPreset = {
   type: 'command_preset',
   triggerData: {
     command: '/settings',
-    description: 'Настройки',
+    description: 'Settings',
     showInMenu: true,
   },
   messageData: {

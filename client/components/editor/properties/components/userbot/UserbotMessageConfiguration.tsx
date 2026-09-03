@@ -126,7 +126,7 @@ export function UserbotMessageConfiguration({
       {/* Секция текста сообщения */}
       <div className="space-y-3 bg-gradient-to-br from-blue-50/40 to-cyan-50/20 dark:from-blue-950/30 dark:to-cyan-900/20 rounded-xl p-3 sm:p-4 border border-blue-200/40 dark:border-blue-800/40">
         <SectionHeader
-          title="Текст сообщения"
+          title="Message text"
           description="Содержание сообщения от аккаунта"
           isOpen={isTextOpen}
           onToggle={() => setIsTextOpen(!isTextOpen)}

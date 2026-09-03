@@ -1,5 +1,5 @@
 /**
- * @fileoverview Главная панель вкладки "История версий" проекта
+ * @fileoverview Главная панель вкладки "Version History" проекта
  * @module editor/versions/versions-panel
  */
 
@@ -39,8 +39,8 @@ export function VersionsPanel({ projectId, onRestored }: VersionsPanelProps) {
       onSuccess: () => {
         // Сначала показываем уведомление — гарантированно, до обновления холста
         toast({
-          title: 'Версия восстановлена',
-          description: 'Проект откатан к выбранной версии. Изменения видны на холсте.',
+          title: 'Version restored',
+          description: 'Project restored to the selected version. Changes are visible on the canvas.',
         });
         // Обновление холста оборачиваем, чтобы возможная ошибка не «съела» фидбек
         try {
@@ -51,8 +51,8 @@ export function VersionsPanel({ projectId, onRestored }: VersionsPanelProps) {
       },
       onError: () => {
         toast({
-          title: 'Ошибка восстановления',
-          description: 'Не удалось восстановить версию проекта',
+          title: 'Restore failed',
+          description: 'Could not restore project version',
           variant: 'destructive',
         });
       },
@@ -66,12 +66,12 @@ export function VersionsPanel({ projectId, onRestored }: VersionsPanelProps) {
     <div className="flex flex-col h-full bg-background">
       <TabHeader
         icon={<History className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="История версий"
+        title="Version History"
         actions={
-          <button type="button" title="Обновить"
+          <button type="button" title="Refresh"
             onClick={() => {
               queryClient.invalidateQueries({ queryKey: ['/api/projects', projectId, 'versions'] });
-              toast({ title: 'Список обновлён' });
+              toast({ title: 'List refreshed' });
             }}
             className="p-2 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
             <RefreshCw className="h-4 w-4" />

@@ -202,7 +202,7 @@ export function MediaAttachmentsPreview({ node, projectId }: MediaAttachmentsPre
             <div key={url + index} className="rounded-lg overflow-hidden border-2 border-emerald-200 dark:border-emerald-700/50">
               <img
                 src={url}
-                alt={`Файл ${index + 1}`}
+                alt={`File ${index + 1}`}
                 className="w-full h-auto max-h-48 object-cover"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = ERROR_PLACEHOLDER;

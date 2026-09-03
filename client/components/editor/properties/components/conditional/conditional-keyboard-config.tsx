@@ -40,7 +40,7 @@ export function ConditionalKeyboardConfig({
   const handleAddButton = () => {
     const newButton = {
       id: Date.now().toString(),
-      text: 'Новая кнопка',
+      text: 'New button',
       action: 'goto',
       target: '',
       url: '',

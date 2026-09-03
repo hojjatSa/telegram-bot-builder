@@ -47,7 +47,7 @@ export function AgentTokensTable({ tokens, onRevoke }: AgentTokensTableProps) {
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Название</TableHead>
+          <TableHead>Name</TableHead>
           <TableHead>Префикс</TableHead>
           <TableHead>Права</TableHead>
           <TableHead>Создан</TableHead>

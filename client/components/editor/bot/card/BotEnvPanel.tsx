@@ -171,7 +171,7 @@ export function BotEnvPanel({ projectId, tokenId, token, adminIds, pending }: Bo
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowRaw(!showRaw)} title="Raw-редактор">
             <FileCode className="h-3.5 w-3.5" />
           </Button>
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowSearch(!showSearch)} title="Поиск">
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowSearch(!showSearch)} title="Search">
             <Search className="h-3.5 w-3.5" />
           </Button>
           <Button variant="ghost" size="sm" className="h-7 text-xs gap-1 px-1.5" onClick={() => setShowAdd(true)}>
@@ -220,7 +220,7 @@ export function BotEnvPanel({ projectId, tokenId, token, adminIds, pending }: Bo
             <>
               <Separator className="opacity-30" />
               <div className="space-y-1">
-                <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Пользовательские</h3>
+                <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">User templates</h3>
                 {filteredCustom.map(v => (
                   <BotEnvRow
                     key={v.id} id={v.id} envKey={v.key} value={v.value}

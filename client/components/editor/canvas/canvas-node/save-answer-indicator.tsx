@@ -9,19 +9,19 @@ interface SaveAnswerIndicatorProps {
 }
 
 const SOURCE_LABELS: Record<string, string> = {
-  any: 'Последний ответ',
+  any: 'Last answer',
   text: 'Текстовый ответ',
-  photo: 'Фото',
-  video: 'Видео',
-  audio: 'Аудио',
-  document: 'Документ',
-  location: 'Геолокация',
-  contact: 'Контакт',
+  photo: 'Photo',
+  video: 'Video',
+  audio: 'Audio',
+  document: 'Document',
+  location: 'Location',
+  contact: 'Contact',
 };
 
 export function SaveAnswerIndicator({ node }: SaveAnswerIndicatorProps) {
   const data = node.data as any;
-  const source = SOURCE_LABELS[data.inputType] || data.inputType || 'Последний ответ';
+  const source = SOURCE_LABELS[data.inputType] || data.inputType || 'Last answer';
   const targetVariable = data.inputVariable || 'не задана';
   const mode = data.appendVariable ? 'append' : 'replace';
 

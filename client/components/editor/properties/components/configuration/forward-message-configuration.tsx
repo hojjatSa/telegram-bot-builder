@@ -323,7 +323,7 @@ export function ForwardMessageConfiguration({
                     onClick={() => removeRecipient(index)}
                   >
                     <i className="fas fa-trash text-xs mr-2"></i>
-                    Удалить
+                    Delete
                   </Button>
                 </div>
 
@@ -354,7 +354,7 @@ export function ForwardMessageConfiguration({
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="user">Пользователь</SelectItem>
+                        <SelectItem value="user">User</SelectItem>
                         <SelectItem value="group">Группа или канал</SelectItem>
                       </SelectContent>
                     </Select>

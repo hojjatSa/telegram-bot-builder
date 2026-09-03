@@ -35,7 +35,7 @@ export function ApiTriggerPreview({ node }: ApiTriggerPreviewProps) {
     <div className="px-3 py-2 text-xs space-y-1">
       <div className="flex items-center gap-1.5 mb-1">
         <i className="fas fa-plug text-violet-500 text-[10px]" />
-        <span className="font-semibold text-violet-700 dark:text-violet-300 text-[11px]">API триггер</span>
+        <span className="font-semibold text-violet-700 dark:text-violet-300 text-[11px]">API Trigger</span>
       </div>
       <div className="flex items-center gap-1.5 flex-wrap">
         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded font-mono ${METHOD_COLORS[method] || METHOD_COLORS.POST}`}>

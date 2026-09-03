@@ -64,7 +64,7 @@ function getNodeContent(node: Node): string {
   if (node.type === 'input') {
     const target = ((node.data as any).inputVariable || '').trim();
     const source = ((node.data as any).inputType || 'any').trim();
-    const sourceLabel = source === 'any' ? 'Последний ответ' : source;
+    const sourceLabel = source === 'any' ? 'Last answer' : source;
     return (target ? `${sourceLabel} → ${target}` : `Источник: ${sourceLabel}`).slice(0, 50);
   }
 
@@ -74,7 +74,7 @@ function getNodeContent(node: Node): string {
   }
 
   if (node.type === 'broadcast') {
-    return 'Рассылка';
+    return 'Broadcast';
   }
 
   if ((node.type as any) === 'set_variable') {

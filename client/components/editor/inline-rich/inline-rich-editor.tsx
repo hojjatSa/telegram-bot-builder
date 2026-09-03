@@ -68,7 +68,7 @@ export function InlineRichEditor(props: InlineRichEditorWithFiltersProps) {
         value={props.value}
         onInput={handleInput}
         onKeyDown={handleKeyDown}
-        placeholder={props.placeholder || 'Введите текст сообщения...'}
+        placeholder={props.placeholder || 'Enter message text...'}
         innerRef={editorRef}
         onLinkClick={linkPopover.openLinkPopover}
         onBlur={saveSelectionOnBlur}

@@ -42,7 +42,7 @@ export function CommitForm({ projectId, compact }: CommitFormProps) {
         toast({ title: 'Чекпоинт создан', description: text });
       },
       onError: () => {
-        toast({ title: 'Ошибка', description: 'Не удалось создать чекпоинт', variant: 'destructive' });
+        toast({ title: 'Error', description: 'Не удалось создать чекпоинт', variant: 'destructive' });
       },
     });
   }, [message, commitMutation, toast]);
@@ -61,10 +61,10 @@ export function CommitForm({ projectId, compact }: CommitFormProps) {
         className={compact ? 'h-8 w-8 shrink-0' : 'shrink-0'}
         disabled={!message.trim() || commitMutation.isPending}
         onClick={handleSubmit}
-        title="Сохранить чекпоинт"
+        title="Save checkpoint"
       >
         <GitCommit className={compact ? 'h-3.5 w-3.5' : 'h-3.5 w-3.5 mr-1.5'} />
-        {!compact && (commitMutation.isPending ? 'Сохранение…' : 'Сохранить чекпоинт')}
+        {!compact && (commitMutation.isPending ? 'Saving…' : 'Save checkpoint')}
       </Button>
     </div>
   );

@@ -15,8 +15,8 @@ interface VariableDropdownProps {
 
 const getBadgeText = (nodeType: string) => {
   const map: Record<string, string> = {
-    'user-input': 'Ввод', 'start': 'Команда', 'command': 'Команда',
-    'system': 'Система', 'conditional': 'Условие'
+    'user-input': 'Ввод', 'start': 'Command', 'command': 'Command',
+    'system': 'Система', 'conditional': 'Condition'
   };
   return map[nodeType] || 'Другое';
 };
@@ -25,9 +25,9 @@ export function ConditionalVariableDropdown({ textVariables, SYSTEM_VARIABLES, o
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <UIButton size="sm" variant="outline" className="h-7 text-xs gap-1" title="Вставить переменную">
+        <UIButton size="sm" variant="outline" className="h-7 text-xs gap-1" title="Insert variable">
           <Plus className="h-3 w-3" />
-          <span className="hidden sm:inline">Переменная</span>
+          <span className="hidden sm:inline">Variable</span>
         </UIButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">

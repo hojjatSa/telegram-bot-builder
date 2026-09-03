@@ -1,5 +1,5 @@
 /**
- * @fileoverview Компонент компактного заголовка вкладки "Пользователи"
+ * @fileoverview Компонент компактного заголовка вкладки "Users"
  * @description Строка с иконкой (bg-primary/10), названием и кнопкой обновления
  */
 
@@ -29,7 +29,7 @@ export function DatabaseHeader({ projectName: _projectName, onRefresh }: Databas
           <Users className="w-5 h-5 text-primary" />
         </div>
         <div>
-          <h2 className="text-base font-semibold leading-none">Пользователи</h2>
+          <h2 className="text-base font-semibold leading-none">Users</h2>
           <p className="text-xs text-muted-foreground mt-0.5">База данных бота</p>
         </div>
       </div>
@@ -42,7 +42,7 @@ export function DatabaseHeader({ projectName: _projectName, onRefresh }: Databas
           title="Обновить данные"
         >
           <RefreshCw className="w-4 h-4 mr-1" />
-          <span className="text-xs">Обновить</span>
+          <span className="text-xs">Refresh</span>
         </Button>
       )}
     </div>

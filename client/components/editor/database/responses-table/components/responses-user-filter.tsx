@@ -32,10 +32,10 @@ export function ResponsesUserFilter({
       }}
     >
       <SelectTrigger className="w-[200px]">
-        <SelectValue placeholder="Все пользователи" />
+        <SelectValue placeholder="All users" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">Все пользователи</SelectItem>
+        <SelectItem value="all">All users</SelectItem>
         {usersArray.map((user) => (
           <SelectItem key={user.id} value={user.id.toString()}>
             {formatUserName(user)}

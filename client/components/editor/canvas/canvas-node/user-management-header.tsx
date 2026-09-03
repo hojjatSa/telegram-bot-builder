@@ -23,13 +23,13 @@ type UserManagementType =
  * Тексты заголовков для каждого типа
  */
 const HEADER_TEXTS: Record<UserManagementType, string> = {
-  ban_user: 'Заблокировать пользователя',
-  unban_user: 'Разблокировать пользователя',
+  ban_user: 'Ban User',
+  unban_user: 'Unban User',
   mute_user: 'Заглушить пользователя',
   unmute_user: 'Разрешить говорить',
-  kick_user: 'Исключить пользователя',
-  promote_user: 'Назначить администратором',
-  demote_user: 'Снять с администратора'
+  kick_user: 'Kick User',
+  promote_user: 'Promote Administrator',
+  demote_user: 'Demote Administrator'
 };
 
 /**

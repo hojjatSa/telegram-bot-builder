@@ -246,7 +246,7 @@ export function PsqlConnectionSection({
               size="icon"
               className="h-8 w-8 flex-shrink-0"
               onClick={() => setShowPassword(!showPassword)}
-              title={showPassword ? 'Скрыть' : 'Показать'}
+              title={showPassword ? 'Hide' : 'Show'}
             >
               {showPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
             </Button>

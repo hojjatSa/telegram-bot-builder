@@ -97,7 +97,7 @@ export function SetVariableConfiguration({
         <div className="flex items-center gap-2">
           <span className="text-base">🧮</span>
           <span className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-            Переменные
+            Variables
           </span>
         </div>
         <p className="text-xs text-muted-foreground">
@@ -157,10 +157,10 @@ export function SetVariableConfiguration({
           }
         >
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60 border border-violet-300/40 dark:border-violet-700/40">
-            <SelectValue placeholder="Без перехода" />
+            <SelectValue placeholder="No transition" />
           </SelectTrigger>
           <SelectContent className="max-h-48 overflow-y-auto">
-            <SelectItem value="no-transition">Без перехода</SelectItem>
+            <SelectItem value="no-transition">No transition</SelectItem>
             {availableTargets.map(({ node, sheetName }) => (
               <SelectItem key={node.id} value={node.id}>
                 <span className="text-xs font-mono truncate">
@@ -179,7 +179,7 @@ export function SetVariableConfiguration({
             })
           }
           className="text-xs h-8 mt-1.5 bg-white/60 dark:bg-slate-950/60 border border-violet-300/40 dark:border-violet-700/40"
-          placeholder="или ID вручную"
+          placeholder="or enter an ID manually"
         />
         <p className="text-xs text-violet-600 dark:text-violet-400 mt-1.5">
           Куда перейти после установки переменных

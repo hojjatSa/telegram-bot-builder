@@ -105,7 +105,7 @@ export function useStorageConfigForm(editing: StorageConfigDto | null): UseStora
       return true;
     } catch (error) {
       // Req 11.9: 400 с диагностикой (например, провал проверки S3 при сохранении).
-      toast({ variant: 'destructive', title: 'Не удалось сохранить', description: extractSaveError(error) });
+      toast({ variant: 'destructive', title: 'Could not save', description: extractSaveError(error) });
       return false;
     } finally {
       setIsSaving(false);

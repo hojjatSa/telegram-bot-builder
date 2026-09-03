@@ -87,13 +87,13 @@ export function useSidebarFileUpload({
           
           // Показать уведомление об успехе
           toast({
-            title: fileType === "json" ? "Файл загружен" : "Python файл загружен",
+            title: fileType === "json" ? "File uploaded" : "Python файл загружен",
             description: `Файл "${file.name}" успешно загружен. Нажмите "Импортировать" для создания проекта.`,
           });
         } catch (error) {
           setImportError('Ошибка при чтении файла');
           toast({
-            title: "Ошибка загрузки",
+            title: "Load failed",
             description: "Не удалось прочитать файл",
             variant: "destructive",
           });
@@ -103,7 +103,7 @@ export function useSidebarFileUpload({
       reader.onerror = () => {
         setImportError('Ошибка при чтении файла');
         toast({
-          title: "Ошибка загрузки",
+          title: "Load failed",
           description: "Не удалось прочитать файл",
           variant: "destructive",
         });

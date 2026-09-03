@@ -195,7 +195,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <DropdownMenuItem>Сохранить</DropdownMenuItem>
+ * <DropdownMenuItem>Save</DropdownMenuItem>
  *
  * @returns {JSX.Element} Элемент выпадающего меню
  */
@@ -315,7 +315,7 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName
  * @param {object} props - Прочие свойства, передаваемые в компонент
  *
  * @example
- * <DropdownMenuLabel>Настройки</DropdownMenuLabel>
+ * <DropdownMenuLabel>Settings</DropdownMenuLabel>
  *
  * @returns {JSX.Element} Метка в выпадающем меню
  */

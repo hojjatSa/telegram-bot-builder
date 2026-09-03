@@ -85,7 +85,7 @@ const DEFAULT_CONFIG: SimpleLayoutConfig = {
     {
       id: 'header',
       type: 'header',
-      name: 'Шапка',
+      name: 'Header',
       position: 'top',
       size: 64,
       visible: true
@@ -93,7 +93,7 @@ const DEFAULT_CONFIG: SimpleLayoutConfig = {
     {
       id: 'sidebar',
       type: 'sidebar',
-      name: 'Боковая панель',
+      name: 'Sidebar',
       position: 'left',
       size: 20,
       visible: true
@@ -101,7 +101,7 @@ const DEFAULT_CONFIG: SimpleLayoutConfig = {
     {
       id: 'canvas',
       type: 'canvas',
-      name: 'Холст',
+      name: 'Canvas',
       position: 'center',
       size: 55,
       visible: true
@@ -109,7 +109,7 @@ const DEFAULT_CONFIG: SimpleLayoutConfig = {
     {
       id: 'properties',
       type: 'properties',
-      name: 'Свойства',
+      name: 'Properties',
       position: 'right',
       size: 25,
       visible: true
@@ -448,11 +448,11 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm" className="flex-1">
                             <Download className="w-4 h-4 mr-2" />
-                            Экспорт
+                            Export
                           </Button>
                           <Button variant="outline" size="sm" className="flex-1">
                             <Upload className="w-4 h-4 mr-2" />
-                            Импорт
+                            Import
                           </Button>
                         </div>
                       </div>
@@ -474,7 +474,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                       size="sm"
                       onClick={handleCancel}
                     >
-                      Отмена
+                      Cancel
                     </Button>
                     <Button
                       size="sm"

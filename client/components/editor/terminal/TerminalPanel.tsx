@@ -96,7 +96,7 @@ export function TerminalPanel({ allProjects, currentProjectId, onProjectChange }
       <div className="flex flex-col h-full bg-background">
         <TabHeader
           icon={<TerminalIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-          title="Терминал"
+          title="Terminal"
         >
           {allProjects && allProjects.length > 1 && onProjectChange && currentProjectId && (
             <ProjectSelector
@@ -120,7 +120,7 @@ export function TerminalPanel({ allProjects, currentProjectId, onProjectChange }
     <div className="flex flex-col h-full bg-background">
       <TabHeader
         icon={<TerminalIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="Терминал"
+        title="Terminal"
       >
         {allProjects && allProjects.length > 1 && onProjectChange && currentProjectId && (
           <ProjectSelector

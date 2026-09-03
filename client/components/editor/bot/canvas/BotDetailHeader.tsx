@@ -117,7 +117,7 @@ export function BotDetailHeader({
           className={`${ACTION_BTN} hover:text-destructive`}
           disabled={deletePending}
           onClick={onDelete}
-          aria-label="Удалить"
+          aria-label="Delete"
         >
           <Trash2 className="h-3.5 w-3.5" />
         </Button>
@@ -127,7 +127,7 @@ export function BotDetailHeader({
           variant="ghost"
           className={ACTION_BTN}
           onClick={onClose}
-          aria-label="Закрыть"
+          aria-label="Close"
         >
           <X className="h-3.5 w-3.5" />
         </Button>

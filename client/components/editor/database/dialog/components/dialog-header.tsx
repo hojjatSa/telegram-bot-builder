@@ -46,7 +46,7 @@ export function DialogHeader({
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <h3 className="font-medium text-xs xs:text-xs sm:text-sm truncate leading-none">Диалог</h3>
+            <h3 className="font-medium text-xs xs:text-xs sm:text-sm truncate leading-none">Dialog</h3>
             <WarningTooltip />
           </div>
           <Select

@@ -50,8 +50,8 @@ export function NodeActions({ onDuplicate, onDelete, isSelected: _isSelected }: 
           className={cn(
             "absolute -top-2 -left-2 w-7 h-7 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-blue-50 hover:to-indigo-50 dark:hover:from-blue-900/40 dark:hover:to-indigo-900/40 hover:text-blue-700 dark:hover:text-blue-300 focus:bg-gradient-to-br focus:from-blue-100 focus:to-indigo-100 dark:focus:from-blue-800/50 dark:focus:to-indigo-800/50 transition-shadow duration-300 shadow-lg hover:shadow-xl focus:shadow-2xl border border-blue-200/50 dark:border-blue-700/50 hover:border-blue-300 dark:hover:border-blue-600 focus:border-blue-400 dark:focus:border-blue-500 z-[60] pointer-events-auto"
           )}
-          title="Дублировать"
-          aria-label="Дублировать"
+          title="Duplicate"
+          aria-label="Duplicate"
         >
           <i className="fas fa-copy text-xs transition-transform duration-200"></i>
         </button>

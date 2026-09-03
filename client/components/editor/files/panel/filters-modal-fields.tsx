@@ -41,11 +41,11 @@ export function FiltersModalFields({ draft, onChange, collaborators, storages }:
     <div className="space-y-4">
       {/* Поиск по названию файла — внутри модалки, не отдельной строкой (Req 6.2) */}
       <div className="space-y-1.5">
-        <Label className="text-xs font-medium">Название файла</Label>
+        <Label className="text-xs font-medium">File name</Label>
         <Input
           value={draft.fileName ?? ''}
           onChange={(e) => onChange({ fileName: e.target.value })}
-          placeholder="Поиск по имени"
+          placeholder="Search by name"
           className="h-8"
           data-testid="filters-file-name"
         />
@@ -60,13 +60,13 @@ export function FiltersModalFields({ draft, onChange, collaborators, storages }:
 
       {/* Тип медиа Telegram + обложка (Req 6.4) */}
       <div className="space-y-1.5">
-        <Label className="text-xs font-medium">Тип файла</Label>
+        <Label className="text-xs font-medium">File type</Label>
         <Select
           value={draft.mediaType ?? 'all'}
           onValueChange={(v) => onChange({ mediaType: v as FileFilters['mediaType'] })}
         >
           <SelectTrigger className="h-8" data-testid="filters-media-type">
-            <SelectValue placeholder="Все типы" />
+            <SelectValue placeholder="All types" />
           </SelectTrigger>
           <SelectContent>
             {MEDIA_TYPE_OPTIONS.map((o) => (
@@ -80,16 +80,16 @@ export function FiltersModalFields({ draft, onChange, collaborators, storages }:
 
       {/* Сотрудник: выпадающий список коллабораторов с аватарами (Req 6.5) */}
       <div className="space-y-1.5">
-        <Label className="text-xs font-medium">Сотрудник</Label>
+        <Label className="text-xs font-medium">Collaborator</Label>
         <Select
           value={draft.uploadedBy !== undefined ? String(draft.uploadedBy) : 'all'}
           onValueChange={(v) => onChange({ uploadedBy: v === 'all' ? undefined : Number(v) })}
         >
           <SelectTrigger className="h-8" data-testid="filters-uploaded-by">
-            <SelectValue placeholder="Все сотрудники" />
+            <SelectValue placeholder="All collaborators" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Все сотрудники</SelectItem>
+            <SelectItem value="all">All collaborators</SelectItem>
             {collaborators.map((c) => (
               <SelectItem key={c.userId} value={String(c.userId)}>
                 <span className="flex items-center gap-2">
@@ -107,16 +107,16 @@ export function FiltersModalFields({ draft, onChange, collaborators, storages }:
 
       {/* Хранилище: все / конкретный local / конкретный S3 (Req 6.6) */}
       <div className="space-y-1.5">
-        <Label className="text-xs font-medium">Хранилище</Label>
+        <Label className="text-xs font-medium">Storage</Label>
         <Select
           value={draft.storageConfigId ?? 'all'}
           onValueChange={(v) => onChange({ storageConfigId: v })}
         >
           <SelectTrigger className="h-8" data-testid="filters-storage">
-            <SelectValue placeholder="Все хранилища" />
+            <SelectValue placeholder="All storage" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Все хранилища</SelectItem>
+            <SelectItem value="all">All storage</SelectItem>
             {storages.map((st) => (
               <SelectItem key={st.id} value={st.id}>
                 {st.name}

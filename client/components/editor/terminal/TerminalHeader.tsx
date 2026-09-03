@@ -58,7 +58,7 @@ export function TerminalHeader({
 }: TerminalHeaderProps) {
   return (
     <div className={`${headerBgClass} px-3 sm:px-4 py-2 flex justify-between items-center`}>
-      <h3 className="font-semibold text-sm sm:text-base">Терминал</h3>
+      <h3 className="font-semibold text-sm sm:text-base">Terminal</h3>
       {showControls && (
         <>
           {/* Мобильный: dropdown-меню */}
@@ -71,21 +71,21 @@ export function TerminalHeader({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={onZoomIn}>
-                  <ZoomIn className="mr-2 h-4 w-4" />Увеличить
+                  <ZoomIn className="mr-2 h-4 w-4" />Zoom in
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={onZoomOut}>
-                  <ZoomOut className="mr-2 h-4 w-4" />Уменьшить
+                  <ZoomOut className="mr-2 h-4 w-4" />Zoom out
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={onClear}>
-                  <Trash2 className="mr-2 h-4 w-4" />Очистить
+                  <Trash2 className="mr-2 h-4 w-4" />Clear
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel className="text-xs">Копировать</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel className="text-xs">Скачать</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
@@ -93,7 +93,7 @@ export function TerminalHeader({
                   <>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onClick={onHide}>
-                      <EyeOff className="mr-2 h-4 w-4" />Скрыть
+                      <EyeOff className="mr-2 h-4 w-4" />Hide
                     </DropdownMenuItem>
                   </>
                 )}
@@ -121,8 +121,8 @@ export function TerminalHeader({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel className="text-xs">Копировать в формате</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => onCopy('text')}>Обычный текст</DropdownMenuItem>
+                <DropdownMenuLabel className="text-xs">Copy as</DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => onCopy('text')}>Plain text</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
               </DropdownMenuContent>
@@ -136,8 +136,8 @@ export function TerminalHeader({
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel className="text-xs">Загрузить в формате</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => onSave('text')}>Обычный текст</DropdownMenuItem>
+                <DropdownMenuLabel className="text-xs">Download as</DropdownMenuLabel>
+                <DropdownMenuItem onClick={() => onSave('text')}>Plain text</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
               </DropdownMenuContent>

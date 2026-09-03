@@ -1,5 +1,5 @@
 /**
- * @fileoverview Главная панель вкладки "Таблицы" — spreadsheet-интерфейс
+ * @fileoverview Главная панель вкладки "Tables" — spreadsheet-интерфейс
  * @module editor/tables/tables-panel
  */
 
@@ -49,7 +49,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
       {/* Шапка */}
       <TabHeader
         icon={<Table2 className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="Таблицы"
+        title="Tables"
         actions={
           <div className="flex items-center gap-2">
             <button
@@ -137,7 +137,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
                 onClick={() => setSelectedTableId(null)}
                 className="text-xs text-muted-foreground hover:text-foreground"
               >
-                ← Назад
+                ← Back
               </button>
               <span className="text-xs font-medium truncate">{selectedTable.name}</span>
             </div>

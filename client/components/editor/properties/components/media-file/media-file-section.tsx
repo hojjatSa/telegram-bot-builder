@@ -182,8 +182,8 @@ export function MediaFileSection({
             value={attachedFiles}
             onChange={(urls) => onNodeUpdate(selectedNode.id, { attachedMedia: urls })}
             nodeName={selectedNode.id}
-            label="Прикреплённые файлы"
-            placeholder="Перетащи файл или вставь ссылку"
+            label="Attachments"
+            placeholder="Drop a file or paste a link"
             keyboardType={selectedNode.data.keyboardType}
             onNodeUpdate={onNodeUpdate}
             nodeId={selectedNode.id}

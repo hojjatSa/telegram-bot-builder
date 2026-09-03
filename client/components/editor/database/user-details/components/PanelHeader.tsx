@@ -74,7 +74,7 @@ export function PanelHeader({ user, users, onClose, formatUserName, onSelectUser
       <div className="flex items-center gap-2 min-w-0">
         <UserAvatarInline user={user} projectId={projectId} tokenId={tokenId} formatUserName={formatUserName} />
         <div className="min-w-0">
-          <h3 className="font-medium text-xs xs:text-xs sm:text-sm truncate">Детали пользователя</h3>
+          <h3 className="font-medium text-xs xs:text-xs sm:text-sm truncate">User Details</h3>
           <Select
             value={user.userId.toString()}
             onValueChange={(value) => {

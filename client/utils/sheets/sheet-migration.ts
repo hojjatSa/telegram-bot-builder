@@ -21,7 +21,7 @@ export function migrateLegacyData(legacyData: BotData): BotDataWithSheets {
       type: 'message' as const,
       position: { x: 400, y: 300 },
       data: {
-        messageText: 'Привет! Я ваш новый бот.',
+        messageText: 'Hello! I am your new bot.',
         keyboardType: 'none',
         buttons: [],
         showInMenu: true,

@@ -44,7 +44,7 @@ export function RemoteSyncBadge({ actor, onDismiss }: RemoteSyncBadgeProps) {
           type="button"
           onClick={onDismiss}
           className="shrink-0 ml-0.5 opacity-60 hover:opacity-100"
-          aria-label="Скрыть"
+          aria-label="Hide"
         >
           <i className="fas fa-times text-[10px]" />
         </button>

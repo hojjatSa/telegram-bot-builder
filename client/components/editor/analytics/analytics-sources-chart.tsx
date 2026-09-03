@@ -217,7 +217,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
     <div className="bg-background border rounded-xl p-3 flex flex-col gap-3">
       <div className="flex items-center justify-between gap-2 flex-wrap">
         <div className="flex items-center gap-2 min-w-0">
-          <span className="text-sm font-medium truncate">Источники трафика</span>
+          <span className="text-sm font-medium truncate">Traffic Sources</span>
           {totalForPeriod > 0 && (
             <span className="text-xs text-muted-foreground whitespace-nowrap">
               +{totalForPeriod} за период
@@ -336,7 +336,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
                 onClick={clearSourceFilter}
                 className="text-[11px] font-medium text-primary hover:underline"
               >
-                Все
+                All
               </button>
             ) : (
               <span className="font-normal opacity-70">кликай источники — можно несколько</span>

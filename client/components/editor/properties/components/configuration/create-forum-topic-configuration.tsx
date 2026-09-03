@@ -56,7 +56,7 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
           <div className="w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center">
             <i className="fas fa-users text-teal-600 dark:text-teal-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-teal-900 dark:text-teal-100">Группа</Label>
+          <Label className="text-sm font-semibold text-teal-900 dark:text-teal-100">Group</Label>
         </div>
 
         <div className="space-y-3">
@@ -127,7 +127,7 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
                   <button
                     type="button"
                     className="text-xs px-2.5 py-1 h-9 rounded-md border border-sky-300/60 dark:border-sky-700/60 bg-sky-50/60 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 hover:bg-sky-100/80 dark:hover:bg-sky-800/30 transition-colors whitespace-nowrap"
-                    title="Вставить переменную"
+                    title="Insert variable"
                   >
                     + Переменная
                   </button>

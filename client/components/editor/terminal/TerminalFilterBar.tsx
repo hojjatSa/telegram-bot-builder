@@ -42,9 +42,9 @@ interface TerminalFilterBarProps {
 
 /** Конфигурация кнопок фильтра */
 const FILTER_BUTTONS: { label: string; value: LogFilter }[] = [
-  { label: 'Все', value: 'all' },
-  { label: 'Вывод', value: 'stdout' },
-  { label: 'Ошибки', value: 'stderr' },
+  { label: 'All', value: 'all' },
+  { label: 'Output', value: 'stdout' },
+  { label: 'Errors', value: 'stderr' },
 ];
 
 /**
@@ -84,29 +84,29 @@ export function TerminalFilterBar({
       {/* Кнопки управления справа */}
       <div className="flex items-center gap-0.5">
         {onZoomIn && (
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onZoomIn} title="Увеличить">
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onZoomIn} title="Zoom in">
             <ZoomIn className="h-3.5 w-3.5" />
           </Button>
         )}
         {onZoomOut && (
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onZoomOut} title="Уменьшить">
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onZoomOut} title="Zoom out">
             <ZoomOut className="h-3.5 w-3.5" />
           </Button>
         )}
         {onClear && (
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onClear} title="Очистить">
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={onClear} title="Clear">
             <Trash2 className="h-3.5 w-3.5" />
           </Button>
         )}
         {onCopy && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-6 w-6" title="Копировать">
+              <Button variant="ghost" size="icon" className="h-6 w-6" title="Copy">
                 <Copy className="h-3.5 w-3.5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel className="text-xs">Копировать</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
               <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
@@ -116,12 +116,12 @@ export function TerminalFilterBar({
         {onSave && (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-6 w-6" title="Скачать">
+              <Button variant="ghost" size="icon" className="h-6 w-6" title="Download">
                 <Download className="h-3.5 w-3.5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel className="text-xs">Скачать</DropdownMenuLabel>
+              <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
               <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>

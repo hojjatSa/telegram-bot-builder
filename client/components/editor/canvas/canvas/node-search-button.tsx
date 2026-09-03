@@ -80,7 +80,7 @@ export function NodeSearchButton({ nodes, onNodeFocus, open, onOpenChange }: Nod
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Поиск узлов..."
+            placeholder="Search nodes..."
             className="flex-1 bg-transparent border-none outline-none text-sm text-slate-700 dark:text-slate-200 placeholder:text-slate-400 dark:placeholder:text-slate-500"
           />
         </div>

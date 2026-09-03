@@ -43,7 +43,7 @@ export function JsonApplyBar({ isDirty, error, onApply, onReset }: JsonApplyBarP
             <i className="fas fa-pencil-alt text-amber-500 text-xs" />
           )}
           <span className={error ? 'text-red-700 dark:text-red-300' : 'text-amber-700 dark:text-amber-300'}>
-            {error ? 'Невалидный JSON' : 'Есть несохранённые изменения'}
+            {error ? 'Invalid JSON' : 'Есть несохранённые изменения'}
           </span>
         </div>
         <div className="flex items-center gap-1.5">

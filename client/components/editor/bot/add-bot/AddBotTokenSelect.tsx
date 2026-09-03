@@ -38,7 +38,7 @@ function getBotLabel(token: BotToken): string {
   }
   if (token.botFirstName) return token.botFirstName;
   if (token.botUsername) return `@${token.botUsername}`;
-  return token.name || `Бот #${token.id}`;
+  return token.name || `Bot #${token.id}`;
 }
 
 /**

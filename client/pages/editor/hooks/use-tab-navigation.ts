@@ -47,7 +47,7 @@ export function useTabNavigation({
   projectId
 }: UseTabNavigationOptions) {
   const handleTabChange = useCallback((tab: EditorTab) => {
-    // Если нажали на ту же вкладку "Код" - ничего не делаем
+    // Если нажали на ту же вкладку "Code" - ничего не делаем
     if (tab === 'export' && currentTab === 'export') {
       return;
     }

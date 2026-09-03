@@ -22,7 +22,7 @@ export function AdminSchemaPage() {
       title={tableName ?? 'Database Schema'}
       embedSrc={embedSrc}
       backHref={tableName ? '/admin/schema' : undefined}
-      backLabel="Все таблицы"
+      backLabel="All tables"
     />
   );
 }

@@ -8,7 +8,7 @@ import { Node } from '@/types/bot';
 
 /** Метки типов получателей */
 const TYPE_LABELS: Record<string, string> = {
-  user: 'Пользователь',
+  user: 'User',
   chat_id: 'Чат',
   admin_ids: 'Администраторы',
 };

@@ -32,7 +32,7 @@ export function MobileUserBadges({ user }: MobileUserBadgesProps): React.JSX.Ele
       )}
       {/* Заблокирован — скрыто */}
       {Number(user.isBot) === 1 && (
-        <Badge variant="outline">Бот</Badge>
+        <Badge variant="outline">Bot</Badge>
       )}
     </div>
   );
