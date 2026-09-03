@@ -1,29 +1,16 @@
 /**
- * @fileoverview Кнопка входа через Telegram для экрана авторизации
+ * @fileoverview Telegram login button for the authentication screen
  * @module components/editor/auth/AuthTelegramButton
  */
 
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Loader2 } from 'lucide-react';
 
-/**
- * Свойства кнопки авторизации через Telegram
- */
 export interface AuthTelegramButtonProps {
-  /** Обработчик нажатия на кнопку */
   onClick: () => void;
-  /** Флаг состояния загрузки — показывает спиннер вместо иконки */
   isLoading?: boolean;
 }
 
-/**
- * Кнопка "Войти через Telegram" для экрана авторизации.
- * Использует синий градиент в стиле хедера приложения.
- *
- * @param props - Свойства компонента
- * @returns JSX элемент кнопки
- */
 export function AuthTelegramButton({ onClick, isLoading }: AuthTelegramButtonProps) {
   return (
     <Button
@@ -37,7 +24,7 @@ export function AuthTelegramButton({ onClick, isLoading }: AuthTelegramButtonPro
       ) : (
         <MessageCircle className="h-5 w-5 mr-2" />
       )}
-      Войти через Telegram
+      Sign in with Telegram
     </Button>
   );
 }
