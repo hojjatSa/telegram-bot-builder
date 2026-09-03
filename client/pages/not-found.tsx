@@ -1,16 +1,5 @@
 /**
- * Компонент страницы "404 Not Found" для отображения при переходе на несуществующую страницу.
- *
- * @component
- * @example
- * // Использование компонента:
- * import NotFound from '@/pages/not-found';
- *
- * return <NotFound />;
- *
- * @returns {JSX.Element} Возвращает JSX элемент, представляющий собой страницу с ошибкой 404.
- * Страница содержит карточку с иконкой предупреждения, заголовком "404 Page Not Found" и
- * текстом с подсказкой о возможной причине ошибки.
+ * Generic 404 page shown for unknown routes.
  */
 import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
@@ -26,7 +15,7 @@ export default function NotFound(): JSX.Element {
           </div>
 
           <p className="mt-4 text-sm text-gray-600">
-            Вы забыли добавить страницу в маршрутизатор?
+            The page you requested does not exist or is not available.
           </p>
         </CardContent>
       </Card>
