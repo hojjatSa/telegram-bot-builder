@@ -22,30 +22,14 @@ import { useTelegramLogin } from '@/components/editor/header/hooks/use-telegram-
 import { isGuest } from '@/types/telegram-user';
 
 const createProjectSchema = z.object({
-  name: z.string().min(1, 'Название проекта обязательно'),
+  name: z.string().min(1, 'Project name is required'),
   description: z.string().optional(),
 });
 
 type CreateProjectForm = z.infer<typeof createProjectSchema>;
 
 /**
- * Компонент главной страницы приложения BotCraft Studio.
- *
- * @component
- * @description
- * Главная страница приложения, предоставляющая интерфейс для управления проектами Telegram ботов.
- * Позволяет создавать новые проекты, просматривать существующие, удалять их и переходить к редактированию.
- * Также предоставляет доступ к сценариям ботов и возможность авторизации через Telegram.
- *
- * @example
- * // Использование компонента:
- * import Home from '@/pages/home';
- *
- * return <Home />;
- *
- * @returns {JSX.Element} Возвращает JSX элемент, представляющий собой главную страницу приложения.
- * Страница содержит заголовок с названием приложения, кнопки для создания новых проектов,
- * список существующих проектов с информацией о них и действиями, а также панель навигации.
+ * Main BotCraft Studio projects page.
  */
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -61,7 +45,6 @@ export default function Home() {
     defaultValues: { name: '', description: '' },
   });
 
-  // Загрузка активных проектов для списка на главной
   const { data: projects = [], isLoading: isLoadingActive } = useQuery<BotProject[]>({
     queryKey: ['/api/projects/list', 'active'],
     queryFn: () => apiRequest('GET', '/api/projects/list?archived=false'),
@@ -78,10 +61,6 @@ export default function Home() {
 
   const isLoading = isLoadingActive || (needArchivedCheck && isLoadingArchived);
 
-  /**
-   * Если активных нет, но есть архивные — открываем первый архивный в редакторе.
-   * На /not-found уходим только когда проектов нет вообще.
-   */
   useEffect(() => {
     if (!sessionReady || isLoading || isGuestUser) return;
 
@@ -95,7 +74,6 @@ export default function Home() {
     }
   }, [sessionReady, isLoading, isGuestUser, projects.length, archivedProjects, setLocation]);
 
-  // Создание нового проекта
   const createProjectMutation = useMutation({
     mutationFn: (data: CreateProjectForm) => apiRequest('POST', '/api/projects', {
       ...data,
@@ -106,7 +84,7 @@ export default function Home() {
             type: 'message',
             position: { x: 400, y: 300 },
             data: {
-              messageText: 'Привет! Я ваш новый бот.',
+              messageText: 'Hello! I am your new bot.',
               keyboardType: 'none',
               buttons: [],
               showInMenu: true,
@@ -118,7 +96,7 @@ export default function Home() {
             position: { x: 100, y: 300 },
             data: {
               command: '/start',
-              description: 'Запустить бота',
+              description: 'Start the bot',
               showInMenu: true,
               autoTransitionTo: 'start-message',
               sourceNodeId: 'start-message',
@@ -131,35 +109,34 @@ export default function Home() {
     onSuccess: (newProject: BotProject) => {
       queryClient.invalidateQueries({ queryKey: ['/api/projects/list'] });
       queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
-      toast({ title: "Проект создан", description: `Проект "${newProject.name}" успешно создан` });
+      toast({ title: 'Project created', description: `Project "${newProject.name}" was created successfully` });
       setIsCreateDialogOpen(false);
       form.reset();
       setLocation(`/editor/${newProject.id}`);
     },
     onError: () => {
       toast({
-        title: "Ошибка создания",
-        description: "Не удалось создать проект",
-        variant: "destructive",
+        title: 'Creation failed',
+        description: 'Could not create the project',
+        variant: 'destructive',
       });
     }
   });
 
-  // Удаление проекта
   const deleteProjectMutation = useMutation({
     mutationFn: (projectId: number) => apiRequest('DELETE', `/api/projects/${projectId}`),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
       toast({
-        title: "Проект удален",
-        description: "Проект успешно удален",
+        title: 'Project deleted',
+        description: 'The project was deleted successfully',
       });
     },
     onError: () => {
       toast({
-        title: "Ошибка удаления",
-        description: "Не удалось удалить проект",
-        variant: "destructive",
+        title: 'Deletion failed',
+        description: 'Could not delete the project',
+        variant: 'destructive',
       });
     }
   });
@@ -169,15 +146,15 @@ export default function Home() {
   };
 
   const handleDeleteProject = (project: BotProject) => {
-    if (confirm(`Вы уверены, что хотите удалить проект "${project.name}"? Это действие нельзя отменить.`)) {
+    if (confirm(`Are you sure you want to delete project "${project.name}"? This action cannot be undone.`)) {
       deleteProjectMutation.mutate(project.id);
     }
   };
 
   const formatDate = (dateString: string | Date | null) => {
-    if (!dateString) return 'Неизвестно';
+    if (!dateString) return 'Unknown';
     const date = typeof dateString === 'string' ? new Date(dateString) : dateString;
-    return date.toLocaleDateString('ru-RU', {
+    return date.toLocaleDateString('en-US', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric',
@@ -187,7 +164,6 @@ export default function Home() {
   };
 
   const getNodeCount = (project: any) => {
-    // Используем предподсчитанное поле с сервера
     if (typeof project.nodeCount === 'number') return project.nodeCount;
     if (!project.data || typeof project.data !== 'object') return 0;
     if (SheetsManager.isNewFormat(project.data)) {
@@ -198,18 +174,16 @@ export default function Home() {
   };
 
   const getSheetsInfo = (project: any) => {
-    // Используем предподсчитанное поле с сервера
     if (typeof project.sheetsCount === 'number') {
       return { count: project.sheetsCount, names: [] };
     }
     if (!project.data || typeof project.data !== 'object') return { count: 0, names: [] };
     if (SheetsManager.isNewFormat(project.data)) {
       const sheets = (project.data as any).sheets || [];
-      return { count: sheets.length, names: sheets.map((s: any) => s.name || 'Лист') };
+      return { count: sheets.length, names: sheets.map((s: any) => s.name || 'Sheet') };
     }
-    return { count: 1, names: ['Главный лист'] };
+    return { count: 1, names: ['Main sheet'] };
   };
-
 
   if (isAuthLoading || isLoading) {
     return (
@@ -218,30 +192,29 @@ export default function Home() {
           <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
             <i className="fas fa-spinner fa-spin text-gray-400 text-xl"></i>
           </div>
-          <p className="text-gray-600">Загрузка проектов...</p>
+          <p className="text-gray-600">Loading projects...</p>
         </div>
       </div>
     );
   }
 
-  // Гость — показываем экран входа
   if (isGuestUser) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center space-y-4 max-w-sm px-4">
           <Bot className="h-16 w-16 text-muted-foreground mx-auto" />
           <h2 className="text-2xl font-bold">BotCraft Studio</h2>
-          <p className="text-muted-foreground">Войдите через Telegram чтобы управлять своими проектами</p>
+          <p className="text-muted-foreground">Sign in with Telegram to manage your projects</p>
           <Button onClick={handleTelegramLogin} size="lg" className="w-full">
-            Войти через Telegram
+            Sign in with Telegram
           </Button>
         </div>
       </div>
     );
   }
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Заголовок */}
       <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -250,7 +223,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className="text-lg font-semibold text-foreground">BotCraft Studio</h1>
-              <p className="text-xs text-muted-foreground">Конструктор Telegram ботов</p>
+              <p className="text-xs text-muted-foreground">Visual Telegram Bot Builder</p>
             </div>
           </div>
           
@@ -258,7 +231,7 @@ export default function Home() {
             <Link href="/templates">
               <Button variant="outline" size="sm">
                 <Bot className="h-4 w-4 mr-2" />
-                Сценарии
+                Templates
               </Button>
             </Link>
             <ThemeToggle />
@@ -266,13 +239,12 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Основной контент */}
       <main className="container py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Мои проекты</h2>
+            <h2 className="text-3xl font-bold tracking-tight">My Projects</h2>
             <p className="text-muted-foreground">
-              Управляйте своими Telegram ботами
+              Manage your Telegram bots
             </p>
           </div>
           
@@ -281,14 +253,14 @@ export default function Home() {
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
-                  Новый проект
+                  New Project
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Создать новый проект</DialogTitle>
+                  <DialogTitle>Create a new project</DialogTitle>
                   <DialogDescription className="sr-only">
-                    Создайте новый проект Telegram бота
+                    Create a new Telegram bot project
                   </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
@@ -298,9 +270,9 @@ export default function Home() {
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Название проекта</FormLabel>
+                          <FormLabel>Project name</FormLabel>
                           <FormControl>
-                            <Input {...field} placeholder="Мой новый бот" />
+                            <Input {...field} placeholder="My new bot" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -311,9 +283,9 @@ export default function Home() {
                       name="description"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Описание (опционально)</FormLabel>
+                          <FormLabel>Description (optional)</FormLabel>
                           <FormControl>
-                            <Textarea {...field} placeholder="Краткое описание бота" rows={3} />
+                            <Textarea {...field} placeholder="Short description of the bot" rows={3} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -321,10 +293,10 @@ export default function Home() {
                     />
                     <div className="flex justify-end space-x-2">
                       <Button type="button" variant="outline" onClick={() => setIsCreateDialogOpen(false)}>
-                        Отмена
+                        Cancel
                       </Button>
                       <Button type="submit" disabled={createProjectMutation.isPending}>
-                        {createProjectMutation.isPending ? 'Создание...' : 'Создать'}
+                        {createProjectMutation.isPending ? 'Creating...' : 'Create'}
                       </Button>
                     </div>
                   </form>
@@ -334,7 +306,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Список проектов */}
         {projects.length === 0 ? null : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
@@ -344,7 +315,7 @@ export default function Home() {
                     <div className="flex-1">
                       <CardTitle className="text-lg">{project.name}</CardTitle>
                       <CardDescription className="mt-1">
-                        {project.description || 'Без описания'}
+                        {project.description || 'No description'}
                       </CardDescription>
                     </div>
                     <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -361,12 +332,11 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="pt-0">
                   <div className="space-y-3">
-                    {/* Статистика */}
                     <div className="space-y-2">
                       <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                         <div className="flex items-center">
                           <User className="h-4 w-4 mr-1" />
-                          {getNodeCount(project)} узлов
+                          {getNodeCount(project)} nodes
                         </div>
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 mr-1" />
@@ -374,14 +344,13 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      {/* Информация о листах */}
                       {(() => {
                         const sheetsInfo = getSheetsInfo(project);
                         return (
                           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                             <div className="flex items-center">
                               <Bot className="h-4 w-4 mr-1" />
-                              {sheetsInfo.count} {sheetsInfo.count === 1 ? 'лист' : sheetsInfo.count < 5 ? 'листа' : 'листов'}:
+                              {sheetsInfo.count} {sheetsInfo.count === 1 ? 'sheet' : 'sheets'}:
                             </div>
                             <div className="flex flex-wrap gap-1">
                               {sheetsInfo.names.slice(0, 3).map((name: string, index: number) => (
@@ -400,14 +369,11 @@ export default function Home() {
                       })()}
                     </div>
 
-
-
-                    {/* Действия */}
                     <div className="flex space-x-2">
                       <Link href={`/editor/${project.id}`} className="flex-1">
                         <Button className="w-full">
                           <Edit className="h-4 w-4 mr-2" />
-                          Редактировать
+                          Edit
                         </Button>
                       </Link>
                       <Link href={`/editor/${project.id}?tab=export`}>
