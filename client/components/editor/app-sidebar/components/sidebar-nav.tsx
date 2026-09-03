@@ -1,5 +1,5 @@
 /**
- * @fileoverview Вертикальная навигация по вкладкам сайдбара
+ * @fileoverview Vertical editor sidebar navigation
  */
 
 import { LayoutDashboard, Code2, Bot, Users, Megaphone, BarChart2, MessageSquare, Table2, Terminal, FileImage, History, Sparkles } from 'lucide-react';
@@ -7,51 +7,33 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/utils';
 import type { HeaderTab } from '../types';
 
-/**
- * Пропсы компонента SidebarNav
- */
 interface SidebarNavProps {
-  /** Текущая активная вкладка */
   currentTab: HeaderTab;
-  /** Обработчик смены вкладки */
   onTabChange: (tab: HeaderTab) => void;
-  /** Свёрнут ли сайдбар */
   isCollapsed?: boolean;
 }
 
-/**
- * Конфигурация одного пункта навигации
- */
 interface NavItem {
-  /** Идентификатор вкладки */
   tab: HeaderTab;
-  /** Отображаемое название */
   label: string;
-  /** Иконка из lucide-react */
   icon: React.ComponentType<{ className?: string }>;
 }
 
-/** Список активных пунктов навигации */
 const NAV_ITEMS: NavItem[] = [
-  { tab: 'editor',    label: 'Редактор',   icon: LayoutDashboard },
-  { tab: 'bot',       label: 'Бот',        icon: Bot },
-  { tab: 'terminal', label: 'Терминал',  icon: Terminal },
-  { tab: 'users',     label: 'Пользователи', icon: Users },
-  { tab: 'dialogs',   label: 'Диалоги',    icon: MessageSquare },
-  { tab: 'broadcast', label: 'Рассылки',   icon: Megaphone },
-  { tab: 'analytics', label: 'Аналитика',  icon: BarChart2 },
-  { tab: 'tables',    label: 'Таблицы',    icon: Table2 },
-  { tab: 'files',     label: 'Файлы',      icon: FileImage },
-  { tab: 'versions',  label: 'История версий', icon: History },
-  { tab: 'agent',     label: 'Агент',      icon: Sparkles },
-  { tab: 'export',    label: 'Код',        icon: Code2 },
+  { tab: 'editor',    label: 'Editor',          icon: LayoutDashboard },
+  { tab: 'bot',       label: 'Bot',             icon: Bot },
+  { tab: 'terminal',  label: 'Terminal',        icon: Terminal },
+  { tab: 'users',     label: 'Users',           icon: Users },
+  { tab: 'dialogs',   label: 'Dialogs',         icon: MessageSquare },
+  { tab: 'broadcast', label: 'Broadcasts',      icon: Megaphone },
+  { tab: 'analytics', label: 'Analytics',       icon: BarChart2 },
+  { tab: 'tables',    label: 'Tables',          icon: Table2 },
+  { tab: 'files',     label: 'Files',           icon: FileImage },
+  { tab: 'versions',  label: 'Version History', icon: History },
+  { tab: 'agent',     label: 'Agent',           icon: Sparkles },
+  { tab: 'export',    label: 'Code',            icon: Code2 },
 ];
 
-/**
- * Вертикальный список кнопок навигации по вкладкам
- * @param props - Свойства компонента
- * @returns JSX элемент с кнопками навигации
- */
 export function SidebarNav({ currentTab, onTabChange, isCollapsed }: SidebarNavProps) {
   return (
     <nav className="flex flex-col gap-1">
