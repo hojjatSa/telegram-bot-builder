@@ -1,0 +1,309 @@
+name: Translate Editor UI Pass 2
+
+on:
+  push:
+    branches:
+      - golnoor
+    paths:
+      - .github/workflows/translate-editor-ui-pass2.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: golnoor
+          fetch-depth: 0
+
+      - name: Translate remaining high-traffic editor strings
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          root = Path('client')
+          translations = {
+            # Variable assignments
+            'Подстановка строки или {переменной}': 'String substitution or {variable}',
+            'Выражение': 'Expression',
+            'Арифметика: +, -, *, /, //, %, **': 'Arithmetic: +, -, *, /, //, %, **',
+            'Случайное число': 'Random number',
+            'Целое число от мин до макс': 'Integer from min to max',
+            'Случайный элемент': 'Random item',
+            'Из списка через запятую': 'From a comma-separated list',
+            'Unix время + смещение (сек)': 'Unix time + offset (sec)',
+            'Длительность': 'Duration',
+            'Секунды → MM:SS или HH:MM:SS': 'Seconds → MM:SS or HH:MM:SS',
+            'Формат числа': 'Number format',
+            'Число с разделителями: 5000000 → 5 000 000': 'Number with separators: 5000000 → 5 000 000',
+            'Элемент массива': 'Array item',
+            'По индексу или dot-notation ключу': 'By index or dot-notation key',
+            'Объединить массивы': 'Merge arrays',
+            'Склеить два массива в один': 'Merge two arrays into one',
+            'Поиск в таблице': 'Table lookup',
+            'Найти значение по условию': 'Find a value by condition',
+            'Замена подстроки': 'Replace substring',
+            'Найти и заменить в строке': 'Find and replace in a string',
+            'Regex извлечение': 'Regex extraction',
+            'Извлечь по регулярному выражению': 'Extract using a regular expression',
+            'Число из строки': 'Number from string',
+            'Извлекает первое число из текста': 'Extracts the first number from text',
+            'Разделить и взять': 'Split and take',
+            'Разделить строку и взять N-й элемент': 'Split a string and take the Nth item',
+            'JSON по ключу': 'JSON by key',
+            'Значение из JSON по пути (data.user.name)': 'Value from JSON path (data.user.name)',
+            'Подстрока': 'Substring',
+            'Вырезать часть строки (start, end)': 'Extract part of a string (start, end)',
+            'Условие (если/иначе)': 'Condition (if/else)',
+            'Если условие → значение A, иначе → B': 'If condition → value A, otherwise → B',
+            'Нижний регистр': 'Lowercase',
+            'Все буквы строчные': 'All letters lowercase',
+            'Верхний регистр': 'Uppercase',
+            'Все буквы заглавные': 'All letters uppercase',
+            'Убрать пробелы': 'Trim whitespace',
+            'Удалить пробелы с начала и конца': 'Remove leading and trailing whitespace',
+            'Длина': 'Length',
+            'Количество символов или элементов массива': 'Number of characters or array items',
+            'переменная': 'variable',
+            'мин': 'min',
+            'макс': 'max',
+            '{массив}': '{array}',
+            'индекс или ключ': 'index or key',
+            'первый массив': 'first array',
+            'второй массив': 'second array',
+            'искать': 'find',
+            'заменить на': 'replace with',
+            '{переменная} — источник': '{variable} — source',
+            '{переменная} — JSON источник': '{variable} — JSON source',
+            'группа': 'group',
+            'разделитель': 'separator',
+            'индекс': 'index',
+            'путь: data.user.name': 'path: data.user.name',
+            'end (пусто=конец)': 'end (empty=end)',
+            '{переменная}': '{variable}',
+            'значение': 'value',
+            'если true': 'if true',
+            'если false': 'if false',
+            'таблица': 'table',
+            'поле': 'field',
+            'элемент1, элемент2, элемент3': 'item1, item2, item3',
+            '0 = сейчас, 90 = +90 сек': '0 = now, 90 = +90 sec',
+            'значение или {переменная}': 'value or {variable}',
+            '+ условие': '+ condition',
+
+            # Conditions
+            'Если переменная введена': 'If variable is set',
+            'Если переменная не введена': 'If variable is empty',
+            'Если переменная равна': 'If variable equals',
+            'Не равно': 'Does not equal',
+            'Если переменная содержит': 'If variable contains',
+            'Не содержит': 'Does not contain',
+            'Начинается с': 'Starts with',
+            'Заканчивается на': 'Ends with',
+            'Соответствует регулярке': 'Matches regex',
+            'Если переменная больше': 'If variable is greater than',
+            'Если переменная меньше': 'If variable is less than',
+            'Если переменная в диапазоне': 'If variable is in range',
+            'Чётное число': 'Even number',
+            'Нечётное число': 'Odd number',
+            'Делится на': 'Divisible by',
+            'Если приватный чат': 'If private chat',
+            'Если групповой чат': 'If group chat',
+            'Если канал': 'If channel',
+            'Если пользователь — администратор бота': 'If user is a bot administrator',
+            'Если пользователь — Telegram Premium': 'If user has Telegram Premium',
+            'Если пользователь — бот': 'If user is a bot',
+            'Если пользователь подписан на канал / состоит в группе': 'If user is subscribed to the channel / belongs to the group',
+            'Если пользователь не подписан на канал / не состоит в группе': 'If user is not subscribed to the channel / does not belong to the group',
+            'Во всех остальных случаях': 'In all other cases',
+            'Если переменная "${varName}" введена': 'If variable "${varName}" is set',
+            'Если переменная "${varName}" не введена': 'If variable "${varName}" is empty',
+            'Если переменная "${varName}" равна "${value || \'...\'}"': 'If variable "${varName}" equals "${value || \'...\'}"',
+            'Если переменная "${varName}" не равна "${value || \'...\'}"': 'If variable "${varName}" does not equal "${value || \'...\'}"',
+            'Если переменная "${varName}" содержит "${value || \'...\'}"': 'If variable "${varName}" contains "${value || \'...\'}"',
+            'Если переменная "${varName}" не содержит "${value || \'...\'}"': 'If variable "${varName}" does not contain "${value || \'...\'}"',
+            'Если переменная "${varName}" начинается с "${value || \'...\'}"': 'If variable "${varName}" starts with "${value || \'...\'}"',
+            'Если переменная "${varName}" заканчивается на "${value || \'...\'}"': 'If variable "${varName}" ends with "${value || \'...\'}"',
+            'Если переменная "${varName}" соответствует регулярке "${value || \'...\'}"': 'If variable "${varName}" matches regex "${value || \'...\'}"',
+            'Если переменная "${varName}" больше ${value || \'...\'}': 'If variable "${varName}" is greater than ${value || \'...\'}',
+            'Если переменная "${varName}" меньше ${value || \'...\'}': 'If variable "${varName}" is less than ${value || \'...\'}',
+            'Если переменная "${varName}" от ${value || \'...\'} до ${value2 || \'...\'}': 'If variable "${varName}" is between ${value || \'...\'} and ${value2 || \'...\'}',
+            'Если переменная "${varName}" — чётное число': 'If variable "${varName}" is even',
+            'Если переменная "${varName}" — нечётное число': 'If variable "${varName}" is odd',
+            'Если переменная "${varName}" делится на ${value || \'...\'}': 'If variable "${varName}" is divisible by ${value || \'...\'}',
+            'Не подписан на ${channels[0]}': 'Not subscribed to ${channels[0]}',
+            'Подписан на ${channels[0]}': 'Subscribed to ${channels[0]}',
+            'Не подписан ни на один из: ${list}': 'Not subscribed to any of: ${list}',
+            'Подписан хотя бы на один из: ${list}': 'Subscribed to at least one of: ${list}',
+            'Не подписан на все: ${list}': 'Not subscribed to all of: ${list}',
+            'Подписан на все: ${list}': 'Subscribed to all: ${list}',
+            'Удалить ветку': 'Delete branch',
+            'от (или {переменная})': 'from (or {variable})',
+            'до (или {переменная})': 'to (or {variable})',
+            'Нет доступных узлов': 'No available nodes',
+            'Текст сообщения для этой ветки...': 'Message text for this branch...',
+            'Текст сообщения, отправляемого по этой ветке': 'Message sent through this branch',
+
+            # Properties header
+            'Текущий элемент': 'Current element',
+            '📝 Текстовое сообщение': '📝 Text Message',
+            '🚀 Старт': '🚀 Start',
+            '⌨️ Команда': '⌨️ Command',
+            '⌨️ Клавиатура': '⌨️ Keyboard',
+            '😀 Стикер': '😀 Sticker',
+            '🎤 Голосовое сообщение': '🎤 Voice Message',
+            '🎞️ GIF анимация': '🎞️ GIF Animation',
+            '📍 Геолокация': '📍 Location',
+            '📞 Контакт': '📞 Contact',
+            '⚡ Триггер команды': '⚡ Command Trigger',
+            '💬 Текстовый триггер': '💬 Text Trigger',
+            '📌 Закрепить сообщение': '📌 Pin Message',
+            '📌❌ Открепить сообщение': '📌❌ Unpin Message',
+            '🗑️ Удалить сообщение': '🗑️ Delete Message',
+            '↗️ Переслать сообщение': '↗️ Forward Message',
+            '🚫 Заблокировать пользователя': '🚫 Ban User',
+            '✅ Разблокировать пользователя': '✅ Unban User',
+            '🔇 Ограничить пользователя': '🔇 Restrict User',
+            '🔊 Снять ограничения': '🔊 Remove Restrictions',
+            '👢 Исключить пользователя': '👢 Kick User',
+            '👑 Назначить администратором': '👑 Promote Administrator',
+            '👤 Снять с администратора': '👤 Demote Administrator',
+            '⚡ Права администратора': '⚡ Administrator Rights',
+            '📢 Рассылка': '📢 Broadcast',
+            'Сохранить ответ в переменную': 'Save answer to variable',
+            '🖼️ Медиафайл': '🖼️ Media File',
+            '🔄 Цикл (Loop)': '🔄 Loop',
+            '✅ ID скопирован!': '✅ ID copied!',
+            '"${displayNodeId}" в буфер обмена': '"${displayNodeId}" copied to clipboard',
+            'Нажмите, чтобы скопировать ID': 'Click to copy ID',
+            'Закрыть панель свойств': 'Close properties panel',
+
+            # Save template modal
+            '${projectName} - Сценарий': '${projectName} - Template',
+            'Новый сценарий': 'New template',
+            'Сценарий сохранен': 'Template saved',
+            'Ваш сценарий бота успешно сохранен': 'Your bot template was saved successfully',
+            'Не удалось сохранить сценарий': 'Could not save template',
+            'Название сценария обязательно': 'Template name is required',
+            'Сохранить как сценарий': 'Save as template',
+            'Сохраните текущую схему бота как сценарий для повторного использования': 'Save the current bot flow as a reusable template',
+            'Название сценария': 'Template name',
+            'Введите название сценария': 'Enter template name',
+            'Краткое описание того, для чего предназначен этот сценарий': 'Briefly describe what this template is for',
+            'Категория': 'Category',
+            'Выберите категорию': 'Select category',
+            'Сделать сценарий публичным (другие пользователи смогут его использовать)': 'Make template public (other users can use it)',
+            'Сохранить анонимно (скрыть мой юзернейм)': 'Save anonymously (hide my username)',
+            'Информация о сценарии:': 'Template information:',
+            'Узлов:': 'Nodes:',
+            'Связей:': 'Connections:',
+            'Команд:': 'Commands:',
+            'Кнопок:': 'Buttons:',
+            'Сохранить сценарий': 'Save template',
+
+            # Userbot settings
+            'Ошибка сохранения настроек юзербота': 'Could not save userbot settings',
+            'Заполните все поля': 'Fill in all fields',
+            'Код отправлен': 'Code sent',
+            'Проверьте Telegram или SMS': 'Check Telegram or SMS',
+            'Ошибка отправки кода': 'Could not send code',
+            'Введите код': 'Enter the code',
+            'Авторизация успешна!': 'Authorization successful!',
+            'Session string сохранён': 'Session string saved',
+            'Неверный код': 'Invalid code',
+            'Введите пароль': 'Enter password',
+            'Неверный пароль': 'Invalid password',
+            'Юзербот работает параллельно с основным ботом': 'Userbot runs alongside the main bot',
+            'Подключить аккаунт пользователя через Telethon': 'Connect a user account through Telethon',
+            'Получить API ID и Hash на my.telegram.org': 'Get API ID and Hash at my.telegram.org',
+            'Номер телефона': 'Phone number',
+            'Отправить код': 'Send code',
+            'Код из Telegram / SMS': 'Code from Telegram / SMS',
+            'Подтвердить': 'Confirm',
+            'Пароль двухфакторной аутентификации': 'Two-factor authentication password',
+            'Ваш 2FA пароль': 'Your 2FA password',
+            'Войти': 'Sign in',
+            'Аккаунт авторизован': 'Account authorized',
+            'Переавторизовать': 'Reauthorize',
+
+            # Media library
+            'Неподдерживаемый файл': 'Unsupported file',
+            'Файл удален': 'File deleted',
+            'Файл обновлен': 'File updated',
+            'Информация о файле была обновлена': 'File information was updated',
+            'Загрузить медиафайлы': 'Upload media files',
+            'Отпустите файлы здесь!': 'Drop files here!',
+            'Файлы будут загружены автоматически': 'Files will upload automatically',
+            'Неподдерживаемые файлы': 'Unsupported files',
+            'Проверьте тип и размер файлов': 'Check file type and size',
+            'Загрузка файлов...': 'Uploading files...',
+            'Пожалуйста, подождите': 'Please wait',
+            'Перетащите файлы сюда или нажмите для выбора': 'Drop files here or click to browse',
+            'Нажмите для выбора файлов': 'Click to select files',
+            'Изображения, видео, аудио, документы (до 50МБ)': 'Images, video, audio, documents (up to 50MB)',
+            'Документы': 'Documents',
+            'Файл успешно загружен': 'File uploaded successfully',
+            'Сделать фото': 'Take photo',
+            'Поиск файлов по имени или описанию...': 'Search files by name or description...',
+            'Файлы не найдены': 'No files found',
+            'Нет загруженных файлов': 'No uploaded files',
+            'Редактировать файл': 'Edit file',
+            'Измените описание и теги для этого медиа файла': 'Edit the description and tags for this media file',
+            'Описание файла': 'File description',
+            'Теги (через запятую)': 'Tags (comma-separated)',
+            'тег1, тег2, тег3': 'tag1, tag2, tag3',
+            'Фото загружено': 'Photo uploaded',
+          }
+
+          pattern = re.compile(r"(?P<q>['\"`])(?P<body>(?:\\.|(?!\1).)*?)(?P=q)", re.S)
+          extensions = {'.ts', '.tsx', '.js', '.jsx', '.html'}
+          changed = []
+
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix not in extensions:
+                  continue
+              if '/tests/' in str(path) or '.test.' in path.name:
+                  continue
+              text = path.read_text(encoding='utf-8', errors='ignore')
+              original = text
+
+              def replace_string(match):
+                  body = match.group('body')
+                  target = translations.get(body)
+                  if target is None:
+                      return match.group(0)
+                  q = match.group('q')
+                  return f'{q}{target}{q}'
+
+              text = pattern.sub(replace_string, text)
+              for source, target in sorted(translations.items(), key=lambda item: -len(item[0])):
+                  if '<' in source or '>' in source:
+                      continue
+                  text = re.sub(
+                      r'(>\s*)' + re.escape(source) + r'(\s*<)',
+                      lambda match, value=target: match.group(1) + value + match.group(2),
+                      text,
+                  )
+              if text != original:
+                  path.write_text(text, encoding='utf-8')
+                  changed.append(str(path))
+
+          print(f'Translated {len(changed)} files in pass 2')
+
+      - name: Commit pass 2
+        run: |
+          if git diff --quiet -- client; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "hojjat saadatmand"
+          git config user.email "hojjat.sa@gmail.com"
+          git add client
+          git commit -m "feat(i18n): translate editor properties and media UI"
+          git push origin golnoor
