@@ -1,5 +1,5 @@
 /**
- * @fileoverview Брендинг бокового меню панели управления
+ * @fileoverview Admin sidebar branding
  * @module components/admin/sidebar/admin-sidebar-brand
  */
 
@@ -7,19 +7,10 @@ import { Shield } from 'lucide-react';
 import { cn } from '@/utils/utils';
 import { CLIENT_APP_VERSION } from '@/lib/app-version';
 
-/**
- * Пропсы компонента AdminSidebarBrand
- */
 interface AdminSidebarBrandProps {
-  /** Свёрнуто ли боковое меню */
   isCollapsed?: boolean;
 }
 
-/**
- * Название панели и номер сборки в шапке бокового меню
- * @param props - Свойства компонента
- * @returns JSX элемент
- */
 export function AdminSidebarBrand({ isCollapsed }: AdminSidebarBrandProps) {
   return (
     <div className={cn('flex items-center gap-2 min-w-0', isCollapsed && 'w-full justify-center')}>
@@ -30,7 +21,7 @@ export function AdminSidebarBrand({ isCollapsed }: AdminSidebarBrandProps) {
       {!isCollapsed && (
         <div className="flex flex-col leading-tight min-w-0">
           <span className="text-sm font-bold text-foreground whitespace-nowrap">
-            Панель управления
+            Admin Panel
           </span>
           <span className="text-[10px] text-muted-foreground/70 font-medium">
             v{CLIENT_APP_VERSION}
