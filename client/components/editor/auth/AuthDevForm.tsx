@@ -1,5 +1,5 @@
 /**
- * @fileoverview Инлайн-форма dev-входа по Telegram ID
+ * @fileoverview Development login form using a Telegram ID
  * @module components/editor/auth/AuthDevForm
  */
 
@@ -10,27 +10,17 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { useTelegramAuth } from '@/components/editor/header/hooks/use-telegram-auth';
 
-/**
- * Форма входа по Telegram ID для dev-режима.
- * Отправляет POST /api/auth/dev-login и синхронизирует клиентскую сессию.
- *
- * @returns JSX элемент формы
- */
 export function AuthDevForm() {
   const [telegramId, setTelegramId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const { acceptSession } = useTelegramAuth();
 
-  /**
-   * Обрабатывает отправку формы — вызывает dev-login API
-   * @param e - событие формы
-   */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const id = parseInt(telegramId, 10);
     if (!id) {
-      toast({ title: 'Введите Telegram ID', variant: 'destructive' });
+      toast({ title: 'Enter your Telegram ID', variant: 'destructive' });
       return;
     }
 
@@ -46,10 +36,10 @@ export function AuthDevForm() {
       if (data.success && data.user) {
         await acceptSession(data.user, Boolean(data.switched));
       } else {
-        toast({ title: 'Ошибка входа', description: data.error, variant: 'destructive' });
+        toast({ title: 'Login failed', description: data.error, variant: 'destructive' });
       }
     } catch {
-      toast({ title: 'Ошибка входа', description: 'Не удалось выполнить dev-login', variant: 'destructive' });
+      toast({ title: 'Login failed', description: 'Could not complete dev login', variant: 'destructive' });
     } finally {
       setIsLoading(false);
     }
@@ -58,16 +48,16 @@ export function AuthDevForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-3">
       <p className="text-xs text-amber-500 text-center leading-relaxed">
-        ⚠️ Dev-режим: введите ваш Telegram ID
+        ⚠️ Dev mode: enter your Telegram ID
       </p>
       <p className="text-xs text-muted-foreground text-center leading-relaxed">
-        Для входа через Telegram Login Widget добавьте{' '}
-        <code className="rounded bg-muted px-1 py-0.5 text-[11px]">SKIP_AUTH=false</code> в{' '}
-        <code className="rounded bg-muted px-1 py-0.5 text-[11px]">.env</code> и перезапустите сервер
+        To use Telegram Login Widget, add{' '}
+        <code className="rounded bg-muted px-1 py-0.5 text-[11px]">SKIP_AUTH=false</code> to{' '}
+        <code className="rounded bg-muted px-1 py-0.5 text-[11px]">.env</code> and restart the server
       </p>
       <Input
         type="number"
-        placeholder="Ваш Telegram ID"
+        placeholder="Your Telegram ID"
         value={telegramId}
         onChange={e => setTelegramId(e.target.value)}
         disabled={isLoading}
@@ -80,10 +70,10 @@ export function AuthDevForm() {
         className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/30 transition-all duration-200"
       >
         {isLoading ? <Loader2 className="h-5 w-5 animate-spin mr-2" /> : <LogIn className="h-5 w-5 mr-2" />}
-        Войти
+        Sign in
       </Button>
       <p className="text-xs text-muted-foreground text-center">
-        Узнать ID:{' '}
+        Find your Telegram ID with{' '}
         <a href="https://t.me/userinfobot" target="_blank" rel="noreferrer" className="underline">
           @userinfobot
         </a>
