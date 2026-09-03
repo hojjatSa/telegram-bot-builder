@@ -1,5 +1,5 @@
 /**
- * @fileoverview Экран "Нет проектов" — отображается когда у пользователя нет проектов
+ * @fileoverview Empty-state screen shown when a user has no projects
  * @module components/editor/no-projects/NoProjectsScreen
  */
 
@@ -14,12 +14,6 @@ import { Input } from '@/components/ui/input';
 import { apiRequest } from '@/queryClient';
 import { useNoProjects } from './hooks/use-no-projects';
 
-/**
- * Экран приветствия для пользователя без проектов.
- * Предлагает создать, импортировать, выбрать шаблон или выйти.
- *
- * @returns JSX элемент экрана
- */
 export function NoProjectsScreen() {
   const [projectName, setProjectName] = useState('');
   const [, setLocation] = useLocation();
@@ -35,7 +29,6 @@ export function NoProjectsScreen() {
     isImporting,
   } = useNoProjects();
 
-  /** Мутация создания нового проекта через POST /api/projects */
   const createMutation = useMutation({
     mutationFn: (name: string) =>
       apiRequest('POST', '/api/projects', {
@@ -54,14 +47,13 @@ export function NoProjectsScreen() {
     <div className="flex items-center justify-center min-h-screen bg-background">
       <Card className="w-full max-w-sm mx-4 shadow-2xl border-border/50">
         <CardHeader className="items-center text-center space-y-3 pb-4">
-          {/* Иконка бота */}
           <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border border-primary/20">
             <Bot className="h-8 w-8 text-primary" />
           </div>
           <div className="space-y-1">
-            <CardTitle className="text-2xl font-bold">Нет проектов</CardTitle>
+            <CardTitle className="text-2xl font-bold">No projects yet</CardTitle>
             <CardDescription>
-              Создайте первый проект или импортируйте существующий
+              Create your first project or import an existing one
             </CardDescription>
           </div>
         </CardHeader>
@@ -69,46 +61,45 @@ export function NoProjectsScreen() {
         <CardContent className="space-y-2 pt-2">
           <Button className="w-full" onClick={handleCreateProject}>
             <Plus className="h-4 w-4 mr-2" />
-            Создать проект
+            Create Project
           </Button>
 
           <Button className="w-full" variant="outline" onClick={handleImport} disabled={isImporting}>
             <FileJson className="h-4 w-4 mr-2" />
-            {isImporting ? 'Импорт...' : 'Импортировать JSON'}
+            {isImporting ? 'Importing...' : 'Import JSON'}
           </Button>
 
           <Button className="w-full" variant="outline" onClick={handleTemplates}>
             <LayoutTemplate className="h-4 w-4 mr-2" />
-            Выбрать шаблон
+            Choose Template
           </Button>
 
           <Button className="w-full text-destructive" variant="ghost" onClick={handleLogout}>
             <LogOut className="h-4 w-4 mr-2" />
-            Выйти
+            Log out
           </Button>
         </CardContent>
       </Card>
 
-      {/* Диалог создания проекта */}
       <Dialog open={isCreateOpen} onOpenChange={setIsCreateOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Новый проект</DialogTitle>
+            <DialogTitle>New Project</DialogTitle>
           </DialogHeader>
           <div className="space-y-4 pt-2">
             <Input
-              placeholder="Название проекта"
+              placeholder="Project name"
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && projectName.trim() && createMutation.mutate(projectName.trim())}
             />
             <div className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setIsCreateOpen(false)}>Отмена</Button>
+              <Button variant="outline" onClick={() => setIsCreateOpen(false)}>Cancel</Button>
               <Button
                 disabled={!projectName.trim() || createMutation.isPending}
                 onClick={() => createMutation.mutate(projectName.trim())}
               >
-                {createMutation.isPending ? 'Создание...' : 'Создать'}
+                {createMutation.isPending ? 'Creating...' : 'Create'}
               </Button>
             </div>
           </div>
