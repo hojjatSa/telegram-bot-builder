@@ -1,34 +1,24 @@
 /**
- * @fileoverview Баннер текущего режима входа на странице настроек
+ * @fileoverview Current login mode banner on the settings page
  * @module components/admin/settings/auth-mode-banner
  */
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import type { AdminAppSettings } from '../types';
 
-/**
- * Пропсы компонента AuthModeBanner
- */
 interface AuthModeBannerProps {
-  /** Текущие настройки приложения */
   settings: AdminAppSettings;
 }
 
-/**
- * Информационный баннер о текущем способе входа
- * @param props - Свойства компонента
- * @returns JSX элемент баннера или null
- */
 export function AuthModeBanner({ settings }: AuthModeBannerProps) {
   const { loginMode } = settings.auth;
 
   if (loginMode === 'dev_login') {
     return (
       <Alert>
-        <AlertTitle>Сейчас: dev-login</AlertTitle>
+        <AlertTitle>Current mode: Dev login</AlertTitle>
         <AlertDescription>
-          Вход по Telegram ID, виджет и поля BotFather не нужны. Перед деплоем и ссылкой для друзей
-          выберите ниже «Telegram Login Widget» и заполните данные бота.
+          Users sign in by entering a Telegram ID. BotFather credentials are not required. Before production deployment or sharing access with other users, switch to Telegram Login Widget below and configure the bot credentials.
         </AlertDescription>
       </Alert>
     );
@@ -37,17 +27,17 @@ export function AuthModeBanner({ settings }: AuthModeBannerProps) {
   if (settings.configured) {
     return (
       <Alert className="border-green-500/40 bg-green-500/10">
-        <AlertTitle>Сейчас: Telegram Login Widget</AlertTitle>
-        <AlertDescription>Вход через кнопку Telegram на сайте.</AlertDescription>
+        <AlertTitle>Current mode: Telegram Login Widget</AlertTitle>
+        <AlertDescription>Users sign in through the Telegram button on the website.</AlertDescription>
       </Alert>
     );
   }
 
   return (
     <Alert className="border-amber-500/40 bg-amber-500/10">
-      <AlertTitle>Нужна настройка Telegram Login</AlertTitle>
+      <AlertTitle>Telegram Login needs configuration</AlertTitle>
       <AlertDescription>
-        Заполните данные BotFather ниже. Или переключите на dev-login для локальной работы без виджета.
+        Fill in the BotFather credentials below, or switch back to Dev login for local development without the widget.
       </AlertDescription>
     </Alert>
   );
