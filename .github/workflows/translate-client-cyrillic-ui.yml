@@ -1,5 +1,6 @@
 name: Translate Client Cyrillic UI
 
+# Rerun after high-traffic editor translations were manually polished.
 on:
   push:
     branches:
