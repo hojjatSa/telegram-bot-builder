@@ -1,4 +1,4 @@
-name: Fork Telegram API base guard
+name: Fork compatibility guard
 
 on:
   pull_request:
@@ -6,6 +6,10 @@ on:
       - 'server/utils/telegram-api-base.ts'
       - 'server/utils/telegram-api-base.test.ts'
       - 'server/utils/telegram-proxy.ts'
+      - 'server/fork/**'
+      - 'server/admin/setup-admin-routes.ts'
+      - 'client/fork/**'
+      - 'client/components/admin/pages/admin-overview.tsx'
       - 'lib/templates/config/**'
       - 'package.json'
       - 'package-lock.json'
@@ -16,6 +20,10 @@ on:
       - 'server/utils/telegram-api-base.ts'
       - 'server/utils/telegram-api-base.test.ts'
       - 'server/utils/telegram-proxy.ts'
+      - 'server/fork/**'
+      - 'server/admin/setup-admin-routes.ts'
+      - 'client/fork/**'
+      - 'client/components/admin/pages/admin-overview.tsx'
       - 'lib/templates/config/**'
       - 'package.json'
       - 'package-lock.json'
@@ -25,7 +33,7 @@ permissions:
   contents: read
 
 jobs:
-  telegram-api-base:
+  fork-compatibility:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -40,8 +48,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Test Telegram API base URL extension
+      - name: Test fork Telegram integration
         run: >-
           node --import tsx --test
           server/utils/telegram-api-base.test.ts
+          server/fork/telegram-gateway/diagnostics.test.ts
           lib/templates/config/telegram-api-base-url.test.ts
+
+      - name: Load fork server registry
+        run: node --import tsx -e "import('./server/fork/index.ts')"
+
+      - name: Build client
+        run: npm run build:client
