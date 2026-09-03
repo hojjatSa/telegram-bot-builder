@@ -6,7 +6,7 @@ name: Deploy VPS
 
 on:
   push:
-    branches: [main]
+    branches: [golnoor]
   workflow_dispatch:
 
 permissions:
