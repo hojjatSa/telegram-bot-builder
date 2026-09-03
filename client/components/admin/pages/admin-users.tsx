@@ -1,5 +1,5 @@
 /**
- * @fileoverview Страница списка аккаунтов платформы
+ * @fileoverview Platform accounts list page
  * @module components/admin/pages/admin-users
  */
 
@@ -10,13 +10,8 @@ import { usePlatformUsers } from '../hooks/use-platform-users';
 import { PlatformUsersPager } from '../users/platform-users-pager';
 import { PlatformUsersTable } from '../users/platform-users-table';
 
-/** Размер страницы по умолчанию */
 const DEFAULT_PER_PAGE = 25;
 
-/**
- * Список всех аккаунтов конструктора с поиском
- * @returns JSX элемент страницы
- */
 export function AdminUsersPage() {
   const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
@@ -39,9 +34,9 @@ export function AdminUsersPage() {
   return (
     <div className="max-w-5xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Аккаунты</h1>
+        <h1 className="text-2xl font-bold">Accounts</h1>
         <p className="text-muted-foreground mt-1">
-          Все, кто входил в конструктор через Telegram
+          Everyone who has signed in to the builder through Telegram
         </p>
       </div>
 
@@ -50,7 +45,7 @@ export function AdminUsersPage() {
         <Input
           value={searchInput}
           onChange={(event) => setSearchInput(event.target.value)}
-          placeholder="Поиск по имени, @name или ID…"
+          placeholder="Search by name, @username or ID…"
           className="pl-9"
         />
       </div>
@@ -62,7 +57,7 @@ export function AdminUsersPage() {
       )}
 
       {error && (
-        <p className="text-destructive">Не удалось загрузить список аккаунтов.</p>
+        <p className="text-destructive">Could not load the account list.</p>
       )}
 
       {data && !isLoading && (
