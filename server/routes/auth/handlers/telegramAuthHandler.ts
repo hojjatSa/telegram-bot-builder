@@ -14,7 +14,9 @@ import { verifyTelegramIdToken, getTelegramUserIdFromToken } from "../utils/tele
 import { isStrictAuthMode } from "../utils/isStrictAuthMode";
 import {
     accessDeniedPayload,
+    ensureGolnoorAccessControlSchema,
     getGolnoorUserAccess,
+    isGolnoorAccessControlEnabled,
 } from "../../../fork/access-control/service";
 
 /**
@@ -59,6 +61,13 @@ export async function handleTelegramAuth(req: Request, res: Response): Promise<v
                 });
                 return;
             }
+        }
+
+        // Initialize before inserting this login's user. On the first deployment,
+        // only accounts that existed before access control was enabled are
+        // bootstrapped as allowed; a genuinely new account must start as pending.
+        if (isGolnoorAccessControlEnabled()) {
+            await ensureGolnoorAccessControlSchema();
         }
 
         // We intentionally create/update the verified Telegram account before the
