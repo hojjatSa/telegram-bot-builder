@@ -14,6 +14,14 @@ const checks = [
     needles: ['getGolnoorUserAccess'],
   },
   {
+    file: 'server/terminal/initializeTerminalWebSocket.ts',
+    needles: ['getGolnoorUserAccess', 'isGolnoorAccessControlEnabled', 'hasProjectAccess'],
+  },
+  {
+    file: 'server/canvas/initializeCanvasWebSocket.ts',
+    needles: ['getGolnoorUserAccess', 'isGolnoorAccessControlEnabled', 'hasProjectAccess'],
+  },
+  {
     file: 'server/fork/index.ts',
     needles: ['registerGolnoorAccessControlRoutes'],
   },
