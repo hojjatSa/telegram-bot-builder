@@ -57,5 +57,10 @@ RUN if [ -f requirements.txt ]; then pip3 install --break-system-packages -r req
 
 EXPOSE 5000
 
+# Image-level healthcheck so Docker/Coolify can distinguish a running process
+# from an application that is actually ready. No curl/wget dependency needed.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
+  CMD node -e "const p=process.env.PORT||5000;fetch('http://127.0.0.1:'+p+'/api/health').then(async r=>{const j=await r.json();process.exit(r.ok&&j.ready===true?0:1)}).catch(()=>process.exit(1))"
+
 # Запускаем миграции и стартуем приложение
 CMD ["npm", "start"]
