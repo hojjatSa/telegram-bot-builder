@@ -1,0 +1,96 @@
+name: Update Golnoor from main safely
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-golnoor-from-main
+  cancel-in-progress: false
+
+jobs:
+  prepare-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Golnoor
+        uses: actions/checkout@v5
+        with:
+          ref: golnoor
+          fetch-depth: 0
+
+      - name: Fetch clean upstream mirror branch
+        run: git fetch origin main
+
+      - name: Stop if Golnoor already contains main
+        id: freshness
+        shell: bash
+        run: |
+          if git merge-base --is-ancestor origin/main HEAD; then
+            echo "needs_update=false" >> "$GITHUB_OUTPUT"
+            echo "Golnoor already contains the current main branch."
+          else
+            echo "needs_update=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Configure Git
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge main into a temporary update branch
+        if: steps.freshness.outputs.needs_update == 'true'
+        id: branch
+        shell: bash
+        run: |
+          BRANCH="automation/update-golnoor-${GITHUB_RUN_ID}"
+          git switch -c "$BRANCH"
+          git merge --no-edit origin/main
+          echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
+
+      - name: Setup Node.js
+        if: steps.freshness.outputs.needs_update == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Run fork compatibility tests
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: >-
+          node --import tsx --test
+          server/utils/telegram-api-base.test.ts
+          server/fork/telegram-gateway/diagnostics.test.ts
+          server/fork/access-control/service.test.ts
+          lib/templates/config/telegram-api-base-url.test.ts
+
+      - name: Verify Golnoor integration hooks survived the merge
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: node scripts/check-golnoor-access-control.mjs
+
+      - name: Build client
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: npm run build:client
+
+      - name: Push tested update branch
+        if: steps.freshness.outputs.needs_update == 'true'
+        run: git push origin "${{ steps.branch.outputs.name }}"
+
+      - name: Open pull request into Golnoor
+        if: steps.freshness.outputs.needs_update == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          UPDATE_BRANCH: ${{ steps.branch.outputs.name }}
+        run: |
+          gh pr create \
+            --base golnoor \
+            --head "$UPDATE_BRANCH" \
+            --title "chore(golnoor): update from clean main" \
+            --body "Automated safe update from the clean upstream mirror. Golnoor gateway, access-control hooks, tests, and client build were verified before this PR was opened. Merge only after required checks are green."
