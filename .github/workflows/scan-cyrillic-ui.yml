@@ -1,5 +1,7 @@
 name: Scan Cyrillic UI
 
+# Audit the Golnoor client after each translation pass so visible Russian text
+# can be reviewed separately from source-code comments and documentation.
 on:
   push:
     branches:
