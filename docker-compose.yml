@@ -37,11 +37,14 @@ services:
   # Основное приложение (конструктор ботов)
   # image — прод/CI (GHCR); build — локальная разработка (docker compose build)
   app:
-    image: ghcr.io/hojjatsa/telegram-bot-builder:${IMAGE_TAG:-latest}
+    image: ghcr.io/hojjatsa/telegram-bot-builder:${IMAGE_TAG:-golnoor}
     build: .
-    pull_policy: missing
+    # Production should always refresh the mutable golnoor tag on redeploy.
+    # For local offline development APP_PULL_POLICY=never can be used explicitly.
+    pull_policy: ${APP_PULL_POLICY:-always}
     container_name: bot-builder-app
     restart: unless-stopped
+    stop_grace_period: 45s
     # 0 = без лимита (по умолчанию). На маленьких VPS задайте APP_MEM_LIMIT=1280m в .env
     mem_limit: ${APP_MEM_LIMIT:-0}
     memswap_limit: ${APP_MEM_LIMIT:-0}
@@ -68,6 +71,15 @@ services:
       TELEGRAM_API_BASE_URL: "${TELEGRAM_API_BASE_URL:-}"
       TELEGRAM_PROXY_URL: "${TELEGRAM_PROXY_URL:-}"
       TELEGRAM_JWKS_URL: "${TELEGRAM_JWKS_URL:-}"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          node -e "fetch('http://127.0.0.1:5000/api/health').then(async r=>{const j=await r.json();if(!r.ok||!j.ready)process.exit(1)}).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
     ports:
       - "127.0.0.1:5000:5000"
     volumes:
