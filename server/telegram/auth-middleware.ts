@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import "express-session";
 import { TelegramUserDB } from "@shared/schema";
+import { getGolnoorUserAccess } from "../fork/access-control/service";
 
 // Расширяем типы Express для поддержки req.user и session
 declare module "express-session" {
@@ -25,13 +26,40 @@ declare global {
 }
 
 /**
- * Middleware для установки req.user из Telegram сессии
- * Если пользователь авторизован через Telegram, его данные будут доступны в req.user
+ * Middleware для установки req.user из Telegram сессии.
+ * Golnoor production additionally checks the fork-isolated approval table.
  */
-export function authMiddleware(req: Request, _res: Response, next: NextFunction) {
-  if (req.session?.telegramUser) {
-    req.user = req.session.telegramUser;
+export async function authMiddleware(req: Request, _res: Response, next: NextFunction) {
+  const sessionUser = req.session?.telegramUser;
+  if (!sessionUser) {
+    next();
+    return;
   }
+
+  try {
+    const access = await getGolnoorUserAccess(Number(sessionUser.id), {
+      createIfMissing: true,
+    });
+
+    if (access.allowed) {
+      req.user = sessionUser;
+    } else if (req.session) {
+      // Revocation should take effect for already-open browser sessions too.
+      delete req.session.telegramUser;
+      req.session.save((error) => {
+        if (error) {
+          console.warn('[Fork/AccessControl] failed to persist revoked session:', error.message);
+        }
+      });
+    }
+  } catch (error) {
+    // Fail closed: a DB/access-control failure must not silently grant access.
+    console.error(
+      '[Fork/AccessControl] session check failed:',
+      error instanceof Error ? error.message : error,
+    );
+  }
+
   next();
 }
 
