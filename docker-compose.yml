@@ -71,6 +71,9 @@ services:
       TELEGRAM_API_BASE_URL: "${TELEGRAM_API_BASE_URL:-}"
       TELEGRAM_PROXY_URL: "${TELEGRAM_PROXY_URL:-}"
       TELEGRAM_JWKS_URL: "${TELEGRAM_JWKS_URL:-}"
+      # Golnoor fork: production defaults to approval-required Telegram login.
+      # Set false only as an emergency recovery switch in Coolify.
+      GOLNOOR_ACCESS_CONTROL_ENABLED: "${GOLNOOR_ACCESS_CONTROL_ENABLED:-}"
     healthcheck:
       test:
         - CMD-SHELL
