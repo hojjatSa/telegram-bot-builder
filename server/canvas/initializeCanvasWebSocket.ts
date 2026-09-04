@@ -15,6 +15,10 @@ import {
 import { broadcastCanvasSync } from './broadcastCanvasSync';
 import { enrichCanvasActor } from './enrichCanvasActor';
 import { applyWebSocketSession } from '../websocket/applyWebSocketSession';
+import {
+  getGolnoorUserAccess,
+  isGolnoorAccessControlEnabled,
+} from '../fork/access-control/service';
 import 'express-session';
 
 /**
@@ -41,6 +45,18 @@ export function initializeCanvasWebSocket(): WebSocketServer {
         const session = (request as { session?: { telegramUser?: TelegramUserDB } }).session;
         const sessionUser = session?.telegramUser;
         const userId = sessionUser?.id;
+
+        if (isGolnoorAccessControlEnabled()) {
+          if (userId == null) {
+            ws.close(4003, 'Authentication required');
+            return;
+          }
+          const access = await getGolnoorUserAccess(Number(userId), { createIfMissing: true });
+          if (!access.allowed) {
+            ws.close(4003, 'Access denied');
+            return;
+          }
+        }
 
         if (userId != null) {
           const hasAccess = await storage.hasProjectAccess(projectId, userId);
