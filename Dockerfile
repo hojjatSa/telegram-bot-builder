@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Устанавливаем все зависимости (включая dev) для сборки клиента
 COPY package*.json ./
-RUN npm install --ignore-scripts
+RUN npm ci --ignore-scripts
 
 # Копируем исходный код, генерируем docs для /admin/schema и /admin/api-docs, собираем клиент
 COPY . .
@@ -28,7 +28,7 @@ WORKDIR /app
 
 # Устанавливаем только production-зависимости
 COPY package*.json ./
-RUN npm install --omit=dev --ignore-scripts
+RUN npm ci --omit=dev --ignore-scripts
 
 # Копируем предсобранный клиент из build-stage
 COPY --from=builder /app/dist ./dist
