@@ -2,13 +2,16 @@
 # Многоэтапная сборка: build-stage собирает клиент, runtime-stage содержит только необходимое
 
 # ── Build stage ──────────────────────────────────────────────────────────────
-FROM node:20-alpine AS builder
+# Node 20 is EOL and several current project dependencies require Node >=22/24.
+FROM node:24-alpine AS builder
 
 WORKDIR /app
 
-# Устанавливаем все зависимости (включая dev) для сборки клиента
+# Upstream package.json/package-lock.json are currently not fully synchronized,
+# so npm ci cannot be used safely yet. npm install still uses the lockfile as a
+# resolution hint while allowing npm to reconcile the missing entries in-image.
 COPY package*.json ./
-RUN npm ci --ignore-scripts
+RUN npm install --ignore-scripts --no-audit --no-fund
 
 # Копируем исходный код, генерируем docs для /admin/schema и /admin/api-docs, собираем клиент
 COPY . .
@@ -18,7 +21,7 @@ RUN npm run docs
 RUN npm run build:client
 
 # ── Runtime stage ─────────────────────────────────────────────────────────────
-FROM node:20-alpine
+FROM node:24-alpine
 
 # Python3 нужен для запуска пользовательских ботов (server/bots/startBot.ts)
 # procps нужен для команды ps (поиск Python процессов при остановке)
@@ -28,7 +31,7 @@ WORKDIR /app
 
 # Устанавливаем только production-зависимости
 COPY package*.json ./
-RUN npm ci --omit=dev --ignore-scripts
+RUN npm install --omit=dev --ignore-scripts --no-audit --no-fund
 
 # Копируем предсобранный клиент из build-stage
 COPY --from=builder /app/dist ./dist
