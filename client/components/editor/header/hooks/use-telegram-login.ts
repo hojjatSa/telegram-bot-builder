@@ -43,7 +43,9 @@ declare global {
 
 /** Идентификатор Telegram-приложения (берётся из переменной окружения VITE_TELEGRAM_CLIENT_ID) */
 const CLIENT_ID_FALLBACK = Number(import.meta.env.VITE_TELEGRAM_CLIENT_ID) || 0;
-const TELEGRAM_LOGIN_SRC = 'https://oauth.telegram.org/js/telegram-login.js?3';
+// Current official Telegram Login SDK. The old oauth.telegram.org script can
+// produce an incomplete OIDC request (for example `redirect_uri required`).
+const TELEGRAM_LOGIN_SRC = 'https://telegram.org/js/telegram-login.js';
 const TELEGRAM_LOGIN_SCRIPT_ID = 'telegram-login-sdk';
 
 function waitForTelegramLogin(timeoutMs: number): Promise<boolean> {
@@ -110,7 +112,16 @@ export function useTelegramLogin() {
    * @returns Ничего не возвращает
    */
   const handleTelegramAuth = useCallback((data: any): void => {
-    if (!data || data.error) return;
+    if (!data) return;
+    if (data.error) {
+      toast({
+        title: 'Telegram sign-in failed',
+        description: String(data.error),
+        variant: 'destructive',
+      });
+      return;
+    }
+
     const user = data.user ?? data;
     const idToken =
       data.id_token ?? data.idToken ?? user.id_token ?? user.idToken;
@@ -123,14 +134,14 @@ export function useTelegramLogin() {
       authDate: user.auth_date,
       idToken: typeof idToken === 'string' ? idToken : undefined,
     });
-  }, [login]);
+  }, [login, toast]);
 
   const init = useCallback(() => {
     if (didInit.current) return;
     if (typeof window.Telegram?.Login?.init !== 'function') return;
     if (!clientId) return;
     window.Telegram.Login.init(
-      { client_id: clientId, request_access: ['write'] },
+      { client_id: clientId, scope: ['profile', 'write'] },
       handleTelegramAuth
     );
     didInit.current = true;
