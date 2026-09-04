@@ -63,7 +63,7 @@ export function BroadcastDeliveryErrorsTable({
         </div>
       </div>
       {results.length === 0 ? (
-        <p className="py-3 text-center text-xs text-muted-foreground">Ничего не найдено</p>
+        <p className="py-3 text-center text-xs text-muted-foreground">Nothing found</p>
       ) : (
         <div className={`grid grid-cols-2 ${compact ? 'max-h-44 overflow-y-auto' : 'max-h-80 overflow-y-auto'}`}>
           {results.map((r) => {

@@ -48,7 +48,7 @@ export function useVariableInsert({
     if (isMediaVariable && onMediaVariableSelect && variable && variable.mediaType) {
       onMediaVariableSelect(variableName, variable.mediaType);
       toast({
-        title: "Медиа прикреплено",
+        title: "Media attached",
         description: `Медиафайл "${variableName}" добавлен в прикрепленные медиа`,
         variant: "default"
       });
@@ -95,7 +95,7 @@ export function useVariableInsert({
     } catch (e) {
       toast({
         title: "Error",
-        description: "Не удалось вставить переменную",
+        description: "Failed to insert variable",
         variant: "destructive"
       });
     }

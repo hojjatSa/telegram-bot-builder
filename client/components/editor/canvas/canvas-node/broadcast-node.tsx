@@ -12,7 +12,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const broadcastNode: ComponentDefinition = {
   id: 'broadcast',
   name: 'Broadcast',
-  description: 'Отправка сообщения всем пользователям из базы',
+  description: "Sending a message to all users in the database",
   icon: 'fas fa-bullhorn',
   color: 'bg-purple-100 text-purple-600',
   type: 'broadcast',
@@ -27,7 +27,7 @@ export const broadcastNode: ComponentDefinition = {
     broadcastTarget: 'all_users',
     enableConfirmation: true,
     confirmationText: 'Отправить рассылку всем пользователям?',
-    successMessage: '✅ Рассылка отправлена!',
-    errorMessage: '❌ Ошибка рассылки'
+    successMessage: "✅ Newsletter sent!",
+    errorMessage: "❌ Mailing error"
   }
 };

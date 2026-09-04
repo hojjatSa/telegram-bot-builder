@@ -90,7 +90,7 @@ export function BotLaunchCard({
           onClick={() => onShowLogs(record.id, record.startedAt)}
         >
           <FileText className="h-3.5 w-3.5" />
-          Логи
+          Logs
         </Button>
       </div>
     </div>

@@ -98,7 +98,7 @@ export function HttpRequestPreview({ node }: HttpRequestPreviewProps) {
       {/* Переменная ответа */}
       {responseVar && (
         <div className="text-xs text-muted-foreground">
-          <span className="text-slate-400 dark:text-slate-500">ответ → </span>
+          <span className="text-slate-400 dark:text-slate-500">answer → </span>
           <span className="font-mono text-cyan-600 dark:text-cyan-400">{'{' + responseVar + '}'}</span>
         </div>
       )}
@@ -106,7 +106,7 @@ export function HttpRequestPreview({ node }: HttpRequestPreviewProps) {
       {/* Переменная статуса */}
       {statusVar && (
         <div className="text-xs text-muted-foreground">
-          <span className="text-slate-400 dark:text-slate-500">статус → </span>
+          <span className="text-slate-400 dark:text-slate-500">status → </span>
           <span className="font-mono text-emerald-600 dark:text-emerald-400">{'{' + statusVar + '}'}</span>
         </div>
       )}
@@ -114,9 +114,9 @@ export function HttpRequestPreview({ node }: HttpRequestPreviewProps) {
       {/* Иконки опций */}
       {(ignoreSsl || ignoreErrors || noRedirects) && (
         <div className="flex items-center gap-1 text-xs text-muted-foreground">
-          {ignoreSsl && <span title="Игнорировать SSL">🔒</span>}
-          {noRedirects && <span title="Не следовать редиректам">↩</span>}
-          {ignoreErrors && <span title="Игнорировать HTTP ошибки">⚠</span>}
+          {ignoreSsl && <span title={"Ignore SSL"}>🔒</span>}
+          {noRedirects && <span title={"Don't follow redirects"}>↩</span>}
+          {ignoreErrors && <span title={"Ignore HTTP errors"}>⚠</span>}
         </div>
       )}
     </div>

@@ -43,14 +43,14 @@ export function useUpdateUser(
       qClient.invalidateQueries({ queryKey: [statsQueryKey, selectedTokenId] });
       toast({
         title: 'Saved',
-        description: 'Данные пользователя обновлены',
+        description: "User details updated",
       });
     },
     onError: (error: any) => {
       console.error('Ошибка обновления пользователя:', error);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить данные',
+        description: "Failed to update data",
         variant: 'destructive',
       });
     }

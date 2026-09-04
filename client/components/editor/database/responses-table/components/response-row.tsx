@@ -74,7 +74,7 @@ export function ResponseRow({
       </TableCell>
       <TableCell className="py-2">
         <div className="font-medium text-sm">
-          {keyName.startsWith('response_') ? keyName.replace('response_', 'Ответ ') : keyName}
+          {keyName.startsWith('response_') ? keyName.replace('response_', "Answer") : keyName}
         </div>
       </TableCell>
       <TableCell className="py-2 max-w-sm">

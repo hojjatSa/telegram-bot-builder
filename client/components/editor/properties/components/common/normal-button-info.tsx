@@ -30,15 +30,15 @@ export function NormalButtonInfo({}: NormalButtonInfoProps) {
         </div>
         <div className="min-w-0 flex-1">
           <Label className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-100 cursor-pointer block">
-            Обычная кнопка
+            Regular button
           </Label>
           <div className="text-xs text-blue-700/70 dark:text-blue-300/70 mt-0.5 leading-snug hidden sm:block">
-            Стандартная кнопка навигации
+            Standard navigation button
           </div>
         </div>
       </div>
       <div className="text-xs sm:text-sm text-blue-700 dark:text-blue-200 leading-relaxed">
-        Работает как обычная кнопка - переход, команда или ссылка
+        Works like a regular button - go, command or link
       </div>
     </div>
   );

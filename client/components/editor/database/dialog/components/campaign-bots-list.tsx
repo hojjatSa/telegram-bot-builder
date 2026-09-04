@@ -46,7 +46,7 @@ export function CampaignBotsList({
   const deleteMutation = useDeleteBroadcast({ projectId, refetch: onRefetch });
 
   if (broadcasts.length === 0) {
-    return <p className="px-1 text-xs text-muted-foreground">Данные по ботам загружаются…</p>;
+    return <p className="px-1 text-xs text-muted-foreground">Bot data is loading...</p>;
   }
 
   return (

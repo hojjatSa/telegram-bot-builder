@@ -31,8 +31,8 @@ export function useClipboard({
     const html = editorRef.current.innerHTML;
     navigator.clipboard.writeText(html).then(() => {
       toast({
-        title: "Скопировано",
-        description: "Форматированный текст скопирован в буфер обмена",
+        title: "Copied",
+        description: "Rich text copied to clipboard",
         variant: "default"
       });
     });

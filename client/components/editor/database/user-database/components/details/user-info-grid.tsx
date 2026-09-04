@@ -31,10 +31,10 @@ export function UserInfoGrid({
   return (
     <div className={`grid ${isMobile ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
       <div>
-        <Label className="text-sm font-medium">Основная информация</Label>
+        <Label className="text-sm font-medium">Basic information</Label>
         <div className="mt-2 space-y-2">
           <div>
-            <span className="text-sm text-muted-foreground">Имя:</span>{' '}
+            <span className="text-sm text-muted-foreground">Name:</span>{' '}
             {selectedUser.firstName || 'Not specified'}
           </div>
           <div>
@@ -49,23 +49,23 @@ export function UserInfoGrid({
       </div>
 
       <div>
-        <Label className="text-sm font-medium">Статистика</Label>
+        <Label className="text-sm font-medium">Statistics</Label>
         <div className="mt-2 space-y-2">
           <div>
-            <span className="text-sm text-muted-foreground">Всего сообщений:</span>{' '}
+            <span className="text-sm text-muted-foreground">Total messages:</span>{' '}
             {userMessageCounts.total || selectedUser.interactionCount || 0}
           </div>
           <div>
-            <span className="text-sm text-muted-foreground">От пользователя:</span>{' '}
+            <span className="text-sm text-muted-foreground">From the user:</span>{' '}
             {userMessageCounts.userSent}
           </div>
           <div>
-            <span className="text-sm text-muted-foreground">От бота:</span>{' '}
+            <span className="text-sm text-muted-foreground">From the bot:</span>{' '}
             {userMessageCounts.botSent}
           </div>
         </div>
         <p className="text-xs text-muted-foreground mt-2">
-          На основе истории диалога между пользователем и ботом
+          Based on the history of the dialogue between the user and the bot
         </p>
       </div>
     </div>

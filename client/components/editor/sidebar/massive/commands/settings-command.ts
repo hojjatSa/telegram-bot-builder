@@ -8,7 +8,7 @@ import type { CommandPreset } from './command-preset.types';
 export const settingsCommand: CommandPreset = {
   id: 'settings-command',
   name: '/settings',
-  description: 'Настройки бота',
+  description: "Bot settings",
   icon: 'fas fa-cog',
   color: 'bg-gray-100 text-gray-600',
   type: 'command_preset',

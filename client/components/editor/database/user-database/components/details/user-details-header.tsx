@@ -14,7 +14,7 @@ export function UserDetailsHeader(): React.JSX.Element {
     <DialogHeader>
       <DialogTitle>User Details</DialogTitle>
       <DialogDescription>
-        Подробная информация о пользователе
+        User details
       </DialogDescription>
     </DialogHeader>
   );

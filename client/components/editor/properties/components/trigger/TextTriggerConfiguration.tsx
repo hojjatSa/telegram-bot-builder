@@ -55,7 +55,7 @@ export function TextTriggerConfiguration({
     <div className="space-y-4 p-4">
       {/* Тексты для срабатывания */}
       <div className="space-y-2">
-        <Label>Тексты для срабатывания</Label>
+        <Label>Trigger texts</Label>
 
         {/* Список существующих текстов */}
         {texts.length > 0 && (
@@ -84,7 +84,7 @@ export function TextTriggerConfiguration({
             value={newText}
             onChange={e => setNewText(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Введите текст и нажмите Enter"
+            placeholder={"Enter text and press Enter"}
             className="flex-1"
           />
           <Button
@@ -95,18 +95,18 @@ export function TextTriggerConfiguration({
             disabled={!newText.trim()}
           >
             <i className="fas fa-plus mr-1"></i>
-            Добавить
+            Add
           </Button>
         </div>
 
         <div className="text-xs text-muted-foreground">
-          Триггер сработает на любой из указанных текстов
+          The trigger will work on any of the specified texts
         </div>
       </div>
 
       {/* Режим совпадения */}
       <div className="space-y-2">
-        <Label>Режим совпадения</Label>
+        <Label>Match mode</Label>
         <Select
           value={matchType}
           onValueChange={(v) => onNodeUpdate(selectedNode.id, { textMatchType: v })}
@@ -115,14 +115,14 @@ export function TextTriggerConfiguration({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="exact">Точное совпадение</SelectItem>
-            <SelectItem value="contains">Содержит подстроку</SelectItem>
+            <SelectItem value="exact">Exact match</SelectItem>
+            <SelectItem value="contains">Contains a substring</SelectItem>
           </SelectContent>
         </Select>
         <div className="text-xs text-muted-foreground">
           {matchType === 'exact'
-            ? 'Сообщение должно быть точно равно одному из указанных текстов'
-            : 'Сообщение должно содержать один из указанных текстов'}
+            ? "The message must be exactly equal to one of the specified texts"
+            : "The message must contain one of the specified texts"}
         </div>
       </div>
 

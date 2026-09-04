@@ -29,11 +29,11 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       </div>
 
       <div className="rounded-lg border border-blue-100/80 dark:border-blue-900/50 bg-white/70 dark:bg-slate-950/40 px-3 py-2 text-xs text-blue-800 dark:text-blue-200">
-        Кнопки собираются из массива HTTP-ответа. Используй шаблоны вроде <span className="font-mono">{'{name}'}</span> и <span className="font-mono">{'project_{id}'}</span>.
+        Buttons are collected from an HTTP response array. Use templates like <span className="font-mono">{'{name}'}</span> And <span className="font-mono">{'project_{id}'}</span>.
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Переменная с ответом</label>
+        <label className="text-xs font-medium text-muted-foreground">Response variable</label>
         <div className="flex items-center gap-1">
           <Input
             value={current.sourceVariable}
@@ -49,7 +49,7 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Путь к массиву</label>
+        <label className="text-xs font-medium text-muted-foreground">Array path</label>
         <Input
           value={current.arrayPath}
           onChange={(e) => updateField('arrayPath', e.target.value)}
@@ -59,7 +59,7 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Шаблон текста</label>
+        <label className="text-xs font-medium text-muted-foreground">Text template</label>
         <Input
           value={current.textTemplate}
           onChange={(e) => updateField('textTemplate', e.target.value)}
@@ -69,7 +69,7 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Шаблон callback_data</label>
+        <label className="text-xs font-medium text-muted-foreground">callback_data template</label>
         <Input
           value={current.callbackTemplate}
           onChange={(e) => updateField('callbackTemplate', e.target.value)}
@@ -79,22 +79,22 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       </div>
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Источник стиля</label>
+        <label className="text-xs font-medium text-muted-foreground">Style source</label>
         <Select value={styleMode} onValueChange={(value) => updateField('styleMode', value)}>
           <SelectTrigger className="h-8 text-xs">
-            <SelectValue placeholder="Без стиля" />
+            <SelectValue placeholder={"No style"} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="none">Без стиля</SelectItem>
-            <SelectItem value="field">Из поля ответа</SelectItem>
-            <SelectItem value="template">Из шаблона</SelectItem>
+            <SelectItem value="none">No style</SelectItem>
+            <SelectItem value="field">From the response field</SelectItem>
+            <SelectItem value="template">From template</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       {styleMode === 'field' && (
         <div className="space-y-1">
-          <label className="text-xs font-medium text-muted-foreground">Поле стиля</label>
+          <label className="text-xs font-medium text-muted-foreground">Style field</label>
           <Input
             value={current.styleField}
             onChange={(e) => updateField('styleField', e.target.value)}
@@ -106,7 +106,7 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
 
       {styleMode === 'template' && (
         <div className="space-y-1">
-          <label className="text-xs font-medium text-muted-foreground">Шаблон стиля</label>
+          <label className="text-xs font-medium text-muted-foreground">Style template</label>
           <Input
             value={current.styleTemplate}
             onChange={(e) => updateField('styleTemplate', e.target.value)}
@@ -117,7 +117,7 @@ export function DynamicButtonsSection({ config, textVariables, onChange }: Dynam
       )}
 
       <div className="space-y-1">
-        <label className="text-xs font-medium text-muted-foreground">Колонки</label>
+        <label className="text-xs font-medium text-muted-foreground">Columns</label>
         <div className="flex items-center gap-2">
           <Input
             type="number"

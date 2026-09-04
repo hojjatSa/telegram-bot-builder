@@ -41,7 +41,7 @@ export function FoursquareIntegrationSection({
         <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">
           <i className="fas fa-map text-purple-600 dark:text-purple-400 text-xs"></i>
         </div>
-        <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Foursquare (опционально)</Label>
+        <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Foursquare (optional)</Label>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
@@ -60,7 +60,7 @@ export function FoursquareIntegrationSection({
         <div>
           <Label className="text-xs font-medium text-purple-700 dark:text-purple-300 mb-2 block">
             <i className="fas fa-layer-group mr-1"></i>
-            Тип места
+            Place type
           </Label>
           <Input
             value={selectedNode.data.foursquareType || ''}
@@ -72,7 +72,7 @@ export function FoursquareIntegrationSection({
       </div>
 
       <div className="text-xs text-purple-600 dark:text-purple-400 mt-2">
-        Интеграция с Foursquare для дополнительной информации о месте
+        Foursquare integration for additional place information
       </div>
     </div>
   );

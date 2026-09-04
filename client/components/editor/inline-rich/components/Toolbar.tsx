@@ -81,17 +81,17 @@ export function Toolbar({
         <div className="w-px h-4 bg-slate-200 dark:bg-slate-700 mx-0.5 shrink-0" />
         <Button variant="ghost" size="icon"
           className="h-7 w-7 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 disabled:opacity-40 shrink-0"
-          onClick={undo} disabled={!canUndo} title="Отменить (Ctrl+Z)">
+          onClick={undo} disabled={!canUndo} title={"Undo (Ctrl+Z)"}>
           <RotateCcw className="h-3.5 w-3.5" />
         </Button>
         <Button variant="ghost" size="icon"
           className="h-7 w-7 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 disabled:opacity-40 shrink-0"
-          onClick={redo} disabled={!canRedo} title="Повторить (Ctrl+Shift+Z)">
+          onClick={redo} disabled={!canRedo} title={"Redo (Ctrl+Shift+Z)"}>
           <RotateCw className="h-3.5 w-3.5" />
         </Button>
         <Button variant="ghost" size="icon"
           className="h-7 w-7 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 shrink-0"
-          onClick={copyFormatted} title="Копировать форматированный текст">
+          onClick={copyFormatted} title={"Copy formatted text"}>
           <Copy className="h-3.5 w-3.5" />
         </Button>
       </div>
@@ -125,17 +125,17 @@ export function Toolbar({
       <div className="flex flex-wrap items-center gap-1 sm:gap-1.5">
         <Button variant="ghost" size="sm" onClick={undo} disabled={!canUndo}
           className="h-8 sm:h-9 w-8 sm:w-9 p-0 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors disabled:opacity-40"
-          title="Отменить (Ctrl+Z)">
+          title={"Undo (Ctrl+Z)"}>
           <RotateCcw className="h-4 w-4 text-slate-700 dark:text-slate-300" />
         </Button>
         <Button variant="ghost" size="sm" onClick={redo} disabled={!canRedo}
           className="h-8 sm:h-9 w-8 sm:w-9 p-0 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors disabled:opacity-40"
-          title="Повторить (Ctrl+Shift+Z)">
+          title={"Redo (Ctrl+Shift+Z)"}>
           <RotateCw className="h-4 w-4 text-slate-700 dark:text-slate-300" />
         </Button>
         <Button variant="ghost" size="sm" onClick={copyFormatted}
           className="h-8 sm:h-9 w-8 sm:w-9 p-0 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 transition-colors"
-          title="Копировать форматированный текст">
+          title={"Copy formatted text"}>
           <Copy className="h-4 w-4 text-slate-700 dark:text-slate-300" />
         </Button>
       </div>

@@ -98,7 +98,7 @@ export function StatDonutCard(props: StatDonutCardProps): React.JSX.Element {
 
       {isEmpty ? (
         /* Пустое состояние */
-        <p className="text-xs text-muted-foreground/50 italic">Нет данных</p>
+        <p className="text-xs text-muted-foreground/50 italic">No data</p>
       ) : (
         /* Основной контент: donut сверху + легенда снизу */
         <div className="flex flex-col items-center gap-3 flex-1 min-h-0">

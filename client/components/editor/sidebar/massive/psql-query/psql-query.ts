@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const psqlQueryNode: ComponentDefinition = {
   id: 'psql-query',
   name: 'PostgreSQL',
-  description: 'Выполнение SQL-запросов к PostgreSQL базе данных',
+  description: "Executing SQL queries against a PostgreSQL database",
   icon: 'fas fa-database',
   color: 'bg-violet-100 text-violet-600',
   type: 'psql_query' as any,

@@ -32,7 +32,7 @@ export function CodeActions({ content, selectedFormat, fileName }: CodeActionsPr
    */
   const handleCopy = () => {
     navigator.clipboard.writeText(content);
-    toast({ title: 'Скопировано!', description: 'Код скопирован в буфер обмена' });
+    toast({ title: "Copied!", description: "The code has been copied to the clipboard" });
   };
 
   /**
@@ -56,7 +56,7 @@ export function CodeActions({ content, selectedFormat, fileName }: CodeActionsPr
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    toast({ title: 'Файл скачан', description: `Файл ${link.download} успешно загружен` });
+    toast({ title: "File downloaded", description: `Файл ${link.download} успешно загружен` });
   };
 
   return (

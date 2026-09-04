@@ -169,7 +169,7 @@ export function CallbackTriggerConfiguration({
           onValueChange={value => onNodeUpdate(selectedNode.id, { callbackData: value })}
         >
           <SelectTrigger className="text-sm bg-white/70 dark:bg-slate-950/60 border border-orange-300/40 dark:border-orange-700/40 hover:border-orange-400/60 dark:hover:border-orange-600/60 focus:border-orange-500 focus:ring-2 focus:ring-orange-400/30 rounded-lg text-orange-900 dark:text-orange-50">
-            <SelectValue placeholder="Выбрать из существующих" />
+            <SelectValue placeholder={"Select from existing"} />
           </SelectTrigger>
           <SelectContent className="bg-gradient-to-br from-orange-50/95 to-amber-50/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-48 overflow-y-auto">
             {existingCallbacks.length > 0 ? (
@@ -182,7 +182,7 @@ export function CallbackTriggerConfiguration({
               ))
             ) : (
               <SelectItem value="__empty__" disabled>
-                Нет кнопок с callback_data
+                No buttons with callback_data
               </SelectItem>
             )}
           </SelectContent>
@@ -199,7 +199,7 @@ export function CallbackTriggerConfiguration({
 
       {/* Тип совпадения */}
       <div className="space-y-2">
-        <Label>Тип совпадения</Label>
+        <Label>Match type</Label>
         <Select
           value={matchType}
           onValueChange={value => onNodeUpdate(selectedNode.id, { matchType: value })}
@@ -208,7 +208,7 @@ export function CallbackTriggerConfiguration({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="exact">Точное совпадение</SelectItem>
+            <SelectItem value="exact">Exact match</SelectItem>
             <SelectItem value="startswith">Starts with</SelectItem>
           </SelectContent>
         </Select>

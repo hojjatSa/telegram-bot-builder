@@ -44,7 +44,7 @@ export function StickerConfiguration({
           </div>
           <Label className="text-xs sm:text-sm font-bold text-yellow-900 dark:text-yellow-100 flex items-center gap-2">
             <i className="fas fa-smile text-yellow-600 dark:text-yellow-400 text-sm"></i>
-            Настройки стикера
+            Sticker settings
           </Label>
         </div>
 
@@ -52,7 +52,7 @@ export function StickerConfiguration({
           <div>
             <Label className="text-xs sm:text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2 sm:mb-2.5 block flex items-center gap-2">
               <i className="fas fa-link text-yellow-600 dark:text-yellow-400"></i>
-              URL стикера или file_id
+              Sticker URL or file_id
             </Label>
             <Input
               value={selectedNode.data.stickerUrl || selectedNode.data.stickerFileId || ''}
@@ -63,7 +63,7 @@ export function StickerConfiguration({
             <div className="flex items-start gap-2 sm:gap-2.5 p-2 sm:p-2.5 mt-2 rounded-lg bg-yellow-50/50 dark:bg-yellow-950/30 border border-yellow-200/50 dark:border-yellow-800/40">
               <i className="fas fa-circle-info text-yellow-600 dark:text-yellow-400 text-xs mt-0.5 flex-shrink-0"></i>
               <p className="text-xs sm:text-sm text-yellow-700 dark:text-yellow-300 leading-relaxed">
-                Укажите file_id из Telegram или URL с прямой ссылкой
+                Specify file_id from Telegram or URL with direct link
               </p>
             </div>
           </div>
@@ -71,7 +71,7 @@ export function StickerConfiguration({
           <div>
             <Label className="text-xs sm:text-sm font-semibold text-yellow-800 dark:text-yellow-200 mb-2 sm:mb-2.5 block flex items-center gap-2">
               <i className="fas fa-tag text-yellow-600 dark:text-yellow-400"></i>
-              Набор стикеров
+              Sticker set
             </Label>
             <Input
               value={selectedNode.data.stickerSetName || ''}
@@ -82,7 +82,7 @@ export function StickerConfiguration({
             <div className="flex items-start gap-2 sm:gap-2.5 p-2 sm:p-2.5 mt-2 rounded-lg bg-yellow-50/50 dark:bg-yellow-950/30 border border-yellow-200/50 dark:border-yellow-800/40">
               <i className="fas fa-circle-info text-yellow-600 dark:text-yellow-400 text-xs mt-0.5 flex-shrink-0"></i>
               <p className="text-xs sm:text-sm text-yellow-700 dark:text-yellow-300 leading-relaxed">
-                Название набора стикеров (опционально)
+                Name of the sticker set (optional)
               </p>
             </div>
           </div>

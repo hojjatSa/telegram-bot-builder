@@ -31,18 +31,18 @@ export function ExpectedValueInput({ condition, selectedNode, onNodeUpdate }: Ex
     <div className="space-y-2 sm:space-y-2.5 bg-gradient-to-br from-orange-50/40 to-yellow-50/30 dark:from-orange-950/15 dark:to-yellow-950/10 border border-orange-200/40 dark:border-orange-800/40 rounded-xl p-3 sm:p-4">
       <Label className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
         <i className="fas fa-target text-orange-600 dark:text-orange-400"></i>
-        <span>{isEquals ? 'Точное значение ответа' : 'Текст в ответе'}</span>
+        <span>{isEquals ? "Exact answer value" : "Text in response"}</span>
       </Label>
       <Input
         value={condition.expectedValue || ''}
         onChange={(e) => updateCondition(condition, selectedNode, { expectedValue: e.target.value }, onNodeUpdate)}
         className="text-xs sm:text-sm h-10 sm:h-11 bg-white/70 dark:bg-slate-950/70 border border-orange-300/50 dark:border-orange-700/50 focus:border-orange-500 rounded-lg"
-        placeholder={isEquals ? 'Точное значение...' : 'Искомый текст...'}
+        placeholder={isEquals ? "Exact value..." : "Searched text..."}
       />
       <div className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
         {isEquals
-          ? 'Пример: "Да", "Мужской", "25"'
-          : 'Пример: "привет" найдет "привет мир" и "привет там"'}
+          ? "Example: \"Yes\", \"Male\", \"25\""
+          : "Example: \"hello\" will find \"hello world\" and \"hello there\""}
       </div>
     </div>
   );

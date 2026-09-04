@@ -62,7 +62,7 @@ export function ProjectHeader({
       <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
         {!hideTitle && (
           <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
-            Ботов: {botsCount}
+            Bots: {botsCount}
           </span>
         )}
         {botsCount > 0 && onCollapseAll && onExpandAll && (
@@ -71,11 +71,11 @@ export function ProjectHeader({
             size="sm"
             className="h-7 px-1.5 sm:px-2 text-xs text-muted-foreground"
             onClick={allCollapsed ? onExpandAll : onCollapseAll}
-            aria-label={allCollapsed ? 'Развернуть все карточки' : 'Свернуть все карточки'}
+            aria-label={allCollapsed ? "Expand all cards" : "Collapse all cards"}
           >
             {allCollapsed
-              ? <><ChevronsUpDown className="w-3 h-3 sm:mr-1" /><span className="hidden sm:inline">Развернуть все</span></>
-              : <><ChevronsDownUp className="w-3 h-3 sm:mr-1" /><span className="hidden sm:inline">Свернуть все</span></>
+              ? <><ChevronsUpDown className="w-3 h-3 sm:mr-1" /><span className="hidden sm:inline">Expand all</span></>
+              : <><ChevronsDownUp className="w-3 h-3 sm:mr-1" /><span className="hidden sm:inline">Collapse all</span></>
             }
           </Button>
         )}

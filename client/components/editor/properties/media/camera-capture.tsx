@@ -70,8 +70,8 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
     } catch (error) {
       console.error('Ошибка доступа к камере:', error);
       toast({
-        title: "Ошибка камеры",
-        description: "Не удалось получить доступ к камере. Проверьте разрешения.",
+        title: "Camera error",
+        description: "Failed to access the camera. Check permissions.",
         variant: "destructive",
       });
     }
@@ -169,8 +169,8 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
               }, {
                 onSuccess: () => {
                   toast({
-                    title: "Фото сохранено",
-                    description: "Фото успешно загружено в библиотеку",
+                    title: "Photo saved",
+                    description: "The photo was successfully uploaded to the library",
                   });
                   handleClose();
                 },
@@ -189,7 +189,7 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
         console.error('Ошибка сохранения фото:', error);
         toast({
           title: "Error",
-          description: "Не удалось сохранить фото",
+          description: "Failed to save photo",
           variant: "destructive",
         });
       }
@@ -238,10 +238,10 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Camera className="w-5 h-5" />
-            Съемка с камеры
+            Shooting from the camera
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Сделайте фотографию с камеры устройства
+            Take a photo from your device camera
           </DialogDescription>
         </DialogHeader>
         
@@ -288,7 +288,7 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
               <div className="absolute inset-0 flex items-center justify-center">
                 <Button onClick={startCamera} className="flex items-center gap-2">
                   <Camera className="w-4 h-4" />
-                  Включить камеру
+                  Turn on camera
                 </Button>
               </div>
             )}
@@ -305,7 +305,7 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
                 variant="outline"
                 className="flex-1"
               >
-                Переснять
+                Reshoot
               </Button>
               <Button
                 onClick={savePhoto}
@@ -317,16 +317,16 @@ export function CameraCapture({ projectId, onCapture, onClose, isOpen }: CameraC
                 ) : (
                   <Zap className="w-4 h-4" />
                 )}
-                Сохранить
+                Save
               </Button>
             </div>
           )}
 
           {/* Info */}
           <div className="text-xs text-gray-500 text-center">
-            {!isStreaming && !capturedImage && "Нажмите 'Включить камеру' для начала съемки"}
-            {isStreaming && !capturedImage && "Нажмите на белую кнопку для съемки"}
-            {capturedImage && "Фото готово! Сохраните или переснимите"}
+            {!isStreaming && !capturedImage && "Click 'Turn on camera' to start shooting"}
+            {isStreaming && !capturedImage && "Click on the white button to shoot"}
+            {capturedImage && "Photo is ready! Save or reshoot"}
           </div>
         </div>
       </DialogContent>

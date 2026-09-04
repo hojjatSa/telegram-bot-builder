@@ -17,8 +17,8 @@ export function AnyMessageTriggerConfiguration() {
         </span>
       </div>
       <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-        Срабатывает на каждое входящее сообщение от пользователя боту.
-        Используется как fallback-обработчик, когда ни один другой триггер не подошёл.
+        Triggers on every incoming message from the user to the bot.
+        Used as a fallback handler when no other trigger is suitable.
       </p>
     </div>
   );

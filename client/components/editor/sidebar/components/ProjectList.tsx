@@ -56,8 +56,8 @@ export const ProjectList: React.FC<ProjectListProps> = ({
   if (projects.length === 0) {
     return (
       <div className="text-center text-muted-foreground py-8">
-        <p>Нет проектов</p>
-        <p className="text-sm">Создайте первый проект</p>
+        <p>No projects</p>
+        <p className="text-sm">Create your first project</p>
       </div>
     );
   }
@@ -100,9 +100,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   <Calendar className="w-3 h-3" />
                   {formatDate(project.createdAt)}
                 </span>
-                <span>{nodeCount} узлов</span>
+                <span>{nodeCount} nodes</span>
                 {sheetsInfo.count > 1 && (
-                  <span>{sheetsInfo.count} листов</span>
+                  <span>{sheetsInfo.count} sheets</span>
                 )}
               </div>
             </div>

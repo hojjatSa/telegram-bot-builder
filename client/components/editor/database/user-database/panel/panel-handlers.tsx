@@ -60,7 +60,7 @@ export function useUserDatabasePanelHandlers(
       });
     } else {
       toast({
-        title: 'Функция недоступна',
+        title: "Function not available",
         description: `Изменение статуса "${field}" пока не поддерживается`,
         variant: 'destructive',
       });

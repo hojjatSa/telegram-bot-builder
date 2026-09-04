@@ -14,7 +14,7 @@ interface ConditionalActionSelectorProps {
 export function ConditionalActionSelector({ action, onActionChange }: ConditionalActionSelectorProps) {
   return (
     <div className="space-y-2">
-      <Label className="text-xs font-medium text-foreground">Действие</Label>
+      <Label className="text-xs font-medium text-foreground">Action</Label>
       <Select value={action} onValueChange={onActionChange}>
         <SelectTrigger className="h-9 text-sm"><SelectValue /></SelectTrigger>
         <SelectContent>

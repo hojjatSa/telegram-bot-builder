@@ -108,8 +108,8 @@ export function TerminalPanel({ allProjects, currentProjectId, onProjectChange }
         </TabHeader>
         <div className="flex-1 flex items-center justify-center text-muted-foreground">
           <div className="text-center">
-            <p className="text-lg font-medium mb-2">Терминалы не активны</p>
-            <p className="text-sm">Запустите бота, чтобы увидеть его логи</p>
+            <p className="text-lg font-medium mb-2">Terminals are not active</p>
+            <p className="text-sm">Launch the bot to see its logs</p>
           </div>
         </div>
       </div>

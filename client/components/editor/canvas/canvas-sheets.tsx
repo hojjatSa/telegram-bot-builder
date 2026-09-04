@@ -328,7 +328,7 @@ export function CanvasSheets({
         size="sm"
         onClick={addNewSheet}
         className="flex-shrink-0 p-0 h-9 w-9 rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-600/20 hover:from-emerald-500/30 hover:to-green-600/30 active:from-emerald-500/40 active:to-green-600/40 transition-colors duration-200 hover:shadow-lg hover:shadow-emerald-500/30 border border-emerald-500/30 hover:border-emerald-400/50"
-        title="Добавить новый лист"
+        title={"Add a new sheet"}
       >
         <Plus className="h-4 w-4 text-emerald-400 drop-shadow-sm" />
       </Button>

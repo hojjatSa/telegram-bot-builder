@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const forwardMessage: ComponentDefinition = {
   id: 'forward-message',
   name: 'Forward Message',
-  description: 'Пересылка сообщения в другой чат',
+  description: "Forwarding a message to another chat",
   icon: 'fas fa-share',
   color: 'bg-amber-100 text-amber-600',
   type: 'forward_message',

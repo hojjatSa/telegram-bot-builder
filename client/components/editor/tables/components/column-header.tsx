@@ -87,7 +87,7 @@ export function ColumnHeader({ column, onRename, onDelete }: ColumnHeaderProps) 
       <DropdownMenuContent align="start" className="w-40">
         <DropdownMenuItem onClick={() => { setLocalName(column.name); setEditing(true); }}>
           <Pencil className="h-3.5 w-3.5 mr-2" />
-          Переименовать
+          Rename
         </DropdownMenuItem>
         <DropdownMenuItem className="text-destructive" onClick={onDelete}>
           <Trash2 className="h-3.5 w-3.5 mr-2" />

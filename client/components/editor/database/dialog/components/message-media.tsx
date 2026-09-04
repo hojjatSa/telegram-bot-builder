@@ -313,7 +313,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
           <div className="rounded-lg overflow-hidden max-w-[200px]">
             <img
               src={mediaSrc}
-              alt="Фото рассылки"
+              alt={"Mailing photo"}
               className="w-full h-auto rounded-lg cursor-zoom-in"
               onClick={() => setLightboxSrc(mediaSrc)}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -354,7 +354,7 @@ export function MessageMedia({ media, messageData, projectId, tokenId }: Message
       >
         <span className="text-lg">📎</span>
         <span className="text-xs truncate">
-          {broadcastMediaType === 'document' ? 'Document' : 'Файл рассылки'}
+          {broadcastMediaType === 'document' ? 'Document' : "Mailing file"}
         </span>
       </a>
     );

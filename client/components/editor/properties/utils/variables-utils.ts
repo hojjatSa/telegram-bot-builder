@@ -29,16 +29,16 @@ const MEDIA_META_SUFFIXES_MAP: Record<string, MediaMetaSuffix[]> = {
     { suffix: 'mime_type', description: 'MIME type' },
   ],
   photo: [
-    { suffix: 'file_id', description: 'Telegram file_id (макс. размер)' },
+    { suffix: 'file_id', description: "Telegram file_id (max. size)" },
     { suffix: 'file_unique_id', description: 'Unique file ID' },
     { suffix: 'file_size', description: 'File size (bytes)' },
     { suffix: 'width', description: 'Width (px)' },
     { suffix: 'height', description: 'Height (px)' },
-    { suffix: 'small_file_id', description: 'file_id миниатюры (мин. размер)' },
-    { suffix: 'small_width', description: 'Ширина миниатюры (px)' },
-    { suffix: 'small_height', description: 'Высота миниатюры (px)' },
-    { suffix: 'sizes_count', description: 'Количество размеров' },
-    { suffix: 'all_sizes', description: 'JSON всех размеров [{file_id, w, h, size}]' },
+    { suffix: 'small_file_id', description: "file_id thumbnail (min. size)" },
+    { suffix: 'small_width', description: "Thumbnail width (px)" },
+    { suffix: 'small_height', description: "Thumbnail height (px)" },
+    { suffix: 'sizes_count', description: "Number of sizes" },
+    { suffix: 'all_sizes', description: "JSON of all sizes [{file_id, w, h, size}]" },
   ],
   audio: [
     { suffix: 'file_id', description: 'Telegram file_id' },
@@ -47,8 +47,8 @@ const MEDIA_META_SUFFIXES_MAP: Record<string, MediaMetaSuffix[]> = {
     { suffix: 'duration', description: 'Duration (sec)' },
     { suffix: 'file_size', description: 'File size (bytes)' },
     { suffix: 'file_name', description: 'File name' },
-    { suffix: 'title', description: 'Название трека' },
-    { suffix: 'performer', description: 'Исполнитель' },
+    { suffix: 'title', description: "Track name" },
+    { suffix: 'performer', description: "Executor" },
     { suffix: 'mime_type', description: 'MIME type' },
   ],
   document: [
@@ -148,7 +148,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeType: node.type, 
         mediaType: 'photo', 
         sourceTable: 'bot_users', 
-        description: 'File ID фотографии',
+        description: "File ID photo",
         nodeIds: [node.id]
       });
     }
@@ -159,7 +159,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeType: node.type, 
         mediaType: 'video', 
         sourceTable: 'bot_users', 
-        description: 'File ID видео',
+        description: "File ID video",
         nodeIds: [node.id]
       });
     }
@@ -170,7 +170,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeType: node.type, 
         mediaType: 'audio', 
         sourceTable: 'bot_users', 
-        description: 'File ID аудио',
+        description: "File ID audio",
         nodeIds: [node.id]
       });
     }
@@ -181,7 +181,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeType: node.type, 
         mediaType: 'document', 
         sourceTable: 'bot_users', 
-        description: 'File ID документа',
+        description: "Document File ID",
         nodeIds: [node.id]
       });
     }
@@ -191,7 +191,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeId: node.id, 
         nodeType: node.type, 
         sourceTable: 'bot_users', 
-        description: 'Множественный выбор (список)',
+        description: "Multiple choice (list)",
         nodeIds: [node.id]
       });
     }
@@ -269,11 +269,11 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
     if ((node.type as string) !== 'managed_bot_updated_trigger') return;
     const data = node.data as any;
     const vars: Array<{ key: string; name: string; description: string }> = [
-      { key: 'saveBotIdTo', name: data.saveBotIdTo || 'bot_id', description: 'ID созданного управляемого бота' },
-      { key: 'saveBotUsernameTo', name: data.saveBotUsernameTo || 'bot_username', description: 'Username созданного управляемого бота' },
-      { key: 'saveBotNameTo', name: data.saveBotNameTo || 'bot_name', description: 'Имя созданного управляемого бота' },
-      { key: 'saveCreatorIdTo', name: data.saveCreatorIdTo || 'creator_id', description: 'ID пользователя, создавшего бота' },
-      { key: 'saveCreatorUsernameTo', name: data.saveCreatorUsernameTo || 'creator_username', description: 'Username пользователя, создавшего бота' },
+      { key: 'saveBotIdTo', name: data.saveBotIdTo || 'bot_id', description: "ID of the created managed bot" },
+      { key: 'saveBotUsernameTo', name: data.saveBotUsernameTo || 'bot_username', description: "Username of the created managed bot" },
+      { key: 'saveBotNameTo', name: data.saveBotNameTo || 'bot_name', description: "Name of the created managed bot" },
+      { key: 'saveCreatorIdTo', name: data.saveCreatorIdTo || 'creator_id', description: "ID of the user who created the bot" },
+      { key: 'saveCreatorUsernameTo', name: data.saveCreatorUsernameTo || 'creator_username', description: "Username of the user who created the bot" },
     ];
     vars.forEach(({ key, name, description }) => {
       if (!name) return;
@@ -293,8 +293,8 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
     if ((node.type as string) !== 'get_managed_bot_token') return;
     const data = node.data as any;
     const vars: Array<{ key: string; name: string; description: string }> = [
-      { key: 'saveTokenTo', name: data.saveTokenTo || 'bot_token', description: 'Токен управляемого бота' },
-      { key: 'saveErrorTo', name: data.saveErrorTo || '', description: 'Ошибка при получении токена' },
+      { key: 'saveTokenTo', name: data.saveTokenTo || 'bot_token', description: "Managed Bot Token" },
+      { key: 'saveErrorTo', name: data.saveErrorTo || '', description: "Error receiving token" },
     ];
     vars.forEach(({ key, name, description }) => {
       if (!name) return;
@@ -436,7 +436,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
           nodeId: node.id,
           nodeType: 'set_variable' as any,
           sourceTable: 'bot_users',
-          description: `Установлена узлом «Установить переменные»`,
+          description: "Set by the “Set Variables” node",
         });
       }
     });
@@ -503,7 +503,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
         nodeId: node.id,
         nodeType: 'schedule_trigger' as any,
         sourceTable: 'bot_users',
-        description: 'Метаданные расписания (timestamp, runCount, nodeId)',
+        description: "Schedule metadata (timestamp, runCount, nodeId)",
       });
     }
   });
@@ -620,7 +620,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
           name: data.saveMessageIdTo,
           nodeId: node.id,
           nodeType: 'userbot_message' as any,
-          description: 'ID сообщения от юзербота',
+          description: "Message ID from userbot",
         });
       }
     }
@@ -631,7 +631,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
           name: data.saveResponseIdTo,
           nodeId: node.id,
           nodeType: 'userbot_message' as any,
-          description: 'ID ответа от получателя',
+          description: "Recipient reply ID",
         });
       }
     }
@@ -642,7 +642,7 @@ export function extractVariables(allNodes: Node[], botTables?: BotTableForVariab
           name: data.saveButtonsTo,
           nodeId: node.id,
           nodeType: 'userbot_message' as any,
-          description: 'Кнопки ответа (JSON)',
+          description: "Reply buttons (JSON)",
         });
       }
     }

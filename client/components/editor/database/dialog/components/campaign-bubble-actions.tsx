@@ -52,7 +52,7 @@ export function CampaignBubbleActions({
           size="icon"
           className="h-6 w-6 shrink-0 text-muted-foreground hover:text-blue-500 hover:bg-blue-500/10"
           onClick={onStartEdit}
-          title="Изменить текст у всех ботов"
+          title={"Change text for all bots"}
         >
           <Pencil className="h-3 w-3" />
         </Button>
@@ -64,7 +64,7 @@ export function CampaignBubbleActions({
           className="h-6 w-6 shrink-0 text-muted-foreground hover:text-amber-500 hover:bg-amber-500/10"
           onClick={onStopAll}
           disabled={isStopping}
-          title="Остановить у всех ботов"
+          title={"Stop all bots"}
         >
           {isStopping ? <Loader2 className="h-3 w-3 animate-spin" /> : <Square className="h-3 w-3" />}
         </Button>
@@ -76,7 +76,7 @@ export function CampaignBubbleActions({
           className="h-6 w-6 shrink-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
           onClick={onRequestDelete}
           disabled={isDeleting}
-          title="Удалить рассылку у всех ботов"
+          title={"Delete mailing lists for all bots"}
         >
           {isDeleting ? <Loader2 className="h-3 w-3 animate-spin" /> : <Trash2 className="h-3 w-3" />}
         </Button>

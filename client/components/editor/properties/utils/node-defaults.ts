@@ -59,7 +59,7 @@ export function getNodeDefaults(type: Node['type']): any {
     location: {
       latitude: 55.7558,
       longitude: 37.6176,
-      title: 'Москва',
+      title: "Moscow",
       address: 'Москва, Россия',
       foursquareId: '',
       foursquareType: '',
@@ -85,7 +85,7 @@ export function getNodeDefaults(type: Node['type']): any {
     },
     start: {
       command: '/start',
-      description: 'Запустить бота',
+      description: "Launch bot",
       messageText: 'Привет! Добро пожаловать!',
       keyboardType: 'none',
       buttons: [],
@@ -100,7 +100,7 @@ export function getNodeDefaults(type: Node['type']): any {
     },
     command: {
       command: '/custom',
-      description: 'Новая команда',
+      description: "New team",
       messageText: 'Команда выполнена',
       keyboardType: 'none',
       buttons: [],
@@ -243,7 +243,7 @@ export function getNodeDefaults(type: Node['type']): any {
     },
     admin_rights: {
       command: '/admin_rights',
-      description: 'Управление правами администратора',
+      description: "Managing Administrator Rights",
       synonyms: ['права админа', 'изменить права', 'админ права', 'тг права', 'права'],
       adminUserIdSource: 'last_message',
       adminChatIdSource: 'current_chat',
@@ -277,8 +277,8 @@ export function getNodeDefaults(type: Node['type']): any {
     broadcast: {
       enableConfirmation: true,
       confirmationText: 'Отправить рассылку всем пользователям?',
-      successMessage: '✅ Рассылка отправлена!',
-      errorMessage: '❌ Ошибка рассылки'
+      successMessage: "✅ Newsletter sent!",
+      errorMessage: "❌ Mailing error"
     },
     photo: {
       messageText: '',
@@ -465,8 +465,8 @@ export function getNodeDefaults(type: Node['type']): any {
     parallel_split: {
       /** Ветки параллельного запуска */
       parallelBranches: [
-        { id: 'pbranch_1', label: 'Ветка 1', target: '' },
-        { id: 'pbranch_2', label: 'Ветка 2', target: '' },
+        { id: 'pbranch_1', label: "Branch 1", target: '' },
+        { id: 'pbranch_2', label: "Branch 2", target: '' },
       ],
       /** Лимит одновременных веток */
       maxConcurrent: 5,

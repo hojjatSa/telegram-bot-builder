@@ -90,7 +90,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
                 id="storage-name"
                 value={draft.name}
                 onChange={(e) => setField('name', e.target.value)}
-                placeholder="Моё хранилище"
+                placeholder={"My storage"}
                 data-testid="storage-field-name"
               />
             </div>
@@ -105,7 +105,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="local">Локальная папка</SelectItem>
+                  <SelectItem value="local">Local folder</SelectItem>
                   <SelectItem value="s3">S3 (MinIO/AWS)</SelectItem>
                 </SelectContent>
               </Select>
@@ -122,9 +122,9 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
           <div className={STORAGE_CONFIG_FORM_SETTING_ROW_CLASS}>
             <div className="space-y-0.5">
               <Label htmlFor="storage-readonly" className="text-sm font-medium">
-                Только чтение
+                Read only
               </Label>
-              <p className="text-xs text-muted-foreground">Загрузка в это хранилище будет недоступна</p>
+              <p className="text-xs text-muted-foreground">Uploading to this storage will not be available</p>
             </div>
             <Switch
               id="storage-readonly"
@@ -148,7 +148,7 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
                 <XCircle className="h-4 w-4 shrink-0" />
               )}
               <span>
-                {testResult.message ?? (testResult.ok ? 'Хранилище доступно' : 'Хранилище недоступно')}
+                {testResult.message ?? (testResult.ok ? "Storage available" : "Storage unavailable")}
               </span>
             </div>
           )}
@@ -161,11 +161,11 @@ export function StorageConfigForm({ open, onOpenChange, editing }: StorageConfig
             className="gap-2 text-muted-foreground hover:text-foreground"
             onClick={runTest}
             disabled={isTesting || !isEdit}
-            title={isEdit ? 'Проверить доступность' : 'Доступно после сохранения'}
+            title={isEdit ? "Check availability" : "Available after saving"}
             data-testid="storage-test-button"
           >
             <PlugZap className="h-4 w-4" />
-            {isTesting ? 'Проверка…' : 'Проверить'}
+            {isTesting ? "Examination…" : "Check"}
           </Button>
           <div className="flex gap-2">
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>

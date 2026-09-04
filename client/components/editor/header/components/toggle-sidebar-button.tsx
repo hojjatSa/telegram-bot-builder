@@ -31,11 +31,11 @@ export function ToggleSidebarButton({ sidebarVisible, onClick }: ToggleSidebarBu
           ? 'bg-purple-600 text-white shadow-md shadow-purple-500/30 hover:shadow-lg hover:shadow-purple-500/40'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
       )}
-      title={sidebarVisible ? 'Скрыть боковую панель' : 'Показать боковую панель'}
+      title={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       data-testid="button-mobile-toggle-sidebar"
     >
       <Sidebar className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{sidebarVisible ? 'Hide' : 'Show'} панель</span>
+      <span className="sm:hidden">{sidebarVisible ? 'Hide' : 'Show'} panel</span>
     </Button>
   );
 }

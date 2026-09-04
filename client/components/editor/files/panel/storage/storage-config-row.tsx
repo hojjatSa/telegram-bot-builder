@@ -80,7 +80,7 @@ export function StorageConfigRow({
               data-testid="storage-active-badge"
             >
               <Star className="h-3 w-3 fill-current" />
-              Активно
+              Actively
             </span>
           )}
         </div>
@@ -90,7 +90,7 @@ export function StorageConfigRow({
             <>
               <span className="mx-1 text-border/70">·</span>
               <Lock className="mr-0.5 inline h-3 w-3 align-[-2px]" />
-              Только чтение
+              Read only
             </>
           )}
         </p>
@@ -105,7 +105,7 @@ export function StorageConfigRow({
             className="h-8 w-8 text-muted-foreground hover:text-primary"
             disabled={isMutating}
             onClick={() => onSetActive(storage.configId)}
-            title="Сделать активным для загрузок"
+            title={"Make active for downloads"}
             data-testid={`storage-set-active-${storage.configId}`}
           >
             <Star className="h-4 w-4" />
@@ -135,7 +135,7 @@ export function StorageConfigRow({
               size="icon"
               className="h-8 w-8 text-muted-foreground hover:text-destructive"
               disabled={isMutating}
-              title="Удалить хранилище"
+              title={"Delete storage"}
               data-testid={`storage-delete-${storage.configId}`}
             >
               <Trash2 className="h-3.5 w-3.5" />
@@ -143,9 +143,9 @@ export function StorageConfigRow({
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Удалить хранилище «{storage.name}»?</AlertDialogTitle>
+              <AlertDialogTitle>Delete storage "{storage.name}»?</AlertDialogTitle>
               <AlertDialogDescription>
-                Удаление запрещено, если на хранилище есть файлы. Действие необратимо.
+                Deletion is prohibited if there are files on the storage. The action is irreversible.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

@@ -47,7 +47,7 @@ export function QuestionCheckboxList({ availableQuestions, selectedNames, onSele
     <div className="bg-gradient-to-br from-blue-50/60 to-purple-50/30 dark:from-blue-950/30 dark:to-purple-950/15 rounded-xl p-3 sm:p-4 border border-blue-200/50 dark:border-blue-800/40 shadow-sm hover:shadow-md transition-all">
       <div className="flex items-center gap-2 mb-3">
         <i className="fas fa-checklist text-blue-600 dark:text-blue-400 text-sm"></i>
-        <span className="text-xs sm:text-sm font-bold text-blue-700 dark:text-blue-300">Доступные вопросы:</span>
+        <span className="text-xs sm:text-sm font-bold text-blue-700 dark:text-blue-300">Available questions:</span>
         <span className="ml-auto text-xs bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-2 py-1 rounded-full font-semibold">
           {availableQuestions.length}
         </span>

@@ -45,7 +45,7 @@ export function DatabaseTabs(props: DatabaseTabsProps): React.JSX.Element {
           Users
         </TabsTrigger>
         <TabsTrigger value="responses" className="text-sm font-medium">
-          Ответы пользователей
+          User responses
         </TabsTrigger>
       </TabsList>
 

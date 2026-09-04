@@ -105,7 +105,7 @@ export function HttpCurlImport({ onImport }: HttpCurlImportProps) {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-sm">Импорт cURL команды</DialogTitle>
+            <DialogTitle className="text-sm">Import cURL command</DialogTitle>
           </DialogHeader>
           <Textarea
             value={value}
@@ -118,7 +118,7 @@ export function HttpCurlImport({ onImport }: HttpCurlImportProps) {
               Cancel
             </Button>
             <Button size="sm" onClick={handleImport} disabled={!value.trim()}>
-              Импортировать
+              Import
             </Button>
           </DialogFooter>
         </DialogContent>

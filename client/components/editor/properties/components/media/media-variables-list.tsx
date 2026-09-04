@@ -29,7 +29,7 @@ export function MediaVariablesList({ variables, onRemove }: MediaVariablesListPr
 
   return (
     <div className="space-y-2">
-      <Label className="text-xs font-medium text-muted-foreground">Прикрепленные медиа</Label>
+      <Label className="text-xs font-medium text-muted-foreground">Attached media</Label>
       <div className="flex flex-wrap gap-2">
         {variables.map((variable) => (
           <MediaVariableBadge
@@ -40,7 +40,7 @@ export function MediaVariablesList({ variables, onRemove }: MediaVariablesListPr
         ))}
       </div>
       <div className="text-xs text-muted-foreground">
-        Эти переменные содержат file_id медиафайлов, полученных от пользователей
+        These variables contain the file_id of media files received from users
       </div>
     </div>
   );

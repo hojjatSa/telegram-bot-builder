@@ -31,7 +31,7 @@ export function ConditionalVariableDropdown({ textVariables, SYSTEM_VARIABLES, o
         </UIButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel className="text-xs">Доступные переменные</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-xs">Available Variables</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {[...SYSTEM_VARIABLES, ...textVariables].map((variable, index) => (
           <DropdownMenuItem key={`${variable.nodeId}-${variable.name}-${index}`} className="cursor-pointer"
@@ -45,7 +45,7 @@ export function ConditionalVariableDropdown({ textVariables, SYSTEM_VARIABLES, o
             </div>
           </DropdownMenuItem>
         ))}
-        {textVariables.length === 0 && <DropdownMenuItem disabled><span className="text-xs text-muted-foreground">Нет доступных переменных</span></DropdownMenuItem>}
+        {textVariables.length === 0 && <DropdownMenuItem disabled><span className="text-xs text-muted-foreground">No variables available</span></DropdownMenuItem>}
       </DropdownMenuContent>
     </DropdownMenu>
   );

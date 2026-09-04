@@ -65,10 +65,10 @@ export function CodeMobileLayout({ panelContent, editorContent }: CodeMobileLayo
               ? 'text-foreground border-b-2 border-primary'
               : 'text-muted-foreground hover:text-foreground',
           ].join(' ')}
-          aria-label="Панель кода"
+          aria-label={"Code panel"}
         >
           <i className="fas fa-list w-4 h-4" />
-          Панель
+          Panel
         </button>
         <button
           type="button"

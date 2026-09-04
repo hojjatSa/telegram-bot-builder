@@ -33,20 +33,20 @@ export function SaveAnswerIndicator({ node }: SaveAnswerIndicatorProps) {
         </div>
         <div className="flex-1 min-w-0 space-y-1">
           <div className="text-sm font-medium text-cyan-800 dark:text-cyan-200">
-            Сохранение ответа
+            Saving a reply
           </div>
           <div className="text-xs text-cyan-600 dark:text-cyan-400 space-y-1">
             <div className="flex items-center gap-1">
               <i className="fas fa-question-circle text-xs" />
-              <span>Источник: {source}</span>
+              <span>Source: {source}</span>
             </div>
             <div className="flex items-center gap-1">
               <i className="fas fa-tag text-xs" />
-              <span>Переменная: <code className="bg-cyan-100 dark:bg-cyan-900/50 px-1 py-0.5 rounded text-xs">{targetVariable}</code></span>
+              <span>Variable: <code className="bg-cyan-100 dark:bg-cyan-900/50 px-1 py-0.5 rounded text-xs">{targetVariable}</code></span>
             </div>
             <div className="flex items-center gap-1">
               <i className="fas fa-sync-alt text-xs" />
-              <span>Режим: {mode === 'append' ? 'добавление' : 'замена'}</span>
+              <span>Mode: {mode === 'append' ? "addition" : "replacement"}</span>
             </div>
           </div>
         </div>

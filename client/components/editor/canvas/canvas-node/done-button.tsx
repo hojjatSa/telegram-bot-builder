@@ -33,7 +33,7 @@ export function DoneButton({ button }: DoneButtonProps) {
       <div className="flex flex-col space-y-1">
         <div className="flex items-center justify-center space-x-1">
           <span className="text-xs font-medium text-blue-700 dark:text-blue-300 break-words">{button.text}</span>
-          <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title="Завершение"></i>
+          <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title={"Completion"}></i>
         </div>
       </div>
     </div>

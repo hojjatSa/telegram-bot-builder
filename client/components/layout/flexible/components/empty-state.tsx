@@ -45,12 +45,12 @@ export function EmptyState(props: EmptyStateProps): React.JSX.Element {
     <div className="h-full w-full flex flex-col items-center justify-center text-muted-foreground bg-background relative">
       <div className="text-center mb-8">
         <h3 className="text-lg font-medium mb-2">
-          {isMobileMode ? 'Мобильный режим' : 'Все панели скрыты'}
+          {isMobileMode ? "Mobile mode" : "All panels are hidden"}
         </h3>
         <p className="text-sm">
           {isMobileMode
-            ? 'На мобильных устройствах боковые панели скрыты для экономии места'
-            : 'Используйте кнопки ниже для показа панелей'
+            ? "On mobile devices, sidebars are hidden to save space"
+            : "Use the buttons below to show panels"
           }
         </p>
       </div>
@@ -59,7 +59,7 @@ export function EmptyState(props: EmptyStateProps): React.JSX.Element {
         <button
           onClick={() => toggleElement('header')}
           className="p-3 rounded-md transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400"
-          title="Показать шапку"
+          title={"Show header"}
         >
           <Navigation className="w-5 h-5" />
         </button>
@@ -67,7 +67,7 @@ export function EmptyState(props: EmptyStateProps): React.JSX.Element {
         <button
           onClick={() => toggleElement('sidebar')}
           className="p-3 rounded-md transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400"
-          title="Показать боковую панель"
+          title={"Show sidebar"}
         >
           <Sidebar className="w-5 h-5" />
         </button>
@@ -75,7 +75,7 @@ export function EmptyState(props: EmptyStateProps): React.JSX.Element {
         <button
           onClick={() => toggleElement('canvas')}
           className="p-3 rounded-md transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400"
-          title="Показать холст"
+          title={"Show canvas"}
         >
           <Monitor className="w-5 h-5" />
         </button>
@@ -83,7 +83,7 @@ export function EmptyState(props: EmptyStateProps): React.JSX.Element {
         <button
           onClick={() => toggleElement('properties')}
           className="p-3 rounded-md transition-all duration-200 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 hover:text-blue-600 dark:hover:text-blue-400"
-          title="Показать панель свойств"
+          title={"Show properties panel"}
         >
           <Sliders className="w-5 h-5" />
         </button>

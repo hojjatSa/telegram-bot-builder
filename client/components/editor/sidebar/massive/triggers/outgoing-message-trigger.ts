@@ -9,7 +9,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const outgoingMessageTrigger: ComponentDefinition = {
   id: 'outgoing-message-trigger',
   name: 'Outgoing Message Trigger',
-  description: 'Срабатывает когда бот отправляет сообщение пользователю. Работает параллельно с основным потоком.',
+  description: "Fires when the bot sends a message to the user. Runs in parallel with the main thread.",
   icon: 'fas fa-paper-plane',
   color: 'bg-purple-100 text-purple-600',
   type: 'outgoing_message_trigger' as any,

@@ -40,7 +40,7 @@ export function KeyboardLayoutActions({
           id="auto-layout"
         />
         <label htmlFor="auto-layout" className="text-sm">
-          Авто-раскладка
+          Auto layout
         </label>
       </div>
 
@@ -51,7 +51,7 @@ export function KeyboardLayoutActions({
           onClick={onAddRow}
           disabled={autoLayout}
         >
-          + Ряд
+          + Row
         </Button>
 
         {rowsCount > 1 && (
@@ -61,7 +61,7 @@ export function KeyboardLayoutActions({
             onClick={() => onRemoveRow(rowsCount - 1)}
             disabled={autoLayout}
           >
-            − Ряд
+            − Row
           </Button>
         )}
       </div>

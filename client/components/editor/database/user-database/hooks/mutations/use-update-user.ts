@@ -60,14 +60,14 @@ export function useUpdateUser(params: UseUpdateUserParams) {
       }, 100);
 
       toast({
-        title: 'Статус изменён',
-        description: 'Статус пользователя успешно обновлён',
+        title: "Status changed",
+        description: "User status updated successfully",
       });
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Не удалось обновить статус пользователя',
+        description: "Failed to update user status",
         variant: 'destructive',
       });
     },

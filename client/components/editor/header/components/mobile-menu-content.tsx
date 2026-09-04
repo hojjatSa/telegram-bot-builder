@@ -77,7 +77,7 @@ export function MobileMenuContent({
     <div className="px-4 sm:px-6 py-4 space-y-4 sm:space-y-6">
       {/* Навигация */}
       <div>
-        <h3 className="text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Навигация</h3>
+        <h3 className="text-xs sm:text-sm font-bold text-muted-foreground uppercase tracking-wider mb-3">Navigation</h3>
         <MobileNavigation
           currentTab={currentTab}
           onTabChange={onTabChange}

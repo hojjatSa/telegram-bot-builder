@@ -38,7 +38,7 @@ export function AdminRightsHeader({ totalRights }: AdminRightsHeaderProps) {
         </div>
       </div>
       <div className="text-xs text-violet-600 dark:text-violet-400 bg-violet-100 dark:bg-violet-900/50 px-2 py-1 rounded-full font-medium">
-        {totalRights} кнопок
+        {totalRights} buttons
       </div>
     </div>
   );

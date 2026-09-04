@@ -124,8 +124,8 @@ export function BroadcastList({ broadcasts, onSelect, selectedId }: BroadcastLis
     return (
       <div className="flex flex-col items-center justify-center py-12 text-muted-foreground">
         <span className="text-5xl mb-3">📭</span>
-        <p className="text-sm font-medium">Рассылок пока нет</p>
-        <p className="text-xs mt-1">Создайте первую рассылку с помощью кнопки выше</p>
+        <p className="text-sm font-medium">No mailings yet</p>
+        <p className="text-xs mt-1">Create your first newsletter using the button above</p>
       </div>
     );
   }

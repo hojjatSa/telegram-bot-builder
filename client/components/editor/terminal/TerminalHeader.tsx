@@ -81,12 +81,12 @@ export function TerminalHeader({
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onCopy('text')}>Text</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onSave('text')}>Text</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
                 {onHide && (

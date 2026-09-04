@@ -39,7 +39,7 @@ export function BroadcastProgressCounters({
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-amber-600">{blockedCount}</div>
-        <div className="text-xs text-muted-foreground">Заблокировали</div>
+        <div className="text-xs text-muted-foreground">Blocked</div>
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-orange-600">{deletedCount}</div>
@@ -47,12 +47,12 @@ export function BroadcastProgressCounters({
       </div>
       <div className="border rounded p-2">
         <div className="text-lg font-bold text-red-500">{failedCount}</div>
-        <div className="text-xs text-muted-foreground">Прочие ошибки</div>
+        <div className="text-xs text-muted-foreground">Other errors</div>
       </div>
       {remaining !== undefined && (
         <div className="border rounded p-2 col-span-2 sm:col-span-4">
           <div className="text-lg font-bold">{remaining}</div>
-          <div className="text-xs text-muted-foreground">Осталось</div>
+          <div className="text-xs text-muted-foreground">Left</div>
         </div>
       )}
     </div>

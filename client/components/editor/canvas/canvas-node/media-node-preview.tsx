@@ -24,7 +24,7 @@ export function MediaNodePreview({ attachedMedia }: MediaNodePreviewProps) {
       <div className="bg-gradient-to-br from-fuchsia-100/50 to-purple-100/50 dark:from-fuchsia-900/30 dark:to-purple-900/30 rounded-lg p-4 mb-4 h-24 flex items-center justify-center">
         <div className="text-center space-y-1">
           <i className="fas fa-photo-video text-fuchsia-400 dark:text-fuchsia-300 text-2xl"></i>
-          <div className="text-xs text-fuchsia-500 dark:text-fuchsia-400">Нет файлов</div>
+          <div className="text-xs text-fuchsia-500 dark:text-fuchsia-400">No files</div>
         </div>
       </div>
     );
@@ -35,7 +35,7 @@ export function MediaNodePreview({ attachedMedia }: MediaNodePreviewProps) {
       <div className="flex items-center gap-2 mb-2">
         <i className="fas fa-photo-video text-fuchsia-500 dark:text-fuchsia-400 text-sm"></i>
         <span className="text-xs font-medium text-fuchsia-700 dark:text-fuchsia-300">
-          {attachedMedia.length} {attachedMedia.length === 1 ? 'файл' : 'файлов'}
+          {attachedMedia.length} {attachedMedia.length === 1 ? "file" : "files"}
         </span>
       </div>
       <div className="flex flex-wrap gap-1.5">

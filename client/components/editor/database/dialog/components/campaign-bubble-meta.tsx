@@ -66,7 +66,7 @@ export function CampaignBubbleMeta({
       className="w-full rounded-md px-1 py-1 text-left transition-colors hover:bg-muted/40 disabled:opacity-50"
       onClick={onToggle}
       disabled={disabled}
-      title={toggleTitle ?? (expanded ? 'Скрыть детали' : 'Показать детали')}
+      title={toggleTitle ?? (expanded ? "Hide details" : "Show details")}
     >
       <span className="flex items-center gap-1.5">
         <span className="text-[11px] tabular-nums text-muted-foreground">

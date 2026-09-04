@@ -106,7 +106,7 @@ export function CodeEditorArea({
           <div className="flex items-center justify-center h-full">
             <div className="flex flex-col items-center gap-3">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
-              <p className="text-sm text-muted-foreground">Генерация кода...</p>
+              <p className="text-sm text-muted-foreground">Code generation...</p>
             </div>
           </div>
         ) : (

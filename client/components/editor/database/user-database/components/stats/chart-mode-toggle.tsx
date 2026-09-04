@@ -26,8 +26,8 @@ export interface ChartModeToggleProps {
  * Конфигурация кнопок переключателя
  */
 const MODES: Array<{ mode: ChartMode; title: string; Icon: React.ElementType }> = [
-  { mode: 'period',     title: 'За период',    Icon: CalendarDays },
-  { mode: 'cumulative', title: 'Накопительно', Icon: TrendingUp   },
+  { mode: 'period',     title: "For the period",    Icon: CalendarDays },
+  { mode: 'cumulative', title: "Cumulatively", Icon: TrendingUp   },
 ];
 
 /**

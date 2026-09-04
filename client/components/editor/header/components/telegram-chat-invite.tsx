@@ -26,7 +26,7 @@ export function TelegramChatInvite({ onClick, variant = 'mobile' }: TelegramChat
     return (
       <>
         <span className="hidden sm:inline-block text-slate-700 dark:text-slate-300">
-          Мы в Telegram:
+          We are on Telegram:
         </span>
         <a
           href="https://t.me/bot_builder_chat"
@@ -44,7 +44,7 @@ export function TelegramChatInvite({ onClick, variant = 'mobile' }: TelegramChat
   return (
     <div className="px-3 py-2.5 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 dark:from-blue-700/20 dark:to-cyan-600/20 rounded-lg border border-blue-400/20 dark:border-blue-500/30 backdrop-blur-sm text-center">
       <p className="text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-        Присоединяйтесь к нашему чату в Telegram:
+        Join our chat on Telegram:
       </p>
       <a
         href="https://t.me/bot_builder_chat"

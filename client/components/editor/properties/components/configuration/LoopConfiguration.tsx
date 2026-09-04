@@ -52,16 +52,16 @@ export function LoopConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-sync-alt text-violet-500 dark:text-violet-400 text-sm" />
           <span className="text-sm font-semibold text-violet-700 dark:text-violet-300">
-            Цикл по массиву
+            Loop through an array
           </span>
         </div>
         <p className="text-xs text-muted-foreground -mt-2">
-          Выполняет цепочку нод для каждого элемента массива
+          Executes a chain of nodes for each array element
         </p>
 
         {/* Переменная-источник */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">Переменная-источник *</Label>
+          <Label className="text-xs font-medium">Source variable *</Label>
           <Input
             value={sourceVariable}
             onChange={(e) => onNodeUpdate(selectedNode.id, { sourceVariable: e.target.value } as any)}
@@ -69,13 +69,13 @@ export function LoopConfiguration({
             className="h-8 text-sm"
           />
           <p className="text-[10px] text-muted-foreground">
-            Имя переменной с массивом для итерации
+            Variable name with array to iterate
           </p>
         </div>
 
         {/* Имя элемента */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">Имя элемента *</Label>
+          <Label className="text-xs font-medium">Element name *</Label>
           <Input
             value={itemVariable}
             onChange={(e) => onNodeUpdate(selectedNode.id, { itemVariable: e.target.value } as any)}
@@ -83,16 +83,16 @@ export function LoopConfiguration({
             className="h-8 text-sm"
           />
           <p className="text-[10px] text-muted-foreground">
-            Доступно как {'{'}
+            Available as {'{'}
             {itemVariable || 'item'}
-            {'}'} и {'{'}
+            {'}'} And {'{'}
             {itemVariable || 'item'}.field{'}'}
           </p>
         </div>
 
         {/* Имя индекса */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">Имя индекса</Label>
+          <Label className="text-xs font-medium">Index name</Label>
           <Input
             value={indexVariable}
             onChange={(e) => onNodeUpdate(selectedNode.id, { indexVariable: e.target.value } as any)}
@@ -100,14 +100,14 @@ export function LoopConfiguration({
             className="h-8 text-sm"
           />
           <p className="text-[10px] text-muted-foreground">
-            Номер итерации (0, 1, 2...)
+            Iteration number (0, 1, 2...)
           </p>
         </div>
 
         {/* Разделитель */}
         <div className="border-t border-violet-200/40 dark:border-violet-700/30 pt-3">
           <span className="text-xs font-medium text-violet-600 dark:text-violet-400">
-            Дополнительно
+            Additionally
           </span>
         </div>
 
@@ -119,13 +119,13 @@ export function LoopConfiguration({
             onCheckedChange={(checked) => onNodeUpdate(selectedNode.id, { parallel: !!checked } as any)}
           />
           <Label htmlFor="loop-parallel" className="text-xs cursor-pointer">
-            Параллельное выполнение (asyncio.gather)
+            Parallel execution (asyncio.gather)
           </Label>
         </div>
 
         {/* Задержка между итерациями */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">Задержка между итерациями (сек)</Label>
+          <Label className="text-xs font-medium">Delay between iterations (sec)</Label>
           <Input
             type="number"
             min={0}
@@ -135,13 +135,13 @@ export function LoopConfiguration({
             className="h-8 text-sm"
           />
           <p className="text-[10px] text-muted-foreground">
-            Anti-flood: пауза между шагами
+            Anti-flood: pause between steps
           </p>
         </div>
 
         {/* Максимум итераций */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">Максимум итераций</Label>
+          <Label className="text-xs font-medium">Maximum iterations</Label>
           <Input
             type="number"
             min={0}
@@ -150,20 +150,20 @@ export function LoopConfiguration({
             className="h-8 text-sm"
           />
           <p className="text-[10px] text-muted-foreground">
-            0 = без лимита
+            0 = no limit
           </p>
         </div>
 
         {/* Разделитель — переходы */}
         <div className="border-t border-violet-200/40 dark:border-violet-700/30 pt-3">
           <span className="text-xs font-medium text-violet-600 dark:text-violet-400">
-            Переходы
+            Transitions
           </span>
         </div>
 
         {/* Тело цикла (autoTransitionTo) */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">↻ Тело цикла</Label>
+          <Label className="text-xs font-medium">↻ Loop body</Label>
           <Select
             value={autoTransitionTo || '__none__'}
             onValueChange={(value) => onNodeUpdate(selectedNode.id, {
@@ -172,10 +172,10 @@ export function LoopConfiguration({
             } as any)}
           >
             <SelectTrigger className="h-8 text-xs">
-              <SelectValue placeholder="Выберите узел..." />
+              <SelectValue placeholder={"Select node..."} />
             </SelectTrigger>
             <SelectContent className="max-h-48 overflow-y-auto">
-              <SelectItem value="__none__">— Не выбрано —</SelectItem>
+              <SelectItem value="__none__">— Not selected —</SelectItem>
               {availableTargets.map(({ node, sheetName }) => (
                 <SelectItem key={node.id} value={node.id}>
                   {formatNodeDisplay(node, sheetName)}
@@ -184,13 +184,13 @@ export function LoopConfiguration({
             </SelectContent>
           </Select>
           <p className="text-[10px] text-muted-foreground">
-            Первый узел цепочки, выполняемой для каждого элемента
+            First node of the chain executed for each element
           </p>
         </div>
 
         {/* После цикла (afterLoopTo) */}
         <div className="space-y-1.5">
-          <Label className="text-xs font-medium">→ После цикла</Label>
+          <Label className="text-xs font-medium">→ After the cycle</Label>
           <Select
             value={afterLoopTo || '__none__'}
             onValueChange={(value) => onNodeUpdate(selectedNode.id, {
@@ -198,10 +198,10 @@ export function LoopConfiguration({
             } as any)}
           >
             <SelectTrigger className="h-8 text-xs">
-              <SelectValue placeholder="Выберите узел..." />
+              <SelectValue placeholder={"Select node..."} />
             </SelectTrigger>
             <SelectContent className="max-h-48 overflow-y-auto">
-              <SelectItem value="__none__">— Не выбрано —</SelectItem>
+              <SelectItem value="__none__">— Not selected —</SelectItem>
               {availableTargets.map(({ node, sheetName }) => (
                 <SelectItem key={node.id} value={node.id}>
                   {formatNodeDisplay(node, sheetName)}
@@ -210,7 +210,7 @@ export function LoopConfiguration({
             </SelectContent>
           </Select>
           <p className="text-[10px] text-muted-foreground">
-            Куда перейти после завершения всех итераций
+            Where to go after all iterations are completed
           </p>
         </div>
       </div>

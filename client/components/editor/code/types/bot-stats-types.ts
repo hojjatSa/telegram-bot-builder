@@ -45,12 +45,12 @@ export interface StatConfig {
  * Конфигурация всех метрик статистики бота
  */
 export const STATS_CONFIG: StatConfig[] = [
-  { key: 'totalNodes', label: 'Всего узлов', colorClass: 'text-blue-600 dark:text-blue-400', darkColorClass: 'dark:bg-blue-900/20', icon: 'fas fa-cubes' },
-  { key: 'commandNodes', label: 'Команд', colorClass: 'text-green-600 dark:text-green-400', darkColorClass: 'dark:bg-green-900/20', icon: 'fas fa-terminal' },
-  { key: 'totalButtons', label: 'Кнопок', colorClass: 'text-purple-600 dark:text-purple-400', darkColorClass: 'dark:bg-purple-900/20', icon: 'fas fa-hand-pointer' },
-  { key: 'messageNodes', label: 'Сообщений', colorClass: 'text-amber-600 dark:text-amber-400', darkColorClass: 'dark:bg-amber-900/20', icon: 'fas fa-comment' },
+  { key: 'totalNodes', label: "Total nodes", colorClass: 'text-blue-600 dark:text-blue-400', darkColorClass: 'dark:bg-blue-900/20', icon: 'fas fa-cubes' },
+  { key: 'commandNodes', label: "Teams", colorClass: 'text-green-600 dark:text-green-400', darkColorClass: 'dark:bg-green-900/20', icon: 'fas fa-terminal' },
+  { key: 'totalButtons', label: "Buttons", colorClass: 'text-purple-600 dark:text-purple-400', darkColorClass: 'dark:bg-purple-900/20', icon: 'fas fa-hand-pointer' },
+  { key: 'messageNodes', label: "Messages", colorClass: 'text-amber-600 dark:text-amber-400', darkColorClass: 'dark:bg-amber-900/20', icon: 'fas fa-comment' },
   { key: 'photoNodes', label: 'Photo', colorClass: 'text-pink-600 dark:text-pink-400', darkColorClass: 'dark:bg-pink-900/20', icon: 'fas fa-image' },
-  { key: 'keyboardNodes', label: 'Клавиатур', colorClass: 'text-cyan-600 dark:text-cyan-400', darkColorClass: 'dark:bg-cyan-900/20', icon: 'fas fa-keyboard' },
-  { key: 'commandsInMenu', label: 'В меню', colorClass: 'text-indigo-600 dark:text-indigo-400', darkColorClass: 'dark:bg-indigo-900/20', icon: 'fas fa-list' },
-  { key: 'adminOnlyCommands', label: 'Админ', colorClass: 'text-red-600 dark:text-red-400', darkColorClass: 'dark:bg-red-900/20', icon: 'fas fa-user-shield' },
+  { key: 'keyboardNodes', label: "Keyboards", colorClass: 'text-cyan-600 dark:text-cyan-400', darkColorClass: 'dark:bg-cyan-900/20', icon: 'fas fa-keyboard' },
+  { key: 'commandsInMenu', label: "On the menu", colorClass: 'text-indigo-600 dark:text-indigo-400', darkColorClass: 'dark:bg-indigo-900/20', icon: 'fas fa-list' },
+  { key: 'adminOnlyCommands', label: "Admin", colorClass: 'text-red-600 dark:text-red-400', darkColorClass: 'dark:bg-red-900/20', icon: 'fas fa-user-shield' },
 ];

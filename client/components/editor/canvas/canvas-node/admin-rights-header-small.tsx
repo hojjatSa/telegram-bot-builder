@@ -34,7 +34,7 @@ export function AdminRightsHeaderSmall({ node }: AdminRightsHeaderSmallProps) {
       <span className="text-violet-600 dark:text-violet-400 font-mono text-sm bg-violet-50 dark:bg-violet-900/30 px-2 py-1 rounded-lg border border-violet-200 dark:border-violet-800 mr-2">
         {node.data.command || '/admin_rights'}
       </span>
-      <span>Права админа</span>
+      <span>Admin rights</span>
     </span>
   );
 }

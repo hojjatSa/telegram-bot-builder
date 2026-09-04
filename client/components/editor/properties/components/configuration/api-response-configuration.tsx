@@ -37,12 +37,12 @@ export function ApiResponseConfiguration({ selectedNode, onUpdateNode }: ApiResp
     <div className="space-y-4 p-4">
       <div className="rounded-xl bg-violet-50/60 dark:bg-violet-900/20 border border-violet-200/50 p-4">
         <p className="text-xs text-slate-500 dark:text-slate-400">
-          Завершает HTTP-запрос, инициированный API-триггером. Поддерживает {'{переменные}'} в теле.
+          Completes an HTTP request initiated by an API trigger. Supports {"{variables}"} in the body.
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-xs">HTTP статус</Label>
+        <Label className="text-xs">HTTP status</Label>
         <Input
           type="number"
           value={Number(data.apiResponseStatusCode ?? 200)}
@@ -66,7 +66,7 @@ export function ApiResponseConfiguration({ selectedNode, onUpdateNode }: ApiResp
       </div>
 
       <div className="space-y-2">
-        <Label className="text-xs">Тело ответа</Label>
+        <Label className="text-xs">Response body</Label>
         <Textarea
           rows={5}
           className="font-mono text-xs"

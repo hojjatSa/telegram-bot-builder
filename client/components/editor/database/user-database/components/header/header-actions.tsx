@@ -50,9 +50,9 @@ export function HeaderActions({
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Удалить все данные пользователей?</AlertDialogTitle>
+            <AlertDialogTitle>Delete all user data?</AlertDialogTitle>
             <AlertDialogDescription>
-              Это действие нельзя отменить. Все данные пользователей для этого бота будут удалены навсегда.
+              This action cannot be undone. All user data for this bot will be deleted permanently.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -61,7 +61,7 @@ export function HeaderActions({
               onClick={onDeleteAll}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              Удалить все
+              Delete everything
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

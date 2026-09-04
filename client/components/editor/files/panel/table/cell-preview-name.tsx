@@ -43,7 +43,7 @@ export function CellPreviewName({ file, projectId, onPreviewClick, className }: 
           type="button"
           onClick={onPreviewClick}
           className="w-8 h-8 rounded bg-muted flex items-center justify-center overflow-hidden shrink-0 cursor-pointer"
-          title="Открыть превью"
+          title={"Open preview"}
         >
           {showThumb ? (
             <img

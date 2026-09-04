@@ -57,8 +57,8 @@ export function BotDatabaseToggle({
   return (
     <SettingCard
       icon={Database}
-      title="База данных пользователей"
-      description={localEnabled ? 'Профили и история сообщений сохраняются' : 'Бот работает без базы данных'}
+      title={"User Database"}
+      description={localEnabled ? "Profiles and message history are saved" : "The bot works without a database"}
       active={localEnabled}
       className={className}
       testId="database-toggle-container-bot-card"
@@ -66,7 +66,7 @@ export function BotDatabaseToggle({
         <Switch
           id={`db-toggle-bot-${tokenId}`}
           data-testid="switch-database-toggle-bot-card"
-          aria-label="База данных пользователей"
+          aria-label={"User Database"}
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);
@@ -86,22 +86,22 @@ export function BotDatabaseToggle({
           data-testid="db-toggle-info-trigger"
         >
           <ChevronDown className={`w-3 h-3 transition-transform ${infoOpen ? 'rotate-180' : ''}`} />
-          Что это за переключатель?
+          What kind of switch is this?
         </CollapsibleTrigger>
         <CollapsibleContent className="pt-1.5">
           <div className="text-[11px] leading-relaxed text-muted-foreground/80 space-y-1.5">
             <p>
-              Включает сбор данных в PostgreSQL. Бот начинает сохранять
-              <b> профили пользователей</b> (id, имя, @username, язык, premium,
-              источник перехода) и <b>историю их сообщений</b>.
+              Enables data collection in PostgreSQL. The bot starts saving
+              <b> user profiles</b> (id, name, @username, language, premium,
+              transition source) and <b>their message history</b>.
             </p>
             <p>
-              Когда БД включена — данные видны во вкладке «Пользователи»,
-              а боту становятся доступны функции работы с базой.
-              Когда выключена — бот ничего не записывает и работает без БД.
+              When the database is enabled, the data is visible in the “Users” tab,
+              and the functions of working with the database become available to the bot.
+              When disabled, the bot does not record anything and works without a database.
             </p>
             <p className="text-muted-foreground/60">
-              После переключения перезапустите бота, чтобы изменения применились.
+              After switching, restart the bot for the changes to take effect.
             </p>
           </div>
         </CollapsibleContent>

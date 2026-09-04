@@ -27,7 +27,7 @@ export function UserInputToggle({
 }: UserInputToggleProps) {
   return (
     <div className="flex items-center gap-2.5 p-2.5 sm:p-3 rounded-lg bg-blue-50/40 dark:bg-blue-950/20 border border-blue-200/40 dark:border-blue-800/40">
-      <span className="text-xs sm:text-sm font-medium text-blue-900 dark:text-blue-100">Включить</span>
+      <span className="text-xs sm:text-sm font-medium text-blue-900 dark:text-blue-100">Turn on</span>
       <Switch
         checked={selectedNode.data.collectUserInput ?? false}
         onCheckedChange={(checked) => {

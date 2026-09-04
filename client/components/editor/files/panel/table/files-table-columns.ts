@@ -42,7 +42,7 @@ export const FILES_TABLE_COLUMNS: FilesTableColumn[] = [
   { id: 'select', label: '', pinned: true, className: 'w-12 min-w-12 text-center' },
   { id: 'previewName', label: 'File', pinned: true, className: 'text-left min-w-[180px]' },
   { id: 'internalId', label: 'ID', className: 'text-left w-14' },
-  { id: 'extension', label: 'Расш.', className: 'text-left w-14' },
+  { id: 'extension', label: "Ext.", className: 'text-left w-14' },
   { id: 'fileIds', label: 'file_id', className: 'text-left min-w-[140px]' },
   { id: 'size', label: 'Size', className: 'text-right w-20' },
   { id: 'uploader', label: 'Collaborator', className: 'text-center w-24' },
@@ -50,7 +50,7 @@ export const FILES_TABLE_COLUMNS: FilesTableColumn[] = [
   { id: 'uploadDate', label: 'Date', className: 'text-left w-32' },
   { id: 'delete', label: '', className: 'w-10 text-center' },
   { id: 'download', label: '', className: 'w-10 text-center' },
-  { id: 'usages', label: 'Ноды', className: 'w-12 text-center' },
+  { id: 'usages', label: "Nodes", className: 'w-12 text-center' },
 ];
 
 /** Количество столбцов (для colSpan в пустом/загрузочном состоянии) */

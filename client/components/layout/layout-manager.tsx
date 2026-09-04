@@ -126,12 +126,12 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
   const presets = [
     {
       name: 'Классический',
-      description: 'Стандартное расположение',
+      description: "Standard location",
       config: DEFAULT_LAYOUT
     },
     {
       name: 'Компактный',
-      description: 'Сжатый интерфейс',
+      description: "Compressed interface",
       config: {
         ...DEFAULT_LAYOUT,
         compactMode: true,
@@ -140,7 +140,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
     },
     {
       name: 'Фокус на холсте',
-      description: 'Максимум места для холста',
+      description: "Maximum space for canvas",
       config: {
         ...DEFAULT_LAYOUT,
         headerPosition: 'bottom' as const,
@@ -149,7 +149,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
     },
     {
       name: 'Левосторонний',
-      description: 'Все панели слева',
+      description: "All panels on the left",
       config: {
         ...DEFAULT_LAYOUT,
         sidebarPosition: 'left' as const,
@@ -159,7 +159,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
     },
     {
       name: 'Правосторонний',
-      description: 'Все панели справа',
+      description: "All panels on the right",
       config: {
         ...DEFAULT_LAYOUT,
         sidebarPosition: 'right' as const,
@@ -178,7 +178,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
         className="fixed bottom-4 right-4 z-50 bg-background/80 backdrop-blur-sm border-2 border-primary/20 hover:border-primary/40 transition-all duration-200"
       >
         <Layout className="h-4 w-4 mr-2" />
-        Настройки макета
+        Layout Settings
       </Button>
     );
   }
@@ -191,10 +191,10 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Layout className="h-5 w-5" />
-                Настройки макета интерфейса
+                Interface Layout Settings
               </CardTitle>
               <CardDescription>
-                Настройте расположение элементов интерфейса под свои потребности
+                Customize the layout of interface elements to suit your needs
               </CardDescription>
             </div>
             <Button
@@ -210,7 +210,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
         <CardContent className="space-y-6">
           {/* Быстрые пресеты */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">Быстрые пресеты</h3>
+            <h3 className="text-lg font-semibold mb-3">Quick presets</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {presets.map((preset, index) => (
                 <Card 
@@ -238,7 +238,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
             <div className="space-y-3">
               <Label className="text-sm font-medium flex items-center gap-2">
                 <Navigation className="h-4 w-4" />
-                Позиция шапки
+                Header position
               </Label>
               <Select 
                 value={config.headerPosition} 
@@ -251,25 +251,25 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   <SelectItem value="top">
                     <div className="flex items-center gap-2">
                       <ArrowUp className="h-4 w-4" />
-                      Сверху
+                      Above
                     </div>
                   </SelectItem>
                   <SelectItem value="bottom">
                     <div className="flex items-center gap-2">
                       <ArrowDown className="h-4 w-4" />
-                      Снизу
+                      From below
                     </div>
                   </SelectItem>
                   <SelectItem value="left">
                     <div className="flex items-center gap-2">
                       <ArrowLeft className="h-4 w-4" />
-                      Слева
+                      Left
                     </div>
                   </SelectItem>
                   <SelectItem value="right">
                     <div className="flex items-center gap-2">
                       <ArrowRight className="h-4 w-4" />
-                      Справа
+                      Right
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -280,7 +280,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
             <div className="space-y-3">
               <Label className="text-sm font-medium flex items-center gap-2">
                 <Sidebar className="h-4 w-4" />
-                Боковая панель (компоненты)
+                Sidebar (components)
               </Label>
               <Select 
                 value={config.sidebarPosition} 
@@ -293,13 +293,13 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   <SelectItem value="left">
                     <div className="flex items-center gap-2">
                       <ArrowLeft className="h-4 w-4" />
-                      Слева
+                      Left
                     </div>
                   </SelectItem>
                   <SelectItem value="right">
                     <div className="flex items-center gap-2">
                       <ArrowRight className="h-4 w-4" />
-                      Справа
+                      Right
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -310,7 +310,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
             <div className="space-y-3">
               <Label className="text-sm font-medium flex items-center gap-2">
                 <Settings className="h-4 w-4" />
-                Панель свойств
+                Properties panel
               </Label>
               <Select 
                 value={config.propertiesPosition} 
@@ -323,13 +323,13 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   <SelectItem value="left">
                     <div className="flex items-center gap-2">
                       <ArrowLeft className="h-4 w-4" />
-                      Слева
+                      Left
                     </div>
                   </SelectItem>
                   <SelectItem value="right">
                     <div className="flex items-center gap-2">
                       <ArrowRight className="h-4 w-4" />
-                      Справа
+                      Right
                     </div>
                   </SelectItem>
                 </SelectContent>
@@ -338,10 +338,10 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
 
             {/* Дополнительные настройки */}
             <div className="space-y-3">
-              <Label className="text-sm font-medium">Дополнительно</Label>
+              <Label className="text-sm font-medium">Additionally</Label>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="compact" className="text-sm">Компактный режим</Label>
+                  <Label htmlFor="compact" className="text-sm">Compact mode</Label>
                   <Switch
                     id="compact"
                     checked={config.compactMode}
@@ -349,7 +349,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="fullscreen" className="text-sm">Полноэкранный холст</Label>
+                  <Label htmlFor="fullscreen" className="text-sm">Full Screen Canvas</Label>
                   <Switch
                     id="fullscreen"
                     checked={config.canvasFullscreen}
@@ -357,7 +357,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="grid" className="text-sm">Показать сетку</Label>
+                  <Label htmlFor="grid" className="text-sm">Show grid</Label>
                   <Switch
                     id="grid"
                     checked={config.showGrid}
@@ -370,7 +370,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
 
           {/* Размеры панелей */}
           <div className="space-y-3">
-            <Label className="text-sm font-medium">Размеры панелей (%)</Label>
+            <Label className="text-sm font-medium">Panel sizes (%)</Label>
             <div className="grid grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label className="text-xs">Sidebar</Label>
@@ -405,7 +405,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                 </div>
               </div>
               <div className="space-y-2">
-                <Label className="text-xs">Панель свойств</Label>
+                <Label className="text-xs">Properties panel</Label>
                 <div className="flex items-center gap-2">
                   <input
                     type="range"
@@ -434,7 +434,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                 onClick={onReset}
               >
                 <RotateCcw className="h-4 w-4 mr-2" />
-                Сброс
+                Reset
               </Button>
               <Button
                 variant="outline"
@@ -442,7 +442,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                 onClick={() => setPreviewMode(!previewMode)}
               >
                 <Maximize className="h-4 w-4 mr-2" />
-                {previewMode ? 'Скрыть превью' : 'Превью'}
+                {previewMode ? "Hide preview" : "Preview"}
               </Button>
             </div>
             <div className="flex items-center gap-3">
@@ -458,7 +458,7 @@ export function LayoutManager({ config, onConfigChange, onApply, onReset }: Layo
                   setIsVisible(false);
                 }}
               >
-                Применить
+                Apply
               </Button>
             </div>
           </div>

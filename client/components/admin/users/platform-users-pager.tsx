@@ -35,7 +35,7 @@ export function PlatformUsersPager({
   return (
     <div className="flex items-center justify-between gap-4 pt-2">
       <p className="text-sm text-muted-foreground">
-        Страница {page} из {totalPages} · всего {total}
+        Page {page} from {totalPages} · total {total}
       </p>
       <div className="flex gap-2">
         <Button
@@ -55,7 +55,7 @@ export function PlatformUsersPager({
           disabled={page >= totalPages}
           onClick={() => onPageChange(page + 1)}
         >
-          Вперёд
+          Forward
           <ChevronRight className="h-4 w-4" />
         </Button>
       </div>

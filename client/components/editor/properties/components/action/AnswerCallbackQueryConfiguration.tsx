@@ -81,18 +81,18 @@ export function AnswerCallbackQueryConfiguration({
       <InfoBlock
         variant="info"
         title="answerCallbackQuery"
-        description="Показывает уведомление пользователю после нажатия inline-кнопки. Форматирование не поддерживается — только plain text и переменные {{var}}."
+        description={"Shows a notification to the user after clicking an inline button. Formatting is not supported - only plain text and {{var}} variables."}
       />
 
       {/* Секция: Текст уведомления */}
       <div className="rounded-xl bg-purple-50/40 dark:bg-purple-900/10 border border-purple-200/40 dark:border-purple-700/30 p-4 space-y-3">
         <p className="text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wide">
-          Текст уведомления
+          Notification text
         </p>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <Label className="text-xs text-slate-600 dark:text-slate-400">
-              Текст (0–200 символов)
+              Text (0–200 characters)
             </Label>
             <VariableSelector
               availableVariables={textVariables as any}
@@ -103,7 +103,7 @@ export function AnswerCallbackQueryConfiguration({
             ref={textareaRef}
             value={data.callbackNotificationText ?? ''}
             onChange={(e) => update('callbackNotificationText', e.target.value)}
-            placeholder="Введите текст уведомления..."
+            placeholder={"Enter notification text..."}
             maxLength={200}
             rows={3}
             className="resize-none text-sm"
@@ -117,15 +117,15 @@ export function AnswerCallbackQueryConfiguration({
       {/* Секция: Тип отображения */}
       <div className="rounded-xl bg-slate-50/40 dark:bg-slate-900/10 border border-slate-200/40 dark:border-slate-700/30 p-4 space-y-3">
         <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
-          Поведение
+          Behavior
         </p>
         <div className="flex items-center justify-between">
           <div className="space-y-1">
             <Label className="text-xs text-slate-600 dark:text-slate-400">
-              Требовать закрытия
+              Require closure
             </Label>
             <p className="text-[10px] text-slate-400">
-              {data.callbackShowAlert ? 'Модальное окно — пользователь нажимает OK' : 'Тост — исчезает само через пару секунд'}
+              {data.callbackShowAlert ? "Modal window - user clicks OK" : "Toast - disappears after a couple of seconds"}
             </p>
           </div>
           <Switch

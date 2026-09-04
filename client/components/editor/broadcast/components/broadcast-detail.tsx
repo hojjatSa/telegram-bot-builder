@@ -84,7 +84,7 @@ export function BroadcastDetail({ broadcast, projectId, onClose, refetch }: Broa
             <Button size="sm" variant="destructive" className="h-7 text-xs gap-1"
               onClick={() => stopMutation.mutate(broadcast.id)} disabled={stopMutation.isPending}>
               <StopCircle className="h-3.5 w-3.5" />
-              Остановить
+              Stop
             </Button>
           )}
           <Button size="icon" variant="ghost" className="h-7 w-7" onClick={onClose}>
@@ -98,10 +98,10 @@ export function BroadcastDetail({ broadcast, projectId, onClose, refetch }: Broa
         <div className="grid grid-cols-2 gap-2">
           <StatMini icon={Users} label="Audience" value={total} color="text-blue-600" bg="bg-blue-50 dark:bg-blue-900/20" />
           <StatMini icon={CheckCircle2} label="Delivered" value={delivered} color="text-green-600" bg="bg-green-50 dark:bg-green-900/20" />
-          <StatMini icon={XCircle} label="Заблокировали" value={blocked} color="text-amber-600" bg="bg-amber-50 dark:bg-amber-900/20" />
+          <StatMini icon={XCircle} label={"Blocked"} value={blocked} color="text-amber-600" bg="bg-amber-50 dark:bg-amber-900/20" />
           <StatMini icon={XCircle} label="Account deleted" value={deleted} color="text-orange-600" bg="bg-orange-50 dark:bg-orange-900/20" />
-          <StatMini icon={XCircle} label="Прочие ошибки" value={failed} color="text-red-500" bg="bg-red-50 dark:bg-red-900/20" />
-          <StatMini icon={Percent} label="Успех" value={`${successRate}%`} color="text-purple-600" bg="bg-purple-50 dark:bg-purple-900/20" />
+          <StatMini icon={XCircle} label={"Other errors"} value={failed} color="text-red-500" bg="bg-red-50 dark:bg-red-900/20" />
+          <StatMini icon={Percent} label={"Success"} value={`${successRate}%`} color="text-purple-600" bg="bg-purple-50 dark:bg-purple-900/20" />
         </div>
 
         <Separator />
@@ -127,12 +127,12 @@ export function BroadcastDetail({ broadcast, projectId, onClose, refetch }: Broa
         <div className="space-y-2 text-sm">
           <div className="flex items-center gap-2 text-muted-foreground">
             <Calendar className="h-3.5 w-3.5 shrink-0" />
-            <span>Создана: <span className="text-foreground">{fmt(broadcast.createdAt)}</span></span>
+            <span>Created: <span className="text-foreground">{fmt(broadcast.createdAt)}</span></span>
           </div>
           {base.finishedAt && (
             <div className="flex items-center gap-2 text-muted-foreground">
               <Clock className="h-3.5 w-3.5 shrink-0" />
-              <span>Завершена: <span className="text-foreground">{fmt(base.finishedAt)}</span></span>
+              <span>Completed: <span className="text-foreground">{fmt(base.finishedAt)}</span></span>
             </div>
           )}
         </div>

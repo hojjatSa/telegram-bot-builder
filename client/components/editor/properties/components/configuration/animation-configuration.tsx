@@ -48,7 +48,7 @@ export function AnimationConfiguration({
           <div className="w-6 h-6 rounded-full bg-pink-100 dark:bg-pink-900/50 flex items-center justify-center">
             <i className="fas fa-film text-pink-600 dark:text-pink-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-pink-900 dark:text-pink-100">Источник GIF анимации</Label>
+          <Label className="text-sm font-semibold text-pink-900 dark:text-pink-100">GIF Animation Source</Label>
         </div>
 
         <MediaSelector
@@ -57,12 +57,12 @@ export function AnimationConfiguration({
           onChange={(url) => onNodeUpdate(selectedNode.id, { animationUrl: url })}
           fileType="video"
           placeholder="https://example.com/awesome-animation.gif"
-          label="Источник анимации"
+          label={"Animation source"}
         />
 
         <div className="flex items-center space-x-2 text-xs text-pink-600 dark:text-pink-400 mt-3">
           <i className="fas fa-check-circle"></i>
-          <span>GIF, MP4 (анемация) • Макс. 50MB</span>
+          <span>GIF, MP4 (animation) • Max. 50MB</span>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export function AnimationConfiguration({
           <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
             <i className="fas fa-cog text-orange-600 dark:text-orange-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Параметры анимации</Label>
+          <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Animation Options</Label>
         </div>
 
         <div className="grid grid-cols-2 gap-4">

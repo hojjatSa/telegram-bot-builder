@@ -101,11 +101,11 @@ export function useCollaborators(projectId: number): UseCollaboratorsResult {
         `/api/bot/projects/${projectId}/collaborators?telegram_id=${currentTelegramId}`,
         { user_id: userId },
       );
-      toast({ title: 'Добавлено', description: `Владелец ${userId} добавлен` });
+      toast({ title: "Added", description: `Владелец ${userId} добавлен` });
       await fetchCollaborators();
       invalidateProfiles();
     } catch {
-      toast({ title: 'Error', description: 'Не удалось добавить владельца', variant: 'destructive' });
+      toast({ title: 'Error', description: "Failed to add owner", variant: 'destructive' });
     } finally {
       setIsAdding(false);
     }
@@ -123,11 +123,11 @@ export function useCollaborators(projectId: number): UseCollaboratorsResult {
         'DELETE',
         `/api/bot/projects/${projectId}/collaborators/${userId}?telegram_id=${currentTelegramId}`,
       );
-      toast({ title: 'Удалено', description: `Владелец ${userId} удалён` });
+      toast({ title: "Deleted", description: `Владелец ${userId} удалён` });
       await fetchCollaborators();
       invalidateProfiles();
     } catch {
-      toast({ title: 'Error', description: 'Не удалось удалить владельца', variant: 'destructive' });
+      toast({ title: 'Error', description: "Failed to remove owner", variant: 'destructive' });
     } finally {
       setIsRemoving(false);
     }

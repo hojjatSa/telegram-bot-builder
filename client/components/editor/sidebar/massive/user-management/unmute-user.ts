@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const unmuteUser: ComponentDefinition = {
   id: 'unmute-user',
   name: 'Remove Restrictions',
-  description: 'Восстановить права участника',
+  description: "Restore participant rights",
   icon: 'fas fa-volume-up',
   color: 'bg-green-100 text-green-600',
   type: 'unmute_user',

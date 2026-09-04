@@ -35,8 +35,8 @@ export function TokenDisplay({ token, onDoubleClick, hidePrefix = false }: Token
         <p
           className="font-mono text-xs text-muted-foreground cursor-pointer hover:bg-muted/50 px-2 py-1 rounded transition-colors break-all flex items-center gap-1.5 group"
           onDoubleClick={onDoubleClick}
-          title="Двойной клик для изменения токена"
-          aria-label="Токен бота — двойной клик для редактирования"
+          title={"Double click to change token"}
+          aria-label={"Bot token - double click to edit"}
         >
           <span className="flex-1">
             {hidePrefix ? maskToken(token) : `Токен: ${maskToken(token)}`}
@@ -45,7 +45,7 @@ export function TokenDisplay({ token, onDoubleClick, hidePrefix = false }: Token
         </p>
       </TooltipTrigger>
       <TooltipContent side="bottom">
-        <p>Двойной клик для изменения токена</p>
+        <p>Double click to change token</p>
       </TooltipContent>
     </Tooltip>
   );

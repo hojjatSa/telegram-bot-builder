@@ -64,7 +64,7 @@ export function ConvertFileConfiguration({
       {/* Формат выходного файла */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Формат файла
+          File Format
         </Label>
         <Select
           value={format}
@@ -83,7 +83,7 @@ export function ConvertFileConfiguration({
       {/* Входная переменная */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Входная переменная (json-массив)
+          Input variable (json array)
         </Label>
         <VariableNameInput
           value={inputVariable}
@@ -105,7 +105,7 @@ export function ConvertFileConfiguration({
           className="text-xs h-8 font-mono bg-white/60 dark:bg-slate-950/60"
         />
         <p className="text-xs text-muted-foreground">
-          Поддерживает {'{'+'date'+'}'} — текущая дата
+          Supports {'{'+'date'+'}'} - current date
         </p>
       </div>
 
@@ -114,7 +114,7 @@ export function ConvertFileConfiguration({
         <>
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Разделитель CSV
+              CSV separator
             </Label>
             <Input
               value={csvDelimiter}
@@ -130,7 +130,7 @@ export function ConvertFileConfiguration({
               onCheckedChange={(checked) => onNodeUpdate(selectedNode.id, { convertFileIncludeHeaderRow: checked })}
             />
             <Label className="text-xs text-muted-foreground cursor-pointer">
-              Включать строку заголовков
+              Include header line
             </Label>
           </div>
         </>
@@ -139,7 +139,7 @@ export function ConvertFileConfiguration({
       {/* Выходная переменная */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Сохранить файл в переменную
+          Save file to variable
         </Label>
         <VariableNameInput
           value={outputVariable}
@@ -153,7 +153,7 @@ export function ConvertFileConfiguration({
       <div className="flex flex-col p-3 rounded-lg bg-gradient-to-br from-emerald-50/60 to-teal-50/40 dark:from-emerald-950/30 dark:to-teal-950/20 border border-emerald-200/40 dark:border-emerald-700/40">
         <Label className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-share-right text-xs" />
-          Следующий узел
+          Next node
         </Label>
         <Select
           value={autoTransitionTo || 'no-transition'}

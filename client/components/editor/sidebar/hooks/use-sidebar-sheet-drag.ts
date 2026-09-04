@@ -129,7 +129,7 @@ export function useSidebarSheetDrag({
       if (!sourceData?.sheets || !targetData?.sheets) {
         toast({
           title: "❌ Error",
-          description: "Оба проекта должны быть в новом формате с листами",
+          description: "Both projects must be in the new format with sheets",
           variant: "destructive",
         });
         setDraggedSheet(null);
@@ -167,13 +167,13 @@ export function useSidebarSheetDrag({
       queryClient.setQueryData(['/api/projects'], updatedProjects);
 
       toast({
-        title: "✅ Лист перемещен",
+        title: "✅ Sheet moved",
         description: `"${sheetToMove.name}" перемещен в "${targetProject.name}"`,
       });
     } catch (error: any) {
       console.error('Ошибка при перемещении листа:', error);
       toast({
-        title: "❌ Ошибка перемещения",
+        title: "❌ Moving error",
         description: error.message || "Не удалось переместить лист",
         variant: "destructive",
       });

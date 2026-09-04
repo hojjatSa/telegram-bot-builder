@@ -49,7 +49,7 @@ export function StagingBar(props: StagingBarProps) {
         <div className="flex items-center justify-center gap-1.5 px-3 py-1 bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800/50 shrink-0">
           <i className="fas fa-triangle-exclamation text-amber-500 text-xs" />
           <span className="text-xs text-amber-700 dark:text-amber-300">
-            Есть изменения и на холсте и в JSON — при сохранении победит JSON
+            There are changes both on the canvas and in JSON - when saving, JSON will win
           </span>
         </div>
       )}
@@ -152,12 +152,12 @@ function CanvasVariant({
           <>
             <span className="text-xs text-slate-600 dark:text-slate-300 px-1.5 whitespace-nowrap">
               <i className="fas fa-pencil text-violet-500 dark:text-violet-400 mr-1.5" />
-              {changesCount > 0 ? `${changesCount} изменений` : 'Есть изменения'}
+              {changesCount > 0 ? `${changesCount} изменений` : "There are changes"}
             </span>
             <div className="hidden sm:block w-px h-4 bg-slate-300 dark:bg-slate-700" />
             <Button size="sm" variant="ghost" onClick={onDetails}
               className="h-7 px-2 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-              Детали
+              Details
             </Button>
           </>
         )}
@@ -167,7 +167,7 @@ function CanvasVariant({
       <div className="flex items-center gap-1.5 w-full sm:w-auto justify-center">
         <Button size="sm" variant="ghost" onClick={onDiscard}
           className="h-7 px-2 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          Сбросить
+          Reset
         </Button>
         <Button size="sm" onClick={onSave} disabled={isSaving}
           className="h-7 px-2.5 text-xs bg-violet-600 hover:bg-violet-700 text-white">
@@ -182,7 +182,7 @@ function CanvasVariant({
           className="h-7 px-2.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white w-full">
           {isSaving
             ? <><i className="fas fa-spinner fa-spin mr-1" />…</>
-            : <><i className="fas fa-play mr-1" />Сохранить и перезапустить</>}
+            : <><i className="fas fa-play mr-1" />Save and restart</>}
         </Button>
       </div>
       <div className="hidden sm:flex items-center">
@@ -190,7 +190,7 @@ function CanvasVariant({
           className="h-7 px-2.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white">
           {isSaving
             ? <><i className="fas fa-spinner fa-spin mr-1" />…</>
-            : <><i className="fas fa-play mr-1" />Сохранить и перезапустить</>}
+            : <><i className="fas fa-play mr-1" />Save and restart</>}
         </Button>
       </div>
         </>
@@ -227,19 +227,19 @@ function JsonDirtyVariant({ onReset, onDetails, onSave, onSaveAndRestart, onSave
       <div className="flex items-center gap-1.5">
         <span className="text-xs text-slate-600 dark:text-slate-300 px-1.5 whitespace-nowrap">
           <i className="fas fa-pencil-alt text-violet-500 dark:text-violet-400 mr-1.5" />
-          Есть изменения в JSON
+          There are changes in JSON
         </span>
         <div className="hidden sm:block w-px h-4 bg-slate-300 dark:bg-slate-700" />
         <Button size="sm" variant="ghost" onClick={onDetails}
           className="h-7 px-2 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-          Детали
+          Details
         </Button>
       </div>
       {/* Кнопки действий — на мобилке в 2 строки, на десктопе в одну */}
       <div className="flex items-center gap-1.5 w-full sm:w-auto justify-center">
         <Button size="sm" variant="ghost" onClick={onReset}
           className="h-7 px-2 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          Сбросить
+          Reset
         </Button>
         <Button size="sm" onClick={onSave} disabled={isSaving}
           className="h-7 px-2.5 text-xs bg-violet-600 hover:bg-violet-700 text-white">
@@ -254,7 +254,7 @@ function JsonDirtyVariant({ onReset, onDetails, onSave, onSaveAndRestart, onSave
           className="h-7 px-2.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white w-full">
           {isSaving
             ? <><i className="fas fa-spinner fa-spin mr-1" />…</>
-            : <><i className="fas fa-play mr-1" />Сохранить и перезапустить</>}
+            : <><i className="fas fa-play mr-1" />Save and restart</>}
         </Button>
       </div>
       <div className="hidden sm:flex items-center">
@@ -262,7 +262,7 @@ function JsonDirtyVariant({ onReset, onDetails, onSave, onSaveAndRestart, onSave
           className="h-7 px-2.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white">
           {isSaving
             ? <><i className="fas fa-spinner fa-spin mr-1" />…</>
-            : <><i className="fas fa-play mr-1" />Сохранить и перезапустить</>}
+            : <><i className="fas fa-play mr-1" />Save and restart</>}
         </Button>
       </div>
     </>
@@ -296,14 +296,14 @@ function JsonErrorVariant({ error, onReset, onDetails }: JsonErrorVariantProps) 
         <div className="hidden sm:block w-px h-4 bg-red-200 dark:bg-slate-700" />
         <Button size="sm" variant="ghost" onClick={onDetails}
           className="h-7 px-2 text-xs text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-          Детали
+          Details
         </Button>
       </div>
       {/* Нижняя строка на мобилке / продолжение на десктопе: кнопка сброса */}
       <div className="flex items-center gap-1.5 w-full sm:w-auto justify-center">
         <Button size="sm" variant="ghost" onClick={onReset}
           className="h-7 px-2 text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-          Сбросить
+          Reset
         </Button>
       </div>
     </>

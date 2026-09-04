@@ -8,13 +8,13 @@ import { ComponentDefinition } from "@shared/schema";
 export const adminRights: ComponentDefinition = {
   id: 'admin-rights',
   name: 'Тг права',
-  description: 'Панель редактирования прав администратора',
+  description: "Administrator rights editing panel",
   icon: 'fas fa-user-cog',
   color: 'bg-purple-100 text-purple-600',
   type: 'admin_rights',
   defaultData: {
     command: '/admin_rights',
-    description: 'Управление правами администратора',
+    description: "Managing Administrator Rights",
     synonyms: ['права админа', 'изменить права', 'админ права', 'тг права', 'права'],
     adminUserIdSource: 'last_message',
     adminChatIdSource: 'current_chat',

@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const pinMessage: ComponentDefinition = {
   id: 'pin-message',
   name: 'Pin Message',
-  description: 'Закрепление сообщения в группе',
+  description: "Pin a message to a group",
   icon: 'fas fa-thumbtack',
   color: 'bg-cyan-100 text-cyan-600',
   type: 'pin_message',

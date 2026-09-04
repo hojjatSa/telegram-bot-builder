@@ -62,11 +62,11 @@ export function KeyboardLayoutEditor({
               <span className="text-lg">🎹</span>
             </div>
             <div>
-              <CardTitle className="text-base">Расположение кнопок</CardTitle>
+              <CardTitle className="text-base">Button layout</CardTitle>
               <CardDescription className="text-xs mt-0.5">
                 {layout.autoLayout
-                  ? `Авто: ${layout.columns} ${layout.columns === 1 ? 'колонка' : layout.columns < 5 ? 'колонки' : 'колонок'}`
-                  : `Ручная: ${layout.rows.length} ${layout.rows.length === 1 ? 'ряд' : layout.rows.length < 5 ? 'ряда' : 'рядов'}`
+                  ? `Авто: ${layout.columns} ${layout.columns === 1 ? "column" : layout.columns < 5 ? "speakers" : "speakers"}`
+                  : `Ручная: ${layout.rows.length} ${layout.rows.length === 1 ? "row" : layout.rows.length < 5 ? "row" : "rows"}`
                 }
               </CardDescription>
             </div>

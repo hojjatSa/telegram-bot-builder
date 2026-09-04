@@ -59,7 +59,7 @@ export function SelectionActionBar({
       <span className="text-sm text-muted-foreground tabular-nums" data-testid="selection-count">
         {selectedCount > 0
           ? `Выбрано: ${selectedCount}`
-          : 'Отметь файлы галочкой слева'}
+          : "Mark files with a checkmark on the left"}
       </span>
 
       <div className="flex flex-wrap items-center gap-2">
@@ -72,7 +72,7 @@ export function SelectionActionBar({
             data-testid="clear-selection"
           >
             <X className="mr-1.5 h-3.5 w-3.5" />
-            Снять выбор
+            Deselect
           </Button>
         )}
 
@@ -83,11 +83,11 @@ export function SelectionActionBar({
             size="sm"
             disabled={selectedCount === 0}
             onClick={onAttach}
-            title={selectedCount === 0 ? 'Сначала отметь файлы галочкой слева' : 'Прикрепить выбранные файлы к ноде'}
+            title={selectedCount === 0 ? "First, mark the files with a checkmark on the left" : "Attach selected files to node"}
             data-testid="attach-selected"
           >
             <Paperclip className="mr-1.5 h-3.5 w-3.5" />
-            {selectedCount > 0 ? `Прикрепить (${selectedCount})` : 'Прикрепить к ноде'}
+            {selectedCount > 0 ? `Прикрепить (${selectedCount})` : "Attach to node"}
           </Button>
         )}
 
@@ -102,14 +102,14 @@ export function SelectionActionBar({
                 data-testid="delete-selected"
               >
                 <Trash2 className="mr-1.5 h-3.5 w-3.5" />
-                Удалить ({selectedCount})
+                Delete ({selectedCount})
               </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Удалить выбранные файлы?</AlertDialogTitle>
+                <AlertDialogTitle>Delete selected files?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Будет удалено файлов: {selectedCount}. Действие необратимо.
+                  The following files will be deleted: {selectedCount}. The action is irreversible.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>

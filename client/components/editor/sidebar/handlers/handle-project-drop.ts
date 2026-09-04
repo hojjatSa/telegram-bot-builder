@@ -66,14 +66,14 @@ export const handleProjectDrop = async (
     queryClient.setQueryData(['/api/projects/list'], newList);
 
     toast({
-      title: '✅ Проекты переупорядочены',
+      title: "✅ Projects reordered",
       description: `Проект "${draggedProject.name}" перемещен`,
     });
   } catch (error: any) {
     console.error('❌ Ошибка сохранения порядка:', error.message);
     toast({
       title: '❌ Error',
-      description: 'Не удалось сохранить порядок проектов',
+      description: "Failed to save project order",
     });
   }
 

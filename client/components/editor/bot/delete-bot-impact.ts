@@ -18,15 +18,15 @@ export function listDeleteBotImpact(opts: {
   isRunning: boolean;
   userCount?: number;
 }): DeleteBotImpactItem[] {
-  const items: DeleteBotImpactItem[] = [{ label: 'Токен и карточка бота' }];
-  if (opts.isRunning) items.push({ label: 'Запущенный процесс' });
+  const items: DeleteBotImpactItem[] = [{ label: "Bot token and card" }];
+  if (opts.isRunning) items.push({ label: "Running process" });
   items.push(
-    { label: 'Диалоги и переписка этого бота' },
-    { label: 'Аналитика этого бота' },
-    { label: 'История запусков и логи' },
-    { label: 'Переменные окружения' },
-    { label: 'Группы этого бота' },
-    { label: 'Привязки file_id в Telegram' },
+    { label: "Dialogues and correspondence of this bot" },
+    { label: "Analytics of this bot" },
+    { label: "Launch history and logs" },
+    { label: "Environment Variables" },
+    { label: "Groups of this bot" },
+    { label: "File_id bindings in Telegram" },
   );
   const users = opts.userCount;
   if (typeof users === 'number' && users > 0) {

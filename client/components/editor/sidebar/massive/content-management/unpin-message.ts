@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const unpinMessage: ComponentDefinition = {
   id: 'unpin-message',
   name: 'Unpin Message',
-  description: 'Снятие закрепления сообщения',
+  description: "Unpin a message",
   icon: 'fas fa-times',
   color: 'bg-slate-100 text-slate-600',
   type: 'unpin_message',

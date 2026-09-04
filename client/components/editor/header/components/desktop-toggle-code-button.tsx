@@ -32,7 +32,7 @@ export function DesktopToggleCodeButton({ codeVisible, onClick }: DesktopToggleC
           ? 'bg-gradient-to-br from-orange-600 to-orange-500 text-white shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/40'
           : 'bg-slate-500/5 dark:bg-slate-700/15 hover:bg-slate-300/40 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-400'
       )}
-      title={codeVisible ? 'Скрыть панель кода' : 'Показать панель кода'}
+      title={codeVisible ? "Hide Code Panel" : "Show Code Panel"}
       data-testid="button-toggle-code"
     >
       <Code className="w-3.5 h-3.5" />

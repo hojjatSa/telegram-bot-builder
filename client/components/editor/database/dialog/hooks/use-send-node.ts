@@ -45,8 +45,8 @@ export function useSendNode(
     onSuccess: () => {
       onSent?.();
       toast({
-        title: 'Узел отправлен',
-        description: 'Содержимое узла отправлено пользователю',
+        title: "Node sent",
+        description: "Node content sent to user",
       });
     },
     onError: (error: Error) => {

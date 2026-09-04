@@ -33,7 +33,7 @@ export function WizardStepper({
   isStepEnabled,
 }: WizardStepperProps) {
   return (
-    <nav aria-label="Шаги рассылки" className={cn('w-full', compact && 'w-auto')}>
+    <nav aria-label={"Mailing steps"} className={cn('w-full', compact && 'w-auto')}>
       <ol className={cn('flex items-center', compact ? 'gap-0' : 'w-full items-start')}>
         {steps.map((label, idx) => {
           const stepNum = idx + 1;

@@ -69,7 +69,7 @@ export function BotControlPanelHeader({
   return (
     <TabHeader
       icon={<Bot className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-      title="Боты"
+      title={"Bots"}
       singleLine
       actions={
         <>
@@ -82,7 +82,7 @@ export function BotControlPanelHeader({
               data-testid="button-connect-bot"
             >
               <Plus className="h-4 w-4" />
-              <span className="hidden @[560px]:inline">Подключить бот</span>
+              <span className="hidden @[560px]:inline">Connect bot</span>
             </Button>
           )}
         </>

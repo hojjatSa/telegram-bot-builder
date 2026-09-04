@@ -47,7 +47,7 @@ export function ButtonTextField({
           value={button.text}
           onChange={(e) => onButtonUpdate(nodeId, button.id, { text: e.target.value })}
           className="flex-1 text-xs sm:text-sm bg-transparent border-none outline-none focus:outline-none focus:ring-0 text-purple-900 dark:text-purple-50 placeholder:text-purple-500/50 dark:placeholder:text-purple-400/50 p-0"
-          placeholder="Введите текст кнопки"
+          placeholder={"Enter button text"}
         />
         <VariableDropdown
           nodeId={nodeId}
@@ -61,7 +61,7 @@ export function ButtonTextField({
             variant="ghost"
             onClick={onDuplicate}
             className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 h-7 w-7 p-0 flex-shrink-0"
-            title="Дублировать кнопку"
+            title={"Duplicate button"}
           >
             <i className="fas fa-copy w-4 h-4" />
           </UiButton>
@@ -72,7 +72,7 @@ export function ButtonTextField({
             variant="ghost"
             onClick={onDelete}
             className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 h-7 w-7 p-0 flex-shrink-0"
-            title="Удалить кнопку"
+            title={"Delete button"}
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />

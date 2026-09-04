@@ -26,7 +26,7 @@ interface StatsCardsProps {
 const STATS_DATA = [
   {
     icon: Users,
-    label: 'Всего',
+    label: "Total",
     fullLabel: 'Total Users',
     gradient: 'from-blue-500 to-blue-600',
     bg: 'bg-blue-50 dark:bg-blue-950/40',
@@ -44,7 +44,7 @@ const STATS_DATA = [
   },
   {
     icon: MessageSquare,
-    label: 'Сообщ.',
+    label: "Message",
     fullLabel: 'Всего сообщений',
     gradient: 'from-violet-500 to-violet-600',
     bg: 'bg-violet-50 dark:bg-violet-950/40',
@@ -60,7 +60,7 @@ const STATS_DATA = [
   },
   {
     icon: Edit,
-    label: 'Ответы',
+    label: "Answers",
     fullLabel: 'Пользователей с ответами',
     gradient: 'from-orange-500 to-orange-600',
     bg: 'bg-orange-50 dark:bg-orange-950/40',

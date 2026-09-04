@@ -84,13 +84,13 @@ export function BotMessagesRetentionSelect({
     mutationFn: (days: number) => updateMessagesRetention(projectId, tokenId, days),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
-      toast({ title: 'Срок хранения сообщений обновлён' });
+      toast({ title: "Message retention period has been updated" });
     },
     onError: () => {
       setLocalDays(normalizeRetentionDays(messagesRetentionDays));
       toast({
         title: 'Error',
-        description: 'Не удалось обновить срок хранения',
+        description: "Failed to update retention period",
         variant: 'destructive',
       });
     },
@@ -101,8 +101,8 @@ export function BotMessagesRetentionSelect({
   return (
     <SettingCard
       icon={History}
-      title="Хранить сообщения"
-      description="Старые диалоги чистятся автоматически; длинный график активности не пострадает"
+      title={"Store messages"}
+      description={"Old dialogs are cleared automatically; a long activity schedule will not be affected"}
     >
       <Select
         value={String(localDays)}
@@ -118,7 +118,7 @@ export function BotMessagesRetentionSelect({
         disabled={mutation.isPending}
       >
         <SelectTrigger className="h-7 w-full text-xs">
-          <SelectValue placeholder="Срок" />
+          <SelectValue placeholder={"Term"} />
         </SelectTrigger>
         <SelectContent>
           {RETENTION_OPTIONS.map(({ value, label }) => (

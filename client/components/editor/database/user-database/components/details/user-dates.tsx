@@ -30,18 +30,18 @@ export function UserDates({
 }: UserDatesProps): React.JSX.Element {
   return (
     <div>
-      <Label className="text-sm font-medium">Даты</Label>
+      <Label className="text-sm font-medium">Dates</Label>
       <div className="mt-2 space-y-2">
         <div>
-          <span className="text-sm text-muted-foreground">Регистрация:</span>{' '}
+          <span className="text-sm text-muted-foreground">Registration:</span>{' '}
           {String(formatDate(createdAt ?? null))}
         </div>
         <div>
-          <span className="text-sm text-muted-foreground">Последнее обновление:</span>{' '}
+          <span className="text-sm text-muted-foreground">Latest update:</span>{' '}
           {String(formatDate(updatedAt ?? null))}
         </div>
         <div>
-          <span className="text-sm text-muted-foreground">Последняя активность:</span>{' '}
+          <span className="text-sm text-muted-foreground">Last activity:</span>{' '}
           {String(formatDate(lastInteraction ?? null))}
         </div>
       </div>

@@ -33,7 +33,7 @@ export function BotTokenSelectChip({ token, selected, count, onToggle }: BotToke
     <button
       type="button"
       disabled={inactive}
-      title={inactive ? 'Токен недействителен. Обновите в настройках проекта.' : undefined}
+      title={inactive ? "The token is invalid. Update in project settings." : undefined}
       onClick={() => onToggle(token.id)}
       className={cn(
         'inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs transition-all',
@@ -55,7 +55,7 @@ export function BotTokenSelectChip({ token, selected, count, onToggle }: BotToke
         {!inactive && selected && <Check className="h-2.5 w-2.5" />}
       </span>
       <span className="truncate max-w-[160px]">{formatBotShortLabel(token, token.id)}</span>
-      {inactive && <span className="text-[10px] text-destructive">токен недействителен</span>}
+      {inactive && <span className="text-[10px] text-destructive">token is invalid</span>}
       {!inactive && selected && count != null && (
         <span className="font-semibold text-blue-600 dark:text-blue-400">
           {count.toLocaleString('ru-RU')}

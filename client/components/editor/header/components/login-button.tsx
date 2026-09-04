@@ -25,10 +25,10 @@ export function LoginButton({ onClick, className }: LoginButtonProps) {
       onClick={onClick}
       size="sm"
       className={`bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white px-3 py-1.5 text-xs font-semibold rounded-lg flex items-center gap-1.5 shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-200 ${className || ''}`}
-      title="Войти через Telegram"
+      title={"Login via Telegram"}
     >
       <MessageCircle className="h-3.5 w-3.5" />
-      <span>Вход</span>
+      <span>Entrance</span>
     </Button>
   );
 }

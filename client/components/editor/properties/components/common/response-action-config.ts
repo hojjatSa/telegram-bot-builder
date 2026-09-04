@@ -22,25 +22,25 @@ export interface ActionOption {
 export const ACTION_OPTIONS: ActionOption[] = [
   {
     value: 'goto',
-    label: 'Перейти к экрану',
+    label: "Go to screen",
     icon: 'fa-arrow-right',
     iconColor: 'text-blue-500'
   },
   {
     value: 'command',
-    label: 'Выполнить команду',
+    label: "Run command",
     icon: 'fa-terminal',
     iconColor: 'text-purple-500'
   },
   {
     value: 'url',
-    label: 'Открыть ссылку',
+    label: "Open link",
     icon: 'fa-external-link-alt',
     iconColor: 'text-green-500'
   },
   {
     value: 'selection',
-    label: 'Выбор опции',
+    label: "Selecting an option",
     icon: 'fa-check-square',
     iconColor: 'text-purple-500'
   }

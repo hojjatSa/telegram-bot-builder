@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const textMessage: ComponentDefinition = {
   id: 'text-message',
   name: 'Text Message',
-  description: 'Обычный текст или Markdown',
+  description: "Plain text or Markdown",
   icon: 'fas fa-comment',
   color: 'bg-blue-100 text-blue-600',
   type: 'message',

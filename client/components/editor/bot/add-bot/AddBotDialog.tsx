@@ -123,7 +123,7 @@ export function AddBotDialog({
                     : 'bg-muted/40 text-foreground border-border hover:bg-muted/70',
                 ].join(' ')}
               >
-                Выбрать существующий
+                Select existing
               </button>
               <button
                 type="button"
@@ -135,7 +135,7 @@ export function AddBotDialog({
                     : 'bg-muted/40 text-foreground border-border hover:bg-muted/70',
                 ].join(' ')}
               >
-                Ввести новый
+                Enter new
               </button>
             </div>
           )}

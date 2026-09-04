@@ -107,13 +107,13 @@ export function BotTableConfiguration({
       <div className="flex items-center gap-2">
         <i className="fas fa-table text-amber-500 dark:text-amber-400 text-sm" />
         <span className="text-sm font-semibold text-amber-700 dark:text-amber-300">
-          Таблица проекта
+          Project table
         </span>
       </div>
 
       {/* Описание */}
       <p className="text-xs text-muted-foreground leading-relaxed">
-        Чтение, запись и обновление данных во внутренних таблицах проекта. Поддерживает операции: чтение, вставка, обновление, upsert и удаление.
+        Reading, writing and updating data in internal project tables. Supports operations: read, insert, update, upsert and delete.
       </p>
 
       {/* Подсказка про управление таблицами */}
@@ -124,7 +124,7 @@ export function BotTableConfiguration({
       >
         <i className="fas fa-lightbulb text-amber-500 text-xs" />
         <span className="text-xs text-amber-700 dark:text-amber-400">
-          Управляйте данными во вкладке «Таблицы» →
+          Manage your data in the “Tables” tab →
         </span>
       </button>
 
@@ -138,10 +138,10 @@ export function BotTableConfiguration({
           onValueChange={(value) => onNodeUpdate(selectedNode.id, { tableName: value === 'no-table' ? '' : value })}
         >
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60">
-            <SelectValue placeholder="Выберите таблицу" />
+            <SelectValue placeholder={"Select table"} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="no-table" disabled>Выберите таблицу</SelectItem>
+            <SelectItem value="no-table" disabled>Select table</SelectItem>
             {tables.map((t: any) => (
               <SelectItem key={t.id} value={t.name}>{t.name}</SelectItem>
             ))}
@@ -151,7 +151,7 @@ export function BotTableConfiguration({
           <Input
             value={tableName}
             onChange={(e) => onNodeUpdate(selectedNode.id, { tableName: e.target.value })}
-            placeholder="или введите имя новой таблицы"
+            placeholder={"or enter a name for the new table"}
             className="text-xs h-7 flex-1 bg-white/60 dark:bg-slate-950/60 border-dashed"
           />
           <VariableSelector
@@ -160,14 +160,14 @@ export function BotTableConfiguration({
           />
         </div>
         <p className="text-[10px] text-muted-foreground/70 leading-tight">
-          Если таблица не существует — будет создана автоматически при первой записи
+          If the table does not exist, it will be created automatically on the first record
         </p>
       </div>
 
       {/* Операция */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Операция
+          Operation
         </Label>
         <Select
           value={operation}
@@ -187,7 +187,7 @@ export function BotTableConfiguration({
       {/* Предупреждение для delete_all */}
       {showNoConfig && (
         <div className="p-2 rounded bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800">
-          <p className="text-xs text-red-600 dark:text-red-400 font-medium">⚠️ Удалит ВСЕ строки из таблицы!</p>
+          <p className="text-xs text-red-600 dark:text-red-400 font-medium">⚠️ Will delete ALL rows from the table!</p>
         </div>
       )}
 
@@ -203,7 +203,7 @@ export function BotTableConfiguration({
       {showAggregateColumn && (
         <div className="space-y-1.5">
           <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Колонка для агрегации
+            Column for aggregation
           </Label>
           <Input
             value={data?.aggregateColumn || ''}
@@ -211,7 +211,7 @@ export function BotTableConfiguration({
             placeholder="balance"
             className="text-xs h-8 bg-white/60 dark:bg-slate-950/60"
           />
-          <p className="text-[10px] text-muted-foreground/70">Числовая колонка для вычисления суммы/макс/мин/среднего или колонка для уникальных значений</p>
+          <p className="text-[10px] text-muted-foreground/70">Numeric column for calculating sum/max/min/average or column for unique values</p>
         </div>
       )}
 
@@ -236,7 +236,7 @@ export function BotTableConfiguration({
         <>
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Ключ (уникальная колонка)
+              Key (unique column)
             </Label>
             <Input
               value={key}
@@ -247,7 +247,7 @@ export function BotTableConfiguration({
           </div>
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              При конфликте
+              In case of conflict
             </Label>
             <Select
               value={onConflict}
@@ -257,9 +257,9 @@ export function BotTableConfiguration({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="ignore">Игнорировать</SelectItem>
-                <SelectItem value="update">Перезаписать</SelectItem>
-                <SelectItem value="merge">Объединить (только пустые)</SelectItem>
+                <SelectItem value="ignore">Ignore</SelectItem>
+                <SelectItem value="update">Overwrite</SelectItem>
+                <SelectItem value="merge">Merge (empty only)</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -270,7 +270,7 @@ export function BotTableConfiguration({
       {['insert', 'upsert'].includes(operation) && (
         <PropertyCheckbox
           id="returnInsertedId"
-          label="Сохранить ID вставленной строки в переменную"
+          label={"Save the ID of the inserted row into a variable"}
           checked={data?.returnInsertedId || false}
           onChange={(checked) => onNodeUpdate(selectedNode.id, { returnInsertedId: checked })}
         />
@@ -280,7 +280,7 @@ export function BotTableConfiguration({
       {showResultFormat && (
         <div className="space-y-1.5">
           <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Формат результата
+            Result Format
           </Label>
           <Select
             value={resultFormat}
@@ -290,11 +290,11 @@ export function BotTableConfiguration({
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="first_row">Первая строка (объект)</SelectItem>
-              <SelectItem value="all_rows">Все строки (массив)</SelectItem>
-              <SelectItem value="scalar">Одно значение</SelectItem>
-              <SelectItem value="count">Количество (число)</SelectItem>
-              <SelectItem value="random_row">Случайная строка</SelectItem>
+              <SelectItem value="first_row">First line (object)</SelectItem>
+              <SelectItem value="all_rows">All lines (array)</SelectItem>
+              <SelectItem value="scalar">One value</SelectItem>
+              <SelectItem value="count">Quantity (number)</SelectItem>
+              <SelectItem value="random_row">Random string</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -310,13 +310,13 @@ export function BotTableConfiguration({
             <Input
               value={orderBy}
               onChange={(e) => onNodeUpdate(selectedNode.id, { orderBy: e.target.value })}
-              placeholder="колонка"
+              placeholder={"column"}
               className="text-xs h-8 bg-white/60 dark:bg-slate-950/60"
             />
           </div>
           <div className="space-y-1.5">
             <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-              Направление
+              Direction
             </Label>
             <Select
               value={orderDirection}
@@ -326,8 +326,8 @@ export function BotTableConfiguration({
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="asc">По возрастанию</SelectItem>
-                <SelectItem value="desc">По убыванию</SelectItem>
+                <SelectItem value="asc">Ascending</SelectItem>
+                <SelectItem value="desc">Descending</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -337,7 +337,7 @@ export function BotTableConfiguration({
       {showResultFormat && (
         <div className="space-y-1.5">
           <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Лимит (0 = без лимита)
+            Limit (0 = no limit)
           </Label>
           <Input
             type="number"
@@ -353,7 +353,7 @@ export function BotTableConfiguration({
             placeholder="0"
             className="text-xs h-8 bg-white/60 dark:bg-slate-950/60"
           />
-          <p className="text-[10px] text-muted-foreground/70">Пропустить N строк (для пагинации)</p>
+          <p className="text-[10px] text-muted-foreground/70">Skip N lines (for pagination)</p>
         </div>
       )}
 
@@ -361,7 +361,7 @@ export function BotTableConfiguration({
       {showSaveResult && (
         <div className="space-y-1.5">
           <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Сохранить результат в переменную
+            Save the result to a variable
           </Label>
           <VariableNameInput
             value={saveResultTo}
@@ -376,7 +376,7 @@ export function BotTableConfiguration({
       <div className="flex flex-col p-3 rounded-lg bg-gradient-to-br from-amber-50/60 to-yellow-50/40 dark:from-amber-950/30 dark:to-yellow-950/20 border border-amber-200/40 dark:border-amber-700/40">
         <Label className="text-xs font-semibold text-amber-700 dark:text-amber-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-share-right text-xs" />
-          Следующий узел
+          Next node
         </Label>
         <Select
           value={autoTransitionTo || 'no-transition'}

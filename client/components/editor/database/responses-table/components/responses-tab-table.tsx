@@ -38,7 +38,7 @@ export function ResponsesTabTable({ users }: ResponsesTabTableProps): React.JSX.
               <TableCell colSpan={3} className="text-center py-12 text-muted-foreground">
                 <div className="flex flex-col items-center gap-2">
                   <MessageSquare className="w-8 h-8 opacity-30" />
-                  <span>Нет пользователей или ответов</span>
+                  <span>No users or replies</span>
                 </div>
               </TableCell>
             </TableRow>

@@ -126,7 +126,7 @@ function nodeToJsx(node: Node, keyRef: KeyRef): JSX.Element | null {
       return (
         <blockquote key={keyRef.current++} className={isExpandable ? EXPANDABLE_BLOCKQUOTE_CLASS : BLOCKQUOTE_CLASS}>
           {isExpandable && (
-            <span className="text-[10px] text-blue-400 font-medium not-italic block mb-1">▼ Раскрывающаяся цитата</span>
+            <span className="text-[10px] text-blue-400 font-medium not-italic block mb-1">▼ Drop-down quote</span>
           )}
           {children}
         </blockquote>
@@ -157,7 +157,7 @@ function nodeToJsx(node: Node, keyRef: KeyRef): JSX.Element | null {
         <span
           key={keyRef.current++}
           className={SPOILER_CLASS}
-          title="Спойлер"
+          title={"Spoiler"}
         >
           {children}
         </span>

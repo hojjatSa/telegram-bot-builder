@@ -57,14 +57,14 @@ export function BotProtectContentToggle({
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
       toast({
         title: 'Setting saved',
-        description: 'Перезапустите бота, чтобы применить защиту контента',
+        description: "Restart the bot to apply content protection",
       });
     },
     onError: () => {
       setLocalEnabled(protectContent === 1);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить защиту контента',
+        description: "Failed to update content protection",
         variant: 'destructive',
       });
     },
@@ -73,18 +73,18 @@ export function BotProtectContentToggle({
   return (
     <SettingCard
       icon={ShieldCheck}
-      title="Защита от копирования"
+      title={"Copy protection"}
       description={
         localEnabled
-          ? 'Telegram запретит пересылку и сохранение сообщений этого бота'
-          : 'Сообщения этого бота можно пересылать и сохранять'
+          ? "Telegram will prohibit forwarding and saving messages from this bot"
+          : "Messages from this bot can be forwarded and saved"
       }
       active={localEnabled}
       className={className}
       action={
         <Switch
           id={`protect-content-${tokenId}`}
-          aria-label="Защита от копирования"
+          aria-label={"Copy protection"}
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);

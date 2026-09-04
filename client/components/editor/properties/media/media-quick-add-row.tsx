@@ -118,8 +118,8 @@ export function MediaQuickAddRow({
       onHttpUrl={(url) => void addUrl(url)}
       onEmpty={() =>
         toast({
-          title: 'Не получилось прочитать файл',
-          description: 'Перетащи из Проводника или вставь через Ctrl+V',
+          title: "Failed to read the file",
+          description: "Drag from Explorer or paste via Ctrl+V",
           variant: 'destructive',
         })
       }
@@ -130,7 +130,7 @@ export function MediaQuickAddRow({
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder={placeholder}
-            title="Сюда можно перетащить файл, вставить картинку (Ctrl+V) или ссылку на неё"
+            title={"Here you can drag a file, insert a picture (Ctrl+V) or a link to it"}
             disabled={busy}
             className="h-10 flex-1 text-sm"
             onKeyDown={(e) => e.key === 'Enter' && void addUrl()}
@@ -143,7 +143,7 @@ export function MediaQuickAddRow({
             className="h-10 w-10 shrink-0"
             disabled={busy}
             onClick={handlePlus}
-            title={urlInput.trim() ? 'Добавить URL' : 'Загрузить файл с устройства'}
+            title={urlInput.trim() ? "Add URL" : "Upload file from device"}
             data-testid="media-quick-add-plus"
           >
             {urlInput.trim() ? <Plus className="h-4 w-4" /> : <Upload className="h-4 w-4" />}
@@ -159,7 +159,7 @@ export function MediaQuickAddRow({
         </div>
         <div className="flex items-center gap-2">
           <div className="h-px flex-1 bg-slate-300/30" />
-          <span className="text-xs text-slate-500">или выбрать уже лежащий</span>
+          <span className="text-xs text-slate-500">or choose an existing one</span>
           <div className="h-px flex-1 bg-slate-300/30" />
         </div>
         <MediaFieldButton
@@ -169,7 +169,7 @@ export function MediaQuickAddRow({
           field="attachedMedia"
           multi={multiple}
           onAttach={onAttached}
-          label="Из хранилища"
+          label={"From storage"}
           className="h-10 w-full gap-1.5"
         />
       </div>

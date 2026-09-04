@@ -136,7 +136,7 @@ export function KeyboardNodeProperties({
       <div className="flex items-center justify-between rounded-lg border border-amber-200/40 dark:border-amber-800/40 bg-amber-50/30 dark:bg-amber-950/20 p-3">
         <div className="flex items-center gap-2">
           <i className="fas fa-bolt text-amber-500 text-xs" />
-          <span className="text-sm font-medium text-amber-900 dark:text-amber-100">Генерировать кнопки из HTTP-ответа</span>
+          <span className="text-sm font-medium text-amber-900 dark:text-amber-100">Generate buttons from HTTP response</span>
         </div>
         <Switch
           checked={enableDynamicButtons}
@@ -157,7 +157,7 @@ export function KeyboardNodeProperties({
         <>
           {/* Подсказка: статические кнопки можно перетаскивать относительно динамических */}
           <div className="rounded-lg border border-dashed border-amber-300/60 dark:border-amber-700/50 bg-amber-50/40 dark:bg-amber-950/20 p-3 text-xs text-amber-900 dark:text-amber-100">
-            Динамические кнопки генерируются из HTTP-ответа. Перетащите блок ⚡ для изменения порядка.
+            Dynamic buttons are generated from an HTTP response. Drag the block ⚡ to change the order.
           </div>
           <KeyboardButtonsSection selectedNode={selectedNode} onButtonAdd={onButtonAdd} />
           {buttons.map((button: any) => (
@@ -186,7 +186,7 @@ export function KeyboardNodeProperties({
           {selectedNode.data.keyboardType === 'inline' && (buttons.length > 1 || enableDynamicButtons) && (
             <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/30 dark:border-amber-800/30">
               <label htmlFor="shuffleButtons" className="text-xs font-medium text-amber-800 dark:text-amber-200 cursor-pointer">
-                🔀 Перемешивать кнопки
+                🔀 Shuffle buttons
               </label>
               <Switch
                 id="shuffleButtons"
@@ -224,7 +224,7 @@ export function KeyboardNodeProperties({
           {selectedNode.data.keyboardType === 'inline' && buttons.length > 1 && (
             <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-amber-50/50 dark:bg-amber-950/20 border border-amber-200/30 dark:border-amber-800/30">
               <label htmlFor="shuffleButtons2" className="text-xs font-medium text-amber-800 dark:text-amber-200 cursor-pointer">
-                🔀 Перемешивать кнопки
+                🔀 Shuffle buttons
               </label>
               <Switch
                 id="shuffleButtons2"

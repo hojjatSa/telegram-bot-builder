@@ -137,7 +137,7 @@ export function ThumbnailSelector({
     <div className="mt-2 space-y-2 border-t border-slate-200/40 dark:border-slate-700/40 pt-2">
       {/* Заголовок секции */}
       <div className="flex items-center">
-        <span className="text-xs font-medium text-slate-600 dark:text-slate-400">🖼 Обложка видео</span>
+        <span className="text-xs font-medium text-slate-600 dark:text-slate-400">🖼 Video cover</span>
       </div>
 
       {/* Превью текущей обложки через MediaFileCard */}
@@ -158,7 +158,7 @@ export function ThumbnailSelector({
           <Input
             value={urlInput}
             onChange={(e) => handleUrlChange(e.target.value)}
-            placeholder="URL фото обложки"
+            placeholder={"Cover photo URL"}
             className="h-8 text-xs flex-1"
             onKeyDown={(e) => e.key === "Enter" && handleApplyUrl()}
           />
@@ -169,7 +169,7 @@ export function ThumbnailSelector({
             disabled={!urlInput.trim() || validationErrors.length > 0}
             className="h-8 px-2 text-xs shrink-0"
           >
-            ОК
+            OK
           </Button>
         </div>
       )}
@@ -198,8 +198,8 @@ export function ThumbnailSelector({
           {/* Информационный блок с требованиями Telegram */}
           <div className="rounded-md bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 px-2 py-1.5">
             <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed">
-              ℹ️ Требования Telegram: JPEG, до 200 KB, до 320×320 px.<br />
-              Для видео &lt; 10 MB Telegram генерирует превью автоматически.
+              ℹ️ Telegram requirements: JPEG, up to 200 KB, up to 320×320 px.<br />
+              For videos &lt; 10 MB Telegram generates previews automatically.
             </p>
           </div>
 
@@ -211,14 +211,14 @@ export function ThumbnailSelector({
                 className="w-full h-8 text-xs font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600"
               >
                 <Upload className="w-3 h-3 mr-1.5" />
-                Выбрать или загрузить фото
+                Select or upload a photo
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-5xl">
               <DialogHeader>
                 <DialogTitle>
                   <i className="fas fa-image mr-2 text-blue-600"></i>
-                  Выбор обложки видео
+                  Choosing a video cover
                 </DialogTitle>
               </DialogHeader>
               <MediaManager

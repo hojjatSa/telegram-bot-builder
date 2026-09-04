@@ -49,7 +49,7 @@ export function PsqlQueryPreview({ node }: PsqlQueryPreviewProps) {
         </div>
       ) : (
         <div className="text-xs text-muted-foreground italic">
-          SQL не задан
+          SQL not specified
         </div>
       )}
 

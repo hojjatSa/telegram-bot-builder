@@ -30,14 +30,14 @@ export function AnalyticsAudienceReachNote({
     <div className="space-y-0.5 text-[11px] leading-snug text-muted-foreground">
       <p>
         <span className="text-amber-600 dark:text-amber-400 tabular-nums">
-          Заблокировали: {blockedBotUsers}
+          Blocked: {blockedBotUsers}
         </span>
         {' · '}
         <span className="text-orange-600 dark:text-orange-400 tabular-nums">
-          Аккаунт удалён: {deletedUsers}
+          Account deleted: {deletedUsers}
         </span>
       </p>
-      <p>В рассылки не входят</p>
+      <p>Not included in mailings</p>
     </div>
   );
 }

@@ -42,7 +42,7 @@ export function IncomingCallbackTriggerPreview({ node }: IncomingCallbackTrigger
   return (
     <div className="flex items-center gap-1.5">
       <span className="text-xs text-orange-300 font-medium">Button Click Trigger</span>
-      <span className="text-[10px] text-orange-400/60">(любая)</span>
+      <span className="text-[10px] text-orange-400/60">(any)</span>
     </div>
   );
 }

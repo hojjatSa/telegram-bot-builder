@@ -55,7 +55,7 @@ export function BotTokenMultiSelect({ projectId, selectedTokenIds, onChange, per
       <div className="flex items-center justify-between gap-2">
         <Label className="flex items-center gap-1.5">
           <Bot className="w-3.5 h-3.5 text-blue-500" />
-          Отправить от ботов
+          Send from bots
         </Label>
         <div className="flex items-center gap-1">
           <Button
@@ -65,7 +65,7 @@ export function BotTokenMultiSelect({ projectId, selectedTokenIds, onChange, per
             onClick={() => onChange(activeTokens.map((token) => token.id))}
             disabled={allSelected || activeTokens.length === 0}
           >
-            Выбрать все
+            Select all
           </Button>
           <Button
             variant="ghost"
@@ -74,13 +74,13 @@ export function BotTokenMultiSelect({ projectId, selectedTokenIds, onChange, per
             onClick={() => onChange([])}
             disabled={selectedTokenIds.length === 0}
           >
-            Снять
+            Take off
           </Button>
         </div>
       </div>
 
       {tokens.length === 0 ? (
-        <p className="text-xs text-muted-foreground">У проекта пока нет подключённых ботов</p>
+        <p className="text-xs text-muted-foreground">The project does not have any connected bots yet</p>
       ) : (
         <div className="flex flex-wrap gap-1.5">
           {tokens.map((token) => (
@@ -98,8 +98,8 @@ export function BotTokenMultiSelect({ projectId, selectedTokenIds, onChange, per
       <p className="text-[11px] text-muted-foreground">
         {selectedTokenIds.length === 0
           ? activeTokens.length === 0 && tokens.length > 0
-            ? 'Нет ботов с действительным токеном'
-            : 'Выберите хотя бы одного бота'
+            ? "No bots with valid token"
+            : "Select at least one bot"
           : `Выбрано: ${selectedTokenIds.length} ${pluralizeBots(selectedTokenIds.length)} — сообщения уйдут параллельно`}
       </p>
     </div>

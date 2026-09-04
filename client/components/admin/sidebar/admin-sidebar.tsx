@@ -44,7 +44,7 @@ export function AdminSidebar() {
             'text-muted-foreground hover:bg-muted/60 transition-colors',
             isCollapsed && 'absolute right-0.5 top-1/2 -translate-y-1/2',
           )}
-          aria-label={isCollapsed ? 'Развернуть меню' : 'Свернуть меню'}
+          aria-label={isCollapsed ? "Expand menu" : "Collapse menu"}
         >
           {isCollapsed ? (
             <ChevronRight className="h-3.5 w-3.5" />

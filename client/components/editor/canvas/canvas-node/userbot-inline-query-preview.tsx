@@ -41,7 +41,7 @@ export function UserbotInlineQueryPreview({ node }: UserbotInlineQueryPreviewPro
       )}
       {!bot && !query && (
         <div className="text-xs text-muted-foreground/50 italic px-2">
-          Настройте inline-запрос
+          Set up an inline request
         </div>
       )}
     </div>

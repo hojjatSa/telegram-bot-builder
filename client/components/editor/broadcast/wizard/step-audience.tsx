@@ -126,7 +126,7 @@ export function StepAudience({ projectId, tokenId, formData, onChange, onNext, o
         <Input
           value={formData.name}
           onChange={(e) => onChange({ name: e.target.value })}
-          placeholder="Например: Акция ноябрь"
+          placeholder={"For example: Promotion November"}
         />
       </div>
 

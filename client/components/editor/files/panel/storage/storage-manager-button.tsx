@@ -29,11 +29,11 @@ export function StorageManagerButton() {
         size="sm"
         className="h-8"
         onClick={() => setOpen(true)}
-        title="Управление хранилищами"
+        title={"Storage management"}
         data-testid="open-storage-manager"
       >
         <Database className="h-3.5 w-3.5 sm:mr-1.5" />
-        <span className="hidden sm:inline">Хранилища</span>
+        <span className="hidden sm:inline">Storage</span>
       </Button>
 
       <StorageConfigManager open={open} onOpenChange={setOpen} />

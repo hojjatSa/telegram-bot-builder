@@ -37,7 +37,7 @@ export function DatabaseToggle({
       data-testid="database-toggle-container"
     >
       <span>{isDatabaseEnabled ? '✅' : '❌'}</span>
-      <span className="whitespace-nowrap">{isDatabaseEnabled ? 'Включена' : 'Выключена'}</span>
+      <span className="whitespace-nowrap">{isDatabaseEnabled ? "Enabled" : "Off"}</span>
       <Switch
         id="db-toggle"
         data-testid="switch-database-toggle"

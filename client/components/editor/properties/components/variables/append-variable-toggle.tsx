@@ -37,10 +37,10 @@ export function AppendVariableToggle({
           <i className="fas fa-layer-group text-amber-600 dark:text-amber-400 text-sm"></i>
           <div>
             <Label htmlFor="appendVariable" className="text-sm font-medium text-amber-900 dark:text-amber-100">
-              Не перезаписывать
+              Do not overwrite
             </Label>
             <p className="text-xs text-amber-700 dark:text-amber-300">
-              Сохранять все значения в массив
+              Store all values ​​in an array
             </p>
           </div>
         </div>
@@ -60,13 +60,13 @@ export function AppendVariableToggle({
           <AlertDescription className="text-xs text-amber-800 dark:text-amber-200">
             <div className="space-y-1">
               <div>
-                <strong>Режим массива:</strong> значения сохраняются как{" "}
+                <strong>Array mode:</strong> values ​​are stored as{" "}
                 <code className="bg-amber-100 dark:bg-amber-900/50 px-1.5 py-0.5 rounded">
                   ["val1", "val2", "val3"]
                 </code>
               </div>
               <div className="text-amber-600 dark:text-amber-400 mt-1">
-                💡 В тексте используйте <code className="bg-amber-100 dark:bg-amber-900/50 px-1 py-0.5 rounded">{`{email|join:", "}`}</code> для вывода через запятую
+                💡 In the text, use <code className="bg-amber-100 dark:bg-amber-900/50 px-1 py-0.5 rounded">{`{email|join:", "}`}</code> for output separated by commas
               </div>
             </div>
           </AlertDescription>

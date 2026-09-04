@@ -166,7 +166,7 @@ export function useTelegramAuth() {
       console.error('Ошибка POST /api/auth/telegram:', e);
       toast({
         title: 'Sign-in failed',
-        description: 'Не удалось выполнить вход',
+        description: "Failed to sign in",
         variant: 'destructive',
       });
       return false;
@@ -197,7 +197,7 @@ export function useTelegramAuth() {
       console.error('Ошибка очистки после выхода:', e);
     }
 
-    toast({ title: 'Вы вышли из аккаунта' });
+    toast({ title: "You are logged out of your account" });
   };
 
   /**

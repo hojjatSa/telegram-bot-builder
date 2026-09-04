@@ -24,7 +24,7 @@ interface ImageAttachmentProps {
 
 /** SVG-заглушка при ошибке загрузки изображения */
 const ERROR_PLACEHOLDER =
-  'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%23f5f5f5" width="100" height="100"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="%23999"%3EОшибка%3C/text%3E%3C/svg%3E';
+  "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"%3E%3Crect fill=\"%23f5f5f5\" width=\"100\" height=\"100\"/%3E%3Ctext x=\"50\" y=\"50\" text-anchor=\"middle\" dy=\".3em\" font-family=\"Arial\" font-size=\"12\" fill=\"%23999\"%3EError%3C/text%3E%3C/svg%3E";
 
 /**
  * Компонент прикреплённого изображения

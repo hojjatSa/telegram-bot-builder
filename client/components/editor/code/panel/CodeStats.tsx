@@ -56,7 +56,7 @@ export function CodeStats({ content, selectedFormat, isLoading, collapseState, o
     return (
       <div className="flex items-center gap-2 text-muted-foreground p-3 bg-muted/30 rounded-md border border-border/50">
         <i className="fas fa-spinner fa-spin text-sm"></i>
-        <span className="text-sm">Генерация кода...</span>
+        <span className="text-sm">Code generation...</span>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export function CodeStats({ content, selectedFormat, isLoading, collapseState, o
     return (
       <div className="flex items-center gap-2 text-muted-foreground p-3 bg-muted/30 rounded-md border border-border/50">
         <i className="fas fa-info-circle text-sm"></i>
-        <span className="text-sm">Нажмите на вкладку формата для загрузки кода</span>
+        <span className="text-sm">Click on the format tab to download the code</span>
       </div>
     );
   }
@@ -74,7 +74,7 @@ export function CodeStats({ content, selectedFormat, isLoading, collapseState, o
     return (
       <div className="flex items-center gap-2 text-red-600 dark:text-red-400 p-3 bg-red-50 dark:bg-red-950/30 rounded-md border border-red-200 dark:border-red-800/40">
         <i className="fas fa-exclamation-triangle text-sm"></i>
-        <span className="text-sm">Ошибка генерации кода</span>
+        <span className="text-sm">Code generation error</span>
       </div>
     );
   }
@@ -85,24 +85,24 @@ export function CodeStats({ content, selectedFormat, isLoading, collapseState, o
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           <div className="bg-blue-50/50 dark:bg-blue-900/25 border border-blue-200/50 dark:border-blue-800/50 rounded-md p-3 sm:p-4 text-center">
             <div className="text-lg sm:text-xl font-bold text-blue-600 dark:text-blue-400">{stats.totalLines}</div>
-            <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">Строк</div>
+            <div className="text-sm text-blue-700 dark:text-blue-300 mt-1">Rows</div>
           </div>
           {selectedFormat === 'python' && stats.functions > 0 && (
             <div className="bg-green-50/50 dark:bg-green-900/25 border border-green-200/50 dark:border-green-800/50 rounded-md p-3 sm:p-4 text-center">
               <div className="text-lg sm:text-xl font-bold text-green-600 dark:text-green-400">{stats.functions}</div>
-              <div className="text-sm text-green-700 dark:text-green-300 mt-1">Функции</div>
+              <div className="text-sm text-green-700 dark:text-green-300 mt-1">Functions</div>
             </div>
           )}
           {selectedFormat === 'python' && stats.classes > 0 && (
             <div className="bg-purple-50/50 dark:bg-purple-900/25 border border-purple-200/50 dark:border-purple-800/50 rounded-md p-3 sm:p-4 text-center">
               <div className="text-lg sm:text-xl font-bold text-purple-600 dark:text-purple-400">{stats.classes}</div>
-              <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">Классы</div>
+              <div className="text-sm text-purple-700 dark:text-purple-300 mt-1">Classes</div>
             </div>
           )}
           {selectedFormat === 'json' && (
             <div className="bg-cyan-50/50 dark:bg-cyan-900/25 border border-cyan-200/50 dark:border-cyan-800/50 rounded-md p-3 sm:p-4 text-center">
               <div className="text-lg sm:text-xl font-bold text-cyan-600 dark:text-cyan-400">{(content.match(/"/g) || []).length / 2}</div>
-              <div className="text-sm text-cyan-700 dark:text-cyan-300 mt-1">Ключей</div>
+              <div className="text-sm text-cyan-700 dark:text-cyan-300 mt-1">Keys</div>
             </div>
           )}
         </div>
@@ -113,17 +113,17 @@ export function CodeStats({ content, selectedFormat, isLoading, collapseState, o
       {stats.totalLines > 0 && (
         <div className="flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 xs:gap-3 text-xs xs:text-sm">
           <div className="flex items-center gap-1.5 xs:gap-2 flex-wrap">
-            <span className="text-muted-foreground whitespace-nowrap">Размер: {Math.round(content.length / 1024)} KB</span>
+            <span className="text-muted-foreground whitespace-nowrap">Size: {Math.round(content.length / 1024)} KB</span>
             {(selectedFormat === 'python' || selectedFormat === 'json') && (
               <Button size="sm" variant="ghost" onClick={onToggleCollapse} className="h-7 xs:h-8 px-1.5 xs:px-2 text-xs" data-testid="button-toggle-all-functions">
                 <i className={`fas ${collapseState ? 'fa-expand' : 'fa-compress'} text-xs`}></i>
-                <span className="hidden xs:inline ml-1">{collapseState ? 'Развернуть' : 'Свернуть'}</span>
+                <span className="hidden xs:inline ml-1">{collapseState ? "Expand" : "Collapse"}</span>
               </Button>
             )}
           </div>
           {stats.truncated && onShowFullCode && (
             <Button size="sm" variant="outline" onClick={onShowFullCode} className="h-7 xs:h-8 px-2 text-xs xs:text-sm whitespace-nowrap" data-testid="button-show-full-code">
-              Показать всё ({stats.totalLines})
+              Show all ({stats.totalLines})
             </Button>
           )}
         </div>

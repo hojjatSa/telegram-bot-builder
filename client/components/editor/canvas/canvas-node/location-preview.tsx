@@ -37,7 +37,7 @@ export function LocationPreview({ node }: LocationPreviewProps) {
           <div className="flex items-center space-x-1">
             {node.data.mapService === 'yandex' && (
               <span className="text-xs px-2 py-0.5 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 rounded-full font-medium border border-yellow-200 dark:border-yellow-800">
-                Яндекс
+                Yandex
               </span>
             )}
             {node.data.mapService === 'google' && (
@@ -47,7 +47,7 @@ export function LocationPreview({ node }: LocationPreviewProps) {
             )}
             {node.data.mapService === '2gis' && (
               <span className="text-xs px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full font-medium border border-green-200 dark:border-green-800">
-                2ГИС
+                2GIS
               </span>
             )}
           </div>
@@ -76,14 +76,14 @@ export function LocationPreview({ node }: LocationPreviewProps) {
         {(node.data.yandexMapUrl || node.data.googleMapUrl || node.data.gisMapUrl) && (
           <div className="flex items-center justify-center space-x-1">
             <i className="fas fa-link text-xs text-green-500"></i>
-            <span className="text-xs opacity-75">URL загружен</span>
+            <span className="text-xs opacity-75">URL loaded</span>
           </div>
         )}
 
         {node.data.generateMapPreview && (
           <div className="flex items-center justify-center space-x-1">
             <i className="fas fa-external-link-alt text-xs text-blue-500"></i>
-            <span className="text-xs opacity-75">Кнопки карт</span>
+            <span className="text-xs opacity-75">Map buttons</span>
           </div>
         )}
       </div>

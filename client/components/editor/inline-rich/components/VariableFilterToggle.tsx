@@ -45,7 +45,7 @@ export function VariableFilterToggle({
       <div className="flex items-center gap-1">
         <i className="fas fa-list text-purple-600 dark:text-purple-400 text-xs"></i>
         <Label className="text-xs font-medium text-purple-700 dark:text-purple-300 cursor-pointer">
-          Запятая
+          Comma
         </Label>
         <Switch
           checked={isComma}
@@ -63,7 +63,7 @@ export function VariableFilterToggle({
       <div className="flex items-center gap-1">
         <i className="fas fa-align-left text-purple-600 dark:text-purple-400 text-xs"></i>
         <Label className="text-xs font-medium text-purple-700 dark:text-purple-300 cursor-pointer">
-          Столбик
+          Column
         </Label>
         <Switch
           checked={isNewline}

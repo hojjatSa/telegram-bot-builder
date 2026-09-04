@@ -39,11 +39,11 @@ export function BotServiceNodeFooter({
     return (
       <div
         className="flex items-center gap-2 border-t border-red-500/25 bg-red-500/5 px-3 py-2 pointer-events-none"
-        title="Токен отозван или бот удалён. Вставьте новый из @BotFather во вкладке Переменные."
+        title={"The token has been revoked or the bot has been deleted. Paste a new one from @BotFather in the Variables tab."}
       >
         <KeyRound className="h-3.5 w-3.5 shrink-0 text-red-500" aria-hidden />
         <span className="min-w-0 truncate text-[11px] font-medium text-red-500">
-          Токен недействителен
+          Token is invalid
         </span>
       </div>
     );
@@ -61,7 +61,7 @@ export function BotServiceNodeFooter({
       >
         <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-red-500" aria-hidden />
         <span className="min-w-0 truncate text-[11px] font-medium text-red-500">
-          Запуск с ошибкой · {when}
+          Launch with error · {when}
         </span>
       </div>
     );

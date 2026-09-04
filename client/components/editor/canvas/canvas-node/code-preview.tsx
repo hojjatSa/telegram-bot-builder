@@ -49,7 +49,7 @@ export function CodePreview({ data }: CodePreviewProps) {
         </pre>
       ) : (
         <div className="text-gray-400 dark:text-gray-500 text-[10px] italic">
-          Пустой скрипт
+          Empty script
         </div>
       )}
     </div>

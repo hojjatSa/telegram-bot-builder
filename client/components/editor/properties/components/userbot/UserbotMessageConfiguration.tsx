@@ -54,8 +54,8 @@ export function UserbotMessageConfiguration({
       {/* Секция получателя */}
       <div className="space-y-3 bg-gradient-to-br from-violet-50/40 to-purple-50/20 dark:from-violet-950/30 dark:to-purple-900/20 rounded-xl p-3 sm:p-4 border border-violet-200/40 dark:border-violet-800/40">
         <SectionHeader
-          title="Получатель"
-          description="Кому отправить сообщение от аккаунта"
+          title={"Recipient"}
+          description={"Who should I send a message to from my account?"}
           isOpen={isRecipientOpen}
           onToggle={() => setIsRecipientOpen(!isRecipientOpen)}
           icon="user"
@@ -76,7 +76,7 @@ export function UserbotMessageConfiguration({
                     list[idx] = e.target.value;
                     onNodeUpdate(selectedNode.id, { userbotRecipients: list, userbotEntity: list[0] || '' });
                   }}
-                  placeholder="@username, ID, {переменная} или 'me'"
+                  placeholder={"@username, ID, {variable} or 'me'"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -114,10 +114,10 @@ export function UserbotMessageConfiguration({
                 onNodeUpdate(selectedNode.id, { userbotRecipients: list, userbotEntity: list[0] || '' });
               }}
             >
-              <i className="fas fa-plus mr-1" /> Добавить получателя
+              <i className="fas fa-plus mr-1" /> Add recipient
             </Button>
             <p className="text-[10px] text-muted-foreground/70">
-              Юзербот должен быть участником чата. Поддерживается: @username, числовой ID, телефон, {'{variable}'}.
+              The userbot must be a participant in the chat. Supported: @username, numeric ID, phone, {'{variable}'}.
             </p>
           </div>
         )}
@@ -127,7 +127,7 @@ export function UserbotMessageConfiguration({
       <div className="space-y-3 bg-gradient-to-br from-blue-50/40 to-cyan-50/20 dark:from-blue-950/30 dark:to-cyan-900/20 rounded-xl p-3 sm:p-4 border border-blue-200/40 dark:border-blue-800/40">
         <SectionHeader
           title="Message text"
-          description="Содержание сообщения от аккаунта"
+          description={"Contents of the message from the account"}
           isOpen={isTextOpen}
           onToggle={() => setIsTextOpen(!isTextOpen)}
           icon="message"
@@ -150,7 +150,7 @@ export function UserbotMessageConfiguration({
             {/* Отключить превью ссылок */}
             <PropertyCheckbox
               id="ub-disableLinkPreview"
-              label="Отключить превью ссылок"
+              label={"Disable link previews"}
               checked={!!data.disableLinkPreview}
               onChange={(checked) => onNodeUpdate(selectedNode.id, { disableLinkPreview: checked })}
             />
@@ -179,12 +179,12 @@ export function UserbotMessageConfiguration({
 
       {/* Сохранить ID ответа (ждёт ответ от получателя) */}
       <div className="bg-gradient-to-br from-violet-50/30 to-purple-50/20 dark:from-violet-950/20 dark:to-purple-900/10 rounded-xl p-3 border border-violet-200/30 dark:border-violet-800/30 space-y-2">
-        <Label className="text-xs text-muted-foreground">Сохранить ID ответа (ждёт ответ)</Label>
+        <Label className="text-xs text-muted-foreground">Save response ID (waiting for response)</Label>
         <div className="flex gap-1">
           <Input
             value={data.saveResponseIdTo ?? ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { saveResponseIdTo: e.target.value })}
-            placeholder="response_msg_id (необязательно)"
+            placeholder={"response_msg_id (optional)"}
             className="h-8 text-sm flex-1"
           />
           <VariableSelector
@@ -193,18 +193,18 @@ export function UserbotMessageConfiguration({
           />
         </div>
         <p className="text-[10px] text-muted-foreground/60">
-          После отправки ждёт 2 сек и сохраняет ID последнего сообщения от получателя. Используй в «Нажать кнопку».
+          After sending, it waits 2 seconds and saves the ID of the last message from the recipient. Use it in “Press a Button”.
         </p>
 
         {/* Сохранить текст ответа */}
         {data.saveResponseIdTo && (
           <div className="space-y-2 pt-2 border-t border-violet-200/20 dark:border-violet-800/20">
-            <Label className="text-xs text-muted-foreground">Сохранить текст ответа в</Label>
+            <Label className="text-xs text-muted-foreground">Save reply text to</Label>
             <div className="flex gap-1">
               <Input
                 value={data.saveResponseTextTo ?? ''}
                 onChange={(e) => onNodeUpdate(selectedNode.id, { saveResponseTextTo: e.target.value })}
-                placeholder="response_text (необязательно)"
+                placeholder={"response_text (optional)"}
                 className="h-8 text-sm flex-1"
               />
               <VariableSelector
@@ -218,7 +218,7 @@ export function UserbotMessageConfiguration({
         {/* Время ожидания ответа */}
         {data.saveResponseIdTo && (
           <div className="space-y-1 pt-2 border-t border-violet-200/20 dark:border-violet-800/20">
-            <Label className="text-xs text-muted-foreground">Время ожидания ответа (сек)</Label>
+            <Label className="text-xs text-muted-foreground">Response time (sec)</Label>
             <Input
               type="number"
               min={1}
@@ -233,15 +233,15 @@ export function UserbotMessageConfiguration({
         {/* Стратегия выбора ответа */}
         {data.saveResponseTextTo && (
           <div className="space-y-1 pt-2 border-t border-violet-200/20 dark:border-violet-800/20">
-            <Label className="text-xs text-muted-foreground">Стратегия выбора ответа</Label>
+            <Label className="text-xs text-muted-foreground">Answer selection strategy</Label>
             <select
               value={data.responseStrategy ?? 'longest'}
               onChange={(e) => onNodeUpdate(selectedNode.id, { responseStrategy: e.target.value })}
               className="h-8 text-sm w-full rounded-md border border-input bg-background px-3"
             >
-              <option value="first">Первое сообщение</option>
-              <option value="longest">Самое длинное</option>
-              <option value="regex_match">По regex</option>
+              <option value="first">First message</option>
+              <option value="longest">Longest</option>
+              <option value="regex_match">By regex</option>
             </select>
           </div>
         )}
@@ -249,11 +249,11 @@ export function UserbotMessageConfiguration({
         {/* Фильтр ответа (regex) */}
         {data.responseStrategy === 'regex_match' && (
           <div className="space-y-1 pt-2 border-t border-violet-200/20 dark:border-violet-800/20">
-            <Label className="text-xs text-muted-foreground">Фильтр ответа (regex)</Label>
+            <Label className="text-xs text-muted-foreground">Response filter (regex)</Label>
             <Input
               value={data.responseFilterRegex ?? ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { responseFilterRegex: e.target.value })}
-              placeholder="Курс покупки.*"
+              placeholder={"Purchase rate.*"}
               className="h-8 text-sm font-mono"
             />
           </div>
@@ -262,12 +262,12 @@ export function UserbotMessageConfiguration({
         {/* Сохранить кнопки ответа (JSON) */}
         {data.saveResponseIdTo && (
           <div className="space-y-1 pt-2 border-t border-violet-200/20 dark:border-violet-800/20">
-            <Label className="text-xs text-muted-foreground">Сохранить кнопки ответа (JSON)</Label>
+            <Label className="text-xs text-muted-foreground">Save response buttons (JSON)</Label>
             <div className="flex gap-1">
               <Input
                 value={data.saveButtonsTo ?? ''}
                 onChange={(e) => onNodeUpdate(selectedNode.id, { saveButtonsTo: e.target.value })}
-                placeholder="buttons_json (необязательно)"
+                placeholder={"buttons_json (optional)"}
                 className="h-8 text-sm flex-1"
               />
               <VariableSelector
@@ -283,7 +283,7 @@ export function UserbotMessageConfiguration({
       <div className="rounded-lg border border-violet-200/40 dark:border-violet-800/40 bg-violet-50/30 dark:bg-violet-950/20 p-3">
         <div className="flex items-center gap-2 text-xs text-violet-700 dark:text-violet-300">
           <i className="fas fa-info-circle" />
-          <span>Сообщение отправляется от аккаунта через Telethon. Кнопки не поддерживаются.</span>
+          <span>The message is sent from the account via Telethon. Buttons are not supported.</span>
         </div>
       </div>
     </div>

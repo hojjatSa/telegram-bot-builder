@@ -93,18 +93,18 @@ export function BotAutoRestartToggle({
   return (
     <SettingCard
       icon={RefreshCw}
-      title="Перезапуск при сбое"
+      title={"Restart on failure"}
       description={
         localEnabled
-          ? 'Бот автоматически перезапустится если упадёт с ошибкой'
-          : 'Бот останется выключенным после сбоя'
+          ? "The bot will automatically restart if it crashes with an error"
+          : "Bot will remain disabled after failure"
       }
       active={localEnabled}
       className={className}
       action={
         <Switch
           id={`auto-restart-${tokenId}`}
-          aria-label="Перезапуск при сбое"
+          aria-label={"Restart on failure"}
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);
@@ -120,7 +120,7 @@ export function BotAutoRestartToggle({
     >
       {localEnabled && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-muted-foreground">Максимум попыток</span>
+          <span className="text-xs text-muted-foreground">Maximum attempts</span>
           <Select
             value={String(localAttempts)}
             onValueChange={(val) => {
@@ -135,12 +135,12 @@ export function BotAutoRestartToggle({
             disabled={mutation.isPending}
           >
             <SelectTrigger className="h-7 w-28 text-xs">
-              <SelectValue placeholder="Попыток" />
+              <SelectValue placeholder={"Attempts"} />
             </SelectTrigger>
             <SelectContent>
               {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
                 <SelectItem key={n} value={String(n)} className="text-xs">
-                  {n} {n === 1 ? 'попытка' : n < 5 ? 'попытки' : 'попыток'}
+                  {n} {n === 1 ? "attempt" : n < 5 ? "attempts" : "attempts"}
                 </SelectItem>
               ))}
             </SelectContent>

@@ -34,7 +34,7 @@ export function ResponsesTabContent(props: ResponsesTabContentProps): React.JSX.
       <div className="p-2 sm:p-3 space-y-3 w-full">
         <div className="flex items-center gap-2">
           <Label htmlFor="user-filter" className="text-sm font-medium whitespace-nowrap">
-            Фильтр:
+            Filter:
           </Label>
           <ResponsesUserFilter
             users={users}

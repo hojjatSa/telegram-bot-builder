@@ -41,7 +41,7 @@ export function ActionInput({
   if (action === 'url') {
     return (
       <div>
-        <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Ссылка для открытия</Label>
+        <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Opening link</Label>
         <Input value={option.url || ''} onChange={(e) => update({ url: e.target.value })}
           className="text-xs border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
           placeholder="https://example.com" />

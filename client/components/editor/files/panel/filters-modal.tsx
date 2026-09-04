@@ -85,7 +85,7 @@ export function FiltersModal({ open, value, onApply, onReset, onOpenChange, coll
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md" data-testid="filters-modal">
         <DialogHeader>
-          <DialogTitle>Фильтры файлов</DialogTitle>
+          <DialogTitle>File filters</DialogTitle>
         </DialogHeader>
 
         <div className="max-h-[60vh] overflow-y-auto pr-1">
@@ -106,7 +106,7 @@ export function FiltersModal({ open, value, onApply, onReset, onOpenChange, coll
             data-testid="filters-reset"
           >
             <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
-            Сбросить фильтр
+            Reset filter
           </Button>
           <Button
             type="button"
@@ -116,7 +116,7 @@ export function FiltersModal({ open, value, onApply, onReset, onOpenChange, coll
             data-testid="filters-apply"
           >
             <Check className="mr-1.5 h-3.5 w-3.5" />
-            Применить
+            Apply
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -15,15 +15,15 @@ import { ComponentDefinition } from '@shared/schema';
 export const parallelSplitNode: ComponentDefinition = {
   id: 'parallel-split-node',
   name: 'Parallel Group',
-  description: 'Одновременный запуск нескольких веток',
+  description: "Running multiple branches simultaneously",
   icon: 'fas fa-sitemap',
   color: 'bg-rose-100 text-rose-600',
   type: 'parallel_split' as any,
   defaultData: {
     /** Ветки параллельного запуска */
     parallelBranches: [
-      { id: 'pbranch_1', label: 'Ветка 1', target: '' },
-      { id: 'pbranch_2', label: 'Ветка 2', target: '' },
+      { id: 'pbranch_1', label: "Branch 1", target: '' },
+      { id: 'pbranch_2', label: "Branch 2", target: '' },
     ],
     /** Лимит одновременных веток */
     maxConcurrent: 5,

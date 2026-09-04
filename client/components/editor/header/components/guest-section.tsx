@@ -53,7 +53,7 @@ export function GuestSection({ onLogin, isVertical }: GuestSectionProps) {
           isVertical ? 'w-full justify-center' : ''
         )}
       >
-        Войти в Telegram
+        Login to Telegram
       </button>
     </div>
   );

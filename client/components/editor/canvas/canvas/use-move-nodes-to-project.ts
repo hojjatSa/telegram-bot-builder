@@ -124,7 +124,7 @@ export function useMoveNodesToProject({
       onBotDataUpdate({ ...botData, sheets: updatedSheets });
 
       toast({
-        title: '✅ Узлы перенесены',
+        title: "✅ Nodes have been moved",
         description: `${movingNodes.length} узл. → "${targetProject.name}"`,
       });
     } catch (error: any) {

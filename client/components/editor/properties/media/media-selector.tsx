@@ -125,7 +125,7 @@ export function MediaSelector({
         const pathToUse = result.localPath || result.imageUrl || url;
         
         toast({
-          title: 'Изображение сохранено',
+          title: "Image saved",
           description: result.message || 'URL сохранён для использования в боте',
         });
         onChange(pathToUse);
@@ -198,7 +198,7 @@ export function MediaSelector({
                     variant="ghost"
                     onClick={() => window.open(selectedFile.url, '_blank')}
                     className="h-8 sm:h-9 w-8 sm:w-9 p-0 hover:bg-emerald-200/50 dark:hover:bg-emerald-800/50 transition-colors"
-                    title="Просмотр"
+                    title={"View"}
                   >
                     <Eye className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   </Button>
@@ -260,7 +260,7 @@ export function MediaSelector({
           {/* Or Divider */}
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="flex-1 h-px bg-slate-300/30 dark:bg-slate-700/30"></div>
-            <span className="text-xs text-slate-500 dark:text-slate-500 font-medium">или</span>
+            <span className="text-xs text-slate-500 dark:text-slate-500 font-medium">or</span>
             <div className="flex-1 h-px bg-slate-300/30 dark:bg-slate-700/30"></div>
           </div>
 

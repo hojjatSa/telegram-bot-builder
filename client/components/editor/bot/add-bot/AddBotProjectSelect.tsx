@@ -25,7 +25,7 @@ export function AddBotProjectSelect({
   return (
     <div className="space-y-2">
       <Label htmlFor="project-select" className="text-sm sm:text-base font-semibold">
-        Выберите проект
+        Select a project
       </Label>
       <select
         id="project-select"
@@ -33,7 +33,7 @@ export function AddBotProjectSelect({
         onChange={(e) => setProjectForNewBot(Number(e.target.value))}
         className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       >
-        <option value="">Выберите проект...</option>
+        <option value="">Select a project...</option>
         {projects.map((project) => (
           <option key={project.id} value={project.id}>
             {project.name}

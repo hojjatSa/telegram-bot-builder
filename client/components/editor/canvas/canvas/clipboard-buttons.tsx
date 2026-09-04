@@ -80,7 +80,7 @@ export function ClipboardButtons({
         <button
           onClick={() => onCopyToClipboard([selectedNodeId])}
           className={`${buttonBaseClasses} ${inactiveClasses}`}
-          title="Копировать в буфер (Shift + Ctrl + C)"
+          title={"Copy to clipboard (Shift + Ctrl + C)"}
         >
           <i className={`fas fa-clipboard ${copyIconClasses}`} />
         </button>
@@ -90,7 +90,7 @@ export function ClipboardButtons({
         <button
           onClick={handlePasteClick}
           className={`${buttonBaseClasses} ${inactiveClasses}`}
-          title="Вставить из буфера (Shift + Ctrl + V)"
+          title={"Paste from Clipboard (Shift + Ctrl + V)"}
         >
           <i className={`fas fa-paste ${pasteIconClasses}`} />
         </button>

@@ -17,7 +17,7 @@ export function EmptyDialog() {
       <MessageSquare className="w-12 h-12 text-muted-foreground mb-4" />
       <p className="text-muted-foreground text-sm">No messages</p>
       <p className="text-xs text-muted-foreground mt-1">
-        Начните диалог, отправив первое сообщение
+        Start a conversation by sending your first message
       </p>
     </div>
   );

@@ -37,7 +37,7 @@ export function BotLaunchSettings({
       updateLaunchSettings(projectId, tokenId, mode, url, secret),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
-      toast({ title: 'Перезапустите бота чтобы применить изменения' });
+      toast({ title: "Restart the bot to apply the changes" });
     },
   });
 
@@ -72,8 +72,8 @@ export function BotLaunchSettings({
           <Rocket className="h-3.5 w-3.5" />
         </div>
         <div className="min-w-0 flex-1 pt-0.5">
-          <p className="text-sm font-medium text-foreground">Режим запуска</p>
-          <p className="mt-0.5 text-xs text-muted-foreground">Polling или webhook</p>
+          <p className="text-sm font-medium text-foreground">Startup mode</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">Polling or webhook</p>
         </div>
       </div>
 
@@ -85,7 +85,7 @@ export function BotLaunchSettings({
         >
           {([
             { value: 'polling' as const, title: 'Polling', description: 'Long-polling', icon: Globe },
-            { value: 'webhook' as const, title: 'Webhook', description: 'Входящий webhook', icon: Link2 },
+            { value: 'webhook' as const, title: 'Webhook', description: "Incoming webhook", icon: Link2 },
           ] as const).map(({ value, title, description, icon: Icon }) => (
             <div
               key={value}
@@ -113,10 +113,10 @@ export function BotLaunchSettings({
           <div className="space-y-3 rounded-md border border-border/50 bg-muted/20 p-3">
             <div className="flex items-center gap-2 text-xs text-muted-foreground">
               <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
-              <span>Применится при следующем запуске</span>
+              <span>Applies next time you start</span>
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor={`webhook-base-url-${tokenId}`} className="text-xs">Базовый URL</Label>
+              <Label htmlFor={`webhook-base-url-${tokenId}`} className="text-xs">Base URL</Label>
               <Input
                 id={`webhook-base-url-${tokenId}`}
                 value={localBaseUrl}
@@ -137,7 +137,7 @@ export function BotLaunchSettings({
                   setLocalSecret(e.target.value);
                   if (onPendingChange) onPendingChange('WEBHOOK_SECRET_TOKEN', e.target.value);
                 }}
-                placeholder="Секретный токен"
+                placeholder={"Secret token"}
                 className="h-8 text-xs"
               />
             </div>

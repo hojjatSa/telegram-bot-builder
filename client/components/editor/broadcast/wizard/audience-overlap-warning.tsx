@@ -39,8 +39,8 @@ export function AudienceOverlapWarning({ overlapEstimate }: AudienceOverlapWarni
     <div className="flex items-start gap-2 rounded-xl border border-amber-300/50 dark:border-amber-700/40 bg-amber-500/10 px-3 py-2">
       <AlertTriangle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
       <p className="text-xs text-amber-800 dark:text-amber-200">
-        {overlapEstimate.toLocaleString('ru-RU')} {pluralizePeople(overlapEstimate)} сообщение
-        от нескольких ботов
+        {overlapEstimate.toLocaleString('ru-RU')} {pluralizePeople(overlapEstimate)} message
+        from several bots
       </p>
     </div>
   );

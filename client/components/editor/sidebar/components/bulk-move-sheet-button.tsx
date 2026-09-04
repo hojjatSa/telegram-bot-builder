@@ -44,7 +44,7 @@ export function BulkMoveSheetButton({ count, sheets, onSelect }: BulkMoveSheetBu
             onClick={(e) => e.stopPropagation()}
           >
             <Share2 className="h-3 w-3 flex-shrink-0" />
-            <span>Переместить ({count}) в лист</span>
+            <span>Move ({count}) into a sheet</span>
             <ChevronDown className="h-3 w-3 ml-auto flex-shrink-0" />
           </Button>
         </DropdownMenuTrigger>
@@ -56,7 +56,7 @@ export function BulkMoveSheetButton({ count, sheets, onSelect }: BulkMoveSheetBu
           onClick={(e) => e.stopPropagation()}
         >
           <div className="px-3 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-            Переместить в
+            Move to
           </div>
           {sheets.map((sheet) => (
             <DropdownMenuItem

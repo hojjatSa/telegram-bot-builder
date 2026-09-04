@@ -60,21 +60,21 @@ export function ManagedBotUpdatedTriggerConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-robot text-indigo-600 dark:text-indigo-400 text-sm" />
           <span className="text-sm font-medium text-indigo-700 dark:text-indigo-300">
-            Триггер создания бота
+            Bot creation trigger
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Срабатывает когда пользователь создал управляемого бота. Данные доступны из сервисного сообщения <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">managed_bot_created</code> (Bot API 9.6).
+          Fires when the user has created a controlled bot. Data available from service message <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">managed_bot_created</code> (Bot API 9.6).
         </p>
       </div>
 
       {/* Секция: Данные бота */}
       <div className="rounded-xl bg-indigo-50/40 dark:bg-indigo-900/10 border border-indigo-200/40 dark:border-indigo-700/30 p-4 space-y-3">
         <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">
-          Данные бота
+          Bot data
         </p>
         <div className="space-y-2">
-          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.id → переменная</Label>
+          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.id → variable</Label>
           <VariableNameInput
             value={data.saveBotIdTo ?? 'bot_id'}
             availableVariables={textVariables as any}
@@ -83,7 +83,7 @@ export function ManagedBotUpdatedTriggerConfiguration({
           />
         </div>
         <div className="space-y-2">
-          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.username → переменная</Label>
+          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.username → variable</Label>
           <VariableNameInput
             value={data.saveBotUsernameTo ?? 'bot_username'}
             availableVariables={textVariables as any}
@@ -92,7 +92,7 @@ export function ManagedBotUpdatedTriggerConfiguration({
           />
         </div>
         <div className="space-y-2">
-          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.first_name → переменная</Label>
+          <Label className="text-xs text-slate-600 dark:text-slate-400">bot.first_name → variable</Label>
           <VariableNameInput
             value={data.saveBotNameTo ?? 'bot_name'}
             availableVariables={textVariables as any}
@@ -105,10 +105,10 @@ export function ManagedBotUpdatedTriggerConfiguration({
       {/* Секция: Данные создателя */}
       <div className="rounded-xl bg-slate-50/40 dark:bg-slate-900/10 border border-slate-200/40 dark:border-slate-700/30 p-4 space-y-3">
         <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
-          Данные создателя
+          Creator details
         </p>
         <div className="space-y-2">
-          <Label className="text-xs text-slate-600 dark:text-slate-400">user.id → переменная</Label>
+          <Label className="text-xs text-slate-600 dark:text-slate-400">user.id → variable</Label>
           <VariableNameInput
             value={data.saveCreatorIdTo ?? 'creator_id'}
             availableVariables={textVariables as any}
@@ -117,7 +117,7 @@ export function ManagedBotUpdatedTriggerConfiguration({
           />
         </div>
         <div className="space-y-2">
-          <Label className="text-xs text-slate-600 dark:text-slate-400">user.username → переменная</Label>
+          <Label className="text-xs text-slate-600 dark:text-slate-400">user.username → variable</Label>
           <VariableNameInput
             value={data.saveCreatorUsernameTo ?? 'creator_username'}
             availableVariables={textVariables as any}
@@ -130,20 +130,20 @@ export function ManagedBotUpdatedTriggerConfiguration({
       {/* Секция: Фильтр */}
       <div className="rounded-xl bg-amber-50/40 dark:bg-amber-900/10 border border-amber-200/40 dark:border-amber-700/30 p-4 space-y-3">
         <p className="text-xs font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-wide">
-          Фильтр
+          Filter
         </p>
         <div className="space-y-2">
           <Label className="text-xs text-slate-600 dark:text-slate-400">
-            Фильтр по user.id (опционально)
+            Filter by user.id (optional)
           </Label>
           <Input
             value={data.filterByUserId ?? ''}
             onChange={(e) => update('filterByUserId', e.target.value)}
-            placeholder="Пусто — реагировать на всех"
+            placeholder={"Empty - react to everyone"}
             className="text-xs"
           />
           <p className="text-[10px] text-slate-400">
-            Если задан — триггер сработает только для этого пользователя.
+            If specified, the trigger will work only for this user.
           </p>
         </div>
       </div>

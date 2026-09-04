@@ -39,7 +39,7 @@ export function BotEnvRowMenu({ envKey, canEdit, canDelete, onEdit, onDelete }: 
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuItem onClick={() => navigator.clipboard.writeText(envKey)}>
-          <Copy className="h-3.5 w-3.5 mr-2" /> Копировать ключ
+          <Copy className="h-3.5 w-3.5 mr-2" /> Copy key
         </DropdownMenuItem>
         {canEdit && (
           <DropdownMenuItem onClick={onEdit}>

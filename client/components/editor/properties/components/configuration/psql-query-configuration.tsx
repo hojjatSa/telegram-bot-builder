@@ -62,11 +62,11 @@ export function PsqlQueryConfiguration({
       <div className="flex items-center gap-2">
         <i className="fas fa-database text-violet-500 dark:text-violet-400 text-sm" />
         <span className="text-sm font-semibold text-violet-700 dark:text-violet-300">
-          SQL-запрос
+          SQL query
         </span>
       </div>
       <p className="text-xs text-muted-foreground -mt-2">
-        Поддерживаются переменные в формате {'{user_id}'}, {'{referrer_id}'}
+        Variables in the format are supported {'{user_id}'}, {'{referrer_id}'}
       </p>
 
       {/* Секция подключения к БД */}
@@ -81,7 +81,7 @@ export function PsqlQueryConfiguration({
       {/* SQL-запрос */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          SQL-запрос
+          SQL query
         </Label>
         <Textarea
           value={query}
@@ -95,7 +95,7 @@ export function PsqlQueryConfiguration({
       {/* Формат результата */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Формат результата
+          Result Format
         </Label>
         <Select
           value={resultFormat}
@@ -105,10 +105,10 @@ export function PsqlQueryConfiguration({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="first_row">Первая строка (объект)</SelectItem>
-            <SelectItem value="json">JSON (массив объектов)</SelectItem>
-            <SelectItem value="text">Текст (по шаблону)</SelectItem>
-            <SelectItem value="affected">Количество затронутых строк</SelectItem>
+            <SelectItem value="first_row">First line (object)</SelectItem>
+            <SelectItem value="json">JSON (array of objects)</SelectItem>
+            <SelectItem value="text">Text (based on template)</SelectItem>
+            <SelectItem value="affected">Number of rows affected</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -117,16 +117,16 @@ export function PsqlQueryConfiguration({
       {resultFormat === 'text' && (
         <div className="space-y-1.5">
           <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-            Шаблон строки
+            Line pattern
           </Label>
           <Input
             value={textTemplate}
             onChange={(e) => onNodeUpdate(selectedNode.id, { textTemplate: e.target.value })}
-            placeholder="{username} — {score} очков"
+            placeholder={"{username} — {score} points"}
             className="text-xs h-8 font-mono bg-white/60 dark:bg-slate-950/60"
           />
           <p className="text-xs text-muted-foreground">
-            Шаблон применяется к каждой строке результата
+            The pattern is applied to each row of the result
           </p>
         </div>
       )}
@@ -134,7 +134,7 @@ export function PsqlQueryConfiguration({
       {/* Сохранить результат в переменную */}
       <div className="space-y-1.5">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Сохранить результат в переменную
+          Save the result to a variable
         </Label>
         <VariableNameInput
           value={saveResultTo}
@@ -148,7 +148,7 @@ export function PsqlQueryConfiguration({
       <div className="flex flex-col p-3 rounded-lg bg-gradient-to-br from-violet-50/60 to-purple-50/40 dark:from-violet-950/30 dark:to-purple-950/20 border border-violet-200/40 dark:border-violet-700/40">
         <Label className="text-xs font-semibold text-violet-700 dark:text-violet-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-share-right text-xs" />
-          Следующий узел
+          Next node
         </Label>
         <Select
           value={autoTransitionTo || 'no-transition'}

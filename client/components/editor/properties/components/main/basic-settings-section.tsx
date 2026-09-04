@@ -129,7 +129,7 @@ export function BasicSettingsSection({
   return (
     <div className="w-full bg-gradient-to-br from-violet-50/40 to-purple-50/20 dark:from-violet-950/30 dark:to-purple-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-violet-200/40 dark:border-violet-800/40 backdrop-blur-sm">
       <SectionHeader
-        title="Основные настройки"
+        title={"Basic settings"}
         isOpen={isOpen}
         onToggle={onToggle}
         icon="sliders-h"
@@ -161,8 +161,8 @@ export function BasicSettingsSection({
               <SynonymEditor
                 synonyms={displaySynonyms}
                 onUpdate={handleSynonymsUpdate}
-                description="Дополнительные текстовые варианты для вызова этого экрана. Например: старт, привет, начать"
-                placeholder="Например: старт, привет, начать"
+                description={"Additional text options to call up this screen. For example: start, hello, start"}
+                placeholder={"For example: start, hello, start"}
               />
             </div>
           )}
@@ -172,7 +172,7 @@ export function BasicSettingsSection({
             <div className="space-y-3 sm:space-y-4 bg-gradient-to-br from-yellow-50/40 to-orange-50/20 dark:from-yellow-950/30 dark:to-orange-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-yellow-200/40 dark:border-yellow-800/40 backdrop-blur-sm">
               <div className="flex items-center gap-2 mb-1">
                 <i className="fas fa-bolt text-yellow-500 dark:text-yellow-400 text-sm"></i>
-                <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">Команды</span>
+                <span className="text-sm font-medium text-yellow-700 dark:text-yellow-300">Teams</span>
               </div>
               <CommandEditor
                 commandTriggers={commandTriggers}

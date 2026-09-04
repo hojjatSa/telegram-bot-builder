@@ -152,7 +152,7 @@ export function UserDatabasePanel(props: UserDatabasePanelProps): React.JSX.Elem
       <div className="flex h-full items-center justify-center">
         <div className="text-center">
           <RefreshCw className="mx-auto mb-2 h-8 w-8 animate-spin text-muted-foreground" />
-          <p className="text-muted-foreground">Загрузка базы данных...</p>
+          <p className="text-muted-foreground">Loading database...</p>
         </div>
       </div>
     );

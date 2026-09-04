@@ -37,7 +37,7 @@ export function UserbotEditTriggerPreview({ node }: UserbotEditTriggerPreviewPro
       )}
       {filterType !== 'any' && filterValue && (
         <p className="text-[10px] text-slate-400 dark:text-slate-500 truncate">
-          🔍 {filterType === 'contains' ? 'содержит' : 'regex'}: {filterValue}
+          🔍 {filterType === 'contains' ? "contains" : 'regex'}: {filterValue}
         </p>
       )}
     </div>

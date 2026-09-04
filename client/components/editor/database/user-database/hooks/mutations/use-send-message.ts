@@ -46,12 +46,12 @@ export function useSendMessage(params: UseSendMessageParams) {
       });
       toast({
         title: 'Message sent',
-        description: 'Сообщение успешно отправлено пользователю',
+        description: "The message was successfully sent to the user",
       });
     },
     onError: (error: any) => {
       toast({
-        title: 'Ошибка отправки',
+        title: "Send error",
         description: error?.message || 'Не удалось отправить сообщение',
         variant: 'destructive',
       });

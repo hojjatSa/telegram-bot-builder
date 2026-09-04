@@ -29,7 +29,7 @@ export function AdminSidebarLinks({ isCollapsed }: AdminSidebarLinksProps) {
     <nav className="flex flex-col gap-1">
       {!isCollapsed && (
         <span className="px-2 pt-1 text-[10px] uppercase tracking-wide text-muted-foreground/60">
-          Документация
+          Documentation
         </span>
       )}
       {items.map(({ href, label, icon: Icon }) => {

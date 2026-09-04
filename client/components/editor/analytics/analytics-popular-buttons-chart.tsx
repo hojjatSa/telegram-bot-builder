@@ -60,9 +60,9 @@ export function AnalyticsPopularButtonsChart({ projectId, selectedTokenId }: Ana
       {/* Заголовок + переключатель периодов */}
       <div className="flex items-center justify-between gap-2 flex-wrap">
         <div className="flex items-center gap-2 min-w-0">
-          <span className="text-sm font-medium truncate">Топ кнопок</span>
+          <span className="text-sm font-medium truncate">Top buttons</span>
           {totalForPeriod > 0 && (
-            <span className="text-xs text-muted-foreground whitespace-nowrap">{totalForPeriod} нажатий за период</span>
+            <span className="text-xs text-muted-foreground whitespace-nowrap">{totalForPeriod} clicks per period</span>
           )}
         </div>
         <GrowthGranularitySelector value={granularity} onChange={setGranularity} />
@@ -71,7 +71,7 @@ export function AnalyticsPopularButtonsChart({ projectId, selectedTokenId }: Ana
       {/* Горизонтальный bar chart или пустое состояние */}
       {items.length === 0 ? (
         <p className="text-xs text-muted-foreground/50 italic py-8 text-center">
-          {isLoading ? '' : 'Нет данных о нажатиях кнопок'}
+          {isLoading ? '' : "No button press data"}
         </p>
       ) : (
         <ResponsiveContainer width="100%" height={Math.max(160, items.length * 32)}>

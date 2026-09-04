@@ -173,7 +173,7 @@ export function TableEditor({
             <Lock className="h-3.5 w-3.5 text-blue-500" />
             <div className="flex flex-col">
               <span className="text-xs text-blue-600 dark:text-blue-400">
-                Системная таблица — данные токена, только чтение
+                System table - token data, read only
               </span>
               {systemInfo && (
                 <span className="text-[10px] text-muted-foreground">
@@ -218,7 +218,7 @@ export function TableEditor({
         <div className="px-4 py-2 bg-amber-50 dark:bg-amber-950/20 border-b border-amber-200/40 dark:border-amber-800/30 flex items-center gap-2">
           <span className="text-sm">✏️</span>
           <span className="text-xs text-amber-700 dark:text-amber-400">
-            Таблица контента — key и type только для чтения, редактируйте value
+            Content table - key and type are read-only, edit value
           </span>
         </div>
       )}
@@ -373,7 +373,7 @@ export function TableEditor({
             className="h-7 text-xs"
             onClick={() => (window as any).__loadMoreMessages?.()}
           >
-            Загрузить ещё (+200)
+            Load more (+200)
           </Button>
         </div>
       )}

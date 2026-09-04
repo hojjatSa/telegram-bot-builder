@@ -117,7 +117,7 @@ export function BotSettingsGrid({
         />
       </SettingsSection>
 
-      <SettingsSection title="Данные">
+      <SettingsSection title={"Data"}>
         <BotDatabaseToggle
           projectId={projectId}
           tokenId={tokenId}
@@ -148,7 +148,7 @@ export function BotSettingsGrid({
         />
       </SettingsSection>
 
-      <SettingsSection title="Логи и поведение">
+      <SettingsSection title={"Logs and behavior"}>
         <BotLogLevelSelect
           projectId={projectId}
           tokenId={tokenId}
@@ -169,17 +169,17 @@ export function BotSettingsGrid({
         />
       </SettingsSection>
 
-      <SettingsSection title="Администраторы">
+      <SettingsSection title={"Administrators"}>
         <BotAdminIds projectId={projectId} onPendingChange={onPendingChange} />
       </SettingsSection>
 
       {showCollaborators && (
-        <SettingsSection title="Владельцы">
+        <SettingsSection title={"Owners"}>
           <ProjectCollaborators projectId={projectId} canManage={canManage} />
         </SettingsSection>
       )}
 
-      <SettingsSection title="Дополнительно">
+      <SettingsSection title={"Additionally"}>
         <BotUserbotSettings
           projectId={projectId}
           tokenId={tokenId}
@@ -192,7 +192,7 @@ export function BotSettingsGrid({
       </SettingsSection>
 
       {showLaunchHistory && (
-        <SettingsSection title="История запусков">
+        <SettingsSection title={"Launch history"}>
           <BotLaunchHistory
             tokenId={tokenId}
             projectId={projectId}

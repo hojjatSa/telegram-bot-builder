@@ -63,14 +63,14 @@ export function BotTableWhereSection({ where, onChange }: BotTableWhereSectionPr
   return (
     <div className="space-y-2">
       <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        Условие (WHERE)
+        Condition (WHERE)
       </Label>
       {where.map((cond, i) => (
         <div key={i} className="flex items-center gap-1">
           <Input
             value={cond.column}
             onChange={(e) => handleUpdate(i, 'column', e.target.value)}
-            placeholder="колонка"
+            placeholder={"column"}
             className="text-xs h-7 flex-1 bg-white/60 dark:bg-slate-950/60"
           />
           <Select
@@ -108,7 +108,7 @@ export function BotTableWhereSection({ where, onChange }: BotTableWhereSectionPr
         className="text-xs h-7 w-full"
         onClick={handleAdd}
       >
-        <i className="fas fa-plus mr-1 text-xs" /> Добавить условие
+        <i className="fas fa-plus mr-1 text-xs" /> Add condition
       </Button>
     </div>
   );

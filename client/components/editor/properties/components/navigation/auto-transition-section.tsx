@@ -69,8 +69,8 @@ export function AutoTransitionSection({
             <i className="fas fa-bolt text-emerald-600 dark:text-emerald-400 text-sm sm:text-base"></i>
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="text-sm sm:text-base font-bold text-emerald-900 dark:text-emerald-100 text-left">Автопереход</h3>
-            <p className="text-xs sm:text-sm text-emerald-700/70 dark:text-emerald-300/70 text-left">Переход к следующему узлу без ожидания ответа</p>
+            <h3 className="text-sm sm:text-base font-bold text-emerald-900 dark:text-emerald-100 text-left">Auto transition</h3>
+            <p className="text-xs sm:text-sm text-emerald-700/70 dark:text-emerald-300/70 text-left">Move to the next node without waiting for a response</p>
           </div>
         </button>
         <i className={`fas fa-chevron-down text-xs sm:text-sm text-emerald-600 dark:text-emerald-400 transition-transform duration-300 ${isOpen ? 'rotate-0' : '-rotate-90'}`}></i>
@@ -78,7 +78,7 @@ export function AutoTransitionSection({
 
       {/* Переключатель - всегда виден */}
       <div className="flex items-center gap-2.5 p-3 sm:p-4 md:p-5 rounded-lg bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200/40 dark:border-emerald-800/40">
-        <span className="text-xs sm:text-sm font-medium text-emerald-900 dark:text-emerald-100">Включить</span>
+        <span className="text-xs sm:text-sm font-medium text-emerald-900 dark:text-emerald-100">Turn on</span>
         <Switch
           checked={selectedNode.data.enableAutoTransition ?? false}
           onCheckedChange={(checked) => {
@@ -101,9 +101,9 @@ export function AutoTransitionSection({
             </div>
             <div className="min-w-0 flex-1">
               <Label className="text-xs sm:text-sm font-semibold text-teal-900 dark:text-teal-100 block">
-                Целевой узел
+                Target node
               </Label>
-              <div className="text-xs text-teal-700/70 dark:text-teal-300/70 mt-0.5">Куда перейти после отправки сообщения</div>
+              <div className="text-xs text-teal-700/70 dark:text-teal-300/70 mt-0.5">Where to go after sending a message</div>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export function AutoTransitionSection({
             onValueChange={(value) => onNodeUpdate(selectedNode.id, { autoTransitionTo: value })}
           >
             <SelectTrigger className="text-xs sm:text-sm h-9 sm:h-10 bg-white/70 dark:bg-slate-950/50 border border-teal-300/50 dark:border-teal-700/50 hover:border-teal-400/70 dark:hover:border-teal-600/70 focus:border-teal-500 focus:ring-teal-400/30 transition-colors duration-200 rounded-lg text-teal-900 dark:text-teal-50">
-              <SelectValue placeholder="Выберите узел из списка">
+              <SelectValue placeholder={"Select a node from the list"}>
                 {selectedTarget ? getNodeTypeLabel(selectedTarget.node.type) : undefined}
               </SelectValue>
             </SelectTrigger>
@@ -121,14 +121,14 @@ export function AutoTransitionSection({
               {availableTargets.map(({ node, sheetId, sheetName }) => (
                   <SelectItem key={`${sheetId}-${node.id}`} value={node.id}>
                     <span className="text-xs sm:text-sm font-mono text-sky-700 dark:text-sky-300 truncate">
-                      {formatNodeDisplay(node, sheetName || 'Лист 1')}
+                      {formatNodeDisplay(node, sheetName || "Sheet 1")}
                     </span>
                   </SelectItem>
                 ))}
 
               {availableTargets.length === 0 && (
                 <SelectItem value="no-nodes" disabled>
-                  Создайте другие узлы
+                  Create other nodes
                 </SelectItem>
               )}
             </SelectContent>
@@ -150,7 +150,7 @@ export function AutoTransitionSection({
             <div className="flex items-start gap-2 sm:gap-2.5 p-2.5 sm:p-3 rounded-lg bg-emerald-100/50 dark:bg-emerald-900/20 border border-emerald-200/50 dark:border-emerald-800/50">
               <i className="fas fa-check-circle text-emerald-600 dark:text-emerald-400 text-xs sm:text-sm flex-shrink-0 mt-0.5"></i>
               <p className="text-xs sm:text-sm text-emerald-700 dark:text-emerald-300 leading-relaxed">
-                После отправки сообщения бот перейдёт к узлу <strong className="font-semibold">{selectedNode.data.autoTransitionTo}</strong>
+                After sending the message, the bot will go to the node <strong className="font-semibold">{selectedNode.data.autoTransitionTo}</strong>
               </p>
             </div>
           )}

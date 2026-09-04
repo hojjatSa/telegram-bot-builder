@@ -149,7 +149,7 @@ export function BotsCanvas({
         </div>
         {tokens.length === 0 && (
           <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground pointer-events-none">
-            Нет ботов в проекте
+            No bots in the project
           </div>
         )}
       </div>

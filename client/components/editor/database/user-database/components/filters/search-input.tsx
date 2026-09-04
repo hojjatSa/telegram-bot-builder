@@ -28,7 +28,7 @@ export function SearchInput({ value, onChange }: SearchInputProps): React.JSX.El
         <Search className="w-4 h-4 text-primary" />
       </div>
       <Input
-        placeholder="Поиск по имени, username или ID..."
+        placeholder={"Search by name, username or ID..."}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className="pl-14 sm:pl-16 pr-4 h-11 sm:h-12 text-sm sm:text-base rounded-xl border-2 border-transparent bg-background shadow-sm hover:border-primary/20 focus:border-primary/40 focus:ring-0 transition-all"

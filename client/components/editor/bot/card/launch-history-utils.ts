@@ -40,7 +40,7 @@ export function getLaunchStatusMeta(
     };
   }
   return {
-    label: 'Остановлен',
+    label: "Stopped",
     badgeClass: 'bg-muted text-muted-foreground border-border',
     footer: 'Запуск остановлен',
   };

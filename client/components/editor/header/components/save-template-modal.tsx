@@ -294,7 +294,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
             {/* Предупреждение о видимости */}
             {formData.isPublic && !formData.isAnonymous && (
               <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg text-sm text-yellow-800 dark:text-yellow-200">
-                ⚠️ <strong>Внимание!</strong> Ваш юзернейм Telegram будет виден всем, кто использует этот сценарий.
+                ⚠️ <strong>Attention!</strong> Your Telegram username will be visible to everyone who uses this script.
               </div>
             )}
 
@@ -315,7 +315,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
             {/* Инфо об анонимности */}
             {formData.isAnonymous && (
               <div className="p-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg text-sm text-blue-800 dark:text-blue-200">
-                ✓ Сценарий будет сохранён как "Сохранено от сообщества"
+                ✓ The script will be saved as "Saved from the community"
               </div>
             )}
           </div>
@@ -353,7 +353,7 @@ export function SaveTemplateModal({ isOpen, onClose, botData, projectName }: Sav
             disabled={saveTemplateMutation.isPending || !formData.name.trim()}
           >
             {saveTemplateMutation.isPending && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
-            Сохранить сценарий
+            Save script
           </Button>
         </DialogFooter>
       </DialogContent>

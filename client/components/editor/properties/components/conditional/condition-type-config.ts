@@ -14,25 +14,25 @@ export interface ConditionOption {
 export const CONDITION_TYPES: ConditionOption[] = [
   {
     value: 'user_data_exists',
-    label: 'Пользователь уже отвечал',
+    label: "The user has already answered",
     symbol: '✓',
     symbolColor: 'text-green-600'
   },
   {
     value: 'user_data_not_exists',
-    label: 'Пользователь НЕ отвечал',
+    label: "The user did not respond",
     symbol: '✕',
     symbolColor: 'text-red-600'
   },
   {
     value: 'user_data_equals',
-    label: 'Ответ равен значению',
+    label: "The answer is equal to the value",
     symbol: '=',
     symbolColor: 'text-blue-600'
   },
   {
     value: 'user_data_contains',
-    label: 'Ответ содержит текст',
+    label: "The answer contains text",
     symbol: '⊃',
     symbolColor: 'text-orange-600'
   }

@@ -32,21 +32,21 @@ export function AgentTokensPanel() {
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <Bot className="h-5 w-5 text-blue-500" />
-            <h2 className="text-lg font-semibold">Агент</h2>
+            <h2 className="text-lg font-semibold">Agent</h2>
           </div>
           <p className="max-w-xl text-sm text-muted-foreground">
-            Подключи ИИ-агента (Kiro / Cursor) к своим проектам. Агент сможет создавать и
-            редактировать ботов в реальном времени прямо на холсте через MCP.
+            Connect an AI agent (Kiro / Cursor) to your projects. The agent will be able to create and
+            edit bots in real time directly on canvas via MCP.
           </p>
         </div>
         <Button onClick={() => setCreateOpen(true)}>
           <Plus className="h-4 w-4 mr-1" />
-          Создать токен
+          Create a token
         </Button>
       </div>
 
-      {isLoading && <p className="text-sm text-muted-foreground">Загрузка токенов…</p>}
-      {isError && <p className="text-sm text-destructive">Не удалось загрузить токены.</p>}
+      {isLoading && <p className="text-sm text-muted-foreground">Loading tokens...</p>}
+      {isError && <p className="text-sm text-destructive">Failed to load tokens.</p>}
       {!isLoading && !isError && (
         <AgentTokensTable tokens={tokens ?? []} onRevoke={setRevokeTarget} />
       )}

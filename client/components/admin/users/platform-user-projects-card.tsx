@@ -41,7 +41,7 @@ export function PlatformUserProjectsCard({
       </CardHeader>
       <CardContent>
         {rows.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Нет проектов.</p>
+          <p className="text-sm text-muted-foreground">No projects.</p>
         ) : (
           <ul className="divide-y divide-border/60">
             {ownedProjects?.map((project) => (
@@ -49,7 +49,7 @@ export function PlatformUserProjectsCard({
                 <div className="min-w-0">
                   <p className="font-medium truncate">{project.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    Создан {formatPlatformUserDate(project.createdAt)} · изменён{' '}
+                    Created {formatPlatformUserDate(project.createdAt)} · changed{' '}
                     {formatPlatformUserDate(project.updatedAt)}
                   </p>
                 </div>
@@ -57,7 +57,7 @@ export function PlatformUserProjectsCard({
                   href={`/editor/${project.id}`}
                   className="inline-flex items-center gap-1 text-sm text-primary hover:underline shrink-0"
                 >
-                  Редактор
+                  Editor
                   <ExternalLink className="h-3.5 w-3.5" />
                 </Link>
               </li>
@@ -67,7 +67,7 @@ export function PlatformUserProjectsCard({
                 <div className="min-w-0">
                   <p className="font-medium truncate">{project.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    Владелец: {project.ownerDisplayName} · изменён{' '}
+                    Owner: {project.ownerDisplayName} · changed{' '}
                     {formatPlatformUserDate(project.updatedAt)}
                   </p>
                 </div>
@@ -75,7 +75,7 @@ export function PlatformUserProjectsCard({
                   href={`/editor/${project.id}`}
                   className="inline-flex items-center gap-1 text-sm text-primary hover:underline shrink-0"
                 >
-                  Редактор
+                  Editor
                   <ExternalLink className="h-3.5 w-3.5" />
                 </Link>
               </li>

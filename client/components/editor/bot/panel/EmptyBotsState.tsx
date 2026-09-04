@@ -27,9 +27,9 @@ export function EmptyBotsState({ onAddBot }: EmptyBotsStateProps) {
     <Card className="border-2 border-dashed border-border/50">
       <CardContent className="flex flex-col items-center justify-center py-8 px-4">
         <Bot className="w-10 h-10 text-muted-foreground mb-2" />
-        <h4 className="font-medium text-foreground mb-1">Нет подключенных ботов</h4>
+        <h4 className="font-medium text-foreground mb-1">No connected bots</h4>
         <p className="text-sm text-muted-foreground text-center mb-4">
-          {isGuestUser ? 'Войдите через Telegram чтобы добавить бота' : 'Добавьте бота к этому проекту'}
+          {isGuestUser ? "Login via Telegram to add a bot" : "Add a bot to this project"}
         </p>
         {!isGuestUser && (
           <Button
@@ -39,7 +39,7 @@ export function EmptyBotsState({ onAddBot }: EmptyBotsStateProps) {
             className="flex items-center gap-2"
           >
             <Plus className="w-4 h-4" />
-            Добавить бота
+            Add a bot
           </Button>
         )}
       </CardContent>

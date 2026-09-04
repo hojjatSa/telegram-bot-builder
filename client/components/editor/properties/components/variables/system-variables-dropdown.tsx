@@ -47,8 +47,8 @@ export function VariableDropdown({ nodeId, button, onButtonUpdate, textVariables
               <i className="fas fa-code text-xs sm:text-sm text-purple-600 dark:text-purple-300"></i>
             </div>
             <div className="min-w-0 flex-1">
-              <div className="text-xs sm:text-sm font-bold text-purple-900 dark:text-purple-100">Доступные переменные</div>
-              <div className="text-xs text-purple-700/70 dark:text-purple-300/60 mt-0.5 leading-tight hidden sm:block">Нажмите на переменную, чтобы вставить</div>
+              <div className="text-xs sm:text-sm font-bold text-purple-900 dark:text-purple-100">Available Variables</div>
+              <div className="text-xs text-purple-700/70 dark:text-purple-300/60 mt-0.5 leading-tight hidden sm:block">Click on variable to insert</div>
             </div>
           </div>
         </div>
@@ -76,8 +76,8 @@ export function VariableDropdown({ nodeId, button, onButtonUpdate, textVariables
           ) : (
             <div className="px-3 sm:px-4 py-4 sm:py-6 text-center">
               <div className="w-12 h-12 rounded-full bg-purple-100/50 dark:bg-purple-900/30 flex items-center justify-center mx-auto mb-2"><i className="fas fa-inbox text-purple-400 dark:text-purple-500"></i></div>
-              <div className="text-xs sm:text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">Нет переменных</div>
-              <div className="text-xs text-purple-600/70 dark:text-purple-400/60 leading-relaxed">Добавьте узлы для получения переменных</div>
+              <div className="text-xs sm:text-sm font-medium text-purple-700 dark:text-purple-300 mb-1">No variables</div>
+              <div className="text-xs text-purple-600/70 dark:text-purple-400/60 leading-relaxed">Add nodes to get variables</div>
             </div>
           )}
         </div>

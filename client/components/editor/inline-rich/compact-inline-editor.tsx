@@ -70,7 +70,7 @@ export function CompactInlineEditor({ showStats = false, ...props }: CompactInli
         {showStats && (
           <div className="flex items-center justify-end gap-2 px-3 py-1.5 bg-slate-50/50 dark:bg-slate-900/50 border-t border-slate-200/50 dark:border-slate-800/50">
             <span className="text-xs text-slate-600 dark:text-slate-400">
-              {wordCount} слов, {charCount} симв.
+              {wordCount} words, {charCount} char.
             </span>
           </div>
         )}

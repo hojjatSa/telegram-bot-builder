@@ -94,11 +94,11 @@ export function AnalyticsTableChartCard({ projectId }: AnalyticsTableChartCardPr
 
   return (
     <div className="bg-background border rounded-xl p-3 flex flex-col gap-3">
-      <span className="text-sm font-medium">График по таблице</span>
+      <span className="text-sm font-medium">Graph from table</span>
       <TableChartInfo />
       {tables.length === 0 ? (
         <p className="text-xs text-muted-foreground/50 italic py-8 text-center">
-          Создайте таблицу во вкладке Таблицы
+          Create a table in the Tables tab
         </p>
       ) : (
         <>

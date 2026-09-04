@@ -60,17 +60,17 @@ export function ProjectCollaborators({ projectId, canManage }: ProjectCollaborat
           <Users className="h-3.5 w-3.5" aria-hidden />
         </div>
         <div className="min-w-0 flex-1 pt-0.5">
-          <p className="text-sm font-medium text-foreground">Владельцы</p>
-          <p className="mt-0.5 text-xs text-muted-foreground">Доступ к проекту в конструкторе</p>
+          <p className="text-sm font-medium text-foreground">Owners</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">Accessing the project in the designer</p>
         </div>
         {isLoading && (
-          <Loader2 className="mt-1 h-3.5 w-3.5 animate-spin text-muted-foreground" aria-label="Загрузка" />
+          <Loader2 className="mt-1 h-3.5 w-3.5 animate-spin text-muted-foreground" aria-label={"Loading"} />
         )}
       </div>
 
       <div className="space-y-1.5 pl-10">
         {collaborators.length === 0 && !isLoading && (
-          <p className="text-xs text-muted-foreground/70">Нет владельцев</p>
+          <p className="text-xs text-muted-foreground/70">No owners</p>
         )}
         {collaborators.map((collab) => {
           const profile = profileById.get(collab.userId);
@@ -107,7 +107,7 @@ export function ProjectCollaborators({ projectId, canManage }: ProjectCollaborat
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               onKeyDown={handleKeyDown}
-              aria-label="Telegram ID нового владельца"
+              aria-label={"Telegram ID of the new owner"}
               type="number"
             />
             <Button
@@ -116,7 +116,7 @@ export function ProjectCollaborators({ projectId, canManage }: ProjectCollaborat
               className="h-7 w-7 shrink-0 text-muted-foreground"
               onClick={handleAdd}
               disabled={isAdding || !inputValue.trim()}
-              aria-label="Добавить владельца"
+              aria-label={"Add owner"}
             >
               {isAdding
                 ? <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />

@@ -48,7 +48,7 @@ export function ManagementCommandSection({
       <div className="space-y-2 sm:space-y-2.5">
         <Label className="text-xs sm:text-sm font-semibold text-red-900 dark:text-red-100 flex items-center gap-2">
           <i className="fas fa-terminal text-red-600 dark:text-red-400 text-xs sm:text-sm"></i>
-          Команда действия
+          Action command
         </Label>
         <Input
           value={selectedNode.data.command || ''}
@@ -60,7 +60,7 @@ export function ManagementCommandSection({
         <div className="flex items-start gap-2 sm:gap-2.5 p-2.5 sm:p-3 rounded-lg bg-red-50/50 dark:bg-red-950/30 border border-red-200/50 dark:border-red-800/40">
           <i className="fas fa-cog text-red-600 dark:text-red-400 text-xs sm:text-sm mt-0.5 flex-shrink-0"></i>
           <p className="text-xs sm:text-sm text-red-700 dark:text-red-300 leading-relaxed">
-            Основная команда для вызова этого действия
+            Basic command to call this action
           </p>
         </div>
       </div>

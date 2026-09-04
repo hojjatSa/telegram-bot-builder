@@ -101,20 +101,20 @@ export function SetVariableConfiguration({
           </span>
         </div>
         <p className="text-xs text-muted-foreground">
-          Вычисления и присваивания. Каждая строка выполняется последовательно.
+          Calculations and assignments. Each line is executed sequentially.
         </p>
       </div>
 
       {/* Список присваиваний */}
       <div className="space-y-2">
         <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-          Переменная = Значение
+          Variable = Value
         </Label>
 
         <div className="space-y-2">
           {assignments.length === 0 ? (
             <p className="text-xs text-muted-foreground italic text-center py-2">
-              Нет присваиваний — нажмите «Добавить»
+              No assignments - click "Add"
             </p>
           ) : (
             assignments.map((a) => (
@@ -137,7 +137,7 @@ export function SetVariableConfiguration({
           onClick={handleAdd}
         >
           <Plus className="h-3.5 w-3.5 mr-1" />
-          Добавить переменную
+          Add a variable
         </Button>
       </div>
 
@@ -145,7 +145,7 @@ export function SetVariableConfiguration({
       <div className="flex flex-col p-3 rounded-lg bg-gradient-to-br from-violet-50/60 to-purple-50/40 dark:from-violet-950/30 dark:to-purple-950/20 border border-violet-200/40 dark:border-violet-700/40">
         <Label className="text-xs font-semibold text-violet-700 dark:text-violet-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-share-right text-xs" />
-          Следующий узел
+          Next node
         </Label>
         <Select
           value={autoTransitionTo || 'no-transition'}
@@ -182,7 +182,7 @@ export function SetVariableConfiguration({
           placeholder="or enter an ID manually"
         />
         <p className="text-xs text-violet-600 dark:text-violet-400 mt-1.5">
-          Куда перейти после установки переменных
+          Where to go after setting variables
         </p>
       </div>
     </div>

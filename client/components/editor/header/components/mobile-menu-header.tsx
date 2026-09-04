@@ -23,7 +23,7 @@ export function MobileMenuHeader({ className }: MobileMenuHeaderProps) {
         <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 rounded-lg flex items-center justify-center">
           <i className="fab fa-telegram-plane text-white text-sm"></i>
         </div>
-        <SheetTitle className="text-left text-lg font-bold">Меню</SheetTitle>
+        <SheetTitle className="text-left text-lg font-bold">Menu</SheetTitle>
       </div>
     </SheetHeader>
   );

@@ -97,7 +97,7 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
         {/* Список версий */}
         <div className="overflow-y-auto flex-1">
           {isLoading ? (
-            <div className="p-6 text-sm text-slate-400 dark:text-slate-500">Загрузка истории версий…</div>
+            <div className="p-6 text-sm text-slate-400 dark:text-slate-500">Loading version history...</div>
           ) : versions.length > 0 ? (
             versions.map((version, index) => (
               <VersionRow
@@ -114,7 +114,7 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
           ) : (
             <div className="flex flex-col items-center justify-center py-8 gap-2 px-4 text-center">
               <i className="fas fa-clock-rotate-left text-slate-300 dark:text-slate-600 text-2xl" />
-              <p className="text-xs text-slate-400 dark:text-slate-500">Снимки создаются при сохранении проекта</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">Snapshots are created when the project is saved</p>
             </div>
           )}
         </div>
@@ -124,7 +124,7 @@ export function VersionHistoryButton({ projectId, onRestored }: VersionHistoryBu
           <div className="flex-shrink-0 px-3 py-2 border-t border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/50">
             <p className="text-[11px] leading-snug text-slate-500 dark:text-slate-400">
               <i className="fas fa-circle-info mr-1 opacity-70" />
-              Восстановление не удаляет другие версии — можно вернуться к любой из них.
+              Restoring does not delete other versions—you can go back to any of them.
             </p>
           </div>
         )}

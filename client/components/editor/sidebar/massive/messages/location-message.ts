@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const locationMessage: ComponentDefinition = {
   id: 'location-message',
   name: 'Location',
-  description: 'Отправка координат',
+  description: "Sending coordinates",
   icon: 'fas fa-map-marker',
   color: 'bg-green-100 text-green-600',
   type: 'location',
@@ -16,7 +16,7 @@ export const locationMessage: ComponentDefinition = {
     messageText: 'Location',
     latitude: 55.7558,
     longitude: 37.6176,
-    title: 'Москва',
+    title: "Moscow",
     address: 'Москва, Россия',
     foursquareId: '',
     foursquareType: '',

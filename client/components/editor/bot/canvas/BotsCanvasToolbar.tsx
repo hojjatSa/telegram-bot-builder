@@ -64,25 +64,25 @@ export function BotsCanvasToolbar({
       className="absolute bottom-4 left-4 z-10 flex flex-col gap-2"
     >
       <div className={GROUP}>
-        <button type="button" className={BTN} onClick={onFit} title="Сбросить вид" aria-label="Сбросить вид">
+        <button type="button" className={BTN} onClick={onFit} title={"Reset view"} aria-label={"Reset view"}>
           <LayoutGrid className="h-4 w-4" />
         </button>
       </div>
 
       <div className={GROUP}>
-        <button type="button" className={BTN} onClick={onZoomIn} disabled={!canZoomIn} title="Приблизить" aria-label="Приблизить">
+        <button type="button" className={BTN} onClick={onZoomIn} disabled={!canZoomIn} title={"Zoom in"} aria-label={"Zoom in"}>
           <Plus className="h-4 w-4" />
         </button>
         <div
           className="flex h-7 w-9 items-center justify-center text-[10px] font-medium tabular-nums text-muted-foreground"
-          title="Масштаб"
+          title={"Scale"}
         >
           {Math.round(zoom)}
         </div>
-        <button type="button" className={BTN} onClick={onZoomOut} disabled={!canZoomOut} title="Отдалить" aria-label="Отдалить">
+        <button type="button" className={BTN} onClick={onZoomOut} disabled={!canZoomOut} title={"Zoom out"} aria-label={"Zoom out"}>
           <Minus className="h-4 w-4" />
         </button>
-        <button type="button" className={BTN} onClick={onFit} title="Уместить" aria-label="Уместить">
+        <button type="button" className={BTN} onClick={onFit} title={"Fit"} aria-label={"Fit"}>
           <Expand className="h-4 w-4" />
         </button>
       </div>
@@ -92,8 +92,8 @@ export function BotsCanvasToolbar({
           type="button"
           className={BTN}
           onClick={onToggleFullscreen}
-          title={isFullscreen ? 'Выйти из полного экрана' : 'Полный экран'}
-          aria-label={isFullscreen ? 'Выйти из полного экрана' : 'Полный экран'}
+          title={isFullscreen ? "Exit full screen" : "Full screen"}
+          aria-label={isFullscreen ? "Exit full screen" : "Full screen"}
         >
           {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
         </button>

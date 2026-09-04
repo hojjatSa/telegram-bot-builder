@@ -510,7 +510,7 @@ export function PropertiesPanel({
             <div className="w-full bg-gradient-to-br from-orange-50/40 to-amber-50/20 dark:from-orange-950/30 dark:to-amber-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-orange-200/40 dark:border-orange-800/40 backdrop-blur-sm">
               <SectionHeader
                 title="Forward Message"
-                description="Настройки источника сообщения и чата назначения"
+                description={"Message source and destination chat settings"}
                 isOpen={isForwardMessageSectionOpen}
                 onToggle={() => setIsForwardMessageSectionOpen((prev) => !prev)}
                 icon="share"
@@ -535,7 +535,7 @@ export function PropertiesPanel({
             <div className="w-full bg-gradient-to-br from-teal-50/40 to-cyan-50/20 dark:from-teal-950/30 dark:to-cyan-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-teal-200/40 dark:border-teal-800/40 backdrop-blur-sm">
               <SectionHeader
                 title="Create topic"
-                description="Создание топика в форум-группе Telegram"
+                description={"Creating a topic in the Telegram forum group"}
                 isOpen={true}
                 onToggle={() => {}}
                 icon="layer-group"
@@ -557,7 +557,7 @@ export function PropertiesPanel({
             <div className="w-full bg-gradient-to-br from-cyan-50/40 to-blue-50/20 dark:from-cyan-950/30 dark:to-blue-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-cyan-200/40 dark:border-cyan-800/40 backdrop-blur-sm">
               <SectionHeader
                 title="HTTP Request"
-                description="Настройки запроса к внешнему API"
+                description={"External API request settings"}
                 isOpen={true}
                 onToggle={() => {}}
                 icon="globe"
@@ -577,7 +577,7 @@ export function PropertiesPanel({
             <div className="w-full bg-gradient-to-br from-violet-50/40 to-indigo-50/20 dark:from-violet-950/30 dark:to-indigo-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-violet-200/40 dark:border-violet-800/40 backdrop-blur-sm">
               <SectionHeader
                 title="API Response"
-                description="HTTP-ответ на запрос API-триггера"
+                description={"HTTP response to API trigger request"}
                 isOpen={true}
                 onToggle={() => {}}
                 icon="reply"
@@ -620,8 +620,8 @@ export function PropertiesPanel({
           {(selectedNode.type as any) === 'answer_callback_query' && (
             <div className="w-full bg-gradient-to-br from-purple-50/40 to-violet-50/20 dark:from-purple-950/30 dark:to-violet-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-purple-200/40 dark:border-purple-800/40 backdrop-blur-sm">
               <SectionHeader
-                title="Уведомление inline-кнопки"
-                description="answerCallbackQuery — уведомление после нажатия кнопки"
+                title={"Notification inline buttons"}
+                description={"answerCallbackQuery - notification after button click"}
                 isOpen={true}
                 onToggle={() => {}}
                 icon="bell"
@@ -935,8 +935,8 @@ export function PropertiesPanel({
                 <div className="mt-2">
                   <InfoBlock
                     variant="info"
-                    title="При включении клавиатуры"
-                    description="Только первый файл будет отображаться и отправляться. Остальные файлы сохранятся. Нажмите «Включить все файлы», чтобы использовать все медиа, но клавиатура при этом отключится."
+                    title={"When you turn on the keyboard"}
+                    description={"Only the first file will be displayed and sent. The remaining files will be saved. Click \"Include All Files\" to use all media, but the keyboard will be disabled."}
                   />
                 </div>
               )}
@@ -958,7 +958,7 @@ export function PropertiesPanel({
                       {selectedNode.data.keyboardType === 'inline' && (selectedNode.data.buttons?.length ?? 0) > 1 && (
                         <PropertyCheckbox
                           id="shuffleButtonsLegacy"
-                          label="🔀 Перемешивать кнопки при каждом показе"
+                          label={"🔀 Shuffle buttons every time you show them"}
                           checked={selectedNode.data.shuffleButtons || false}
                           onChange={(checked) => onNodeUpdate(selectedNode.id, { shuffleButtons: checked })}
                         />

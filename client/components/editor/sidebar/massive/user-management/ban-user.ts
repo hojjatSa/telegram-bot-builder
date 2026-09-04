@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const banUser: ComponentDefinition = {
   id: 'ban-user',
   name: 'Ban User',
-  description: 'Забанить участника группы',
+  description: "Ban a group member",
   icon: 'fas fa-ban',
   color: 'bg-red-100 text-red-600',
   type: 'ban_user',

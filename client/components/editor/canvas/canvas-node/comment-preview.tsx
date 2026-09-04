@@ -62,7 +62,7 @@ export function CommentPreview({ data }: CommentPreviewProps) {
         </div>
       ) : (
         <div className="text-gray-400 dark:text-gray-500 text-[10px] italic">
-          Пустая заметка
+          Blank note
         </div>
       )}
     </div>

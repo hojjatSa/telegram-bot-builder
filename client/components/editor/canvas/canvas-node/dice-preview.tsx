@@ -34,10 +34,10 @@ export function DicePreview({ node }: DicePreviewProps) {
       <div className="text-center space-y-2">
         <i className="fas fa-dice text-slate-400 dark:text-slate-300 text-3xl"></i>
         <div className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-          <div className="font-medium">Игральный кубик</div>
+          <div className="font-medium">Dice</div>
           <div className="flex items-center justify-center space-x-1">
             <i className="fas fa-gamepad text-xs"></i>
-            <span>{node.data.emoji || '🎲'} Развлечение</span>
+            <span>{node.data.emoji || '🎲'} Entertainment</span>
           </div>
         </div>
       </div>

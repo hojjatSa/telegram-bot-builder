@@ -47,7 +47,7 @@ export function MoveToSheetMenu({ sheets, onSelect }: MoveToSheetMenuProps) {
         onClick={(e) => e.stopPropagation()}
       >
         <Share2 className="w-4 h-4 opacity-70 shrink-0" />
-        <span className="flex-1">В лист</span>
+        <span className="flex-1">To sheet</span>
         <i className="fas fa-chevron-right text-xs opacity-50" />
       </button>
 

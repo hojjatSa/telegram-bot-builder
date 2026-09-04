@@ -49,7 +49,7 @@ export function UserbotMessagePreview({ node }: UserbotMessagePreviewProps) {
       {/* Пустое состояние */}
       {!messageText && !entity && (
         <div className="text-xs text-muted-foreground/50 italic px-2">
-          Настройте получателя и текст
+          Customize the recipient and text
         </div>
       )}
     </div>

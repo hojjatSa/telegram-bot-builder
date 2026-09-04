@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const muteUser: ComponentDefinition = {
   id: 'mute-user',
   name: 'Заглушить пользователя',
-  description: 'Ограничить права участника',
+  description: "Limit participant rights",
   icon: 'fas fa-volume-mute',
   color: 'bg-orange-100 text-orange-600',
   type: 'mute_user',

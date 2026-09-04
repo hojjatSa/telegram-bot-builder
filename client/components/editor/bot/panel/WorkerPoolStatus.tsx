@@ -62,7 +62,7 @@ function WorkerPoolDetails({ data, projects }: { data: WorkerStats; projects?: A
       <div>
         <div className="font-medium">Worker Pool</div>
         <div className="mt-0.5 text-muted-foreground">
-          {data.workers} воркер{data.workers > 1 ? 'а' : ''} · {data.totalBots} бот{data.totalBots > 1 ? 'а' : ''}
+          {data.workers} worker{data.workers > 1 ? "A" : ''} · {data.totalBots} bot{data.totalBots > 1 ? "A" : ''}
           {data.totalMemoryMb > 0 && ` · ${data.totalMemoryMb} MB`}
         </div>
       </div>
@@ -75,7 +75,7 @@ function WorkerPoolDetails({ data, projects }: { data: WorkerStats; projects?: A
             layout="detail"
             trailing={(
               <span className="shrink-0 text-[11px] tabular-nums text-muted-foreground">
-                {d.botsCount} бот · {d.memoryMb} MB
+                {d.botsCount} bot · {d.memoryMb} MB
               </span>
             )}
           />
@@ -110,9 +110,9 @@ export function WorkerPoolStatus({ projects }: WorkerPoolStatusProps) {
         <TooltipTrigger asChild>
           <div className={`${badgeBase} cursor-default hidden @[600px]:flex`}>
             <Activity className="w-3 h-3 shrink-0" />
-            <span>{data.workers} воркер{data.workers > 1 ? 'а' : ''}</span>
+            <span>{data.workers} worker{data.workers > 1 ? "A" : ''}</span>
             <span className="text-muted-foreground">·</span>
-            <span>{data.totalBots} бот{data.totalBots > 1 ? 'а' : ''}</span>
+            <span>{data.totalBots} bot{data.totalBots > 1 ? "A" : ''}</span>
             {data.totalMemoryMb > 0 && (
               <>
                 <span className="text-muted-foreground">·</span>
@@ -129,7 +129,7 @@ export function WorkerPoolStatus({ projects }: WorkerPoolStatusProps) {
       {/* Мобильные: tap-popover с читаемой сводкой */}
       <Popover>
         <PopoverTrigger asChild>
-          <button type="button" className={`${badgeBase} @[600px]:hidden max-w-[min(100%,200px)]`} aria-label="Статус Worker Pool">
+          <button type="button" className={`${badgeBase} @[600px]:hidden max-w-[min(100%,200px)]`} aria-label={"Worker Pool status"}>
             <Activity className="w-3 h-3 shrink-0" />
             <span className="truncate tabular-nums">
               {formatMobileWorkerPoolSummary(data)}

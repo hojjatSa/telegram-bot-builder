@@ -100,17 +100,17 @@ export function ParallelSplitBranchItem({ branch, index, onChange, onDelete, get
       {/* Стартовая нода ветки */}
       <TargetSelector
         value={branch.target || ''}
-        placeholder="⊘ Стартовая нода ветки"
+        placeholder={"⊘ Start node of the branch"}
         onChange={(value) => onChange(branch.id, 'target', value)}
         targets={getAllNodesFromAllSheets}
       />
 
       {/* Фоллбек при ошибке ветки */}
       <div className="space-y-1">
-        <p className="text-[11px] text-gray-400 dark:text-gray-500">При ошибке ветки (необязательно):</p>
+        <p className="text-[11px] text-gray-400 dark:text-gray-500">On branch error (optional):</p>
         <TargetSelector
           value={branch.onErrorTarget || ''}
-          placeholder="⊘ Нода при ошибке"
+          placeholder={"⊘ Node on error"}
           onChange={(value) => onChange(branch.id, 'onErrorTarget', value)}
           targets={getAllNodesFromAllSheets}
         />

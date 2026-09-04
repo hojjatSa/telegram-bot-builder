@@ -56,7 +56,7 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
   /** Отправляет форму создания токена */
   const handleSubmit = async () => {
     if (!label.trim()) {
-      toast({ title: "Укажи название", variant: "destructive" });
+      toast({ title: "Please enter a name", variant: "destructive" });
       return;
     }
     const expiresInDays = parseInt(expiry);
@@ -71,7 +71,7 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
       setExpiry("0");
       onCreated(res.token);
     } catch {
-      toast({ title: "Не удалось создать токен", variant: "destructive" });
+      toast({ title: "Failed to create token", variant: "destructive" });
     }
   };
 
@@ -79,8 +79,8 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Создать токен</DialogTitle>
-          <DialogDescription>Токен для подключения ИИ-агента к твоим проектам.</DialogDescription>
+          <DialogTitle>Create a token</DialogTitle>
+          <DialogDescription>A token for connecting an AI agent to your projects.</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
@@ -88,22 +88,22 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
             <Label htmlFor="agent-token-label">Name</Label>
             <Input
               id="agent-token-label"
-              placeholder="Например, Cursor на ноуте"
+              placeholder={"For example, Cursor on a laptop"}
               value={label}
               onChange={(e) => setLabel(e.target.value)}
             />
           </div>
 
           <div className="space-y-1.5">
-            <Label>Срок действия</Label>
+            <Label>Validity period</Label>
             <Select value={expiry} onValueChange={setExpiry}>
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="0">Без срока</SelectItem>
-                <SelectItem value="30">30 дней</SelectItem>
-                <SelectItem value="90">90 дней</SelectItem>
+                <SelectItem value="0">No deadline</SelectItem>
+                <SelectItem value="30">30 days</SelectItem>
+                <SelectItem value="90">90 days</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -114,7 +114,7 @@ export function CreateTokenDialog({ open, onOpenChange, onCreated }: CreateToken
             Cancel
           </Button>
           <Button onClick={handleSubmit} disabled={createToken.isPending}>
-            {createToken.isPending ? "Создаём…" : "Create"}
+            {createToken.isPending ? "We create..." : "Create"}
           </Button>
         </DialogFooter>
       </DialogContent>

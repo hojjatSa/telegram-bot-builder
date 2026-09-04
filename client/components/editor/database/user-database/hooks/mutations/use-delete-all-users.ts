@@ -48,15 +48,15 @@ export function useDeleteAllUsers(params: UseDeleteAllUsersParams) {
 
       const deletedCount = data?.deletedCount || 0;
       toast({
-        title: 'База данных очищена',
+        title: "Database cleared",
         description: `Удалено записей: ${deletedCount}. Все пользовательские данные удалены.`,
       });
     },
     onError: (error) => {
       console.error('Bulk deletion failed:', error);
       toast({
-        title: 'Ошибка очистки базы',
-        description: 'Не удалось очистить базу данных. Проверьте консоль для подробностей.',
+        title: "Database cleanup error",
+        description: "Failed to clear the database. Check your console for details.",
         variant: 'destructive',
       });
     },

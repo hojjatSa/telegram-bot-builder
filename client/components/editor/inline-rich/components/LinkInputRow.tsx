@@ -77,7 +77,7 @@ export function LinkInputRow({
         variant="ghost"
         className="h-7 w-7 text-green-400 hover:text-green-300 hover:bg-green-500/10 shrink-0"
         onClick={() => onApply(url)}
-        title="Применить ссылку"
+        title={"Apply link"}
       >
         <Check className="h-3.5 w-3.5" />
       </Button>
@@ -89,7 +89,7 @@ export function LinkInputRow({
           variant="ghost"
           className="h-7 w-7 text-red-400 hover:text-red-300 hover:bg-red-500/10 shrink-0"
           onClick={onRemove}
-          title="Удалить ссылку"
+          title={"Remove link"}
         >
           <Trash2 className="h-3.5 w-3.5" />
         </Button>

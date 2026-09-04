@@ -53,7 +53,7 @@ export function LocationCoordinatesSection({
               country: locationInfo.country || selectedNode.data.country
             });
             toast({
-              title: "Информация обновлена",
+              title: "Information updated",
               description: `Автоматически определены: ${locationInfo.city || 'город'}, ${locationInfo.country || 'страна'}`
             });
           }
@@ -77,7 +77,7 @@ export function LocationCoordinatesSection({
               country: locationInfo.country || selectedNode.data.country
             });
             toast({
-              title: "Информация обновлена",
+              title: "Information updated",
               description: `Автоматически определены: ${locationInfo.city || 'город'}, ${locationInfo.country || 'страна'}`
             });
           }
@@ -92,14 +92,14 @@ export function LocationCoordinatesSection({
         <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
           <i className="fas fa-map-marker-alt text-emerald-600 dark:text-emerald-400 text-xs"></i>
         </div>
-        <Label className="text-sm font-semibold text-emerald-900 dark:text-emerald-100">Координаты местоположения</Label>
+        <Label className="text-sm font-semibold text-emerald-900 dark:text-emerald-100">Location coordinates</Label>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
           <Label className="text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-2 block">
             <i className="fas fa-globe mr-1"></i>
-            Широта
+            Latitude
           </Label>
           <Input
             type="number"
@@ -113,7 +113,7 @@ export function LocationCoordinatesSection({
         <div>
           <Label className="text-xs font-medium text-emerald-700 dark:text-emerald-300 mb-2 block">
             <i className="fas fa-globe mr-1"></i>
-            Долгота
+            Longitude
           </Label>
           <Input
             type="number"
@@ -127,7 +127,7 @@ export function LocationCoordinatesSection({
       </div>
 
       <div className="text-xs text-emerald-600 dark:text-emerald-400 mt-2">
-        Основные координаты точки на карте (обязательно)
+        Basic coordinates of a point on the map (required)
       </div>
     </div>
   );

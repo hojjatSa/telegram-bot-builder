@@ -364,7 +364,7 @@ export function collectConnections(nodes: Node[]): Connection[] {
           fromId: node.id,
           toId: autoTransitionTo,
           type: 'button-goto',
-          label: '↻ Тело',
+          label: "↻ Body",
           buttonId: 'loop-body',
         });
       }
@@ -374,7 +374,7 @@ export function collectConnections(nodes: Node[]): Connection[] {
           fromId: node.id,
           toId: afterLoopTo,
           type: 'button-goto',
-          label: '→ Далее',
+          label: "→ Next",
           buttonId: 'loop-after',
         });
       }

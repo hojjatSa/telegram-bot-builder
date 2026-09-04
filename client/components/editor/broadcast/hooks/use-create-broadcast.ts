@@ -101,7 +101,7 @@ export function useCreateBroadcast({
     onSuccess: (data) => {
       const botCount = data.broadcastIds?.length ?? 1;
       toast({
-        title: 'Рассылка создана',
+        title: "Newsletter created",
         description: botCount > 1
           ? `Рассылка запущена по ${botCount} ботам`
           : 'Рассылка запущена успешно',
@@ -111,7 +111,7 @@ export function useCreateBroadcast({
     },
     onError: (error: Error) => {
       toast({
-        title: 'Ошибка создания рассылки',
+        title: "Error creating mailing list",
         description: error.message || 'Не удалось создать рассылку',
         variant: 'destructive',
       });

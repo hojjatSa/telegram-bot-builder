@@ -51,7 +51,7 @@ export function ConditionalMessagesActions({
   return (
     <div className="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
       <Label className="text-xs sm:text-sm font-semibold text-purple-700 dark:text-purple-300">
-        📋 Условия
+        📋 Conditions
       </Label>
       <div className="flex gap-1.5 w-full sm:w-auto">
         <Button
@@ -59,10 +59,10 @@ export function ConditionalMessagesActions({
           variant="outline"
           onClick={autoFixPriorities}
           className="flex-1 sm:flex-none text-xs border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all duration-200"
-          title="Автоматически расставить приоритеты для избежания конфликтов"
+          title={"Automatically prioritize to avoid conflicts"}
         >
           <i className="fas fa-sort-amount-down text-xs"></i>
-          <span className="hidden sm:inline ml-1.5">Приоритеты</span>
+          <span className="hidden sm:inline ml-1.5">Priorities</span>
         </Button>
         <Button
           size="sm"
@@ -71,7 +71,7 @@ export function ConditionalMessagesActions({
           className="flex-1 sm:flex-none text-xs bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 dark:from-purple-500 dark:to-purple-600 dark:hover:from-purple-600 dark:hover:to-purple-700 transition-all duration-200"
         >
           <i className="fas fa-plus text-xs"></i>
-          <span className="hidden sm:inline ml-1.5">Новое</span>
+          <span className="hidden sm:inline ml-1.5">New</span>
         </Button>
       </div>
     </div>

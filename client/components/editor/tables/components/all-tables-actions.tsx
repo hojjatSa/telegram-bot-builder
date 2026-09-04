@@ -86,20 +86,20 @@ export function AllTablesActions({ projectId, onImportTable }: AllTablesActionsP
           variant="ghost"
           className="h-7 text-xs gap-1.5"
           onClick={handleExport}
-          title="Экспорт всех таблиц"
+          title={"Export all tables"}
         >
           <Download className="h-3.5 w-3.5" />
-          <span className="hidden md:inline">Экспорт всех</span>
+          <span className="hidden md:inline">Export all</span>
         </Button>
         <Button
           size="sm"
           variant="ghost"
           className="h-7 text-xs gap-1.5"
           onClick={() => setImportOpen(true)}
-          title="Импорт таблиц из файла"
+          title={"Importing tables from a file"}
         >
           <Upload className="h-3.5 w-3.5" />
-          <span className="hidden md:inline">Импорт всех</span>
+          <span className="hidden md:inline">Import all</span>
         </Button>
       </div>
 
@@ -107,17 +107,17 @@ export function AllTablesActions({ projectId, onImportTable }: AllTablesActionsP
       <Dialog open={importOpen} onOpenChange={(v) => !v && handleClose()}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Импорт всех таблиц</DialogTitle>
+            <DialogTitle>Import all tables</DialogTitle>
           </DialogHeader>
 
           {parsed.length === 0 && (
             <div className="border-2 border-dashed rounded-lg p-6 text-center">
               <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
               <p className="text-sm text-muted-foreground mb-2">
-                Выберите файл экспорта (.json)
+                Select export file (.json)
               </p>
               <label className="cursor-pointer">
-                <span className="text-sm text-primary underline">Выбрать файл</span>
+                <span className="text-sm text-primary underline">Select file</span>
                 <input
                   type="file"
                   accept=".json"
@@ -136,14 +136,14 @@ export function AllTablesActions({ projectId, onImportTable }: AllTablesActionsP
           {parsed.length > 0 && (
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">
-                Найдено таблиц: <strong>{parsed.length}</strong>
+                Tables found: <strong>{parsed.length}</strong>
               </p>
               <ul className="text-sm space-y-1 max-h-40 overflow-auto">
                 {parsed.map((t, i) => (
                   <li key={i} className="flex justify-between px-2 py-1 bg-muted/30 rounded">
                     <span className="font-medium">{t.name}</span>
                     <span className="text-muted-foreground">
-                      {t.columns.length} кол. / {t.rows.length} стр.
+                      {t.columns.length} count / {t.rows.length} p.
                     </span>
                   </li>
                 ))}
@@ -156,7 +156,7 @@ export function AllTablesActions({ projectId, onImportTable }: AllTablesActionsP
               Cancel
             </Button>
             <Button onClick={handleImport} disabled={parsed.length === 0 || importing}>
-              {importing ? 'Импорт...' : 'Импортировать все'}
+              {importing ? "Import..." : "Import all"}
             </Button>
           </DialogFooter>
         </DialogContent>

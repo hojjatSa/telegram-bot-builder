@@ -19,9 +19,9 @@ export function BotControlPanelEmpty() {
         <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/10 dark:from-blue-500/30 dark:to-indigo-500/20 flex items-center justify-center mb-4 sm:mb-6">
           <Bot className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 dark:text-blue-400" />
         </div>
-        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-2">Нет доступных проектов</h3>
+        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground mb-2">No projects available</h3>
         <p className="text-sm sm:text-base text-muted-foreground text-center mb-6 max-w-md">
-          Создайте проект, чтобы начать добавление и управление Telegram-ботами
+          Create a project to start adding and managing Telegram bots
         </p>
       </CardContent>
     </Card>

@@ -378,8 +378,8 @@ export function UrlDownloader({
 
     if (validUrls.length === 0) {
       toast({
-        title: "Нет валидных URL",
-        description: "Добавьте и проверьте URL для загрузки",
+        title: "No valid URLs",
+        description: "Add and check download URL",
         variant: "destructive",
       });
       return;
@@ -417,7 +417,7 @@ export function UrlDownloader({
       });
 
       toast({
-        title: "Пакетная загрузка завершена",
+        title: "Batch download complete",
         description: `Успешно: ${result.success}, Ошибок: ${result.errors}`,
       });
 
@@ -443,7 +443,7 @@ export function UrlDownloader({
       });
 
       toast({
-        title: "Ошибка пакетной загрузки",
+        title: "Batch download error",
         description: error instanceof Error ? error.message : 'Unknown error',
         variant: "destructive",
       });
@@ -470,8 +470,8 @@ export function UrlDownloader({
       }
     } catch (error) {
       toast({
-        title: "Ошибка вставки",
-        description: "Не удалось получить текст из буфера обмена",
+        title: "Insertion error",
+        description: "Failed to get text from clipboard",
         variant: "destructive",
       });
     }
@@ -487,28 +487,28 @@ export function UrlDownloader({
         <div>
           <h3 className="text-sm sm:text-lg font-semibold flex items-center gap-2">
             <LinkIcon className="w-4 h-4 sm:w-5 sm:h-5" />
-            Загрузка файлов по ссылкам
+            Uploading files via links
           </h3>
           <p className="text-xs sm:text-sm text-muted-foreground">
-            Загружайте файлы напрямую из интернета по URL
+            Download files directly from the Internet via URL
           </p>
         </div>
         <Badge variant="outline">
-          {validUrlsCount}/{totalUrlsCount} готово
+          {validUrlsCount}/{totalUrlsCount} ready
         </Badge>
       </div>
 
       {/* Общие настройки */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm sm:text-base">Общие настройки</CardTitle>
+          <CardTitle className="text-sm sm:text-base">General settings</CardTitle>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="defaultDescription">Описание по умолчанию</Label>
+            <Label htmlFor="defaultDescription">Default description</Label>
             <Textarea
               id="defaultDescription"
-              placeholder="Описание для всех загружаемых файлов..."
+              placeholder={"Description for all downloaded files..."}
               value={defaultDescription}
               onChange={(e) => setDefaultDescription(e.target.value)}
               rows={2}
@@ -521,7 +521,7 @@ export function UrlDownloader({
               checked={isPublic}
               onCheckedChange={setIsPublic}
             />
-            <Label htmlFor="isPublic">Публичные файлы</Label>
+            <Label htmlFor="isPublic">Public files</Label>
           </div>
         </CardContent>
       </Card>
@@ -530,7 +530,7 @@ export function UrlDownloader({
       <Card>
         <CardHeader>
           <CardTitle className="text-sm sm:text-base flex items-center justify-between">
-            URL для загрузки
+            Download URL
             <Button
               onClick={addUrlField}
               size="sm"
@@ -538,11 +538,11 @@ export function UrlDownloader({
               disabled={urls.length >= maxUrls}
             >
               <Plus className="w-4 h-4 sm:mr-1" />
-              <span className="hidden sm:inline">Добавить URL</span>
+              <span className="hidden sm:inline">Add URL</span>
             </Button>
           </CardTitle>
           <CardDescription className="text-xs sm:text-sm">
-            Поддерживаются изображения, видео, аудио и документы до 200МБ
+            Supports images, videos, audio and documents up to 200MB
           </CardDescription>
         </CardHeader>
         <CardContent className="p-3 sm:p-6 space-y-4">
@@ -596,28 +596,28 @@ export function UrlDownloader({
                   {urlData.status === 'checking' && (
                     <div className="flex items-center gap-2 text-blue-600">
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span className="text-sm">Проверка...</span>
+                      <span className="text-sm">Examination...</span>
                     </div>
                   )}
                   
                   {urlData.status === 'valid' && (
                     <div className="flex items-center gap-2 text-green-600">
                       <CheckCircle className="w-4 h-4" />
-                      <span className="text-sm">URL валиден</span>
+                      <span className="text-sm">URL is valid</span>
                     </div>
                   )}
                   
                   {urlData.status === 'invalid' && (
                     <div className="flex items-center gap-2 text-red-600">
                       <XCircle className="w-4 h-4" />
-                      <span className="text-sm">Ошибка: {urlData.error}</span>
+                      <span className="text-sm">Error: {urlData.error}</span>
                     </div>
                   )}
                   
                   {urlData.status === 'downloading' && (
                     <div className="flex items-center gap-2 text-blue-600">
                       <Download className="w-4 h-4" />
-                      <span className="text-sm">Загрузка... {urlData.progress || 0}%</span>
+                      <span className="text-sm">Loading... {urlData.progress || 0}%</span>
                       <Progress value={urlData.progress || 0} className="w-20" />
                     </div>
                   )}
@@ -625,14 +625,14 @@ export function UrlDownloader({
                   {urlData.status === 'success' && (
                     <div className="flex items-center gap-2 text-green-600">
                       <CheckCircle className="w-4 h-4" />
-                      <span className="text-sm">Загружено успешно</span>
+                      <span className="text-sm">Uploaded successfully</span>
                     </div>
                   )}
                   
                   {urlData.status === 'error' && (
                     <div className="flex items-center gap-2 text-red-600">
                       <XCircle className="w-4 h-4" />
-                      <span className="text-sm">Ошибка: {urlData.error}</span>
+                      <span className="text-sm">Error: {urlData.error}</span>
                     </div>
                   )}
                 </div>
@@ -645,7 +645,7 @@ export function UrlDownloader({
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate">{urlData.fileInfo.fileName}</div>
                     <div className="text-muted-foreground">
-                      {urlData.fileInfo.category} • {urlData.fileInfo.sizeMB}МБ
+                      {urlData.fileInfo.category} • {urlData.fileInfo.sizeMB}MB
                     </div>
                   </div>
                   <Badge variant="secondary">{urlData.fileInfo.fileType}</Badge>
@@ -659,7 +659,7 @@ export function UrlDownloader({
                     <Label htmlFor={`fileName-${urlData.id}`}>File name</Label>
                     <Input
                       id={`fileName-${urlData.id}`}
-                      placeholder="Оставьте пустым для автоопределения"
+                      placeholder={"Leave blank for auto-detection"}
                       value={urlData.fileName || ''}
                       onChange={(e) => updateUrlField(urlData.id, 'fileName', e.target.value)}
                     />
@@ -668,7 +668,7 @@ export function UrlDownloader({
                     <Label htmlFor={`description-${urlData.id}`}>Description</Label>
                     <Input
                       id={`description-${urlData.id}`}
-                      placeholder="Индивидуальное описание файла"
+                      placeholder={"Individual file description"}
                       value={urlData.description || ''}
                       onChange={(e) => updateUrlField(urlData.id, 'description', e.target.value)}
                     />
@@ -685,7 +685,7 @@ export function UrlDownloader({
                   disabled={isProcessing}
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  Загрузить этот файл
+                  Download this file
                 </Button>
               )}
             </div>
@@ -697,8 +697,8 @@ export function UrlDownloader({
       <Alert>
         <Info className="h-4 w-4" />
         <AlertDescription className="text-xs sm:text-sm">
-          <strong>Совет:</strong> Сначала добавьте все URL и дождитесь их проверки, 
-          затем используйте "Загрузить все файлы" для эффективной пакетной загрузки.
+          <strong>Advice:</strong> First add all the URLs and wait for them to be verified, 
+          then use "Download All Files" for efficient batch downloading.
         </AlertDescription>
       </Alert>
 
@@ -714,7 +714,7 @@ export function UrlDownloader({
           ) : (
             <Download className="w-4 h-4 mr-2" />
           )}
-          Загрузить все файлы ({validUrlsCount})
+          Download all files ({validUrlsCount})
         </Button>
         
         {onClose && (

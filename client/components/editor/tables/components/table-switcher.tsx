@@ -37,7 +37,7 @@ export function TableSwitcher({ tables, selectedTable, onSelect }: TableSwitcher
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="h-7 gap-1.5 text-xs font-medium">
           <Table2 className="h-3.5 w-3.5" />
-          {selectedTable?.name ?? 'Выбрать таблицу'}
+          {selectedTable?.name ?? "Select table"}
           <ChevronDown className="h-3 w-3 text-muted-foreground" />
         </Button>
       </DropdownMenuTrigger>

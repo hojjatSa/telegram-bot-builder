@@ -35,7 +35,7 @@ export function createSheet(name: string, nodes: Node[] = []): CanvasSheet {
       position: { x: 100, y: 300 },
       data: {
         command: '/start',
-        description: 'Запустить бота',
+        description: "Launch bot",
         showInMenu: true,
         autoTransitionTo: 'start-message',
         sourceNodeId: 'start-message',

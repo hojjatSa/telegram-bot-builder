@@ -35,14 +35,14 @@ export function StickerPreview({ node }: StickerPreviewProps) {
         <i className="fas fa-laugh text-pink-400 dark:text-pink-300 text-3xl"></i>
         {node.data.stickerUrl || node.data.stickerFileId ? (
           <div className="text-xs text-pink-600 dark:text-pink-400 space-y-1">
-            <div className="font-medium">Стикер загружен</div>
+            <div className="font-medium">Sticker loaded</div>
             <div className="flex items-center justify-center space-x-1">
               <i className="fas fa-images text-xs"></i>
-              <span>Анимированный</span>
+              <span>Animated</span>
             </div>
           </div>
         ) : (
-          <div className="text-xs text-pink-500 dark:text-pink-400">Добавьте URL стикера</div>
+          <div className="text-xs text-pink-500 dark:text-pink-400">Add sticker URL</div>
         )}
       </div>
     </div>

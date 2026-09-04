@@ -99,7 +99,7 @@ export function CommandEditor({
               variant="ghost"
               size="sm"
               className="h-9 sm:h-10 w-9 sm:w-10 p-0 hover:bg-red-100/50 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-              title="Удалить команду"
+              title={"Delete command"}
             >
               <i className="fas fa-trash text-xs sm:text-sm"></i>
             </UIButton>
@@ -115,7 +115,7 @@ export function CommandEditor({
               value={newCommand}
               onChange={(e) => handleInputChange(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleAdd(); }}
-              placeholder="/команда"
+              placeholder={"/team"}
               className={`h-9 sm:h-10 text-xs sm:text-sm px-3 sm:px-3.5 border transition-all ${
                 error
                   ? 'border-red-300 dark:border-red-600 focus:border-red-500 focus:ring-red-200/50 dark:focus:ring-red-900/50 bg-red-50/30 dark:bg-red-950/20'
@@ -138,8 +138,8 @@ export function CommandEditor({
         className="w-full h-9 sm:h-10 text-xs sm:text-sm font-medium bg-gradient-to-r from-yellow-500 to-orange-500 dark:from-yellow-600 dark:to-orange-600 hover:from-yellow-600 hover:to-orange-600 dark:hover:from-yellow-700 dark:hover:to-orange-700 shadow-md hover:shadow-lg transition-all text-white"
       >
         <i className="fas fa-plus mr-2"></i>
-        <span className="hidden sm:inline">Добавить команду</span>
-        <span className="sm:hidden">Добавить</span>
+        <span className="hidden sm:inline">Add a command</span>
+        <span className="sm:hidden">Add</span>
       </UIButton>
     </div>
   );

@@ -51,9 +51,9 @@ export function StorageConfigManager({
               <Database className="h-5 w-5 text-primary" />
             </div>
             <div className="space-y-1.5 pt-0.5">
-              <DialogTitle className="text-lg leading-none">Хранилища</DialogTitle>
+              <DialogTitle className="text-lg leading-none">Storage</DialogTitle>
               <DialogDescription className="text-xs leading-relaxed">
-                Выберите активное для новых загрузок или добавьте S3 / локальную папку.
+                Select active for new uploads or add S3/local folder.
               </DialogDescription>
             </div>
           </div>
@@ -61,7 +61,7 @@ export function StorageConfigManager({
 
         <div className="flex max-h-[50vh] flex-col gap-1 overflow-auto px-3 py-3">
           {isLoading && (
-            <p className="py-8 text-center text-sm text-muted-foreground">Загрузка хранилищ…</p>
+            <p className="py-8 text-center text-sm text-muted-foreground">Loading storage...</p>
           )}
 
           {!isLoading && storages.length === 0 && (
@@ -70,9 +70,9 @@ export function StorageConfigManager({
                 <HardDrive className="h-6 w-6 text-primary" />
               </div>
               <div className="space-y-1">
-                <p className="text-sm font-medium">Хранилища не настроены</p>
+                <p className="text-sm font-medium">Storages are not configured</p>
                 <p className="text-xs text-muted-foreground">
-                  Добавьте локальную папку или S3 для загрузки медиафайлов.
+                  Add a local or S3 folder to upload media files.
                 </p>
               </div>
             </div>
@@ -96,11 +96,11 @@ export function StorageConfigManager({
             size="sm"
             className="h-9 w-full gap-2 sm:w-auto"
             onClick={openCreate}
-            title="Добавить новое хранилище"
+            title={"Add new storage"}
             data-testid="storage-add-config"
           >
             <Plus className="h-4 w-4" />
-            Добавить хранилище
+            Add storage
           </Button>
         </div>
       </DialogContent>

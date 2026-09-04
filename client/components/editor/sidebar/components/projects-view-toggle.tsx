@@ -33,7 +33,7 @@ export function ProjectsViewToggle({ value, onChange }: ProjectsViewToggleProps)
             : 'text-muted-foreground hover:text-foreground hover:bg-white/40 dark:hover:bg-slate-700/30'
         }`}
       >
-        Активные
+        Active
       </button>
       <button
         type="button"
@@ -44,7 +44,7 @@ export function ProjectsViewToggle({ value, onChange }: ProjectsViewToggleProps)
             : 'text-muted-foreground hover:text-foreground hover:bg-white/40 dark:hover:bg-slate-700/30'
         }`}
       >
-        Архив
+        Archive
       </button>
     </div>
   );

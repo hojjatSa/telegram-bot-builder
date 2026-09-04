@@ -94,7 +94,7 @@ export function BotContentCacheToggle({
       setLocalEnabled(contentCache === 1);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить настройку живого обновления контента',
+        description: "Failed to update live content update setting",
         variant: 'destructive',
       });
     },
@@ -109,18 +109,18 @@ export function BotContentCacheToggle({
   return (
     <SettingCard
       icon={RefreshCw}
-      title="Живое обновление контента"
+      title={"Live content update"}
       description={
         localEnabled
-          ? 'Тексты сообщений, кнопок и т.д. обновляются без перезапуска — расход памяти выше'
-          : 'Тексты и кнопки меняются только после перезапуска — меньше памяти'
+          ? "Texts of messages, buttons, etc. updated without restarting - higher memory consumption"
+          : "Texts and buttons change only after a restart - less memory"
       }
       active={localEnabled}
       className={className}
       action={
         <Switch
           id={`content-cache-${tokenId}`}
-          aria-label="Живое обновление контента"
+          aria-label={"Live content update"}
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);

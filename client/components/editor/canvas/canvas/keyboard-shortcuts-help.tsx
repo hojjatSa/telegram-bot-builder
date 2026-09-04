@@ -23,56 +23,56 @@ export function KeyboardShortcutsHelp() {
       <PopoverContent side="bottom" className="w-72 p-3 max-h-96 overflow-y-auto">
         <div className="space-y-4">
           <div>
-            <h4 className="font-medium text-sm mb-2">Масштаб</h4>
+            <h4 className="font-medium text-sm mb-2">Scale</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Увеличить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Increase:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + +</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Уменьшить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Decrease:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + -</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Сбросить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Reset:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + 0</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Уместить всё:</span>
+                <span className="text-gray-600 dark:text-gray-400">Fit everything:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + 1</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Авто-уместить (A):</span>
+                <span className="text-gray-600 dark:text-gray-400">Auto-fit (A):</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + 2</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Предыдущий вид:</span>
+                <span className="text-gray-600 dark:text-gray-400">Previous view:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Escape</code>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-200 dark:border-slate-600 pt-3">
-            <h4 className="font-medium text-sm mb-2">Редактирование</h4>
+            <h4 className="font-medium text-sm mb-2">Editing</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Удалить узел:</span>
+                <span className="text-gray-600 dark:text-gray-400">Delete a node:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Delete</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Дублировать:</span>
+                <span className="text-gray-600 dark:text-gray-400">Duplicate:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + C / D</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Копировать (буфер):</span>
+                <span className="text-gray-600 dark:text-gray-400">Copy (buffer):</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + Shift + C</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Вставить (буфер):</span>
+                <span className="text-gray-600 dark:text-gray-400">Paste (buffer):</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + V</code>
               </div>
               <div className="flex justify-center text-gray-500 dark:text-gray-500 text-xs italic">
-                Работают и русские клавиши: С, М, В
+                Russian keys also work: S, M, V
               </div>
             </div>
           </div>
@@ -81,29 +81,29 @@ export function KeyboardShortcutsHelp() {
             <h4 className="font-medium text-sm mb-2">History</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Отменить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Cancel:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + Z</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Повторить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Repeat:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + Y / Shift + Z</code>
               </div>
             </div>
           </div>
 
           <div className="border-t border-gray-200 dark:border-slate-600 pt-3">
-            <h4 className="font-medium text-sm mb-2">Навигация</h4>
+            <h4 className="font-medium text-sm mb-2">Navigation</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Масштаб:</span>
-                <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + колесо</code>
+                <span className="text-gray-600 dark:text-gray-400">Scale:</span>
+                <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + wheel</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Панорамирование:</span>
-                <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Alt + ЛКМ</code>
+                <span className="text-gray-600 dark:text-gray-400">Pan:</span>
+                <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Alt + LMB</code>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Поиск узлов:</span>
+                <span className="text-gray-600 dark:text-gray-400">Search nodes:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + F</code>
               </div>
             </div>
@@ -113,7 +113,7 @@ export function KeyboardShortcutsHelp() {
             <h4 className="font-medium text-sm mb-2">File</h4>
             <div className="space-y-1.5 text-xs">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Сохранить:</span>
+                <span className="text-gray-600 dark:text-gray-400">Save:</span>
                 <code className="bg-gray-100 dark:bg-slate-800 px-1.5 py-0.5 rounded">Ctrl + S</code>
               </div>
             </div>

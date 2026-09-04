@@ -15,11 +15,11 @@ interface CommentConfigurationProps {
 
 /** Доступные цвета заметки: значение и визуальный класс кружка */
 const COMMENT_COLORS: Array<{ value: string; label: string; swatch: string }> = [
-  { value: 'yellow', label: 'Жёлтый', swatch: 'bg-yellow-400' },
-  { value: 'blue', label: 'Синий', swatch: 'bg-blue-400' },
-  { value: 'green', label: 'Зелёный', swatch: 'bg-green-400' },
-  { value: 'pink', label: 'Розовый', swatch: 'bg-pink-400' },
-  { value: 'gray', label: 'Серый', swatch: 'bg-gray-400' },
+  { value: 'yellow', label: "Yellow", swatch: 'bg-yellow-400' },
+  { value: 'blue', label: "Blue", swatch: 'bg-blue-400' },
+  { value: 'green', label: "Green", swatch: 'bg-green-400' },
+  { value: 'pink', label: "Pink", swatch: 'bg-pink-400' },
+  { value: 'gray', label: "Grey", swatch: 'bg-gray-400' },
 ];
 
 /**
@@ -46,19 +46,19 @@ export function CommentConfiguration({ selectedNode, onNodeUpdate }: CommentConf
     <div className="space-y-3 px-4 py-3">
       <div className="flex items-center gap-2 text-xs text-yellow-600 dark:text-yellow-400">
         <i className="fas fa-sticky-note" />
-        <span className="font-medium">Заметка на холсте — не влияет на логику бота</span>
+        <span className="font-medium">Note on canvas - does not affect bot logic</span>
       </div>
 
       <textarea
         value={text}
         onChange={handleTextChange}
-        placeholder="Напишите заметку..."
+        placeholder={"Write a note..."}
         className="w-full min-h-[120px] p-3 text-sm border border-gray-200 dark:border-slate-700 rounded-lg bg-yellow-50/50 dark:bg-yellow-900/10 resize-y focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:focus:ring-yellow-700"
       />
 
       {/* Выбор цвета заметки */}
       <div className="space-y-1.5">
-        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Цвет заметки</span>
+        <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Note color</span>
         <div className="flex items-center gap-2">
           {COMMENT_COLORS.map((c) => (
             <button

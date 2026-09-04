@@ -91,13 +91,13 @@ export function UserManagementConfiguration({
             <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
               <i className="fas fa-clipboard text-orange-600 dark:text-orange-400 text-xs"></i>
             </div>
-            <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Причина действия</Label>
+            <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Reason for action</Label>
           </div>
 
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-comment mr-1"></i>
-              Причина
+              Cause
             </Label>
             <Input
               value={selectedNode.data.reason || ''}
@@ -116,23 +116,23 @@ export function UserManagementConfiguration({
             <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">
               <i className="fas fa-clock text-purple-600 dark:text-purple-400 text-xs"></i>
             </div>
-            <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Длительность бана</Label>
+            <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Ban duration</Label>
           </div>
 
           <div>
             <Label className="text-xs font-medium text-purple-700 dark:text-purple-300 mb-2 block">
               <i className="fas fa-calendar mr-1"></i>
-              Дата окончания (Unix timestamp)
+              End date (Unix timestamp)
             </Label>
             <Input
               type="number"
               value={selectedNode.data.untilDate || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { untilDate: parseInt(e.target.value) || 0 })}
               className="border-purple-200 dark:border-purple-700 focus:border-purple-500 focus:ring-purple-200"
-              placeholder="0 (навсегда)"
+              placeholder={"0 (forever)"}
             />
             <div className="text-xs text-purple-600 dark:text-purple-400 mt-1">
-              0 = постоянный бан, или Unix timestamp даты окончания
+              0 = permanent ban, or Unix timestamp end date
             </div>
           </div>
         </div>
@@ -153,7 +153,7 @@ export function UserManagementConfiguration({
             <div>
               <Label className="text-xs font-medium text-indigo-700 dark:text-indigo-300 mb-2 block">
                 <i className="fas fa-timer mr-1"></i>
-                Длительность (секунды)
+                Duration (seconds)
               </Label>
               <Input
                 type="number"
@@ -163,7 +163,7 @@ export function UserManagementConfiguration({
                 placeholder="3600"
               />
               <div className="text-xs text-indigo-600 dark:text-indigo-400 mt-1">
-                Количество секунд (3600 = 1 час)
+                Number of seconds (3600 = 1 hour)
               </div>
             </div>
           </div>
@@ -174,19 +174,19 @@ export function UserManagementConfiguration({
               <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center">
                 <i className="fas fa-ban text-slate-600 dark:text-slate-400 text-xs"></i>
               </div>
-              <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Ограничения</Label>
+              <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Restrictions</Label>
             </div>
 
             <div className="grid grid-cols-1 gap-3">
               {[
-                { key: 'canSendMessages', label: 'Отправлять сообщения', icon: 'fas fa-comment' },
-                { key: 'canSendMediaMessages', label: 'Отправлять медиа', icon: 'fas fa-image' },
-                { key: 'canSendPolls', label: 'Создавать опросы', icon: 'fas fa-poll' },
-                { key: 'canSendOtherMessages', label: 'Отправлять стикеры/GIF', icon: 'fas fa-laugh' },
-                { key: 'canAddWebPagePreviews', label: 'Добавлять превью ссылок', icon: 'fas fa-link' },
-                { key: 'canChangeGroupInfo', label: 'Изменять информацию группы', icon: 'fas fa-edit' },
-                { key: 'canInviteUsers2', label: 'Приглашать пользователей', icon: 'fas fa-user-plus' },
-                { key: 'canPinMessages2', label: 'Закреплять сообщения', icon: 'fas fa-thumbtack' }
+                { key: 'canSendMessages', label: "Send messages", icon: 'fas fa-comment' },
+                { key: 'canSendMediaMessages', label: "Send media", icon: 'fas fa-image' },
+                { key: 'canSendPolls', label: "Create polls", icon: 'fas fa-poll' },
+                { key: 'canSendOtherMessages', label: "Send stickers/GIF", icon: 'fas fa-laugh' },
+                { key: 'canAddWebPagePreviews', label: "Add link previews", icon: 'fas fa-link' },
+                { key: 'canChangeGroupInfo', label: "Change group information", icon: 'fas fa-edit' },
+                { key: 'canInviteUsers2', label: "Invite users", icon: 'fas fa-user-plus' },
+                { key: 'canPinMessages2', label: "Pin messages", icon: 'fas fa-thumbtack' }
               ].map(({ key, label, icon }) => (
                 <div key={key} className="flex items-center justify-between p-2 rounded-lg bg-card/50 border border-slate-200/30 dark:border-slate-800/30">
                   <div className="flex items-center space-x-2">
@@ -215,7 +215,7 @@ export function UserManagementConfiguration({
           <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
             <i className="fas fa-tags text-green-600 dark:text-green-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-green-900 dark:text-green-100">Синонимы команды</Label>
+          <Label className="text-sm font-semibold text-green-900 dark:text-green-100">Team synonyms</Label>
         </div>
 
         <SynonymEditor
@@ -230,7 +230,7 @@ export function UserManagementConfiguration({
             return selectedNode.data.synonyms || [];
           })()}
           onUpdate={(synonyms) => onNodeUpdate(selectedNode.id, { synonyms })}
-          title="Альтернативные команды"
+          title={"Alternative commands"}
           description={getSynonymDescription()}
           placeholder={getSynonymPlaceholder()}
         />

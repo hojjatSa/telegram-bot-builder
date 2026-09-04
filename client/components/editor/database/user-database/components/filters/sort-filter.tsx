@@ -49,14 +49,14 @@ export function SortFilter({
         </div>
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="lastInteraction-desc">Последняя активность</SelectItem>
-        <SelectItem value="lastInteraction-asc">Давняя активность</SelectItem>
-        <SelectItem value="interactionCount-desc">Больше сообщений</SelectItem>
-        <SelectItem value="interactionCount-asc">Меньше сообщений</SelectItem>
-        <SelectItem value="createdAt-desc">Сначала новые</SelectItem>
-        <SelectItem value="createdAt-asc">Сначала старые</SelectItem>
-        <SelectItem value="firstName-asc">Имя А-Я</SelectItem>
-        <SelectItem value="firstName-desc">Имя Я-А</SelectItem>
+        <SelectItem value="lastInteraction-desc">Last activity</SelectItem>
+        <SelectItem value="lastInteraction-asc">Long-time activity</SelectItem>
+        <SelectItem value="interactionCount-desc">More messages</SelectItem>
+        <SelectItem value="interactionCount-asc">Fewer messages</SelectItem>
+        <SelectItem value="createdAt-desc">New ones first</SelectItem>
+        <SelectItem value="createdAt-asc">Old ones first</SelectItem>
+        <SelectItem value="firstName-asc">Name A-Z</SelectItem>
+        <SelectItem value="firstName-desc">Name Y-A</SelectItem>
       </SelectContent>
     </Select>
   );

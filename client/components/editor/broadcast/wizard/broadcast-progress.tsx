@@ -94,7 +94,7 @@ export function BroadcastProgress({ projectId, broadcast, refetch, onClose }: Br
             onClick={() => stopMutation.mutate(broadcast.id)}
             disabled={stopMutation.isPending}
           >
-            ⏸ Остановить
+            ⏸ Stop
           </Button>
         </div>
       )}

@@ -30,7 +30,7 @@ export function CodeFormatTabs({ selectedFormat, projectName, onFormatChange }: 
 
   return (
     <div className="space-y-1.5 xs:space-y-2">
-      <label className="text-xs xs:text-sm font-semibold text-foreground block">Форматы:</label>
+      <label className="text-xs xs:text-sm font-semibold text-foreground block">Formats:</label>
       <Tabs value={selectedFormat} onValueChange={(v) => onFormatChange(v as CodeFormat)} className="w-full">
         <TabsList className="flex flex-col h-auto p-0 bg-transparent border-none justify-start">
           <TabsTrigger value="python" className={tabClass}>

@@ -33,14 +33,14 @@ export function KeyboardPresetSelector({
 }: KeyboardPresetSelectorProps) {
   return (
     <div className="space-y-2">
-      <label className="text-sm font-medium">Пресет раскладки</label>
+      <label className="text-sm font-medium">Layout preset</label>
       <Select
         value={columns.toString()}
         onValueChange={(value) => onColumnsChange(parseInt(value))}
         disabled={disabled}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Выберите пресет" />
+          <SelectValue placeholder={"Select a preset"} />
         </SelectTrigger>
         <SelectContent>
           {KEYBOARD_PRESETS.map((preset) => (

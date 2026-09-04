@@ -37,7 +37,7 @@ export function BroadcastHeader({
               📢 Broadcast
             </h3>
             <p className="text-xs sm:text-sm text-orange-700/70 dark:text-orange-300/70 mt-0.5 text-left">
-              Настройка отправки сообщений всем пользователям
+              Setting up sending messages to all users
             </p>
           </div>
         </button>

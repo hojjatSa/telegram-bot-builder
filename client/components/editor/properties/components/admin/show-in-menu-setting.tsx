@@ -35,9 +35,9 @@ export function ShowInMenuSetting({ selectedNode, onNodeUpdate }: ShowInMenuSett
       <div className="flex-1 min-w-0">
         <Label className="text-xs sm:text-sm font-semibold text-primary-700 dark:text-primary-300 flex items-center gap-1.5">
           <i className="fas fa-list text-xs sm:text-sm"></i>
-          Показать в меню
+          Show in menu
         </Label>
-        <div className="text-xs text-primary-600 dark:text-primary-400 mt-0.5">Добавить команду в меню @BotFather</div>
+        <div className="text-xs text-primary-600 dark:text-primary-400 mt-0.5">Add command to menu @BotFather</div>
       </div>
       <div className="flex-shrink-0">
         <Switch

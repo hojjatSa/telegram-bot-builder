@@ -8,13 +8,13 @@ import type { CommandPreset } from './command-preset.types';
 export const startCommand: CommandPreset = {
   id: 'start-command',
   name: '/start',
-  description: 'Точка входа в бота',
+  description: "Bot entry point",
   icon: 'fas fa-play',
   color: 'bg-green-100 text-green-600',
   type: 'command_preset',
   triggerData: {
     command: '/start',
-    description: 'Запустить бота',
+    description: "Launch bot",
     showInMenu: true,
   },
   messageData: {

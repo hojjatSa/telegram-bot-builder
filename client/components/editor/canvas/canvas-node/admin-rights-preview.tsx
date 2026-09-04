@@ -39,7 +39,7 @@ export function AdminRightsPreview({}: AdminRightsPreviewProps) {
         <div className="flex items-center space-x-2 mb-3">
           <div className="w-1 h-4 bg-amber-500 dark:bg-amber-400 rounded-full"></div>
           <span className="text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wide">
-            Inline кнопки
+            Inline buttons
           </span>
         </div>
 

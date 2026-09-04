@@ -105,10 +105,10 @@ export function MultipleSelectionSettings({
             </div>
             <div className="min-w-0 flex-1">
               <Label className="text-xs sm:text-sm font-semibold text-teal-900 dark:text-teal-100 cursor-pointer block">
-                Переменная для сохранения
+                Variable to save
               </Label>
               <div className="text-xs text-teal-700/70 dark:text-teal-300/70 leading-snug">
-                Опции сохраняются в переменную
+                Options are saved to a variable
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export function MultipleSelectionSettings({
               value={selectedNode.data.multiSelectVariable || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { multiSelectVariable: e.target.value })}
               className="flex-1 text-xs sm:text-sm bg-transparent border-none outline-none text-teal-900 dark:text-teal-50 placeholder:text-teal-500/50 dark:placeholder:text-teal-400/50 p-0"
-              placeholder="выбранные_опции"
+              placeholder={"selected_options"}
             />
           </div>
         </div>

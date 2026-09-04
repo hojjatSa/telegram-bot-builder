@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const demoteUser: ComponentDefinition = {
   id: 'demote-user',
   name: 'Demote Administrator',
-  description: 'Убрать права администратора',
+  description: "Remove administrator rights",
   icon: 'fas fa-user-minus',
   color: 'bg-gray-100 text-gray-600',
   type: 'demote_user',

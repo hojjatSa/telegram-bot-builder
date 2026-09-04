@@ -29,7 +29,7 @@ export interface StorageConfigFormFieldsProps {
 function LocalFields({ draft, onConfigChange }: StorageConfigFormFieldsProps) {
   return (
     <div className="space-y-1.5">
-      <Label htmlFor="storage-root-path">Путь к папке</Label>
+      <Label htmlFor="storage-root-path">Folder path</Label>
       <Input
         id="storage-root-path"
         value={configStr(draft.config, 'rootPath')}
@@ -37,7 +37,7 @@ function LocalFields({ draft, onConfigChange }: StorageConfigFormFieldsProps) {
         placeholder="uploads"
         data-testid="storage-field-rootPath"
       />
-      <p className="text-xs text-muted-foreground">Относительный путь от корня проекта на сервере</p>
+      <p className="text-xs text-muted-foreground">Relative path from the project root on the server</p>
     </div>
   );
 }
@@ -62,7 +62,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="storage-region">Регион</Label>
+          <Label htmlFor="storage-region">Region</Label>
           <Input
             id="storage-region"
             value={configStr(draft.config, 'region')}
@@ -75,7 +75,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
 
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-1.5">
-          <Label htmlFor="storage-bucket">Бакет</Label>
+          <Label htmlFor="storage-bucket">Bucket</Label>
           <Input
             id="storage-bucket"
             value={configStr(draft.config, 'bucket')}
@@ -85,7 +85,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="storage-public-url">Публичный URL</Label>
+          <Label htmlFor="storage-public-url">Public URL</Label>
           <Input
             id="storage-public-url"
             value={configStr(draft.config, 'publicUrlBase')}
@@ -93,16 +93,16 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
             placeholder="https://cdn.example.com"
             data-testid="storage-field-publicUrlBase"
           />
-          <p className="text-xs text-muted-foreground">Необязательно — для прямых ссылок на файлы</p>
+          <p className="text-xs text-muted-foreground">Optional - for direct links to files</p>
         </div>
       </div>
 
       <div className={STORAGE_CONFIG_FORM_SETTING_ROW_CLASS}>
         <div className="space-y-0.5">
           <Label htmlFor="storage-force-path-style" className="text-sm font-medium">
-            Path-style адресация
+            Path-style addressing
           </Label>
-          <p className="text-xs text-muted-foreground">Включите для MinIO и совместимых серверов</p>
+          <p className="text-xs text-muted-foreground">Enable for MinIO and compatible servers</p>
         </div>
         <Switch
           id="storage-force-path-style"
@@ -113,7 +113,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
       </div>
 
       <div className="space-y-3 pt-1">
-        <p className={STORAGE_CONFIG_FORM_SECTION_TITLE_CLASS}>Ключи доступа</p>
+        <p className={STORAGE_CONFIG_FORM_SECTION_TITLE_CLASS}>Access keys</p>
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
             <Label htmlFor="storage-access-key">Access Key ID</Label>
@@ -121,7 +121,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
               id="storage-access-key"
               value={draft.s3AccessKeyId ?? ''}
               onChange={(e) => onCredChange('s3AccessKeyId', e.target.value)}
-              placeholder={hasSecrets ? 'оставьте пустым — сохранить текущий' : 'AKIA…'}
+              placeholder={hasSecrets ? "leave empty - save current" : 'AKIA…'}
               autoComplete="off"
               data-testid="storage-field-accessKeyId"
             />
@@ -133,7 +133,7 @@ function S3Fields({ draft, hasSecrets, onConfigChange, onCredChange }: StorageCo
               type="password"
               value={draft.s3SecretAccessKey ?? ''}
               onChange={(e) => onCredChange('s3SecretAccessKey', e.target.value)}
-              placeholder={hasSecrets ? 'оставьте пустым — сохранить текущий' : '••••••••'}
+              placeholder={hasSecrets ? "leave empty - save current" : '••••••••'}
               autoComplete="new-password"
               data-testid="storage-field-secretAccessKey"
             />

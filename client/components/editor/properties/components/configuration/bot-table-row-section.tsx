@@ -53,14 +53,14 @@ export function BotTableRowSection({ row, onChange }: BotTableRowSectionProps) {
   return (
     <div className="space-y-2">
       <Label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        Данные строки
+        Row data
       </Label>
       {entries.map(([key, value]) => (
         <div key={key} className="flex items-center gap-1.5">
           <Input
             value={key}
             onChange={(e) => handleKeyChange(key, e.target.value)}
-            placeholder="колонка"
+            placeholder={"column"}
             className="text-xs h-7 flex-1 bg-white/60 dark:bg-slate-950/60"
           />
           <span className="text-xs text-muted-foreground">=</span>
@@ -86,7 +86,7 @@ export function BotTableRowSection({ row, onChange }: BotTableRowSectionProps) {
         className="text-xs h-7 w-full"
         onClick={handleAdd}
       >
-        <i className="fas fa-plus mr-1 text-xs" /> Добавить поле
+        <i className="fas fa-plus mr-1 text-xs" /> Add a field
       </Button>
     </div>
   );

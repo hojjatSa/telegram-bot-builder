@@ -265,7 +265,7 @@ function SheetAccordionContent({
       {/* Панель перемещения — над списком, появляется при выборе хотя бы одного узла */}
       {selectedCount > 0 && availableSheets.length > 0 && (
         <div className="px-1.5 py-1 mb-1 flex flex-wrap items-center gap-1" onClick={(e) => e.stopPropagation()}>
-          <span className="text-xs text-muted-foreground flex-shrink-0">↗ в лист:</span>
+          <span className="text-xs text-muted-foreground flex-shrink-0">↗ to sheet:</span>
           {availableSheets.map((sheet) => (
             <button
               key={sheet.id}
@@ -280,7 +280,7 @@ function SheetAccordionContent({
       )}
       {filtered.length === 0 ? (
         <div className="text-xs text-muted-foreground opacity-60 px-1.5">
-          {nodes.length === 0 ? 'Нет узлов' : 'Не найдено'}
+          {nodes.length === 0 ? "No nodes" : "Not found"}
         </div>
       ) : (
         <div className="space-y-1.5">
@@ -380,7 +380,7 @@ function SheetAccordionContent({
                 {onNodeSelect && (
                   <button
                     className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary dark:bg-primary/15 dark:hover:bg-primary/25 flex items-center justify-center transition-all duration-200 hover:shadow-md hover:shadow-primary/20"
-                    title="Открыть свойства"
+                    title={"Open properties"}
                     onClick={(e) => {
                       e.stopPropagation();
                       if (node.id) onNodeSelect(node.id);
@@ -392,7 +392,7 @@ function SheetAccordionContent({
                 {/* Кнопка центрирования на узле (всегда видна для мобильных устройств) */}
                 <button
                   className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary dark:bg-primary/15 dark:hover:bg-primary/25 flex items-center justify-center transition-all duration-200 hover:shadow-md hover:shadow-primary/20"
-                  title="Центрировать на узле"
+                  title={"Center on node"}
                   onClick={(e) => {
                     e.stopPropagation();
                     if (onNodeFocus && node.id) onNodeFocus(node.id);
@@ -731,7 +731,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <h4
               className="text-xs xs:text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100 break-words leading-tight line-clamp-2 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               onDoubleClick={handleProjectDoubleClick}
-              title="Двойной клик для редактирования названия"
+              title={"Double click to edit title"}
             >
               {project.name}
             </h4>
@@ -769,7 +769,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               onProjectDuplicate?.(project.id);
             }}
             className="h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 p-0 text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-all hover:bg-blue-500/20 rounded-md flex-shrink-0"
-            title="Дублировать проект"
+            title={"Duplicate project"}
           >
             <Copy className="h-3 xs:h-3.5 w-3 xs:w-3.5" />
           </Button>
@@ -778,7 +778,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             size="sm"
             onClick={handleDeleteClick}
             className="h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 p-0 text-slate-400 dark:text-slate-500 hover:text-red-600 dark:hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all hover:bg-red-500/20 rounded-md flex-shrink-0"
-            title="Удалить проект"
+            title={"Delete project"}
           >
             <Trash2 className="h-3 xs:h-3.5 w-3 xs:w-3.5" />
           </Button>
@@ -973,14 +973,14 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                             variant="ghost"
                             size="sm"
                             className="h-5 sm:h-6 w-5 sm:w-6 p-0 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 rounded transition-all"
-                            title="Переместить в другой проект"
+                            title={"Move to another project"}
                           >
                             <Share2 className="h-2.5 sm:h-3 w-2.5 sm:w-3" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56" side="top" sideOffset={5}>
                           <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                            Переместить в
+                            Move to
                           </div>
                           {allProjects
                             .filter((otherProject) => otherProject.id !== project.id)

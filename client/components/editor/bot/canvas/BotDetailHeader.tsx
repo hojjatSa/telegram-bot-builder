@@ -84,7 +84,7 @@ export function BotDetailHeader({
             target="_blank"
             rel="noopener noreferrer"
             className="mt-0.5 block truncate text-xs text-muted-foreground transition-colors hover:text-foreground hover:underline"
-            title="Открыть бота в Telegram"
+            title={"Open a bot in Telegram"}
           >
             @{token.botUsername}
           </a>
@@ -93,7 +93,7 @@ export function BotDetailHeader({
         )}
         {!tokenOk && (
           <p className="mt-1 text-[11px] leading-snug text-red-500">
-            Вставьте новый токен из @BotFather во вкладке «Переменные» или удалите бота.
+            Insert a new token from @BotFather in the Variables tab or delete the bot.
           </p>
         )}
       </div>
@@ -105,8 +105,8 @@ export function BotDetailHeader({
           className={ACTION_BTN}
           disabled={controlPending || !tokenOk}
           onClick={onToggleRun}
-          aria-label={isRunning ? 'Остановить' : 'Запустить'}
-          title={!tokenOk ? 'Сначала обновите токен' : undefined}
+          aria-label={isRunning ? "Stop" : "Launch"}
+          title={!tokenOk ? "First refresh the token" : undefined}
         >
           {isRunning ? <Square className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
         </Button>

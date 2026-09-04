@@ -49,7 +49,7 @@ export function BroadcastToggle({ selectedNode, onNodeUpdate, allNodes = [] }: B
         <div className="flex items-center justify-between">
           <Label className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-1.5">
             <i className="fas fa-broadcast-tower text-xs sm:text-sm"></i>
-            Участвует в рассылке
+            Participates in the mailing list
           </Label>
           <Switch
             checked={selectedNode.data.enableBroadcast ?? false}
@@ -59,14 +59,14 @@ export function BroadcastToggle({ selectedNode, onNodeUpdate, allNodes = [] }: B
           />
         </div>
         <div className="text-xs text-blue-600 dark:text-blue-400">
-          Отправлять это сообщение при рассылке
+          Send this message when sending out
         </div>
         
         {/* Выбор целевого broadcast узла */}
         {broadcastNodes.length > 0 && (
           <div className="space-y-1.5 pt-2 border-t border-blue-200/40 dark:border-blue-700/40">
             <Label htmlFor="broadcastTargetNode" className="text-xs font-medium text-blue-600 dark:text-blue-400">
-              Узел рассылки
+              Distribution node
             </Label>
             <Select
               value={targetBroadcast}
@@ -75,13 +75,13 @@ export function BroadcastToggle({ selectedNode, onNodeUpdate, allNodes = [] }: B
               }
             >
               <SelectTrigger id="broadcastTargetNode" className="w-full h-8 text-xs">
-                <SelectValue placeholder="Все рассылки" />
+                <SelectValue placeholder={"All mailings"} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">
                   <div className="flex items-center gap-2">
                     <span>🔄</span>
-                    <span>Все рассылки</span>
+                    <span>All mailings</span>
                   </div>
                 </SelectItem>
                 {broadcastNodes.map(node => (
@@ -97,8 +97,8 @@ export function BroadcastToggle({ selectedNode, onNodeUpdate, allNodes = [] }: B
             </Select>
             <p className="text-xs text-blue-500 dark:text-blue-400">
               {targetBroadcast && targetBroadcast !== 'all'
-                ? 'Сообщение будет отправлено только при запуске выбранной рассылки'
-                : 'Сообщение будет отправлено при любой рассылке'}
+                ? "The message will only be sent when the selected mailing is launched"
+                : "The message will be sent with any mailing."}
             </p>
           </div>
         )}

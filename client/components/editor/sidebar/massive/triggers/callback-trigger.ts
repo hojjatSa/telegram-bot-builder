@@ -12,7 +12,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const callbackTrigger: ComponentDefinition = {
   id: 'callback-trigger',
   name: 'Inline Button Trigger',
-  description: 'Срабатывает когда пользователь нажимает inline-кнопку с заданным callback_data',
+  description: "Fires when the user presses an inline button with the specified callback_data",
   icon: 'fas fa-hand-pointer',
   color: 'bg-orange-100 text-orange-600',
   type: 'callback_trigger' as any,

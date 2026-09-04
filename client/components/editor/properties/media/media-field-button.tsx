@@ -108,7 +108,7 @@ export function MediaFieldButton({
         size="sm"
         className={className ?? 'h-auto min-h-[2.5rem] sm:h-11 gap-1.5'}
         onClick={() => setOpen(true)}
-        title="Выбрать уже загруженный или входящий файл"
+        title={"Select an already downloaded or incoming file"}
       >
         <FolderOpen className="w-4 h-4 flex-shrink-0" />
         <span className="truncate">{label}</span>

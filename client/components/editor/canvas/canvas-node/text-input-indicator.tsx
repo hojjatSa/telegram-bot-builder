@@ -37,13 +37,13 @@ export function TextInputIndicator({ node }: TextInputIndicatorProps) {
         </div>
         <div className="flex-1">
           <div className="text-sm font-medium text-cyan-800 dark:text-cyan-200 mb-1">
-            Текстовый ввод
+            Text input
           </div>
           <div className="text-xs text-cyan-600 dark:text-cyan-400 space-y-1">
             {(node.data as any).inputVariable && (
               <div className="flex items-center space-x-1">
                 <i className="fas fa-tag text-xs"></i>
-                <span>Сохранить в: <code className="bg-cyan-100 dark:bg-cyan-900/50 px-1 py-0.5 rounded text-xs">{(node.data as any).inputVariable}</code></span>
+                <span>Save to: <code className="bg-cyan-100 dark:bg-cyan-900/50 px-1 py-0.5 rounded text-xs">{(node.data as any).inputVariable}</code></span>
               </div>
             )}
           </div>

@@ -28,9 +28,9 @@ export function CodePanelHeader({ onClose }: CodePanelHeaderProps) {
             <i className="fas fa-code text-purple-600 dark:text-purple-400 text-xs xs:text-sm"></i>
           </div>
           <div className="flex-1 min-w-0">
-            <h1 className="text-lg xs:text-xl sm:text-2xl font-bold text-foreground leading-tight">Код проекта</h1>
+            <h1 className="text-lg xs:text-xl sm:text-2xl font-bold text-foreground leading-tight">Project code</h1>
             <p className="text-xs xs:text-sm text-muted-foreground mt-0.5 xs:mt-1 break-words">
-              Просмотр и загрузка сгенерированного кода
+              View and download generated code
             </p>
           </div>
         </div>
@@ -40,7 +40,7 @@ export function CodePanelHeader({ onClose }: CodePanelHeaderProps) {
             variant="ghost"
             className="h-8 w-8 flex-shrink-0"
             onClick={onClose}
-            title="Закрыть панель кода"
+            title={"Close Code Panel"}
             data-testid="button-close-code-panel"
           >
             <X className="w-4 h-4" />
@@ -49,14 +49,14 @@ export function CodePanelHeader({ onClose }: CodePanelHeaderProps) {
       </div>
 
       <div className="bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800/50 rounded-lg p-3 text-xs text-blue-800 dark:text-blue-200">
-        <h3 className="font-semibold mb-1">Горячие клавиши:</h3>
+        <h3 className="font-semibold mb-1">Hotkeys:</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
-          <div><strong>Ctrl+Alt+C / Cmd+Alt+C:</strong> Копировать код</div>
-          <div><strong>Ctrl+Alt+F / Cmd+Alt+F:</strong> Переключить сворачивание</div>
-          <div><strong>Ctrl+Shift+[</strong>: Сворачивание блока</div>
-          <div><strong>Ctrl+Shift+]</strong>: Разворачивание блока</div>
-          <div><strong>Ctrl + K, затем Ctrl + J</strong>: Развернуть всё</div>
-          <div><strong>Ctrl + F</strong>: Поиск</div>
+          <div><strong>Ctrl+Alt+C / Cmd+Alt+C:</strong> Copy code</div>
+          <div><strong>Ctrl+Alt+F / Cmd+Alt+F:</strong> Toggle Collapse</div>
+          <div><strong>Ctrl+Shift+[</strong>: Collapse block</div>
+          <div><strong>Ctrl+Shift+]</strong>: Expand block</div>
+          <div><strong>Ctrl + K then Ctrl + J</strong>: Expand all</div>
+          <div><strong>Ctrl + F</strong>: Search</div>
         </div>
       </div>
     </div>

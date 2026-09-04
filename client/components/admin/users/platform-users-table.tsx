@@ -28,7 +28,7 @@ export function PlatformUsersTable({ items }: PlatformUsersTableProps) {
   if (items.length === 0) {
     return (
       <p className="py-8 text-center text-sm text-muted-foreground">
-        Аккаунты не найдены.
+        No accounts found.
       </p>
     );
   }
@@ -38,11 +38,11 @@ export function PlatformUsersTable({ items }: PlatformUsersTableProps) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Аккаунт</TableHead>
+            <TableHead>Account</TableHead>
             <TableHead>ID</TableHead>
-            <TableHead>Первый вход</TableHead>
-            <TableHead className="text-center">Владелец</TableHead>
-            <TableHead className="text-center">Участник</TableHead>
+            <TableHead>First entry</TableHead>
+            <TableHead className="text-center">Owner</TableHead>
+            <TableHead className="text-center">Participant</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

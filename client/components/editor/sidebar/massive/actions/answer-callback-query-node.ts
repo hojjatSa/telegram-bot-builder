@@ -12,7 +12,7 @@ export const answerCallbackQueryNode: ComponentDefinition = {
   id: 'answer_callback_query',
   type: 'answer_callback_query' as any,
   name: 'Inline Button Notification',
-  description: 'Показывает всплывающее уведомление пользователю после нажатия inline-кнопки',
+  description: "Shows a popup notification to the user after clicking an inline button",
   icon: 'fas fa-bell',
   color: 'bg-purple-100 text-purple-600',
   defaultData: {

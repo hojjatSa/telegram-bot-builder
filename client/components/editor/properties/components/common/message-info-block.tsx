@@ -51,7 +51,7 @@ export function MessageInfoBlock({ variant = 'blue' }: MessageInfoBlockProps) {
     <div className={`flex items-start gap-2 sm:gap-2.5 p-2.5 sm:p-3 rounded-lg border ${currentStyle.container}`}>
       <i className={`fas ${currentStyle.icon} text-xs sm:text-sm mt-0.5 flex-shrink-0`}></i>
       <p className={`text-xs sm:text-sm ${currentStyle.text} leading-relaxed`}>
-        Поддерживает переменные вида {'{name}'}, Markdown форматирование и медиафайлы
+        Supports type variables {'{name}'}, Markdown formatting and media files
       </p>
     </div>
   );

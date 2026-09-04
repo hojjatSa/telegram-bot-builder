@@ -23,10 +23,10 @@ export function DialogWarning({ onClose }: DialogWarningProps) {
       <i className="fas fa-exclamation-triangle text-amber-600 dark:text-amber-400 text-sm mt-0.5 flex-shrink-0"></i>
       <div className="flex-1">
         <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed font-medium">
-          Некоторые сообщения могут не фиксироваться
+          Some messages may not be recorded
         </p>
         <p className="text-xs text-amber-600 dark:text-amber-400 mt-1 leading-relaxed">
-          Проверьте с помощью консоли логов для полной истории
+          Check using the log console for full history
         </p>
       </div>
       {onClose && (

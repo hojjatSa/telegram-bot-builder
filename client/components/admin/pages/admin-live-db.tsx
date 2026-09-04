@@ -18,10 +18,10 @@ export function AdminLiveDbPage() {
   if (!import.meta.env.DEV) {
     return (
       <div className="max-w-xl space-y-4">
-        <h1 className="text-2xl font-bold">База данных (живая)</h1>
+        <h1 className="text-2xl font-bold">Database (live)</h1>
         <p className="text-muted-foreground">
-          Drizzle Studio доступен только в режиме разработки. Запустите{' '}
-          <code className="text-foreground">npm run db:studio</code> локально.
+          Drizzle Studio is only available in development mode. Run{' '}
+          <code className="text-foreground">npm run db:studio</code> locally.
         </p>
       </div>
     );
@@ -30,30 +30,30 @@ export function AdminLiveDbPage() {
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">База данных (живая)</h1>
-        <p className="text-muted-foreground mt-1">Drizzle Studio — просмотр и редактирование таблиц</p>
+        <h1 className="text-2xl font-bold">Database (live)</h1>
+        <p className="text-muted-foreground mt-1">Drizzle Studio - viewing and editing tables</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Как открыть</CardTitle>
+          <CardTitle className="text-lg">How to open</CardTitle>
           <CardDescription>
-            Студия работает отдельным процессом и открывается в новой вкладке браузера.
+            The studio runs as a separate process and opens in a new browser tab.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <ol className="list-decimal list-inside space-y-2 text-sm text-muted-foreground">
             <li>
-              В терминале проекта выполните:{' '}
+              In the project terminal, run:{' '}
               <code className="text-foreground">npm run db:studio</code>
             </li>
-            <li>Дождитесь сообщения о запуске студии</li>
-            <li>Нажмите кнопку ниже</li>
+            <li>Wait for the message about the launch of the studio</li>
+            <li>Click the button below</li>
           </ol>
           <a href={DRIZZLE_STUDIO_URL} target="_blank" rel="noopener noreferrer">
             <Button className="gap-2">
               <ExternalLink className="h-4 w-4" />
-              Открыть Drizzle Studio
+              Open Drizzle Studio
             </Button>
           </a>
         </CardContent>

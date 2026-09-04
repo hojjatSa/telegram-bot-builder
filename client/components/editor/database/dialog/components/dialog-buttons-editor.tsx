@@ -31,7 +31,7 @@ interface DialogButtonsEditorProps {
 
 /** Доступные варианты раскладки кнопок по рядам */
 const ROW_OPTIONS = [
-  { value: 0, label: 'Авто' },
+  { value: 0, label: "Auto" },
   { value: 1, label: '1' },
   { value: 2, label: '2' },
   { value: 3, label: '3' },
@@ -117,15 +117,15 @@ export function DialogButtonsEditor({ buttons, onChange, availableNodes, buttons
       {/* Предупреждение для callback-кнопок: без обработчика callback_data нажатие не сработает */}
       {hasCallbackButton && (
         <p className="text-xs text-muted-foreground">
-          Callback-кнопка сработает только если в боте настроен обработчик этого callback_data —
-          иначе нажатие ничего не сделает.
+          The callback button will only work if the bot has a handler for this callback_data configured -
+          otherwise pressing will do nothing.
         </p>
       )}
 
       {/* Селектор раскладки кнопок по рядам — показываем только при 2+ кнопках */}
       {onButtonsPerRowChange && buttons.length >= 2 && (
         <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground whitespace-nowrap">Кнопок в ряду:</span>
+          <span className="text-xs text-muted-foreground whitespace-nowrap">Buttons in a row:</span>
           <div className="flex gap-1">
             {ROW_OPTIONS.map((opt) => (
               <UIButton
@@ -145,7 +145,7 @@ export function DialogButtonsEditor({ buttons, onChange, availableNodes, buttons
 
       <UIButton variant="outline" size="sm" onClick={handleAdd} className="w-full">
         <Plus className="w-4 h-4 mr-1" />
-        Добавить кнопку
+        Add a button
       </UIButton>
     </div>
   );

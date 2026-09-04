@@ -31,11 +31,11 @@ export function ToggleCodeButton({ codeVisible, onClick }: ToggleCodeButtonProps
           ? 'bg-orange-600 text-white shadow-md shadow-orange-500/30 hover:shadow-lg hover:shadow-orange-500/40'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
       )}
-      title={codeVisible ? 'Скрыть панель кода' : 'Показать панель кода'}
+      title={codeVisible ? "Hide Code Panel" : "Show Code Panel"}
       data-testid="button-mobile-toggle-code"
     >
       <Code className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{codeVisible ? 'Hide' : 'Show'} код</span>
+      <span className="sm:hidden">{codeVisible ? 'Hide' : 'Show'} code</span>
     </Button>
   );
 }

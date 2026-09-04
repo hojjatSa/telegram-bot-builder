@@ -9,9 +9,9 @@ import type { DialogKind } from './dialog-kind';
 /** Пункты сегмента */
 const SEGMENTS: ReadonlyArray<{ id: DialogKind; label: string }> = [
   { id: 'all', label: 'All' },
-  { id: 'users', label: 'Личные' },
-  { id: 'groups', label: 'Группы' },
-  { id: 'channels', label: 'Каналы' },
+  { id: 'users', label: "Personal" },
+  { id: 'groups', label: "Groups" },
+  { id: 'channels', label: "Channels" },
 ];
 
 /**
@@ -37,7 +37,7 @@ export function DialogSegmentChips({
     <div
       className="flex items-center gap-1.5 overflow-x-auto scrollbar-none px-3 py-2 border-b border-border/50 flex-shrink-0"
       role="tablist"
-      aria-label="Тип диалогов"
+      aria-label={"Dialogue type"}
     >
       {SEGMENTS.map((segment) => {
         const selected = value === segment.id;

@@ -76,7 +76,7 @@ export function LayoutButtons({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{headerVisible ? 'Скрыть шапку' : 'Показать шапку'}</p>
+              <p>{headerVisible ? "Hide header" : "Show header"}</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -99,7 +99,7 @@ export function LayoutButtons({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{sidebarVisible ? 'Скрыть боковую панель' : 'Показать боковую панель'}</p>
+              <p>{sidebarVisible ? "Hide sidebar" : "Show sidebar"}</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -122,7 +122,7 @@ export function LayoutButtons({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{canvasVisible ? 'Скрыть холст' : 'Показать холст'}</p>
+              <p>{canvasVisible ? "Hide Canvas" : "Show canvas"}</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -145,7 +145,7 @@ export function LayoutButtons({
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>{propertiesVisible ? 'Скрыть панель свойств' : 'Показать панель свойств'}</p>
+              <p>{propertiesVisible ? "Hide Properties Panel" : "Show properties panel"}</p>
             </TooltipContent>
           </Tooltip>
         )}
@@ -213,7 +213,7 @@ export function LayoutButtons({
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Показать все панели</p>
+                  <p>Show all panels</p>
                 </TooltipContent>
               </Tooltip>
             );

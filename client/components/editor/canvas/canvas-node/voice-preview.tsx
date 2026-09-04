@@ -39,12 +39,12 @@ export function VoicePreview({ node }: VoicePreviewProps) {
             {node.data.duration && (
               <div className="flex items-center justify-center space-x-1">
                 <i className="fas fa-clock text-xs"></i>
-                <span>{node.data.duration}с</span>
+                <span>{node.data.duration}With</span>
               </div>
             )}
           </div>
         ) : (
-          <div className="text-xs text-emerald-500 dark:text-emerald-400">Добавьте URL голосового сообщения</div>
+          <div className="text-xs text-emerald-500 dark:text-emerald-400">Add a voicemail URL</div>
         )}
       </div>
     </div>

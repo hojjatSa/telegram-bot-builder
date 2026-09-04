@@ -63,7 +63,7 @@ export function GotoTargetSection({
             <SelectItem value="no-nodes" disabled>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <i className="fas fa-exclamation-circle text-xs"></i>
-                <span>Создайте другие экраны</span>
+                <span>Create other screens</span>
               </div>
             </SelectItem>
           )}
@@ -74,7 +74,7 @@ export function GotoTargetSection({
         value={button.target || ''}
         onChange={(e) => onButtonUpdate(selectedNode.id, button.id, { target: e.target.value })}
         className="text-xs sm:text-sm bg-white/60 dark:bg-slate-950/60 border border-sky-300/40 dark:border-sky-700/40 text-sky-900 dark:text-sky-50 placeholder:text-sky-500/50 dark:placeholder:text-sky-400/50 focus:border-sky-500 focus:ring-2 focus:ring-sky-400/30"
-        placeholder="Или введите ID экрана вручную"
+        placeholder={"Or enter the screen ID manually"}
       />
     </div>
   );

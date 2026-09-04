@@ -63,7 +63,7 @@ export function useSendGroupMessage({
     onSuccess: () => {
       toast({
         title: 'Message sent',
-        description: 'Сообщение успешно отправлено в группу',
+        description: "Message successfully sent to group",
       });
       onSent?.();
     },
@@ -71,7 +71,7 @@ export function useSendGroupMessage({
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Не удалось отправить сообщение в группу',
+        description: "Failed to send message to group",
         variant: 'destructive',
       });
     },

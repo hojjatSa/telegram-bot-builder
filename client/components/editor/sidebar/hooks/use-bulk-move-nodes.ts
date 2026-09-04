@@ -80,7 +80,7 @@ export function useBulkMoveNodes(params: UseBulkMoveNodesParams): UseBulkMoveNod
 
       const targetSheet = data.sheets.find((s: any) => s.id === targetSheetId);
       toast({
-        title: '✅ Узлы перемещены',
+        title: "✅ Nodes have been moved",
         description: `${movedNodes.length} узл. → "${targetSheet?.name || targetSheetId}"`,
       });
     } catch (error: any) {

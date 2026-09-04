@@ -42,23 +42,23 @@ export const componentCategories: Array<{
     components: [callbackTrigger, incomingCallbackTrigger, keyboardMessage, answerCallbackQueryNode]
   },
   {
-    title: 'Группы',
+    title: "Groups",
     components: [groupMessageTrigger, createForumTopicNode, kickUser]
   },
   {
-    title: 'Автоматизация',
+    title: "Automation",
     components: [scheduleTrigger]
   },
   {
-    title: 'Внешний API',
+    title: "External API",
     components: [apiTrigger, apiResponseNode]
   },
   {
-    title: 'Интеграции',
+    title: "Integrations",
     components: [httpRequestNode, psqlQueryNode, botTableNode, convertFileNode, conditionNode, setVariableNode, loopNode, delayNode, codeNode, parallelSplitNode]
   },
   {
-    title: 'Юзербот',
+    title: "Userbot",
     components: [userbotMessage, userbotClickButton, userbotInlineQuery, userbotEditTrigger]
   },
   {

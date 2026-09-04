@@ -51,24 +51,24 @@ export function EmptyConditionalState({ selectedNode, onNodeUpdate }: EmptyCondi
 
       <div className="text-center max-w-sm">
         <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2">
-          Создайте первое условное сообщение
+          Create the first conditional message
         </h3>
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 leading-relaxed">
-          Условия позволяют показывать разные сообщения в зависимости от ответов пользователя
+          Conditions allow you to show different messages depending on user responses
         </p>
 
         <div className="space-y-2 mb-6 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-start gap-2 justify-center">
             <span className="text-purple-600 dark:text-purple-400 font-bold mt-0.5 flex-shrink-0">✓</span>
-            <span>Проверяйте сохраненные ответы пользователя</span>
+            <span>Check a user's saved answers</span>
           </div>
           <div className="flex items-start gap-2 justify-center">
             <span className="text-purple-600 dark:text-purple-400 font-bold mt-0.5 flex-shrink-0">✓</span>
-            <span>Показывайте персонализированные сообщения</span>
+            <span>Show personalized messages</span>
           </div>
           <div className="flex items-start gap-2 justify-center">
             <span className="text-purple-600 dark:text-purple-400 font-bold mt-0.5 flex-shrink-0">✓</span>
-            <span>Автоматически маршрутизируйте по разным веткам</span>
+            <span>Automatically route across different branches</span>
           </div>
         </div>
 
@@ -78,7 +78,7 @@ export function EmptyConditionalState({ selectedNode, onNodeUpdate }: EmptyCondi
         >
           <span className="flex items-center justify-center gap-1.5">
             <span className="inline-block">+</span>
-            Добавить условие
+            Add condition
           </span>
         </button>
       </div>

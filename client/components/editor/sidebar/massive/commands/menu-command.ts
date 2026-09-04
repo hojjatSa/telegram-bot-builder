@@ -8,13 +8,13 @@ import type { CommandPreset } from './command-preset.types';
 export const menuCommand: CommandPreset = {
   id: 'menu-command',
   name: '/menu',
-  description: 'Главное меню бота',
+  description: "Bot main menu",
   icon: 'fas fa-bars',
   color: 'bg-purple-100 text-purple-600',
   type: 'command_preset',
   triggerData: {
     command: '/menu',
-    description: 'Главное меню',
+    description: "Main menu",
     showInMenu: true,
   },
   messageData: {

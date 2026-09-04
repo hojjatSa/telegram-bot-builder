@@ -47,7 +47,7 @@ export function McpConfigSnippet({ token }: McpConfigSnippetProps) {
   /** Копирует конфиг в буфер обмена */
   const handleCopy = async () => {
     await navigator.clipboard.writeText(config);
-    toast({ title: "Скопировано", description: "Конфиг MCP в буфере обмена" });
+    toast({ title: "Copied", description: "MCP config on clipboard" });
   };
 
   return (
@@ -71,8 +71,8 @@ export function McpConfigSnippet({ token }: McpConfigSnippetProps) {
         </Button>
       </div>
       <p className="text-xs text-muted-foreground">
-        Claude Code: добавьте <code className="text-xs">"type": "http"</code> рядом с{" "}
-        <code className="text-xs">url</code> в JSON-конфиге.
+        Claude Code: add <code className="text-xs">"type": "http"</code> next to{" "}
+        <code className="text-xs">url</code> in the JSON config.
       </p>
       <pre className="max-h-60 overflow-auto rounded-md bg-muted p-3 text-xs font-mono">{config}</pre>
     </div>

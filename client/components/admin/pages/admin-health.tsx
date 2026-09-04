@@ -42,23 +42,23 @@ export function AdminHealthPage() {
   if (error || !data) {
     return (
       <div className="max-w-2xl space-y-4">
-        <h1 className="text-2xl font-bold">Проверка работы</h1>
-        <p className="text-destructive">Не удалось получить статус сервера.</p>
+        <h1 className="text-2xl font-bold">Checking work</h1>
+        <p className="text-destructive">Failed to get server status.</p>
       </div>
     );
   }
 
   const items = [
     { label: 'Database', ok: data.database },
-    { label: 'Шаблоны', ok: data.templates },
+    { label: "Templates", ok: data.templates },
     { label: 'Telegram', ok: data.telegram },
-    { label: 'Готовность', ok: data.ready },
+    { label: "Readiness", ok: data.ready },
   ];
 
   return (
     <div className="max-w-2xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Проверка работы</h1>
+        <h1 className="text-2xl font-bold">Checking work</h1>
         <p className="text-muted-foreground mt-1">GET /api/health</p>
       </div>
 
@@ -70,7 +70,7 @@ export function AdminHealthPage() {
           {items.map(({ label, ok }) => (
             <div key={label} className="flex items-center justify-between">
               <span>{label}</span>
-              <Badge variant={ok ? 'default' : 'secondary'}>{ok ? 'OK' : 'Нет'}</Badge>
+              <Badge variant={ok ? 'default' : 'secondary'}>{ok ? 'OK' : "No"}</Badge>
             </div>
           ))}
         </CardContent>

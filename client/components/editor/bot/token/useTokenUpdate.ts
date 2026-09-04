@@ -71,8 +71,8 @@ export function useTokenUpdate(): TokenUpdateResult {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/bot`] });
 
       toast({
-        title: "Токен обновлен",
-        description: "Токен бота успешно изменен"
+        title: "Token updated",
+        description: "Bot token successfully changed"
       });
 
       return true;

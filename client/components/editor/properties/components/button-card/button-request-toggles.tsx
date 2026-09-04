@@ -72,7 +72,7 @@ export function ButtonRequestToggles({
               📞
             </div>
             <Label className="text-xs sm:text-sm font-semibold text-green-900 dark:text-green-100 cursor-pointer">
-              Запросить контакт
+              Request contact
             </Label>
           </div>
           <Switch
@@ -90,7 +90,7 @@ export function ButtonRequestToggles({
               📍
             </div>
             <Label className="text-xs sm:text-sm font-semibold text-blue-900 dark:text-blue-100 cursor-pointer">
-              Запросить геолокацию
+              Request geolocation
             </Label>
           </div>
           <Switch
@@ -108,7 +108,7 @@ export function ButtonRequestToggles({
               🤖
             </div>
             <Label className="text-xs sm:text-sm font-semibold text-indigo-900 dark:text-indigo-100 cursor-pointer">
-              Запросить управляемого бота
+              Request a managed bot
             </Label>
           </div>
           <Switch

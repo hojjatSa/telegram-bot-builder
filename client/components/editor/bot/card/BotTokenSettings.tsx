@@ -30,8 +30,8 @@ export function BotTokenSettings({
   return (
     <SettingCard
       icon={KeyRound}
-      title="Токен бота"
-      description="Двойной клик, чтобы вставить новый от @BotFather"
+      title={"Bot token"}
+      description={"Double click to insert new one from @BotFather"}
       testId="bot-token-settings"
     >
       <TokenDisplayEdit

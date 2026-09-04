@@ -49,7 +49,7 @@ export function StatBarCard(props: StatBarCardProps): React.JSX.Element {
 
       {isEmpty ? (
         /* Пустое состояние */
-        <p className="text-xs text-muted-foreground/50 italic">Нет данных</p>
+        <p className="text-xs text-muted-foreground/50 italic">No data</p>
       ) : (
         /* Список элементов с барами */
         <div className="flex flex-col gap-1.5">

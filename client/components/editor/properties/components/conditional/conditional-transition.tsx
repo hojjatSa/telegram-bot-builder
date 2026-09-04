@@ -34,7 +34,7 @@ export function ConditionalTransition({ condition, selectedNode, getAllNodesFrom
     <div className="space-y-2 pt-2 border-t border-blue-200/30 dark:border-blue-800/30">
       <Label className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
         <i className="fas fa-arrow-right text-blue-600 dark:text-blue-400"></i>
-        <span>Переход после ответа</span>
+        <span>Jump after reply</span>
       </Label>
       <div className="space-y-2.5">
         <Select
@@ -42,10 +42,10 @@ export function ConditionalTransition({ condition, selectedNode, getAllNodesFrom
           onValueChange={(value) => updateCondition(condition, selectedNode, { nextNodeAfterInput: value === 'no-transition' ? undefined : value }, onNodeUpdate)}
         >
           <SelectTrigger className="text-xs sm:text-sm h-9 sm:h-10 bg-gradient-to-br from-blue-50/60 to-white/60 dark:from-blue-950/30 dark:to-slate-950/70 border border-blue-300/60 dark:border-blue-700/60 hover:border-blue-400/80 dark:hover:border-blue-600/80 focus:border-blue-500 focus:ring-2 focus:ring-blue-400/40 rounded-lg">
-            <SelectValue placeholder="Выберите узел..." />
+            <SelectValue placeholder={"Select node..."} />
           </SelectTrigger>
           <SelectContent className="bg-gradient-to-br from-sky-50/95 to-blue-50/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-48 overflow-y-auto">
-            <SelectItem value="no-transition">Не переходить</SelectItem>
+            <SelectItem value="no-transition">Don't cross</SelectItem>
             {getAllNodesFromAllSheets.filter(n => n.node.id !== selectedNode.id).map(({ node, sheetName }) => {
               const nodeContent =
                 node.type === 'message'
@@ -68,11 +68,11 @@ export function ConditionalTransition({ condition, selectedNode, getAllNodesFrom
           value={condition.nextNodeAfterInput && condition.nextNodeAfterInput !== 'no-transition' ? condition.nextNodeAfterInput : ''}
           onChange={(e) => updateCondition(condition, selectedNode, { nextNodeAfterInput: e.target.value || undefined }, onNodeUpdate)}
           className="text-xs sm:text-sm h-9 sm:h-10 bg-white/60 dark:bg-slate-950/60 border border-blue-300/40 dark:border-blue-700/40 focus:border-blue-500 rounded-lg text-foreground placeholder:text-muted-foreground/50"
-          placeholder="Введите ID узла (опционально)"
+          placeholder={"Enter node ID (optional)"}
         />
       </div>
       <div className="text-xs text-muted-foreground leading-relaxed">
-        Узел, куда перейти после получения ответа от пользователя
+        Node where to go after receiving a response from the user
       </div>
     </div>
   );

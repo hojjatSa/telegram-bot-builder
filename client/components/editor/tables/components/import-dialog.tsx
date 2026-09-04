@@ -140,7 +140,7 @@ export function ImportDialog({
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <FileUp className="h-5 w-5" />
-            Импорт данных
+            Import data
           </DialogTitle>
         </DialogHeader>
 
@@ -156,10 +156,10 @@ export function ImportDialog({
           >
             <Upload className="h-8 w-8 mx-auto mb-3 text-muted-foreground" />
             <p className="text-sm text-muted-foreground mb-2">
-              Перетащите .csv или .json файл сюда
+              Drag and drop your .csv or .json file here
             </p>
             <label className="cursor-pointer">
-              <span className="text-sm text-primary underline">или выберите файл</span>
+              <span className="text-sm text-primary underline">or select file</span>
               <input
                 type="file"
                 accept=".csv,.json"
@@ -179,7 +179,7 @@ export function ImportDialog({
         {hasData && (
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              Файл: <strong>{fileName}</strong> — {columns.length} колонок, {rows.length} строк
+              File: <strong>{fileName}</strong> — {columns.length} speakers, {rows.length} lines
             </p>
 
             {/* Мини-таблица превью */}
@@ -215,7 +215,7 @@ export function ImportDialog({
                 variant={mode === 'new' ? 'default' : 'outline'}
                 onClick={() => setMode('new')}
               >
-                Создать новую таблицу
+                Create a new table
               </Button>
               {hasSelectedTable && (
                 <Button
@@ -223,7 +223,7 @@ export function ImportDialog({
                   variant={mode === 'append' ? 'default' : 'outline'}
                   onClick={() => setMode('append')}
                 >
-                  Добавить в текущую
+                  Add to current
                 </Button>
               )}
             </div>
@@ -235,7 +235,7 @@ export function ImportDialog({
             Cancel
           </Button>
           <Button onClick={handleImport} disabled={!hasData}>
-            Импортировать
+            Import
           </Button>
         </DialogFooter>
       </DialogContent>

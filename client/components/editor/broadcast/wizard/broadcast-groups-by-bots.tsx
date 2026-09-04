@@ -53,7 +53,7 @@ export function BroadcastGroupsByBots({
 
   if (tokenIds.length === 0) {
     return (
-      <p className="text-xs text-muted-foreground">Сначала выберите ботов</p>
+      <p className="text-xs text-muted-foreground">Select bots first</p>
     );
   }
 
@@ -66,7 +66,7 @@ export function BroadcastGroupsByBots({
           <div key={tid} className="space-y-1.5 rounded-lg border border-border/50 p-2.5">
             <Label className="text-xs text-muted-foreground flex items-center gap-1.5">
               <Users className="w-3 h-3" />
-              Группы {label}
+              Groups {label}
             </Label>
             <GroupSelect
               projectId={projectId}
@@ -81,8 +81,8 @@ export function BroadcastGroupsByBots({
       })}
       {overlap.length > 0 && (
         <p className="text-xs text-amber-600 dark:text-amber-400">
-          {overlap.length} {overlap.length === 1 ? 'группа отмечена' : 'групп отмечено'} у нескольких
-          ботов — в чат может прийти несколько копий сообщения
+          {overlap.length} {overlap.length === 1 ? "group marked" : "groups noted"} several
+          bots - several copies of the message may arrive in the chat
         </p>
       )}
     </div>

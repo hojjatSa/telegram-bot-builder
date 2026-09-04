@@ -29,11 +29,11 @@ export function BasicInfo({ user }: BasicInfoProps): React.JSX.Element {
       <div className="space-y-2 sm:space-y-3">
         <div className="flex items-center gap-1.5 sm:gap-2">
           <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
-          <Label className="text-xs sm:text-sm font-semibold">Основная информация</Label>
+          <Label className="text-xs sm:text-sm font-semibold">Basic information</Label>
         </div>
         <div className="grid gap-2 sm:gap-3 pl-5 sm:pl-6">
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <span className="text-[10px] sm:text-sm text-muted-foreground min-w-[70px] sm:min-w-[100px]">Имя:</span>
+            <span className="text-[10px] sm:text-sm text-muted-foreground min-w-[70px] sm:min-w-[100px]">Name:</span>
             <span className="text-xs sm:text-sm font-medium break-words">
               {user.firstName && typeof user.firstName === 'string' ? user.firstName : 'Not specified'}
             </span>

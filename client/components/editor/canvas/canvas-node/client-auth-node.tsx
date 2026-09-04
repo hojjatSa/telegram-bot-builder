@@ -15,7 +15,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const clientAuthNode: ComponentDefinition = {
   id: 'client-auth',
   name: 'Client API Авторизация',
-  description: 'Использует сессию из БД (user_telegram_settings)',
+  description: "Uses a session from the database (user_telegram_settings)",
   icon: 'fas fa-user-shield',
   color: 'bg-emerald-100 text-emerald-600',
   type: 'client_auth',

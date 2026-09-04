@@ -131,7 +131,7 @@ export function ServerStatus() {
                 <Loader2 className="h-3 w-3 animate-spin text-orange-500" />
               )}
               <span className={status.templates ? 'text-green-700 dark:text-green-300' : 'text-orange-600 dark:text-orange-400'}>
-                Сценарии
+                Scenarios
               </span>
             </div>
 

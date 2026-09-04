@@ -94,7 +94,7 @@ export function CampaignProgress({ projectId, campaignId, name, refetch, onClose
       {/* Разбивка по ботам */}
       <div className="space-y-2">
         <p className="text-xs text-muted-foreground">
-          {broadcasts.length} {pluralizeBots(broadcasts.length)} отправляют параллельно
+          {broadcasts.length} {pluralizeBots(broadcasts.length)} sent in parallel
         </p>
         {broadcasts.map((item) => (
           <CampaignBotProgressRow
@@ -116,7 +116,7 @@ export function CampaignProgress({ projectId, campaignId, name, refetch, onClose
             onClick={() => stopAllMutation.mutate(campaignId)}
             disabled={stopAllMutation.isPending}
           >
-            ⏸ Остановить у всех ботов
+            ⏸ Stop all bots
           </Button>
         </div>
       ) : (

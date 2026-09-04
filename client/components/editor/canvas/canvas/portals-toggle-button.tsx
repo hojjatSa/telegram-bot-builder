@@ -41,7 +41,7 @@ export function PortalsToggleButton({ active, onToggle, count }: PortalsToggleBu
     <button
       onClick={onToggle}
       className={`${buttonBaseClasses} ${active ? activeClasses : inactiveClasses}`}
-      title="Показать порталы к другим листам"
+      title={"Show portals to other sheets"}
     >
       <i className={`fas fa-external-link-alt ${iconClasses}`} />
       {/* Бейдж с количеством порталов */}

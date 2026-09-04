@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const delayNode: ComponentDefinition = {
   id: 'delay-node',
   name: '⏱ Задержка',
-  description: 'Пауза или фоновый таймер перед следующим действием',
+  description: "Pause or background timer before next action",
   icon: 'fas fa-stopwatch',
   color: 'bg-amber-100 text-amber-600',
   type: 'delay',

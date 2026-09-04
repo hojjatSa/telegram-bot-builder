@@ -38,17 +38,17 @@ export function TemplateCard({ template, onUse, showDelete, onDelete }: Template
                 </>
               ) : template.authorName ? (
                 <Badge variant="secondary" className="text-xs font-medium bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">
-                  <Users className="w-2.5 h-2.5 mr-1 hidden xs:inline" />От @{template.authorName}
+                  <Users className="w-2.5 h-2.5 mr-1 hidden xs:inline" />From @{template.authorName}
                 </Badge>
               ) : (
                 <Badge variant="secondary" className="bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs font-medium">
-                  <Users className="w-2.5 h-2.5 mr-1 hidden xs:inline" />От сообщества
+                  <Users className="w-2.5 h-2.5 mr-1 hidden xs:inline" />From the community
                 </Badge>
               )}
               {showDelete && (
                 <Badge variant={template.isPublic === 1 ? 'outline' : 'secondary'} className={`text-xs font-medium ${template.isPublic === 1 ? 'border-green-200/50 dark:border-green-800/50 bg-green-50/50 dark:bg-green-950/20 text-green-700 dark:text-green-300' : 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300'}`}>
                   {template.isPublic === 1 ? <Globe className="w-2.5 h-2.5" /> : <Lock className="w-2.5 h-2.5" />}
-                  <span className="ml-1 hidden xs:inline">{template.isPublic === 1 ? 'Публичный' : 'Приватный'}</span>
+                  <span className="ml-1 hidden xs:inline">{template.isPublic === 1 ? "Public" : "Private"}</span>
                 </Badge>
               )}
             </div>
@@ -72,11 +72,11 @@ export function TemplateCard({ template, onUse, showDelete, onDelete }: Template
           <div className="flex items-center gap-2 text-xs xs:text-sm text-muted-foreground bg-gradient-to-r from-muted/50 to-muted/30 dark:from-muted/30 dark:to-muted/10 rounded-lg px-2.5 py-2 border border-border/20 group-hover:border-border/40 transition-all">
             <Eye className="h-3.5 w-3.5 flex-shrink-0 text-blue-500/70" />
             <span className="font-medium">{template.useCount ?? 0}</span>
-            <span className="text-muted-foreground/60">использований</span>
+            <span className="text-muted-foreground/60">uses</span>
           </div>
           <div className="flex gap-2 pt-1">
             <Button size="sm" className="flex-1 h-9 xs:h-10 text-xs xs:text-sm font-semibold bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-sm hover:shadow-md transition-all group-hover:scale-105" onClick={() => onUse(template)} data-testid="button-use-template">
-              <Sparkles className="w-3 h-3 mr-1.5" />Использовать
+              <Sparkles className="w-3 h-3 mr-1.5" />Use
             </Button>
             {showDelete && (
               <Button size="sm" variant="outline" onClick={() => onDelete(template)} className="h-9 xs:h-10 px-2.5 border-red-200/50 dark:border-red-800/50 hover:bg-red-50 dark:hover:bg-red-950/20 hover:text-red-600 dark:hover:text-red-400 transition-all" data-testid="button-delete-template">

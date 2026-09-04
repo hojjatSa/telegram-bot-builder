@@ -63,7 +63,7 @@ export function InterfaceToggles({
         <button
           onClick={onToggleHeader}
           className={getButtonClasses(headerVisible)}
-          title={`${headerVisible ? 'Скрыть' : 'Показать'} шапку`}
+          title={`${headerVisible ? "Hide" : "Show"} шапку`}
         >
           <Navigation className="w-4 h-4" />
         </button>
@@ -73,7 +73,7 @@ export function InterfaceToggles({
         <button
           onClick={onToggleSidebar}
           className={getButtonClasses(sidebarVisible)}
-          title={`${sidebarVisible ? 'Скрыть' : 'Показать'} боковую панель`}
+          title={`${sidebarVisible ? "Hide" : "Show"} боковую панель`}
         >
           <Sidebar className="w-4 h-4" />
         </button>
@@ -83,7 +83,7 @@ export function InterfaceToggles({
         <button
           onClick={onToggleProperties}
           className={getButtonClasses(propertiesVisible)}
-          title={`${propertiesVisible ? 'Скрыть' : 'Показать'} панель свойств`}
+          title={`${propertiesVisible ? "Hide" : "Show"} панель свойств`}
         >
           <Sliders className="w-4 h-4" />
         </button>

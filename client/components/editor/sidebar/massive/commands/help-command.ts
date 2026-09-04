@@ -8,13 +8,13 @@ import type { CommandPreset } from './command-preset.types';
 export const helpCommand: CommandPreset = {
   id: 'help-command',
   name: '/help',
-  description: 'Справка по боту',
+  description: "Bot Help",
   icon: 'fas fa-question-circle',
   color: 'bg-blue-100 text-blue-600',
   type: 'command_preset',
   triggerData: {
     command: '/help',
-    description: 'Справка по боту',
+    description: "Bot Help",
     showInMenu: true,
   },
   messageData: {

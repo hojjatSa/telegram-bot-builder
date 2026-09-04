@@ -38,26 +38,26 @@ export function useStorageManagerActions(): UseStorageManagerActionsResult {
   const handleSetActive = async (configId: string) => {
     try {
       await setActive(configId);
-      toast({ title: 'Хранилище сделано активным' });
+      toast({ title: "The storage is made active" });
     } catch {
-      toast({ variant: 'destructive', title: 'Не удалось сменить активное хранилище' });
+      toast({ variant: 'destructive', title: "Failed to change active storage" });
     }
   };
 
   const handleDelete = async (configId: string) => {
     try {
       await remove(configId);
-      toast({ title: 'Хранилище удалено' });
+      toast({ title: "Storage deleted" });
     } catch (error) {
       if (isFilesConflict(error)) {
         toast({
           variant: 'destructive',
-          title: 'Нельзя удалить хранилище',
-          description: 'На этом хранилище есть файлы. Сначала перенесите или удалите их.',
+          title: "Storage cannot be deleted",
+          description: "There are files on this storage. First move or delete them.",
         });
         return;
       }
-      toast({ variant: 'destructive', title: 'Не удалось удалить хранилище' });
+      toast({ variant: 'destructive', title: "Failed to delete storage" });
     }
   };
 

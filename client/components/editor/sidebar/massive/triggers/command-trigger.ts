@@ -13,7 +13,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const commandTrigger: ComponentDefinition = {
   id: 'command-trigger',
   name: 'Command Trigger',
-  description: 'Команда без контента — точка входа в сценарий',
+  description: "A command without content is the entry point into the scenario",
   icon: 'fas fa-bolt',
   color: 'bg-yellow-100 text-yellow-600',
   type: 'command_trigger',
@@ -21,7 +21,7 @@ export const commandTrigger: ComponentDefinition = {
     /** Команда триггера, например "/start" */
     command: '/start',
     /** Описание команды для BotFather */
-    description: 'Запустить бота',
+    description: "Launch bot",
     /** Показывать команду в меню бота */
     showInMenu: true,
   }

@@ -160,7 +160,7 @@ export function MediaPreviewItem({ urlOrFileId, projectId, tokenId }: MediaPrevi
         </span>
       );
     } catch {
-      return <span className="text-xs text-muted-foreground">📎 Файл</span>;
+      return <span className="text-xs text-muted-foreground">📎 File</span>;
     }
   }
 
@@ -224,7 +224,7 @@ export function MediaPreviewList({ mediaUrls, projectId, tokenId, compact }: Med
 
   return (
     <div className={compact ? 'flex flex-wrap gap-2' : 'px-4 py-2.5'}>
-      {!compact && <p className="text-muted-foreground mb-2 text-sm">Медиафайлы</p>}
+      {!compact && <p className="text-muted-foreground mb-2 text-sm">Media files</p>}
       <div className="flex flex-wrap gap-2">
         {mediaUrls.map((url, idx) => (
           <MediaPreviewItem key={idx} urlOrFileId={url} projectId={projectId} tokenId={tokenId} />

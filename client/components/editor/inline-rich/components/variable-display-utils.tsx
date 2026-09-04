@@ -110,7 +110,7 @@ export function getNodeInfo(variable: Variable) {
     }
     return (
       <div className="text-[10px] text-teal-600 dark:text-teal-400 mt-0.5">
-        ⚙️ Системная переменная
+        ⚙️ System variable
       </div>
     );
   }
@@ -121,7 +121,7 @@ export function getNodeInfo(variable: Variable) {
     if (nodeIds && nodeIds.length > 1) {
       return (
         <div className="text-[10px] text-slate-500 dark:text-slate-500 font-mono mt-0.5 truncate">
-          🗄️ bot_users ({nodeIds.length} узла)
+          🗄️ bot_users ({nodeIds.length} node)
         </div>
       );
     }

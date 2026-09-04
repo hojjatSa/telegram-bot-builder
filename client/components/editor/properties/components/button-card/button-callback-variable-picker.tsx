@@ -61,7 +61,7 @@ export function ButtonCallbackVariablePicker({
           variant="outline"
           size="sm"
           className="h-6 text-[10px] gap-1 px-2 border-blue-300/40 dark:border-blue-700/40 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30"
-          title="Вставить переменную в callback_data"
+          title={"Insert variable into callback_data"}
         >
           <Pin className="h-3 w-3" />
           <span>Variables</span>
@@ -75,11 +75,11 @@ export function ButtonCallbackVariablePicker({
           <div className="flex items-center gap-2">
             <Pin className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
             <div className="text-xs font-semibold text-blue-900 dark:text-blue-100">
-              📌 Доступные переменные
+              📌 Available variables
             </div>
           </div>
           <div className="text-[10px] text-blue-600/70 dark:text-blue-400/60 mt-0.5">
-            Вставить в callback_data
+            Insert into callback_data
           </div>
         </div>
         <DropdownMenuSeparator className="bg-blue-200/30 dark:bg-blue-800/30" />
@@ -112,7 +112,7 @@ export function ButtonCallbackVariablePicker({
             ))
           ) : (
             <div className="px-3 py-4 text-center text-[11px] text-blue-500 dark:text-blue-400">
-              Нет доступных переменных
+              No variables available
             </div>
           )}
         </div>

@@ -61,7 +61,7 @@ export function NodeSearchButton({ nodes, onNodeFocus, open, onOpenChange }: Nod
       <PopoverTrigger asChild>
         <button
           className="flex-shrink-0 p-0 h-9 w-9 rounded-xl bg-slate-200/60 hover:bg-slate-300/80 dark:bg-slate-700/50 dark:hover:bg-slate-600/70 border border-slate-300/50 hover:border-slate-400/70 dark:border-slate-600/50 dark:hover:border-slate-500/70 transition-colors duration-200 group flex items-center justify-center"
-          title="Поиск узлов (Ctrl + F)"
+          title={"Search nodes (Ctrl + F)"}
         >
           <i className="fas fa-search text-slate-600 dark:text-slate-400 text-sm group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors" />
         </button>
@@ -100,7 +100,7 @@ export function NodeSearchButton({ nodes, onNodeFocus, open, onOpenChange }: Nod
             <div className="flex flex-col items-center justify-center py-8 gap-2 px-4">
               <i className="fas fa-search text-slate-300 dark:text-slate-600 text-2xl" />
               <p className="text-xs text-slate-400 dark:text-slate-500 text-center">
-                {query.trim() ? 'Ничего не найдено' : 'Введите запрос для поиска узлов'}
+                {query.trim() ? "Nothing found" : "Enter a query to search for nodes"}
               </p>
             </div>
           )}

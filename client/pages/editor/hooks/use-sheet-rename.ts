@@ -78,13 +78,13 @@ export function useSheetRename(params: UseSheetRenameParams) {
       updateProjectMutation.mutate();
 
       toast({
-        title: 'Лист переименован',
+        title: "Sheet renamed",
         description: `Лист переименован в "${newName}"`,
       });
     } catch (error) {
       toast({
-        title: 'Ошибка переименования',
-        description: 'Не удалось переименовать лист',
+        title: "Rename error",
+        description: "Failed to rename sheet",
         variant: 'destructive',
       });
     }

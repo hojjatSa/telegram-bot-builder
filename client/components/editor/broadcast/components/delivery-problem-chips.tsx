@@ -8,7 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 
 /** Подсказка про статус «заблокировали бота» */
 export const BLOCKED_USERS_HINT =
-  'Пользователи, которые заблокировали бота. Если человек напишет боту, этот статус снимется.';
+  "Users who blocked the bot. If a person writes to the bot, this status will be removed.";
 
 /**
  * Описание одного типа проблемы доставки
@@ -56,7 +56,7 @@ function buildChips(blocked: number, deleted: number, failed: number): ProblemCh
     {
       count: blocked,
       icon: Ban,
-      label: 'Блок',
+      label: "Block",
       title: BLOCKED_USERS_HINT,
       className: 'bg-amber-500/10 text-amber-700 dark:text-amber-400',
       showHelp: true,
@@ -64,15 +64,15 @@ function buildChips(blocked: number, deleted: number, failed: number): ProblemCh
     {
       count: deleted,
       icon: UserX,
-      label: 'Удалены',
-      title: 'Аккаунт удалён или не найден',
+      label: "Deleted",
+      title: "Account deleted or not found",
       className: 'bg-slate-500/10 text-slate-600 dark:text-slate-300',
     },
     {
       count: failed,
       icon: CircleAlert,
-      label: 'Прочие',
-      title: 'Прочие ошибки доставки',
+      label: "Others",
+      title: "Other delivery errors",
       className: 'bg-rose-500/10 text-rose-600 dark:text-rose-400',
     },
   ].filter((item) => item.count > 0);

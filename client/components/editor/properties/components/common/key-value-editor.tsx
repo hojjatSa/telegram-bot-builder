@@ -126,7 +126,7 @@ export function KeyValueEditor({
         onClick={add}
       >
         <Plus className="h-3.5 w-3.5" />
-        Добавить параметр
+        Add parameter
       </Button>
     </div>
   );

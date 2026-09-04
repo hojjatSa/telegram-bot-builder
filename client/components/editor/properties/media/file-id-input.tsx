@@ -81,15 +81,15 @@ export function FileIdInput({ projectId, mediaType, onMediaTypeChange, onAdd }: 
   const hasAnyFileId = Object.values(fileIds).some((v) => v.trim().length > 0);
 
   if (isLoading) {
-    return <p className="text-sm text-muted-foreground py-4 text-center">Загрузка токенов...</p>;
+    return <p className="text-sm text-muted-foreground py-4 text-center">Loading tokens...</p>;
   }
 
   if (tokens.length === 0) {
     return (
       <InfoBlock
         variant="warning"
-        title="Нет токенов"
-        description="Добавьте токен бота в настройках проекта, чтобы использовать Telegram file_id."
+        title={"No tokens"}
+        description={"Add a bot token in the project settings to use the Telegram file_id."}
       />
     );
   }
@@ -98,13 +98,13 @@ export function FileIdInput({ projectId, mediaType, onMediaTypeChange, onAdd }: 
     <div className="space-y-4">
       <InfoBlock
         variant="info"
-        title="ℹ️ file_id привязан к боту"
-        description="Один файл имеет разный file_id для каждого бота. Заполните поля для нужных токенов."
+        title={"ℹ️ file_id is tied to the bot"}
+        description={"One file has a different file_id for each bot. Fill in the fields for the required tokens."}
       />
 
       {/* Выбор типа медиа */}
       <div className="space-y-1.5 sm:space-y-2">
-        <Label className="text-xs sm:text-sm font-medium">Тип медиа</Label>
+        <Label className="text-xs sm:text-sm font-medium">Media type</Label>
         <RadioGroup
           value={mediaType}
           onValueChange={(v) => onMediaTypeChange(v as MediaType)}
@@ -141,7 +141,7 @@ export function FileIdInput({ projectId, mediaType, onMediaTypeChange, onAdd }: 
         disabled={!hasAnyFileId}
         className="w-full"
       >
-        Добавить file_id
+        Add file_id
       </Button>
     </div>
   );

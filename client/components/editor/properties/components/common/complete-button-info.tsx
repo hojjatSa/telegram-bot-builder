@@ -30,15 +30,15 @@ export function CompleteButtonInfo({}: CompleteButtonInfoProps) {
         </div>
         <div className="min-w-0 flex-1">
           <Label className="text-xs sm:text-sm font-semibold text-purple-900 dark:text-purple-100 cursor-pointer block">
-            Кнопка завершения
+            End button
           </Label>
           <div className="text-xs text-purple-700/70 dark:text-purple-300/70 mt-0.5 leading-snug hidden sm:block">
-            Завершает выбор и переходит дальше
+            Completes selection and moves on
           </div>
         </div>
       </div>
       <div className="text-xs sm:text-sm text-purple-700 dark:text-purple-200 leading-relaxed">
-        Сохраняет все выбранные опции и переходит к следующему экрану
+        Saves all selected options and moves to the next screen
       </div>
     </div>
   );

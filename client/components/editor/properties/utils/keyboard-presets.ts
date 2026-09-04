@@ -7,10 +7,10 @@ import { KeyboardPreset } from '../types/keyboard-layout';
 
 /** Список доступных пресетов раскладок */
 export const KEYBOARD_PRESETS: KeyboardPreset[] = [
-  { name: 'Одна колонка', columns: 1, description: 'Вертикальный список' },
-  { name: 'Две колонки', columns: 2, description: 'Стандартная сетка' },
-  { name: 'Три колонки', columns: 3, description: 'Компактный вид' },
-  { name: 'Четыре колонки', columns: 4, description: 'Максимально компактно' },
+  { name: 'Одна колонка', columns: 1, description: "Vertical list" },
+  { name: 'Две колонки', columns: 2, description: "Standard mesh" },
+  { name: 'Три колонки', columns: 3, description: "Compact view" },
+  { name: 'Четыре колонки', columns: 4, description: "As compact as possible" },
 ];
 
 /**

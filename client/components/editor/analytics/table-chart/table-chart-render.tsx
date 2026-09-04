@@ -36,7 +36,7 @@ export interface TableChartRenderProps {
 export function TableChartRender({ data, chartType, valueLabel }: TableChartRenderProps): React.JSX.Element {
   if (data.length === 0) {
     return (
-      <p className="text-xs text-muted-foreground/50 italic py-8 text-center">Нет данных для построения</p>
+      <p className="text-xs text-muted-foreground/50 italic py-8 text-center">No data to build</p>
     );
   }
 

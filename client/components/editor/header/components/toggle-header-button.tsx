@@ -31,11 +31,11 @@ export function ToggleHeaderButton({ headerVisible, onClick }: ToggleHeaderButto
           ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30 hover:shadow-lg hover:shadow-blue-500/40'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
       )}
-      title={headerVisible ? 'Скрыть шапку' : 'Показать шапку'}
+      title={headerVisible ? "Hide header" : "Show header"}
       data-testid="button-mobile-toggle-header"
     >
       <NavigationIcon className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{headerVisible ? 'Hide' : 'Show'} шапку</span>
+      <span className="sm:hidden">{headerVisible ? 'Hide' : 'Show'} hat</span>
     </Button>
   );
 }

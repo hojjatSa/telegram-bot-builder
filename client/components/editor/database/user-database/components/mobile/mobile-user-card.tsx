@@ -42,7 +42,7 @@ export function MobileUserCard(props: MobileUserCardProps): React.JSX.Element {
           size="sm"
           className="absolute top-2 right-2"
           onClick={() => onNavigateToDialog(user)}
-          title="Открыть диалог"
+          title={"Open dialogue"}
         >
           <MessageSquare className="w-4 h-4" />
         </Button>

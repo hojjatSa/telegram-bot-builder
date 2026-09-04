@@ -71,12 +71,12 @@ export function BotActions({
           size="sm"
           onClick={() => startBotMutation.mutate({ tokenId, projectId })}
           disabled={startBotMutation.isPending && isStartingThisBot}
-          aria-label={startBotMutation.isPending && isStartingThisBot ? 'Запуск бота...' : 'Запустить бота'}
+          aria-label={startBotMutation.isPending && isStartingThisBot ? "Launching the bot..." : "Launch bot"}
           className="h-8 gap-1 sm:gap-2 px-2 sm:px-3 text-xs bg-green-600 hover:bg-green-700"
         >
           <Play className="w-3 h-3" aria-hidden="true" />
           <span className="hidden sm:inline">
-            {startBotMutation.isPending && isStartingThisBot ? 'Starting...' : 'Запустить'}
+            {startBotMutation.isPending && isStartingThisBot ? 'Starting...' : "Launch"}
           </span>
           <span className="sm:hidden">
             {startBotMutation.isPending && isStartingThisBot ? '...' : 'Run'}
@@ -88,15 +88,15 @@ export function BotActions({
           variant="outline"
           onClick={() => stopBotMutation.mutate({ tokenId, projectId })}
           disabled={stopBotMutation.isPending && isStoppingThisBot}
-          aria-label={stopBotMutation.isPending && isStoppingThisBot ? 'Остановка бота...' : 'Остановить бота'}
+          aria-label={stopBotMutation.isPending && isStoppingThisBot ? "Stopping the bot..." : "Stop bot"}
           className="h-8 gap-1 sm:gap-2 px-2 sm:px-3 text-xs"
         >
           <Square className="w-3.5 h-3.5" aria-hidden="true" />
           <span className="hidden sm:inline">
-            {stopBotMutation.isPending && isStoppingThisBot ? 'Остановка...' : 'Остановить'}
+            {stopBotMutation.isPending && isStoppingThisBot ? "Stop..." : "Stop"}
           </span>
           <span className="sm:hidden">
-            {stopBotMutation.isPending && isStoppingThisBot ? '...' : 'Стоп'}
+            {stopBotMutation.isPending && isStoppingThisBot ? '...' : "Stop"}
           </span>
         </Button>
       )}
@@ -107,7 +107,7 @@ export function BotActions({
             variant="ghost"
             size="sm"
             className="h-9 w-9 p-0"
-            aria-label="Дополнительные действия с ботом"
+            aria-label={"Additional actions with the bot"}
             data-testid="button-bot-menu"
           >
             <MoreHorizontal className="h-4 w-4" aria-hidden="true" />

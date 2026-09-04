@@ -16,12 +16,12 @@ export function ConditionalMessagesInfoBlock() {
         <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-500/10 transition-transform duration-300" style={{ transform: 'rotate(-90deg)' }}>
           <i className="fas fa-chevron-down text-xs"></i>
         </span>
-        <span>ℹ️ Как это работает?</span>
+        <span>ℹ️ How does it work?</span>
       </summary>
       <div className="mt-2 ml-6 space-y-1 text-xs text-blue-600 dark:text-blue-400 leading-relaxed">
-        <div className="flex gap-2"><span className="flex-shrink-0">📝</span> <span>Бот запомнит ответы пользователей</span></div>
-        <div className="flex gap-2"><span className="flex-shrink-0">🎯</span> <span>Покажет разные сообщения</span></div>
-        <div className="flex gap-2"><span className="flex-shrink-0">⚡</span> <span>Например: новым - "Добро пожаловать!", старым - "С возвращением!"</span></div>
+        <div className="flex gap-2"><span className="flex-shrink-0">📝</span> <span>The bot will remember user responses</span></div>
+        <div className="flex gap-2"><span className="flex-shrink-0">🎯</span> <span>Will show different messages</span></div>
+        <div className="flex gap-2"><span className="flex-shrink-0">⚡</span> <span>For example: new - “Welcome!”, old - “Welcome back!”</span></div>
       </div>
     </details>
   );

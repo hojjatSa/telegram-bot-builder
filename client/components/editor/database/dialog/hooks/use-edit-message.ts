@@ -99,7 +99,7 @@ export function useEditMessage({
     },
 
     onSuccess: () => {
-      toast({ title: 'Сообщение изменено', description: 'Текст сообщения успешно обновлён' });
+      toast({ title: "Message changed", description: "Message text successfully updated" });
       onEdited?.();
     },
 
@@ -108,7 +108,7 @@ export function useEditMessage({
       onRollback(messageId, originalText);
       toast({
         title: 'Error',
-        description: 'Не удалось отредактировать сообщение',
+        description: "Failed to edit message",
         variant: 'destructive',
       });
     },

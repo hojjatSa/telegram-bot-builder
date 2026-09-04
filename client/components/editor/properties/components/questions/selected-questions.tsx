@@ -18,7 +18,7 @@ export function SelectedQuestions({ selectedNames }: SelectedQuestionsProps) {
       <div className="flex items-center gap-2 mb-2.5">
         <i className="fas fa-check-circle text-green-600 dark:text-green-400"></i>
         <span className="text-xs sm:text-sm font-bold text-green-700 dark:text-green-300">
-          Выбрано: {selectedNames.length}
+          Selected: {selectedNames.length}
         </span>
       </div>
       <div className="flex flex-wrap gap-2">

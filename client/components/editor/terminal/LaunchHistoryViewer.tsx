@@ -106,11 +106,11 @@ export function LaunchHistoryViewer({ launchId, startedAt }: LaunchHistoryViewer
       />
       {isLoading ? (
         <div className={`flex-1 flex items-center justify-center ${placeholderTextClass} italic`}>
-          Загрузка логов...
+          Loading logs...
         </div>
       ) : logs.length === 0 ? (
         <div className={`flex-1 flex items-center justify-center ${placeholderTextClass} italic`}>
-          Логи не сохранены
+          Logs are not saved
         </div>
       ) : (
         <div className="flex-1 overflow-hidden min-h-0">

@@ -53,7 +53,7 @@ export function SaveCheckpointPopover({ onSaveWithNote, isSaving, size = 'toolba
       <PopoverTrigger asChild>
         <button
           className={size === 'bar' ? BAR_TRIGGER_CLASS : TOOLBAR_TRIGGER_CLASS}
-          title="Сохранить с заметкой"
+          title={"Save with note"}
         >
           <i
             className={size === 'bar'
@@ -65,7 +65,7 @@ export function SaveCheckpointPopover({ onSaveWithNote, isSaving, size = 'toolba
 
       <PopoverContent side="bottom" className="w-72 p-3">
         <div className="flex flex-col gap-2">
-          <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Сохранить с заметкой</span>
+          <span className="font-semibold text-sm text-slate-700 dark:text-slate-200">Save with note</span>
           <Input
             value={note}
             onChange={(e) => setNote(e.target.value)}
@@ -75,14 +75,14 @@ export function SaveCheckpointPopover({ onSaveWithNote, isSaving, size = 'toolba
                 handleSubmit();
               }
             }}
-            placeholder="Заметка к версии (необязательно)…"
+            placeholder={"Release Note (optional)…"}
             autoFocus
           />
           <Button onClick={handleSubmit} disabled={!note.trim() || isSaving} size="sm">
             {isSaving ? 'Saving…' : 'Save checkpoint'}
           </Button>
           <p className="text-[11px] leading-snug text-slate-500 dark:text-slate-400">
-            С заметкой снимок станет постоянным чекпоинтом и не удалится при очистке истории.
+            With a note, the photo will become a permanent checkpoint and will not be deleted when the history is cleared.
           </p>
         </div>
       </PopoverContent>

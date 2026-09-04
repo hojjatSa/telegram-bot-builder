@@ -57,7 +57,7 @@ export function InlineButton({ button, allNodes }: InlineButtonProps) {
           </div>
           {button.action === 'goto' && (
             <div className="mt-1.5 text-xs text-emerald-600 dark:text-emerald-400 truncate">
-              К узлу: {targetNodeDisplay}{targetNodeDisplay.length > 30 ? '...' : ''}
+              To node: {targetNodeDisplay}{targetNodeDisplay.length > 30 ? '...' : ''}
             </div>
           )}
           {(button.action === 'goto' || button.action === 'command' || button.customCallbackData) && (
@@ -72,12 +72,12 @@ export function InlineButton({ button, allNodes }: InlineButtonProps) {
           )}
           {button.action === 'selection' && (
             <div className="mt-1.5 text-xs text-purple-600 dark:text-purple-400">
-              Выбор
+              Choice
             </div>
           )}
           {button.action === 'complete' && (
             <div className="mt-1.5 text-xs text-purple-600 dark:text-purple-400">
-              Завершение
+              Completion
             </div>
           )}
           {button.action === 'copy_text' && (
@@ -93,7 +93,7 @@ export function InlineButton({ button, allNodes }: InlineButtonProps) {
           {button.hideAfterClick && (
             <div className="mt-1 flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">
               <i className="fas fa-eye-slash text-[10px]"></i>
-              <span>скрыть</span>
+              <span>hide</span>
             </div>
           )}
         </div>
@@ -105,13 +105,13 @@ export function InlineButton({ button, allNodes }: InlineButtonProps) {
             <i className="fas fa-arrow-right text-blue-600 dark:text-blue-400 text-xs opacity-70" title={`К узлу: ${targetNodeDisplay}`}></i>
           )}
           {button.action === 'selection' && (
-            <i className="fas fa-mouse-pointer text-purple-600 dark:text-purple-400 text-xs opacity-70" title="Выбор"></i>
+            <i className="fas fa-mouse-pointer text-purple-600 dark:text-purple-400 text-xs opacity-70" title={"Choice"}></i>
           )}
           {button.action === 'complete' && (
-            <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title="Завершение"></i>
+            <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title={"Completion"}></i>
           )}
           {button.action === 'copy_text' && (
-            <i className="fas fa-clipboard text-yellow-600 dark:text-yellow-400 text-xs opacity-70" title="Копировать текст"></i>
+            <i className="fas fa-clipboard text-yellow-600 dark:text-yellow-400 text-xs opacity-70" title={"Copy text"}></i>
           )}
           {button.action === 'web_app' && (
             <i className="fas fa-globe text-cyan-600 dark:text-cyan-400 text-xs opacity-70" title={`Web App: ${(button as any).webAppUrl}`}></i>

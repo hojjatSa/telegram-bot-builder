@@ -7,7 +7,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const userbotClickButton: ComponentDefinition = {
   id: 'userbot-click-button',
   name: 'Click Button (Userbot)',
-  description: 'Нажать inline-кнопку в сообщении через Telethon',
+  description: "Press the inline button in a message via Telethon",
   icon: 'fas fa-hand-pointer',
   color: 'bg-violet-100 text-violet-600',
   type: 'userbot_click_button' as any,

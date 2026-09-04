@@ -32,7 +32,7 @@ export function ActionSelector({ action, index, onActionChange }: ActionSelector
   return (
     <div>
       <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">
-        Действие кнопки
+        Button action
       </Label>
       <Select
         value={action || 'goto'}

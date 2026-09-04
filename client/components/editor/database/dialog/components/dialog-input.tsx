@@ -126,7 +126,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
             variant={showMedia ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => { setShowMedia((v) => !v); setShowFileId(false); setShowButtons(false); }}
-            title="Прикрепить медиафайл"
+            title={"Attach media file"}
           >
             <Paperclip className="w-4 h-4" />
             {mediaUrls.length > 0 && (
@@ -150,7 +150,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
             variant={showButtons ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => { setShowButtons((v) => !v); setShowMedia(false); setShowFileId(false); }}
-            title="Инлайн-кнопки сообщения"
+            title={"Inline message buttons"}
           >
             <Rows3 className="w-4 h-4" />
             {buttons.length > 0 && (
@@ -158,7 +158,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
             )}
           </Button>
 
-          <p className="text-xs text-muted-foreground ml-1 hidden">Enter - отправить</p>
+          <p className="text-xs text-muted-foreground ml-1 hidden">Enter - send</p>
         </div>
 
         <Button
@@ -172,7 +172,7 @@ export function DialogInput({ isPending, projectId, availableNodes, onSend }: Di
           ) : (
             <>
               <Send className="w-4 h-4 mr-1" />
-              Отправить
+              Send
             </>
           )}
         </Button>

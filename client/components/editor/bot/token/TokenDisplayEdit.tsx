@@ -70,7 +70,7 @@ export function TokenDisplayEdit({
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/bot`] });
       invalidateBotStatusQueries(queryClient, projectId, tokenId);
 
-      toast({ title: 'Токен обновлен', description: 'Токен бота успешно изменён' });
+      toast({ title: "Token updated", description: "Bot token successfully changed" });
 
       stopEditing();
       onTokenUpdate();

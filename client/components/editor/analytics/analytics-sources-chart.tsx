@@ -220,7 +220,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
           <span className="text-sm font-medium truncate">Traffic Sources</span>
           {totalForPeriod > 0 && (
             <span className="text-xs text-muted-foreground whitespace-nowrap">
-              +{totalForPeriod} за период
+              +{totalForPeriod} for the period
             </span>
           )}
         </div>
@@ -232,7 +232,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
 
       {chartData.length < 2 ? (
         <p className="text-xs text-muted-foreground/50 italic py-8 text-center">
-          {isLoading ? '' : 'Нет данных об источниках трафика'}
+          {isLoading ? '' : "No information about traffic sources"}
         </p>
       ) : chartType === 'line' ? (
         <ResponsiveContainer width="100%" height={160}>
@@ -327,7 +327,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
         <div className="flex flex-col gap-2 border-t border-border/40 pt-2">
           <div className="flex items-baseline justify-between gap-2 text-[11px] font-semibold text-muted-foreground">
             <span>
-              Легенда · {allSourcesData.length}
+              Legend · {allSourcesData.length}
               {filtered ? ` · выбрано ${selectedSources!.size}` : ` · на графике топ-${TOP_SOURCES}`}
             </span>
             {filtered ? (
@@ -339,7 +339,7 @@ export function AnalyticsSourcesChart({ projectId, selectedTokenId }: AnalyticsS
                 All
               </button>
             ) : (
-              <span className="font-normal opacity-70">кликай источники — можно несколько</span>
+              <span className="font-normal opacity-70">click on sources - you can have several</span>
             )}
           </div>
           <div className="grid grid-cols-2 gap-1 max-h-[168px] overflow-y-auto pr-1">

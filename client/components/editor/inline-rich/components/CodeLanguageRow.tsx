@@ -86,7 +86,7 @@ export function CodeLanguageRow({
         variant="ghost"
         className="h-7 w-7 text-green-400 hover:text-green-300 hover:bg-green-500/10 shrink-0"
         onClick={() => onApply(lang)}
-        title="Применить язык"
+        title={"Apply language"}
       >
         <Check className="h-3.5 w-3.5" />
       </Button>
@@ -98,7 +98,7 @@ export function CodeLanguageRow({
           variant="ghost"
           className="h-7 w-7 text-red-400 hover:text-red-300 hover:bg-red-500/10 shrink-0"
           onClick={onRemove}
-          title="Убрать язык"
+          title={"Remove tongue"}
         >
           <X className="h-3.5 w-3.5" />
         </Button>

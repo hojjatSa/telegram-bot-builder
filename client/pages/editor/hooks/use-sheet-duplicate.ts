@@ -92,13 +92,13 @@ export function useSheetDuplicate(params: UseSheetDuplicateParams) {
       updateProjectMutation.mutate();
 
       toast({
-        title: 'Лист дублирован',
-        description: 'Лист успешно дублирован',
+        title: "Sheet duplicated",
+        description: "The sheet was successfully duplicated",
       });
     } catch (error) {
       toast({
-        title: 'Ошибка дублирования',
-        description: 'Не удалось дублировать лист',
+        title: "Duplication error",
+        description: "Failed to duplicate sheet",
         variant: 'destructive',
       });
     }

@@ -33,7 +33,7 @@ export function LogoutButton({ onClick, isVertical, className }: LogoutButtonPro
         isVertical ? 'w-full justify-center' : 'flex items-center justify-center',
         className
       )}
-      title="Выход"
+      title={"Exit"}
     >
       <LogOut className="h-3.5 w-3.5" />
     </Button>

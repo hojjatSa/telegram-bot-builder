@@ -60,12 +60,12 @@ export function CodeConfiguration({
         </span>
       </div>
       <p className="text-[10px] text-muted-foreground leading-relaxed">
-        Пишите тело async-функции с await. Переменные пользователя доступны по имени, присваивание сохраняется.
-        client и userbot_client — тот же вход юзербота, что у узлов «Сообщение / Нажать кнопку».
-        Без USERBOT_API_ID / USERBOT_API_HASH / USERBOT_SESSION_STRING вызовы Telethon не сработают, остальной Python — да.
+        Write the body of an async function with await. User variables are accessible by name, assignment is preserved.
+        client and userbot_client - the same userbot input as the “Message / Press Button” nodes.
+        Without USERBOT_API_ID / USERBOT_API_HASH / USERBOT_SESSION_STRING Telethon calls will not work, the rest of Python will.
       </p>
       <div className="space-y-1.5">
-        <Label className="text-xs font-medium">Скрипт</Label>
+        <Label className="text-xs font-medium">Script</Label>
         <textarea
           value={source}
           onChange={(e) => onNodeUpdate(selectedNode.id, { code: e.target.value })}
@@ -76,7 +76,7 @@ export function CodeConfiguration({
       </div>
       <div className="flex flex-col p-3 rounded-lg bg-gradient-to-br from-indigo-50/60 to-slate-50/40 dark:from-indigo-950/30 dark:to-slate-950/20 border border-indigo-200/40 dark:border-indigo-700/40">
         <Label className="text-xs font-semibold text-indigo-700 dark:text-indigo-300 mb-2">
-          Следующий узел
+          Next node
         </Label>
         <Select value={autoTransitionTo || 'no-transition'} onValueChange={applyTarget}>
           <SelectTrigger className="text-xs h-8 bg-white/60 dark:bg-slate-950/60">

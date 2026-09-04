@@ -26,8 +26,8 @@ export interface ChartTypeToggleProps {
  * Конфигурация кнопок переключателя типа графика
  */
 const TYPES: Array<{ type: ChartType; title: string; Icon: React.ElementType }> = [
-  { type: 'bar',  title: 'Столбчатый', Icon: BarChart2  },
-  { type: 'line', title: 'Линейный',   Icon: LineChart  },
+  { type: 'bar',  title: "Columnar", Icon: BarChart2  },
+  { type: 'line', title: "Linear",   Icon: LineChart  },
 ];
 
 /**

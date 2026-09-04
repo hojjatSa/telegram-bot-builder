@@ -82,7 +82,7 @@ export function ResponsesTableWithPagination({
     <div className="space-y-3 w-full max-w-full">
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 text-[9px] xs:text-[10px] sm:text-xs text-muted-foreground">
-          <span className="whitespace-nowrap">Показывать:</span>
+          <span className="whitespace-nowrap">Show:</span>
           <ItemsPerPageSelector value={itemsPerPage} onChange={(val) => { setItemsPerPage(val); setCurrentPage(1); }} />
         </div>
         <ResponseCount
@@ -116,7 +116,7 @@ export function ResponsesTableWithPagination({
               ) : (
                 <TableRow>
                   <TableCell colSpan={3} className="text-center py-12 text-muted-foreground">
-                    Нет ответов
+                    No answers
                   </TableCell>
                 </TableRow>
               )}

@@ -79,7 +79,7 @@ export function ActionHistory({
       <PopoverTrigger asChild>
         <button
           className="flex-shrink-0 p-0 h-9 w-9 rounded-xl bg-slate-200/60 hover:bg-slate-300/80 dark:bg-slate-700/50 dark:hover:bg-slate-600/70 border border-slate-300/50 hover:border-slate-400/70 dark:border-slate-600/50 dark:hover:border-slate-500/70 transition-colors duration-200 group flex items-center justify-center"
-          title="История действий"
+          title={"Action history"}
         >
           <i className="fas fa-clock-rotate-left text-slate-600 dark:text-slate-400 text-sm group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors" />
         </button>
@@ -106,7 +106,7 @@ export function ActionHistory({
               onClick={handleSelectAll}
               className="text-xs text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors"
             >
-              {allSelected ? 'Снять всё' : 'Выбрать всё'}
+              {allSelected ? "Remove everything" : "Select all"}
             </button>
           )}
         </div>
@@ -165,7 +165,7 @@ export function ActionHistory({
           ) : (
             <div className="flex flex-col items-center justify-center py-8 gap-2">
               <i className="fas fa-clock-rotate-left text-slate-300 dark:text-slate-600 text-2xl" />
-              <p className="text-xs text-slate-400 dark:text-slate-500">Нет действий в истории</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">No action in story</p>
             </div>
           )}
         </div>
@@ -179,7 +179,7 @@ export function ActionHistory({
               className="w-full flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 active:bg-red-700 text-white text-xs font-medium transition-colors"
             >
               <i className="fas fa-rotate-left" />
-              Отменить {selectedCount} {selectedCount === 1 ? 'действие' : selectedCount < 5 ? 'действия' : 'действий'}
+              Cancel {selectedCount} {selectedCount === 1 ? "action" : selectedCount < 5 ? "actions" : "actions"}
             </button>
           </div>
         )}

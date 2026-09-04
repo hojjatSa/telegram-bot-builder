@@ -32,7 +32,7 @@ export function DesktopToggleCanvasButton({ canvasVisible, onClick }: DesktopTog
           ? 'bg-gradient-to-br from-cyan-600 to-cyan-500 text-white shadow-md shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/40'
           : 'bg-slate-500/5 dark:bg-slate-700/15 hover:bg-slate-300/40 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-400'
       )}
-      title={canvasVisible ? 'Скрыть холст' : 'Показать холст'}
+      title={canvasVisible ? "Hide Canvas" : "Show canvas"}
       data-testid="button-toggle-canvas"
     >
       <Monitor className="w-3.5 h-3.5" />

@@ -29,7 +29,7 @@ export function UserResponsesList({
     <div>
       <div className="flex items-center gap-2 mb-4">
         <MessageSquare className="w-5 h-5 text-primary" />
-        <Label className="text-base font-semibold">Ответы пользователя</Label>
+        <Label className="text-base font-semibold">User responses</Label>
         <Badge variant="secondary" className="text-xs">
           {String(entries.length)}
         </Badge>

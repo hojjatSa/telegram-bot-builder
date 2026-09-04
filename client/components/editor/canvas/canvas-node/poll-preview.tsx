@@ -34,11 +34,11 @@ export function PollPreview({ node }: PollPreviewProps) {
       <div className="text-center space-y-2">
         <i className="fas fa-poll text-violet-400 dark:text-violet-300 text-3xl"></i>
         <div className="text-xs text-violet-600 dark:text-violet-400 space-y-1">
-          <div className="font-medium">{node.data.question || 'Опрос'}</div>
+          <div className="font-medium">{node.data.question || "Survey"}</div>
           {node.data.options && node.data.options.length > 0 && (
             <div className="flex items-center justify-center space-x-1">
               <i className="fas fa-list text-xs"></i>
-              <span>{node.data.options.length} вариантов</span>
+              <span>{node.data.options.length} options</span>
             </div>
           )}
           {node.data.allowsMultipleAnswers && (

@@ -54,7 +54,7 @@ interface PsqlConnectionSectionProps {
 
 /** Серверные переменные (доступны всегда) */
 const SERVER_VARIABLES = [
-  { key: 'DATABASE_URL', description: 'Основная PostgreSQL БД платформы' },
+  { key: 'DATABASE_URL', description: "Main PostgreSQL database platform" },
 ];
 
 /**
@@ -153,7 +153,7 @@ export function PsqlConnectionSection({
       {/* Заголовок */}
       <Label className="text-xs font-semibold text-violet-700 dark:text-violet-300 flex items-center gap-1.5">
         <Unplug className="w-3.5 h-3.5" />
-        Подключение к БД
+        Connecting to the database
       </Label>
 
       {/* Dropdown-селектор в стиле VariableSelector */}
@@ -172,7 +172,7 @@ export function PsqlConnectionSection({
           {/* Серверные переменные */}
           <DropdownMenuLabel className="text-xs font-semibold flex items-center gap-1.5">
             <Server className="w-3 h-3" />
-            Серверные
+            Server
           </DropdownMenuLabel>
           {SERVER_VARIABLES.map((v) => (
             <DropdownMenuItem
@@ -194,7 +194,7 @@ export function PsqlConnectionSection({
           {/* Переменные бота */}
           <DropdownMenuLabel className="text-xs font-semibold flex items-center gap-1.5">
             <Bot className="w-3 h-3" />
-            Переменные бота
+            Bot Variables
           </DropdownMenuLabel>
           {envVariables.length > 0 ? (
             envVariables.map((v) => (
@@ -210,7 +210,7 @@ export function PsqlConnectionSection({
             ))
           ) : (
             <div className="px-3 py-2 text-[10px] text-muted-foreground italic">
-              Нет переменных. Добавьте во вкладке «Бот».
+              No variables. Add in the “Bot” tab.
             </div>
           )}
 
@@ -220,7 +220,7 @@ export function PsqlConnectionSection({
           <DropdownMenuItem onClick={handleSelectCustom} className="cursor-pointer">
             <div className="flex items-center gap-1.5">
               <Pencil className="w-3 h-3" />
-              <span className="text-xs font-medium">Ввести вручную</span>
+              <span className="text-xs font-medium">Enter manually</span>
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -255,7 +255,7 @@ export function PsqlConnectionSection({
           {/* Кнопка разбора */}
           {connectionString && !showFields && (
             <Button variant="outline" size="sm" className="text-xs h-7" onClick={handleParse}>
-              Разобрать URL
+              Parse URL
             </Button>
           )}
 

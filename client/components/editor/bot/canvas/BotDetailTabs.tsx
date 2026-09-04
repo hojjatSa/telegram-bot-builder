@@ -12,7 +12,7 @@ const TABS: Array<{ id: BotDetailTabId; label: string; icon: typeof History }> =
   { id: 'settings', label: 'Settings', icon: Settings },
   { id: 'variables', label: 'Variables', icon: Braces },
   { id: 'terminal', label: 'Terminal', icon: Terminal },
-  { id: 'collaborators', label: 'Владельцы', icon: Users },
+  { id: 'collaborators', label: "Owners", icon: Users },
 ];
 
 /** Пропсы вкладок */
@@ -31,7 +31,7 @@ interface BotDetailTabsProps {
 export function BotDetailTabs({ value, onChange }: BotDetailTabsProps) {
   return (
     <div className="@container sticky top-0 z-10 shrink-0 border-b border-border/60 bg-background/95 backdrop-blur">
-      <nav className="flex gap-1 px-4 overflow-x-auto" role="tablist" aria-label="Разделы бота">
+      <nav className="flex gap-1 px-4 overflow-x-auto" role="tablist" aria-label={"Bot sections"}>
         {TABS.map(({ id, label, icon: Icon }) => {
           const active = value === id;
           return (

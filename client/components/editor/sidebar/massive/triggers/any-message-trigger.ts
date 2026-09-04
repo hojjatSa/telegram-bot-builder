@@ -9,7 +9,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const anyMessageTrigger: ComponentDefinition = {
   id: 'any-message-trigger',
   name: 'Incoming Message Trigger',
-  description: 'Срабатывает на каждое входящее сообщение от пользователя боту',
+  description: "Triggers on every incoming message from the user to the bot",
   icon: 'fas fa-inbox',
   color: 'bg-green-100 text-green-600',
   type: 'incoming_message_trigger',

@@ -83,10 +83,10 @@ export function BotLayout({ projectId, projectName, allProjects, onProjectChange
                 ? 'text-foreground border-b-2 border-primary'
                 : 'text-muted-foreground hover:text-foreground',
             ].join(' ')}
-            aria-label="Управление ботами"
+            aria-label={"Bot management"}
           >
             <Bot className="w-4 h-4" />
-            Боты
+            Bots
           </button>
           <button
             type="button"
@@ -100,7 +100,7 @@ export function BotLayout({ projectId, projectName, allProjects, onProjectChange
             aria-label="Terminal"
           >
             <Terminal className="w-4 h-4" />
-            Терминал
+            Terminal
             {hasTerminals && (
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
             )}

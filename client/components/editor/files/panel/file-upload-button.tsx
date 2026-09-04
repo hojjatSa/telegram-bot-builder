@@ -94,7 +94,7 @@ export function FileUploadButton({
         className="h-8"
         disabled={isUploading}
         onClick={openPicker}
-        title="Загрузить файлы с устройства"
+        title={"Upload files from device"}
         data-testid="file-storage-upload"
       >
         {isUploading ? (
@@ -102,7 +102,7 @@ export function FileUploadButton({
         ) : (
           <Upload className="h-3.5 w-3.5 sm:mr-1.5" />
         )}
-        <span className="hidden sm:inline">{isUploading ? 'Загрузка…' : 'Загрузить'}</span>
+        <span className="hidden sm:inline">{isUploading ? "Loading…" : "Download"}</span>
       </Button>
       <FileClipboardButton disabled={isUploading} onFiles={handleClipboardFiles} />
     </>

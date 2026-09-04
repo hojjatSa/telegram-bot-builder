@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const codeNode: ComponentDefinition = {
   id: 'code-node',
   name: '💻 Python-код',
-  description: 'Произвольный Python: переменные пользователя доступны по имени',
+  description: "Arbitrary Python: user variables accessible by name",
   icon: 'fas fa-code',
   color: 'bg-indigo-100 text-indigo-600',
   type: 'code',

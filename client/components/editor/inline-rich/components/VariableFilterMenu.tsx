@@ -49,7 +49,7 @@ export function VariableFilterMenu({
           variant="ghost"
           size="sm"
           className="h-6 w-6 p-0 hover:bg-blue-100 dark:hover:bg-blue-900/30"
-          title="Фильтры переменной"
+          title={"Variable filters"}
           onClick={(e) => e.stopPropagation()}
         >
           <Sliders className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
@@ -57,14 +57,14 @@ export function VariableFilterMenu({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 bg-gradient-to-br from-blue-50/95 to-cyan-50/95 dark:from-slate-900/95 dark:to-slate-800/95 border border-blue-200/50 dark:border-blue-800/50">
         <DropdownMenuLabel className="text-xs font-semibold text-blue-800 dark:text-blue-200">
-          🔧 Фильтры для <code className="bg-blue-100 dark:bg-blue-900/50 px-1.5 py-0.5 rounded font-mono">{`{${variableName}}`}</code>
+          🔧 Filters for <code className="bg-blue-100 dark:bg-blue-900/50 px-1.5 py-0.5 rounded font-mono">{`{${variableName}}`}</code>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-blue-200/30 dark:bg-blue-800/30" />
         
         {/* Фильтр join для массивов */}
         <div className="p-2">
           <div className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2">
-            📦 Для массивов:
+            📦 For arrays:
           </div>
           {VARIABLE_FILTER_OPTIONS.map((option) => (
             <DropdownMenuItem
@@ -88,7 +88,7 @@ export function VariableFilterMenu({
         {/* Информация */}
         <div className="px-3 py-2">
           <div className="text-xs text-blue-600 dark:text-blue-400 leading-relaxed">
-            💡 Фильтры работают с переменными, которые сохраняются в режиме <strong>"Не перезаписывать"</strong>
+            💡 Filters work with variables that are saved in the mode <strong>"Do not overwrite"</strong>
           </div>
         </div>
       </DropdownMenuContent>

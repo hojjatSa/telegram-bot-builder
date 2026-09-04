@@ -36,7 +36,7 @@ export function AudienceFilters({ audienceType, formData, onChange, tagInput, se
   if (audienceType === 'tags') {
     return (
       <div className="space-y-2 rounded-xl border p-3 bg-muted/20">
-        <Input value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={onAddTag} placeholder="Введите тег и нажмите Enter" />
+        <Input value={tagInput} onChange={(e) => setTagInput(e.target.value)} onKeyDown={onAddTag} placeholder={"Enter a tag and press Enter"} />
         <div className="flex flex-wrap gap-1">
           {(formData.filters.tags ?? []).map((tag) => (
             <span key={tag} className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded-full text-xs">
@@ -53,11 +53,11 @@ export function AudienceFilters({ audienceType, formData, onChange, tagInput, se
     return (
       <div className="grid grid-cols-2 gap-2 rounded-xl border p-3 bg-muted/20">
         <div>
-          <Label className="text-xs">От</Label>
+          <Label className="text-xs">From</Label>
           <Input type="date" value={formData.filters.registeredFrom ?? ''} onChange={(e) => onChange({ filters: { ...formData.filters, registeredFrom: e.target.value } })} />
         </div>
         <div>
-          <Label className="text-xs">До</Label>
+          <Label className="text-xs">To</Label>
           <Input type="date" value={formData.filters.registeredTo ?? ''} onChange={(e) => onChange({ filters: { ...formData.filters, registeredTo: e.target.value } })} />
         </div>
       </div>
@@ -68,11 +68,11 @@ export function AudienceFilters({ audienceType, formData, onChange, tagInput, se
     return (
       <div className="grid grid-cols-2 gap-2 rounded-xl border p-3 bg-muted/20">
         <div>
-          <Label className="text-xs">Активен от</Label>
+          <Label className="text-xs">Active from</Label>
           <Input type="date" value={formData.filters.activeFrom ?? ''} onChange={(e) => onChange({ filters: { ...formData.filters, activeFrom: e.target.value } })} />
         </div>
         <div>
-          <Label className="text-xs">Активен до</Label>
+          <Label className="text-xs">Active until</Label>
           <Input type="date" value={formData.filters.activeTo ?? ''} onChange={(e) => onChange({ filters: { ...formData.filters, activeTo: e.target.value } })} />
         </div>
       </div>

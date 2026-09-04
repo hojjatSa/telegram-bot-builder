@@ -50,13 +50,13 @@ export function TemplateTabs({ currentTab, onTabChange, templates, isLoading, is
           <Layers className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>All</span>
         </TabsTrigger>
         <TabsTrigger value="featured" className={`${BAZOVYE_KLASSY} ${AKTIVNYE_KLASSY.featured}`}>
-          <Sparkles className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Рекомендуемые</span>
+          <Sparkles className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Featured</span>
         </TabsTrigger>
         <TabsTrigger value="popular" className={`${BAZOVYE_KLASSY} ${AKTIVNYE_KLASSY.popular}`}>
-          <Flame className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Популярные</span>
+          <Flame className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Popular</span>
         </TabsTrigger>
         <TabsTrigger value="my" className={`${BAZOVYE_KLASSY} ${AKTIVNYE_KLASSY.my}`}>
-          <Bookmark className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>Мои</span>
+          <Bookmark className="h-3.5 xs:h-4 w-3.5 xs:w-4 flex-shrink-0" /><span>My</span>
         </TabsTrigger>
       </TabsList>
 

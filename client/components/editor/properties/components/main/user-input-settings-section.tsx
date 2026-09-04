@@ -183,8 +183,8 @@ export function UserInputSettingsSection({
   return (
     <div className="w-full bg-gradient-to-br from-blue-50/40 to-cyan-50/20 dark:from-blue-950/30 dark:to-cyan-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-blue-200/40 dark:border-blue-800/40 backdrop-blur-sm">
       <SectionHeader
-        title={isMessageNode ? 'Ответ пользователя' : 'Сбор ответов'}
-        description={isMessageNode ? 'Управление связанным узлом сохранения ответа' : 'Собирать ввод пользователя в переменные'}
+        title={isMessageNode ? "User response" : "Collecting responses"}
+        description={isMessageNode ? "Managing the associated save response node" : "Collect user input into variables"}
         isOpen={isOpen}
         onToggle={onToggle}
         icon={isMessageNode ? 'link' : 'inbox'}
@@ -197,11 +197,11 @@ export function UserInputSettingsSection({
         <div className={`space-y-3 sm:space-y-4 rounded-xl p-3 sm:p-4 md:p-5 border ${isMessageNode ? 'bg-gradient-to-br from-cyan-50/40 to-sky-50/20 dark:from-cyan-950/15 dark:to-sky-950/5 border-cyan-200/25 dark:border-cyan-800/25' : 'bg-gradient-to-br from-blue-50/40 to-indigo-50/20 dark:from-blue-950/15 dark:to-indigo-950/5 border-blue-200/25 dark:border-blue-800/25'}`}>
           <div className="flex items-center justify-between gap-3 rounded-xl border border-white/40 dark:border-slate-800/50 bg-white/70 dark:bg-slate-950/30 px-3 py-3">
             <div className="space-y-0.5">
-              <Label className="text-sm font-medium">{isMessageNode ? 'Сбор ответа' : 'Сбор ответа'}</Label>
+              <Label className="text-sm font-medium">{isMessageNode ? "Collecting a response" : "Collecting a response"}</Label>
               <p className="text-xs text-slate-500 dark:text-slate-400">
                 {isMessageNode
-                  ? 'Связать сообщение с отдельным узлом сохранения ответа'
-                  : 'Собирать ввод пользователя в переменные'}
+                  ? "Link a message to a separate reply save node"
+                  : "Collect user input into variables"}
               </p>
             </div>
             <Switch
@@ -212,16 +212,16 @@ export function UserInputSettingsSection({
 
           {isMessageNode && (
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Связанный узел сохранения ответа</Label>
+              <Label className="text-sm font-medium">Related Save Answer Node</Label>
               <Select
                 value={messageInputState?.isLinked && linkedSummary ? linkedSummary.nodeId : 'no-input'}
                 onValueChange={handleLinkedInputSelect}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Выберите input-узел" />
+                  <SelectValue placeholder={"Select input node"} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="no-input">Без связи</SelectItem>
+                  <SelectItem value="no-input">No connection</SelectItem>
                   {inputNodes.map(({ node, sheetName }) => (
                     <SelectItem key={`${sheetName}-${node.id}`} value={node.id}>
                       {formatNodeDisplay(node, sheetName)}
@@ -235,31 +235,31 @@ export function UserInputSettingsSection({
           {isMessageNode && messageInputState?.isLinked && linkedSummary ? (
             <div className="space-y-2 rounded-xl border border-cyan-200/60 dark:border-cyan-800/50 bg-white/70 dark:bg-slate-950/30 px-3 py-3">
               <div className="text-xs font-medium text-cyan-700 dark:text-cyan-300">
-                {messageInputState?.isEnabled ? 'Связь активна' : 'Связь сохранена'}
+                {messageInputState?.isEnabled ? "Communication active" : "Connection saved"}
               </div>
               <div className="grid gap-1 text-xs text-slate-600 dark:text-slate-300">
                 <div>ID: {linkedSummary.nodeId}</div>
-                <div>Лист: {linkedSummary.sheetName}</div>
-                <div>Переменная: {linkedSummary.inputVariable || 'не задана'}</div>
-                <div>Источник: {linkedSummary.inputType}</div>
-                <div>Режим: {linkedSummary.appendVariable ? 'добавление' : 'замена'}</div>
-                <div>Следующий узел: {linkedSummary.inputTargetNodeId || 'не задан'}</div>
+                <div>Sheet: {linkedSummary.sheetName}</div>
+                <div>Variable: {linkedSummary.inputVariable || "not specified"}</div>
+                <div>Source: {linkedSummary.inputType}</div>
+                <div>Mode: {linkedSummary.appendVariable ? "addition" : "replacement"}</div>
+                <div>Next node: {linkedSummary.inputTargetNodeId || "not specified"}</div>
               </div>
             </div>
           ) : isMessageNode && messageInputState?.isLegacy ? (
             <div className="space-y-2 rounded-xl border border-dashed border-cyan-200/60 dark:border-cyan-800/50 bg-white/50 dark:bg-slate-950/20 px-3 py-3">
               <div className="text-xs text-slate-500 dark:text-slate-400">
-                Старые настройки ввода будут перенесены в новый `input` при создании.
+                Old input settings will be carried over to the new `input` when created.
               </div>
               <div className="grid gap-1 text-xs text-slate-600 dark:text-slate-300">
-                <div>Переменная: {linkedSummary?.inputVariable || 'не задана'}</div>
-                <div>Источник: {linkedSummary?.inputType || 'any'}</div>
-                <div>Следующий узел: {linkedSummary?.inputTargetNodeId || 'не задан'}</div>
+                <div>Variable: {linkedSummary?.inputVariable || "not specified"}</div>
+                <div>Source: {linkedSummary?.inputType || 'any'}</div>
+                <div>Next node: {linkedSummary?.inputTargetNodeId || "not specified"}</div>
               </div>
               <div className="flex flex-wrap gap-2">
                 {onNodeAdd && (
                   <Button type="button" variant="secondary" size="sm" onClick={handleCreateInputNode}>
-                    Мигрировать в новый `input`
+                    Migrate to new `input`
                   </Button>
                 )}
               </div>
@@ -267,12 +267,12 @@ export function UserInputSettingsSection({
           ) : isMessageNode ? (
             <div className="space-y-2 rounded-xl border border-dashed border-cyan-200/60 dark:border-cyan-800/50 bg-white/50 dark:bg-slate-950/20 px-3 py-3">
               <div className="text-xs text-slate-500 dark:text-slate-400">
-                Связанный `input`-узел не найден. Можно создать новый или выбрать существующий.
+                The associated `input` node was not found. You can create a new one or select an existing one.
               </div>
               <div className="flex flex-wrap gap-2">
                 {onNodeAdd && (
                   <Button type="button" variant="secondary" size="sm" onClick={handleCreateInputNode}>
-                    Создать узел сохранения ответа
+                    Create a save answer node
                   </Button>
                 )}
               </div>
@@ -328,7 +328,7 @@ export function UserInputSettingsSection({
       {isOpen && !isMessageNode && !selectedNode.data.collectUserInput && (
         <div className="space-y-3 sm:space-y-4 bg-gradient-to-br from-blue-50/40 to-indigo-50/20 dark:from-blue-950/15 dark:to-indigo-950/5 border border-blue-200/25 dark:border-blue-800/25 rounded-xl p-3 sm:p-4 md:p-5">
           <div className="text-xs text-slate-500 dark:text-slate-400">
-            Включите сбор ответа, чтобы настроить переменные, медиа и переходы после ввода.
+            Enable response collection to customize variables, media, and transitions after typing.
           </div>
         </div>
       )}

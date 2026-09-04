@@ -208,8 +208,8 @@ export function useFormatting({
 
     if (!range || !selection) {
       toast({
-        title: "Нет выделения",
-        description: "Выделите текст для форматирования или поставьте курсор в нужное место",
+        title: "No selection",
+        description: "Select the text to format or place the cursor where you want it",
         variant: "default"
       });
       setIsFormatting(false);
@@ -303,8 +303,8 @@ export function useFormatting({
       }, 0);
     } catch (e) {
       toast({
-        title: "Ошибка форматирования",
-        description: "Не удалось применить форматирование",
+        title: "Formatting error",
+        description: "Failed to apply formatting",
         variant: "destructive"
       });
     }

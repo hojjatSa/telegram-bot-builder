@@ -40,7 +40,7 @@ export function UndoRedoButtons({ canUndo, canRedo = false, onUndo, onRedo }: Un
         onClick={() => { if (canUndo) onUndo?.(); }}
         disabled={!canUndo}
         className={`${BUTTON_BASE_CLASSES} ${BUTTON_INACTIVE_CLASSES} ${!canUndo ? BUTTON_DISABLED_CLASSES : ''}`}
-        title="Отменить действие (Ctrl + Z)"
+        title={"Undo action (Ctrl + Z)"}
       >
         <i className={`fas fa-undo text-sm transition-colors ${canUndo ? 'text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400' : 'text-slate-400 dark:text-slate-500'}`} />
       </button>
@@ -50,7 +50,7 @@ export function UndoRedoButtons({ canUndo, canRedo = false, onUndo, onRedo }: Un
         onClick={() => { if (canRedo) onRedo?.(); }}
         disabled={!canRedo}
         className={`${BUTTON_BASE_CLASSES} ${BUTTON_INACTIVE_CLASSES} ${!canRedo ? BUTTON_DISABLED_CLASSES : ''}`}
-        title="Повторить действие (Ctrl + Y)"
+        title={"Repeat action (Ctrl + Y)"}
       >
         <i className={`fas fa-redo text-sm transition-colors ${canRedo ? 'text-slate-600 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400' : 'text-slate-400 dark:text-slate-500'}`} />
       </button>

@@ -48,7 +48,7 @@ export function useEditBroadcastCampaign({ projectId, refetch }: UseEditBroadcas
     },
     onSuccess: (data) => {
       toast({
-        title: 'Текст обновлён',
+        title: "Text updated",
         description: `Сообщений изменено у получателей: ${data?.edited ?? 0}`,
       });
       refetch?.();

@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const commentNode: ComponentDefinition = {
   id: 'comment-node',
   name: '📝 Комментарий',
-  description: 'Текстовая заметка на холсте — не влияет на логику бота',
+  description: "Text note on canvas - does not affect bot logic",
   icon: 'fas fa-sticky-note',
   color: 'bg-yellow-100 text-yellow-700',
   type: 'comment',

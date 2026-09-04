@@ -44,8 +44,8 @@ export function UserbotInlineQueryConfiguration({
       {/* Секция настроек */}
       <div className="space-y-3 bg-gradient-to-br from-violet-50/40 to-purple-50/20 dark:from-violet-950/30 dark:to-purple-900/20 rounded-xl p-3 sm:p-4 border border-violet-200/40 dark:border-violet-800/40">
         <SectionHeader
-          title="Inline-запрос"
-          description="Отправить inline-запрос к боту через Telethon"
+          title={"Inline request"}
+          description={"Send an inline request to the bot via Telethon"}
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
           icon="at"
@@ -63,7 +63,7 @@ export function UserbotInlineQueryConfiguration({
                 <Input
                   value={data.botUsername ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { botUsername: e.target.value })}
-                  placeholder="@bot_username или {переменная}"
+                  placeholder={"@bot_username or {variable}"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -75,12 +75,12 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Query */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Текст запроса (query)</Label>
+              <Label className="text-xs text-muted-foreground">Query text</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.query ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { query: e.target.value })}
-                  placeholder="поисковый запрос или {переменная}"
+                  placeholder={"search term or {variable}"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -92,7 +92,7 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Отправить в тот же чат */}
             <div className="flex items-center justify-between">
-              <Label className="text-xs text-muted-foreground">Отправить в тот же чат</Label>
+              <Label className="text-xs text-muted-foreground">Send to the same chat</Label>
               <Switch
                 checked={data.sendToSameChat ?? true}
                 onCheckedChange={(v) => onNodeUpdate(selectedNode.id, { sendToSameChat: v })}
@@ -102,12 +102,12 @@ export function UserbotInlineQueryConfiguration({
             {/* Target chat — показывается только если Switch выключен */}
             {!(data.sendToSameChat ?? true) && (
               <div className="space-y-1">
-                <Label className="text-xs text-muted-foreground">Целевой чат</Label>
+                <Label className="text-xs text-muted-foreground">Target chat</Label>
                 <div className="flex gap-1">
                   <Input
                     value={data.targetChat ?? ''}
                     onChange={(e) => onNodeUpdate(selectedNode.id, { targetChat: e.target.value })}
-                    placeholder="@username, chat_id или {переменная}"
+                    placeholder={"@username, chat_id or {variable}"}
                     className="h-8 text-sm font-mono flex-1"
                   />
                   <VariableSelector
@@ -120,12 +120,12 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Индекс результата */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Индекс результата</Label>
+              <Label className="text-xs text-muted-foreground">Result index</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.resultIndex ?? '0'}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { resultIndex: e.target.value })}
-                  placeholder="0 — первый результат"
+                  placeholder={"0 - first result"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -137,12 +137,12 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Сохранить title */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить title результата</Label>
+              <Label className="text-xs text-muted-foreground">Save title of result</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveResultTitleTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveResultTitleTo: e.target.value })}
-                  placeholder="result_title (необязательно)"
+                  placeholder={"result_title (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -154,12 +154,12 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Сохранить description */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить description результата</Label>
+              <Label className="text-xs text-muted-foreground">Save result description</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveResultDescTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveResultDescTo: e.target.value })}
-                  placeholder="result_desc (необязательно)"
+                  placeholder={"result_desc (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -171,12 +171,12 @@ export function UserbotInlineQueryConfiguration({
 
             {/* Сохранить ID отправленного */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить ID отправленного сообщения</Label>
+              <Label className="text-xs text-muted-foreground">Save sent message ID</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveResponseIdTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveResponseIdTo: e.target.value })}
-                  placeholder="sent_msg_id (необязательно)"
+                  placeholder={"sent_msg_id (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -193,7 +193,7 @@ export function UserbotInlineQueryConfiguration({
       <div className="rounded-lg border border-violet-200/40 dark:border-violet-800/40 bg-violet-50/30 dark:bg-violet-950/20 p-3">
         <div className="flex items-center gap-2 text-xs text-violet-700 dark:text-violet-300">
           <i className="fas fa-info-circle" />
-          <span>Выполняет inline-запрос (@bot query) и отправляет выбранный результат в чат.</span>
+          <span>Executes an inline query (@bot query) and sends the selected result to the chat.</span>
         </div>
       </div>
     </div>

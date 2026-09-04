@@ -27,7 +27,7 @@ export const VARIABLE_INPUT_CONFIGS: VariableInputConfig[] = [
   {
     enableKey: 'enablePhotoInput',
     variableKey: 'photoInputVariable',
-    title: 'Переменная для фото',
+    title: "Variable for photo",
     placeholder: 'user_photo',
     colors: {
       text: 'text-green-700 dark:text-green-300',
@@ -39,7 +39,7 @@ export const VARIABLE_INPUT_CONFIGS: VariableInputConfig[] = [
   {
     enableKey: 'enableVideoInput',
     variableKey: 'videoInputVariable',
-    title: 'Переменная для видео',
+    title: "Video variable",
     placeholder: 'user_video',
     colors: {
       text: 'text-red-700 dark:text-red-300',
@@ -51,7 +51,7 @@ export const VARIABLE_INPUT_CONFIGS: VariableInputConfig[] = [
   {
     enableKey: 'enableAudioInput',
     variableKey: 'audioInputVariable',
-    title: 'Переменная для аудио',
+    title: "Audio variable",
     placeholder: 'user_audio',
     colors: {
       text: 'text-yellow-700 dark:text-yellow-300',
@@ -63,7 +63,7 @@ export const VARIABLE_INPUT_CONFIGS: VariableInputConfig[] = [
   {
     enableKey: 'enableDocumentInput',
     variableKey: 'documentInputVariable',
-    title: 'Переменная для документа',
+    title: "Document variable",
     placeholder: 'user_document',
     colors: {
       text: 'text-purple-700 dark:text-purple-300',

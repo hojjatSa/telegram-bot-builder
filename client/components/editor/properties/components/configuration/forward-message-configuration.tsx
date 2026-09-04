@@ -212,7 +212,7 @@ export function ForwardMessageConfiguration({
           <div className="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
             <i className="fas fa-share text-amber-600 dark:text-amber-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-amber-900 dark:text-amber-100">Источник сообщения</Label>
+          <Label className="text-sm font-semibold text-amber-900 dark:text-amber-100">Message source</Label>
         </div>
 
         <div className="space-y-3">
@@ -228,25 +228,25 @@ export function ForwardMessageConfiguration({
             })}
           >
             <SelectTrigger className="bg-card/70 border border-amber-200/50 dark:border-amber-800/50">
-              <SelectValue placeholder="Выберите источник сообщения" />
+              <SelectValue placeholder={"Select message source"} />
             </SelectTrigger>
             <SelectContent>
               {/* Текущее входящее сообщение пользователя */}
-              <SelectItem value="current_message">Текущее сообщение</SelectItem>
+              <SelectItem value="current_message">Current message</SelectItem>
               {/* Последнее входящее сообщение пользователя */}
-              <SelectItem value="last_message">Последнее сообщение пользователя</SelectItem>
+              <SelectItem value="last_message">User's last message</SelectItem>
               {/** Последнее исходящее сообщение бота */}
-              <SelectItem value="last_bot_message">Последнее сообщение бота</SelectItem>
+              <SelectItem value="last_bot_message">Last bot message</SelectItem>
               {/* Указать ID сообщения вручную */}
-              <SelectItem value="manual">Вручную</SelectItem>
+              <SelectItem value="manual">Manually</SelectItem>
               {/* Взять ID сообщения из переменной */}
-              <SelectItem value="variable">Из переменной</SelectItem>
+              <SelectItem value="variable">From variable</SelectItem>
             </SelectContent>
           </Select>
 
           {sourceMode === 'manual' && (
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-amber-700 dark:text-amber-300">ID сообщения</Label>
+              <Label className="text-xs font-medium text-amber-700 dark:text-amber-300">Message ID</Label>
               <Input
                 value={data.sourceMessageId || ''}
                 onChange={(e) => onNodeUpdate(selectedNode.id, { sourceMessageId: e.target.value })}
@@ -254,16 +254,16 @@ export function ForwardMessageConfiguration({
                 className="bg-white/60 dark:bg-slate-950/60 border-amber-200/50 dark:border-amber-800/50"
               />
               <div className="text-xs text-amber-600/70 dark:text-amber-400/70 leading-relaxed">
-                Telegram message_id сообщения в диалоге с ботом. Найти можно в логах бота — строка вида{' '}
+                Telegram message_id of the message in the dialogue with the bot. You can find it in the bot logs - a line like{' '}
                 <span className="font-mono bg-amber-100/60 dark:bg-amber-900/30 px-1 rounded">tg_message_id=XXXX</span>
-                . Или используй режим «Последнее сообщение бота» — тогда ID подставится автоматически из переменной {'{last_bot_message_id}'}.
+                . Or use the “Last bot message” mode - then the ID will be substituted automatically from the variable {'{last_bot_message_id}'}.
               </div>
             </div>
           )}
 
           {sourceMode === 'variable' && (
             <div className="space-y-2">
-              <Label className="text-xs font-medium text-amber-700 dark:text-amber-300">Имя переменной</Label>
+              <Label className="text-xs font-medium text-amber-700 dark:text-amber-300">Variable name</Label>
               <div className="flex gap-2">
                 <Input
                   value={data.sourceMessageVariableName || ''}
@@ -281,12 +281,12 @@ export function ForwardMessageConfiguration({
 
           {linkedSourceNodeId && (
             <div className="text-xs text-amber-700/80 dark:text-amber-300/80 leading-relaxed">
-              Источник привязан к узлу: {linkedSourceLabel || linkedSourceNodeId}
+              The source is bound to the node: {linkedSourceLabel || linkedSourceNodeId}
             </div>
           )}
 
           <div className="text-xs text-amber-700/80 dark:text-amber-300/80 leading-relaxed">
-            Связь на холсте с узлом сообщения задаёт источник пересылки и не запускает `forward_message` автоматически. При необходимости можно указать ID вручную или взять его из переменной.
+            The canvas link to the message node specifies the forwarding source and does not trigger `forward_message` automatically. If necessary, you can specify the ID manually or take it from a variable.
           </div>
         </div>
       </div>
@@ -297,12 +297,12 @@ export function ForwardMessageConfiguration({
           <div className="w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
             <i className="fas fa-inbox text-sky-600 dark:text-sky-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-sky-900 dark:text-sky-100">Чат назначения</Label>
+          <Label className="text-sm font-semibold text-sky-900 dark:text-sky-100">Destination chat</Label>
         </div>
 
         <div className="space-y-3">
           <div className="text-xs text-sky-700/80 dark:text-sky-300/80 leading-relaxed">
-            Можно добавить несколько получателей. Первый получатель сохраняется в старые поля для совместимости.
+            You can add multiple recipients. The first recipient is retained in the old fields for compatibility.
           </div>
 
           <div className="space-y-3">
@@ -313,7 +313,7 @@ export function ForwardMessageConfiguration({
               >
                 <div className="flex items-center justify-between gap-3">
                   <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">
-                    Получатель {index + 1}
+                    Recipient {index + 1}
                   </Label>
                   <Button
                     type="button"
@@ -333,19 +333,19 @@ export function ForwardMessageConfiguration({
                   onValueChange={(value) => updateRecipient(index, { targetChatIdSource: value as TargetChatMode })}
                 >
                   <SelectTrigger className="bg-card/70 border border-sky-200/50 dark:border-sky-800/50">
-                    <SelectValue placeholder="Выберите способ указания чата" />
+                    <SelectValue placeholder={"Choose how to specify your chat"} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="manual">Вручную</SelectItem>
-                    <SelectItem value="variable">Из переменной</SelectItem>
-                    <SelectItem value="admin_ids">Admin IDs проекта</SelectItem>
+                    <SelectItem value="manual">Manually</SelectItem>
+                    <SelectItem value="variable">From variable</SelectItem>
+                    <SelectItem value="admin_ids">Admin IDs of the project</SelectItem>
                   </SelectContent>
                 </Select>
 
                 {recipient.targetChatIdSource === 'manual' && (
                   <div className="space-y-2">
                     {/* Тип получателя */}
-                    <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Тип получателя</Label>
+                    <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Recipient type</Label>
                     <Select
                       value={recipient.targetChatType || 'user'}
                       onValueChange={(value) => updateRecipient(index, { targetChatType: value as 'user' | 'group' })}
@@ -355,18 +355,18 @@ export function ForwardMessageConfiguration({
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="user">User</SelectItem>
-                        <SelectItem value="group">Группа или канал</SelectItem>
+                        <SelectItem value="group">Group or channel</SelectItem>
                       </SelectContent>
                     </Select>
 
                     {/* ID или username чата */}
                     <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">
-                      {recipient.targetChatType === 'group' ? 'ID или username группы/канала' : 'ID или username пользователя'}
+                      {recipient.targetChatType === 'group' ? "Group/channel ID or username" : "User ID or username"}
                     </Label>
                     <Input
                       value={recipient.targetChatId || ''}
                       onChange={(e) => updateRecipient(index, { targetChatId: e.target.value })}
-                      placeholder={recipient.targetChatType === 'group' ? '2300967595 или @channel_name' : '123456789 или @username'}
+                      placeholder={recipient.targetChatType === 'group' ? "2300967595 or @channel_name" : "123456789 or @username"}
                       className="bg-white/60 dark:bg-slate-950/60 border-sky-200/50 dark:border-sky-800/50"
                     />
 
@@ -375,7 +375,7 @@ export function ForwardMessageConfiguration({
                       <div className="space-y-2 pt-1">
                         <div className="flex items-center justify-between gap-2">
                           <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">
-                            ID топика (необязательно)
+                            Topic ID (optional)
                           </Label>
                           {/* Переключатель источника ID топика */}
                           <Select
@@ -392,8 +392,8 @@ export function ForwardMessageConfiguration({
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="manual">Вручную</SelectItem>
-                              <SelectItem value="variable">Из переменной</SelectItem>
+                              <SelectItem value="manual">Manually</SelectItem>
+                              <SelectItem value="variable">From variable</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -408,7 +408,7 @@ export function ForwardMessageConfiguration({
                               className="bg-white/60 dark:bg-slate-950/60 border-sky-200/50 dark:border-sky-800/50"
                             />
                             <div className="text-xs text-sky-600/70 dark:text-sky-400/70">
-                              Для форум-групп. Найти в ссылке: t.me/c/GROUP_ID/TOPIC_ID/MSG_ID
+                              For forum groups. Find in the link: t.me/c/GROUP_ID/TOPIC_ID/MSG_ID
                             </div>
                           </>
                         )}
@@ -423,7 +423,7 @@ export function ForwardMessageConfiguration({
                               placeholder="forum_thread_id"
                             />
                             <div className="text-xs text-sky-600/70 dark:text-sky-400/70">
-                              Переменная должна содержать числовой ID топика форум-группы.
+                              The variable must contain the numeric ID of the forum group topic.
                             </div>
                           </>
                         )}
@@ -434,7 +434,7 @@ export function ForwardMessageConfiguration({
 
                 {recipient.targetChatIdSource === 'variable' && (
                   <div className="space-y-2">
-                    <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Имя переменной</Label>
+                    <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Variable name</Label>
                     <Input
                       value={recipient.targetChatVariableName || ''}
                       onChange={(e) => updateRecipient(index, { targetChatVariableName: e.target.value })}
@@ -446,7 +446,7 @@ export function ForwardMessageConfiguration({
 
                 {recipient.targetChatIdSource === 'admin_ids' && (
                   <div className="rounded-lg border border-sky-200/40 dark:border-sky-800/30 bg-sky-50/70 dark:bg-sky-950/20 px-3 py-2 text-xs text-sky-700 dark:text-sky-300 leading-relaxed">
-                    Будут использованы admin ids проекта. Это удобно для отправки сообщения сразу всем администраторам.
+                    The admin ids of the project will be used. This is convenient for sending a message to all administrators at once.
                   </div>
                 )}
               </div>
@@ -460,7 +460,7 @@ export function ForwardMessageConfiguration({
             onClick={addRecipient}
           >
             <i className="fas fa-plus mr-2"></i>
-            Добавить получателя
+            Add recipient
           </Button>
         </div>
       </div>
@@ -469,9 +469,9 @@ export function ForwardMessageConfiguration({
       <div className="bg-gradient-to-br from-slate-50/50 to-slate-100/30 dark:from-slate-950/20 dark:to-slate-900/10 border border-slate-200/30 dark:border-slate-800/30 rounded-lg p-4 space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div>
-            <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Отправлять без уведомления</Label>
+            <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Send without notification</Label>
             <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">
-              Пересылать сообщение тихо, без звука и push-уведомления у получателя.
+              Forward a message quietly, without sound or push notifications to the recipient.
             </div>
           </div>
           <Switch
@@ -482,9 +482,9 @@ export function ForwardMessageConfiguration({
         <div className="border-t border-slate-200/40 dark:border-slate-700/40" />
         <div className="flex items-center justify-between gap-3">
           <div>
-            <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Скрыть автора</Label>
+            <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Hide author</Label>
             <div className="text-xs text-slate-600 dark:text-slate-400 mt-1">
-              Использует <span className="font-mono">copy_message</span> вместо <span className="font-mono">forward_message</span> — сообщение придёт без ссылки на оригинал.
+              Uses <span className="font-mono">copy_message</span> instead of <span className="font-mono">forward_message</span> — the message will arrive without a link to the original.
             </div>
           </div>
           <Switch

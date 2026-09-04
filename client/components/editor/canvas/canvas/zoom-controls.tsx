@@ -130,7 +130,7 @@ export function ZoomControls({
         onPointerCancel={stopRepeat}
         disabled={!canZoomOut}
         className={`${BUTTON_BASE_CLASSES} ${BUTTON_INACTIVE_CLASSES} ${!canZoomOut ? BUTTON_DISABLED_CLASSES : ''}`}
-        title="Уменьшить масштаб (Ctrl + -)"
+        title={"Zoom out (Ctrl + -)"}
       >
         <i className={`fas fa-search-minus ${ICON_CLASSES}`} />
       </button>
@@ -140,7 +140,7 @@ export function ZoomControls({
         <PopoverTrigger asChild>
           <button
             className="flex-shrink-0 px-2 py-0 h-9 rounded-xl bg-slate-200/60 hover:bg-slate-300/80 dark:bg-slate-700/50 dark:hover:bg-slate-600/70 border border-slate-300/50 hover:border-slate-400/70 dark:border-slate-600/50 dark:hover:border-slate-500/70 transition-colors duration-200 text-slate-700 dark:text-slate-300 font-mono text-xs group flex items-center gap-1"
-            title="Выбрать масштаб"
+            title={"Select scale"}
           >
             <span className="flex items-center justify-center space-x-1">
               <span>{Math.round(zoom)}%</span>
@@ -153,7 +153,7 @@ export function ZoomControls({
             {/* Ползунок масштаба */}
             <div>
               <label className="text-xs font-medium text-gray-600 dark:text-gray-400 block mb-2">
-                Точный масштаб
+                Accurate scale
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -174,7 +174,7 @@ export function ZoomControls({
             {/* Быстрый выбор масштаба */}
             <div className="space-y-1">
               <div className="text-xs font-medium text-gray-600 dark:text-gray-400 px-2 py-1">
-                Быстрый выбор
+                Quick selection
               </div>
               {ZOOM_LEVELS.map((level) => (
                 <button
@@ -188,7 +188,7 @@ export function ZoomControls({
                 >
                   <div className="flex items-center justify-between">
                     <span>{level}%</span>
-                    {level === 100 && <span className="text-xs opacity-60">По умолчанию</span>}
+                    {level === 100 && <span className="text-xs opacity-60">Default</span>}
                     {level === 200 && <span className="text-xs opacity-60">Maximum</span>}
                     {level === 1 && <span className="text-xs opacity-60">Minimum</span>}
                   </div>
@@ -205,7 +205,7 @@ export function ZoomControls({
             >
               <div className="flex items-center space-x-2">
                 <i className="fas fa-home text-xs" />
-                <span>Сбросить вид</span>
+                <span>Reset view</span>
               </div>
             </button>
 
@@ -217,7 +217,7 @@ export function ZoomControls({
             >
               <div className="flex items-center space-x-2">
                 <i className="fas fa-expand-arrows-alt text-xs" />
-                <span>Уместить всё</span>
+                <span>Fit everything</span>
               </div>
             </button>
           </div>
@@ -232,7 +232,7 @@ export function ZoomControls({
         onPointerCancel={stopRepeat}
         disabled={!canZoomIn}
         className={`${BUTTON_BASE_CLASSES} ${BUTTON_INACTIVE_CLASSES} ${!canZoomIn ? BUTTON_DISABLED_CLASSES : ''} flex items-center justify-center`}
-        title="Увеличить масштаб (Ctrl + +)"
+        title={"Zoom in (Ctrl + +)"}
       >
         <i className={`fas fa-search-plus ${ICON_CLASSES}`} />
       </button>
@@ -242,7 +242,7 @@ export function ZoomControls({
         onClick={onFitToContent}
         disabled={!canFitToContent}
         className={`${BUTTON_BASE_CLASSES} ${BUTTON_INACTIVE_CLASSES} ${!canFitToContent ? BUTTON_DISABLED_CLASSES : ''} flex items-center justify-center`}
-        title="Уместить в экран (Ctrl + 1)"
+        title={"Fit to screen (Ctrl + 1)"}
       >
         <i className={`fas fa-expand-arrows-alt ${ICON_CLASSES}`} />
       </button>
@@ -256,7 +256,7 @@ export function ZoomControls({
             ? 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/40 hover:bg-amber-500/30 hover:border-amber-500/60'
             : BUTTON_INACTIVE_CLASSES
         } ${!canRestorePreviousView ? BUTTON_DISABLED_CLASSES : ''} flex items-center justify-center`}
-        title="Вернуть предыдущий вид камеры (Escape)"
+        title={"Return to previous camera view (Escape)"}
       >
         <i className={`fas fa-history text-sm transition-colors ${
           canRestorePreviousView
@@ -272,7 +272,7 @@ export function ZoomControls({
           ? 'bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30'
           : BUTTON_INACTIVE_CLASSES
         } flex items-center justify-center`}
-        title={autoFitValue ? 'Авто-уместить при смене листа: ВКЛ' : 'Авто-уместить при смене листа: ВЫКЛ'}
+        title={autoFitValue ? "Auto-fit when changing sheet: ON" : "Auto-fit when changing sheet: OFF"}
       >
         <span className="text-[10px] font-bold leading-none">A</span>
       </button>

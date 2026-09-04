@@ -20,11 +20,11 @@ export function AddBotDialogHeader() {
           <Plus className="w-5 h-5 text-blue-600 dark:text-blue-400" />
         </div>
         <div>
-          <DialogTitle className="text-xl sm:text-2xl">Подключить бота</DialogTitle>
+          <DialogTitle className="text-xl sm:text-2xl">Connect a bot</DialogTitle>
         </div>
       </div>
       <DialogDescription className="text-sm">
-        Добавьте нового бота, используя токен от <span className="font-semibold text-foreground">@BotFather</span>
+        Add a new bot using the token from <span className="font-semibold text-foreground">@BotFather</span>
       </DialogDescription>
     </DialogHeader>
   );

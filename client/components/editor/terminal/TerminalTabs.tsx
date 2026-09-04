@@ -142,7 +142,7 @@ export function TerminalTabs({ onTerminalSelect }: TerminalTabsProps) {
   return (
     <Select value={activeTerminalId || ''} onValueChange={handleSelectChange}>
       <SelectTrigger className="h-7 max-w-[min(100%,480px)] text-xs">
-        <SelectValue placeholder="Выберите терминал" />
+        <SelectValue placeholder={"Select terminal"} />
       </SelectTrigger>
       <SelectContent>
         {sortedTerminals.map((terminal) => {

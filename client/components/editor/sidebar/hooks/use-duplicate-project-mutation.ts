@@ -65,14 +65,14 @@ export function useDuplicateProjectMutation(): UseDuplicateProjectMutationResult
       }
 
       toast({
-        title: "Проект дублирован",
+        title: "The project is duplicated",
         description: `Создана копия "${newProject.name}"`,
       });
     },
     onError: () => {
       toast({
-        title: "Ошибка дублирования",
-        description: "Не удалось дублировать проект",
+        title: "Duplication error",
+        description: "Failed to duplicate project",
         variant: "destructive",
       });
     }

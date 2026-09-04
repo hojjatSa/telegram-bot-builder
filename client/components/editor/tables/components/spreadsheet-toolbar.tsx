@@ -90,7 +90,7 @@ export function SpreadsheetToolbar({
         onClick={onReindex}
       >
         <RefreshCw className="h-3.5 w-3.5" />
-        Перезаписать ID
+        Overwrite ID
       </Button>
 
       {/* Импорт, вставка и экспорт */}
@@ -100,10 +100,10 @@ export function SpreadsheetToolbar({
           variant="ghost"
           className="h-7 text-xs gap-1.5"
           onClick={handlePasteFromClipboard}
-          title="Вставить данные из буфера обмена"
+          title={"Paste data from clipboard"}
         >
           <ClipboardPaste className="h-3.5 w-3.5" />
-          Вставить
+          Insert
         </Button>
         <Button
           size="sm"

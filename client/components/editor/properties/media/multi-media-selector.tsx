@@ -167,10 +167,10 @@ export function MultiMediaSelector({
             onClick={handleEnableAllFiles}
             className="w-full text-xs px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors font-medium"
           >
-            Включить все файлы ({hiddenCount} скрыто)
+            Include all files ({hiddenCount} hidden)
           </button>
           <p className="text-xs text-muted-foreground text-center">
-            При включении клавиатура отключится
+            The keyboard will turn off when turned on.
           </p>
         </div>
       )}

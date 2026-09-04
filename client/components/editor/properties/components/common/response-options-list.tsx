@@ -42,11 +42,11 @@ export function ResponseOptionsList({
     <div>
       <div className="flex items-center justify-between mb-3">
         <Label className="text-xs font-medium text-blue-700 dark:text-blue-300">
-          <i className="fas fa-list-ul mr-1"></i>Варианты ответов
+          <i className="fas fa-list-ul mr-1"></i>Answer options
         </Label>
         <UIButton size="sm" variant="ghost" onClick={addOption}
           className="text-xs text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200">
-          + Добавить
+          +Add
         </UIButton>
       </div>
       <div className="space-y-3">
@@ -55,7 +55,7 @@ export function ResponseOptionsList({
             <div className="flex items-center justify-between mb-2">
               <Input value={option.text} onChange={(e) => updateOption(i, { text: e.target.value })}
                 className="flex-1 text-sm font-medium bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Текст кнопки" />
+                placeholder={"Button text"} />
               <UIButton size="sm" variant="ghost" onClick={() => removeOption(i)}
                 className="text-muted-foreground hover:text-destructive h-auto p-1">
                 <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -65,10 +65,10 @@ export function ResponseOptionsList({
             </div>
             <div className="space-y-2">
               <div>
-                <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Значение для сохранения</Label>
+                <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Value to save</Label>
                 <Input value={option.value || ''} onChange={(e) => updateOption(i, { value: e.target.value })}
                   className="text-xs border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
-                  placeholder="Значение (если пусто - используется текст кнопки)" />
+                  placeholder={"Value (if empty, the button text is used)"} />
               </div>
               <ActionSelector action={option.action as ResponseAction} index={i} onActionChange={(idx, a) => updateOption(idx, { action: a })} />
               <div className="mt-2">

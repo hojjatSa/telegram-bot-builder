@@ -39,18 +39,18 @@ export function DelayConfiguration({ selectedNode, onNodeUpdate, textVariables =
     <div className="space-y-4 p-4">
       {/* Режим */}
       <div className="space-y-2">
-        <Label className="text-xs font-medium">Режим</Label>
+        <Label className="text-xs font-medium">Mode</Label>
         <Select value={mode} onValueChange={(val) => onNodeUpdate(selectedNode.id, { mode: val })}>
           <SelectTrigger className="h-8 text-xs">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="blocking">⏸ Пауза</SelectItem>
-            <SelectItem value="background">🚀 Фоновый таймер</SelectItem>
+            <SelectItem value="blocking">⏸ Pause</SelectItem>
+            <SelectItem value="background">🚀 Background timer</SelectItem>
           </SelectContent>
         </Select>
         <p className="text-[10px] text-gray-400">
-          {mode === 'blocking' ? 'Ждёт указанное время, потом переходит дальше' : 'Запускает переход через N времени, цепочка завершается сразу'}
+          {mode === 'blocking' ? "Waits for the specified time, then moves on" : "Starts a transition after N time, the chain ends immediately"}
         </p>
       </div>
 
@@ -61,7 +61,7 @@ export function DelayConfiguration({ selectedNode, onNodeUpdate, textVariables =
           <Input
             value={seconds}
             onChange={(e) => onNodeUpdate(selectedNode.id, { seconds: e.target.value })}
-            placeholder={unit === 'seconds' ? '3 или 0.1' : '3'}
+            placeholder={unit === 'seconds' ? "3 or 0.1" : '3'}
             className="h-8 text-xs flex-1"
           />
           <Select value={unit} onValueChange={(val) => onNodeUpdate(selectedNode.id, { unit: val })}>
@@ -69,17 +69,17 @@ export function DelayConfiguration({ selectedNode, onNodeUpdate, textVariables =
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="seconds">Секунды</SelectItem>
-              <SelectItem value="minutes">Минуты</SelectItem>
-              <SelectItem value="hours">Часы</SelectItem>
-              <SelectItem value="days">Дни</SelectItem>
-              <SelectItem value="weeks">Недели</SelectItem>
+              <SelectItem value="seconds">Seconds</SelectItem>
+              <SelectItem value="minutes">minutes</SelectItem>
+              <SelectItem value="hours">Watch</SelectItem>
+              <SelectItem value="days">Days</SelectItem>
+              <SelectItem value="weeks">weeks</SelectItem>
             </SelectContent>
           </Select>
         </div>
         {unit === 'seconds' && (
           <p className="text-[10px] text-gray-400">
-            Дробные значения поддерживаются, например 0.1 = 100 мс
+            Fractional values ​​are supported, for example 0.1 = 100 ms
           </p>
         )}
       </div>

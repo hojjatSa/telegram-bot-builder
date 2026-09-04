@@ -35,17 +35,17 @@ export function CopyFileIdButton({ fileId, className = '' }: CopyFileIdButtonPro
     e.stopPropagation();
     navigator.clipboard.writeText(fileId).then(() => {
       setCopied(true);
-      toast({ description: 'file_id скопирован' });
+      toast({ description: "file_id copied" });
       setTimeout(() => setCopied(false), 2000);
     }).catch(() => {
-      toast({ description: 'Не удалось скопировать', variant: 'destructive' });
+      toast({ description: "Failed to copy", variant: 'destructive' });
     });
   }, [fileId, toast]);
 
   return (
     <button
       onClick={handleCopy}
-      title="Скопировать file_id"
+      title={"Copy file_id"}
       className={`flex items-center justify-center w-6 h-6 rounded bg-black/50 hover:bg-black/70 text-white transition-colors ${className}`}
     >
       {copied

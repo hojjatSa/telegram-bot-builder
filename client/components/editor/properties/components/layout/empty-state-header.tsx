@@ -25,7 +25,7 @@ export function EmptyStateHeader({ onClose }: EmptyStateHeaderProps) {
           </div>
           <div>
             <h2 className="text-sm font-semibold text-foreground">Properties</h2>
-            <p className="text-xs text-muted-foreground">Выберите элемент для настройки</p>
+            <p className="text-xs text-muted-foreground">Select an item to customize</p>
           </div>
         </div>
         {onClose && (

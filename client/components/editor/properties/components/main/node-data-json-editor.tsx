@@ -77,7 +77,7 @@ export function NodeDataJsonEditor({ value, error, onChange, onApply }: NodeData
         />
       </div>
       <p className="px-4 pb-3 text-[11px] text-muted-foreground shrink-0">
-        Редактируется только <code className="font-mono">node.data</code>. Нажмите «Применить» или Ctrl+S.
+        Editable only <code className="font-mono">node.data</code>. Click "Apply" or Ctrl+S.
       </p>
     </div>
   );

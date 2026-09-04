@@ -74,7 +74,7 @@ export function BotTokenSelector({
     return (
       <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
         <Bot className="w-3.5 h-3.5" />
-        <span>Нет ботов</span>
+        <span>No bots</span>
       </div>
     );
   }
@@ -107,7 +107,7 @@ export function BotTokenSelector({
           <SelectValue placeholder="Bot" />
         </SelectTrigger>
         <SelectContent>
-          {allowAll ? <SelectItem value="all">Все боты</SelectItem> : null}
+          {allowAll ? <SelectItem value="all">All bots</SelectItem> : null}
           {sortedTokens.map((token) => {
             const count = userCounts.get(token.id);
             const label =

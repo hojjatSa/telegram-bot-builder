@@ -30,7 +30,7 @@ const FILE_ICONS: Record<string, string> = {
 
 /** SVG-заглушка при ошибке загрузки изображения */
 const ERROR_PLACEHOLDER =
-  'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect fill="%23f5f5f5" width="100" height="100"/%3E%3Ctext x="50" y="50" text-anchor="middle" dy=".3em" font-family="Arial" font-size="12" fill="%23999"%3EОшибка%3C/text%3E%3C/svg%3E';
+  "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"%3E%3Crect fill=\"%23f5f5f5\" width=\"100\" height=\"100\"/%3E%3Ctext x=\"50\" y=\"50\" text-anchor=\"middle\" dy=\".3em\" font-family=\"Arial\" font-size=\"12\" fill=\"%23999\"%3EError%3C/text%3E%3C/svg%3E";
 
 /**
  * Проверяет, является ли строка переменной вида {var.path}
@@ -85,7 +85,7 @@ function VideoWithThumbnail({ src, thumbnailUrl }: { src: string; thumbnailUrl?:
     >
       <img
         src={thumbnailUrl}
-        alt="обложка видео"
+        alt={"video cover"}
         className="w-full h-auto max-h-48 object-cover"
         onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
       />
@@ -95,7 +95,7 @@ function VideoWithThumbnail({ src, thumbnailUrl }: { src: string; thumbnailUrl?:
         </div>
       </div>
       <div className="absolute bottom-1 right-1 bg-black/60 rounded px-1.5 py-0.5">
-        <span className="text-[10px] text-white">🖼 обложка</span>
+        <span className="text-[10px] text-white">🖼 cover</span>
       </div>
     </div>
   );
@@ -172,7 +172,7 @@ export function MediaAttachmentsPreview({ node, projectId }: MediaAttachmentsPre
                   <span className="text-2xl">{icon}</span>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-violet-900 dark:text-violet-100 truncate">Telegram file_id ({mediaType})</p>
-                    <p className="text-xs text-violet-700/70 dark:text-violet-300/70">Отправка без скачивания</p>
+                    <p className="text-xs text-violet-700/70 dark:text-violet-300/70">Sending without downloading</p>
                   </div>
                 </div>
               )}
@@ -187,7 +187,7 @@ export function MediaAttachmentsPreview({ node, projectId }: MediaAttachmentsPre
               <div className="flex items-center gap-3">
                 <span className="text-2xl">🖼️</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-amber-900 dark:text-amber-100 truncate">Фото {index + 1}</p>
+                  <p className="text-sm font-semibold text-amber-900 dark:text-amber-100 truncate">Photo {index + 1}</p>
                   <p className="text-xs font-mono text-amber-700/70 dark:text-amber-300/70 truncate">{url}</p>
                 </div>
               </div>
@@ -227,7 +227,7 @@ export function MediaAttachmentsPreview({ node, projectId }: MediaAttachmentsPre
             <div className="flex items-center gap-3">
               <span className="text-2xl">{FILE_ICONS[fileType] || '📄'}</span>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-blue-900 dark:text-blue-100 truncate">Файл {index + 1}</p>
+                <p className="text-sm font-semibold text-blue-900 dark:text-blue-100 truncate">File {index + 1}</p>
                 <p className="text-xs text-blue-700/70 dark:text-blue-300/70 truncate">{fileType.toUpperCase()}</p>
               </div>
             </div>

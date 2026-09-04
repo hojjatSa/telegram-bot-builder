@@ -36,7 +36,7 @@ export function DesktopLoadTemplateButton({ onClick, isVertical }: DesktopLoadTe
       )}
     >
       <FolderOpen className="h-3.5 w-3.5 max-sm:mx-auto" />
-      <span className="ml-1 hidden xl:inline">Сценарии</span>
+      <span className="ml-1 hidden xl:inline">Scenarios</span>
     </Button>
   );
 }

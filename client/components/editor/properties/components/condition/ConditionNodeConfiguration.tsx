@@ -81,10 +81,10 @@ export function ConditionNodeConfiguration({ selectedNode, allNodes, getAllNodes
           value={variable}
           availableVariables={textVariables}
           onChange={(val) => onNodeUpdate(selectedNode.id, { variable: val })}
-          placeholder="{{name}}, {{возраст}}, {{город}}"
+          placeholder={"{{name}}, {{age}}, {{city}}"}
         />
         <p className="text-xs text-gray-400 dark:text-gray-500">
-          Укажите переменную, которую хотите проверить
+          Specify the variable you want to check
         </p>
       </div>
       )}
@@ -117,7 +117,7 @@ export function ConditionNodeConfiguration({ selectedNode, allNodes, getAllNodes
           className="w-full border-dashed border-violet-300 dark:border-violet-700 text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-900/20 hover:border-violet-400"
         >
           <Plus className="h-3.5 w-3.5 mr-1" />
-          Добавить условие
+          Add condition
         </Button>
       </div>
     </div>

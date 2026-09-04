@@ -39,16 +39,16 @@ interface AdminRightsEditorProps {
  * Список прав администратора с настройками по умолчанию
  */
 const ADMIN_RIGHTS: AdminRight[] = [
-  { key: 'canChangeInfo', label: 'Изменять информацию группы', icon: 'fas fa-edit' },
-  { key: 'canDeleteMessages', label: 'Удалять сообщения', icon: 'fas fa-trash', default: true },
-  { key: 'canBanUsers', label: 'Блокировать пользователей', icon: 'fas fa-ban' },
-  { key: 'canInviteUsers', label: 'Приглашать пользователей', icon: 'fas fa-user-plus', default: true },
-  { key: 'canPinMessages', label: 'Закреплять сообщения', icon: 'fas fa-thumbtack', default: true },
-  { key: 'canAddAdmins', label: 'Добавлять администраторов', icon: 'fas fa-user-shield' },
-  { key: 'canRestrictMembers', label: 'Ограничивать участников', icon: 'fas fa-user-lock' },
-  { key: 'canPromoteMembers', label: 'Повышать участников', icon: 'fas fa-arrow-up' },
-  { key: 'canManageVideoChats', label: 'Управлять видеозвонками', icon: 'fas fa-video' },
-  { key: 'isAnonymous', label: 'Анонимный админ', icon: 'fas fa-user-secret' }
+  { key: 'canChangeInfo', label: "Change group information", icon: 'fas fa-edit' },
+  { key: 'canDeleteMessages', label: "Delete messages", icon: 'fas fa-trash', default: true },
+  { key: 'canBanUsers', label: "Block users", icon: 'fas fa-ban' },
+  { key: 'canInviteUsers', label: "Invite users", icon: 'fas fa-user-plus', default: true },
+  { key: 'canPinMessages', label: "Pin messages", icon: 'fas fa-thumbtack', default: true },
+  { key: 'canAddAdmins', label: "Add administrators", icon: 'fas fa-user-shield' },
+  { key: 'canRestrictMembers', label: "Limit participants", icon: 'fas fa-user-lock' },
+  { key: 'canPromoteMembers', label: "Promote members", icon: 'fas fa-arrow-up' },
+  { key: 'canManageVideoChats', label: "Manage video calls", icon: 'fas fa-video' },
+  { key: 'isAnonymous', label: "Anonymous admin", icon: 'fas fa-user-secret' }
 ];
 
 /**

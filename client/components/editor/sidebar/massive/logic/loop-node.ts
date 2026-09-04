@@ -11,7 +11,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const loopNode: ComponentDefinition = {
   id: 'loop-node',
   name: '🔄 Loop',
-  description: 'Цикл по массиву — выполнить цепочку для каждого элемента',
+  description: "Loop through an array - chain through each element",
   icon: 'fas fa-sync-alt',
   color: 'bg-violet-100 text-violet-600',
   type: 'loop',

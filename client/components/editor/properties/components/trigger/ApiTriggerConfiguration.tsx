@@ -82,12 +82,12 @@ export function ApiTriggerConfiguration({
           <span className="text-sm font-medium text-violet-700 dark:text-violet-300">API Trigger</span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Принимает HTTP-запрос от внешней системы и запускает цепочку. Secret передавайте в заголовке X-Api-Secret.
+          Receives an HTTP request from an external system and starts the chain. Pass Secret in the X-Api-Secret header.
         </p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-xs">Публичный URL</Label>
+        <Label className="text-xs">Public URL</Label>
         <Input readOnly value={publicUrl} className="font-mono text-xs" />
         {urlHint && (
           <p className="text-[10px] text-muted-foreground">{urlHint}</p>
@@ -96,7 +96,7 @@ export function ApiTriggerConfiguration({
 
       <div className="grid grid-cols-2 gap-3">
         <div className="space-y-2">
-          <Label className="text-xs">Метод</Label>
+          <Label className="text-xs">Method</Label>
           <Select value={method} onValueChange={(v) => update('apiMethod', v)}>
             <SelectTrigger><SelectValue /></SelectTrigger>
             <SelectContent>
@@ -107,7 +107,7 @@ export function ApiTriggerConfiguration({
           </Select>
         </div>
         <div className="space-y-2">
-          <Label className="text-xs">Путь</Label>
+          <Label className="text-xs">Path</Label>
           <Input value={path} onChange={(e) => update('apiPath', e.target.value)} placeholder="/payment" />
         </div>
       </div>
@@ -117,22 +117,22 @@ export function ApiTriggerConfiguration({
         <div className="flex gap-2">
           <Input value={secret} onChange={(e) => update('apiSecretToken', e.target.value)} className="font-mono text-xs" />
           <Button type="button" variant="outline" size="sm" onClick={() => update('apiSecretToken', generateSecret())}>
-            Сгенерировать
+            Generate
           </Button>
         </div>
-        <p className="text-[10px] text-amber-600 dark:text-amber-400">Не вставляйте secret во frontend-код сайта.</p>
+        <p className="text-[10px] text-amber-600 dark:text-amber-400">Do not insert secret into the frontend code of the site.</p>
       </div>
 
       <div className="space-y-2">
-        <Label className="text-xs">Сохранить body в</Label>
+        <Label className="text-xs">Save body to</Label>
         <Input value={String(data.apiSaveBodyTo ?? '')} onChange={(e) => update('apiSaveBodyTo', e.target.value)} placeholder="body" />
       </div>
       <div className="space-y-2">
-        <Label className="text-xs">Сохранить query в (опц.)</Label>
+        <Label className="text-xs">Save query to (optional)</Label>
         <Input value={String(data.apiSaveQueryTo ?? '')} onChange={(e) => update('apiSaveQueryTo', e.target.value)} />
       </div>
       <div className="space-y-2">
-        <Label className="text-xs">Сохранить headers в (опц.)</Label>
+        <Label className="text-xs">Save headers to (optional)</Label>
         <Input value={String(data.apiSaveHeadersTo ?? '')} onChange={(e) => update('apiSaveHeadersTo', e.target.value)} />
       </div>
 

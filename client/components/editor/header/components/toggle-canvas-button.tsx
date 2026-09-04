@@ -31,11 +31,11 @@ export function ToggleCanvasButton({ canvasVisible, onClick }: ToggleCanvasButto
           ? 'bg-cyan-600 text-white shadow-md shadow-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/40'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
       )}
-      title={canvasVisible ? 'Скрыть холст' : 'Показать холст'}
+      title={canvasVisible ? "Hide Canvas" : "Show canvas"}
       data-testid="button-mobile-toggle-canvas"
     >
       <Monitor className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{canvasVisible ? 'Hide' : 'Show'} холст</span>
+      <span className="sm:hidden">{canvasVisible ? 'Hide' : 'Show'} canvas</span>
     </Button>
   );
 }

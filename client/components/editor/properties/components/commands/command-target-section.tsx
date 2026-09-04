@@ -61,7 +61,7 @@ export function CommandTargetSection({
         onValueChange={(value) => onButtonUpdate(selectedNode.id, button.id, { target: value })}
       >
         <SelectTrigger className="text-xs bg-white/60 dark:bg-slate-950/60 border border-orange-300/40 dark:border-orange-700/40 hover:border-orange-400/60 dark:hover:border-orange-600/60 focus:border-orange-500 focus:ring-orange-400/30">
-          <SelectValue placeholder="Выберите команду" />
+          <SelectValue placeholder={"Select a team"} />
         </SelectTrigger>
         <SelectContent className="bg-gradient-to-br from-orange-50/95 to-amber-50/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-48 overflow-y-auto">
           {commandSourceNodes.map((node) => (
@@ -70,7 +70,7 @@ export function CommandTargetSection({
                 <i className="fas fa-bolt text-xs"></i>
                 <span>{node.data.command}</span>
                 <span className="text-gray-500">
-                  - источник команды
+                  - command source
                 </span>
                 {node.data.description && (
                   <span className="text-gray-500">- {node.data.description}</span>
@@ -94,7 +94,7 @@ export function CommandTargetSection({
         value={button.target || ''}
         onChange={(e) => onButtonUpdate(selectedNode.id, button.id, { target: e.target.value })}
         className="text-xs"
-        placeholder="Введите команду (например: /help)"
+        placeholder={"Enter the command (for example: /help)"}
       />
 
       {isInvalidCommand && (
@@ -106,7 +106,7 @@ export function CommandTargetSection({
               clipRule="evenodd"
             />
           </svg>
-          <span>Команда должна начинаться с символа "/"</span>
+          <span>The command must begin with a "/" character</span>
         </div>
       )}
     </div>

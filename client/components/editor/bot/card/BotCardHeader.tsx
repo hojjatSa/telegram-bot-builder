@@ -103,7 +103,7 @@ export function BotCardHeader({
       size="icon"
       className="h-7 w-7 flex-shrink-0"
       onClick={onToggleCollapse}
-      aria-label={isCollapsed ? 'Развернуть карточку' : 'Свернуть карточку'}
+      aria-label={isCollapsed ? "Expand card" : "Collapse card"}
     >
       {isCollapsed ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
     </Button>
@@ -140,7 +140,7 @@ export function BotCardHeader({
             <Input
               value={editValue} onChange={(e) => setEditValue(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') handleSaveEdit(); else if (e.key === 'Escape') handleCancelEdit(); }}
-              onBlur={handleSaveEdit} autoFocus aria-label="Редактировать имя бота"
+              onBlur={handleSaveEdit} autoFocus aria-label={"Edit bot name"}
               className="font-bold text-base sm:text-lg h-auto px-2 py-1 flex-1 min-w-0"
               data-testid="input-bot-name-edit"
             />
@@ -159,7 +159,7 @@ export function BotCardHeader({
                     <Pencil className="w-3 h-3 text-muted-foreground opacity-0 group-hover/name:opacity-60 transition-opacity flex-shrink-0" aria-hidden="true" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent side="top">Двойной клик для редактирования имени</TooltipContent>
+                <TooltipContent side="top">Double click to edit name</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           )}
@@ -170,7 +170,7 @@ export function BotCardHeader({
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs sm:text-sm text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 hover:underline transition-colors"
-              title="Открыть бота в Telegram"
+              title={"Open a bot in Telegram"}
               data-testid="link-bot-username"
             >
               @{token.botUsername}

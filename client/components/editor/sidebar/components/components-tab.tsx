@@ -63,7 +63,7 @@ export function ComponentsTab({
   onComponentAdd,
 }: ComponentsTabProps) {
   /** Заголовок секции команд */
-  const COMMANDS_TITLE = 'Команды';
+  const COMMANDS_TITLE = "Teams";
 
   /** Строка поиска по компонентам */
   const [searchQuery, setSearchQuery] = useState('');
@@ -79,14 +79,14 @@ export function ComponentsTab({
         <Input
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Поиск компонентов..."
+          placeholder={"Search components..."}
           className="h-8 text-xs pl-8 pr-2"
         />
       </div>
 
       {/* Результаты поиска — плоский список */}
       {filtered && !filtered.hasResults && (
-        <p className="text-xs text-muted-foreground text-center py-4">Ничего не найдено</p>
+        <p className="text-xs text-muted-foreground text-center py-4">Nothing found</p>
       )}
 
       {filtered && filtered.hasResults && (

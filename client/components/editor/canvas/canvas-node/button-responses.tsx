@@ -34,7 +34,7 @@ export function ButtonResponses({ inputVariable }: ButtonResponsesProps) {
       </div>
       <div className="flex-1 min-w-0">
         <div className="text-xs font-medium text-slate-700 dark:text-slate-300">
-          Кнопки как варианты ответа
+          Buttons as answer options
         </div>
         <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-1 mt-1">
           {inputVariable ? (
@@ -45,7 +45,7 @@ export function ButtonResponses({ inputVariable }: ButtonResponsesProps) {
               </code>
             </>
           ) : (
-            <span className="text-amber-600 dark:text-amber-400 italic">Переменная не задана</span>
+            <span className="text-amber-600 dark:text-amber-400 italic">Variable not set</span>
           )}
         </div>
       </div>

@@ -38,12 +38,12 @@ export function ClientAuthProperties({ node }: ClientAuthPropertiesProps) {
           <div className="flex items-center justify-between">
             <h4 className="font-semibold text-emerald-800 dark:text-emerald-300 flex items-center gap-2">
               <i className="fas fa-database text-emerald-600 dark:text-emerald-400"></i>
-              Источник данных
+              Data source
             </h4>
             <div className="flex items-center gap-2">
               <ComingSoonBadge />
               <Badge variant={sessionCreated ? "default" : "secondary"} className={sessionCreated ? "bg-emerald-500" : "bg-gray-500"}>
-                {sessionCreated ? "✅ Сессия активна" : "⏳ Нет сессии"}
+                {sessionCreated ? "✅ Session active" : "⏳ No session"}
               </Badge>
             </div>
           </div>
@@ -51,15 +51,15 @@ export function ClientAuthProperties({ node }: ClientAuthPropertiesProps) {
           <div className="space-y-2 text-sm text-emerald-700 dark:text-emerald-300">
             <p className="flex items-center gap-2">
               <i className="fas fa-table w-5"></i>
-              <span>Таблица: <code className="bg-emerald-100 dark:bg-emerald-900/40 px-2 py-0.5 rounded">user_telegram_settings</code></span>
+              <span>Table: <code className="bg-emerald-100 dark:bg-emerald-900/40 px-2 py-0.5 rounded">user_telegram_settings</code></span>
             </p>
             <p className="flex items-center gap-2">
               <i className="fas fa-key w-5"></i>
-              <span>API ID и API Hash читаются из базы данных</span>
+              <span>API ID and API Hash are read from the database</span>
             </p>
             <p className="flex items-center gap-2">
               <i className="fas fa-user w-5"></i>
-              <span>Сессия: <code className="bg-emerald-100 dark:bg-emerald-900/40 px-2 py-0.5 rounded">{sessionName}</code></span>
+              <span>Session: <code className="bg-emerald-100 dark:bg-emerald-900/40 px-2 py-0.5 rounded">{sessionName}</code></span>
             </p>
           </div>
         </CardContent>
@@ -70,13 +70,13 @@ export function ClientAuthProperties({ node }: ClientAuthPropertiesProps) {
         <CardContent className="p-4 text-sm text-blue-700 dark:text-blue-300">
           <p className="font-semibold mb-2 flex items-center gap-2">
             <i className="fas fa-info-circle text-blue-600 dark:text-blue-400"></i>
-            Как это работает:
+            How does this work:
           </p>
           <ol className="list-decimal list-inside space-y-1.5 ml-1">
-            <li>Credentials хранятся в таблице <code className="text-xs bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded">user_telegram_settings</code></li>
-            <li>Узел автоматически читает активную сессию из БД</li>
-            <li>API ID/API Hash подставляются в сгенерированный код</li>
-            <li>Для настройки Telethon userbot откройте карточку бота → блок «Telethon Userbot»</li>
+            <li>Credentials are stored in a table <code className="text-xs bg-blue-100 dark:bg-blue-900/40 px-1.5 py-0.5 rounded">user_telegram_settings</code></li>
+            <li>The node automatically reads the active session from the database</li>
+            <li>API ID/API Hash is inserted into the generated code</li>
+            <li>To configure Telethon userbot, open the bot card → the “Telethon Userbot” block</li>
           </ol>
         </CardContent>
       </Card>
@@ -87,9 +87,9 @@ export function ClientAuthProperties({ node }: ClientAuthPropertiesProps) {
           <CardContent className="p-4 text-sm text-amber-700 dark:text-amber-300">
             <p className="font-semibold mb-1 flex items-center gap-2">
               <i className="fas fa-exclamation-triangle text-amber-600 dark:text-amber-400"></i>
-              Внимание!
+              Attention!
             </p>
-            <p>Сессия ещё не создана. При запуске бота потребуется авторизация.</p>
+            <p>The session has not yet been created. When starting the bot, authorization will be required.</p>
           </CardContent>
         </Card>
       )}

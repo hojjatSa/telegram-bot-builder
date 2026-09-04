@@ -62,7 +62,7 @@ export function YandexMapSection({
                 country: locationInfo.country || selectedNode.data.country
               });
               toast({
-                title: "Координаты обновлены",
+                title: "Coordinates updated",
                 description: `Из Яндекс.Карт: ${locationInfo.city || 'город'}, ${locationInfo.country || 'страна'}`
               });
             }
@@ -76,7 +76,7 @@ export function YandexMapSection({
     <div>
       <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
         <i className="fas fa-link mr-1"></i>
-        Ссылка на Яндекс Карты
+        Link to Yandex Maps
       </Label>
       <Input
         type="url"
@@ -86,12 +86,12 @@ export function YandexMapSection({
         placeholder="https://yandex.ru/maps/..."
       />
       <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
-        Скопируйте ссылку из Яндекс.Карт - координаты извлекутся автоматически
+        Copy the link from Yandex.Maps - the coordinates will be retrieved automatically
       </p>
       {selectedNode.data.yandexMapUrl && selectedNode.data.latitude && selectedNode.data.longitude && (
         <div className="mt-2 text-xs text-green-600 dark:text-green-400 flex items-center">
           <i className="fas fa-check-circle mr-1"></i>
-          Координаты: {formatCoordinates(selectedNode.data.latitude, selectedNode.data.longitude)}
+          Coordinates: {formatCoordinates(selectedNode.data.latitude, selectedNode.data.longitude)}
         </div>
       )}
     </div>

@@ -42,9 +42,9 @@ export function OutgoingMessageTriggerConfiguration({
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Срабатывает когда бот отправляет сообщение пользователю.
-          Работает параллельно с основным потоком — не прерывает его.
-          Доступна переменная <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">{'{message_text}'}</code> — текст отправленного сообщения.
+          Fires when the bot sends a message to the user.
+          Works in parallel with the main thread - does not interrupt it.
+          Variable available <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">{'{message_text}'}</code> — text of the sent message.
         </p>
       </div>
 

@@ -28,14 +28,14 @@ export function AnswerCallbackQueryPreview({ node }: AnswerCallbackQueryPreviewP
       <div className="flex items-center gap-2">
         <span className="text-base">🔔</span>
         <span className="text-xs font-semibold text-purple-700 dark:text-purple-300">
-          Уведомление inline-кнопки
+          Notification inline buttons
         </span>
       </div>
 
       {/* Текст уведомления */}
       <div className="text-xs text-muted-foreground truncate max-w-full">
         {isEmpty ? (
-          <span className="italic opacity-60">Текст не задан</span>
+          <span className="italic opacity-60">No text specified</span>
         ) : (
           <span className="font-mono text-purple-600 dark:text-purple-400 truncate">
             {text.length > 40 ? text.slice(0, 40) + '…' : text}
@@ -46,7 +46,7 @@ export function AnswerCallbackQueryPreview({ node }: AnswerCallbackQueryPreviewP
       {/* Тип отображения */}
       <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
         <i className={showAlert ? 'fas fa-exclamation-circle text-amber-500' : 'fas fa-info-circle text-purple-400'} />
-        <span>{showAlert ? 'Требует закрытия' : 'Исчезает само'}</span>
+        <span>{showAlert ? "Requires closure" : "Disappears on its own"}</span>
       </div>
     </div>
   );

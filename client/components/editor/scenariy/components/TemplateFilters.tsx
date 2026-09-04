@@ -30,7 +30,7 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
     <div className="rounded-xl border border-border/40 bg-gradient-to-br from-card/60 to-card/40 dark:from-card/50 dark:to-card/30 p-3 xs:p-4 sm:p-5 space-y-3 xs:space-y-4 backdrop-blur-sm hover:border-border/60 transition-all duration-300">
       <div className="relative group">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-blue-500/50 h-4 w-4 group-focus-within:text-blue-600 dark:group-focus-within:text-blue-400 transition-colors duration-200" />
-        <Input placeholder="Поиск сценариев по названию..." value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="pl-10 h-10 xs:h-11 text-sm xs:text-base border border-border/50 rounded-lg bg-background/80 hover:bg-background hover:border-border/70 focus:border-blue-500/60 focus:ring-blue-500/15 transition-all duration-200 shadow-sm" />
+        <Input placeholder={"Search scripts by name..."} value={searchTerm} onChange={(e) => onSearchChange(e.target.value)} className="pl-10 h-10 xs:h-11 text-sm xs:text-base border border-border/50 rounded-lg bg-background/80 hover:bg-background hover:border-border/70 focus:border-blue-500/60 focus:ring-blue-500/15 transition-all duration-200 shadow-sm" />
       </div>
 
       <div className="flex flex-col xs:flex-row gap-2.5 xs:gap-3">
@@ -48,7 +48,7 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
             <SelectTrigger className="w-full h-9 xs:h-10 text-xs xs:text-sm border border-border/60 rounded-lg bg-background/80 hover:bg-background hover:border-blue-500/40 focus:border-blue-500/60 focus:ring-blue-500/15 transition-all duration-200 shadow-sm">
               <div className="flex items-center gap-2">
                 <Filter className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400 hidden xs:block" />
-                <SelectValue placeholder="Выбрать категорию" />
+                <SelectValue placeholder={"Select category"} />
               </div>
             </SelectTrigger>
             <SelectContent className="z-50 rounded-lg">
@@ -86,10 +86,10 @@ export function TemplateFilters({ searchTerm, onSearchChange, selectedCategory, 
       {aktivnyeFiltery && (
         <div className="pt-2 border-t border-border/30">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-xs font-medium text-muted-foreground">Фильтры активны:</span>
-            {searchTerm && <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">Поиск: {searchTerm}</Badge>}
+            <span className="text-xs font-medium text-muted-foreground">Filters active:</span>
+            {searchTerm && <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">Search: {searchTerm}</Badge>}
             {selectedCategory !== 'all' && <Badge variant="outline" className="text-xs bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300">{KATEGORII.find(c => c.value === selectedCategory)?.label}</Badge>}
-            {sortBy !== 'popular' && <Badge variant="outline" className="text-xs bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300">Сортировка: {METKI_SORTIROVKI[sortBy]}</Badge>}
+            {sortBy !== 'popular' && <Badge variant="outline" className="text-xs bg-amber-50 dark:bg-amber-900/20 border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300">Sorting: {METKI_SORTIROVKI[sortBy]}</Badge>}
           </div>
         </div>
       )}

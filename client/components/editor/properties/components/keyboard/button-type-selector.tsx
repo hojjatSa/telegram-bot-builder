@@ -11,8 +11,8 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const INPUT_BUTTON_TYPE_OPTIONS = [
-  { value: 'inline', label: 'Inline кнопки (в сообщении)' },
-  { value: 'reply', label: 'Reply кнопки (виртуальная клавиатура)' }
+  { value: 'inline', label: "Inline buttons (in message)" },
+  { value: 'reply', label: "Reply buttons (virtual keyboard)" }
 ];
 
 /** Пропсы компонента ButtonTypeSelector */
@@ -36,7 +36,7 @@ export function ButtonTypeSelector({ selectedNode, onNodeUpdate }: ButtonTypeSel
     <div>
       <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 block">
         <i className="fas fa-mouse mr-1"></i>
-        Тип кнопок
+        Button type
       </Label>
       <Select
         value={selectedNode.data.inputButtonType || 'inline'}

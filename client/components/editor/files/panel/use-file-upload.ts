@@ -71,12 +71,12 @@ export function useFileUpload(
         if (success > 0 && failed === 0) {
           toast({
             title: success === 1 ? 'Файл загружен и выбран' : `Загружено и выбрано файлов: ${success}`,
-            description: 'Нажми «Прикрепить» внизу, чтобы добавить файл к ноде.',
+            description: "Click \"Attach\" below to add the file to the node.",
           });
         } else if (success > 0) {
           toast({ title: `Загружено ${success}, ошибок: ${failed}`, variant: 'destructive' });
         } else {
-          toast({ title: 'Не удалось загрузить файлы', variant: 'destructive' });
+          toast({ title: "Failed to upload files", variant: 'destructive' });
         }
       } finally {
         setIsUploading(false);

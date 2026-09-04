@@ -52,9 +52,9 @@ export function TokenEditInput({
           onKeyDown={onKeyDown}
           autoFocus
           className={`font-mono text-xs flex-1 ${error ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
-          placeholder="Введите токен бота"
+          placeholder={"Enter your bot token"}
           disabled={isValidating}
-          aria-label="Поле ввода токена бота"
+          aria-label={"Bot token input field"}
           aria-invalid={!!error}
         />
         <Button
@@ -63,7 +63,7 @@ export function TokenEditInput({
           className="h-8 w-8 shrink-0 text-green-600 hover:text-green-700 hover:bg-green-50 dark:hover:bg-green-950"
           onClick={onSave}
           disabled={isValidating}
-          aria-label="Сохранить токен"
+          aria-label={"Save token"}
         >
           {isValidating ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />
@@ -77,7 +77,7 @@ export function TokenEditInput({
           className="h-8 w-8 shrink-0 text-muted-foreground hover:text-foreground"
           onClick={onCancel}
           disabled={isValidating}
-          aria-label="Отменить редактирование"
+          aria-label={"Undo editing"}
         >
           <X className="h-3.5 w-3.5" />
         </Button>
@@ -85,7 +85,7 @@ export function TokenEditInput({
       {isValidating && (
         <p className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1.5">
           <Loader2 className="h-3 w-3 animate-spin" />
-          Проверка токена...
+          Token verification...
         </p>
       )}
       {error && (

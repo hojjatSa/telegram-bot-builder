@@ -75,7 +75,7 @@ export function MessageBubble({ message, index }: MessageBubbleProps): React.JSX
                 <span>
                   {messageData.button_text
                     ? `Нажата: ${messageData.button_text}`
-                    : 'Нажата кнопка'}
+                    : "Button pressed"}
                 </span>
               </div>
             </div>

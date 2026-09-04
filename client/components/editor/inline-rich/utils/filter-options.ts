@@ -16,6 +16,6 @@ export interface FilterOption {
 
 /** Доступные фильтры для переменных */
 export const VARIABLE_FILTER_OPTIONS: FilterOption[] = [
-  { filter: '|join:", "', separator: ', ', label: 'Через запятую', icon: '📝' },
-  { filter: '|join:"\\n"', separator: '\n', label: 'В столбик', icon: '📋' },
+  { filter: '|join:", "', separator: ', ', label: "Separated by commas", icon: '📝' },
+  { filter: '|join:"\\n"', separator: '\n', label: "In a column", icon: '📋' },
 ];

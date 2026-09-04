@@ -77,11 +77,11 @@ export function UserResponses({ user }: UserResponsesProps): React.JSX.Element |
         <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center gap-1 xs:gap-1.5 sm:gap-2 min-w-0">
             <MessageSquare className="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-4 sm:h-4 text-primary flex-shrink-0" />
-            <Label className="text-[10px] xs:text-xs sm:text-sm font-semibold truncate">Ответы пользователя</Label>
+            <Label className="text-[10px] xs:text-xs sm:text-sm font-semibold truncate">User responses</Label>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <div className="flex items-center gap-1 text-[9px] xs:text-[10px] sm:text-xs text-muted-foreground">
-              <span className="whitespace-nowrap">Показывать:</span>
+              <span className="whitespace-nowrap">Show:</span>
               <ItemsPerPageSelector value={itemsPerPage} onChange={setItemsPerPage} />
             </div>
             <ResponseCount

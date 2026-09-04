@@ -59,13 +59,13 @@ export function ForumTopicPreview({ node }: { node: Node }) {
 
       {chatDisplay && (
         <div className="text-xs text-gray-400 dark:text-gray-500 font-mono truncate">
-          группа: {chatDisplay}
+          group: {chatDisplay}
         </div>
       )}
 
       {skipIfExists && (
         <div className="text-xs text-amber-600 dark:text-amber-400">
-          пропустить если существует
+          skip if exists
         </div>
       )}
     </div>

@@ -12,7 +12,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const scheduleTrigger: ComponentDefinition = {
   id: 'schedule-trigger',
   name: 'Scheduled Trigger',
-  description: 'Запуск по таймеру (интервал, день недели, cron)',
+  description: "Run by timer (interval, day of week, cron)",
   icon: 'fas fa-clock',
   color: 'bg-teal-100 text-teal-600',
   type: 'schedule_trigger' as any,

@@ -11,7 +11,7 @@ import { normalizeDynamicButtonsConfig } from '@/components/editor/properties/ut
 export const keyboardMessage: ComponentDefinition = {
   id: 'keyboard-message',
   name: 'Keyboard',
-  description: 'Отдельная нода для кнопок и раскладок',
+  description: "Separate node for buttons and layouts",
   icon: 'fas fa-keyboard',
   color: 'bg-amber-100 text-amber-600',
   type: 'keyboard',

@@ -69,7 +69,7 @@ export function VariableNameDropdown({
               variant="outline"
               size="sm"
               className="h-8 w-8 p-0 border-l-0 rounded-l-none border-cyan-200/50 dark:border-cyan-700/50"
-              title="Выбрать из списка"
+              title={"Select from list"}
             >
               <ChevronDown className="h-4 w-4" />
             </Button>
@@ -81,7 +81,7 @@ export function VariableNameDropdown({
         >
           <div className="px-3 py-2">
             <div className="text-xs font-semibold text-cyan-800 dark:text-cyan-200">
-              📌 Существующие переменные
+              📌 Existing variables
             </div>
           </div>
           <DropdownMenuSeparator className="bg-cyan-200/30 dark:bg-cyan-800/30" />
@@ -101,7 +101,7 @@ export function VariableNameDropdown({
             ) : (
               <div className="px-3 py-4 text-center">
                 <div className="text-xs text-cyan-600 dark:text-cyan-400">
-                  Нет существующих переменных
+                  No existing variables
                 </div>
               </div>
             )}
@@ -109,7 +109,7 @@ export function VariableNameDropdown({
           <DropdownMenuSeparator className="bg-cyan-200/30 dark:bg-cyan-800/30" />
           <div className="px-3 py-2">
             <div className="text-xs text-cyan-600 dark:text-cyan-400">
-              💡 Введите новое имя или выберите из списка
+              💡 Enter a new name or select from the list
             </div>
           </div>
         </DropdownMenuContent>

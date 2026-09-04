@@ -65,7 +65,7 @@ export function MediaDropZone({
           data-testid="media-drop-overlay"
         >
           <p className="pointer-events-none px-2 text-center text-xs font-medium text-primary">
-            Отпусти, чтобы прикрепить к ноде
+            Release to attach to node
           </p>
         </div>
       )}

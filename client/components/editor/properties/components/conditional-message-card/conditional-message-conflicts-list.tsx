@@ -25,7 +25,7 @@ export function ConditionalMessageConflictsList({ ruleConflicts }: ConditionalMe
         <div className="flex items-center gap-2 mb-2.5">
           <i className="fas fa-shield-exclamation text-red-600 dark:text-red-400 text-sm"></i>
           <span className="text-xs sm:text-sm font-semibold text-red-700 dark:text-red-300">
-            {ruleConflicts.length} {ruleConflicts.length === 1 ? 'ошибка' : ruleConflicts.length < 5 ? 'ошибки' : 'ошибок'} в условиях
+            {ruleConflicts.length} {ruleConflicts.length === 1 ? "error" : ruleConflicts.length < 5 ? "errors" : "errors"} in conditions
           </span>
         </div>
 
@@ -46,7 +46,7 @@ export function ConditionalMessageConflictsList({ ruleConflicts }: ConditionalMe
                 {conflict.description}
               </span>
               {conflict.severity === 'error' && (
-                <span className="text-xs text-red-600 dark:text-red-400 mt-1 block">Требует исправления</span>
+                <span className="text-xs text-red-600 dark:text-red-400 mt-1 block">Needs correction</span>
               )}
             </div>
           </div>

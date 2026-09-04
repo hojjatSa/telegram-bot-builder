@@ -95,13 +95,13 @@ export function ButtonCard({
       <>
       <div className="border-t border-border/20 my-3"></div>
       <div className="space-y-1.5">
-        <span className="text-xs text-gray-500 dark:text-gray-400">Стиль кнопки</span>
+        <span className="text-xs text-gray-500 dark:text-gray-400">Button style</span>
         <div className="flex gap-2">
           {([
-            { value: undefined, label: 'Авто', className: 'border-gray-300 text-gray-600' },
-            { value: 'primary', label: 'Синий', className: 'border-blue-400 text-blue-600 bg-blue-50 dark:bg-blue-900/20' },
-            { value: 'success', label: 'Зелёный', className: 'border-green-400 text-green-600 bg-green-50 dark:bg-green-900/20' },
-            { value: 'danger', label: 'Красный', className: 'border-red-400 text-red-600 bg-red-50 dark:bg-red-900/20' },
+            { value: undefined, label: "Auto", className: 'border-gray-300 text-gray-600' },
+            { value: 'primary', label: "Blue", className: 'border-blue-400 text-blue-600 bg-blue-50 dark:bg-blue-900/20' },
+            { value: 'success', label: "Green", className: 'border-green-400 text-green-600 bg-green-50 dark:bg-green-900/20' },
+            { value: 'danger', label: "Red", className: 'border-red-400 text-red-600 bg-red-50 dark:bg-red-900/20' },
           ] as const).map(({ value, label, className }) => (
             <button
               key={label}
@@ -166,7 +166,7 @@ export function ButtonCard({
             value={(button as any).copyText || ''}
             onChange={(e) => onButtonUpdate(nodeId, button.id, { copyText: e.target.value } as any)}
             className="text-xs sm:text-sm bg-white/60 dark:bg-slate-950/60 border border-blue-300/40 dark:border-blue-700/40 text-blue-900 dark:text-blue-50 placeholder:text-blue-500/50 dark:placeholder:text-blue-400/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-400/30 rounded-lg"
-            placeholder="Текст для копирования"
+            placeholder={"Text to copy"}
           />
         </>
       )}

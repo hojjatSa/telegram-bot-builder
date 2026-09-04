@@ -71,10 +71,10 @@ export function KeyboardButtonsSection({
           hideAfterClick: false
         })}
         className="h-8 px-2 sm:px-3 border-orange-300/50 dark:border-orange-700/50 text-orange-700 dark:text-orange-300 hover:bg-orange-100/50 dark:hover:bg-orange-900/30"
-        title="Добавить кнопку"
+        title={"Add a button"}
       >
         <i className="fas fa-plus text-xs"></i>
-        <span className="ml-1.5 hidden sm:inline text-xs font-medium">Кнопка</span>
+        <span className="ml-1.5 hidden sm:inline text-xs font-medium">Button</span>
       </Button>
       {selectedNode.data.allowMultipleSelection && (
         <>
@@ -83,20 +83,20 @@ export function KeyboardButtonsSection({
             variant="outline"
             onClick={handleAddOptionButton}
             className="h-8 px-2 sm:px-3 border-green-300/50 dark:border-green-700/50 text-green-700 dark:text-green-300 hover:bg-green-100/50 dark:hover:bg-green-900/30"
-            title="Добавить опцию"
+            title={"Add option"}
           >
             <i className="fas fa-check text-xs"></i>
-            <span className="ml-1.5 hidden sm:inline text-xs font-medium">Опция</span>
+            <span className="ml-1.5 hidden sm:inline text-xs font-medium">Option</span>
           </Button>
           <Button
             size="sm"
             variant="outline"
             onClick={handleAddCompleteButton}
             className="h-8 px-2 sm:px-3 border-purple-300/50 dark:border-purple-700/50 text-purple-700 dark:text-purple-300 hover:bg-purple-100/50 dark:hover:bg-purple-900/30"
-            title="Добавить завершение"
+            title={"Add completion"}
           >
             <i className="fas fa-flag-checkered text-xs"></i>
-            <span className="ml-1.5 hidden sm:inline text-xs font-medium">Завершение</span>
+            <span className="ml-1.5 hidden sm:inline text-xs font-medium">Completion</span>
           </Button>
         </>
       )}

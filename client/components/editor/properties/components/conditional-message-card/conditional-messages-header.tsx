@@ -38,8 +38,8 @@ export function ConditionalMessagesHeader({
           <i className="fas fa-code-branch text-purple-600 dark:text-purple-400 text-sm sm:text-base"></i>
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm sm:text-base font-bold text-purple-900 dark:text-purple-100 text-left">Условные сообщения</h3>
-          <p className="text-xs sm:text-sm text-purple-700/70 dark:text-purple-300/70 mt-0.5 text-left">Разные ответы на основе условий</p>
+          <h3 className="text-sm sm:text-base font-bold text-purple-900 dark:text-purple-100 text-left">Conditional messages</h3>
+          <p className="text-xs sm:text-sm text-purple-700/70 dark:text-purple-300/70 mt-0.5 text-left">Different answers based on conditions</p>
         </div>
         <ComingSoonBadge />
       </button>

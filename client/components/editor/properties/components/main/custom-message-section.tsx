@@ -31,7 +31,7 @@ export function CustomMessageSection({ condition, selectedNode, textVariables, o
       <div className="flex items-center justify-between">
         <Label className="text-xs sm:text-sm font-semibold text-green-700 dark:text-green-300 flex items-center gap-2">
           <i className="fas fa-message text-green-600 dark:text-green-400"></i>
-          <span>Кастомное сообщение (опционально)</span>
+          <span>Custom message (optional)</span>
         </Label>
         <Switch
           checked={showCustomMessage}
@@ -43,12 +43,12 @@ export function CustomMessageSection({ condition, selectedNode, textVariables, o
           <InlineRichEditor
             value={condition.messageText}
             onChange={(value) => updateCondition(condition, selectedNode, { messageText: value }, onNodeUpdate)}
-            placeholder="Добро пожаловать обратно! Рады вас снова видеть."
+            placeholder={"Welcome back! Glad to see you again."}
             enableMarkdown={condition.formatMode === 'markdown'}
             availableVariables={textVariables}
           />
           <div className="text-xs text-green-600 dark:text-green-400">
-            Если не указано, будет использоваться основной текст узла
+            If not specified, the node's body text will be used
           </div>
         </div>
       )}

@@ -17,20 +17,20 @@ interface ButtonActionOptionProps {
  * Конфигурация иконок и стилей для каждого типа действия
  */
 export const ACTION_CONFIG: Record<ButtonActionType, { icon: string; color: string; label: string }> = {
-  goto: { icon: 'fa-right-long', color: 'text-teal-600 dark:text-teal-400', label: 'Перейти к экрану' },
-  url: { icon: 'fa-link', color: 'text-blue-600 dark:text-blue-400', label: 'Открыть ссылку' },
-  selection: { icon: 'fa-check-square', color: 'text-green-600 dark:text-green-400', label: 'Выбор опции' },
-  complete: { icon: 'fa-flag-checkered', color: 'text-purple-600 dark:text-purple-400', label: 'Кнопка завершения' },
-  default: { icon: 'fa-circle-dot', color: 'text-slate-500 dark:text-slate-400', label: 'Обычная кнопка' },
-  contact: { icon: 'fa-phone', color: 'text-green-600 dark:text-green-400', label: 'Запрос контакта' },
-  location: { icon: 'fa-location-dot', color: 'text-blue-600 dark:text-blue-400', label: 'Запрос геолокации' },
+  goto: { icon: 'fa-right-long', color: 'text-teal-600 dark:text-teal-400', label: "Go to screen" },
+  url: { icon: 'fa-link', color: 'text-blue-600 dark:text-blue-400', label: "Open link" },
+  selection: { icon: 'fa-check-square', color: 'text-green-600 dark:text-green-400', label: "Selecting an option" },
+  complete: { icon: 'fa-flag-checkered', color: 'text-purple-600 dark:text-purple-400', label: "End button" },
+  default: { icon: 'fa-circle-dot', color: 'text-slate-500 dark:text-slate-400', label: "Regular button" },
+  contact: { icon: 'fa-phone', color: 'text-green-600 dark:text-green-400', label: "Contact request" },
+  location: { icon: 'fa-location-dot', color: 'text-blue-600 dark:text-blue-400', label: "Geolocation request" },
   command: { icon: 'fa-terminal', color: 'text-orange-600 dark:text-orange-400', label: 'Command' },
   /** Копировать текст в буфер обмена (Bot API 7.11, только inline) */
-  copy_text: { icon: 'fa-clipboard', color: 'text-yellow-600 dark:text-yellow-400', label: 'Копировать текст' },
+  copy_text: { icon: 'fa-clipboard', color: 'text-yellow-600 dark:text-yellow-400', label: "Copy text" },
   /** Открыть Telegram Mini App по URL (только inline, требует HTTPS) */
-  web_app: { icon: 'fa-globe', color: 'text-cyan-600 dark:text-cyan-400', label: 'Открыть Web App' },
+  web_app: { icon: 'fa-globe', color: 'text-cyan-600 dark:text-cyan-400', label: "Open Web App" },
   /** Запросить создание управляемого бота (Bot API 9.6, только reply) */
-  request_managed_bot: { icon: 'fa-robot', color: 'text-indigo-600 dark:text-indigo-400', label: 'Запросить управляемого бота' },
+  request_managed_bot: { icon: 'fa-robot', color: 'text-indigo-600 dark:text-indigo-400', label: "Request a managed bot" },
 };
 
 /**

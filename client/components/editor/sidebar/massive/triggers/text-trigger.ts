@@ -13,7 +13,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const textTrigger: ComponentDefinition = {
   id: 'text-trigger',
   name: 'Text Trigger',
-  description: 'Срабатывает когда пользователь отправляет заданный текст',
+  description: "Fires when the user sends the specified text",
   icon: 'fas fa-comment-dots',
   color: 'bg-blue-100 text-blue-600',
   type: 'text_trigger',

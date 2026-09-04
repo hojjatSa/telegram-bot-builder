@@ -131,10 +131,10 @@ export function ReadmePreview({ markdownContent, onContentChange, theme }: Readm
     return (
       <Card className="h-full flex flex-col">
         <div className="flex items-center justify-between p-2 border-b">
-          <span className="text-sm text-muted-foreground">Редактор README</span>
+          <span className="text-sm text-muted-foreground">README Editor</span>
           <div className="flex gap-1">
-            <Button variant="outline" size="sm" onClick={() => setViewMode('split')} title="Разделённый вид"><i className="fas fa-columns"></i></Button>
-            <Button variant="outline" size="sm" onClick={() => setViewMode('preview')} title="Режим превью"><i className="fas fa-eye"></i></Button>
+            <Button variant="outline" size="sm" onClick={() => setViewMode('split')} title={"Split View"}><i className="fas fa-columns"></i></Button>
+            <Button variant="outline" size="sm" onClick={() => setViewMode('preview')} title={"Preview mode"}><i className="fas fa-eye"></i></Button>
           </div>
         </div>
         <CardContent className="flex-1 p-0 overflow-hidden">
@@ -148,10 +148,10 @@ export function ReadmePreview({ markdownContent, onContentChange, theme }: Readm
     return (
       <Card className="h-full flex flex-col">
         <div className="flex items-center justify-between p-2 border-b">
-          <span className="text-sm text-muted-foreground">Предпросмотр README</span>
+          <span className="text-sm text-muted-foreground">Preview README</span>
           <div className="flex gap-1">
-            <Button variant="outline" size="sm" onClick={() => setViewMode('split')} title="Разделённый вид"><i className="fas fa-columns"></i></Button>
-            <Button variant="outline" size="sm" onClick={() => setViewMode('editor')} title="Режим редактора"><i className="fas fa-edit"></i></Button>
+            <Button variant="outline" size="sm" onClick={() => setViewMode('split')} title={"Split View"}><i className="fas fa-columns"></i></Button>
+            <Button variant="outline" size="sm" onClick={() => setViewMode('editor')} title={"Editor mode"}><i className="fas fa-edit"></i></Button>
           </div>
         </div>
         <CardContent className="flex-1 overflow-auto p-0" ref={previewScrollRef} onScroll={handlePreviewScroll}>
@@ -164,10 +164,10 @@ export function ReadmePreview({ markdownContent, onContentChange, theme }: Readm
   return (
     <Card className="h-full flex flex-col" ref={containerRef}>
       <div className="flex items-center justify-between p-2 border-b">
-        <span className="text-sm text-muted-foreground">Предпросмотр README</span>
+        <span className="text-sm text-muted-foreground">Preview README</span>
         <div className="flex gap-1">
-          <Button variant="outline" size="sm" onClick={() => setViewMode('editor')} title="Только редактор"><i className="fas fa-edit"></i></Button>
-          <Button variant="outline" size="sm" onClick={() => setViewMode('preview')} title="Только превью"><i className="fas fa-eye"></i></Button>
+          <Button variant="outline" size="sm" onClick={() => setViewMode('editor')} title={"Editor only"}><i className="fas fa-edit"></i></Button>
+          <Button variant="outline" size="sm" onClick={() => setViewMode('preview')} title={"Preview only"}><i className="fas fa-eye"></i></Button>
         </div>
       </div>
       <div className="flex-1 flex overflow-hidden relative">

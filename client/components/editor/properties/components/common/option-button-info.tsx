@@ -37,12 +37,12 @@ export function OptionButtonInfo({ selectedNode, onNodeUpdate }: OptionButtonInf
         </div>
         <div className="min-w-0 flex-1">
           <Label className="text-xs sm:text-sm font-semibold text-green-900 dark:text-green-100 cursor-pointer block">
-            Опция для выбора
+            Option to select
           </Label>
           <div className="text-xs text-green-700/70 dark:text-green-300/70 mt-0.5 leading-snug hidden sm:block">
             {isInline
-              ? 'Добавляет отметку рядом с текстом'
-              : 'Обновляет клавиатуру после выбора'
+              ? "Adds a mark next to the text"
+              : "Updates the keyboard after selection"
             }
           </div>
         </div>
@@ -50,13 +50,13 @@ export function OptionButtonInfo({ selectedNode, onNodeUpdate }: OptionButtonInf
       <div className="text-xs sm:text-sm text-green-700 dark:text-green-200 leading-relaxed">
         {isInline
           ? `При нажатии появится отметка: ${checkmarkSymbol}`
-          : 'После выбора покажется обновленная клавиатура'
+          : "After selecting, the updated keyboard will appear"
         }
       </div>
 
       {isInline && (
         <div className="space-y-2">
-          <Label className="text-xs sm:text-sm font-medium text-green-900 dark:text-green-100">Символ отметки</Label>
+          <Label className="text-xs sm:text-sm font-medium text-green-900 dark:text-green-100">Mark symbol</Label>
           <Input
             value={checkmarkSymbol}
             onChange={(e) => onNodeUpdate(selectedNode.id, { checkmarkSymbol: e.target.value })}

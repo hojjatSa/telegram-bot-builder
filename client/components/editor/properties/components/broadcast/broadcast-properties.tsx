@@ -36,7 +36,7 @@ export function BroadcastNodeProperties({ node, onUpdate }: BroadcastNodePropert
       {/* Подтверждение рассылки */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Label htmlFor="enableConfirmation">Подтверждение отправки</Label>
+          <Label htmlFor="enableConfirmation">Dispatch confirmation</Label>
           <ComingSoonBadge />
         </div>
         <Switch
@@ -52,7 +52,7 @@ export function BroadcastNodeProperties({ node, onUpdate }: BroadcastNodePropert
       {data.enableConfirmation && (
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label htmlFor="confirmationText">Текст подтверждения</Label>
+            <Label htmlFor="confirmationText">Confirmation text</Label>
             <ComingSoonBadge />
           </div>
           <Input
@@ -61,7 +61,7 @@ export function BroadcastNodeProperties({ node, onUpdate }: BroadcastNodePropert
             onChange={(e) =>
               onUpdate(node.id, { confirmationText: e.target.value })
             }
-            placeholder="Отправить рассылку всем пользователям?"
+            placeholder={"Send a newsletter to all users?"}
           />
         </div>
       )}

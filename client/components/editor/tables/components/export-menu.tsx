@@ -57,15 +57,15 @@ export function ExportMenu({ table }: ExportMenuProps) {
       <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={handleCsv}>
           <Download className="h-4 w-4" />
-          Скачать CSV
+          Download CSV
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleJson}>
           <FileJson className="h-4 w-4" />
-          Скачать JSON
+          Download JSON
         </DropdownMenuItem>
         <DropdownMenuItem onClick={handleClipboard}>
           <Copy className="h-4 w-4" />
-          Скопировать в буфер
+          Copy to clipboard
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

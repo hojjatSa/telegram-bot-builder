@@ -38,7 +38,7 @@ export function AgentTokensTable({ tokens, onRevoke }: AgentTokensTableProps) {
     return (
       <div className="flex flex-col items-center gap-2 py-10 text-center text-muted-foreground">
         <KeyRound className="h-8 w-8 opacity-50" />
-        <p className="text-sm">Токенов пока нет. Создай первый, чтобы подключить ИИ-агента.</p>
+        <p className="text-sm">There are no tokens yet. Create the first one to connect the AI ​​agent.</p>
       </div>
     );
   }
@@ -48,11 +48,11 @@ export function AgentTokensTable({ tokens, onRevoke }: AgentTokensTableProps) {
       <TableHeader>
         <TableRow>
           <TableHead>Name</TableHead>
-          <TableHead>Префикс</TableHead>
-          <TableHead>Права</TableHead>
-          <TableHead>Создан</TableHead>
-          <TableHead>Использование</TableHead>
-          <TableHead className="text-right">Действие</TableHead>
+          <TableHead>Prefix</TableHead>
+          <TableHead>Rights</TableHead>
+          <TableHead>Created</TableHead>
+          <TableHead>Usage</TableHead>
+          <TableHead className="text-right">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -62,14 +62,14 @@ export function AgentTokensTable({ tokens, onRevoke }: AgentTokensTableProps) {
             <TableCell className="font-mono text-xs">{t.prefix}…</TableCell>
             <TableCell>
               <Badge variant={t.scopes.includes("write") ? "default" : "secondary"}>
-                {t.scopes.includes("write") ? "чтение+запись" : "чтение"}
+                {t.scopes.includes("write") ? "read+write" : "reading"}
               </Badge>
             </TableCell>
             <TableCell className="text-sm text-muted-foreground">
               {t.createdAt ? formatRelativeTime(t.createdAt) : "—"}
             </TableCell>
             <TableCell className="text-sm text-muted-foreground">
-              {t.lastUsedAt ? formatRelativeTime(t.lastUsedAt) : "ни разу"}
+              {t.lastUsedAt ? formatRelativeTime(t.lastUsedAt) : "never"}
             </TableCell>
             <TableCell className="text-right">
               <Button
@@ -80,7 +80,7 @@ export function AgentTokensTable({ tokens, onRevoke }: AgentTokensTableProps) {
                 className="text-destructive hover:text-destructive"
               >
                 <Trash2 className="h-4 w-4 mr-1" />
-                {t.revokedAt ? "Отозван" : "Отозвать"}
+                {t.revokedAt ? "Withdrawn" : "Revoke"}
               </Button>
             </TableCell>
           </TableRow>

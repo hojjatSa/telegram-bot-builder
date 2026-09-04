@@ -45,7 +45,7 @@ export function ProjectCardArchiveButton({
         }
       }}
       className="h-6 w-6 xs:h-7 xs:w-7 sm:h-8 sm:w-8 p-0 text-slate-400 dark:text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 opacity-0 group-hover:opacity-100 transition-all hover:bg-amber-500/20 rounded-md flex-shrink-0"
-      title={isArchivedView ? 'Вернуть из архива' : 'В архив'}
+      title={isArchivedView ? "Return from archive" : "To the archive"}
     >
       {isArchivedView ? (
         <ArchiveRestore className="h-3 xs:h-3.5 w-3 xs:w-3.5" />

@@ -43,7 +43,7 @@ export function ApiTypeSelector({ node, onUpdate }: ApiTypeSelectorProps) {
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <Label htmlFor="apiType" className="text-sm font-medium">
-          Метод отправки
+          Sending method
         </Label>
         <ComingSoonBadge />
       </div>
@@ -52,15 +52,15 @@ export function ApiTypeSelector({ node, onUpdate }: ApiTypeSelectorProps) {
         onValueChange={(value: "bot" | "client") => onUpdate(node.id, { broadcastApiType: value })}
       >
         <SelectTrigger id="apiType" className="w-full">
-          <SelectValue placeholder="Выберите метод" />
+          <SelectValue placeholder={"Select method"} />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="bot">
             <div className="flex items-center gap-2">
               <span>🤖</span>
-              <span>Bot API (стандарт)</span>
+              <span>Bot API (standard)</span>
               <Badge variant="secondary" className="ml-auto text-xs">
-                Только писавшие боту
+                Only those who wrote to the bot
               </Badge>
             </div>
           </SelectItem>
@@ -69,7 +69,7 @@ export function ApiTypeSelector({ node, onUpdate }: ApiTypeSelectorProps) {
               <span>👤</span>
               <span>Client API (Userbot)</span>
               <Badge variant="outline" className="ml-auto text-xs">
-                Требует авторизации
+                Requires authorization
               </Badge>
             </div>
           </SelectItem>
@@ -78,7 +78,7 @@ export function ApiTypeSelector({ node, onUpdate }: ApiTypeSelectorProps) {
 
       {apiType === 'client' && (
         <p className="text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1">
-          ⚠️ Настройте Telethon Userbot в карточке бота (API ID, API Hash, авторизация по коду)
+          ⚠️ Configure Telethon Userbot in the bot card (API ID, API Hash, authorization by code)
         </p>
       )}
     </div>

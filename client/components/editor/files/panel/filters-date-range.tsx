@@ -73,7 +73,7 @@ export function FiltersDateRange({ dateFrom, dateTo, onChange }: FiltersDateRang
 
   return (
     <div className="space-y-1.5">
-      <Label className="text-xs font-medium">Дата загрузки</Label>
+      <Label className="text-xs font-medium">Upload date</Label>
       <div className="flex items-center gap-2">
         <Popover>
           <PopoverTrigger asChild>
@@ -99,7 +99,7 @@ export function FiltersDateRange({ dateFrom, dateTo, onChange }: FiltersDateRang
             size="icon"
             className="h-8 w-8 shrink-0"
             onClick={handleClear}
-            aria-label="Очистить даты"
+            aria-label={"Clear dates"}
             data-testid="filters-date-clear"
           >
             <X className="h-3.5 w-3.5" />

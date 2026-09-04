@@ -101,7 +101,7 @@ export function useSidebarImportHandler({
                 closeImportDialog();
                 clearImport();
                 toast({
-                  title: "✅ Успешно импортировано!",
+                  title: "✅ Successfully imported!",
                   description: `Python бот загружен (${result.nodeCount} узлов)`,
                   variant: "default",
                 });
@@ -114,7 +114,7 @@ export function useSidebarImportHandler({
               }).catch((apiError: any) => {
                 setImportError(apiError.message || 'Ошибка при создании проекта');
                 toast({
-                  title: "❌ Ошибка создания проекта",
+                  title: "❌ Error creating project",
                   description: apiError.message || 'Could not create project',
                   variant: "destructive",
                 });
@@ -122,7 +122,7 @@ export function useSidebarImportHandler({
             } catch (error: any) {
               setImportError(error.message || 'Ошибка при импорте проекта');
               toast({
-                title: "❌ Ошибка импорта",
+                title: "❌ Import error",
                 description: error.message || 'Could not create project',
                 variant: "destructive",
               });
@@ -177,7 +177,7 @@ export function useSidebarImportHandler({
             }).catch((error: any) => {
               setImportError(error.message || 'Ошибка при импорте проекта');
               toast({
-                title: "Ошибка импорта",
+                title: "Import error",
                 description: error.message,
                 variant: "destructive",
               });
@@ -187,8 +187,8 @@ export function useSidebarImportHandler({
         } catch (error: any) {
           setImportError('Файл должен содержать либо Python код бота (с @@NODE_START@@), либо валидный JSON');
           toast({
-            title: "Ошибка парсинга",
-            description: "Неподдерживаемый формат файла",
+            title: "Parsing error",
+            description: "Unsupported file format",
             variant: "destructive",
           });
           return;
@@ -256,7 +256,7 @@ export function useSidebarImportHandler({
           queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
 
           toast({
-            title: "Проект импортирован",
+            title: "Project imported",
             description: `Проект "${newProject.name}" успешно импортирован. Проект готов к редактированию!`,
           });
 
@@ -267,7 +267,7 @@ export function useSidebarImportHandler({
       }).catch((error) => {
         setImportError(`Ошибка импорта: ${error.message}`);
         toast({
-          title: "Ошибка импорта",
+          title: "Import error",
           description: error.message,
           variant: "destructive",
         });
@@ -276,7 +276,7 @@ export function useSidebarImportHandler({
       const errorMsg = error instanceof SyntaxError ? 'Неверный JSON формат' : error.message;
       setImportError(errorMsg);
       toast({
-        title: "Ошибка валидации",
+        title: "Validation error",
         description: errorMsg,
         variant: "destructive",
       });

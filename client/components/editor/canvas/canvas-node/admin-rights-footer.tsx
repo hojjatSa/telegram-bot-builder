@@ -30,11 +30,11 @@ export function AdminRightsFooter({}: AdminRightsFooterProps) {
       <div className="flex items-center justify-center space-x-3 text-xs text-violet-600 dark:text-violet-400">
         <div className="flex items-center space-x-1">
           <i className="fas fa-toggle-on"></i>
-          <span>Интерактивные переключатели</span>
+          <span>Interactive switches</span>
         </div>
         <div className="flex items-center space-x-1">
           <i className="fas fa-sync-alt"></i>
-          <span>Обновление в реальном времени</span>
+          <span>Real time update</span>
         </div>
       </div>
     </div>

@@ -46,9 +46,9 @@ export function InlineCode({ children }: InlineCodeProps) {
           : 'bg-muted text-accent-foreground hover:bg-muted/80'
       }`}
       onClick={handleCopy}
-      title="Нажмите для копирования"
+      title={"Click to copy"}
     >
-      {copied ? '✓ Скопировано' : children}
+      {copied ? "✓ Copied" : children}
     </code>
   );
 }

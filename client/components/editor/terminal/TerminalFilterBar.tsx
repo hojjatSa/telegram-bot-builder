@@ -107,7 +107,7 @@ export function TerminalFilterBar({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onCopy('text')}>Text</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
             </DropdownMenuContent>
@@ -122,7 +122,7 @@ export function TerminalFilterBar({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onSave('text')}>Text</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
               <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
             </DropdownMenuContent>

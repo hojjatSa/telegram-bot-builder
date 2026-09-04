@@ -75,18 +75,18 @@ export function DeleteBotConfirmDialog({
             />
             <div className="min-w-0 flex-1">
               <AlertDialogTitle className="flex min-w-0 items-center gap-1.5 text-sm font-semibold leading-tight">
-                <span className="truncate">Удалить {title}?</span>
+                <span className="truncate">Delete {title}?</span>
                 <IdBadge id={token.id} className="text-[10px] shrink-0" />
               </AlertDialogTitle>
               <AlertDialogDescription className="mt-0.5 truncate text-[11px] text-muted-foreground">
-                {token.botUsername ? `@${token.botUsername}` : 'Это действие необратимо'}
+                {token.botUsername ? `@${token.botUsername}` : "This action is irreversible"}
               </AlertDialogDescription>
             </div>
           </div>
         </AlertDialogHeader>
         <div className="border-t border-border/50 bg-muted/20 px-4 py-3">
           <p className="mb-2 text-[10px] font-medium uppercase tracking-wide text-muted-foreground/80">
-            Удалится
+            Will be deleted
           </p>
           <ul className="space-y-1.5">
             {items.map((item) => (
@@ -109,7 +109,7 @@ export function DeleteBotConfirmDialog({
               onConfirm();
             }}
           >
-            {pending ? 'Удаление…' : 'Удалить бота'}
+            {pending ? "Removing..." : "Delete bot"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

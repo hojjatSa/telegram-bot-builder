@@ -227,13 +227,13 @@ export function CodePanel({
                           <CardTitle
                             className="text-sm xs:text-base font-semibold truncate cursor-pointer"
                             onDoubleClick={() => startEditing(index)}
-                            title="Двойной клик для переименования"
+                            title={"Double click to rename"}
                           >
                             {currentProjectName}{projectIdSuffix}: {getFormatLabel(selectedFormat)}
                           </CardTitle>
                         )}
                         <CardDescription className="text-xs xs:text-sm mt-0.5">
-                          Файлы проекта {currentProjectName}{projectIdSuffix}
+                          Project files {currentProjectName}{projectIdSuffix}
                         </CardDescription>
                       </div>
                     </div>
@@ -246,8 +246,8 @@ export function CodePanel({
                     <div className="flex items-start gap-2 px-3 py-2 rounded-md bg-muted/40 border border-border/40">
                       <i className="fas fa-info-circle text-xs text-muted-foreground/60 mt-0.5 flex-shrink-0" />
                       <p className="text-xs text-muted-foreground leading-relaxed">
-                        Здесь хранится структура сценария бота. Отредактируйте JSON в редакторе справа и нажмите{' '}
-                        <span className="font-medium text-foreground/80">«Применить»</span> — изменения вступят в силу.
+                        The bot script structure is stored here. Edit the JSON in the editor on the right and click{' '}
+                        <span className="font-medium text-foreground/80">"Apply"</span> — the changes will take effect.
                       </p>
                     </div>
                   )}

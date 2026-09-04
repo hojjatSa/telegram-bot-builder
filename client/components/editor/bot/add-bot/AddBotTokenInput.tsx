@@ -32,7 +32,7 @@ export function AddBotTokenInput({
   return (
     <div className="space-y-2">
       <Label htmlFor="bot-token" className="text-sm sm:text-base font-semibold">
-        Токен бота
+        Bot token
       </Label>
       <div className="relative">
         <Input
@@ -55,7 +55,7 @@ export function AddBotTokenInput({
         <div className="flex items-center gap-2 px-3 py-2 bg-blue-50 dark:bg-blue-950/30 rounded-md border border-blue-200 dark:border-blue-800/50">
           <div className="w-2 h-2 bg-blue-500 rounded-full animate-spin" />
           <p className="text-xs sm:text-sm text-blue-700 dark:text-blue-300 font-medium">
-            Проверяем токен и получаем информацию о боте...
+            We check the token and get information about the bot...
           </p>
         </div>
       )}

@@ -85,7 +85,7 @@ export function ActiveFilterChips({
         onClick={onResetAll}
         data-testid="filters-reset-all"
       >
-        Сбросить всё
+        Reset everything
       </Button>
     </div>
   );

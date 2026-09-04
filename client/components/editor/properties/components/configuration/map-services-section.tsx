@@ -47,7 +47,7 @@ export function MapServicesSection({
         <div className="w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
           <i className="fas fa-route text-orange-600 dark:text-orange-400 text-xs"></i>
         </div>
-        <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Картографические сервисы</Label>
+        <Label className="text-sm font-semibold text-orange-900 dark:text-orange-100">Map services</Label>
       </div>
 
       <div className="space-y-4">
@@ -55,17 +55,17 @@ export function MapServicesSection({
         <div>
           <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
             <i className="fas fa-layer-group mr-1"></i>
-            Сервисы карт
+            Map services
           </Label>
           <select
             value={selectedNode.data.mapService || 'custom'}
             onChange={(e) => onNodeUpdate(selectedNode.id, { mapService: e.target.value as 'custom' | 'yandex' | 'google' | '2gis' })}
             className="w-full px-3 py-2 border border-orange-200 dark:border-orange-700 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm focus:border-orange-500 focus:ring-orange-200"
           >
-            <option value="custom">Пользовательские координаты</option>
-            <option value="yandex">Яндекс Карты</option>
+            <option value="custom">Custom coordinates</option>
+            <option value="yandex">Yandex Maps</option>
             <option value="google">Google Maps</option>
-            <option value="2gis">2ГИС</option>
+            <option value="2gis">2GIS</option>
           </select>
         </div>
 
@@ -96,7 +96,7 @@ export function MapServicesSection({
           <div>
             <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
               <i className="fas fa-search-plus mr-1"></i>
-              Масштаб карты
+              Map scale
             </Label>
             <Input
               type="number"
@@ -111,7 +111,7 @@ export function MapServicesSection({
           <div className="flex flex-col justify-end">
             <PropertyCheckbox
               id="showDirections"
-              label="Показать маршрут"
+              label={"Show route"}
               checked={selectedNode.data.showDirections || false}
               onChange={(checked) => onNodeUpdate(selectedNode.id, { showDirections: checked })}
             />
@@ -121,7 +121,7 @@ export function MapServicesSection({
         {/* Generate Map Preview */}
         <PropertyCheckbox
           id="generateMapPreview"
-          label="Генерировать превью карты с кнопками сервисов"
+          label={"Generate preview maps with service buttons"}
           checked={selectedNode.data.generateMapPreview !== false}
           onChange={(checked) => onNodeUpdate(selectedNode.id, { generateMapPreview: checked })}
         />

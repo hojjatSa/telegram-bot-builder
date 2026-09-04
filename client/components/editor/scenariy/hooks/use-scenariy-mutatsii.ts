@@ -29,10 +29,10 @@ export function useIspolzovatStsenary() {
       queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
       queryClient.invalidateQueries({ queryKey: ['/api/templates/category/custom'] });
       queryClient.invalidateQueries({ queryKey: ['/api/templates'] });
-      toast({ title: '✅ Успешно!', description: 'Сценарий добавлен в ваши проекты и коллекцию' });
+      toast({ title: "✅ Success!", description: "The script has been added to your projects and collection" });
     },
     onError: () => {
-      toast({ title: '❌ Error', description: 'Не удалось использовать сценарий', variant: 'destructive' });
+      toast({ title: '❌ Error', description: "Failed to use script", variant: 'destructive' });
     },
   });
 
@@ -46,7 +46,7 @@ export function useIspolzovatStsenary() {
     dobavitIdStsenariya(template.id);
     setLocation('/');
     toast({
-      title: 'Сценарий загружен!',
+      title: "Script loaded!",
       description: `Сценарий "${template.name}" будет применён к вашему проекту`,
     });
   };
@@ -73,7 +73,7 @@ export function useUdalitStsenary() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['/api/templates/category/custom'] });
       queryClient.invalidateQueries({ queryKey: ['/api/templates'] });
-      toast({ title: '✅ Сценарий удалён', description: 'Ваш сценарий успешно удалён' });
+      toast({ title: "✅ Script deleted", description: "Your script has been successfully deleted" });
     },
     onError: () => {
       toast({ title: '❌ Error', description: 'Could not delete template', variant: 'destructive' });

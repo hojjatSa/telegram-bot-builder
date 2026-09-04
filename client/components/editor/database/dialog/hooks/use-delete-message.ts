@@ -81,8 +81,8 @@ export function useDeleteMessage({
 
     onSuccess: () => {
       toast({
-        title: 'Сообщение удалено',
-        description: 'Сообщение успешно удалено',
+        title: "Post deleted",
+        description: "Message successfully deleted",
       });
       onDeleted?.();
     },
@@ -92,7 +92,7 @@ export function useDeleteMessage({
       onRollback(messageId);
       toast({
         title: 'Error',
-        description: 'Не удалось удалить сообщение',
+        description: "Failed to delete message",
         variant: 'destructive',
       });
     },

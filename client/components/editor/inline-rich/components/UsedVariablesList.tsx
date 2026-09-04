@@ -33,7 +33,7 @@ export function UsedVariablesList({
       <div className="flex items-center gap-2 mb-2">
         <i className="fas fa-code text-purple-600 dark:text-purple-400 text-sm"></i>
         <span className="text-xs font-semibold text-purple-800 dark:text-purple-200">
-          Использованные переменные
+          Variables used
         </span>
       </div>
 
@@ -56,7 +56,7 @@ export function UsedVariablesList({
       </div>
 
       <div className="text-xs text-purple-600 dark:text-purple-400 leading-relaxed">
-        💡 Фильтры работают с переменными в режиме <strong>"Не перезаписывать"</strong>
+        💡 Filters work with variables in the mode <strong>"Do not overwrite"</strong>
       </div>
     </div>
   );

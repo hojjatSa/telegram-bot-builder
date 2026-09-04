@@ -35,10 +35,10 @@ interface GroupDef {
  * Пользовательские идут первыми — свои переменные нужнее.
  */
 const GROUP_DEFS: GroupDef[] = [
-  { key: 'custom', label: '✏️ Пользовательские', tabLabel: '✏️ Свои' },
-  { key: 'system', label: '⚙️ Системные', tabLabel: '⚙️ Системные' },
+  { key: 'custom', label: "✏️ Custom", tabLabel: '✏️ Свои' },
+  { key: 'system', label: "⚙️ System", tabLabel: '⚙️ Системные' },
   { key: 'media', label: '📎 Media', tabLabel: '📎 Media' },
-  { key: 'tables', label: '📊 Таблицы', tabLabel: '📊 Таблицы' }
+  { key: 'tables', label: "📊 Tables", tabLabel: '📊 Таблицы' }
 ];
 
 /**
@@ -172,7 +172,7 @@ export function VariableListContent({
             onClick={(e) => e.stopPropagation()}
             onMouseDown={(e) => e.stopPropagation()}
             onKeyDown={(e) => e.stopPropagation()}
-            placeholder="Поиск переменной..."
+            placeholder={"Search for a variable..."}
             className="h-7 text-xs pl-7 pr-2 py-0"
           />
         </div>
@@ -186,7 +186,7 @@ export function VariableListContent({
         </div>
       ) : visibleCount === 0 ? (
         <div className="px-3 py-4 text-xs text-muted-foreground text-center">
-          Ничего не найдено
+          Nothing found
         </div>
       ) : (
         visibleGroupDefs.map((group) => {

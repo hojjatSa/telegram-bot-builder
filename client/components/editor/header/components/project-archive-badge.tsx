@@ -25,7 +25,7 @@ export function ProjectArchiveBadge({ onUnarchive, disabled = false }: ProjectAr
   return (
     <div className="flex items-center gap-1.5 flex-shrink-0">
       <span className="text-[10px] xs:text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400/30 whitespace-nowrap">
-        В архиве
+        In the archive
       </span>
       <Button
         type="button"
@@ -34,10 +34,10 @@ export function ProjectArchiveBadge({ onUnarchive, disabled = false }: ProjectAr
         disabled={disabled}
         onClick={onUnarchive}
         className="h-7 px-2 text-xs gap-1 text-amber-700 dark:text-amber-300 hover:bg-amber-500/15"
-        title="Вернуть из архива"
+        title={"Return from archive"}
       >
         <ArchiveRestore className="h-3.5 w-3.5" />
-        <span className="hidden sm:inline">Вернуть</span>
+        <span className="hidden sm:inline">Return</span>
       </Button>
     </div>
   );

@@ -47,7 +47,7 @@ export function InlineStatsBadges({ stats }: InlineStatsBadgesProps): React.JSX.
       <span className="text-border/60 text-[10px]">·</span>
 
       {/* Premium пользователи */}
-      <span className="inline-flex items-center gap-0.5" title="Premium пользователи">
+      <span className="inline-flex items-center gap-0.5" title={"Premium users"}>
         <Star className="w-3 h-3" />
         <span className="tabular-nums">{formatCompact(stats.premiumUsers)}</span>
       </span>
@@ -55,7 +55,7 @@ export function InlineStatsBadges({ stats }: InlineStatsBadgesProps): React.JSX.
       <span className="text-border/60 text-[10px]">·</span>
 
       {/* Всего сообщений */}
-      <span className="inline-flex items-center gap-0.5" title="Всего сообщений">
+      <span className="inline-flex items-center gap-0.5" title={"Total messages"}>
         <MessageCircle className="w-3 h-3" />
         <span className="tabular-nums">{formatCompact(stats.totalInteractions)}</span>
       </span>
@@ -63,7 +63,7 @@ export function InlineStatsBadges({ stats }: InlineStatsBadgesProps): React.JSX.
       <span className="text-border/60 text-[10px]">·</span>
 
       {/* Среднее на пользователя */}
-      <span className="inline-flex items-center gap-0.5" title="Среднее сообщений на пользователя">
+      <span className="inline-flex items-center gap-0.5" title={"Average messages per user"}>
         <BarChart2 className="w-3 h-3" />
         <span className="tabular-nums">{formatCompact(stats.avgInteractionsPerUser)}</span>
       </span>

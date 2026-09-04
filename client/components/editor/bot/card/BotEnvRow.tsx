@@ -143,7 +143,7 @@ export function BotEnvRow({
         <span
           className={`text-xs break-all flex-1 min-w-0 ${canEdit ? 'text-foreground/80 cursor-pointer' : 'text-muted-foreground/70'}`}
           onClick={() => { if (canEdit) handleStartEdit(); }}
-          title={canEdit ? 'Нажмите для редактирования' : 'Только для чтения'}
+          title={canEdit ? "Click to edit" : "Read-only"}
         >
           {displayValue}
         </span>
@@ -151,7 +151,7 @@ export function BotEnvRow({
 
       {/* Кнопка reveal для секретов */}
       {isSecret && (
-        <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover/row:opacity-100" onClick={handleToggleReveal} title="Показать/скрыть">
+        <Button variant="ghost" size="icon" className="h-6 w-6 opacity-0 group-hover/row:opacity-100" onClick={handleToggleReveal} title={"Show/hide"}>
           {revealed ? <EyeOff className="h-3 w-3" /> : <Eye className="h-3 w-3" />}
         </Button>
       )}

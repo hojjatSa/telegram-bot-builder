@@ -199,7 +199,7 @@ export function MediaFileCard({
           )}
           {isHidden && (
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <span className="text-xs text-white font-medium">Скрыт</span>
+              <span className="text-xs text-white font-medium">Hidden</span>
             </div>
           )}
         </div>
@@ -212,7 +212,7 @@ export function MediaFileCard({
             }`}>{fileName}</p>
             {isHidden && (
               <Badge variant="outline" className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600">
-                Скрыт
+                Hidden
               </Badge>
             )}
           </div>
@@ -222,7 +222,7 @@ export function MediaFileCard({
             <p className="text-xs text-emerald-600/50 dark:text-emerald-400/50 truncate mt-1">{url}</p>
           ) : (
             <p className="text-xs text-emerald-600/50 dark:text-emerald-400/50 mt-1">
-              file_id · {Object.keys(fileIdsByToken).length} {Object.keys(fileIdsByToken).length === 1 ? 'токен' : 'токена'}
+              file_id · {Object.keys(fileIdsByToken).length} {Object.keys(fileIdsByToken).length === 1 ? "token" : "token"}
             </p>
           )}
         </div>

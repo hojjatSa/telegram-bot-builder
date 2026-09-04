@@ -60,7 +60,7 @@ export function UserSection({
             'px-2.5 py-1.5 text-xs text-muted-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all',
             isVertical ? 'w-full justify-center' : '',
           )}
-          title="Сменить аккаунт"
+          title={"Change account"}
         >
           <RefreshCw className="h-3.5 w-3.5" />
         </Button>

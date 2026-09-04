@@ -74,7 +74,7 @@ export function useBotMutations({
     mutationFn: ({ tokenId, projectId: pid }: { tokenId: number; projectId: number }) =>
       apiRequest('POST', `/api/projects/${pid}/bot/start`, { tokenId }),
     onSuccess: (_, vars) => {
-      toast({ title: 'Бот запущен', description: 'Бот успешно запущен и готов к работе.' });
+      toast({ title: "Bot launched", description: "The bot has been successfully launched and is ready to work." });
       invalidateBotStatusQueries(queryClient, vars.projectId, vars.tokenId);
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.projectId}/bot/info`] });
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.projectId}/tokens`] });
@@ -85,7 +85,7 @@ export function useBotMutations({
       }
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка запуска', description: error.message, variant: 'destructive' });
+      toast({ title: "Startup error", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -93,13 +93,13 @@ export function useBotMutations({
     mutationFn: ({ tokenId, projectId: pid }: { tokenId: number; projectId: number }) =>
       apiRequest('POST', `/api/projects/${pid}/bot/stop`, { tokenId }),
     onSuccess: (_, vars) => {
-      toast({ title: 'Бот остановлен', description: 'Бот успешно остановлен.' });
+      toast({ title: "Bot stopped", description: "The bot has been stopped successfully." });
       invalidateBotStatusQueries(queryClient, vars.projectId, vars.tokenId);
       queryClient.invalidateQueries({ queryKey: ['launch-history', vars.tokenId] });
       if (onBotStopped) onBotStopped(vars.projectId, vars.tokenId);
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка остановки', description: error.message, variant: 'destructive' });
+      toast({ title: "Stop error", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -117,10 +117,10 @@ export function useBotMutations({
         // Удаляем терминальную вкладку удалённого бота
         if (onBotDeleted) onBotDeleted(token.projectId, tokenId);
       }
-      toast({ title: 'Бот удалён' });
+      toast({ title: "Bot deleted" });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка при удалении бота', description: error.message, variant: 'destructive' });
+      toast({ title: "Error when deleting bot", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -137,7 +137,7 @@ export function useBotMutations({
       });
     },
     onError: () => {
-      toast({ title: 'Error', description: 'Не удалось изменить настройку базы данных', variant: 'destructive' });
+      toast({ title: 'Error', description: "Failed to change database setting", variant: 'destructive' });
     },
   });
 
@@ -147,7 +147,7 @@ export function useBotMutations({
     onSuccess: (data, vars) => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.projectId}/tokens`] });
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.projectId}/bot/info`] });
-      toast({ title: 'Бот успешно добавлен', description: 'Информация о боте автоматически получена из Telegram' });
+      toast({ title: "Bot added successfully", description: "Information about the bot was automatically obtained from Telegram" });
       // Создаём терминальную вкладку для нового бота
       if (onBotStarted && data?.id) {
         onBotStarted(vars.projectId, data.id, vars.name || `Бот ${data.id}`);
@@ -155,7 +155,7 @@ export function useBotMutations({
       onBotAdded();
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка при добавлении бота', description: error.message, variant: 'destructive' });
+      toast({ title: "Error adding bot", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -184,7 +184,7 @@ export function useBotMutations({
     },
     onError: (error: Error) => {
       setIsParsingBot(false);
-      toast({ title: 'Ошибка получения информации о боте', description: error.message || 'Проверьте правильность токена', variant: 'destructive' });
+      toast({ title: "Error getting bot information", description: error.message || 'Проверьте правильность токена', variant: 'destructive' });
     },
   });
 
@@ -200,7 +200,7 @@ export function useBotMutations({
         queryClient.invalidateQueries({ queryKey: [`/api/projects/${token.projectId}/tokens`] });
         queryClient.invalidateQueries({ queryKey: [`/api/projects/${token.projectId}/bot/info`] });
       }
-      toast({ title: 'Информация о боте обновлена' });
+      toast({ title: "Bot information updated" });
     },
     onError: (error: Error) => {
       toast({ title: 'Update failed', description: error.message, variant: 'destructive' });
@@ -219,10 +219,10 @@ export function useBotMutations({
           onBotStarted?.(pid, r.tokenId, '');
         });
       }
-      toast({ title: 'Боты перезапущены', description: `Перезапущено: ${data.restarted}` });
+      toast({ title: "Bots restarted", description: `Перезапущено: ${data.restarted}` });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка перезапуска', description: error.message, variant: 'destructive' });
+      toast({ title: "Restart error", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -252,13 +252,13 @@ export function useBotMutations({
         return;
       }
       toast({
-        title: 'Офлайн-боты запущены',
+        title: "Offline bots launched",
         description: `Успешно: ${data.started}`
           + (data.failed ? `, ошибок: ${data.failed}` : ''),
       });
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка запуска', description: error.message, variant: 'destructive' });
+      toast({ title: "Startup error", description: error.message, variant: 'destructive' });
     },
   });
 
@@ -290,7 +290,7 @@ export function useBotMutations({
     onSuccess: (data, vars) => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.targetProjectId}/tokens`] });
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${vars.targetProjectId}/bot/info`] });
-      toast({ title: 'Бот успешно добавлен', description: 'Существующий токен привязан к проекту' });
+      toast({ title: "Bot added successfully", description: "An existing token is tied to the project" });
       // Создаём терминальную вкладку для привязанного бота
       if (onBotStarted && data?.id) {
         const source = allTokensFlatFull.find(t => t.id === vars.tokenId);
@@ -299,7 +299,7 @@ export function useBotMutations({
       onBotAdded();
     },
     onError: (error: Error) => {
-      toast({ title: 'Ошибка при добавлении бота', description: error.message, variant: 'destructive' });
+      toast({ title: "Error adding bot", description: error.message, variant: 'destructive' });
     },
   });
 

@@ -1252,7 +1252,7 @@ export default function Editor() {
           queryClient.invalidateQueries({ queryKey: ['/api/projects'] });
 
           toast({
-            title: 'Сценарий применен',
+            title: "Script applied",
             description: `Сценарий "${template.name}" успешно загружен`,
           });
 
@@ -1642,7 +1642,7 @@ export default function Editor() {
                   type="button"
                   onClick={() => setAreAllCollapsed(!areAllCollapsed)}
                   className="flex items-center gap-1 h-6 px-2 text-xs rounded-sm border bg-background hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-                  title={areAllCollapsed ? 'Развернуть всё' : 'Свернуть всё'}
+                  title={areAllCollapsed ? "Expand all" : "Collapse all"}
                 >
                   {areAllCollapsed ? (
                     <>

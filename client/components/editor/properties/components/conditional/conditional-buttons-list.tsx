@@ -34,9 +34,9 @@ export function ConditionalButtonsList({
   return (
     <div className="space-y-2.5">
       <div className="flex items-center justify-between gap-2">
-        <Label className="text-xs font-semibold text-foreground">Кнопки</Label>
+        <Label className="text-xs font-semibold text-foreground">Buttons</Label>
         <UIButton size="sm" variant="outline" onClick={add_button} className="text-xs">
-          <i className="fas fa-plus mr-1.5"></i>Добавить
+          <i className="fas fa-plus mr-1.5"></i>Add
         </UIButton>
       </div>
       {(condition.buttons || []).map((button: any, i: number) => (

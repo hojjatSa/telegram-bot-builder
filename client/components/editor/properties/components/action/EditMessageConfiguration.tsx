@@ -74,7 +74,7 @@ export function EditMessageConfiguration({
       <InlineRichEditor
         value={data.editMessageText ?? ''}
         onChange={(v) => update('editMessageText', v)}
-        placeholder="Введите новый текст сообщения..."
+        placeholder={"Enter new message text..."}
         enableMarkdown={data.editFormatMode === 'markdown'}
         onFormatModeChange={(mode) => update('editFormatMode', mode)}
         availableVariables={[...textVariables, ...mediaVariables] as Variable[]}
@@ -87,30 +87,30 @@ export function EditMessageConfiguration({
           <div className="w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
             <i className="fas fa-pen text-amber-600 dark:text-amber-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-amber-900 dark:text-amber-100">Источник сообщения</Label>
+          <Label className="text-sm font-semibold text-amber-900 dark:text-amber-100">Message source</Label>
         </div>
         <Select
           value={data.editMessageIdSource ?? 'last_bot_message'}
           onValueChange={(v) => update('editMessageIdSource', v)}
         >
           <SelectTrigger className="bg-card/70 border border-amber-200/50 dark:border-amber-800/50">
-            <SelectValue placeholder="Выберите источник сообщения" />
+            <SelectValue placeholder={"Select message source"} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="last_bot_message">Последнее сообщение бота</SelectItem>
-            <SelectItem value="custom">ID сообщения</SelectItem>
+            <SelectItem value="last_bot_message">Last bot message</SelectItem>
+            <SelectItem value="custom">Message ID</SelectItem>
           </SelectContent>
         </Select>
         {data.editMessageIdSource === 'custom' && (
           <div className="space-y-2">
             <Label className="text-xs font-medium text-amber-700 dark:text-amber-300">
-              ID сообщения или переменная
+              Message ID or variable
             </Label>
             <div className="flex gap-2">
               <Input
                 value={data.editMessageIdManual ?? ''}
                 onChange={(e) => update('editMessageIdManual', e.target.value)}
-                placeholder="123456789 или {message_id}"
+                placeholder={"123456789 or {message_id}"}
                 className="bg-white/60 dark:bg-slate-950/60 border-amber-200/50 dark:border-amber-800/50 flex-1"
               />
               <VariableSelector
@@ -138,24 +138,24 @@ export function EditMessageConfiguration({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="keep">Не менять</SelectItem>
-            <SelectItem value="remove">Убрать кнопки</SelectItem>
-            <SelectItem value="node">Взять из узла keyboard</SelectItem>
+            <SelectItem value="keep">Don't change</SelectItem>
+            <SelectItem value="remove">Remove buttons</SelectItem>
+            <SelectItem value="node">Take from the keyboard node</SelectItem>
           </SelectContent>
         </Select>
         {keyboardMode === 'node' && (
           <div className="space-y-2">
-            <Label className="text-xs text-slate-600 dark:text-slate-400">Узел с кнопками</Label>
+            <Label className="text-xs text-slate-600 dark:text-slate-400">Button node</Label>
             <Select
               value={data.editKeyboardNodeId ?? ''}
               onValueChange={(v) => update('editKeyboardNodeId', v)}
             >
               <SelectTrigger className="bg-card/70">
-                <SelectValue placeholder="Выберите keyboard узел" />
+                <SelectValue placeholder={"Select keyboard node"} />
               </SelectTrigger>
               <SelectContent>
                 {keyboardNodes.length === 0 ? (
-                  <div className="px-3 py-2 text-xs text-muted-foreground">Нет узлов keyboard на холсте</div>
+                  <div className="px-3 py-2 text-xs text-muted-foreground">No keyboard nodes on canvas</div>
                 ) : (
                   keyboardNodes.map(n => (
                     <SelectItem key={n.id} value={n.id}>
@@ -168,7 +168,7 @@ export function EditMessageConfiguration({
           </div>
         )}
         {keyboardMode === 'remove' && (
-          <p className="text-[10px] text-slate-400">Inline-кнопки будут удалены из сообщения</p>
+          <p className="text-[10px] text-slate-400">Inline buttons will be removed from the message</p>
         )}
       </div>
     </div>

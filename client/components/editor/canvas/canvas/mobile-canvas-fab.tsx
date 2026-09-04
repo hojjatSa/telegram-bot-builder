@@ -49,7 +49,7 @@ export function MobileCanvasFab({
           active:scale-95 transition-all duration-200
           ${selectedNodeId ? 'opacity-100 scale-100' : 'opacity-0 scale-75 pointer-events-none'}
         `}
-        aria-label="Открыть свойства"
+        aria-label={"Open properties"}
       >
         <SlidersHorizontal className="w-5 h-5" />
       </button>
@@ -65,7 +65,7 @@ export function MobileCanvasFab({
           text-gray-700 dark:text-gray-200
           active:scale-95 transition-all duration-200
         "
-        aria-label="Открыть компоненты"
+        aria-label={"Open components"}
       >
         <LayoutGrid className="w-5 h-5" />
       </button>

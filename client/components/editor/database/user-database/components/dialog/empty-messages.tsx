@@ -15,7 +15,7 @@ export function EmptyMessages(): React.JSX.Element {
       <MessageSquare className="w-12 h-12 text-muted-foreground mb-4" />
       <p className="text-muted-foreground">No messages</p>
       <p className="text-sm text-muted-foreground mt-1">
-        Начните диалог, отправив первое сообщение
+        Start a conversation by sending your first message
       </p>
     </div>
   );

@@ -125,11 +125,11 @@ export function BotCardInfo({
 
         <p className="text-xs text-muted-foreground flex flex-wrap gap-x-1 gap-y-0.5">
           <span className="whitespace-nowrap">
-            Добавлен: {new Date(token.createdAt!).toLocaleDateString('ru-RU')}
+            Added: {new Date(token.createdAt!).toLocaleDateString('ru-RU')}
           </span>
           {token.lastUsedAt && (
             <span className="whitespace-nowrap before:content-['•_'] sm:before:content-['•_']">
-              Последний: {new Date(token.lastUsedAt).toLocaleDateString('ru-RU')}
+              Last: {new Date(token.lastUsedAt).toLocaleDateString('ru-RU')}
             </span>
           )}
           {token.trackExecutionTime === 1 && (

@@ -24,15 +24,15 @@ export interface LogicOperatorOption {
 export const LOGIC_OPERATORS: LogicOperatorOption[] = [
   {
     value: 'AND',
-    label: 'И (AND) - ВСЕ вопросы должны быть выполнены',
-    description: 'Пользователь должен ответить на ВСЕ выбранные вопросы',
+    label: "AND (AND) - ALL questions must be completed",
+    description: "The user must answer ALL selected questions",
     symbol: '∧',
     symbolColor: 'text-green-600'
   },
   {
     value: 'OR',
-    label: 'ИЛИ (OR) - ЛЮБОЙ из вопросов годится',
-    description: 'Пользователь может ответить на ЛЮБОЙ из выбранных вопросов',
+    label: "OR (OR) - ANY of the questions are suitable",
+    description: "The user can answer ANY of the selected questions",
     symbol: '∨',
     symbolColor: 'text-blue-600'
   }

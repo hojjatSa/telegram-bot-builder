@@ -38,7 +38,7 @@ export function AddRowsFooter({ onAddRows }: AddRowsFooterProps) {
         onClick={handleAdd}
       >
         <Plus className="h-3 w-3" />
-        Добавить строк
+        Add lines
       </Button>
       <Input
         type="number"

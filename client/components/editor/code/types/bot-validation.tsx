@@ -54,7 +54,7 @@ export function BotValidation({ botData }: BotValidationProps) {
     <div className="space-y-2">
       <div className="flex items-center gap-2 text-red-600 dark:text-red-400 p-3 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800/40">
         <i className="fas fa-exclamation-triangle"></i>
-        <span className="font-medium text-sm">Найдены ошибки в структуре:</span>
+        <span className="font-medium text-sm">Errors found in the structure:</span>
       </div>
       <div className="space-y-1.5">
         {validationResult.errors.map((error: string, index: number) => (

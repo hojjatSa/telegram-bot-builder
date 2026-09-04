@@ -41,7 +41,7 @@ export function FiltersButton({ activeCount, onOpen }: FiltersButtonProps) {
       data-testid="filters-button"
     >
       <SlidersHorizontal className="h-3.5 w-3.5 shrink-0" />
-      Фильтры
+      Filters
       {activeCount > 0 && (
         <span
           className={FILTERS_BUTTON_COUNT_BADGE_CLASS}

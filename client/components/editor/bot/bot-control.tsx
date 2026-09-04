@@ -214,7 +214,7 @@ export function BotControl({ projectId, onBotStarted, onBotStopped, onBotDeleted
     if (token.isActive === 0) {
       return (
         <Badge variant="destructive">
-          Токен недействителен
+          Token is invalid
         </Badge>
       );
     }
@@ -227,17 +227,17 @@ export function BotControl({ projectId, onBotStarted, onBotStopped, onBotDeleted
         <Badge variant="default" className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border-green-200 dark:border-green-800">
           <div className="flex items-center gap-1">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            Активный
+            Active
           </div>
         </Badge>
       );
     }
     if (token.isDefault) return (
       <Badge variant="outline" className="border-border text-foreground/80 bg-muted/40">
-        По умолчанию
+        Default
       </Badge>
     );
-    return <Badge variant="outline">Готов</Badge>;
+    return <Badge variant="outline">Ready</Badge>;
   };
 
   return (

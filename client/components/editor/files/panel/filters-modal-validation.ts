@@ -26,7 +26,7 @@ export const MEDIA_TYPE_OPTIONS: MediaTypeOption[] = [
   { value: 'voice', label: 'Voice' },
   { value: 'document', label: 'Document' },
   { value: 'sticker', label: 'Sticker' },
-  { value: 'animation', label: 'Анимация (GIF)' },
+  { value: 'animation', label: "Animation (GIF)" },
   { value: 'video_note', label: 'Video Message' },
   { value: 'cover', label: 'Cover' },
 ];

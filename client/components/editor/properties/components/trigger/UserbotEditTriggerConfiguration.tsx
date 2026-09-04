@@ -41,40 +41,40 @@ export function UserbotEditTriggerConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-pen text-amber-600 dark:text-amber-400 text-sm" />
           <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
-            Триггер редактирования (юзербот)
+            Edit trigger (userbot)
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Срабатывает при редактировании сообщения в указанном чате.
-          Работает через Telethon (юзербот-аккаунт).
+          Fires when a message is edited in the specified chat.
+          Works through Telethon (userbot account).
         </p>
       </div>
 
       {/* Сущность (чат/канал) */}
       <div className="space-y-1.5">
-        <Label className="text-xs text-muted-foreground">Чат / канал (entity)</Label>
+        <Label className="text-xs text-muted-foreground">Chat/channel (entity)</Label>
         <Input
           value={data.userbotEntity || ''}
           onChange={(e) => onNodeUpdate(selectedNode.id, { userbotEntity: e.target.value })}
-          placeholder="@username, ID или {переменная}"
+          placeholder={"@username, ID or {variable}"}
           className="h-8 text-sm font-mono"
         />
         <p className="text-[10px] text-muted-foreground/60">
-          Юзербот должен быть участником чата.
+          The userbot must be a participant in the chat.
         </p>
       </div>
 
       {/* Тип фильтра */}
       <div className="space-y-1.5">
-        <Label className="text-xs text-muted-foreground">Фильтр</Label>
+        <Label className="text-xs text-muted-foreground">Filter</Label>
         <select
           value={data.filterType || 'any'}
           onChange={(e) => onNodeUpdate(selectedNode.id, { filterType: e.target.value })}
           className="h-8 text-sm w-full rounded-md border border-input bg-background px-3"
         >
-          <option value="any">Любое редактирование</option>
-          <option value="contains">Содержит текст</option>
-          <option value="regex">Регулярное выражение</option>
+          <option value="any">Any editing</option>
+          <option value="contains">Contains text</option>
+          <option value="regex">Regular expression</option>
         </select>
       </div>
 
@@ -82,12 +82,12 @@ export function UserbotEditTriggerConfiguration({
       {data.filterType && data.filterType !== 'any' && (
         <div className="space-y-1.5">
           <Label className="text-xs text-muted-foreground">
-            {data.filterType === 'contains' ? 'Текст для поиска' : 'Regex-паттерн'}
+            {data.filterType === 'contains' ? "Search text" : "Regex pattern"}
           </Label>
           <Input
             value={data.filterValue || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { filterValue: e.target.value })}
-            placeholder={data.filterType === 'contains' ? 'искомый текст' : '.*паттерн.*'}
+            placeholder={data.filterType === 'contains' ? "search text" : ".*pattern.*"}
             className="h-8 text-sm font-mono"
           />
         </div>
@@ -95,7 +95,7 @@ export function UserbotEditTriggerConfiguration({
 
       {/* Переменные для сохранения */}
       <div className="space-y-3 rounded-lg border border-slate-200/50 dark:border-slate-700/50 p-3">
-        <p className="text-xs font-medium text-slate-600 dark:text-slate-400">Сохранить в переменные</p>
+        <p className="text-xs font-medium text-slate-600 dark:text-slate-400">Save to variables</p>
 
         <div className="space-y-1.5">
           <Label className="text-xs text-muted-foreground">Message text</Label>
@@ -108,7 +108,7 @@ export function UserbotEditTriggerConfiguration({
         </div>
 
         <div className="space-y-1.5">
-          <Label className="text-xs text-muted-foreground">ID сообщения</Label>
+          <Label className="text-xs text-muted-foreground">Message ID</Label>
           <Input
             value={data.saveMessageIdTo || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { saveMessageIdTo: e.target.value })}
@@ -118,7 +118,7 @@ export function UserbotEditTriggerConfiguration({
         </div>
 
         <div className="space-y-1.5">
-          <Label className="text-xs text-muted-foreground">ID чата (опционально)</Label>
+          <Label className="text-xs text-muted-foreground">Chat ID (optional)</Label>
           <Input
             value={data.saveChatIdTo || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { saveChatIdTo: e.target.value })}
@@ -128,7 +128,7 @@ export function UserbotEditTriggerConfiguration({
         </div>
 
         <div className="space-y-1.5">
-          <Label className="text-xs text-muted-foreground">ID отправителя (опционально)</Label>
+          <Label className="text-xs text-muted-foreground">Sender ID (optional)</Label>
           <Input
             value={data.saveSenderIdTo || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { saveSenderIdTo: e.target.value })}

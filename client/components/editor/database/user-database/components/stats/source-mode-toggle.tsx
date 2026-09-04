@@ -26,8 +26,8 @@ export interface SourceModeToggleProps {
  * Конфигурация кнопок переключателя
  */
 const MODES: Array<{ mode: SourceMode; title: string; Icon: React.ElementType }> = [
-  { mode: 'total',     title: 'Общий',        Icon: Users     },
-  { mode: 'by-source', title: 'По источникам', Icon: GitBranch },
+  { mode: 'total',     title: "General",        Icon: Users     },
+  { mode: 'by-source', title: "By sources", Icon: GitBranch },
 ];
 
 /**

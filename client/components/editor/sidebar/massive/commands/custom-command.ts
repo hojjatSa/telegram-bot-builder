@@ -8,13 +8,13 @@ import type { CommandPreset } from './command-preset.types';
 export const customCommand: CommandPreset = {
   id: 'custom-command',
   name: 'Command',
-  description: 'Произвольная команда',
+  description: "Free command",
   icon: 'fas fa-terminal',
   color: 'bg-yellow-100 text-yellow-600',
   type: 'command_preset',
   triggerData: {
     command: '/команда',
-    description: 'Описание команды',
+    description: "Command Description",
     showInMenu: true,
   },
   messageData: {

@@ -140,7 +140,7 @@ export function useImportExport(): UseImportExportResult {
       queryClient.invalidateQueries({ queryKey: ['/api/projects/list'] });
 
       toast({
-        title: '✅ Проект импортирован',
+        title: "✅ Project imported",
         description: `Проект "${projectName}" успешно импортирован`,
       });
 
@@ -150,7 +150,7 @@ export function useImportExport(): UseImportExportResult {
       const errorMessage = err instanceof Error ? err.message : 'Не удалось импортировать проект';
       setImportState(prev => ({ ...prev, error: errorMessage }));
       toast({
-        title: '❌ Ошибка импорта',
+        title: "❌ Import error",
         description: errorMessage,
         variant: 'destructive',
       });

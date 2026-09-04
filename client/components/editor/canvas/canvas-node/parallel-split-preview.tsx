@@ -58,13 +58,13 @@ export function ParallelSplitPreview({
         <div className="w-8 h-8 rounded-lg bg-rose-100 dark:bg-rose-900/40 flex items-center justify-center">
           <i className="fas fa-sitemap text-rose-600 dark:text-rose-400 text-sm" />
         </div>
-        <span className="font-semibold text-gray-800 dark:text-gray-200 text-sm">⚡ Параллельная группа</span>
+        <span className="font-semibold text-gray-800 dark:text-gray-200 text-sm">⚡ Parallel group</span>
       </div>
 
       {/* Метаданные запуска */}
       <div className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-800 rounded px-2 py-1">
-        Одновременно: {maxConcurrent === 0 ? 'без лимита' : maxConcurrent}
-        {awaitAll ? ' · ждать всех' : ''}
+        Simultaneously: {maxConcurrent === 0 ? "no limit" : maxConcurrent}
+        {awaitAll ? "· wait for everyone" : ''}
       </div>
 
       {/* Ветки */}
@@ -93,7 +93,7 @@ export function ParallelSplitPreview({
         ))}
         {branches.length === 0 && (
           <div className="text-xs text-gray-400 dark:text-gray-500 italic px-2 py-1">
-            Нет веток — добавьте в панели свойств
+            No branches - add in the properties panel
           </div>
         )}
       </div>

@@ -65,9 +65,9 @@ export function EditMessagePreview({ node }: EditMessagePreviewProps) {
           {showText && text.trim() ? (
             <FormattedText value={text} lineClamp={6} />
           ) : showText ? (
-            <span className="text-sm italic text-muted-foreground opacity-60">Текст не задан</span>
+            <span className="text-sm italic text-muted-foreground opacity-60">No text specified</span>
           ) : (
-            <span className="text-sm text-muted-foreground opacity-60">Редактирование кнопок</span>
+            <span className="text-sm text-muted-foreground opacity-60">Editing buttons</span>
           )}
         </div>
       </div>

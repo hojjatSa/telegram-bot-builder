@@ -36,7 +36,7 @@ export function MessageInputForm({
   return (
     <div className="space-y-3">
       <Label htmlFor="message-input" className="text-sm font-medium">
-        Отправить сообщение
+        Send message
       </Label>
       <div className="flex gap-2">
         <Textarea
@@ -60,7 +60,7 @@ export function MessageInputForm({
       </div>
       <div className="flex justify-between items-center">
         <p className="text-xs text-muted-foreground">
-          Нажмите Enter для отправки, Shift+Enter для новой строки
+          Press Enter to send, Shift+Enter for new line
         </p>
         <Button
           data-testid="button-send-message"
@@ -71,12 +71,12 @@ export function MessageInputForm({
           {isPending ? (
             <>
               <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
-              Отправка...
+              Sending...
             </>
           ) : (
             <>
               <Send className="w-4 h-4 mr-2" />
-              Отправить
+              Send
             </>
           )}
         </Button>

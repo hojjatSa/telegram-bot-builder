@@ -57,7 +57,7 @@ export function MediaVariableBadge({ variable, onRemove }: MediaVariableBadgePro
       <button
         onClick={() => onRemove(variable.name)}
         className="ml-1 text-xs opacity-50 hover:opacity-100 transition-opacity"
-        title="Удалить медиафайл"
+        title={"Delete media file"}
       >
         ✕
       </button>

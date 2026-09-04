@@ -38,7 +38,7 @@ export function VariableSelector({
             variant="outline"
             size="sm"
             className="h-8 w-8 p-0 hover:bg-cyan-50 dark:hover:bg-cyan-900/20"
-            title="Выбрать из списка"
+            title={"Select from list"}
           >
             <ChevronDown className="h-4 w-4" />
           </Button>
@@ -46,7 +46,7 @@ export function VariableSelector({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 sm:w-64">
         <DropdownMenuLabel className="text-xs sm:text-sm font-semibold">
-          📌 Доступные переменные
+          📌 Available variables
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <VariableListContent

@@ -67,7 +67,7 @@ export function FilesTable(props: FilesTableProps) {
   const allSelected = isAllSelected(files, selectedIds);
 
   if (isLoading) {
-    return <div className={EMPTY_STATE_CLASS} data-testid="files-table-loading">Загрузка…</div>;
+    return <div className={EMPTY_STATE_CLASS} data-testid="files-table-loading">Loading…</div>;
   }
   if (files.length === 0) {
     return <div className={EMPTY_STATE_CLASS} data-testid="files-table-empty">No files found</div>;
@@ -125,7 +125,7 @@ export function FilesTable(props: FilesTableProps) {
             onCheckedChange={(checked) => onSelectAll(checked as boolean)}
             className={FILE_CHECKBOX_CLASS}
           />
-          Выбрать все ({files.length})
+          Select all ({files.length})
         </label>
         {files.map((file) => (
           <FileCardPlaceholder key={file.id} {...rowProps(file)} />

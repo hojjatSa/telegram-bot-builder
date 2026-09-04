@@ -48,12 +48,12 @@ export function VariablesMenu({
         >
           <Plus className="h-4 w-4 text-blue-600 dark:text-blue-400" />
           <span className="hidden sm:inline">Variable</span>
-          <span className="sm:hidden">+ Переменная</span>
+          <span className="sm:hidden">+ Variable</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 sm:w-64">
         <DropdownMenuLabel className="text-xs sm:text-sm font-semibold">
-          📌 Доступные переменные
+          📌 Available variables
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <VariableListContent

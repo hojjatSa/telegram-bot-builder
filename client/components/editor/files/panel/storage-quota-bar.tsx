@@ -72,7 +72,7 @@ function CompactQuotaBar({
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1 font-medium text-foreground">
             <InfinityIcon className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            Безлимитно
+            Unlimited
           </span>
           <span className="text-border/60">·</span>
           <span className={QUOTA_CAPTION_MUTED_CLASS}>{formatBytes(usedBytes)}</span>
@@ -151,9 +151,9 @@ export function StorageQuotaBar(props: StorageQuotaBarProps) {
       >
         <span className={QUOTA_UNLIMITED_BADGE_CLASS}>
           <InfinityIcon className={QUOTA_UNLIMITED_BADGE_ICON_CLASS} aria-hidden />
-          Безлимитно
+          Unlimited
         </span>
-        <span className={QUOTA_CAPTION_MUTED_CLASS}>занято {formatBytes(usedBytes)}</span>
+        <span className={QUOTA_CAPTION_MUTED_CLASS}>busy {formatBytes(usedBytes)}</span>
       </div>
     );
   }
@@ -193,7 +193,7 @@ export function StorageQuotaBar(props: StorageQuotaBarProps) {
 
       {exceeded && (
         <p className={QUOTA_EXCEEDED_TEXT_CLASS} data-testid="storage-quota-warning">
-          Хранилище переполнено. Загрузка остаётся доступной, но освободите место.
+          The storage is full. The download remains available, but please make room.
         </p>
       )}
     </div>

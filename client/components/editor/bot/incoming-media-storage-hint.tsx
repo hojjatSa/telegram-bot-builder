@@ -60,9 +60,9 @@ export function IncomingMediaStorageHint({
 
   return (
     <p className={className}>
-      Фото скачиваются в{' '}
-      <code className="rounded bg-muted/60 px-1 py-0.5 font-mono text-[11px]">{uploadPath}</code>, регистрируются в{' '}
-      <code className="rounded bg-muted/60 px-1 py-0.5 font-mono text-[11px]">media_files</code> и отображаются во вкладке «Файлы».
+      Photos are downloaded to{' '}
+      <code className="rounded bg-muted/60 px-1 py-0.5 font-mono text-[11px]">{uploadPath}</code>, are registered in{' '}
+      <code className="rounded bg-muted/60 px-1 py-0.5 font-mono text-[11px]">media_files</code> and are displayed in the “Files” tab.
     </p>
   );
 }

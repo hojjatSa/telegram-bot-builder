@@ -242,10 +242,10 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
                 <LayoutDashboard className="w-5 h-5" />
-                Настройка макета интерфейса
+                Customizing the Interface Layout
               </DialogTitle>
               <DialogDescription className="sr-only">
-                Настройте расположение панелей интерфейса редактора
+                Customize the layout of editor interface panels
               </DialogDescription>
             </DialogHeader>
             
@@ -256,15 +256,15 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                   <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="elements" className="flex items-center gap-1">
                       <Layout className="w-4 h-4" />
-                      Элементы
+                      Elements
                     </TabsTrigger>
                     <TabsTrigger value="presets" className="flex items-center gap-1">
                       <Zap className="w-4 h-4" />
-                      Пресеты
+                      Presets
                     </TabsTrigger>
                     <TabsTrigger value="advanced" className="flex items-center gap-1">
                       <Settings className="w-4 h-4" />
-                      Продвинутые
+                      Advanced
                     </TabsTrigger>
                   </TabsList>
 
@@ -273,7 +273,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <LayoutDashboard className="w-4 h-4" />
-                        <h3 className="font-semibold">Элементы интерфейса</h3>
+                        <h3 className="font-semibold">Interface elements</h3>
                       </div>
                       {tempConfig.elements.map(element => (
                       <Card key={element.id} className="p-3">
@@ -294,7 +294,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                           {element.visible && (
                             <div className="space-y-2">
                               <div>
-                                <Label className="text-sm">Позиция</Label>
+                                <Label className="text-sm">Position</Label>
                                 <Select
                                   value={element.position}
                                   onValueChange={(value) => 
@@ -305,17 +305,17 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                                     <SelectValue />
                                   </SelectTrigger>
                                   <SelectContent>
-                                    <SelectItem value="top">Сверху</SelectItem>
-                                    <SelectItem value="bottom">Снизу</SelectItem>
-                                    <SelectItem value="left">Слева</SelectItem>
-                                    <SelectItem value="right">Справа</SelectItem>
-                                    <SelectItem value="center">Центр</SelectItem>
+                                    <SelectItem value="top">Above</SelectItem>
+                                    <SelectItem value="bottom">From below</SelectItem>
+                                    <SelectItem value="left">Left</SelectItem>
+                                    <SelectItem value="right">Right</SelectItem>
+                                    <SelectItem value="center">Center</SelectItem>
                                   </SelectContent>
                                 </Select>
                               </div>
                               
                               <div>
-                                <Label className="text-sm">Размер: {element.size}%</Label>
+                                <Label className="text-sm">Size: {element.size}%</Label>
                                 <Slider
                                   value={[element.size]}
                                   onValueChange={(value) => 
@@ -340,7 +340,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                     <div className="space-y-4">
                       <div className="flex items-center gap-2">
                         <Zap className="w-4 h-4" />
-                        <h3 className="font-semibold">Быстрые пресеты</h3>
+                        <h3 className="font-semibold">Quick presets</h3>
                       </div>
                       <div className="grid grid-cols-1 gap-3">
                         <Card className="p-4 cursor-pointer hover:bg-accent transition-colors" onClick={() => {
@@ -356,8 +356,8 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                           <div className="flex items-center gap-3">
                             <ArrowDown className="w-5 h-5 text-blue-500" />
                             <div>
-                              <h4 className="font-medium">Шапка снизу</h4>
-                              <p className="text-sm text-muted-foreground">Переместить заголовок в нижнюю часть</p>
+                              <h4 className="font-medium">Hat bottom</h4>
+                              <p className="text-sm text-muted-foreground">Move title to bottom</p>
                             </div>
                           </div>
                         </Card>
@@ -375,8 +375,8 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                           <div className="flex items-center gap-3">
                             <Minimize2 className="w-5 h-5 text-green-500" />
                             <div>
-                              <h4 className="font-medium">Минимальный режим</h4>
-                              <p className="text-sm text-muted-foreground">Только холст и заголовок</p>
+                              <h4 className="font-medium">Minimum mode</h4>
+                              <p className="text-sm text-muted-foreground">Canvas and header only</p>
                             </div>
                           </div>
                         </Card>
@@ -397,8 +397,8 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                           <div className="flex items-center gap-3">
                             <Maximize2 className="w-5 h-5 text-purple-500" />
                             <div>
-                              <h4 className="font-medium">Полный режим</h4>
-                              <p className="text-sm text-muted-foreground">Показать все панели</p>
+                              <h4 className="font-medium">Full mode</h4>
+                              <p className="text-sm text-muted-foreground">Show all panels</p>
                             </div>
                           </div>
                         </Card>
@@ -411,7 +411,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                     <div className="space-y-4">
                       <div className="flex items-center gap-2">
                         <Settings className="w-4 h-4" />
-                        <h3 className="font-semibold">Продвинутые настройки</h3>
+                        <h3 className="font-semibold">Advanced Settings</h3>
                       </div>
 
                       <div className="space-y-3">
@@ -423,7 +423,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                               setTempConfig(prev => ({ ...prev, compactMode: checked }))
                             }
                           />
-                          <Label htmlFor="compact">Компактный режим</Label>
+                          <Label htmlFor="compact">Compact mode</Label>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -434,7 +434,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                               setTempConfig(prev => ({ ...prev, showGrid: checked }))
                             }
                           />
-                          <Label htmlFor="grid">Показывать сетку</Label>
+                          <Label htmlFor="grid">Show grid</Label>
                         </div>
                       </div>
 
@@ -443,7 +443,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                       <div className="space-y-3">
                         <h4 className="font-medium flex items-center gap-2">
                           <Palette className="w-4 h-4" />
-                          Экспорт и импорт
+                          Export and import
                         </h4>
                         <div className="flex gap-2">
                           <Button variant="outline" size="sm" className="flex-1">
@@ -466,7 +466,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                     onClick={handleReset}
                   >
                     <RotateCcw className="w-4 h-4 mr-2" />
-                    Сброс
+                    Reset
                   </Button>
                   <div className="flex items-center space-x-2">
                     <Button
@@ -481,7 +481,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
                       onClick={handleApply}
                     >
                       <Save className="w-4 h-4 mr-2" />
-                      Применить
+                      Apply
                     </Button>
                   </div>
                   </div>
@@ -492,7 +492,7 @@ export const SimpleLayoutCustomizer: React.FC<SimpleLayoutCustomizerProps> = ({
               <div className="flex-1 bg-gray-50 dark:bg-gray-900 rounded-lg p-4">
                 <div className="h-full border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg relative">
                   <div className="absolute top-2 left-2 bg-white dark:bg-gray-800 px-2 py-1 rounded text-xs font-medium">
-                    Предварительный просмотр
+                    Preview
                   </div>
                   <div className="h-full p-6 pt-10">
                     <div className="h-full grid gap-2" style={{

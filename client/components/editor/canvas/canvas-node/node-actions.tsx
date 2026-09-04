@@ -66,7 +66,7 @@ export function NodeActions({ onDuplicate, onDelete, isSelected: _isSelected }: 
           className={cn(
             "absolute -top-2 -right-2 w-7 h-7 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm text-red-600 dark:text-red-400 rounded-xl flex items-center justify-center hover:bg-gradient-to-br hover:from-red-50 hover:to-rose-50 dark:hover:from-red-900/40 dark:hover:to-rose-900/40 hover:text-red-700 dark:hover:text-red-300 focus:bg-gradient-to-br focus:from-red-100 focus:to-rose-100 dark:focus:from-red-800/50 dark:focus:to-rose-800/50 transition-shadow duration-300 shadow-lg hover:shadow-xl focus:shadow-2xl border border-red-200/50 dark:border-red-700/50 hover:border-red-300 dark:hover:border-red-600 focus:border-red-400 dark:focus:border-red-500 z-[60] pointer-events-auto"
           )}
-          title="Удалить элемент"
+          title={"Remove element"}
         >
           <i className="fas fa-times text-xs transition-transform duration-200"></i>
         </button>

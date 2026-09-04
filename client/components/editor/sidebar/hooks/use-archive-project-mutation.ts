@@ -36,12 +36,12 @@ export function useArchiveProjectMutation(): UseArchiveProjectMutationResult {
     mutationFn: (projectId: number) => apiRequest('POST', `/api/projects/${projectId}/archive`),
     onSuccess: async () => {
       await invalidateProjectQueries();
-      toast({ title: 'Проект в архиве', description: 'Проект скрыт из активных списков' });
+      toast({ title: "Archived project", description: "The project is hidden from active lists" });
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Не удалось заархивировать проект',
+        description: "Failed to archive project",
         variant: 'destructive',
       });
     },
@@ -51,12 +51,12 @@ export function useArchiveProjectMutation(): UseArchiveProjectMutationResult {
     mutationFn: (projectId: number) => apiRequest('POST', `/api/projects/${projectId}/unarchive`),
     onSuccess: async () => {
       await invalidateProjectQueries();
-      toast({ title: 'Проект восстановлен', description: 'Проект снова в активных' });
+      toast({ title: "The project has been restored", description: "The project is active again" });
     },
     onError: () => {
       toast({
         title: 'Error',
-        description: 'Не удалось вернуть проект из архива',
+        description: "Failed to return project from archive",
         variant: 'destructive',
       });
     },

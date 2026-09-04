@@ -7,7 +7,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const userbotMessage: ComponentDefinition = {
   id: 'userbot-message',
   name: 'Message (Userbot)',
-  description: 'Отправка сообщения от аккаунта через Telethon',
+  description: "Sending a message from an account via Telethon",
   icon: 'fas fa-paper-plane',
   color: 'bg-violet-100 text-violet-600',
   type: 'userbot_message' as any,

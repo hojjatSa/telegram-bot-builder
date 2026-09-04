@@ -71,20 +71,20 @@ export function ResponseCard({
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-gradient-to-r from-blue-500 to-green-500" />
             <span className="text-sm font-medium text-foreground">
-              {String(keyName.startsWith('response_') ? keyName.replace('response_', 'Ответ ') : keyName)}
+              {String(keyName.startsWith('response_') ? keyName.replace('response_', "Answer") : keyName)}
             </span>
           </div>
           {responseData?.type && (
             <Badge variant="outline" className="text-xs border-primary/20 text-primary">
               {String(
                 responseData.type === 'text'
-                  ? 'Текст'
+                  ? "Text"
                   : responseData.type === 'number'
-                  ? 'Число'
+                  ? "Number"
                   : responseData.type === 'email'
                   ? 'Email'
                   : responseData.type === 'phone'
-                  ? 'Телефон'
+                  ? "Telephone"
                   : responseData.type
               )}
             </Badge>
@@ -93,7 +93,7 @@ export function ResponseCard({
         <div className="flex items-center gap-2">
           <Calendar className="w-3 h-3 text-muted-foreground" />
           <span className="text-xs text-muted-foreground font-medium">
-            {String(responseData?.timestamp ? formatDate(responseData.timestamp) : 'Недавно')}
+            {String(responseData?.timestamp ? formatDate(responseData.timestamp) : "Recently")}
           </span>
         </div>
       </div>
@@ -103,7 +103,7 @@ export function ResponseCard({
         <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800 rounded-lg border">
           <div className="flex items-center gap-2 mb-2">
             <MessageSquare className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span className="font-medium text-blue-900 dark:text-blue-100">Вопрос:</span>
+            <span className="font-medium text-blue-900 dark:text-blue-100">Question:</span>
           </div>
           <div className="text-blue-800 dark:text-blue-200 leading-relaxed">
             {String(questionText)}
@@ -114,7 +114,7 @@ export function ResponseCard({
         <div className="p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
           <div className="flex items-center gap-2 mb-2">
             <Edit className="w-4 h-4 text-green-600 dark:text-green-400" />
-            <span className="font-medium text-green-900 dark:text-green-100">Ответ:</span>
+            <span className="font-medium text-green-900 dark:text-green-100">Answer:</span>
           </div>
 
           <ResponseMedia
@@ -135,7 +135,7 @@ export function ResponseCard({
           <div className="mt-3 pt-3 border-t border-border">
             <div className="text-xs text-muted-foreground flex items-center gap-1">
               <span className="inline-block w-2 h-2 bg-muted-foreground rounded-full" />
-              ID узла: {String(responseData.nodeId)}
+              Node ID: {String(responseData.nodeId)}
             </div>
           </div>
         )}

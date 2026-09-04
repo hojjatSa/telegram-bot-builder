@@ -40,31 +40,31 @@ export function AdminRightsInfo({ title = 'Administrator Rights' }: AdminRightsI
 
       <div className="space-y-3">
         <div className="text-sm text-violet-800 dark:text-violet-200">
-          При вызове команды автоматически отправляется сообщение с 11 инлайн кнопками, показывающими текущие права администратора:
+          When calling the command, a message is automatically sent with 11 inline buttons showing the current administrator rights:
         </div>
 
         <div className="grid grid-cols-2 gap-2 text-xs">
-          <div className="text-violet-600 dark:text-violet-400">• 🏷️ Изменение профиля</div>
-          <div className="text-violet-600 dark:text-violet-400">• 🗑️ Удаление сообщений</div>
-          <div className="text-violet-600 dark:text-violet-400">• 🚫 Блокировка участников</div>
-          <div className="text-violet-600 dark:text-violet-400">• 📨 Приглашение участников</div>
-          <div className="text-violet-600 dark:text-violet-400">• 📌 Закрепление сообщений</div>
-          <div className="text-violet-600 dark:text-violet-400">• 🎥 Управление видеочатами</div>
-          <div className="text-violet-600 dark:text-violet-400">• 📰 Публикация историй</div>
-          <div className="text-violet-600 dark:text-violet-400">• ✏️ Редактирование историй</div>
-          <div className="text-violet-600 dark:text-violet-400">• 🗑️ Удаление историй</div>
-          <div className="text-violet-600 dark:text-violet-400">• 🔒 Анонимность</div>
-          <div className="text-violet-600 dark:text-violet-400">• 👑 Назначение администраторов</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🏷️ Profile change</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🗑️Deleting messages</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🚫 Blocking participants</div>
+          <div className="text-violet-600 dark:text-violet-400">• 📨 Inviting participants</div>
+          <div className="text-violet-600 dark:text-violet-400">• 📌 Pinning messages</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🎥 Video chat management</div>
+          <div className="text-violet-600 dark:text-violet-400">• 📰 Publishing stories</div>
+          <div className="text-violet-600 dark:text-violet-400">• ✏️ Editing stories</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🗑️Deleting stories</div>
+          <div className="text-violet-600 dark:text-violet-400">• 🔒 Anonymity</div>
+          <div className="text-violet-600 dark:text-violet-400">• 👑 Assigning administrators</div>
         </div>
 
         <div className="mt-3 p-3 bg-violet-100/50 dark:bg-violet-900/20 rounded-lg border border-violet-200 dark:border-violet-700">
           <div className="text-xs text-violet-700 dark:text-violet-300 font-medium mb-1">
-            💡 Автоматическое определение участника:
+            💡 Automatic participant detection:
           </div>
           <div className="text-xs text-violet-600 dark:text-violet-400">
-            • При ответе на сообщение — права того, кто отправил сообщение<br />
-            • При упоминании (@username) — права упомянутого пользователя<br />
-            • При добавлении ID в команду — права указанного участника
+            • When replying to a message, the rights of the person who sent the message<br />
+            • When mentioned (@username) - rights of the mentioned user<br />
+            • When adding an ID to a team, the rights of the specified member
           </div>
         </div>
       </div>

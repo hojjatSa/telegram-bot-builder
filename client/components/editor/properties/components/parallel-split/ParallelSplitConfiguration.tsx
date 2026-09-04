@@ -66,7 +66,7 @@ export function ParallelSplitConfiguration({ selectedNode, getAllNodesFromAllShe
     <div className="space-y-4 p-4">
       {/* Список веток */}
       <div className="space-y-2">
-        <Label>Ветки параллельного запуска</Label>
+        <Label>Parallel launch branches</Label>
         {branches.map((branch, index) => (
           <ParallelSplitBranchItem
             key={branch.id}
@@ -84,16 +84,16 @@ export function ParallelSplitConfiguration({ selectedNode, getAllNodesFromAllShe
           className="w-full border-dashed border-rose-300 dark:border-rose-700 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:border-rose-400"
         >
           <Plus className="h-3.5 w-3.5 mr-1" />
-          Добавить ветку
+          Add a branch
         </Button>
         <p className="text-xs text-gray-400 dark:text-gray-500">
-          Все ветки запускаются одновременно — каждая живёт своей жизнью
+          All branches are launched simultaneously - each one lives its own life
         </p>
       </div>
 
       {/* Лимит одновременных веток */}
       <div className="space-y-2">
-        <Label>Максимум одновременных веток</Label>
+        <Label>Maximum simultaneous branches</Label>
         <Input
           type="number"
           min={0}
@@ -102,16 +102,16 @@ export function ParallelSplitConfiguration({ selectedNode, getAllNodesFromAllShe
           className="text-sm h-8"
         />
         <p className="text-xs text-gray-400 dark:text-gray-500">
-          Остальные ждут в очереди — защита от FloodWait и квот API. 0 — без лимита
+          The rest are waiting in line - protection from FloodWait and API quotas. 0 - no limit
         </p>
       </div>
 
       {/* Защита от двойного запуска */}
       <div className="flex items-center justify-between gap-2">
         <div className="space-y-0.5">
-          <Label>Не запускать повторно</Label>
+          <Label>Don't restart</Label>
           <p className="text-xs text-gray-400 dark:text-gray-500">
-            Пока предыдущий прогон пользователя не завершён
+            While the user's previous run is not completed
           </p>
         </div>
         <Switch
@@ -123,9 +123,9 @@ export function ParallelSplitConfiguration({ selectedNode, getAllNodesFromAllShe
       {/* Режим ожидания всех веток */}
       <div className="flex items-center justify-between gap-2">
         <div className="space-y-0.5">
-          <Label>Ждать завершения всех веток</Label>
+          <Label>Wait for all branches to complete</Label>
           <p className="text-xs text-gray-400 dark:text-gray-500">
-            По умолчанию выключено — обработчик завершается сразу
+            Disabled by default - the handler ends immediately
           </p>
         </div>
         <Switch

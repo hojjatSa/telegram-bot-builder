@@ -42,7 +42,7 @@ export function MediaInputToggles({ selectedNode, onNodeUpdate }: MediaInputTogg
   return (
     <div className="space-y-4">
       <ToggleGroup
-        title="Медиафайлы (группа)"
+        title={"Media files (group)"}
         icon="fa-images"
         colorClasses={{ title: 'text-blue-700 dark:text-blue-300', icon: 'text-blue-600 dark:text-blue-400' }}
         configs={mediaConfigs}
@@ -62,13 +62,13 @@ export function MediaInputToggles({ selectedNode, onNodeUpdate }: MediaInputTogg
       {showMixedWarning && (
         <InfoBlock
           variant="warning"
-          title="⚠️ Документы отправятся отдельным сообщением"
+          title={"⚠️ Documents will be sent in a separate message"}
           description={
             <>
-              Telegram не позволяет смешивать документы с фото/видео/аудио в одной группе.
+              Telegram does not allow mixing documents with photos/videos/audio in one group.
               <br /><br />
-              <strong>Рекомендация:</strong> используйте <strong>отдельный узел</strong> для отправки документов,
-              чтобы пользователь получил всё в одном сообщении.
+              <strong>Recommendation:</strong> use <strong>separate node</strong> to send documents,
+              so that the user receives everything in one message.
             </>
           }
         />
@@ -77,8 +77,8 @@ export function MediaInputToggles({ selectedNode, onNodeUpdate }: MediaInputTogg
       {!showMixedWarning && hasDocumentInput && (
         <InfoBlock
           variant="info"
-          title="📄 Документы будут отправлены группой"
-          description="Если документов несколько, они отправятся вместе в одном сообщении"
+          title={"📄Documents will be sent as a group"}
+          description={"If there are several documents, they will be sent together in one message"}
         />
       )}
 

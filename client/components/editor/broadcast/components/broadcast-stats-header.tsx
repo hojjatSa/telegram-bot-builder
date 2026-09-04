@@ -80,7 +80,7 @@ export function BroadcastStatsHeader({ broadcasts }: BroadcastStatsHeaderProps) 
     <div className="flex gap-3">
       <StatCard
         icon={Send}
-        label="Всего отправлено"
+        label={"Total sent"}
         value={totalSent}
         hint={hint}
         iconClass="text-blue-600"
@@ -96,7 +96,7 @@ export function BroadcastStatsHeader({ broadcasts }: BroadcastStatsHeaderProps) 
       />
       <StatCard
         icon={XCircle}
-        label="Ошибок"
+        label={"Errors"}
         value={totalFailed}
         hint={hint}
         iconClass="text-red-500"

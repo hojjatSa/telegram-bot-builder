@@ -218,15 +218,15 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
       const savedPercentage = Math.round(((originalSize - optimizedSize) / originalSize) * 100);
 
       toast({
-        title: "Оптимизация завершена",
+        title: "Optimization complete",
         description: `Сэкономлено ${savedPercentage}% места (${formatFileSize(originalSize - optimizedSize)})`,
       });
 
     } catch (error) {
       console.error('Optimization error:', error);
       toast({
-        title: "Ошибка оптимизации",
-        description: "Не удалось оптимизировать некоторые файлы",
+        title: "Optimization error",
+        description: "Failed to optimize some files",
         variant: "destructive",
       });
     } finally {
@@ -267,10 +267,10 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
         <div>
           <h2 className="text-xl font-semibold flex items-center">
             <Zap className="w-5 h-5 mr-2 text-yellow-500" />
-            Оптимизация файлов
+            File optimization
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Сжатие и оптимизация файлов для ускорения загрузки
+            File compression and optimization for faster loading times
           </p>
         </div>
       </div>
@@ -278,17 +278,17 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
       {/* Статистика файлов */}
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Обзор файлов</CardTitle>
+          <CardTitle className="text-base">Browse files</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600">{files.length}</div>
-              <div className="text-muted-foreground">Всего файлов</div>
+              <div className="text-muted-foreground">Total files</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">{fileStats.image || 0}</div>
-              <div className="text-muted-foreground">Изображений</div>
+              <div className="text-muted-foreground">Images</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">{fileStats.video || 0}</div>
@@ -296,7 +296,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-orange-600">{formatFileSize(fileStats.totalSize || 0)}</div>
-              <div className="text-muted-foreground">Общий размер</div>
+              <div className="text-muted-foreground">Overall size</div>
             </div>
           </div>
         </CardContent>
@@ -307,7 +307,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="images" className="flex items-center">
             <Image className="w-4 h-4 mr-2" />
-            Изображения
+            Images
             <Badge variant="secondary" className="ml-2">{fileStats.image || 0}</Badge>
           </TabsTrigger>
           <TabsTrigger value="videos" disabled={!fileStats.video}>
@@ -327,7 +327,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             <CardContent className="pt-6">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="compress-images">Сжимать изображения</Label>
+                  <Label htmlFor="compress-images">Compress images</Label>
                   <Switch
                     id="compress-images"
                     checked={settings.images.compress}
@@ -343,7 +343,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
                 {settings.images.compress && (
                   <>
                     <div className="space-y-2">
-                      <Label>Качество: {settings.images.quality}%</Label>
+                      <Label>Quality: {settings.images.quality}%</Label>
                       <Slider
                         value={[settings.images.quality]}
                         onValueChange={([value]) =>
@@ -359,7 +359,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
                     </div>
 
                     <div className="space-y-2">
-                      <Label>Максимальная ширина: {settings.images.maxWidth}px</Label>
+                      <Label>Maximum width: {settings.images.maxWidth}px</Label>
                       <Slider
                         value={[settings.images.maxWidth]}
                         onValueChange={([value]) =>
@@ -385,7 +385,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             <CardContent className="pt-6">
               <div className="text-center text-muted-foreground">
                 <FileVideo className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                <p>Оптимизация видео будет добавлена в следующих версиях</p>
+                <p>Video optimization will be added in future versions</p>
               </div>
             </CardContent>
           </Card>
@@ -396,7 +396,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             <CardContent className="pt-6">
               <div className="text-center text-muted-foreground">
                 <FileAudio className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                <p>Оптимизация аудио будет добавлена в следующих версиях</p>
+                <p>Audio optimization will be added in future versions</p>
               </div>
             </CardContent>
           </Card>
@@ -407,7 +407,7 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
       {isOptimizing && (
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <Label>Оптимизация файлов...</Label>
+            <Label>File optimization...</Label>
             <span className="text-sm text-muted-foreground">{optimizationProgress}%</span>
           </div>
           <Progress value={optimizationProgress} />
@@ -421,17 +421,17 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             <div className="flex items-center mb-4">
               <CheckCircle2 className="w-5 h-5 text-green-600 mr-2" />
               <span className="font-medium text-green-800 dark:text-green-200">
-                Оптимизация завершена успешно
+                Optimization completed successfully
               </span>
             </div>
 
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-muted-foreground">Исходный размер:</span>
+                <span className="text-muted-foreground">Original size:</span>
                 <div className="font-medium">{formatFileSize(files.reduce((sum, file) => sum + file.size, 0))}</div>
               </div>
               <div>
-                <span className="text-muted-foreground">Оптимизированный размер:</span>
+                <span className="text-muted-foreground">Optimized size:</span>
                 <div className="font-medium text-green-600">
                   {formatFileSize(optimizedFiles.reduce((sum, file) => sum + file.size, 0))}
                 </div>
@@ -454,12 +454,12 @@ export function FileOptimizer({ files, onOptimizedFiles, onClose }: FileOptimize
             className="flex items-center"
           >
             <Zap className="w-4 h-4 mr-2" />
-            {isOptimizing ? 'Оптимизация...' : 'Оптимизировать'}
+            {isOptimizing ? "Optimization..." : "Optimize"}
           </Button>
         ) : (
           <Button onClick={applyOptimizedFiles} className="flex items-center">
             <Download className="w-4 h-4 mr-2" />
-            Применить оптимизированные файлы
+            Apply optimized files
           </Button>
         )}
       </div>

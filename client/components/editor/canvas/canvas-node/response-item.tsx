@@ -28,7 +28,7 @@ interface ResponseItemProps {
  * Конфигурация иконок и цветов для типов ответов
  */
 const RESPONSE_CONFIG: Record<ResponseItemType, { icon: string; color: string; label: string }> = {
-  text: { icon: 'keyboard', color: 'blue', label: 'Текстовый ввод' },
+  text: { icon: 'keyboard', color: 'blue', label: "Text input" },
   photo: { icon: 'image', color: 'purple', label: 'Photo' },
   video: { icon: 'video', color: 'red', label: 'Video' },
   audio: { icon: 'microphone', color: 'green', label: 'Audio' },

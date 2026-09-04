@@ -30,7 +30,7 @@ export function AdminUserDetailPage() {
     return (
       <div className="max-w-3xl space-y-4">
         <BackLink />
-        <p className="text-destructive">Неверный опознаватель аккаунта.</p>
+        <p className="text-destructive">Invalid account ID.</p>
       </div>
     );
   }
@@ -47,7 +47,7 @@ export function AdminUserDetailPage() {
     return (
       <div className="max-w-3xl space-y-4">
         <BackLink />
-        <p className="text-destructive">Аккаунт не найден или недоступен.</p>
+        <p className="text-destructive">Account not found or unavailable.</p>
       </div>
     );
   }
@@ -79,23 +79,23 @@ export function AdminUserDetailPage() {
         </CardHeader>
         <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
           <p>
-            <span className="text-muted-foreground">Имя: </span>
+            <span className="text-muted-foreground">Name: </span>
             {user.firstName}
             {user.lastName ? ` ${user.lastName}` : ''}
           </p>
           <p>
-            <span className="text-muted-foreground">Первый вход: </span>
+            <span className="text-muted-foreground">First entry: </span>
             {formatPlatformUserDate(user.createdAt)}
           </p>
           <p>
-            <span className="text-muted-foreground">Обновлён: </span>
+            <span className="text-muted-foreground">Updated: </span>
             {formatPlatformUserDate(user.updatedAt)}
           </p>
         </CardContent>
       </Card>
 
-      <PlatformUserProjectsCard title="Проекты во владении" ownedProjects={ownedProjects} />
-      <PlatformUserProjectsCard title="Участник проектов" sharedProjects={sharedProjects} />
+      <PlatformUserProjectsCard title={"Projects in possession"} ownedProjects={ownedProjects} />
+      <PlatformUserProjectsCard title={"Project participant"} sharedProjects={sharedProjects} />
     </div>
   );
 }
@@ -109,7 +109,7 @@ function BackLink() {
     <Link href="/admin/users">
       <Button variant="ghost" size="sm" className="gap-2 -ml-2">
         <ArrowLeft className="h-4 w-4" />
-        К списку аккаунтов
+        To the list of accounts
       </Button>
     </Link>
   );

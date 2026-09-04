@@ -120,11 +120,11 @@ export function ButtonCallbackField({
       {currentValue && (
         <div className="flex items-center justify-between">
           <span className={`text-[10px] font-mono ${isOverLimit ? 'text-red-500' : 'text-slate-400 dark:text-slate-500'}`}>
-            {byteCount} / {MAX_CALLBACK_BYTES} байт
+            {byteCount} / {MAX_CALLBACK_BYTES} byte
           </span>
           {isOverLimit && (
             <span className="text-[10px] text-red-500">
-              Превышен лимит Telegram (64 байта)
+              Telegram limit exceeded (64 bytes)
             </span>
           )}
         </div>

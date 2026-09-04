@@ -67,8 +67,8 @@ export function useDeleteProjectMutation(): UseDeleteProjectMutationResult {
     },
     onSuccess: async () => {
       toast({
-        title: "Проект удален",
-        description: "Проект успешно удален",
+        title: "Project deleted",
+        description: "The project was successfully deleted",
       });
     },
     onError: (_, __, context) => {
@@ -82,7 +82,7 @@ export function useDeleteProjectMutation(): UseDeleteProjectMutationResult {
 
       toast({
         title: "Delete failed",
-        description: "Не удалось удалить проект",
+        description: "Failed to delete project",
         variant: "destructive",
       });
     }

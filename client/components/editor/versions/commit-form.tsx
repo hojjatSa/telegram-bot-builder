@@ -39,10 +39,10 @@ export function CommitForm({ projectId, compact }: CommitFormProps) {
     commitMutation.mutate({ message: text }, {
       onSuccess: () => {
         setMessage('');
-        toast({ title: 'Чекпоинт создан', description: text });
+        toast({ title: "Checkpoint created", description: text });
       },
       onError: () => {
-        toast({ title: 'Error', description: 'Не удалось создать чекпоинт', variant: 'destructive' });
+        toast({ title: 'Error', description: "Failed to create checkpoint", variant: 'destructive' });
       },
     });
   }, [message, commitMutation, toast]);
@@ -53,7 +53,7 @@ export function CommitForm({ projectId, compact }: CommitFormProps) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={(e) => { if (e.key === 'Enter') handleSubmit(); }}
-        placeholder="Название чекпоинта…"
+        placeholder={"Checkpoint name..."}
         className="h-8 text-sm"
       />
       <Button

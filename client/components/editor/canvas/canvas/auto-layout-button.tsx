@@ -34,7 +34,7 @@ export function AutoLayoutButton({ onAutoLayout }: AutoLayoutButtonProps) {
     <button
       onClick={onAutoLayout}
       className={`${buttonBaseClasses} ${inactiveClasses}`}
-      title="Авто-расстановка узлов (Shift+A)"
+      title={"Automatic placement of nodes (Shift+A)"}
     >
       <i className="fas fa-sitemap text-slate-600 dark:text-slate-400 text-sm group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors" />
     </button>

@@ -43,7 +43,7 @@ export const defaultNodeData = {
   /** Команда бота (например, /start) */
   command: '/start',
   /** Описание команды */
-  description: 'Запустить бота',
+  description: "Launch bot",
   /** URL изображения */
   imageUrl: '',
   /** URL видео */

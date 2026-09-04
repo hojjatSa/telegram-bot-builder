@@ -52,8 +52,8 @@ export function CommandAdvancedSettings({
   return (
     <div className="bg-gradient-to-br from-cyan-50/40 to-blue-50/20 dark:from-cyan-950/30 dark:to-blue-900/20 rounded-xl p-3 sm:p-4 md:p-5 border border-cyan-200/40 dark:border-cyan-800/40 backdrop-blur-sm">
       <SectionHeader
-        title="Расширенные настройки"
-        description="Меню и настройки команды"
+        title={"Advanced settings"}
+        description={"Team menu and settings"}
         isOpen={isOpen}
         onToggle={onToggle}
         icon="gear"

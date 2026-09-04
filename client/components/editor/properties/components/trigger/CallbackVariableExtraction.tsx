@@ -77,7 +77,7 @@ export function CallbackVariableExtraction({
           htmlFor="cb-extract-vars"
           className="text-xs font-semibold text-teal-700 dark:text-teal-300 cursor-pointer select-none"
         >
-          Извлекать переменные из callback
+          Retrieve variables from callback
         </Label>
       </div>
 
@@ -85,7 +85,7 @@ export function CallbackVariableExtraction({
         <div className="space-y-3">
           {/* Поле шаблона */}
           <div className="space-y-1.5">
-            <Label className="text-xs text-muted-foreground">Шаблон разбора</Label>
+            <Label className="text-xs text-muted-foreground">Parsing template</Label>
             <Input
               value={parseTemplate}
               onChange={(e) => onTemplateChange(e.target.value)}
@@ -93,7 +93,7 @@ export function CallbackVariableExtraction({
               className="font-mono text-xs h-8 bg-white/60 dark:bg-slate-950/60 border border-teal-300/40 dark:border-teal-700/40"
             />
             <p className="text-[11px] text-teal-600 dark:text-teal-400">
-              Части в {'{скобках}'} станут переменными
+              Parts in {"{in parentheses}"} will become variables
             </p>
           </div>
 
@@ -101,13 +101,13 @@ export function CallbackVariableExtraction({
           {placeholders.length > 0 && (
             <div className="space-y-1.5">
               <Label className="text-xs text-muted-foreground uppercase tracking-wide">
-                Маппинг переменных
+                Variable mapping
               </Label>
               <div className="rounded-md border border-teal-200/50 dark:border-teal-700/50 overflow-hidden">
                 {/* Заголовок таблицы */}
                 <div className="grid grid-cols-2 gap-2 px-2 py-1.5 bg-teal-100/50 dark:bg-teal-900/30 text-[10px] uppercase tracking-wider text-teal-600 dark:text-teal-400 font-medium">
-                  <span>Из шаблона</span>
-                  <span>Сохранить как</span>
+                  <span>From template</span>
+                  <span>Save as</span>
                 </div>
                 {/* Строки маппинга */}
                 {placeholders.map((placeholder, idx) => {

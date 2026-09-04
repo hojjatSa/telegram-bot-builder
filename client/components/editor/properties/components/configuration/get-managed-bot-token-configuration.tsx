@@ -47,12 +47,12 @@ export function GetManagedBotTokenConfiguration({
       <InfoBlock
         variant="info"
         title="getManagedBotToken (Bot API 9.6)"
-        description="Вызывает bot.get_managed_bot_token(user_id=<bot_id>) и сохраняет токен в переменную."
+        description={"Calls bot.get_managed_bot_token(user_id=<bot_id>) and saves the token to a variable."}
       />
 
       {/* Источник bot_id */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Источник bot_id</Label>
+        <Label className="text-sm font-medium">Source bot_id</Label>
         <Select
           value={source}
           onValueChange={(v) => update('botIdSource', v)}
@@ -61,8 +61,8 @@ export function GetManagedBotTokenConfiguration({
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="variable">Из переменной</SelectItem>
-            <SelectItem value="manual">Вручную</SelectItem>
+            <SelectItem value="variable">From variable</SelectItem>
+            <SelectItem value="manual">Manually</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -70,7 +70,7 @@ export function GetManagedBotTokenConfiguration({
       {/* Поле ввода в зависимости от источника */}
       {source === 'variable' ? (
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Переменная с bot_id</Label>
+          <Label className="text-sm font-medium">Variable with bot_id</Label>
           <Input
             placeholder="bot_id"
             value={data.botIdVariable || ''}
@@ -80,7 +80,7 @@ export function GetManagedBotTokenConfiguration({
         </div>
       ) : (
         <div className="space-y-2">
-          <Label className="text-sm font-medium">ID бота (число)</Label>
+          <Label className="text-sm font-medium">Bot ID (number)</Label>
           <Input
             placeholder="123456789"
             value={data.botIdManual || ''}
@@ -92,7 +92,7 @@ export function GetManagedBotTokenConfiguration({
 
       {/* Сохранить токен */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Сохранить токен в переменную</Label>
+        <Label className="text-sm font-medium">Save token to variable</Label>
         <Input
           placeholder="bot_token"
           value={data.saveTokenTo || ''}
@@ -103,7 +103,7 @@ export function GetManagedBotTokenConfiguration({
 
       {/* Сохранить ошибку (опционально) */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Сохранить ошибку в переменную (опционально)</Label>
+        <Label className="text-sm font-medium">Save error to variable (optional)</Label>
         <Input
           placeholder="error"
           value={data.saveErrorTo || ''}

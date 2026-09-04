@@ -46,7 +46,7 @@ export function DesktopActionsCell(props: DesktopActionsCellProps): React.JSX.El
             variant="ghost"
             size="sm"
             className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
-            title="Открыть диалог"
+            title={"Open dialogue"}
             onClick={(e) => {
               e.stopPropagation();
               onOpenDialogPanel(user);
@@ -63,7 +63,7 @@ export function DesktopActionsCell(props: DesktopActionsCellProps): React.JSX.El
             variant="ghost"
             size="sm"
             className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground"
-            title="Открыть в Диалогах"
+            title={"Open in Dialogs"}
             onClick={(e) => { e.stopPropagation(); onNavigateToDialog(user); }}
           >
             <ExternalLink className="w-3.5 h-3.5" />
@@ -86,9 +86,9 @@ export function DesktopActionsCell(props: DesktopActionsCellProps): React.JSX.El
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>Удалить пользователя?</AlertDialogTitle>
+              <AlertDialogTitle>Delete user?</AlertDialogTitle>
               <AlertDialogDescription>
-                Это действие нельзя отменить. Все данные пользователя "{formatUserName(user)}" будут удалены.
+                This action cannot be undone. All user data"{formatUserName(user)}" will be deleted.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

@@ -87,13 +87,13 @@ export function useSheetDelete(params: UseSheetDeleteParams) {
       updateProjectMutation.mutate();
 
       toast({
-        title: 'Лист удален',
-        description: 'Лист успешно удален',
+        title: "Sheet deleted",
+        description: "Sheet deleted successfully",
       });
     } catch (error) {
       toast({
         title: 'Delete failed',
-        description: 'Не удалось удалить лист',
+        description: "Failed to delete sheet",
         variant: 'destructive',
       });
     }

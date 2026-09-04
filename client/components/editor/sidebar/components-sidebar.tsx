@@ -256,7 +256,7 @@ export function ComponentsSidebar({
           // Обновляем кэш конкретного проекта (используется в шапке и других местах)
           queryClient.setQueryData([`/api/projects/${projectId}`], { ...project, name: newName.trim() });
           toast({
-            title: "✅ Проект переименован",
+            title: "✅ The project has been renamed",
             description: `"${project.name}" → "${newName.trim()}"`,
           });
         }
@@ -312,7 +312,7 @@ export function ComponentsSidebar({
       queryClient.setQueryData(['/api/projects'], updatedProjects);
       queryClient.setQueryData([`/api/projects/${projectId}`], { ...project, data: newData });
       const targetSheet = data.sheets.find((s: any) => s.id === targetSheetId);
-      toast({ title: '✅ Узлы перемещены', description: `${movedNodes.length} узл. → "${targetSheet?.name || targetSheetId}"` });
+      toast({ title: "✅ Nodes have been moved", description: `${movedNodes.length} узл. → "${targetSheet?.name || targetSheetId}"` });
     } catch (error: any) {
       toast({ title: '❌ Error', description: error.message, variant: 'destructive' });
     }
@@ -345,7 +345,7 @@ export function ComponentsSidebar({
             <div className="space-y-3 mb-4">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3">
                 <h3 className="text-base font-bold bg-gradient-to-r from-slate-700 to-slate-600 dark:from-slate-300 dark:to-slate-400 bg-clip-text text-transparent whitespace-nowrap">
-                  Проекты ({projects.length})
+                  Projects ({projects.length})
                 </h3>
                 <div className="flex items-center gap-2 flex-wrap">
                   <Button
@@ -354,11 +354,11 @@ export function ComponentsSidebar({
                     className="h-9 px-3 flex items-center gap-1.5 font-semibold text-xs bg-gradient-to-r from-green-500/10 to-green-400/5 hover:from-green-600/20 hover:to-green-500/15 border-green-400/30 dark:border-green-500/30 hover:border-green-500/50 dark:hover:border-green-400/50 text-green-700 dark:text-green-300 rounded-lg transition-all hover:shadow-md hover:shadow-green-500/20"
                     onClick={handleCreateProject}
                     disabled={isCreatingProject}
-                    title="Создать новый проект"
+                    title={"Create a new project"}
                     data-testid="button-create-project"
                   >
                     <Plus className="h-4 w-4" />
-                    <span>Новый</span>
+                    <span>New</span>
                   </Button>
                   <Button
                     size="default"
@@ -369,7 +369,7 @@ export function ComponentsSidebar({
                       setImportJsonText('');
                       setImportError('');
                     }}
-                    title="Импортировать проект из JSON"
+                    title={"Import project from JSON"}
                     data-testid="button-import-project"
                   >
                     <i className="fas fa-upload text-xs" />
@@ -409,17 +409,17 @@ export function ComponentsSidebar({
                   <Home className="h-8 w-8 text-muted-foreground" />
                 </div>
                 <h4 className="text-sm font-medium text-foreground mb-2">
-                  {projectsView === 'archived' ? 'Архив пуст' : 'Нет проектов'}
+                  {projectsView === 'archived' ? "Archive is empty" : "No projects"}
                 </h4>
                 <p className="text-xs text-muted-foreground mb-4">
                   {projectsView === 'archived'
-                    ? 'Здесь появятся проекты, которые вы отправите в архив'
-                    : 'Создайте первый проект для начала работы'}
+                    ? "Projects that you will archive will appear here."
+                    : "Create your first project to get started"}
                 </p>
                 {projectsView === 'active' && (
                 <Button size="default" onClick={handleCreateProject} disabled={isCreatingProject} className="h-10 px-6">
                   <Plus className="h-4 w-4 mr-2" />
-                  {isCreatingProject ? 'Creating...' : 'Создать проект'}
+                  {isCreatingProject ? 'Creating...' : "Create a project"}
                 </Button>
                 )}
               </div>
@@ -532,7 +532,7 @@ export function ComponentsSidebar({
                         queryClient.setQueryData(['/api/projects'], updatedProjects);
 
                         toast({
-                          title: "✅ Лист перемещен",
+                          title: "✅ Sheet moved",
                           description: `"${sheetToMove.name}" → "${targetProject.name}"`,
                         });
                       } catch (error: any) {

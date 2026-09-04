@@ -36,9 +36,9 @@ export function StatusFilter({ value, onChange }: StatusFilterProps): React.JSX.
         </div>
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="all">Все статусы</SelectItem>
-        <SelectItem value="true">Активные</SelectItem>
-        <SelectItem value="false">Неактивные</SelectItem>
+        <SelectItem value="all">All statuses</SelectItem>
+        <SelectItem value="true">Active</SelectItem>
+        <SelectItem value="false">Inactive</SelectItem>
       </SelectContent>
     </Select>
   );

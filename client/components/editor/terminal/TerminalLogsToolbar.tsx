@@ -80,7 +80,7 @@ export function TerminalLogsToolbar(props: TerminalLogsToolbarProps) {
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Фильтр и поиск логов"
+          placeholder={"Filter and search logs"}
           className="h-7 text-xs flex-1 min-w-0 border-none bg-transparent shadow-none focus-visible:ring-0 px-0"
         />
         {searchQuery && (

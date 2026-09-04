@@ -21,12 +21,12 @@ const STATUS_CONFIG: Record<
   { label: string; className: string; icon: React.ElementType; spin?: boolean }
 > = {
   pending: {
-    label: 'Ожидает',
+    label: "Waiting",
     className: 'bg-gray-100 text-gray-600 border-gray-200 dark:bg-gray-800 dark:text-gray-400',
     icon: Clock,
   },
   running: {
-    label: 'Идёт...',
+    label: "Coming...",
     className: 'bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/40 dark:text-blue-300',
     icon: Loader2,
     spin: true,

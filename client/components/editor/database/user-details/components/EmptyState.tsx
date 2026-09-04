@@ -14,7 +14,7 @@ export function EmptyState(): React.JSX.Element {
   return (
     <div className="h-full flex flex-col items-center justify-center text-muted-foreground p-3 sm:p-4">
       <User className="w-10 h-10 sm:w-12 sm:h-12 mb-3 sm:mb-4" />
-      <p className="text-center text-xs sm:text-sm px-4">Выберите пользователя для просмотра деталей</p>
+      <p className="text-center text-xs sm:text-sm px-4">Select a user to view details</p>
     </div>
   );
 }

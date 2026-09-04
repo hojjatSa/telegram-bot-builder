@@ -7,7 +7,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const userbotEditTrigger: ComponentDefinition = {
   id: 'userbot-edit-trigger',
   name: 'Edit (Userbot)',
-  description: 'Срабатывает при редактировании сообщения в чате',
+  description: "Fires when editing a chat message",
   icon: 'fas fa-pen',
   color: 'bg-amber-100 text-amber-600',
   type: 'userbot_edit_trigger' as any,

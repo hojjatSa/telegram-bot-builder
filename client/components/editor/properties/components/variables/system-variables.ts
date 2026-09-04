@@ -28,21 +28,21 @@ export interface SystemVariable {
  */
 export const SYSTEM_VARIABLES: SystemVariable[] = [
   // Базовые переменные из Telegram API
-  { name: 'user_name', nodeId: 'system', nodeType: 'system', description: 'Отображаемое имя пользователя (first_name или username)', sourceTable: 'bot_users' },
-  { name: 'chat_id', nodeId: 'system', nodeType: 'system', description: 'ID чата', sourceTable: null as any },
-  { name: 'bot_name', nodeId: 'system', nodeType: 'system', description: 'Имя бота', sourceTable: null as any },
+  { name: 'user_name', nodeId: 'system', nodeType: 'system', description: "User display name (first_name or username)", sourceTable: 'bot_users' },
+  { name: 'chat_id', nodeId: 'system', nodeType: 'system', description: "Chat ID", sourceTable: null as any },
+  { name: 'bot_name', nodeId: 'system', nodeType: 'system', description: "Bot name", sourceTable: null as any },
   // Переменные нажатой кнопки (доступны после любого нажатия инлайн-кнопки)
-  { name: 'callback_data', nodeId: 'system', nodeType: 'system', description: 'Данные последней нажатой инлайн-кнопки (callback_data)', sourceTable: null as any },
-  { name: 'button_text', nodeId: 'system', nodeType: 'system', description: 'Текст последней нажатой инлайн-кнопки', sourceTable: null as any },
+  { name: 'callback_data', nodeId: 'system', nodeType: 'system', description: "Data of the last pressed inline button (callback_data)", sourceTable: null as any },
+  { name: 'button_text', nodeId: 'system', nodeType: 'system', description: "Text of the last pressed inline button", sourceTable: null as any },
   // Переменные сообщения
-  { name: 'message_id', nodeId: 'system', nodeType: 'system', description: 'ID последнего сообщения', sourceTable: null as any },
-  { name: 'message_text', nodeId: 'system', nodeType: 'system', description: 'Текст последнего сообщения от пользователя', sourceTable: null as any },
+  { name: 'message_id', nodeId: 'system', nodeType: 'system', description: "Last message ID", sourceTable: null as any },
+  { name: 'message_text', nodeId: 'system', nodeType: 'system', description: "Text of the last message from the user", sourceTable: null as any },
   // Дата и время
-  { name: 'current_date', nodeId: 'system', nodeType: 'system', description: 'Текущая дата (YYYY-MM-DD)', sourceTable: null as any },
-  { name: 'current_time', nodeId: 'system', nodeType: 'system', description: 'Текущее время (HH:MM:SS)', sourceTable: null as any },
-  { name: 'current_datetime', nodeId: 'system', nodeType: 'system', description: 'Текущие дата и время', sourceTable: null as any },
+  { name: 'current_date', nodeId: 'system', nodeType: 'system', description: "Current date (YYYY-MM-DD)", sourceTable: null as any },
+  { name: 'current_time', nodeId: 'system', nodeType: 'system', description: "Current time (HH:MM:SS)", sourceTable: null as any },
+  { name: 'current_datetime', nodeId: 'system', nodeType: 'system', description: "Current date and time", sourceTable: null as any },
   // Язык пользователя
-  { name: 'language_code', nodeId: 'system', nodeType: 'system', description: 'Код языка пользователя (ru, en и т.д.)', sourceTable: null as any },
+  { name: 'language_code', nodeId: 'system', nodeType: 'system', description: "User language code (ru, en, etc.)", sourceTable: null as any },
   // Переменные из схем таблиц
   ...getAllSystemVariables()
 ];

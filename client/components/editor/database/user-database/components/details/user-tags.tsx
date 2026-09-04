@@ -26,7 +26,7 @@ export function UserTags({ tags }: UserTagsProps): React.JSX.Element | null {
 
   return (
     <div>
-      <Label className="text-sm font-medium">Теги</Label>
+      <Label className="text-sm font-medium">Tags</Label>
       <div className="mt-2 flex flex-wrap gap-1">
         {tags.map((tag, index) => (
           <Badge key={index} variant="secondary">

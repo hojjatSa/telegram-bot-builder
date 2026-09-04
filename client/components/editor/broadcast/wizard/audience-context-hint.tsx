@@ -51,8 +51,8 @@ export function AudienceContextHint({ projectId, tokenId, selectedTokenIds }: Au
     <div className="rounded-xl border border-border/60 bg-muted/40 px-3 py-2.5 text-sm space-y-1.5">
       <p className="text-xs text-muted-foreground">
         {isMulti
-          ? 'Получатели — пользователи проекта у каждого выбранного бота'
-          : 'Получатели — пользователи выбранного проекта и бота'}
+          ? "Recipients are project users for each selected bot"
+          : "Recipients are users of the selected project and bot"}
       </p>
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
         <span className="inline-flex items-center gap-1.5 min-w-0">

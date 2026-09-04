@@ -40,16 +40,16 @@ export function RevealTokenDialog({ token, onClose }: RevealTokenDialogProps) {
   const handleCopy = async () => {
     if (!token) return;
     await navigator.clipboard.writeText(token);
-    toast({ title: "Скопировано", description: "Токен в буфере обмена" });
+    toast({ title: "Copied", description: "Token on clipboard" });
   };
 
   return (
     <Dialog open={!!token} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Токен создан</DialogTitle>
+          <DialogTitle>Token created</DialogTitle>
           <DialogDescription>
-            Сохрани токен сейчас — больше он не отобразится.
+            Save the token now - it will not be displayed again.
           </DialogDescription>
         </DialogHeader>
 

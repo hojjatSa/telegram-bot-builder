@@ -31,7 +31,7 @@ export function OptionButton({ button }: OptionButtonProps) {
     <div className="group relative">
       <div className="p-3 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-lg text-xs font-medium text-green-700 dark:text-green-300 text-center border border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-700 transition-colors duration-200 shadow-sm relative">
         <div className="flex items-center justify-center space-x-1">
-          <i className="fas fa-square text-green-600 dark:text-green-400 text-xs opacity-50" title="Невыбрано"></i>
+          <i className="fas fa-square text-green-600 dark:text-green-400 text-xs opacity-50" title={"Not selected"}></i>
           <span className="break-words">{button.text}</span>
         </div>
         {/* Simulated selected state */}

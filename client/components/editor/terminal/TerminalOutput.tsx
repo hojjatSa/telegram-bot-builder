@@ -111,7 +111,7 @@ export function TerminalOutput({
       >
         <span>Time</span>
         <span>Level</span>
-        <span>Данные</span>
+        <span>Data</span>
       </div>
       <div
         ref={containerRef}
@@ -121,7 +121,7 @@ export function TerminalOutput({
       >
         {lines.length === 0 ? (
           <div className={`flex items-center justify-center h-full italic text-sm ${placeholderTextClass}`}>
-            Нет вывода...
+            No conclusion...
           </div>
         ) : (
           lines.map((line, i) => (
@@ -148,7 +148,7 @@ export function TerminalOutput({
           type="button"
           onClick={scrollToBottom}
           className="absolute bottom-4 right-4 bg-primary/80 hover:bg-primary text-primary-foreground rounded-full w-8 h-8 flex items-center justify-center shadow-lg transition-all"
-          title="Прокрутить вниз"
+          title={"Scroll down"}
         >
           ↓
         </button>

@@ -77,7 +77,7 @@ export function SheetPortalNode({ portal, position, onNavigateSheet, onNavigateN
                   {portal.links.length}
                 </span>
                 <span className="text-base text-purple-500/70 dark:text-purple-400/60">
-                  {portal.links.length === 1 ? 'связь' : portal.links.length < 5 ? 'связи' : 'связей'}
+                  {portal.links.length === 1 ? "connection" : portal.links.length < 5 ? "communications" : "connections"}
                 </span>
               </div>
             </div>

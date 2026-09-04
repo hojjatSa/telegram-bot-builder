@@ -62,7 +62,7 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
         <span className="flex flex-col gap-1.5 mt-0.5">
           <span className="flex items-center gap-1.5 bg-slate-800/40 border border-slate-600/20 rounded-md px-2 py-1">
             <i className="fas fa-crosshairs text-red-400/70 text-[10px]" />
-            <span className="text-[10px] text-slate-400">цель:</span>
+            <span className="text-[10px] text-slate-400">target:</span>
             <span className="text-[10px] text-slate-300/90 font-mono">
               {(() => {
                 const src = (node.data as any).messageIdSource ?? 'current_message';
@@ -79,7 +79,7 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
           {(node.data as any).bulkDelete && (
             <span className="inline-flex items-center gap-1 text-[9px] bg-amber-800/20 border border-amber-600/30 rounded-full px-1.5 py-0.5 text-amber-400">
               <i className="fas fa-layer-group text-[8px]" />
-              массовое удаление
+              mass deletion
             </span>
           )}
         </span>
@@ -90,7 +90,7 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
           {/* Источник */}
           <span className="flex items-center gap-1.5 bg-amber-900/10 border border-amber-700/20 rounded-md px-2 py-1">
             <i className="fas fa-inbox text-amber-500/80 text-[10px]" />
-            <span className="text-[10px] text-slate-400">сообщение:</span>
+            <span className="text-[10px] text-slate-400">message:</span>
             <span className="text-[10px] text-amber-300/90 font-mono">
               {sourceIdSource === 'variable'
                 ? ((node.data as any).sourceMessageVariableName || 'variable')
@@ -103,7 +103,7 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
             <span className="flex flex-col gap-1 border-t border-amber-800/20 pt-1.5">
               <span className="flex items-center gap-1 mb-0.5">
                 <i className="fas fa-paper-plane text-amber-500/70 text-[10px]" />
-                <span className="text-[10px] text-slate-400">чат назначения:</span>
+                <span className="text-[10px] text-slate-400">destination chat:</span>
               </span>
               <span className="flex flex-wrap gap-1">
                 {targets.map((t: any, i: number) => {
@@ -144,13 +144,13 @@ export function ContentManagementHeader({ node, type }: ContentManagementHeaderP
               {disableNotification && (
                 <span className="inline-flex items-center gap-1 text-[9px] bg-slate-800/60 border border-slate-600/30 rounded-full px-1.5 py-0.5 text-slate-400">
                   <i className="fas fa-bell-slash text-[8px]" />
-                  без уведомления
+                  without notice
                 </span>
               )}
               {hideAuthor && (
                 <span className="inline-flex items-center gap-1 text-[9px] bg-slate-800/60 border border-slate-600/30 rounded-full px-1.5 py-0.5 text-slate-400">
                   <i className="fas fa-user-secret text-[8px]" />
-                  скрыть автора
+                  hide author
                 </span>
               )}
             </span>

@@ -123,15 +123,15 @@ export function MediaFileSection({
           {showMixedWarning && (
             <InfoBlock
               variant="warning"
-              title="⚠️ Документы отправятся отдельным сообщением"
-              description="Telegram не позволяет смешивать документы с фото/видео/аудио. Бот отправит их двумя отдельными группами."
+              title={"⚠️ Documents will be sent in a separate message"}
+              description={"Telegram does not allow mixing documents with photos/videos/audios. The bot will send them in two separate groups."}
             />
           )}
 
           {/* Отображаем imageUrl если задан — поддерживает переменные вида {var.path} */}
           {imageUrl && (
             <div className="rounded-lg border border-amber-200/60 dark:border-amber-700/60 bg-amber-50/40 dark:bg-amber-900/20 p-3">
-              <p className="text-xs text-amber-700 dark:text-amber-300 font-medium mb-1">Изображение (imageUrl)</p>
+              <p className="text-xs text-amber-700 dark:text-amber-300 font-medium mb-1">Image (imageUrl)</p>
               {isVariablePlaceholder(imageUrl) ? (
                 <div className="flex items-center gap-2">
                   <span className="text-base">🖼️</span>
@@ -154,7 +154,7 @@ export function MediaFileSection({
               onSelect={handleVariableSelect}
               trigger={
                 <button className="text-xs px-2.5 py-1 rounded-lg border border-rose-300/60 dark:border-rose-700/60 bg-rose-50/60 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 hover:bg-rose-100/80 dark:hover:bg-rose-800/30 transition-colors">
-                  + Переменная
+                  + Variable
                 </button>
               }
             />

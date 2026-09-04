@@ -43,13 +43,13 @@ function parseSize(raw: string): number | undefined {
 export function FiltersSizeRange({ sizeMin, sizeMax, sizeUnit = 'KB', onChange }: FiltersSizeRangeProps) {
   return (
     <div className="space-y-1.5">
-      <Label className="text-xs font-medium">Размер файла</Label>
+      <Label className="text-xs font-medium">File size</Label>
       <div className="flex items-center gap-2">
         <Input
           type="number"
           inputMode="numeric"
           min={0}
-          placeholder="Мин"
+          placeholder={"Min"}
           value={sizeMin ?? ''}
           onChange={(e) => onChange({ sizeMin: parseSize(e.target.value) })}
           className="h-8"
@@ -60,7 +60,7 @@ export function FiltersSizeRange({ sizeMin, sizeMax, sizeUnit = 'KB', onChange }
           type="number"
           inputMode="numeric"
           min={0}
-          placeholder="Макс"
+          placeholder={"Max"}
           value={sizeMax ?? ''}
           onChange={(e) => onChange({ sizeMax: parseSize(e.target.value) })}
           className="h-8"

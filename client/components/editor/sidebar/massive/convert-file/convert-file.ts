@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const convertFileNode: ComponentDefinition = {
   id: 'convert-file',
   name: 'File Converter',
-  description: 'Конвертирует данные из переменной в CSV или JSON файл',
+  description: "Converts data from a variable to a CSV or JSON file",
   icon: 'fas fa-file-export',
   color: 'bg-emerald-100 text-emerald-600',
   type: 'convert_file' as any,

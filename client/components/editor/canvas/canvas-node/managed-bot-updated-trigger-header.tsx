@@ -31,8 +31,8 @@ export function ManagedBotUpdatedTriggerHeader({ node }: ManagedBotUpdatedTrigge
           <i className="fas fa-robot text-indigo-400 text-sm" />
         </div>
         <div className="flex flex-col leading-tight">
-          <span className="text-sm font-bold text-indigo-300">Управляемый бот</span>
-          <span className="text-[10px] text-indigo-400/60">триггер апдейта</span>
+          <span className="text-sm font-bold text-indigo-300">Managed bot</span>
+          <span className="text-[10px] text-indigo-400/60">update trigger</span>
         </div>
       </div>
 

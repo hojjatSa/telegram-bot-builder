@@ -49,7 +49,7 @@ export function AdminRightsGrid({}: AdminRightsGridProps) {
 
       <div className="text-xs text-gray-500 dark:text-gray-400 text-center py-1 font-medium">
         <span className="inline-flex items-center px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">
-          +{HIDDEN_RIGHTS_COUNT} еще
+          +{HIDDEN_RIGHTS_COUNT} more
         </span>
       </div>
     </>

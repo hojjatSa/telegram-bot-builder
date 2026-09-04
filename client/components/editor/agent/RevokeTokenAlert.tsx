@@ -40,9 +40,9 @@ export function RevokeTokenAlert({ token, onClose }: RevokeTokenAlertProps) {
     if (!token) return;
     try {
       await revoke.mutateAsync(token.id);
-      toast({ title: "Токен отозван", description: `«${token.label}» больше не работает` });
+      toast({ title: "Token revoked", description: `«${token.label}» больше не работает` });
     } catch {
-      toast({ title: "Не удалось отозвать токен", variant: "destructive" });
+      toast({ title: "Failed to revoke token", variant: "destructive" });
     } finally {
       onClose();
     }
@@ -52,15 +52,15 @@ export function RevokeTokenAlert({ token, onClose }: RevokeTokenAlertProps) {
     <AlertDialog open={!!token} onOpenChange={(open) => !open && onClose()}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Отозвать токен?</AlertDialogTitle>
+          <AlertDialogTitle>Revoke the token?</AlertDialogTitle>
           <AlertDialogDescription>
-            Токен «{token?.label}» мгновенно перестанет работать. Действие необратимо.
+            Token "{token?.label}" will instantly stop working. The action is irreversible.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction onClick={handleConfirm} disabled={revoke.isPending}>
-            Отозвать
+            Revoke
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

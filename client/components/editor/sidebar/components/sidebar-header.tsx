@@ -86,7 +86,7 @@ export function SidebarHeader({
               variant="ghost"
               className="h-8 w-8 flex-shrink-0"
               onClick={onClose}
-              title="Закрыть панель компонентов"
+              title={"Close Components Panel"}
               data-testid="button-close-components-sidebar"
             >
               <X className="w-4 h-4" />
@@ -103,7 +103,7 @@ export function SidebarHeader({
               : 'text-muted-foreground hover:text-foreground hover:bg-white/40 dark:hover:bg-slate-700/30'
           }`}
         >
-          Элементы
+          Elements
         </button>
         <button
           onClick={() => onTabChange('projects')}

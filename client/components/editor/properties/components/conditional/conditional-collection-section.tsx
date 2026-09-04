@@ -37,7 +37,7 @@ export function ConditionalCollectionSection({
       <div className="flex items-center justify-between">
         <Label className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-2">
           <i className="fas fa-inbox text-blue-600 dark:text-blue-400 mr-0.5"></i>
-          <span>Сбор ответов</span>
+          <span>Collecting responses</span>
         </Label>
         <Switch
           checked={condition.collectUserInput ?? false}
@@ -48,7 +48,7 @@ export function ConditionalCollectionSection({
         <div className="space-y-3 sm:space-y-3.5 pt-2 border-t border-blue-200/40 dark:border-blue-800/40">
           <div className="text-xs sm:text-sm text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-950/30 px-3 py-2 rounded-lg leading-relaxed">
             <i className="fas fa-info-circle mr-2"></i>
-            Собирать ввод пользователя в переменные
+            Collect user input into variables
           </div>
           <ConditionalMediaToggles condition={condition} selectedNode={selectedNode} onNodeUpdate={onNodeUpdate} />
           <ConditionalVariableInputs condition={condition} selectedNode={selectedNode} onNodeUpdate={onNodeUpdate} />

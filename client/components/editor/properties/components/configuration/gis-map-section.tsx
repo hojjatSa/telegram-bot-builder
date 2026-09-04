@@ -62,7 +62,7 @@ export function GisMapSection({
                 country: locationInfo.country || selectedNode.data.country
               });
               toast({
-                title: "Координаты обновлены",
+                title: "Coordinates updated",
                 description: `Из 2ГИС: ${locationInfo.city || 'город'}, ${locationInfo.country || 'страна'}`
               });
             }
@@ -76,7 +76,7 @@ export function GisMapSection({
     <div>
       <Label className="text-xs font-medium text-orange-700 dark:text-orange-300 mb-2 block">
         <i className="fas fa-link mr-1"></i>
-        Ссылка на 2ГИС
+        Link to 2GIS
       </Label>
       <Input
         type="url"
@@ -86,12 +86,12 @@ export function GisMapSection({
         placeholder="https://2gis.ru/..."
       />
       <p className="text-xs text-orange-600 dark:text-orange-400 mt-1">
-        Скопируйте ссылку из 2ГИС - координаты извлекутся автоматически
+        Copy the link from 2GIS - the coordinates will be retrieved automatically
       </p>
       {selectedNode.data.gisMapUrl && selectedNode.data.latitude && selectedNode.data.longitude && (
         <div className="mt-2 text-xs text-green-600 dark:text-green-400 flex items-center">
           <i className="fas fa-check-circle mr-1"></i>
-          Координаты: {formatCoordinates(selectedNode.data.latitude, selectedNode.data.longitude)}
+          Coordinates: {formatCoordinates(selectedNode.data.latitude, selectedNode.data.longitude)}
         </div>
       )}
     </div>

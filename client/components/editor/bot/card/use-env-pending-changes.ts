@@ -100,7 +100,7 @@ export function useEnvPendingChanges(projectId: number, tokenId: number) {
       try { await apiRequest('POST', `/api/projects/${projectId}/bot/stop`, { tokenId }); } catch { /* может быть уже остановлен */ }
       await apiRequest('POST', `/api/projects/${projectId}/bot/start`, { tokenId });
       invalidateBotStatusQueries(queryClient, projectId, tokenId);
-      toast({ title: 'Бот перезапущен', description: 'Изменения сохранены, бот перезапущен' });
+      toast({ title: "Bot restarted", description: "Changes saved, bot restarted" });
     } catch (error: any) {
       toast({ title: 'Error', description: error.message || 'Could not save', variant: 'destructive' });
     } finally {

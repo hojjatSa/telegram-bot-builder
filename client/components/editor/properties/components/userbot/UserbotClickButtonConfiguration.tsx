@@ -44,8 +44,8 @@ export function UserbotClickButtonConfiguration({
       {/* Секция настроек */}
       <div className="space-y-3 bg-gradient-to-br from-violet-50/40 to-purple-50/20 dark:from-violet-950/30 dark:to-purple-900/20 rounded-xl p-3 sm:p-4 border border-violet-200/40 dark:border-violet-800/40">
         <SectionHeader
-          title="Нажатие кнопки"
-          description="Нажать inline-кнопку в сообщении"
+          title={"Pressing a button"}
+          description={"Click the inline button in the message"}
           isOpen={isOpen}
           onToggle={() => setIsOpen(!isOpen)}
           icon="hand-pointer"
@@ -58,12 +58,12 @@ export function UserbotClickButtonConfiguration({
           <div className="space-y-3">
             {/* Entity */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Чат (entity)</Label>
+              <Label className="text-xs text-muted-foreground">Chat (entity)</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.userbotEntity ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { userbotEntity: e.target.value })}
-                  placeholder="@bot_username или {переменная}"
+                  placeholder={"@bot_username or {variable}"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -75,7 +75,7 @@ export function UserbotClickButtonConfiguration({
 
             {/* Message ID */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Источник сообщения</Label>
+              <Label className="text-xs text-muted-foreground">Message source</Label>
               <Select
                 value={data.messageIdSource ?? 'manual'}
                 onValueChange={(v) => onNodeUpdate(selectedNode.id, { messageIdSource: v })}
@@ -84,8 +84,8 @@ export function UserbotClickButtonConfiguration({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="last">Последнее сообщение в чате</SelectItem>
-                  <SelectItem value="manual">Конкретный ID</SelectItem>
+                  <SelectItem value="last">Last chat message</SelectItem>
+                  <SelectItem value="manual">Specific ID</SelectItem>
                 </SelectContent>
               </Select>
               {(data.messageIdSource ?? 'manual') === 'manual' && (
@@ -93,7 +93,7 @@ export function UserbotClickButtonConfiguration({
                   <Input
                     value={data.messageId ?? ''}
                     onChange={(e) => onNodeUpdate(selectedNode.id, { messageId: e.target.value })}
-                    placeholder="{response_msg_id} или число"
+                    placeholder={"{response_msg_id} or number"}
                     className="h-8 text-sm font-mono flex-1"
                   />
                   <VariableSelector
@@ -106,7 +106,7 @@ export function UserbotClickButtonConfiguration({
 
             {/* Способ отправки клика */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Отправка клика</Label>
+              <Label className="text-xs text-muted-foreground">Sending a click</Label>
               <Select
                 value={data.clickDelivery ?? 'fire_and_forget'}
                 onValueChange={(v) => onNodeUpdate(selectedNode.id, { clickDelivery: v })}
@@ -115,18 +115,18 @@ export function UserbotClickButtonConfiguration({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="fire_and_forget">Без ожидания (быстро)</SelectItem>
-                  <SelectItem value="await">С ожиданием (надёжно)</SelectItem>
+                  <SelectItem value="fire_and_forget">No waiting (fast)</SelectItem>
+                  <SelectItem value="await">Looking forward to it (reliably)</SelectItem>
                 </SelectContent>
               </Select>
               <p className="text-[10px] text-muted-foreground/60">
-                «С ожиданием» — await msg.click(), для ботов вроде Vortex, где fire-and-forget не срабатывает
+                “With waiting” - await msg.click(), for bots like Vortex, where fire-and-forget does not work
               </p>
             </div>
 
             {/* Способ поиска */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Способ поиска кнопки</Label>
+              <Label className="text-xs text-muted-foreground">How to search for a button</Label>
               <Select
                 value={data.clickMode ?? 'text'}
                 onValueChange={(v) => onNodeUpdate(selectedNode.id, { clickMode: v })}
@@ -135,9 +135,9 @@ export function UserbotClickButtonConfiguration({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="text">По тексту кнопки</SelectItem>
-                  <SelectItem value="data">По callback_data</SelectItem>
-                  <SelectItem value="index">По индексу (row, col)</SelectItem>
+                  <SelectItem value="text">By button text</SelectItem>
+                  <SelectItem value="data">By callback_data</SelectItem>
+                  <SelectItem value="index">By index (row, col)</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -145,13 +145,13 @@ export function UserbotClickButtonConfiguration({
             {/* Значение поиска */}
             <div className="space-y-1">
               <Label className="text-xs text-muted-foreground">
-                {data.clickMode === 'text' ? 'Текст кнопки' : data.clickMode === 'data' ? 'callback_data' : 'Индекс (row, col)'}
+                {data.clickMode === 'text' ? "Button text" : data.clickMode === 'data' ? 'callback_data' : "Index (row, col)"}
               </Label>
               <div className="flex gap-1">
                 <Input
                   value={data.clickValue ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { clickValue: e.target.value })}
-                  placeholder={data.clickMode === 'index' ? '0, 1' : data.clickMode === 'data' ? 'menu_games' : 'Играть'}
+                  placeholder={data.clickMode === 'index' ? '0, 1' : data.clickMode === 'data' ? 'menu_games' : "Play"}
                   className="h-8 text-sm font-mono flex-1"
                 />
                 <VariableSelector
@@ -163,12 +163,12 @@ export function UserbotClickButtonConfiguration({
 
             {/* Сохранить alert */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить alert в переменную</Label>
+              <Label className="text-xs text-muted-foreground">Save alert to variable</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveAlertTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveAlertTo: e.target.value })}
-                  placeholder="alert_text (необязательно)"
+                  placeholder={"alert_text (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -180,12 +180,12 @@ export function UserbotClickButtonConfiguration({
 
             {/* Сохранить текст сообщения */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить текст сообщения</Label>
+              <Label className="text-xs text-muted-foreground">Save message text</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveResultTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveResultTo: e.target.value })}
-                  placeholder="new_message_text (необязательно)"
+                  placeholder={"new_message_text (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -197,12 +197,12 @@ export function UserbotClickButtonConfiguration({
 
             {/* Сохранить кнопки (JSON) */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить кнопки (JSON)</Label>
+              <Label className="text-xs text-muted-foreground">Save buttons (JSON)</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveButtonsTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveButtonsTo: e.target.value })}
-                  placeholder="buttons_json (необязательно)"
+                  placeholder={"buttons_json (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -214,12 +214,12 @@ export function UserbotClickButtonConfiguration({
 
             {/* Сохранить флаг медиа */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить наличие медиа</Label>
+              <Label className="text-xs text-muted-foreground">Save media availability</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveHasMediaTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveHasMediaTo: e.target.value })}
-                  placeholder="has_media (необязательно)"
+                  placeholder={"has_media (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -231,12 +231,12 @@ export function UserbotClickButtonConfiguration({
 
             {/* Сохранить медиа (для пересылки) */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Сохранить медиа (для пересылки)</Label>
+              <Label className="text-xs text-muted-foreground">Save media (for forwarding)</Label>
               <div className="flex gap-1">
                 <Input
                   value={data.saveMediaTo ?? ''}
                   onChange={(e) => onNodeUpdate(selectedNode.id, { saveMediaTo: e.target.value })}
-                  placeholder="media_object (необязательно)"
+                  placeholder={"media_object (optional)"}
                   className="h-8 text-sm flex-1"
                 />
                 <VariableSelector
@@ -245,7 +245,7 @@ export function UserbotClickButtonConfiguration({
                 />
               </div>
               <p className="text-[10px] text-muted-foreground/60">
-                Медиа-объект можно переслать через userbot_message в поле attachedMedia как {'{variable}'}
+                The media object can be sent via userbot_message to the attachedMedia field as {'{variable}'}
               </p>
             </div>
           </div>
@@ -256,7 +256,7 @@ export function UserbotClickButtonConfiguration({
       <div className="rounded-lg border border-violet-200/40 dark:border-violet-800/40 bg-violet-50/30 dark:bg-violet-950/20 p-3">
         <div className="flex items-center gap-2 text-xs text-violet-700 dark:text-violet-300">
           <i className="fas fa-info-circle" />
-          <span>Нажимает inline-кнопку от имени аккаунта. Работает только с inline-клавиатурами.</span>
+          <span>Presses the inline button on behalf of the account. Works only with inline keyboards.</span>
         </div>
       </div>
     </div>

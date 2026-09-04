@@ -118,10 +118,10 @@ export function SubscriptionChannelsInput({
               </SelectTrigger>
               <SelectContent className="bg-gradient-to-br from-violet-50/95 to-purple-50/90 dark:from-slate-900/95 dark:to-slate-800/95 border border-violet-200/50 dark:border-violet-800/50 shadow-xl">
                 <SelectItem value="all">
-                  <span className="text-xs text-violet-700 dark:text-violet-300">Подписан на все каналы</span>
+                  <span className="text-xs text-violet-700 dark:text-violet-300">Subscribed to all channels</span>
                 </SelectItem>
                 <SelectItem value="any">
-                  <span className="text-xs text-violet-700 dark:text-violet-300">Подписан хотя бы на один</span>
+                  <span className="text-xs text-violet-700 dark:text-violet-300">Subscribed to at least one</span>
                 </SelectItem>
               </SelectContent>
             </Select>
@@ -159,13 +159,13 @@ export function SubscriptionChannelsInput({
         onChange={e => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
         onBlur={addChannel}
-        placeholder="+ Добавить канал"
+        placeholder={"+ Add channel"}
         className="text-sm h-7 w-full"
       />
 
       {/* Строка 4: подсказка про администратора */}
       <p className="text-xs text-violet-500/80 dark:text-violet-300/70">
-        Бот должен быть администратором канала или группы для проверки подписки/членства.
+        The bot must be a channel or group admin to verify subscription/membership.
       </p>
     </div>
   );

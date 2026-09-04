@@ -112,7 +112,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" onClick={handleToggleCustomizer}>
           <Move className="w-4 h-4 mr-2" />
-          Настроить расположение
+          Customize location
         </Button>
       </DialogTrigger>
       
@@ -120,18 +120,18 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
         <DialogHeader className="p-6 pb-0">
           <DialogTitle className="flex items-center gap-2">
             <Layout className="w-5 h-5" />
-            Настройка расположения интерфейса
+            Setting up the interface layout
           </DialogTitle>
           <DialogDescription className="sr-only px-6 pt-2">
-            Настройте расположение панелей интерфейса редактора
+            Customize the layout of editor interface panels
           </DialogDescription>
         </DialogHeader>
         
         <Tabs defaultValue="customize" className="flex-1 flex flex-col">
           <div className="px-6">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="customize">Настройка</TabsTrigger>
-              <TabsTrigger value="elements">Элементы</TabsTrigger>
+              <TabsTrigger value="customize">Settings</TabsTrigger>
+              <TabsTrigger value="elements">Elements</TabsTrigger>
             </TabsList>
           </div>
           
@@ -158,7 +158,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     <div className="flex items-center gap-2">
                       <Layout className="w-4 h-4 text-blue-500" />
                       <div>
-                        <p className="text-sm font-medium">Всего элементов</p>
+                        <p className="text-sm font-medium">Total items</p>
                         <p className="text-lg font-bold">{elementsWithContent.length}</p>
                       </div>
                     </div>
@@ -170,7 +170,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     <div className="flex items-center gap-2">
                       <Eye className="w-4 h-4 text-green-500" />
                       <div>
-                        <p className="text-sm font-medium">Видимые</p>
+                        <p className="text-sm font-medium">Visible</p>
                         <p className="text-lg font-bold">{visibleElements.length}</p>
                       </div>
                     </div>
@@ -182,7 +182,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     <div className="flex items-center gap-2">
                       <Lock className="w-4 h-4 text-orange-500" />
                       <div>
-                        <p className="text-sm font-medium">Заблокированные</p>
+                        <p className="text-sm font-medium">Blocked</p>
                         <p className="text-lg font-bold">{lockedElements.length}</p>
                       </div>
                     </div>
@@ -194,7 +194,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     <div className="flex items-center gap-2">
                       <Grid className="w-4 h-4 text-purple-500" />
                       <div>
-                        <p className="text-sm font-medium">Сетка</p>
+                        <p className="text-sm font-medium">Net</p>
                         <p className="text-lg font-bold">{config.gridSize}%</p>
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
 
               {/* Список элементов */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Управление элементами</h3>
+                <h3 className="text-lg font-semibold">Element Management</h3>
                 
                 {elementsWithContent.map((element) => (
                   <Card key={element.id} className="border-l-4 border-l-blue-500">
@@ -225,10 +225,10 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                         
                         <div className="flex items-center gap-2">
                           <Badge variant={element.visible ? "default" : "secondary"}>
-                            {element.visible ? "Видимый" : "Скрытый"}
+                            {element.visible ? "Visible" : "Hidden"}
                           </Badge>
                           <Badge variant={element.locked ? "destructive" : "outline"}>
-                            {element.locked ? "Заблокирован" : "Разблокирован"}
+                            {element.locked ? "Blocked" : "Unlocked"}
                           </Badge>
                           
                           <Button
@@ -255,7 +255,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
 
               {/* Быстрые действия */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Быстрые действия</h3>
+                <h3 className="text-lg font-semibold">Quick Actions</h3>
                 
                 <div className="flex flex-wrap gap-2">
                   <Button
@@ -270,12 +270,12 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     {visibleElements.length === elementsWithContent.length ? (
                       <>
                         <EyeOff className="w-4 h-4 mr-2" />
-                        Скрыть все
+                        Hide all
                       </>
                     ) : (
                       <>
                         <Eye className="w-4 h-4 mr-2" />
-                        Показать все
+                        Show all
                       </>
                     )}
                   </Button>
@@ -292,12 +292,12 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     {lockedElements.length === elementsWithContent.length ? (
                       <>
                         <Unlock className="w-4 h-4 mr-2" />
-                        Разблокировать все
+                        Unlock everything
                       </>
                     ) : (
                       <>
                         <Lock className="w-4 h-4 mr-2" />
-                        Заблокировать все
+                        Block everything
                       </>
                     )}
                   </Button>
@@ -310,12 +310,12 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     {config.previewMode ? (
                       <>
                         <Pause className="w-4 h-4 mr-2" />
-                        Режим редактирования
+                        Edit mode
                       </>
                     ) : (
                       <>
                         <Play className="w-4 h-4 mr-2" />
-                        Режим предпросмотра
+                        Preview mode
                       </>
                     )}
                   </Button>
@@ -326,7 +326,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
                     onClick={resetLayout}
                   >
                     <RotateCcw className="w-4 h-4 mr-2" />
-                    Сбросить
+                    Reset
                   </Button>
                 </div>
               </div>
@@ -342,7 +342,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
               checked={config.previewMode}
               onCheckedChange={(checked) => updateConfig({ previewMode: checked })}
             />
-            <Label htmlFor="live-preview">Режим предпросмотра</Label>
+            <Label htmlFor="live-preview">Preview mode</Label>
           </div>
           
           <div className="flex gap-2">
@@ -350,7 +350,7 @@ export const LayoutCustomizer: React.FC<LayoutCustomizerProps> = ({
               Cancel
             </Button>
             <Button onClick={handleApplyLayout}>
-              Применить расположение
+              Apply location
             </Button>
           </div>
         </div>

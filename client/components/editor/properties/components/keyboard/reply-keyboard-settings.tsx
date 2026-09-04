@@ -23,16 +23,16 @@ const updateCondition = (condition: any, selectedNode: any, updates: any, onNode
 export function ReplyKeyboardSettings({ condition, onNodeUpdate }: ReplyKeyboardSettingsProps) {
   return (
     <div className="border-t border-purple-100/30 dark:border-purple-800/20 pt-2.5 space-y-2">
-      <Label className="text-xs font-medium text-foreground block">Параметры</Label>
+      <Label className="text-xs font-medium text-foreground block">Options</Label>
       <div className="flex items-center justify-between">
-        <Label className="text-xs text-purple-700 dark:text-purple-400 cursor-pointer">Авто-размер</Label>
+        <Label className="text-xs text-purple-700 dark:text-purple-400 cursor-pointer">Auto-size</Label>
         <Switch
           checked={condition.resizeKeyboard ?? true}
           onCheckedChange={(checked) => updateCondition(condition, condition, { resizeKeyboard: checked }, onNodeUpdate)}
         />
       </div>
       <div className="flex items-center justify-between">
-        <Label className="text-xs text-purple-700 dark:text-purple-400 cursor-pointer">Скрыть после первого нажатия</Label>
+        <Label className="text-xs text-purple-700 dark:text-purple-400 cursor-pointer">Hide after first click</Label>
         <Switch
           checked={condition.oneTimeKeyboard ?? false}
           onCheckedChange={(checked) => updateCondition(condition, condition, { oneTimeKeyboard: checked }, onNodeUpdate)}

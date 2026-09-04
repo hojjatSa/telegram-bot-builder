@@ -384,14 +384,14 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
     deleteMutation.mutate(file.id, {
       onSuccess: () => {
         toast({
-          title: "Файл удален",
+          title: "File deleted",
           description: `${file.fileName} был удален`,
         });
         setSelectedFile(null);
       },
       onError: (error) => {
         toast({
-          title: "Ошибка удаления",
+          title: "Uninstall error",
           description: error.message,
           variant: "destructive",
         });
@@ -434,14 +434,14 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
     }, {
       onSuccess: () => {
         toast({
-          title: "Файл обновлен",
-          description: "Информация о файле была обновлена",
+          title: "File updated",
+          description: "File information has been updated",
         });
         setEditingFile(null);
       },
       onError: (error) => {
         toast({
-          title: "Ошибка обновления",
+          title: "Update error",
           description: error.message,
           variant: "destructive",
         });
@@ -539,7 +539,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 className="flex items-center gap-2 flex-shrink-0"
               >
                 <Zap className="w-4 h-4 flex-shrink-0" />
-                <span className="truncate">{uploadingFiles.length} загружается</span>
+                <span className="truncate">{uploadingFiles.length} loading</span>
               </Button>
             )}
           </CardTitle>
@@ -652,7 +652,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             <div className="mt-6 space-y-3">
               <div className="flex items-center justify-between">
                 <h4 className="font-medium text-sm text-gray-700 dark:text-gray-300">
-                  Прогресс загрузки ({uploadingFiles.length} файлов)
+                  Download progress ({uploadingFiles.length} files)
                 </h4>
                 <Button
                   variant="ghost"
@@ -788,14 +788,14 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             {/* Статистика */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
               <div className="flex items-center gap-4 text-xs text-gray-500">
-                <span>Макс. размер: 100МБ (видео), 50МБ (остальное)</span>
+                <span>Max. size: 100MB (video), 50MB (rest)</span>
                 <span>•</span>
-                <span>До 10 файлов за раз</span>
+                <span>Up to 10 files at a time</span>
               </div>
               {allFiles && allFiles.length > 0 && (
                 <Button variant="outline" size="sm" className="flex items-center gap-2">
                   <FolderOpen className="w-4 h-4" />
-                  {allFiles.length} файлов в библиотеке
+                  {allFiles.length} files in the library
                 </Button>
               )}
             </div>
@@ -810,7 +810,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
               <Input
-                placeholder="Поиск файлов по имени или описанию..."
+                placeholder={"Search files by name or description..."}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -843,7 +843,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
           {searchQuery && (
             <div className="mt-2 flex items-center gap-2">
               <span className="text-sm text-gray-500">
-                Найдено: {getFilesToDisplay().length} файлов
+                Found: {getFilesToDisplay().length} files
               </span>
               <Button
                 variant="ghost"
@@ -953,7 +953,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                   <div className="space-y-2">
                     <div className="flex justify-between text-xs text-gray-500">
                       <span>{formatFileSize(file.fileSize)}</span>
-                      <span>Использован: {file.usageCount || 0} раз</span>
+                      <span>Used: {file.usageCount || 0} once</span>
                     </div>
                     {file.description && (
                       <p className="text-xs text-gray-600 dark:text-gray-400 truncate">
@@ -990,7 +990,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
             <div className="text-center py-12">
               <FileText className="w-12 h-12 mx-auto mb-4 text-gray-300" />
               <p className="text-gray-500">
-                {searchQuery ? 'Файлы не найдены' : 'Нет загруженных файлов'}
+                {searchQuery ? "No files found" : "No files uploaded"}
               </p>
             </div>
           )}
@@ -1016,7 +1016,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                     ...editingFile,
                     description: e.target.value
                   })}
-                  placeholder="Описание файла"
+                  placeholder={"File Description"}
                 />
               </div>
               <div>
@@ -1027,7 +1027,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                     ...editingFile,
                     tags: e.target.value.split(',').map(tag => tag.trim()).filter(Boolean)
                   })}
-                  placeholder="тег1, тег2, тег3"
+                  placeholder={"tag1, tag2, tag3"}
                 />
               </div>
               <div className="flex justify-end gap-2">
@@ -1056,7 +1056,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
           const validationError = validateFile(file);
           if (validationError) {
             toast({
-              title: "Файл отклонен",
+              title: "File rejected",
               description: `${file.name}: ${validationError}`,
               variant: "destructive",
             });
@@ -1075,7 +1075,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
 
           uploadMutation.mutate({
             file,
-            description: 'Фото с камеры',
+            description: "Photo from camera",
             tags: ['камера', 'фото']
           }, {
             onSuccess: () => {
@@ -1087,7 +1087,7 @@ export function MediaManager({ projectId, onSelectFile, selectedType }: MediaMan
                 )
               );
               toast({
-                title: "Фото загружено",
+                title: "Photo uploaded",
                 description: `${file.name} успешно загружен`,
               });
               setTimeout(() => {

@@ -62,7 +62,7 @@ export function BotLaunchHistory({
 
   if (isLoading) {
     return (
-      <p className="py-8 text-center text-xs text-muted-foreground">Загрузка истории…</p>
+      <p className="py-8 text-center text-xs text-muted-foreground">Loading history...</p>
     );
   }
 
@@ -70,8 +70,8 @@ export function BotLaunchHistory({
     return (
       <div className="rounded-lg border border-dashed border-border/60 px-4 py-10 text-center">
         <History className="mx-auto mb-2 h-5 w-5 text-muted-foreground/40" />
-        <p className="text-sm text-muted-foreground">Пока нет запусков</p>
-        <p className="mt-1 text-xs text-muted-foreground/70">Запустите бота — запись появится здесь</p>
+        <p className="text-sm text-muted-foreground">No launches yet</p>
+        <p className="mt-1 text-xs text-muted-foreground/70">Launch the bot - the entry will appear here</p>
       </div>
     );
   }
@@ -80,7 +80,7 @@ export function BotLaunchHistory({
     <div className="flex flex-col gap-4">
       <div className="space-y-2">
         <h3 className="px-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-          Текущий
+          Current
         </h3>
         <BotLaunchCard record={current} onShowLogs={handleShowLogs} featured />
       </div>

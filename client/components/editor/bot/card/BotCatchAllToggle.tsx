@@ -90,7 +90,7 @@ export function BotCatchAllToggle({
       setLocalEnabled(catchAllHandlers !== 0);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить настройку catch-all обработчиков',
+        description: "Failed to update catch-all handlers configuration",
         variant: 'destructive',
       });
     },
@@ -99,18 +99,18 @@ export function BotCatchAllToggle({
   return (
     <SettingCard
       icon={Inbox}
-      title="Catch-all обработчики"
+      title={"Catch-all handlers"}
       description={
         localEnabled
-          ? 'Бот ловит и логирует необработанные сообщения и нажатия'
-          : 'Необработанные сообщения игнорируются (меньше кода)'
+          ? "The bot catches and logs unprocessed messages and clicks"
+          : "Unprocessed messages are ignored (less code)"
       }
       active={localEnabled}
       className={className}
       action={
         <Switch
           id={`catch-all-${tokenId}`}
-          aria-label="Catch-all обработчики"
+          aria-label={"Catch-all handlers"}
           checked={localEnabled}
           onCheckedChange={(checked) => {
             setLocalEnabled(checked);

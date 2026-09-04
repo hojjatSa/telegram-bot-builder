@@ -74,7 +74,7 @@ export function DatabaseHeaderSection(props: DatabaseHeaderSectionProps): React.
             size="sm"
             onClick={handleRefresh}
             className="h-7 px-2 text-muted-foreground hover:text-foreground"
-            title="Обновить данные"
+            title={"Update data"}
           >
             <RefreshCw className="w-3.5 h-3.5 mr-1" />
             <span className="text-xs hidden sm:inline">Refresh</span>

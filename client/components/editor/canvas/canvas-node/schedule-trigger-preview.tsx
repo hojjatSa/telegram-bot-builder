@@ -65,7 +65,7 @@ export function ScheduleTriggerPreview({ node }: ScheduleTriggerPreviewProps) {
       </div>
       {rules.length > 1 && (
         <div className="text-teal-500 dark:text-teal-400 text-[10px]">
-          +{rules.length - 1} правил(о)
+          +{rules.length - 1} rules
         </div>
       )}
       <div className="text-gray-500 dark:text-gray-400 text-[10px] truncate">

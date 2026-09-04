@@ -34,7 +34,7 @@ export function ThumbnailLibraryTab({
   if (isLoading) {
     return (
       <p className="text-xs text-muted-foreground text-center py-6">
-        Загрузка фото...
+        Loading photos...
       </p>
     );
   }
@@ -42,7 +42,7 @@ export function ThumbnailLibraryTab({
   if (!photos.length) {
     return (
       <p className="text-xs text-muted-foreground text-center py-6">
-        В проекте нет загруженных фото
+        There are no uploaded photos in the project
       </p>
     );
   }

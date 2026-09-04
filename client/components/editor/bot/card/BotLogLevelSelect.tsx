@@ -18,10 +18,10 @@ import { SettingCard } from './SettingCard';
 
 /** Доступные уровни логирования */
 const LOG_LEVELS = [
-  { value: 'ERROR',   label: 'Только ошибки',     color: 'red' },
-  { value: 'WARNING', label: 'Предупреждения',     color: 'yellow' },
-  { value: 'INFO',    label: 'Информация',         color: 'blue' },
-  { value: 'DEBUG',   label: 'Отладка (подробно)', color: 'gray' },
+  { value: 'ERROR',   label: "Only errors",     color: 'red' },
+  { value: 'WARNING', label: "Warnings",     color: 'yellow' },
+  { value: 'INFO',    label: "Information",         color: 'blue' },
+  { value: 'DEBUG',   label: "Debugging (detailed)", color: 'gray' },
 ] as const;
 
 /** Тип значения уровня логирования */
@@ -73,7 +73,7 @@ export function BotLogLevelSelect({ projectId, tokenId, logLevel, onPendingChang
     mutationFn: (level: string) => updateLogLevel(projectId, tokenId, level),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/tokens`] });
-      toast({ title: 'Перезапустите бота чтобы применить изменения' });
+      toast({ title: "Restart the bot to apply the changes" });
     },
     onError: () => {
       setLocalLevel((logLevel as LogLevel) ?? 'WARNING');
@@ -83,8 +83,8 @@ export function BotLogLevelSelect({ projectId, tokenId, logLevel, onPendingChang
   return (
     <SettingCard
       icon={FileText}
-      title="Уровень логирования"
-      description="Детализация вывода в терминал"
+      title={"Logging level"}
+      description={"Detailed output to the terminal"}
     >
       <Select
         value={localLevel}

@@ -43,11 +43,11 @@ export function FileStorageHeaderActions({
           href={DOCS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          title="Документация по файловому хранилищу"
+          title={"File storage documentation"}
           data-testid="file-storage-docs-link"
         >
           <BookOpen className="h-3.5 w-3.5 sm:mr-1.5" />
-          <span className="hidden sm:inline">Документация</span>
+          <span className="hidden sm:inline">Documentation</span>
         </a>
       </Button>
       <Button
@@ -56,7 +56,7 @@ export function FileStorageHeaderActions({
         size="icon"
         className="h-8 w-8 text-muted-foreground hover:text-foreground"
         onClick={onRefresh}
-        title="Обновить список файлов"
+        title={"Update file list"}
         data-testid="file-storage-refresh"
       >
         <RefreshCw className="h-4 w-4" />

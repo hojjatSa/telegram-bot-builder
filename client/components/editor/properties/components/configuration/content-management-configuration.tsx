@@ -96,13 +96,13 @@ export function ContentManagementConfiguration({
           <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
             <i className="fas fa-reply text-blue-600 dark:text-blue-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-blue-900 dark:text-blue-100">Автоматическое управление</Label>
+          <Label className="text-sm font-semibold text-blue-900 dark:text-blue-100">Automatic control</Label>
         </div>
 
         <div className="bg-blue-50/50 dark:bg-blue-950/20 rounded-lg p-3 border border-blue-200/30 dark:border-blue-800/30">
           <div className="text-xs text-blue-700 dark:text-blue-300 leading-relaxed">
             <i className="fas fa-info-circle mr-1"></i>
-            Команда будет применена к сообщению, на которое отвечает пользователь.{getAutoMessage()}
+            The command will be applied to the message the user is replying to.{getAutoMessage()}
           </div>
         </div>
 
@@ -112,10 +112,10 @@ export function ContentManagementConfiguration({
               <div className="flex-1">
                 <Label className="text-xs font-medium text-blue-700 dark:text-blue-300">
                   <i className="fas fa-bell-slash mr-1"></i>
-                  Тихое закрепление
+                  Quiet anchoring
                 </Label>
                 <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
-                  Закрепить без уведомления участников
+                  Pin without notifying participants
                 </div>
               </div>
               <div className="ml-4">
@@ -135,7 +135,7 @@ export function ContentManagementConfiguration({
           <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/50 flex items-center justify-center">
             <i className="fas fa-tags text-green-600 dark:text-green-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-green-900 dark:text-green-100">Синонимы команды</Label>
+          <Label className="text-sm font-semibold text-green-900 dark:text-green-100">Team synonyms</Label>
         </div>
 
         <SynonymEditor
@@ -150,7 +150,7 @@ export function ContentManagementConfiguration({
             return selectedNode.data.synonyms || [];
           })()}
           onUpdate={(synonyms) => onNodeUpdate(selectedNode.id, { synonyms })}
-          title="Альтернативные команды"
+          title={"Alternative commands"}
           description={getSynonymDescription()}
           placeholder={getSynonymPlaceholder()}
         />

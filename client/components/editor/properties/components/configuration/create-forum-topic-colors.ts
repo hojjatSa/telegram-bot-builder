@@ -7,12 +7,12 @@ import { TopicIconColor } from './create-forum-topic-types';
 
 /** Список доступных цветов иконок топиков Telegram */
 export const TOPIC_ICON_COLORS: { value: TopicIconColor; label: string }[] = [
-  { value: '7322096',  label: '🔵 Синий' },
-  { value: '16766590', label: '🟡 Жёлтый' },
-  { value: '13338331', label: '🟣 Фиолетовый' },
-  { value: '9367192',  label: '🟢 Зелёный' },
-  { value: '16749490', label: '🟠 Оранжевый' },
-  { value: '16478047', label: '🔴 Красный' },
+  { value: '7322096',  label: "🔵 Blue" },
+  { value: '16766590', label: "🟡 Yellow" },
+  { value: '13338331', label: "🟣 Purple" },
+  { value: '9367192',  label: "🟢 Green" },
+  { value: '16749490', label: "🟠Orange" },
+  { value: '16478047', label: "🔴 Red" },
 ];
 
 /**

@@ -56,15 +56,15 @@ export function ChangesModal({ open, onClose, onSave, isSaving, actionHistory, m
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-sm">
             <i className="fas fa-clock-rotate-left text-violet-500" />
-            Изменения ({actionHistory.length})
+            Changes ({actionHistory.length})
           </DialogTitle>
         </DialogHeader>
 
         <div className="max-h-72 overflow-y-auto space-y-0.5 py-1">
           {mode === 'json' && actionHistory.length === 0 ? (
-            <p className="text-xs text-slate-400 text-center py-6">Изменения применены к JSON редактору</p>
+            <p className="text-xs text-slate-400 text-center py-6">Changes applied to JSON editor</p>
           ) : actionHistory.length === 0 ? (
-            <p className="text-xs text-slate-400 text-center py-6">Нет изменений</p>
+            <p className="text-xs text-slate-400 text-center py-6">No changes</p>
           ) : actionHistory.map((item) => {
             const { icon, color, bg } = getActionIcon(item.type);
             return (

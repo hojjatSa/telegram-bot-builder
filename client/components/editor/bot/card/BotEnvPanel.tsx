@@ -166,23 +166,23 @@ export function BotEnvPanel({ projectId, tokenId, token, adminIds, pending }: Bo
     <div className="space-y-3">
       {/* Заголовок */}
       <div className="flex flex-wrap items-center gap-1.5">
-        <span className="text-xs text-muted-foreground font-medium whitespace-nowrap">{totalCount} переменных</span>
+        <span className="text-xs text-muted-foreground font-medium whitespace-nowrap">{totalCount} variables</span>
         <div className="flex items-center gap-0.5">
-          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowRaw(!showRaw)} title="Raw-редактор">
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowRaw(!showRaw)} title={"Raw editor"}>
             <FileCode className="h-3.5 w-3.5" />
           </Button>
           <Button variant="ghost" size="icon" className="h-7 w-7" onClick={() => setShowSearch(!showSearch)} title="Search">
             <Search className="h-3.5 w-3.5" />
           </Button>
           <Button variant="ghost" size="sm" className="h-7 text-xs gap-1 px-1.5" onClick={() => setShowAdd(true)}>
-            <Plus className="h-3.5 w-3.5" /> Новая
+            <Plus className="h-3.5 w-3.5" /> New
           </Button>
         </div>
       </div>
 
       {showSearch && (
         <Input value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder="Фильтр по имени..." className="h-7 text-xs" autoFocus />
+          placeholder={"Filter by name..."} className="h-7 text-xs" autoFocus />
       )}
 
       {showRaw ? (
@@ -203,7 +203,7 @@ export function BotEnvPanel({ projectId, tokenId, token, adminIds, pending }: Bo
 
           {/* Системные переменные */}
           <div className="space-y-1">
-            <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Системные</h3>
+            <h3 className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">System</h3>
             {filteredSystem.map(v => (
               <BotEnvRow
                 key={v.key} id={null} envKey={v.key} value={v.value}
@@ -232,7 +232,7 @@ export function BotEnvPanel({ projectId, tokenId, token, adminIds, pending }: Bo
                   />
                 ))}
                 {filteredCustom.length === 0 && (
-                  <p className="text-xs text-muted-foreground/50 px-2 py-2">Нет пользовательских переменных</p>
+                  <p className="text-xs text-muted-foreground/50 px-2 py-2">No user variables</p>
                 )}
               </div>
             </>

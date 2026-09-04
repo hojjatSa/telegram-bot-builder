@@ -78,7 +78,7 @@ export function SetVariablePreview({ node }: SetVariablePreviewProps) {
 
   if (assignments.length === 0) {
     return (
-      <span className="text-xs text-slate-400 italic">Нет переменных</span>
+      <span className="text-xs text-slate-400 italic">No variables</span>
     );
   }
 
@@ -92,7 +92,7 @@ export function SetVariablePreview({ node }: SetVariablePreviewProps) {
       ))}
       {hidden > 0 && (
         <span className="text-[10px] text-slate-500">
-          +{hidden} ещё
+          +{hidden} more
         </span>
       )}
     </div>

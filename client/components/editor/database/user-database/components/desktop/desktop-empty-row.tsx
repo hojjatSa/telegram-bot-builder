@@ -25,7 +25,7 @@ export function DesktopEmptyRow({ searchQuery }: DesktopEmptyRowProps): React.JS
       <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
         <div className="flex flex-col items-center gap-2">
           <Users className="w-8 h-8 opacity-30" />
-          <span>{searchQuery ? 'Пользователи не найдены' : 'Нет пользователей'}</span>
+          <span>{searchQuery ? "No users found" : "No users"}</span>
         </div>
       </TableCell>
     </TableRow>

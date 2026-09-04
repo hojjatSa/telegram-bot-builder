@@ -38,7 +38,7 @@ export function VariableNamesSection({ condition, selectedNode, availableQuestio
     <div className="space-y-2 sm:space-y-3">
       <Label className="text-xs sm:text-sm font-semibold text-foreground flex items-center gap-2">
         <i className="fas fa-question text-blue-600 dark:text-blue-400"></i>
-        <span>На какие вопросы ответил?</span>
+        <span>What questions did you answer?</span>
       </Label>
       {availableQuestions.length > 0 ? (
         <div className="space-y-3 sm:space-y-4">
@@ -47,17 +47,17 @@ export function VariableNamesSection({ condition, selectedNode, availableQuestio
             <LogicOperatorSelector value={condition.logicOperator || 'AND'} onChange={handleLogic} />
           )}
           <div>
-            <Label className="text-xs font-medium text-muted-foreground mb-1 block">Или добавьте вручную:</Label>
+            <Label className="text-xs font-medium text-muted-foreground mb-1 block">Or add manually:</Label>
             <Input value={(condition.variableNames || []).join(', ')} onChange={(e) => handleUpdate(e.target.value.split(',').map((n: string) => n.trim()).filter((n: string) => n))}
-              className="text-xs" placeholder="имя, пол, возраст" />
-            <div className="text-xs text-muted-foreground mt-1">Введите названия через запятую</div>
+              className="text-xs" placeholder={"name, gender, age"} />
+            <div className="text-xs text-muted-foreground mt-1">Enter names separated by commas</div>
           </div>
         </div>
       ) : (
         <div className="text-center py-6 sm:py-8 px-4 text-muted-foreground bg-gradient-to-br from-slate-50/50 to-slate-50/30 dark:from-slate-900/20 dark:to-slate-950/20 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
           <i className="fas fa-inbox text-2xl sm:text-3xl mb-3 opacity-50"></i>
-          <div className="text-xs sm:text-sm font-medium">Нет доступных вопросов</div>
-          <div className="text-xs text-muted-foreground mt-1">Создайте узлы со сбором ответов</div>
+          <div className="text-xs sm:text-sm font-medium">No questions available</div>
+          <div className="text-xs text-muted-foreground mt-1">Create nodes that collect responses</div>
         </div>
       )}
       <SelectedQuestions selectedNames={condition.variableNames || []} />

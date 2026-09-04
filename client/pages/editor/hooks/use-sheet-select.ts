@@ -117,8 +117,8 @@ export function useSheetSelect(params: UseSheetSelectParams) {
         }
 
         toast({
-          title: 'Лист был удален',
-          description: 'Переключились на другой лист',
+          title: "The sheet has been deleted",
+          description: "Switched to another sheet",
           variant: 'destructive',
         });
         return;
@@ -153,8 +153,8 @@ export function useSheetSelect(params: UseSheetSelectParams) {
       }
     } catch (error) {
       toast({
-        title: 'Ошибка переключения',
-        description: 'Не удалось переключиться на лист',
+        title: "Switching error",
+        description: "Failed to switch to sheet",
         variant: 'destructive',
       });
     }

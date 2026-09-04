@@ -90,11 +90,11 @@ export function FileStoragePanel(props: FileStoragePanelProps) {
               data-testid="toggle-attach-mode"
             >
               <Paperclip className="mr-1.5 h-3.5 w-3.5" />
-              {s.attachModeEnabled ? 'Прикрепление вкл.' : 'Режим прикрепления'}
+              {s.attachModeEnabled ? "Attachment on" : "Attach Mode"}
             </Button>
             {s.attachModeEnabled && attachTarget && (
               <span className="max-w-[12rem] truncate text-xs text-muted-foreground sm:max-w-xs">
-                Цель: <strong className="text-foreground">{attachTarget.nodeLabel}</strong>
+                Target: <strong className="text-foreground">{attachTarget.nodeLabel}</strong>
               </span>
             )}
           </div>

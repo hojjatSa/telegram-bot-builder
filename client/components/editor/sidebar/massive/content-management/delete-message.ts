@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const deleteMessage: ComponentDefinition = {
   id: 'delete-message',
   name: 'Delete Message',
-  description: 'Удаляет одно или несколько сообщений в чате',
+  description: "Deletes one or more chat messages",
   icon: 'fas fa-trash',
   color: 'bg-red-100 text-red-600',
   type: 'delete_message',

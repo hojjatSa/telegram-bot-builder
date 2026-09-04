@@ -42,7 +42,7 @@ export function SheetPortalTooltip({ links, direction }: SheetPortalTooltipProps
     <div className="max-w-[320px]">
       {/* Заголовок направления */}
       <div className="text-[11px] font-semibold mb-1 text-muted-foreground">
-        {direction === 'outgoing' ? 'Исходящие связи' : 'Входящие связи'}
+        {direction === 'outgoing' ? "Outgoing communications" : "Incoming connections"}
       </div>
 
       {/* Прокручиваемый список связей */}

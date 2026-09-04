@@ -19,25 +19,25 @@ export interface DocsUiOption {
 export const DOCS_UI_OPTIONS: DocsUiOption[] = [
   {
     title: 'Swagger UI',
-    description: 'Классика: Try it out, Authorize, отправка запросов из браузера.',
+    description: "Classic: Try it out, Authorize, sending requests from the browser.",
     suffix: '/swagger',
     badge: 'interactive',
   },
   {
     title: 'Scalar',
-    description: 'Современный UI: поиск, тёмная тема, удобный Try it out.',
+    description: "Modern UI: search, dark theme, convenient Try it out.",
     suffix: '/scalar',
     badge: 'interactive',
   },
   {
     title: 'Redoc',
-    description: 'Read-only документация: трёхколоночный layout, удобно читать схемы.',
+    description: "Read-only documentation: three-column layout, easy to read diagrams.",
     suffix: '/redoc',
     badge: 'read-only',
   },
   {
     title: 'RapiDoc',
-    description: 'Компактный read-only viewer с боковой навигацией.',
+    description: "Compact read-only viewer with side navigation.",
     suffix: '/rapidoc',
     badge: 'read-only',
   },

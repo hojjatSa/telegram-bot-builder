@@ -44,10 +44,10 @@ export function StartOfflineConfirmDialog({
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Запустить офлайн-ботов?</AlertDialogTitle>
+          <AlertDialogTitle>Launch offline bots?</AlertDialogTitle>
           <AlertDialogDescription>
-            Будет запущено {offlineCount} остановленных ботов проекта «{projectName}».
-            Уже работающие боты и боты с недействительным токеном не будут затронуты.
+            Will be launched {offlineCount} stopped bots of the project "{projectName}"
+            Already running bots and bots with an invalid token will not be affected.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -58,7 +58,7 @@ export function StartOfflineConfirmDialog({
               onConfirm();
             }}
           >
-            Запустить
+            Launch
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -41,7 +41,7 @@ export function ButtonRequestManagedBotFields({
       {/* Предложенное имя бота */}
       <div className="space-y-1">
         <span className="text-xs text-indigo-700 dark:text-indigo-300 font-medium">
-          Предложенное имя бота
+          Suggested bot name
         </span>
         <Input
           value={(button as any).suggestedBotName || ''}
@@ -49,14 +49,14 @@ export function ButtonRequestManagedBotFields({
             onButtonUpdate(nodeId, button.id, { suggestedBotName: e.target.value || undefined } as any)
           }
           className="text-xs sm:text-sm bg-white/60 dark:bg-slate-950/60 border border-blue-300/40 dark:border-blue-700/40 text-blue-900 dark:text-blue-50 placeholder:text-blue-500/50 dark:placeholder:text-blue-400/50 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-400/30 rounded-lg"
-          placeholder="Мой бот"
+          placeholder={"My bot"}
         />
       </div>
 
       {/* Предложенный username бота */}
       <div className="space-y-1">
         <span className="text-xs text-indigo-700 dark:text-indigo-300 font-medium">
-          Предложенный username
+          Suggested username
         </span>
         <Input
           value={(button as any).suggestedBotUsername || ''}

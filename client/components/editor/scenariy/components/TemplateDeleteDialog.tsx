@@ -26,11 +26,11 @@ export function TemplateDeleteDialog({ template, onConfirm, onCancel }: Template
     <AlertDialog open={template !== null} onOpenChange={(open) => { if (!open) onCancel(); }}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Удалить сценарий?</AlertDialogTitle>
+          <AlertDialogTitle>Delete the script?</AlertDialogTitle>
           <AlertDialogDescription>
-            Вы уверены, что хотите удалить сценарий{' '}
+            Are you sure you want to delete the script?{' '}
             <span className="font-semibold text-foreground">«{template?.name}»</span>?
-            Это действие нельзя отменить.
+            This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

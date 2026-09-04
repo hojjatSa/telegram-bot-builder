@@ -79,8 +79,8 @@ export function BotsCanvasWorkspace({ project, tokens }: BotsCanvasWorkspaceProp
           <div
             role="separator"
             aria-orientation="vertical"
-            aria-label="Изменить ширину панели"
-            title="Потяните, чтобы изменить ширину"
+            aria-label={"Change panel width"}
+            title={"Pull to change width"}
             onPointerDown={onResizePointerDown}
             className={[
               'group/resize absolute inset-y-0 left-0 z-30 w-3 -translate-x-1/2',

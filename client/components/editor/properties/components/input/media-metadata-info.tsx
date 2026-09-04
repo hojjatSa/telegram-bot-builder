@@ -77,7 +77,7 @@ export function MediaMetadataInfo({
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-2">
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
-          Дополнительные переменные
+          Additional Variables
         </p>
         <Button
           type="button"
@@ -86,7 +86,7 @@ export function MediaMetadataInfo({
           className="h-7 px-2 text-[11px] text-muted-foreground hover:text-foreground"
           onClick={toggleAll}
         >
-          {allSelected ? 'Снять все' : 'Выбрать все'}
+          {allSelected ? "Remove everything" : "Select all"}
         </Button>
       </div>
 

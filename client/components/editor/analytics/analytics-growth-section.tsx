@@ -59,7 +59,7 @@ export function AnalyticsGrowthSection(props: AnalyticsGrowthSectionProps): Reac
     <div className="bg-background border rounded-xl p-4 flex flex-col gap-3">
       {/* Заголовок с переключателями */}
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <p className="text-sm font-semibold text-foreground">Прирост пользователей</p>
+        <p className="text-sm font-semibold text-foreground">User growth</p>
         <div className="flex items-center gap-1.5 flex-wrap">
           <SourceModeToggle value={sourceMode} onChange={onSourceModeChange} />
           <GrowthGranularitySelector value={granularity} onChange={onGranularityChange} />

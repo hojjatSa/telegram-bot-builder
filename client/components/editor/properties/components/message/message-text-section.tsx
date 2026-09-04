@@ -95,7 +95,7 @@ export function MessageTextSection({
           {/* Переключатель превью ссылок */}
           <PropertyCheckbox
             id="disableLinkPreview"
-            label="Отключить превью ссылок"
+            label={"Disable link previews"}
             checked={!!selectedNode.data.disableLinkPreview}
             onChange={(checked) => onNodeUpdate(selectedNode.id, { disableLinkPreview: checked })}
           />

@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const groupMessageTrigger: ComponentDefinition = {
   id: 'group-message-trigger',
   name: 'Триггер входящего сообщения в теме группы',
-  description: 'Срабатывает когда оператор пишет в топик форум-группы',
+  description: "Triggers when an operator writes to a forum group topic",
   icon: 'fas fa-comments',
   color: 'bg-violet-100 text-violet-600',
   type: 'group_message_trigger',

@@ -48,7 +48,7 @@ function NoDialogSelected(): React.JSX.Element {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-3 text-muted-foreground">
       <MessageSquare className="h-12 w-12 opacity-20" />
-      <p className="text-sm">Выберите диалог</p>
+      <p className="text-sm">Select dialogue</p>
     </div>
   );
 }
@@ -141,7 +141,7 @@ export function DialogsTabContent({
           <div className="rounded-lg bg-primary/10 p-1 shrink-0">
             <MessageSquare className="w-3.5 h-3.5 text-primary" />
           </div>
-          <span className="text-xs font-semibold text-foreground">Диалоги</span>
+          <span className="text-xs font-semibold text-foreground">Dialogues</span>
           <span className="text-border/60 text-[10px]">·</span>
           {showProjectSelector ? (
             <ProjectSelector
@@ -217,7 +217,7 @@ export function DialogsTabContent({
                 </Button>
               </>
             ) : (
-              <span className="text-[11px] text-muted-foreground">Выберите диалог</span>
+              <span className="text-[11px] text-muted-foreground">Select dialogue</span>
             )}
           </div>
         </div>
@@ -228,7 +228,7 @@ export function DialogsTabContent({
         <div className="md:hidden flex-shrink-0">
           <TabHeader
             icon={<MessageSquare className="h-4 w-4 text-primary" />}
-            title="Диалоги"
+            title={"Dialogues"}
             actions={
               <Button
                 variant="outline"
@@ -237,7 +237,7 @@ export function DialogsTabContent({
                 onClick={() => setBroadcastModalOpen(true)}
               >
                 <Megaphone className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline">+ Рассылка</span>
+                <span className="hidden sm:inline">+ Newsletter</span>
                 <span className="sm:hidden">+</span>
               </Button>
             }

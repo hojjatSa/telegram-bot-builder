@@ -39,7 +39,7 @@ export function MarqueeSelectButton({ active, onToggle }: MarqueeSelectButtonPro
     <button
       onClick={onToggle}
       className={`${buttonBaseClasses} ${active ? activeClasses : inactiveClasses}`}
-      title="Рамочное выделение нескольких узлов (M)"
+      title={"Box selection of multiple nodes (M)"}
     >
       <i className={`fas fa-object-group ${iconClasses}`} />
     </button>

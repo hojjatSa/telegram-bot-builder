@@ -37,7 +37,7 @@ export function ButtonsPreviewHeader({
         {isMultiSelect && (
           <div className="text-xs text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/50 px-2 py-1 rounded-full">
             <i className="fas fa-check-double text-xs mr-1"></i>
-            Мульти-выбор
+            Multi-select
           </div>
         )}
         {shuffleButtons && (

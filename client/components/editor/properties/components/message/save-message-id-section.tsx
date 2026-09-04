@@ -32,14 +32,14 @@ export function SaveMessageIdSection({ selectedNode, onNodeUpdate, textVariables
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <Label className="text-xs text-slate-600 dark:text-slate-400">
-          Сохранить ID сообщения в переменную
+          Save message ID to variable
         </Label>
       </div>
       <div className="flex gap-2">
         <Input
           value={data.saveMessageIdTo ?? ''}
           onChange={(e) => onNodeUpdate(selectedNode.id, { saveMessageIdTo: e.target.value })}
-          placeholder="message_id (необязательно)"
+          placeholder={"message_id (optional)"}
           className="flex-1 h-8 text-sm"
         />
         <VariableSelector
@@ -48,7 +48,7 @@ export function SaveMessageIdSection({ selectedNode, onNodeUpdate, textVariables
         />
       </div>
       <p className="text-[10px] text-slate-400">
-        После отправки ID сообщения будет сохранён в эту переменную. Используй в узле «Редактировать сообщение».
+        After sending, the message ID will be saved to this variable. Use it in the “Edit message” node.
       </p>
     </div>
   );

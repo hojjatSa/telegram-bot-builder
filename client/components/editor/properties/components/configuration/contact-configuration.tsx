@@ -45,14 +45,14 @@ export function ContactConfiguration({
           <div className="w-6 h-6 rounded-full bg-cyan-100 dark:bg-cyan-900/50 flex items-center justify-center">
             <i className="fas fa-address-book text-cyan-600 dark:text-cyan-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-cyan-900 dark:text-cyan-100">Контактная информация</Label>
+          <Label className="text-sm font-semibold text-cyan-900 dark:text-cyan-100">Contact information</Label>
         </div>
 
         <div className="space-y-4">
           <div>
             <Label className="text-xs font-medium text-cyan-700 dark:text-cyan-300 mb-2 block">
               <i className="fas fa-phone mr-1"></i>
-              Номер телефона (обязательно)
+              Phone number (required)
             </Label>
             <Input
               value={selectedNode.data.phoneNumber || ''}
@@ -66,13 +66,13 @@ export function ContactConfiguration({
             <div>
               <Label className="text-xs font-medium text-cyan-700 dark:text-cyan-300 mb-2 block">
                 <i className="fas fa-user mr-1"></i>
-                Имя (обязательно)
+                Name (required)
               </Label>
               <Input
                 value={selectedNode.data.firstName || ''}
                 onChange={(e) => onNodeUpdate(selectedNode.id, { firstName: e.target.value })}
                 className="border-cyan-200 dark:border-cyan-700 focus:border-cyan-500 focus:ring-cyan-200"
-                placeholder="Иван"
+                placeholder={"Ivan"}
               />
             </div>
             <div>
@@ -84,7 +84,7 @@ export function ContactConfiguration({
                 value={selectedNode.data.lastName || ''}
                 onChange={(e) => onNodeUpdate(selectedNode.id, { lastName: e.target.value })}
                 className="border-cyan-200 dark:border-cyan-700 focus:border-cyan-500 focus:ring-cyan-200"
-                placeholder="Петров"
+                placeholder={"Petrov"}
               />
             </div>
           </div>
@@ -97,7 +97,7 @@ export function ContactConfiguration({
           <div className="w-6 h-6 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
             <i className="fas fa-id-card text-indigo-600 dark:text-indigo-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-indigo-900 dark:text-indigo-100">Дополнительные данные</Label>
+          <Label className="text-sm font-semibold text-indigo-900 dark:text-indigo-100">Additional data</Label>
         </div>
 
         <div className="space-y-4">
@@ -114,24 +114,24 @@ export function ContactConfiguration({
               placeholder="123456789"
             />
             <div className="text-xs text-indigo-600 dark:text-indigo-400 mt-1">
-              ID пользователя в Telegram (если известен)
+              Telegram user ID (if known)
             </div>
           </div>
 
           <div>
             <Label className="text-xs font-medium text-indigo-700 dark:text-indigo-300 mb-2 block">
               <i className="fas fa-address-card mr-1"></i>
-              vCard данные
+              vCard data
             </Label>
             <Textarea
               value={selectedNode.data.vcard || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { vcard: e.target.value })}
               className="resize-none border-indigo-200 dark:border-indigo-700 focus:border-indigo-500 focus:ring-indigo-200 transition-all duration-200"
               rows={4}
-              placeholder="BEGIN:VCARD&#10;VERSION:3.0&#10;FN:Иван Петров&#10;TEL:+79991234567&#10;END:VCARD"
+              placeholder={"BEGIN:VCARD\nVERSION:3.0\nFN:Ivan Petrov\nTEL:+79991234567\nEND:VCARD"}
             />
             <div className="text-xs text-indigo-600 dark:text-indigo-400 mt-1">
-              Дополнительная контактная информация в формате vCard (опционально)
+              Additional contact information in vCard format (optional)
             </div>
           </div>
         </div>

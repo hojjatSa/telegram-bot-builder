@@ -46,7 +46,7 @@ export function ConvertFilePreview({ node }: ConvertFilePreviewProps) {
         </div>
       ) : (
         <div className="text-xs text-muted-foreground italic">
-          Переменная не задана
+          Variable not set
         </div>
       )}
 

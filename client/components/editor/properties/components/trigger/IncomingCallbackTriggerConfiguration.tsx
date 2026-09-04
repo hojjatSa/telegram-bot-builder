@@ -58,10 +58,10 @@ export function IncomingCallbackTriggerConfiguration({
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Перехватывает нажатия инлайн-кнопок по паттерну.
-          Доступны переменные{' '}
+          Intercepts clicks of inline buttons using a pattern.
+          Variables available{' '}
           <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">{'{callback_data}'}</code>{' '}
-          и{' '}
+          And{' '}
           <code className="bg-slate-100 dark:bg-slate-800 px-1 rounded">{'{button_text}'}</code>.
         </p>
       </div>
@@ -71,12 +71,12 @@ export function IncomingCallbackTriggerConfiguration({
         <div className="flex items-center gap-2">
           <i className="fas fa-filter text-slate-400 text-xs" />
           <span className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
-            Фильтр callback_data
+            Filter callback_data
           </span>
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs font-medium text-muted-foreground">Тип сопоставления</label>
+          <label className="text-xs font-medium text-muted-foreground">Matching type</label>
           <Select
             value={callbackMatchType}
             onValueChange={(v) => update('callbackMatchType', v)}
@@ -86,16 +86,16 @@ export function IncomingCallbackTriggerConfiguration({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="startsWith">Starts with</SelectItem>
-              <SelectItem value="equals">Равно</SelectItem>
-              <SelectItem value="contains">Содержит</SelectItem>
+              <SelectItem value="equals">Equals</SelectItem>
+              <SelectItem value="contains">Contains</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div className="space-y-1">
           <label className="text-xs font-medium text-muted-foreground">
-            Паттерн{' '}
-            <span className="text-slate-400 font-normal">(пусто = любая кнопка)</span>
+            Pattern{' '}
+            <span className="text-slate-400 font-normal">(empty = any button)</span>
           </label>
           <Input
             value={callbackPattern}
@@ -108,11 +108,11 @@ export function IncomingCallbackTriggerConfiguration({
         {/* Превью результата */}
         {callbackPattern && (
           <div className="rounded-lg bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 px-3 py-2 text-[11px] text-slate-500 dark:text-slate-400">
-            Сработает если callback_data{' '}
+            Will work if callback_data{' '}
             <span className="font-medium text-slate-700 dark:text-slate-300">
-              {callbackMatchType === 'startsWith' && 'начинается с'}
-              {callbackMatchType === 'equals' && 'равно'}
-              {callbackMatchType === 'contains' && 'содержит'}
+              {callbackMatchType === 'startsWith' && "starts with"}
+              {callbackMatchType === 'equals' && "equals"}
+              {callbackMatchType === 'contains' && "contains"}
             </span>{' '}
             <code className="bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300 px-1 rounded font-mono">
               {callbackPattern}
@@ -122,7 +122,7 @@ export function IncomingCallbackTriggerConfiguration({
 
         {!callbackPattern && (
           <div className="rounded-lg bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700/40 px-3 py-2 text-[11px] text-amber-700 dark:text-amber-400">
-            ⚠️ Без паттерна триггер срабатывает на <strong>любое</strong> нажатие кнопки
+            ⚠️ Without a pattern, the trigger fires on <strong>any</strong> pressing a button
           </div>
         )}
       </div>

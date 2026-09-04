@@ -37,9 +37,9 @@ export function MessageLinkedInputIndicator({ node, allNodes = [] }: MessageLink
       <div className="flex items-center gap-2 text-xs text-cyan-700 dark:text-cyan-300">
         <i className="fas fa-link text-[10px]" />
         <span className="font-medium">
-          {state.isLegacy ? 'Старый сбор ответа' : 'Сохраняет ответ'}
+          {state.isLegacy ? "Old answer collection" : "Saves the answer"}
         </span>
-        <span className="text-cyan-600/80 dark:text-cyan-400/80">в {linkedVariable}</span>
+        <span className="text-cyan-600/80 dark:text-cyan-400/80">V {linkedVariable}</span>
       </div>
     </div>
   );

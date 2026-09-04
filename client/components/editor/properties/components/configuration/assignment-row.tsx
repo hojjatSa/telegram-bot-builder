@@ -81,7 +81,7 @@ interface ModeConfig {
 const MODE_CONFIGS: Record<AssignmentMode, ModeConfig> = {
   text: {
     icon: 'T',
-    label: 'Текст',
+    label: "Text",
     hint: 'String substitution or {variable}',
     borderClass: '',
   },
@@ -428,7 +428,7 @@ function renderValueInput(
           </div>
           <div className="flex items-center gap-1">
             <Input
-              placeholder="паттерн: (\d+)\s*рублей"
+              placeholder={"pattern: (\\d+)\\s*rubles"}
               value={(assignment as any).pattern || ''}
               onChange={(e) => onChange(assignment.id, 'pattern', e.target.value)}
               className={`flex-1 ${inputClass} font-mono`}

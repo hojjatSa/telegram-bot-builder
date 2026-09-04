@@ -96,7 +96,7 @@ export function ScheduleTriggerConfiguration({
           </span>
         </div>
         <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-          Запускает цепочку узлов по таймеру без участия пользователя. Поддерживает интервал, дни недели, дни месяца и cron-выражения.
+          Starts a chain of nodes on a timer without user intervention. Supports interval, days of the week, days of the month and cron expressions.
         </p>
       </div>
 
@@ -104,13 +104,13 @@ export function ScheduleTriggerConfiguration({
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wide">
-            Правила
+            Rules
           </Label>
           <button
             onClick={addRule}
             className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-800 dark:hover:text-teal-200 font-medium"
           >
-            + Добавить
+            +Add
           </button>
         </div>
         {rules.map((rule, index) => (
@@ -127,7 +127,7 @@ export function ScheduleTriggerConfiguration({
 
       {/* Часовой пояс */}
       <div className="space-y-2">
-        <Label className="text-xs text-slate-600 dark:text-slate-400">Часовой пояс</Label>
+        <Label className="text-xs text-slate-600 dark:text-slate-400">Time zone</Label>
         <select
           value={timezone}
           onChange={(e) => update('timezone', e.target.value)}
@@ -142,7 +142,7 @@ export function ScheduleTriggerConfiguration({
       {/* Запустить при старте */}
       <PropertyCheckbox
         id="runOnStart"
-        label="Запустить при старте бота"
+        label={"Run when bot starts"}
         checked={runOnStart}
         onChange={(checked) => update('runOnStart', checked)}
       />

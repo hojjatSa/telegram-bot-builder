@@ -34,12 +34,12 @@ export function BotFatherCard({ commands }: BotFatherCardProps) {
       <div className="flex items-center justify-between gap-2">
         <h4 className="font-medium text-blue-800 dark:text-blue-200 text-sm xs:text-base">
           <i className="fas fa-robot mr-2"></i>
-          Команды для @BotFather
+          Commands for @BotFather
         </h4>
         <button
           onClick={handleCopy}
           className="text-xs px-2 py-1 rounded border border-blue-300 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors"
-          title="Скопировать команды"
+          title={"Copy commands"}
         >
           <i className="fas fa-copy mr-1"></i>
           Copy

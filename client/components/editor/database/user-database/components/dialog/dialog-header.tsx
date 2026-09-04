@@ -30,7 +30,7 @@ export function MessageDialogHeader({
     <DialogHeader>
       <DialogTitle className="flex items-center gap-2">
         <MessageSquare className="w-5 h-5" />
-        Диалог с пользователем
+        Dialogue with the user
       </DialogTitle>
       <DialogDescription>
         {selectedUser && formatUserName(selectedUser)}

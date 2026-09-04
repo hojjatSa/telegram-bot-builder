@@ -85,8 +85,8 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Импортировать проект</DialogTitle>
-          <DialogDescription>Вставьте JSON или загрузите файл с данными проекта</DialogDescription>
+          <DialogTitle>Import project</DialogTitle>
+          <DialogDescription>Paste JSON or upload project data file</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
@@ -96,7 +96,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
             <div>
               <label className="text-sm font-medium mb-2 flex items-center gap-2">
                 <i className="fas fa-paste text-blue-500" />
-                Вставьте JSON проекта
+                Paste the project JSON
               </label>
               <Textarea
                 value={importState.jsonText}
@@ -105,7 +105,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
                   onPythonTextChange('');
                   onErrorChange('');
                 }}
-                placeholder='{"name": "Мой бот", "description": "", "data": {...}}'
+                placeholder={"{\"name\": \"My bot\", \"description\": \"\", \"data\": {...}}"}
                 className="font-mono text-xs h-40 resize-none"
                 data-testid="textarea-import-json"
               />
@@ -115,7 +115,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
             <div>
               <label className="text-sm font-medium mb-2 flex items-center gap-2">
                 <i className="fas fa-file text-green-500" />
-                Загрузить файл JSON
+                Upload JSON file
               </label>
               <input
                 ref={fileInputRef}
@@ -133,8 +133,8 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
               >
                 <i className="fas fa-cloud-upload-alt text-3xl text-muted-foreground" />
                 <div className="text-center">
-                  <p className="text-sm font-medium">Нажмите для выбора файла</p>
-                  <p className="text-xs text-muted-foreground">JSON / TXT файл</p>
+                  <p className="text-sm font-medium">Click to select file</p>
+                  <p className="text-xs text-muted-foreground">JSON/TXT file</p>
                 </div>
               </Button>
             </div>
@@ -143,7 +143,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
             <div>
               <label className="text-sm font-medium mb-2 flex items-center gap-2">
                 <i className="fas fa-python text-yellow-500" />
-                Или загрузите Python код бота
+                Or download the bot's Python code
               </label>
               <input
                 ref={pythonFileInputRef}
@@ -161,8 +161,8 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
               >
                 <i className="fas fa-code text-3xl text-muted-foreground" />
                 <div className="text-center">
-                  <p className="text-sm font-medium">Нажмите для выбора файла</p>
-                  <p className="text-xs text-muted-foreground">Python (.py) файл</p>
+                  <p className="text-sm font-medium">Click to select file</p>
+                  <p className="text-xs text-muted-foreground">Python (.py) file</p>
                 </div>
               </Button>
             </div>
@@ -190,7 +190,7 @@ export const ImportDialog: React.FC<ImportDialogProps> = ({
               data-testid="button-confirm-import"
             >
               <i className="fas fa-check mr-2" />
-              Импортировать
+              Import
             </Button>
           </div>
         </div>

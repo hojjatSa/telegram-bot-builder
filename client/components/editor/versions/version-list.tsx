@@ -27,13 +27,13 @@ export interface VersionListProps {
  */
 export function VersionList({ versions, projectId, isLoading, restoringId, onRestore }: VersionListProps) {
   if (isLoading) {
-    return <div className="p-6 text-sm text-muted-foreground">Загрузка истории версий…</div>;
+    return <div className="p-6 text-sm text-muted-foreground">Loading version history...</div>;
   }
 
   if (versions.length === 0) {
     return (
       <div className="p-6 text-sm text-muted-foreground">
-        История версий пуста. Снимки создаются автоматически при сохранении проекта.
+        The version history is empty. Snapshots are created automatically when you save a project.
       </div>
     );
   }

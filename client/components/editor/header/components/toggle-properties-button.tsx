@@ -31,11 +31,11 @@ export function TogglePropertiesButton({ propertiesVisible, onClick }: TogglePro
           ? 'bg-pink-600 text-white shadow-md shadow-pink-500/30 hover:shadow-lg hover:shadow-pink-500/40'
           : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
       )}
-      title={propertiesVisible ? 'Скрыть панель свойств' : 'Показать панель свойств'}
+      title={propertiesVisible ? "Hide Properties Panel" : "Show properties panel"}
       data-testid="button-mobile-toggle-properties"
     >
       <Sliders className="sm:w-4 sm:h-4 w-0 sm:flex-shrink-0" />
-      <span className="sm:hidden">{propertiesVisible ? 'Hide' : 'Show'} свойства</span>
+      <span className="sm:hidden">{propertiesVisible ? 'Hide' : 'Show'} properties</span>
     </Button>
   );
 }

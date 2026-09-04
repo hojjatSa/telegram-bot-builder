@@ -35,7 +35,7 @@ export function GetManagedBotTokenPreview({ node }: GetManagedBotTokenPreviewPro
         </span>
       </div>
       <div className="text-xs text-muted-foreground">
-        {isVariable ? 'Из переменной: ' : 'ID бота: '}
+        {isVariable ? "From variable:" : "Bot ID:"}
         <span className="font-mono text-indigo-600 dark:text-indigo-400">
           {isVariable ? `{${botIdLabel}}` : botIdLabel}
         </span>

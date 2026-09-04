@@ -93,7 +93,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
 
   return (
     <div className="space-y-4">
-      <p className="text-sm font-medium text-muted-foreground">Проверьте параметры рассылки</p>
+      <p className="text-sm font-medium text-muted-foreground">Check your mailing parameters</p>
 
       <BroadcastValidationAlerts validation={validation} />
 
@@ -111,7 +111,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
         {selectedBotLabels.length > 0 && (
           <div className="flex items-center gap-3 px-4 py-3">
             <Bot className="w-4 h-4 text-blue-500 shrink-0" />
-            <span className="text-muted-foreground">Боты</span>
+            <span className="text-muted-foreground">Bots</span>
             <span className="ml-auto font-medium text-right max-w-[70%] truncate">
               {selectedBotLabels.length} {pluralizeBots(selectedBotLabels.length)} · {selectedBotLabels.join(', ')}
             </span>
@@ -119,7 +119,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
         )}
         <div className="flex items-center gap-3 px-4 py-3">
           <Users className="w-4 h-4 text-violet-500 shrink-0" />
-          <span className="text-muted-foreground">Получателей</span>
+          <span className="text-muted-foreground">Recipients</span>
           <span className="ml-auto font-medium">
             {audienceType === 'manual'
               ? recipientCount.toLocaleString('ru-RU')
@@ -128,7 +128,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
         </div>
         <div className="flex items-center gap-3 px-4 py-3">
           <Clock className="w-4 h-4 text-amber-500 shrink-0" />
-          <span className="text-muted-foreground">Примерное время</span>
+          <span className="text-muted-foreground">Approximate time</span>
           <span className="ml-auto font-medium">
             {estimatedSeconds > 0 ? `~${estimatedSeconds} сек` : '—'}
           </span>
@@ -142,7 +142,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
           return (
             <div className="flex items-center gap-3 px-4 py-3">
               <Layers className="w-4 h-4 text-fuchsia-500 shrink-0" />
-              <span className="text-muted-foreground">Группы</span>
+              <span className="text-muted-foreground">Groups</span>
               <span className="ml-auto font-medium">{groupsCount}</span>
             </div>
           );
@@ -178,7 +178,7 @@ export function StepConfirm({ projectId, tokenId, formData, isLoading, onConfirm
           className="bg-gradient-to-r from-blue-500 to-violet-500 text-white hover:from-blue-600 hover:to-violet-600 gap-1.5 px-5"
         >
           <Rocket className="w-4 h-4" />
-          {isLoading ? 'Starting...' : 'Запустить рассылку'}
+          {isLoading ? 'Starting...' : "Start newsletter"}
         </Button>
       </div>
     </div>

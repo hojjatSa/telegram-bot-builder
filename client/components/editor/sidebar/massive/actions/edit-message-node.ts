@@ -13,7 +13,7 @@ export const editMessageNode: ComponentDefinition = {
   id: 'edit_message',
   type: 'edit_message' as any,
   name: 'Edit Message',
-  description: 'Редактирует текст или кнопки уже отправленного сообщения',
+  description: "Edits the text or buttons of an already sent message",
   icon: 'fas fa-pen',
   color: 'bg-blue-100 text-blue-600',
   defaultData: {

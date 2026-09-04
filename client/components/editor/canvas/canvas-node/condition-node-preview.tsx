@@ -95,7 +95,7 @@ export function ConditionNodePreview({
               style={{ overflow: 'visible' }}
             >
               {isElse ? (
-                <span className="font-medium">Иначе</span>
+                <span className="font-medium">Otherwise</span>
               ) : (
                 <span className="font-medium break-words pr-4">
                   {getBranchOperatorLabel(branch, variable) || branch.label}

@@ -43,7 +43,7 @@ export function UserbotClickButtonPreview({ node }: UserbotClickButtonPreviewPro
       {clickValue && (
         <div className="rounded-lg p-2 bg-violet-100/50 dark:bg-violet-900/20 border border-violet-200/50 dark:border-violet-800/30">
           <div className="flex items-center gap-1.5">
-            <span className="text-xs" title={clickDelivery === 'await' ? 'С ожиданием' : 'Без ожидания'}>{deliveryLabel}</span>
+            <span className="text-xs" title={clickDelivery === 'await' ? "Looking forward to" : "No waiting"}>{deliveryLabel}</span>
             <span className="text-xs">{modeLabel}</span>
             <span className="text-xs font-mono text-violet-700 dark:text-violet-300 truncate">
               {clickValue}
@@ -54,7 +54,7 @@ export function UserbotClickButtonPreview({ node }: UserbotClickButtonPreviewPro
 
       {!clickValue && !entity && (
         <div className="text-xs text-muted-foreground/50 italic px-2">
-          Настройте кнопку для нажатия
+          Customize the button to press
         </div>
       )}
     </div>

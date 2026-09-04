@@ -17,7 +17,7 @@ interface HttpAuthEditorProps {
 
 /** Типы аутентификации с метками */
 const AUTH_TYPES = [
-  { value: 'none', label: 'Без аутентификации' },
+  { value: 'none', label: "No authentication" },
   { value: 'bearer', label: 'Bearer Token' },
   { value: 'basic', label: 'Basic Auth' },
   { value: 'header', label: 'Header' },
@@ -52,11 +52,11 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
 
       {authType === 'bearer' && (
         <div className="space-y-1">
-          <Label className="text-xs text-muted-foreground">Токен</Label>
+          <Label className="text-xs text-muted-foreground">Token</Label>
           <Input
             value={(data.httpRequestAuthBearerToken as string) || ''}
             onChange={(e) => onUpdate({ httpRequestAuthBearerToken: e.target.value })}
-            placeholder="Bearer токен"
+            placeholder={"Bearer token"}
             className="h-7 text-xs font-mono"
           />
         </div>
@@ -65,7 +65,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
       {authType === 'basic' && (
         <div className="space-y-1.5">
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Логин</Label>
+            <Label className="text-xs text-muted-foreground">Login</Label>
             <Input
               value={(data.httpRequestAuthBasicUsername as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthBasicUsername: e.target.value })}
@@ -74,7 +74,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
             />
           </div>
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Пароль</Label>
+            <Label className="text-xs text-muted-foreground">Password</Label>
             <Input
               type="password"
               value={(data.httpRequestAuthBasicPassword as string) || ''}
@@ -89,7 +89,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
       {authType === 'header' && (
         <div className="space-y-1.5">
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Имя заголовка</Label>
+            <Label className="text-xs text-muted-foreground">Header name</Label>
             <Input
               value={(data.httpRequestAuthHeaderName as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthHeaderName: e.target.value })}
@@ -102,7 +102,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
             <Input
               value={(data.httpRequestAuthHeaderValue as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthHeaderValue: e.target.value })}
-              placeholder="значение заголовка"
+              placeholder={"header value"}
               className="h-7 text-xs font-mono"
             />
           </div>
@@ -112,7 +112,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
       {authType === 'query' && (
         <div className="space-y-1.5">
           <div className="space-y-1">
-            <Label className="text-xs text-muted-foreground">Имя параметра</Label>
+            <Label className="text-xs text-muted-foreground">Parameter name</Label>
             <Input
               value={(data.httpRequestAuthQueryName as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthQueryName: e.target.value })}
@@ -125,7 +125,7 @@ export function HttpAuthEditor({ data, onUpdate }: HttpAuthEditorProps) {
             <Input
               value={(data.httpRequestAuthQueryValue as string) || ''}
               onChange={(e) => onUpdate({ httpRequestAuthQueryValue: e.target.value })}
-              placeholder="значение параметра"
+              placeholder={"parameter value"}
               className="h-7 text-xs font-mono"
             />
           </div>

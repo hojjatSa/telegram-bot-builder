@@ -43,33 +43,33 @@ export function LocationDetailsSection({
         <div className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center">
           <i className="fas fa-info-circle text-blue-600 dark:text-blue-400 text-xs"></i>
         </div>
-        <Label className="text-sm font-semibold text-blue-900 dark:text-blue-100">Описание местоположения</Label>
+        <Label className="text-sm font-semibold text-blue-900 dark:text-blue-100">Location Description</Label>
       </div>
 
       <div className="space-y-4">
         <div>
           <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 block">
             <i className="fas fa-tag mr-1"></i>
-            Название места
+            Place name
           </Label>
           <Input
             value={selectedNode.data.title || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { title: e.target.value })}
             className="border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
-            placeholder="Красная площадь"
+            placeholder={"Red Square"}
           />
         </div>
 
         <div>
           <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 block">
             <i className="fas fa-map-signs mr-1"></i>
-            Адрес
+            Address
           </Label>
           <Input
             value={selectedNode.data.address || ''}
             onChange={(e) => onNodeUpdate(selectedNode.id, { address: e.target.value })}
             className="border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
-            placeholder="Красная площадь, дом 1"
+            placeholder={"Red Square, building 1"}
           />
         </div>
 
@@ -77,25 +77,25 @@ export function LocationDetailsSection({
           <div>
             <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 block">
               <i className="fas fa-city mr-1"></i>
-              Город
+              City
             </Label>
             <Input
               value={selectedNode.data.city || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { city: e.target.value })}
               className="border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
-              placeholder="Москва"
+              placeholder={"Moscow"}
             />
           </div>
           <div>
             <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-2 block">
               <i className="fas fa-flag mr-1"></i>
-              Страна
+              Country
             </Label>
             <Input
               value={selectedNode.data.country || ''}
               onChange={(e) => onNodeUpdate(selectedNode.id, { country: e.target.value })}
               className="border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200"
-              placeholder="Россия"
+              placeholder={"Russia"}
             />
           </div>
         </div>

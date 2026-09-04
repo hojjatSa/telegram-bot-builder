@@ -56,10 +56,10 @@ export function InputNavigationGrid({
           value={selectedNode.data.inputVariable || ''}
           onChange={(value) => onNodeUpdate(selectedNode.id, { inputVariable: value })}
           availableVariables={availableVariables}
-          placeholder="имя, email, телефон"
+          placeholder={"name, email, phone"}
         />
         <div className="text-xs text-cyan-600 dark:text-cyan-400 mt-1.5 leading-snug">
-          Ключ для сохранения ответа
+          Key to save answer
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export function InputNavigationGrid({
       <div className="flex flex-col p-3 sm:p-3.5 rounded-lg bg-gradient-to-br from-violet-50/60 to-purple-50/40 dark:from-violet-950/30 dark:to-purple-950/20 border border-violet-200/40 dark:border-violet-700/40 hover:shadow-sm transition-all duration-200">
         <Label className="text-xs sm:text-sm font-semibold text-violet-700 dark:text-violet-300 mb-2 flex items-center gap-1.5">
           <i className="fas fa-share-right text-xs sm:text-sm"></i>
-          Следующий узел
+          Next node
         </Label>
         <div className="space-y-1.5 flex-1">
           <Select
@@ -77,16 +77,16 @@ export function InputNavigationGrid({
             }}
           >
             <SelectTrigger className="text-xs sm:text-sm h-7 sm:h-8 bg-white/60 dark:bg-slate-950/60 border border-violet-300/40 dark:border-violet-700/40 hover:border-violet-400/60 dark:hover:border-violet-600/60 focus:border-violet-500 focus:ring-violet-400/30">
-              <SelectValue placeholder="⊘ Выберите">
+              <SelectValue placeholder={"⊘ Select"}>
                 {selectedNode.data.inputTargetNodeId === 'no-transition'
-                  ? 'Без переходов'
+                  ? "No transitions"
                   : selectedTarget
                     ? getNodeTypeLabel(selectedTarget.node.type)
                     : undefined}
               </SelectValue>
             </SelectTrigger>
             <SelectContent className="bg-gradient-to-br from-sky-50/95 to-blue-50/90 dark:from-slate-900/95 dark:to-slate-800/95 max-h-48 overflow-y-auto">
-              <SelectItem value="no-transition">Без переходов</SelectItem>
+              <SelectItem value="no-transition">No transitions</SelectItem>
               {availableTargets.map(({ node, sheetName }) => (
                 <SelectItem key={node.id} value={node.id}>
                   <span className="text-xs font-mono text-sky-700 dark:text-sky-300 truncate">
@@ -106,7 +106,7 @@ export function InputNavigationGrid({
           />
         </div>
         <div className="text-xs text-violet-600 dark:text-violet-400 mt-1.5 leading-snug">
-          Куда перейти после ответа
+          Where to go after answering
         </div>
       </div>
     </div>

@@ -19,9 +19,9 @@ export function AdminDocsViewerPage() {
   if (!option) {
     return (
       <div className="space-y-4">
-        <p className="text-muted-foreground">Неизвестный просмотрщик документации.</p>
+        <p className="text-muted-foreground">Unknown documentation viewer.</p>
         <Link href="/admin/docs">
-          <Button variant="outline">К выбору UI</Button>
+          <Button variant="outline">To the choice of UI</Button>
         </Link>
       </div>
     );

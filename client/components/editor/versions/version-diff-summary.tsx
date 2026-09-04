@@ -29,10 +29,10 @@ export function VersionDiffSummary({ projectId, versionId }: VersionDiffSummaryP
   const { data: version, isLoading, isError } = useProjectVersionSnapshot(projectId, versionId);
 
   if (isLoading) {
-    return <div className="px-4 py-2 text-xs text-muted-foreground">Загрузка снимка…</div>;
+    return <div className="px-4 py-2 text-xs text-muted-foreground">Loading photo...</div>;
   }
   if (isError || !version) {
-    return <div className="px-4 py-2 text-xs text-destructive">Не удалось загрузить снимок версии</div>;
+    return <div className="px-4 py-2 text-xs text-destructive">Failed to load version snapshot</div>;
   }
 
   // Текущее состояние проекта берём из кэша запроса проекта
@@ -41,11 +41,11 @@ export function VersionDiffSummary({ projectId, versionId }: VersionDiffSummaryP
 
   return (
     <div className="px-4 py-2 text-xs flex items-center gap-3">
-      <span className="text-emerald-600 dark:text-emerald-400">+{diff.added.length} нод</span>
-      <span className="text-red-600 dark:text-red-400">−{diff.removed.length} нод</span>
-      <span className="text-amber-600 dark:text-amber-400">~{diff.changed.length} изменено</span>
+      <span className="text-emerald-600 dark:text-emerald-400">+{diff.added.length} node</span>
+      <span className="text-red-600 dark:text-red-400">−{diff.removed.length} node</span>
+      <span className="text-amber-600 dark:text-amber-400">~{diff.changed.length} changed</span>
       {diff.added.length === 0 && diff.removed.length === 0 && diff.changed.length === 0 && (
-        <span className="text-muted-foreground">Изменений нет</span>
+        <span className="text-muted-foreground">No changes</span>
       )}
     </div>
   );

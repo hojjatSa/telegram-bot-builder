@@ -90,8 +90,8 @@ export function FileClipboardButton({
       const files = await readClipboardFiles();
       if (files.length === 0) {
         toast({
-          title: 'В буфере нет файла',
-          description: 'Скопируйте скриншот и нажмите Ctrl+V или Ctrl+М',
+          title: "There is no file in the buffer",
+          description: "Copy the screenshot and press Ctrl+V or Ctrl+M",
         });
         setAwaitingPaste(true);
         return;
@@ -100,7 +100,7 @@ export function FileClipboardButton({
     } catch (error) {
       setAwaitingPaste(true);
       toast({
-        title: 'Нажмите Ctrl+V или Ctrl+М',
+        title: "Press Ctrl+V or Ctrl+M",
         description: isClipboardDenied(error)
           ? 'Браузер не даёт читать буфер напрямую — вставьте сочетанием клавиш'
           : 'Вставьте скриншот или файл: Ctrl+V, Ctrl+М или Shift+Insert',
@@ -125,12 +125,12 @@ export function FileClipboardButton({
         className={compact ? 'h-10 w-10 shrink-0' : 'h-8'}
         disabled={disabled}
         onClick={() => void handleClick()}
-        title="Вставить из буфера: Ctrl+V, Ctrl+М или Shift+Insert"
+        title={"Paste from clipboard: Ctrl+V, Ctrl+M or Shift+Insert"}
         data-testid="file-storage-upload-clipboard"
       >
         <ClipboardPaste className={compact ? 'h-4 w-4' : 'h-3.5 w-3.5 sm:mr-1.5'} />
         {!compact && (
-          <span className="hidden sm:inline">{awaitingPaste ? 'Ctrl+V / М' : 'From clipboard'}</span>
+          <span className="hidden sm:inline">{awaitingPaste ? "Ctrl+V / M" : 'From clipboard'}</span>
         )}
       </Button>
     </>

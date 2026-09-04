@@ -36,7 +36,7 @@ export function useStopBroadcastCampaign({ projectId, refetch }: UseStopBroadcas
       );
     },
     onSuccess: () => {
-      toast({ title: 'Broadcast stopped', description: 'Отправка остановлена у всех ботов' });
+      toast({ title: 'Broadcast stopped', description: "Sending stopped for all bots" });
       refetch?.();
     },
     onError: (error: Error) => {

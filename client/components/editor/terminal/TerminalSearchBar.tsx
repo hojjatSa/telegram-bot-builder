@@ -60,7 +60,7 @@ export function TerminalSearchBar({
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Фильтрация и поиск в журналах"
+        placeholder={"Filtering and searching in logs"}
         className="h-6 text-xs flex-1 min-w-0 border-none bg-transparent shadow-none focus-visible:ring-0 px-1"
       />
       {searchQuery && (

@@ -83,7 +83,7 @@ function FileIdLine({
       <div className="flex items-center gap-1.5">
         <span className={labelCls} title={label}>🤖 {label}</span>
         <span className={textCls} title={fileId}>{fileId}</span>
-        <Button size="sm" variant="ghost" onClick={onCopy} className="h-5 w-5 p-0 shrink-0" title="Скопировать File ID">
+        <Button size="sm" variant="ghost" onClick={onCopy} className="h-5 w-5 p-0 shrink-0" title={"Copy File ID"}>
           {copied ? <Check className="w-3 h-3 text-emerald-500" /> : <Copy className="w-3 h-3 text-slate-400" />}
         </Button>
       </div>
@@ -131,14 +131,14 @@ export function TelegramFileIdOwner({
     if (!telegramFileId) {
       return (
         <div className={compact ? '' : 'pt-1'}>
-          <span className="text-xs text-slate-400 italic">🤖 File ID: появится после первой отправки ботом</span>
+          <span className="text-xs text-slate-400 italic">🤖 File ID: will appear after the first submission by the bot</span>
         </div>
       );
     }
     return (
       <div className={compact ? '' : 'pt-1'}>
         <FileIdLine
-          label="общий кэш проекта"
+          label={"shared project cache"}
           fileId={telegramFileId}
           hint="Владелец неизвестен — id не привязан к боту (может не работать у других токенов)"
           compact={compact}
@@ -173,9 +173,9 @@ export function TelegramFileIdOwner({
           onClick={() => setExpanded((v) => !v)}
         >
           {expanded ? (
-            <><ChevronUp className="w-3 h-3" /> свернуть</>
+            <><ChevronUp className="w-3 h-3" /> collapse</>
           ) : (
-            <><ChevronDown className="w-3 h-3" /> ещё {hiddenCount}</>
+            <><ChevronDown className="w-3 h-3" /> more {hiddenCount}</>
           )}
         </button>
       )}

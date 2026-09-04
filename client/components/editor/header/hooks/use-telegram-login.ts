@@ -186,7 +186,7 @@ export function useTelegramLogin() {
             toast({ title: 'Sign-in failed', description: data.error, variant: 'destructive' });
           }
         } catch {
-          toast({ title: 'Sign-in failed', description: 'Не удалось выполнить dev-login', variant: 'destructive' });
+          toast({ title: 'Sign-in failed', description: "dev-login failed", variant: 'destructive' });
         }
       };
 
@@ -198,8 +198,8 @@ export function useTelegramLogin() {
     const ready = await ensureTelegramLogin();
     if (!ready || typeof window.Telegram?.Login?.open !== 'function') {
       toast({
-        title: 'Telegram недоступен',
-        description: 'Не удалось загрузить виджет. Откройте сайт в Telegram или попробуйте позже.',
+        title: "Telegram is unavailable",
+        description: "Failed to load widget. Open the site in Telegram or try again later.",
         variant: 'destructive',
       });
       return;

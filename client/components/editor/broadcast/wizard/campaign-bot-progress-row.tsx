@@ -63,7 +63,7 @@ export function CampaignBotProgressRow({
             className="h-6 w-6 text-muted-foreground hover:text-destructive"
             onClick={() => onStop(broadcast.id)}
             disabled={isStopping}
-            title="Остановить у этого бота"
+            title={"Stop this bot"}
           >
             <Square className="h-3 w-3" />
           </Button>
@@ -83,7 +83,7 @@ export function CampaignBotProgressRow({
         </span>
         {!isRunning && (
           <span>
-            {status === 'stopped' ? 'остановлена' : status === 'done' ? 'завершена' : status === 'failed' ? 'ошибка' : status}
+            {status === 'stopped' ? "stopped" : status === 'done' ? "completed" : status === 'failed' ? "error" : status}
           </span>
         )}
       </div>

@@ -57,7 +57,7 @@ export function DatabaseStatsSection(props: DatabaseStatsSectionProps): React.JS
               ? 'bg-background text-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
           }`}
-          title="Классические карточки"
+          title={"Classic cards"}
         >
           <LayoutGrid className="w-3.5 h-3.5" />
         </button>
@@ -68,7 +68,7 @@ export function DatabaseStatsSection(props: DatabaseStatsSectionProps): React.JS
               ? 'bg-background text-foreground shadow-sm'
               : 'text-muted-foreground hover:text-foreground'
           }`}
-          title="Дашборд с аналитикой"
+          title={"Dashboard with analytics"}
         >
           <BarChart2 className="w-3.5 h-3.5" />
         </button>

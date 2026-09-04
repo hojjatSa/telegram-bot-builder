@@ -51,7 +51,7 @@ export function BotEnvServerVarsPopover({ onSelect }: BotEnvServerVarsPopoverPro
           variant="ghost"
           size="icon"
           className="h-7 w-7 shrink-0"
-          title="Подставить из сервера"
+          title={"Substitute from server"}
           type="button"
         >
           <Server className="h-3.5 w-3.5 text-muted-foreground" />
@@ -60,7 +60,7 @@ export function BotEnvServerVarsPopover({ onSelect }: BotEnvServerVarsPopoverPro
       <PopoverContent align="start" className="w-72 p-0">
         <div className="px-3 py-2 border-b">
           <span className="text-xs font-medium text-muted-foreground">
-            🖥️ Серверные переменные
+            🖥️ Server variables
           </span>
         </div>
         <div className="max-h-56 overflow-y-auto">
@@ -71,7 +71,7 @@ export function BotEnvServerVarsPopover({ onSelect }: BotEnvServerVarsPopoverPro
           )}
           {data?.items?.length === 0 && (
             <div className="px-3 py-3 text-xs text-muted-foreground text-center">
-              Нет доступных переменных
+              No variables available
             </div>
           )}
           {data?.items?.map((item) => (

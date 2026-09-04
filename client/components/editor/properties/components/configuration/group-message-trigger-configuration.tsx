@@ -54,17 +54,17 @@ export function GroupMessageTriggerConfiguration({
             onValueChange={(value) => update({ groupChatIdSource: value as GroupChatIdSource })}
           >
             <SelectTrigger className="bg-card/70 border border-violet-200/50 dark:border-violet-800/50">
-              <SelectValue placeholder="Источник ID группы" />
+              <SelectValue placeholder={"Group ID Source"} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="manual">Вручную</SelectItem>
-              <SelectItem value="variable">Из переменной</SelectItem>
+              <SelectItem value="manual">Manually</SelectItem>
+              <SelectItem value="variable">From variable</SelectItem>
             </SelectContent>
           </Select>
 
           {chatIdSource === 'manual' && (
             <div className="space-y-1">
-              <Label className="text-xs font-medium text-violet-700 dark:text-violet-300">ID группы</Label>
+              <Label className="text-xs font-medium text-violet-700 dark:text-violet-300">Group ID</Label>
               <input
                 value={data.groupChatId ?? ''}
                 onChange={(e) => update({ groupChatId: e.target.value })}
@@ -76,7 +76,7 @@ export function GroupMessageTriggerConfiguration({
 
           {chatIdSource === 'variable' && (
             <div className="space-y-1">
-              <Label className="text-xs font-medium text-violet-700 dark:text-violet-300">Имя переменной</Label>
+              <Label className="text-xs font-medium text-violet-700 dark:text-violet-300">Variable name</Label>
               <VariableNameInput
                 value={data.groupChatVariableName ?? ''}
                 availableVariables={textVariables}
@@ -94,11 +94,11 @@ export function GroupMessageTriggerConfiguration({
           <div className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/50 flex items-center justify-center">
             <i className="fas fa-link text-purple-600 dark:text-purple-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Маппинг топика</Label>
+          <Label className="text-sm font-semibold text-purple-900 dark:text-purple-100">Topic mapping</Label>
         </div>
 
         <div className="space-y-1">
-          <Label className="text-xs font-medium text-purple-700 dark:text-purple-300">Переменная с thread_id пользователя</Label>
+          <Label className="text-xs font-medium text-purple-700 dark:text-purple-300">Variable with user thread_id</Label>
           <VariableNameInput
             value={data.threadIdVariable ?? ''}
             availableVariables={textVariables}
@@ -106,7 +106,7 @@ export function GroupMessageTriggerConfiguration({
             placeholder="support_thread_id"
           />
           <div className="text-xs text-purple-600/70 dark:text-purple-400/70 mt-1">
-            По этой переменной ищем пользователя в базе
+            Using this variable we search for a user in the database
           </div>
         </div>
       </div>
@@ -117,11 +117,11 @@ export function GroupMessageTriggerConfiguration({
           <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
             <i className="fas fa-user-check text-slate-600 dark:text-slate-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Результат</Label>
+          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Result</Label>
         </div>
 
         <div className="space-y-1">
-          <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Переменная для найденного user_id</Label>
+          <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Variable for the found user_id</Label>
           <VariableNameInput
             value={data.resolvedUserIdVariable ?? ''}
             availableVariables={textVariables}
@@ -130,7 +130,7 @@ export function GroupMessageTriggerConfiguration({
      
           />
           <div className="text-xs text-slate-600/70 dark:text-slate-400/70 mt-1">
-            Найденный user_id будет доступен в следующих узлах
+            The found user_id will be available in the following nodes
           </div>
         </div>
       </div>

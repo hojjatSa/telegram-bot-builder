@@ -74,11 +74,11 @@ function DocumentFile({ url, onError }: { url: string; onError: () => void }): R
           {fileName}
         </div>
         <div className="text-xs text-blue-700 dark:text-blue-300">
-          {extension} документ
+          {extension} document
         </div>
       </div>
       <div className="text-blue-600 dark:text-blue-400 text-xs">
-        Открыть →
+        Open →
       </div>
     </a>
   );
@@ -143,7 +143,7 @@ export function ResponseMedia({
               <img
                 key={idx}
                 src={url}
-                alt="Ответ фото"
+                alt={"Answer photo"}
                 className="w-full h-auto rounded-lg"
                 onError={() => setMediaError(true)}
               />
@@ -215,7 +215,7 @@ export function ResponseMedia({
     return (
       <div className="inline-flex items-center gap-2 px-3 py-2 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg border border-indigo-200 dark:border-indigo-800">
         <span className="text-sm text-indigo-700 dark:text-indigo-300 font-medium">
-          Фото (загрузка...)
+          Photo (loading...)
         </span>
       </div>
     );

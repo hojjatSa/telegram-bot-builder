@@ -30,7 +30,7 @@ export function AdminOpenapiPage() {
     return (
       <div className="max-w-2xl space-y-4">
         <h1 className="text-2xl font-bold">OpenAPI JSON</h1>
-        <p className="text-destructive">Не удалось загрузить спецификацию.</p>
+        <p className="text-destructive">Failed to load specification.</p>
       </div>
     );
   }
@@ -43,7 +43,7 @@ export function AdminOpenapiPage() {
       </div>
       <Card>
         <CardHeader>
-          <CardTitle className="text-lg">Спецификация</CardTitle>
+          <CardTitle className="text-lg">Specification</CardTitle>
         </CardHeader>
         <CardContent>
           <pre className="text-xs overflow-auto rounded-lg bg-muted p-4 max-h-[70vh]">

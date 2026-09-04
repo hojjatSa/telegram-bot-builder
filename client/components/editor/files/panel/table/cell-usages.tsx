@@ -45,7 +45,7 @@ export function CellUsages({ file, allSheets, onGoToNode, className }: CellUsage
     <td className={cn('p-2 text-center', className)}>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="ghost" size="icon" className="relative h-6 w-6" title="Где используется">
+          <Button variant="ghost" size="icon" className="relative h-6 w-6" title={"Where is it used?"}>
             <ArrowUpRight className="h-3 w-3" />
             {usages.length > 0 && (
               <span className="absolute -top-0.5 -right-0.5 h-3 min-w-3 rounded-full bg-primary px-0.5 text-[8px] leading-3 text-primary-foreground">
@@ -56,7 +56,7 @@ export function CellUsages({ file, allSheets, onGoToNode, className }: CellUsage
         </PopoverTrigger>
         <PopoverContent className="w-56 p-2 text-xs" align="end">
           {usages.length === 0 ? (
-            <p className="text-muted-foreground text-center py-1">Не используется в нодах</p>
+            <p className="text-muted-foreground text-center py-1">Not used in nodes</p>
           ) : (
             <div className="space-y-1 max-h-40 overflow-auto">
               {usages.map((u) => (

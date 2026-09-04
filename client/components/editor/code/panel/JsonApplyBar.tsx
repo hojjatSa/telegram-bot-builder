@@ -43,7 +43,7 @@ export function JsonApplyBar({ isDirty, error, onApply, onReset }: JsonApplyBarP
             <i className="fas fa-pencil-alt text-amber-500 text-xs" />
           )}
           <span className={error ? 'text-red-700 dark:text-red-300' : 'text-amber-700 dark:text-amber-300'}>
-            {error ? 'Invalid JSON' : 'Есть несохранённые изменения'}
+            {error ? 'Invalid JSON' : "There are unsaved changes"}
           </span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -54,7 +54,7 @@ export function JsonApplyBar({ isDirty, error, onApply, onReset }: JsonApplyBarP
             className="h-7 px-2 text-xs"
             data-testid="button-json-reset"
           >
-            Сбросить
+            Reset
           </Button>
           <Button
             size="sm"
@@ -63,7 +63,7 @@ export function JsonApplyBar({ isDirty, error, onApply, onReset }: JsonApplyBarP
             className="h-7 px-2 text-xs bg-green-600 hover:bg-green-700 text-white disabled:opacity-50"
             data-testid="button-json-apply"
           >
-            Применить
+            Apply
           </Button>
         </div>
       </div>

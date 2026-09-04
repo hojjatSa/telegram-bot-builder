@@ -29,7 +29,7 @@ export function MobilePropertiesButton({ onClick, className }: MobilePropertiesB
         'transition-all duration-200 hover:shadow-md hover:shadow-purple-500/25',
         className
       )}
-      title="Открыть панель свойств"
+      title={"Open properties panel"}
       data-testid="button-mobile-properties"
     >
       <Sliders className="w-4 h-4 sm:w-4 sm:h-4 text-purple-600 dark:text-purple-400 group-hover:text-purple-700 dark:group-hover:text-purple-300 transition-colors duration-200" />

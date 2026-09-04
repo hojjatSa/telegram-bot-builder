@@ -61,8 +61,8 @@ export default function ScenariyPage() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-xl font-bold text-destructive mb-2">Ошибка загрузки сценариев</h2>
-          <p className="text-muted-foreground mb-4">Произошла ошибка при загрузке. Пожалуйста, обновите страницу.</p>
+          <h2 className="text-xl font-bold text-destructive mb-2">Error loading scripts</h2>
+          <p className="text-muted-foreground mb-4">An error occurred while loading. Please refresh the page.</p>
           <Button onClick={() => window.location.reload()}>Refresh page</Button>
         </div>
       </div>
@@ -76,10 +76,10 @@ export default function ScenariyPage() {
           <div className="flex items-center space-x-4">
             <Link to="/">
               <Button variant="ghost" size="sm">
-                <ArrowLeft className="h-4 w-4 mr-2" />Назад к редактору
+                <ArrowLeft className="h-4 w-4 mr-2" />Back to editor
               </Button>
             </Link>
-            <h1 className="text-2xl font-bold">Сценарии ботов</h1>
+            <h1 className="text-2xl font-bold">Bot scripts</h1>
           </div>
         </div>
       </div>

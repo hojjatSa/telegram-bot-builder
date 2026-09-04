@@ -22,14 +22,14 @@ interface UserJsonDataProps {
 export function UserJsonData({ userData }: UserJsonDataProps): React.JSX.Element {
   return (
     <div>
-      <Label className="text-sm font-medium">Все данные пользователя (JSON)</Label>
+      <Label className="text-sm font-medium">All user data (JSON)</Label>
       <div className="mt-2">
         <Textarea
           value={JSON.stringify(userData ?? {}, null, 2)}
           readOnly
           rows={6}
           className="text-xs font-mono bg-muted"
-          placeholder="Нет данных для отображения"
+          placeholder={"No data to display"}
         />
       </div>
     </div>

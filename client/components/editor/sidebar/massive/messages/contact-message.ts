@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const contactMessage: ComponentDefinition = {
   id: 'contact-message',
   name: 'Contact',
-  description: 'Поделиться контактом',
+  description: "Share contact",
   icon: 'fas fa-address-book',
   color: 'bg-blue-100 text-blue-600',
   type: 'contact',

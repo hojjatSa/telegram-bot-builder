@@ -51,7 +51,7 @@ export function ReplyButton({ button, allNodes }: ReplyButtonProps) {
           </div>
           {button.action === 'goto' && (
             <div className="mt-1.5 text-xs text-emerald-600 dark:text-emerald-400 truncate">
-              К узлу: {targetNodeDisplay}{targetNodeDisplay.length > 30 ? '...' : ''}
+              To node: {targetNodeDisplay}{targetNodeDisplay.length > 30 ? '...' : ''}
             </div>
           )}
           {button.action === 'url' && (
@@ -61,12 +61,12 @@ export function ReplyButton({ button, allNodes }: ReplyButtonProps) {
           )}
           {button.action === 'selection' && (
             <div className="mt-1.5 text-xs text-purple-600 dark:text-purple-400">
-              Выбор
+              Choice
             </div>
           )}
           {button.action === 'complete' && (
             <div className="mt-1.5 text-xs text-purple-600 dark:text-purple-400">
-              Завершение
+              Completion
             </div>
           )}
           {button.requestContact && (
@@ -76,12 +76,12 @@ export function ReplyButton({ button, allNodes }: ReplyButtonProps) {
             <div className="mt-1.5 text-xs text-blue-600 dark:text-blue-400">📍 Location</div>
           )}
           {button.action === 'request_managed_bot' && (
-            <div className="mt-1.5 text-xs text-indigo-600 dark:text-indigo-400">🤖 Управляемый бот</div>
+            <div className="mt-1.5 text-xs text-indigo-600 dark:text-indigo-400">🤖 Managed bot</div>
           )}
           {button.hideAfterClick && (
             <div className="mt-1 flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">
               <i className="fas fa-eye-slash text-[10px]"></i>
-              <span>скрыть</span>
+              <span>hide</span>
             </div>
           )}
         </div>
@@ -93,19 +93,19 @@ export function ReplyButton({ button, allNodes }: ReplyButtonProps) {
             <i className="fas fa-arrow-right text-blue-600 dark:text-blue-400 text-xs opacity-70" title={`К узлу: ${targetNodeDisplay}`}></i>
           )}
           {button.action === 'selection' && (
-            <i className="fas fa-mouse-pointer text-purple-600 dark:text-purple-400 text-xs opacity-70" title="Выбор"></i>
+            <i className="fas fa-mouse-pointer text-purple-600 dark:text-purple-400 text-xs opacity-70" title={"Choice"}></i>
           )}
           {button.action === 'complete' && (
-            <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title="Завершение"></i>
+            <i className="fas fa-flag-checkered text-purple-600 dark:text-purple-400 text-xs opacity-70" title={"Completion"}></i>
           )}
           {button.requestContact && (
-            <span className="text-xs opacity-70" title="Запрос контакта">📞</span>
+            <span className="text-xs opacity-70" title={"Contact request"}>📞</span>
           )}
           {button.requestLocation && (
-            <span className="text-xs opacity-70" title="Запрос геолокации">📍</span>
+            <span className="text-xs opacity-70" title={"Geolocation request"}>📍</span>
           )}
           {button.action === 'request_managed_bot' && (
-            <span className="text-xs opacity-70" title="Запрос управляемого бота">🤖</span>
+            <span className="text-xs opacity-70" title={"Managed Bot Request"}>🤖</span>
           )}
         </div>
       </div>

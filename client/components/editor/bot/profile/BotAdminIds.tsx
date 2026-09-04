@@ -69,8 +69,8 @@ export function BotAdminIds({ projectId, onPendingChange }: BotAdminIdsProps) {
           <ShieldCheck className="h-3.5 w-3.5" aria-hidden />
         </div>
         <div className="min-w-0 flex-1 pt-0.5">
-          <p className="text-sm font-medium text-foreground">Администраторы</p>
-          <p className="mt-0.5 text-xs text-muted-foreground">Telegram ID с правами админа</p>
+          <p className="text-sm font-medium text-foreground">Administrators</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">Telegram ID with admin rights</p>
         </div>
         <div className="flex shrink-0 items-center gap-0.5">
           <Button
@@ -78,7 +78,7 @@ export function BotAdminIds({ projectId, onPendingChange }: BotAdminIdsProps) {
             variant="ghost"
             className="h-7 w-7 text-muted-foreground"
             onClick={add}
-            aria-label="Добавить администратора"
+            aria-label={"Add administrator"}
           >
             <Plus className="h-3.5 w-3.5" aria-hidden />
           </Button>
@@ -94,7 +94,7 @@ export function BotAdminIds({ projectId, onPendingChange }: BotAdminIdsProps) {
               }
             }}
             disabled={isSaving}
-            aria-label="Сохранить список администраторов"
+            aria-label={"Save list of administrators"}
           >
             {isSaving
               ? <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />

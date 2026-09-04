@@ -22,29 +22,29 @@ interface ScheduleRuleEditorProps {
 
 /** Дни недели */
 const WEEKDAYS = [
-  { key: 'mon', label: 'Пн' },
-  { key: 'tue', label: 'Вт' },
-  { key: 'wed', label: 'Ср' },
-  { key: 'thu', label: 'Чт' },
-  { key: 'fri', label: 'Пт' },
-  { key: 'sat', label: 'Сб' },
-  { key: 'sun', label: 'Вс' },
+  { key: 'mon', label: "Mon" },
+  { key: 'tue', label: "W" },
+  { key: 'wed', label: "Wed" },
+  { key: 'thu', label: "Thu" },
+  { key: 'fri', label: "Fri" },
+  { key: 'sat', label: "Sat" },
+  { key: 'sun', label: "Sun" },
 ];
 
 /** Режимы расписания */
 const MODES = [
-  { value: 'interval', label: 'Интервал' },
-  { value: 'weekday', label: 'День недели' },
-  { value: 'monthday', label: 'День месяца' },
+  { value: 'interval', label: "Interval" },
+  { value: 'weekday', label: "Day of the week" },
+  { value: 'monthday', label: "Day of the month" },
   { value: 'cron', label: 'Cron' },
 ];
 
 /** Единицы измерения интервала */
 const INTERVAL_UNITS = [
-  { value: 'seconds', label: 'секунд', multiplier: 1 / 60 },
-  { value: 'minutes', label: 'минут', multiplier: 1 },
-  { value: 'hours', label: 'часов', multiplier: 60 },
-  { value: 'days', label: 'дней', multiplier: 1440 },
+  { value: 'seconds', label: "seconds", multiplier: 1 / 60 },
+  { value: 'minutes', label: "minutes", multiplier: 1 },
+  { value: 'hours', label: "hours", multiplier: 60 },
+  { value: 'days', label: "days", multiplier: 1440 },
 ];
 
 /**
@@ -66,13 +66,13 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
     <div className="rounded-lg border border-slate-200 dark:border-slate-700 p-3 space-y-2 bg-white/50 dark:bg-slate-800/50">
       <div className="flex items-center justify-between">
         <span className="text-[10px] text-slate-400 uppercase tracking-wide">
-          Правило {index + 1}
+          Rule {index + 1}
         </span>
         {canRemove && (
           <button
             onClick={onRemove}
             className="text-red-400 hover:text-red-600 text-xs"
-            title="Удалить правило"
+            title={"Delete rule"}
           >
             <i className="fas fa-trash-alt" />
           </button>
@@ -93,7 +93,7 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
       {/* Интервал */}
       {mode === 'interval' && (
         <div className="flex items-center gap-2">
-          <Label className="text-xs text-slate-500 whitespace-nowrap">Каждые</Label>
+          <Label className="text-xs text-slate-500 whitespace-nowrap">Every</Label>
           <Input
             type="number"
             min={1}
@@ -142,7 +142,7 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <Label className="text-xs text-slate-500">Время:</Label>
+            <Label className="text-xs text-slate-500">Time:</Label>
             <Input
               type="number" min={0} max={23}
               value={rule.hour ?? 0}
@@ -164,7 +164,7 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
       {mode === 'monthday' && (
         <div className="space-y-2">
           <div className="space-y-1">
-            <Label className="text-xs text-slate-500">Дни месяца (через запятую)</Label>
+            <Label className="text-xs text-slate-500">Days of the month (separated by commas)</Label>
             <Input
               value={(rule.monthDays || []).join(', ')}
               onChange={(e) => {
@@ -176,7 +176,7 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
             />
           </div>
           <div className="flex items-center gap-2">
-            <Label className="text-xs text-slate-500">Время:</Label>
+            <Label className="text-xs text-slate-500">Time:</Label>
             <Input
               type="number" min={0} max={23}
               value={rule.hour ?? 0}
@@ -197,14 +197,14 @@ export function ScheduleRuleEditor({ rule, index, canRemove, onChange, onRemove 
       {/* Cron */}
       {mode === 'cron' && (
         <div className="space-y-1">
-          <Label className="text-xs text-slate-500">Cron-выражение</Label>
+          <Label className="text-xs text-slate-500">Cron expression</Label>
           <Input
             value={rule.cronExpression || ''}
             onChange={(e) => onChange({ ...rule, cronExpression: e.target.value })}
             placeholder="*/5 * * * *"
             className="text-xs font-mono"
           />
-          <p className="text-[10px] text-slate-400">мин час день месяц день_недели</p>
+          <p className="text-[10px] text-slate-400">min hour day month day_week</p>
         </div>
       )}
     </div>

@@ -39,7 +39,7 @@ export function BroadcastDeliveryEmpty({
           showLabels
           size="md"
         />
-        <p className="text-xs text-muted-foreground">Нет построчного списка получателей</p>
+        <p className="text-xs text-muted-foreground">No line-by-line list of recipients</p>
       </div>
     );
   }
@@ -47,7 +47,7 @@ export function BroadcastDeliveryEmpty({
   return (
     <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
       <CheckCircle2 className="h-3.5 w-3.5 text-green-500" />
-      Ошибок нет
+      No errors
     </p>
   );
 }

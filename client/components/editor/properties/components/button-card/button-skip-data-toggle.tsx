@@ -45,7 +45,7 @@ export function ButtonSkipDataToggle({
           </div>
           <div className="min-w-0 flex-1">
             <Label className="text-xs sm:text-sm font-semibold text-cyan-900 dark:text-cyan-100 cursor-pointer block">
-              Не сохранять ответы
+              Don't save answers
             </Label>
           </div>
         </div>

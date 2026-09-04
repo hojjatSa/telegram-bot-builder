@@ -97,7 +97,7 @@ export function DialogList({
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Поиск диалогов..."
+            placeholder={"Searching for dialogues..."}
             className="pl-8 h-8 text-sm bg-muted/50"
           />
         </div>
@@ -139,7 +139,7 @@ export function DialogList({
         ) : allUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-24 gap-2 text-muted-foreground">
             <MessageSquare className="h-6 w-6 opacity-40" />
-            <span className="text-sm">Нет диалогов</span>
+            <span className="text-sm">No dialogue</span>
           </div>
         ) : (
           <>

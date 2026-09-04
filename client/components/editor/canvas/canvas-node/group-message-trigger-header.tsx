@@ -25,11 +25,11 @@ export function GroupMessageTriggerHeader({ node }: GroupMessageTriggerHeaderPro
           <i className="fas fa-comments text-violet-400 text-sm" />
         </div>
         <div className="flex flex-col leading-tight">
-          <span className="text-sm font-bold text-violet-300">Сообщение в теме</span>
-          <span className="text-[10px] text-violet-400/60">триггер входящего</span>
+          <span className="text-sm font-bold text-violet-300">Message in topic</span>
+          <span className="text-[10px] text-violet-400/60">incoming trigger</span>
         </div>
         {groupChatIdSource === 'variable' && (
-          <i className="fas fa-code text-violet-400/50 text-[10px] ml-auto" title="из переменной" />
+          <i className="fas fa-code text-violet-400/50 text-[10px] ml-auto" title={"from variable"} />
         )}
       </div>
 
@@ -37,7 +37,7 @@ export function GroupMessageTriggerHeader({ node }: GroupMessageTriggerHeaderPro
       {groupLabel && (
         <div className="flex items-center gap-1.5 bg-violet-900/20 border border-violet-700/30 rounded-md px-2 py-1">
           <i className="fas fa-hashtag text-violet-500/70 text-[10px]" />
-          <span className="text-[10px] text-slate-400">группа:</span>
+          <span className="text-[10px] text-slate-400">group:</span>
           <span className="font-mono text-[10px] text-violet-300/90 bg-violet-900/40 border border-violet-700/40 rounded px-1.5 py-0.5">
             {groupLabel}
           </span>
@@ -50,14 +50,14 @@ export function GroupMessageTriggerHeader({ node }: GroupMessageTriggerHeaderPro
           {threadIdVariable && (
             <div className="flex items-center gap-1.5">
               <i className="fas fa-link text-purple-500/60 text-[10px]" />
-              <span className="text-[10px] text-slate-400">тема топика:</span>
+              <span className="text-[10px] text-slate-400">topic topic:</span>
               <span className="font-mono text-[10px] text-purple-300/80">{threadIdVariable}</span>
             </div>
           )}
           {resolvedUserIdVariable && (
             <div className="flex items-center gap-1.5">
               <i className="fas fa-user-check text-emerald-500/60 text-[10px]" />
-              <span className="text-[10px] text-slate-400">сохранить user_id:</span>
+              <span className="text-[10px] text-slate-400">save user_id:</span>
               <span className="font-mono text-[10px] text-emerald-300/80">{resolvedUserIdVariable}</span>
             </div>
           )}

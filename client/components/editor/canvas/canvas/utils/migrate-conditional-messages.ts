@@ -27,13 +27,13 @@ function mapConditionToBranch(cond: any): ConditionBranch {
     case 'user_data_exists':
       return { id: cond.id, label: varLabel || 'Заполнено', operator: 'filled', value: '', target };
     case 'user_data_not_exists':
-      return { id: cond.id, label: 'Не заполнено', operator: 'empty', value: '', target };
+      return { id: cond.id, label: "Not filled in", operator: 'empty', value: '', target };
     case 'user_data_equals':
       return { id: cond.id, label: `= ${cond.expectedValue || ''}`, operator: 'equals', value: cond.expectedValue || '', target };
     case 'first_time':
-      return { id: cond.id, label: 'Первый раз', operator: 'filled', value: '', target };
+      return { id: cond.id, label: "First time", operator: 'filled', value: '', target };
     case 'returning_user':
-      return { id: cond.id, label: 'Возвращается', operator: 'filled', value: '', target };
+      return { id: cond.id, label: "Returns", operator: 'filled', value: '', target };
     default:
       return { id: cond.id, label: varLabel || cond.condition, operator: 'filled', value: '', target };
   }
@@ -100,7 +100,7 @@ export function migrateConditionalMessagesToConditionNodes(nodes: Node[]): Node[
      * Ветка else указывает на исходный узел — он отправляется,
      * если ни одно из условий не выполнено
      */
-    const elseBranch: ConditionBranch = { id: 'else', label: 'Иначе', operator: 'else', value: '', target: node.id };
+    const elseBranch: ConditionBranch = { id: 'else', label: "Otherwise", operator: 'else', value: '', target: node.id };
     branches.push(elseBranch);
 
     /** Переменная из первого условия — используется как основная переменная узла condition.

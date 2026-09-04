@@ -21,17 +21,17 @@ export interface StatusBadge {
 export function getCampaignStatusBadge(status: string): StatusBadge {
   switch (status) {
     case 'done':
-      return { className: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300', label: 'Завершена' };
+      return { className: 'bg-green-100 text-green-700 dark:bg-green-900/50 dark:text-green-300', label: "Completed" };
     case 'running':
-      return { className: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300', label: 'Отправка...' };
+      return { className: 'bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300', label: "Sending..." };
     case 'stopped':
       return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Stopped' };
     case 'partial':
-      return { className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300', label: 'Частично' };
+      return { className: 'bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300', label: "Partially" };
     case 'failed':
       return { className: 'bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300', label: 'Error' };
     case 'pending':
-      return { className: 'bg-muted text-muted-foreground', label: 'В очереди' };
+      return { className: 'bg-muted text-muted-foreground', label: "In line" };
     default:
       return { className: 'bg-muted text-muted-foreground', label: status };
   }

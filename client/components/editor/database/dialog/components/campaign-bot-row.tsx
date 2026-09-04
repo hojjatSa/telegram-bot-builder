@@ -70,7 +70,7 @@ export function CampaignBotRow({
           type="button"
           className="flex min-w-0 flex-1 items-center gap-1.5 text-left"
           onClick={onToggle}
-          title={isOpen ? 'Скрыть проблемы' : 'Показать проблемы доставки'}
+          title={isOpen ? "Hide problems" : "Show delivery problems"}
         >
           {canExpand
             ? <ExpandIcon className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
@@ -95,7 +95,7 @@ export function CampaignBotRow({
               onDeleteBroadcast();
             }}
             disabled={isDeleting}
-            title="Удалить рассылку у этого бота"
+            title={"Delete this bot's newsletter"}
           >
             {isDeleting
               ? <Loader2 className="h-2.5 w-2.5 animate-spin" />

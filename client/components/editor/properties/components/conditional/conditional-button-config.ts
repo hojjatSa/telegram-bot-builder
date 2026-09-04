@@ -10,8 +10,8 @@ export interface ConditionalActionOption {
 }
 
 export const CONDITIONAL_BUTTON_ACTIONS: ConditionalActionOption[] = [
-  { value: 'goto', label: 'Перейти к узлу' },
-  { value: 'url', label: 'Открыть ссылку' },
-  { value: 'command', label: 'Выполнить команду' },
-  { value: 'selection', label: 'Выбор опции' }
+  { value: 'goto', label: "Go to node" },
+  { value: 'url', label: "Open link" },
+  { value: 'command', label: "Run command" },
+  { value: 'selection', label: "Selecting an option" }
 ];

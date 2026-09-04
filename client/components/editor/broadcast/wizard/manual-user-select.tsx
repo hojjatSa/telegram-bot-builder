@@ -107,7 +107,7 @@ export function ManualUserSelect({ projectId, tokenId, selectedUserIds, onChange
   };
 
   if (isLoading) {
-    return <div className="text-sm text-muted-foreground py-2">Загрузка пользователей...</div>;
+    return <div className="text-sm text-muted-foreground py-2">Loading users...</div>;
   }
 
   return (
@@ -118,7 +118,7 @@ export function ManualUserSelect({ projectId, tokenId, selectedUserIds, onChange
         <Input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Поиск по имени или username"
+          placeholder={"Search by name or username"}
           className="pl-8"
         />
       </div>
@@ -127,7 +127,7 @@ export function ManualUserSelect({ projectId, tokenId, selectedUserIds, onChange
       <div className="flex items-center gap-2 py-1.5 border-b pb-2">
         <Checkbox id="select-all" checked={allFilteredSelected} onCheckedChange={handleToggleAll} />
         <Label htmlFor="select-all" className="cursor-pointer text-sm font-semibold">
-          Все ({filteredUsers.length})
+          All ({filteredUsers.length})
         </Label>
       </div>
 
@@ -162,7 +162,7 @@ export function ManualUserSelect({ projectId, tokenId, selectedUserIds, onChange
           );
         })}
         {filteredUsers.length === 0 && (
-          <div className="text-sm text-muted-foreground text-center py-4">Пользователи не найдены</div>
+          <div className="text-sm text-muted-foreground text-center py-4">No users found</div>
         )}
       </div>
     </div>

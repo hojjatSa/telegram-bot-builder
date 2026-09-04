@@ -47,15 +47,15 @@ export function LaunchLogsModal({ launchId, startedAt, isOpen, onClose }: Launch
       <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-sm font-medium">
-            Логи запуска · {formatTitle(startedAt)}
+            Launch logs · {formatTitle(startedAt)}
           </DialogTitle>
         </DialogHeader>
         <div className="flex-1 overflow-y-auto rounded-md bg-black/90 p-3 font-mono text-xs min-h-[200px]">
           {isLoading && (
-            <span className="text-muted-foreground">Загрузка логов...</span>
+            <span className="text-muted-foreground">Loading logs...</span>
           )}
           {!isLoading && logs.length === 0 && (
-            <span className="text-muted-foreground">Логи не сохранены</span>
+            <span className="text-muted-foreground">Logs are not saved</span>
           )}
           {logs.map((log) => (
             <div

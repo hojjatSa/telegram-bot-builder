@@ -42,11 +42,11 @@ export function BroadcastDeleteConfirm({ open, onOpenChange, botCount, onConfirm
     <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Удалить рассылку?</AlertDialogTitle>
+          <AlertDialogTitle>Delete the newsletter?</AlertDialogTitle>
           <AlertDialogDescription>
             {isMulti
               ? `Сообщения будут удалены в Telegram у всех получателей — по каждому из ${botCount} ботов. История рассылки тоже удалится. Отменить действие нельзя.`
-              : 'Сообщения будут удалены в Telegram у всех получателей, а история рассылки — из проекта. Отменить действие нельзя.'}
+              : "Messages will be deleted in Telegram for all recipients, and the mailing history will be deleted from the project. The action cannot be undone."}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

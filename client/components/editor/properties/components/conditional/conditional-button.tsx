@@ -43,17 +43,17 @@ export function ConditionalButton({
         <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-purple-100/30 dark:border-purple-800/20">
           <div className="flex items-center gap-2 min-w-0">
             <div className="w-1 h-1 rounded-full bg-purple-500"></div>
-            <span className="text-xs font-semibold text-purple-600 dark:text-purple-400 truncate">Кнопка {buttonIndex + 1}</span>
+            <span className="text-xs font-semibold text-purple-600 dark:text-purple-400 truncate">Button {buttonIndex + 1}</span>
           </div>
           <UIButton size="sm" variant="ghost" onClick={rm} className="h-6 text-destructive flex-shrink-0"><i className="fas fa-trash text-xs"></i></UIButton>
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between gap-2">
-            <Label className="text-xs font-medium text-foreground">Текст</Label>
+            <Label className="text-xs font-medium text-foreground">Text</Label>
             <ConditionalVariableDropdown textVariables={textVariables} SYSTEM_VARIABLES={SYSTEM_VARIABLES} onInsert={(t) => upd({ text: (button.text || '') + t })} />
           </div>
-          <Input value={button.text} onChange={(e) => upd({ text: e.target.value })} className="h-9 text-sm" placeholder="Текст кнопки" />
-          <div className="text-xs text-muted-foreground">{`Переменные: {age} → "25"`}</div>
+          <Input value={button.text} onChange={(e) => upd({ text: e.target.value })} className="h-9 text-sm" placeholder={"Button text"} />
+          <div className="text-xs text-muted-foreground">{"Variables: {age} → \"25\""}</div>
         </div>
         <div className="space-y-2 border-t border-purple-100/30 dark:border-purple-800/20 pt-2.5">
           <ConditionalActionSelector action={button.action as ConditionalButtonAction} onActionChange={(a) => upd({ action: a })} />
@@ -66,8 +66,8 @@ export function ConditionalButton({
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <div className="w-6 h-6 rounded-lg flex items-center justify-center bg-cyan-200/50 dark:bg-cyan-900/40"><i className="fas fa-forward text-xs text-cyan-600 dark:text-cyan-400"></i></div>
                 <div className="min-w-0 flex-1">
-                  <Label className="text-xs font-semibold text-cyan-900 dark:text-cyan-100 cursor-pointer block">Пропустить сохранение</Label>
-                  <div className="text-xs text-cyan-700/70 dark:text-cyan-300/70">Перейти без сохранения</div>
+                  <Label className="text-xs font-semibold text-cyan-900 dark:text-cyan-100 cursor-pointer block">Skip save</Label>
+                  <div className="text-xs text-cyan-700/70 dark:text-cyan-300/70">Go without saving</div>
                 </div>
               </div>
               <Switch checked={button.skipDataCollection ?? false} onCheckedChange={(v) => upd({ skipDataCollection: v })} />

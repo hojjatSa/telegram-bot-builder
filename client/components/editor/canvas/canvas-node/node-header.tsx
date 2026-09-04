@@ -107,7 +107,7 @@ export function NodeHeader({ node, onMove }: NodeHeaderProps) {
       case 'answer_callback_query' as any:
         return (
           <span className="font-semibold text-purple-700 dark:text-purple-300">
-            🔔 Уведомление кнопки
+            🔔 Button notification
           </span>
         );
       /** Заголовок узла редактирования сообщения */

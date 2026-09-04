@@ -23,8 +23,8 @@ interface MediaFileSectionHeaderProps {
 export function MediaFileSectionHeader({ isOpen, onToggle }: MediaFileSectionHeaderProps) {
   return (
     <SectionHeader
-      title="Прикрепленный медиафайл"
-      description="Картинка, видео, аудио или документ"
+      title={"Attached media file"}
+      description={"Picture, video, audio or document"}
       isOpen={isOpen}
       onToggle={onToggle}
       icon="paperclip"

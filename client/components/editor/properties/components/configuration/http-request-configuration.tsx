@@ -121,7 +121,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
     <div className="space-y-0 divide-y divide-border">
       <Section>
         <div className="flex items-center justify-between mb-2">
-          <SectionLabel>Запрос</SectionLabel>
+          <SectionLabel>Request</SectionLabel>
           <HttpCurlImport onImport={upd} />
         </div>
         <div className="flex gap-1.5">
@@ -148,7 +148,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Query параметры</SectionLabel>
+        <SectionLabel>Query parameters</SectionLabel>
         <KeyValueEditor
           pairs={jsonToPairs((data.httpRequestQueryParams as string) || '')}
           onChange={(pairs) => upd({ httpRequestQueryParams: pairsToJson(pairs) })}
@@ -158,12 +158,12 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Аутентификация</SectionLabel>
+        <SectionLabel>Authentication</SectionLabel>
         <HttpAuthEditor data={data} onUpdate={upd} />
       </Section>
 
       <Section>
-        <SectionLabel>Заголовки</SectionLabel>
+        <SectionLabel>Headings</SectionLabel>
         <KeyValueEditor
           pairs={headersToPairs(data.httpRequestHeaders as string | undefined)}
           onChange={(pairs) => upd({ httpRequestHeaders: pairsToHeaders(pairs) })}
@@ -175,7 +175,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       {showBody && (
         <Section>
           <div className="flex items-center justify-between mb-2">
-            <SectionLabel>Тело запроса</SectionLabel>
+            <SectionLabel>Request body</SectionLabel>
             <Select
               value={(data.httpRequestBodyFormat as string) || 'json'}
               onValueChange={(v) => upd({ httpRequestBodyFormat: v as Node['data']['httpRequestBodyFormat'] })}
@@ -212,7 +212,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
             />
           </div>
           <div className="flex gap-2 items-center">
-            <Label className="text-xs text-muted-foreground w-24 shrink-0">Формат</Label>
+            <Label className="text-xs text-muted-foreground w-24 shrink-0">Format</Label>
             <Select
               value={(data.httpRequestResponseFormat as string) || 'autodetect'}
               onValueChange={(v) => upd({ httpRequestResponseFormat: v as Node['data']['httpRequestResponseFormat'] })}
@@ -221,12 +221,12 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="autodetect" className="text-xs">Автоопределение</SelectItem>
+                <SelectItem value="autodetect" className="text-xs">Auto detection</SelectItem>
                 <SelectItem value="json" className="text-xs">JSON</SelectItem>
                 <SelectItem value="xml" className="text-xs">XML</SelectItem>
-                <SelectItem value="text" className="text-xs">Текст</SelectItem>
+                <SelectItem value="text" className="text-xs">Text</SelectItem>
                 {/* Формат file: ответ сохраняется как base64-строка для медиа-ноды */}
-                <SelectItem value="file" className="text-xs">Файл (base64)</SelectItem>
+                <SelectItem value="file" className="text-xs">File (base64)</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -234,10 +234,10 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Извлечение по пути (опционально)</SectionLabel>
+        <SectionLabel>Extract along the path (optional)</SectionLabel>
         <div className="space-y-2">
           <div className="flex gap-2 items-center">
-            <Label className="text-xs text-muted-foreground w-24 shrink-0">JSON путь</Label>
+            <Label className="text-xs text-muted-foreground w-24 shrink-0">JSON path</Label>
             <Input
               placeholder="exchange.{from_id}.to.{to_id}.xr"
               value={(data.httpRequestResponseJsonPath as string) || ''}
@@ -246,7 +246,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
             />
           </div>
           <div className="flex gap-2 items-center">
-            <Label className="text-xs text-muted-foreground w-24 shrink-0">Сохранить в</Label>
+            <Label className="text-xs text-muted-foreground w-24 shrink-0">Save to</Label>
             <Input
               placeholder="extracted_value"
               value={(data.httpRequestResponseExtractTo as string) || ''}
@@ -255,13 +255,13 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
             />
           </div>
           <p className="text-[10px] text-muted-foreground">
-            Извлекает значение из JSON-ответа по указанному пути. Поддерживает {'{переменные}'}.
+            Retrieves a value from the JSON response at the specified path. Supports {"{variables}"}.
           </p>
         </div>
       </Section>
 
       <Section>
-        <SectionLabel>Статус код (опционально)</SectionLabel>
+        <SectionLabel>Status code (optional)</SectionLabel>
         <Input
           placeholder="status_code"
           value={(data.httpRequestStatusVariable as string) || ''}
@@ -271,7 +271,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Таймаут (секунды)</SectionLabel>
+        <SectionLabel>Timeout (seconds)</SectionLabel>
         <Input
           type="number"
           min={1}
@@ -283,23 +283,23 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Опции</SectionLabel>
+        <SectionLabel>Options</SectionLabel>
         <div className="space-y-2">
           <CheckOption
             id="ignoreErrors"
-            label="Игнорировать HTTP ошибки (4xx, 5xx)"
+            label={"Ignore HTTP errors (4xx, 5xx)"}
             checked={!!(data.httpRequestIgnoreHttpErrors)}
             onCheckedChange={(v) => upd({ httpRequestIgnoreHttpErrors: v })}
           />
           <CheckOption
             id="ignoreSsl"
-            label="Игнорировать SSL сертификат"
+            label={"Ignore SSL certificate"}
             checked={!!(data.httpRequestIgnoreSsl)}
             onCheckedChange={(v) => upd({ httpRequestIgnoreSsl: v })}
           />
           <CheckOption
             id="followRedirects"
-            label="Следовать редиректам"
+            label={"Follow redirects"}
             checked={data.httpRequestFollowRedirects !== false}
             onCheckedChange={(v) => upd({ httpRequestFollowRedirects: v })}
           />
@@ -307,10 +307,10 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
       </Section>
 
       <Section>
-        <SectionLabel>Пакетный режим (Batch)</SectionLabel>
+        <SectionLabel>Batch mode</SectionLabel>
         <CheckOption
           id="enableBatch"
-          label="Параллельные запросы по массиву"
+          label={"Parallel queries over an array"}
           checked={!!(data.httpRequestBatchEnabled)}
           onCheckedChange={(v) => upd({ httpRequestBatchEnabled: v })}
         />
@@ -318,7 +318,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
         {data.httpRequestBatchEnabled && (
           <div className="mt-3 space-y-2">
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Источник</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Source</Label>
               <Input
                 placeholder="table.exchangers"
                 value={(data.httpRequestBatchSource as string) || ''}
@@ -327,7 +327,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
               />
             </div>
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Элемент</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Element</Label>
               <Input
                 placeholder="item"
                 value={(data.httpRequestBatchItemVar as string) || 'item'}
@@ -336,7 +336,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
               />
             </div>
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Результат</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Result</Label>
               <Input
                 placeholder="results"
                 value={(data.httpRequestBatchResultVariable as string) || ''}
@@ -347,7 +347,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
 
             {/* Поля результата */}
             <div className="mt-3">
-              <Label className="text-xs font-medium mb-1.5 block">Поля результата</Label>
+              <Label className="text-xs font-medium mb-1.5 block">Result fields</Label>
               {((data.httpRequestBatchResultFields as any[]) || []).map((field: any, idx: number) => (
                 <div key={idx} className="flex gap-1 items-center mb-1">
                   <Input
@@ -362,7 +362,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
                   />
                   <span className="text-xs text-muted-foreground">=</span>
                   <Input
-                    placeholder="{item.field} или __extracted__"
+                    placeholder={"{item.field} or __extracted__"}
                     value={field.value || ''}
                     onChange={(e) => {
                       const fields = [...((data.httpRequestBatchResultFields as any[]) || [])];
@@ -387,21 +387,21 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
                   upd({ httpRequestBatchResultFields: fields } as any);
                 }}
                 className="text-xs text-blue-500 hover:text-blue-700 mt-1"
-              >+ Добавить поле</button>
+              >+Add field</button>
             </div>
 
             <p className="text-[10px] text-muted-foreground mt-2">
-              Для каждого элемента массива выполняется запрос параллельно. URL и JSON-путь поддерживают {'{item.field}'}. Значение <code className="bg-muted px-1 rounded">__extracted__</code> — результат извлечения по JSON Path.
+              For each element of the array, the query is executed in parallel. URL and JSON path support {'{item.field}'}. Meaning <code className="bg-muted px-1 rounded">__extracted__</code> — the result of extraction using JSON Path.
             </p>
           </div>
         )}
       </Section>
 
       <Section>
-        <SectionLabel>Пагинация</SectionLabel>
+        <SectionLabel>Pagination</SectionLabel>
         <CheckOption
           id="enablePagination"
-          label="Включить пагинацию"
+          label={"Enable pagination"}
           checked={!!(data.httpRequestEnablePagination)}
           onCheckedChange={(v) => upd({ httpRequestEnablePagination: v })}
         />
@@ -410,7 +410,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
           <div className="mt-3 space-y-3">
             {/* Режим пагинации */}
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Режим</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Mode</Label>
               <Select
                 value={(data.httpRequestPaginationMode as string) || 'interactive'}
                 onValueChange={(v) => upd({ httpRequestPaginationMode: v as any })}
@@ -419,15 +419,15 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="interactive" className="text-xs">Интерактивный (кнопки)</SelectItem>
-                  <SelectItem value="fetch_all" className="text-xs">Собрать все страницы</SelectItem>
+                  <SelectItem value="interactive" className="text-xs">Interactive (buttons)</SelectItem>
+                  <SelectItem value="fetch_all" className="text-xs">Collect all pages</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {/* Поле с total */}
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Поле total</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Total field</Label>
               <Input
                 placeholder="count"
                 value={(data.httpRequestPaginationTotalField as string) || ''}
@@ -438,7 +438,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
 
             {/* Поле с массивом */}
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Поле items</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Items field</Label>
               <Input
                 placeholder="items"
                 value={(data.httpRequestPaginationItemsField as string) || ''}
@@ -449,7 +449,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
 
             {/* Лимит */}
             <div className="flex gap-2 items-center">
-              <Label className="text-xs text-muted-foreground w-24 shrink-0">Лимит</Label>
+              <Label className="text-xs text-muted-foreground w-24 shrink-0">Limit</Label>
               <Input
                 type="number"
                 min={1}
@@ -464,7 +464,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
             {/* Переменная offset — только для interactive */}
             {(data.httpRequestPaginationMode as string) !== 'fetch_all' && (
               <div className="flex gap-2 items-center">
-                <Label className="text-xs text-muted-foreground w-24 shrink-0">Переменная offset</Label>
+                <Label className="text-xs text-muted-foreground w-24 shrink-0">offset variable</Label>
                 <Input
                   placeholder="page_offset"
                   value={(data.httpRequestPaginationOffsetVar as string) || ''}
@@ -477,7 +477,7 @@ export function HttpRequestConfiguration({ selectedNode, onNodeUpdate }: HttpReq
             {/* Макс страниц — только для fetch_all */}
             {(data.httpRequestPaginationMode as string) === 'fetch_all' && (
               <div className="flex gap-2 items-center">
-                <Label className="text-xs text-muted-foreground w-24 shrink-0">Макс. страниц</Label>
+                <Label className="text-xs text-muted-foreground w-24 shrink-0">Max. pages</Label>
                 <Input
                   type="number"
                   min={1}

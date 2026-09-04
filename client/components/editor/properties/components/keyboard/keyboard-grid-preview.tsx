@@ -164,7 +164,7 @@ export function KeyboardGridPreview({
                         {item.text}
                       </div>
                     ))}
-                    <div className="text-xs text-amber-600 dark:text-amber-400 mt-1">⚡ +ещё...</div>
+                    <div className="text-xs text-amber-600 dark:text-amber-400 mt-1">⚡ +more...</div>
                   </div>
                 ) : (
                   getButtonText(buttonId)
@@ -189,7 +189,7 @@ export function KeyboardGridPreview({
           }}
         >
           <span className="text-xs text-muted-foreground">
-            Перетащите кнопку для создания нового ряда
+            Drag the button to create a new row
           </span>
         </div>
       )}
@@ -201,8 +201,8 @@ export function KeyboardGridPreview({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <p className="text-xs text-amber-800 dark:text-amber-200">
-            <strong>Авто-раскладка включена.</strong> Кнопки автоматически распределяются по колонкам. 
-            Отключите авто-раскладку для ручного управления расположением.
+            <strong>Auto-layout is enabled.</strong> Buttons are automatically distributed across columns. 
+            Disable auto-layout to manually control the layout.
           </p>
         </div>
       )}

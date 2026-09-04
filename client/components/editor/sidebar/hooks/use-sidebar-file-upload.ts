@@ -94,7 +94,7 @@ export function useSidebarFileUpload({
           setImportError('Ошибка при чтении файла');
           toast({
             title: "Load failed",
-            description: "Не удалось прочитать файл",
+            description: "Failed to read file",
             variant: "destructive",
           });
         }
@@ -104,7 +104,7 @@ export function useSidebarFileUpload({
         setImportError('Ошибка при чтении файла');
         toast({
           title: "Load failed",
-          description: "Не удалось прочитать файл",
+          description: "Failed to read file",
           variant: "destructive",
         });
       };

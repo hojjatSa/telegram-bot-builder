@@ -83,13 +83,13 @@ export function useSheetAdd(params: UseSheetAddParams) {
       updateProjectMutation.mutate();
 
       toast({
-        title: 'Лист создан',
+        title: "Sheet created",
         description: `Лист "${name}" успешно создан`,
       });
     } catch (error) {
       toast({
         title: 'Create failed',
-        description: 'Не удалось создать лист',
+        description: "Failed to create sheet",
         variant: 'destructive',
       });
     }

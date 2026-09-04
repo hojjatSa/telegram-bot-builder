@@ -59,7 +59,7 @@ function RecipientCard({
     <div className="border border-blue-200/40 dark:border-blue-800/40 bg-white/50 dark:bg-slate-950/30 rounded-xl p-3 space-y-2">
       <div className="flex items-center justify-between gap-2">
         <Label className="text-xs font-medium text-blue-700 dark:text-blue-300">
-          Получатель {index + 1}
+          Recipient {index + 1}
         </Label>
         <Button
           type="button"
@@ -82,8 +82,8 @@ function RecipientCard({
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="user">Пользователю</SelectItem>
-          <SelectItem value="chat_id">По ID</SelectItem>
+          <SelectItem value="user">To the user</SelectItem>
+          <SelectItem value="chat_id">By ID</SelectItem>
         </SelectContent>
       </Select>
 
@@ -98,15 +98,15 @@ function RecipientCard({
               id={`isGroup-${recipient.id}`}
             />
             <label htmlFor={`isGroup-${recipient.id}`} className="text-xs text-muted-foreground cursor-pointer select-none">
-              Группа или канал (добавить -100)
+              Group or channel (add -100)
             </label>
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-xs text-muted-foreground w-16 flex-shrink-0">Чат/канал:</span>
+            <span className="text-xs text-muted-foreground w-16 flex-shrink-0">Chat/channel:</span>
             <Input
               value={recipient.chatId ?? ''}
               onChange={(e) => onUpdate({ chatId: e.target.value })}
-              placeholder="123456789, @channel или {переменная}"
+              placeholder={"123456789, @channel or {variable}"}
               className="flex-1 h-8 text-sm"
             />
             <VariableSelector
@@ -115,11 +115,11 @@ function RecipientCard({
             />
           </div>
           <div className="flex items-center gap-1">
-            <span className="text-xs text-muted-foreground w-16 flex-shrink-0">Топик (опц.):</span>
+            <span className="text-xs text-muted-foreground w-16 flex-shrink-0">Topic (opt.):</span>
             <Input
               value={recipient.threadId ?? ''}
               onChange={(e) => onUpdate({ threadId: e.target.value })}
-              placeholder="{thread_id} или число"
+              placeholder={"{thread_id} or number"}
               className="flex-1 h-8 text-sm"
             />
             <VariableSelector
@@ -135,12 +135,12 @@ function RecipientCard({
           <div className="flex items-center gap-1">
             <span className="text-xs text-muted-foreground w-16 flex-shrink-0">
               <i className="fas fa-key mr-1 text-[10px]" />
-              Токен:
+              Token:
             </span>
             <Input
               value={recipient.botToken ?? ''}
               onChange={(e) => onUpdate({ botToken: e.target.value })}
-              placeholder="{bot_token} или токен бота"
+              placeholder={"{bot_token} or bot token"}
               className="flex-1 h-8 text-sm"
             />
             <VariableSelector
@@ -149,8 +149,8 @@ function RecipientCard({
             />
           </div>
           <p className="text-[10px] text-slate-400 px-1">
-            По умолчанию — токен текущего бота. Используй переменную{' '}
-            <span className="font-mono">{'{token_status.instance.token}'}</span> для отправки через другой бот.
+            Default is the token of the current bot. Use a variable{' '}
+            <span className="font-mono">{'{token_status.instance.token}'}</span> to send via another bot.
           </p>
         </div>
       )}
@@ -201,7 +201,7 @@ export function MessageRecipientSection({ selectedNode, onNodeUpdate, textVariab
 
   return (
     <div className="bg-gradient-to-br from-blue-50/40 to-cyan-50/20 dark:from-blue-950/30 dark:to-cyan-900/20 border border-blue-200/40 dark:border-blue-800/40 rounded-xl p-3 space-y-2">
-      <Label className="text-xs font-medium text-blue-700 dark:text-blue-300">Получатели</Label>
+      <Label className="text-xs font-medium text-blue-700 dark:text-blue-300">Recipients</Label>
 
       {recipients.map((r, i) => (
         <RecipientCard
@@ -221,7 +221,7 @@ export function MessageRecipientSection({ selectedNode, onNodeUpdate, textVariab
         onClick={() => save([...recipients, createRecipient()])}
       >
         <i className="fas fa-plus mr-2" />
-        Добавить получателя
+        Add recipient
       </Button>
     </div>
   );

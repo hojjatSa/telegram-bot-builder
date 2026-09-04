@@ -43,7 +43,7 @@ const CATEGORY_TABS: readonly CategoryTabDef[] = [
   { value: 'all', label: 'All', icon: Layers },
   { value: 'incoming', label: 'Incoming', icon: Inbox },
   { value: 'outgoing', label: 'Outgoing', icon: Send },
-  { value: 'uploaded', label: 'Загруженные', icon: Upload },
+  { value: 'uploaded', label: "Loaded", icon: Upload },
 ];
 
 /**

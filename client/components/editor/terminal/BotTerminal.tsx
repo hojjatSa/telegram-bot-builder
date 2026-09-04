@@ -40,7 +40,7 @@ export function BotTerminal({ projectId, tokenId, isBotRunning = false }: BotTer
   return (
     <div className="h-full w-full flex flex-col min-h-0">
       <TerminalLogsContextBar
-        title="Живые логи"
+        title={"Live logs"}
         statusLabel={isBotRunning ? 'Online' : 'Offline'}
         statusClassName={
           isBotRunning

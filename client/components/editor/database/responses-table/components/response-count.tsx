@@ -23,7 +23,7 @@ export function ResponseCount({
 
   return (
     <Badge variant="secondary" className="text-[9px] xs:text-[10px] sm:text-xs flex-shrink-0 px-1 xs:px-1.5 sm:px-2 py-0">
-      {start}–{end} из {totalCount}
+      {start}–{end} from {totalCount}
     </Badge>
   );
 }

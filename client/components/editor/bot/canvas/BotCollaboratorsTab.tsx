@@ -35,10 +35,10 @@ export function BotCollaboratorsTab({ projectId, canManage }: BotCollaboratorsTa
           aria-hidden
         />
         <div className="min-w-0 space-y-1">
-          <p className="text-sm font-medium leading-snug">Панель в разработке</p>
+          <p className="text-sm font-medium leading-snug">Panel under development</p>
           <p className="text-xs leading-relaxed text-amber-900/80 dark:text-amber-100/80">
-            Скоро появятся разрешения у людей и отвязка от Telegram — пока доступ
-            выдаётся по Telegram ID.
+            People will soon have permission and will be able to unlink from Telegram - access for now
+            issued via Telegram ID.
           </p>
         </div>
       </div>

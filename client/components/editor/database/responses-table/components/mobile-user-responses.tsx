@@ -28,7 +28,7 @@ export function MobileUserResponses({
 
   return (
     <div className="border-t pt-3">
-      <div className="text-sm font-medium mb-2">Последние ответы:</div>
+      <div className="text-sm font-medium mb-2">Latest answers:</div>
       <div className="space-y-2">
         <div key={key} className="text-xs bg-muted/50 rounded-lg p-2">
           <div className="text-muted-foreground mb-1">{String(key)}:</div>
@@ -42,7 +42,7 @@ export function MobileUserResponses({
         </div>
         {entries.length > 1 && (
           <div className="text-xs text-muted-foreground">
-            +{entries.length - 1} еще...
+            +{entries.length - 1} more...
           </div>
         )}
       </div>

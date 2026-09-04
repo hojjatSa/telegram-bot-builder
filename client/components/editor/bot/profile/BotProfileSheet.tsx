@@ -66,7 +66,7 @@ export function BotProfileSheet({
       }
     },
     onSuccess: async () => {
-      toast({ title: 'Успешно', description: 'Профиль бота обновлён' });
+      toast({ title: "Successfully", description: "Bot profile updated" });
       queryClient.invalidateQueries({ queryKey: [`/api/projects/${projectId}/bot/info`] });
       onProfileUpdated();
       onClose();
@@ -84,15 +84,15 @@ export function BotProfileSheet({
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent side="left" className="sm:max-w-md overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>Редактировать профиль бота</SheetTitle>
+          <SheetTitle>Edit bot profile</SheetTitle>
         </SheetHeader>
         <div className="space-y-4 pt-4">
           <div className="space-y-2">
-            <Label htmlFor="bot-name">Имя бота</Label>
+            <Label htmlFor="bot-name">Bot name</Label>
             <Input id="bot-name" value={name} onChange={(e) => setName(e.target.value)} maxLength={64} />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="bot-short-description">Краткое описание</Label>
+            <Label htmlFor="bot-short-description">Brief description</Label>
             <Input
               id="bot-short-description"
               value={shortDescription}
@@ -101,7 +101,7 @@ export function BotProfileSheet({
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="bot-description">Полное описание</Label>
+            <Label htmlFor="bot-description">Full description</Label>
             <Textarea
               id="bot-description"
               value={description}
@@ -117,7 +117,7 @@ export function BotProfileSheet({
             </Button>
             <Button onClick={() => saveMutation.mutate()} disabled={saveMutation.isPending || !tokenId}>
               <Check className="h-4 w-4 mr-2" />
-              {saveMutation.isPending ? 'Сохранение...' : 'Save'}
+              {saveMutation.isPending ? "Saving..." : 'Save'}
             </Button>
           </div>
         </div>

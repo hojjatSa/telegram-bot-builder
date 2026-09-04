@@ -35,7 +35,7 @@ export function ClientAuthCard({ node }: ClientAuthCardProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between mb-1">
             <h4 className="font-semibold text-emerald-800 dark:text-emerald-300 text-sm">
-              {hasSession ? '✅ Сессия активна' : '⏳ Требуется авторизация'}
+              {hasSession ? "✅ Session active" : "⏳ Authorization required"}
             </h4>
           </div>
           <p className="text-xs text-emerald-600 dark:text-emerald-400">

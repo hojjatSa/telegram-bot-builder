@@ -32,7 +32,7 @@ export function DesktopToggleSidebarButton({ sidebarVisible, onClick }: DesktopT
           ? 'bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-md shadow-purple-500/30 hover:shadow-lg hover:shadow-purple-500/40'
           : 'bg-slate-500/5 dark:bg-slate-700/15 hover:bg-slate-300/40 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-400'
       )}
-      title={sidebarVisible ? 'Скрыть боковую панель' : 'Показать боковую панель'}
+      title={sidebarVisible ? "Hide sidebar" : "Show sidebar"}
       data-testid="button-toggle-sidebar"
     >
       <Sidebar className="w-3.5 h-3.5" />

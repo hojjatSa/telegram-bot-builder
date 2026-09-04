@@ -48,14 +48,14 @@ const MEDIA_INPUT_TYPES = ['photo', 'video', 'audio', 'document'];
 
 export const SAVE_ANSWER_SOURCE_OPTIONS: Array<{ value: string; label: string }> = [
   { value: 'any', label: 'Last answer' },
-  { value: 'text', label: 'Текстовый ответ' },
+  { value: 'text', label: "Text reply" },
   { value: 'photo', label: 'Photo' },
   { value: 'video', label: 'Video' },
   { value: 'audio', label: 'Audio' },
   { value: 'document', label: 'Document' },
   { value: 'location', label: 'Location' },
   { value: 'contact', label: 'Contact' },
-  { value: 'callback', label: 'Нажатие кнопки (callback)' },
+  { value: 'callback', label: "Button press (callback)" },
 ];
 
 export function SaveAnswerProperties({
@@ -78,20 +78,20 @@ export function SaveAnswerProperties({
         <div className="flex items-center gap-2">
           <i className="fas fa-save text-cyan-500 dark:text-cyan-400 text-sm" />
           <span className="text-sm font-semibold text-cyan-700 dark:text-cyan-300">
-            Сохранение ответа
+            Saving a reply
           </span>
         </div>
         <SaveAnswerStorageHint inputType={inputType} />
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="inputType" className="text-sm font-medium">Источник ответа</Label>
+        <Label htmlFor="inputType" className="text-sm font-medium">Answer source</Label>
         <Select
           value={inputType}
           onValueChange={(value) => onNodeUpdate(selectedNode.id, { inputType: value as SaveAnswerSourceValue })}
         >
           <SelectTrigger id="inputType" className="w-full">
-            <SelectValue placeholder="Выберите источник ответа" />
+            <SelectValue placeholder={"Select answer source"} />
           </SelectTrigger>
           <SelectContent>
             {SAVE_ANSWER_SOURCE_OPTIONS.map((option) => (
@@ -112,17 +112,17 @@ export function SaveAnswerProperties({
       />
 
       <div className="space-y-2">
-        <Label htmlFor="saveMode" className="text-sm font-medium">Режим записи</Label>
+        <Label htmlFor="saveMode" className="text-sm font-medium">Recording Mode</Label>
         <Select
           value={mode}
           onValueChange={(value) => onNodeUpdate(selectedNode.id, { appendVariable: value === 'append' })}
         >
           <SelectTrigger id="saveMode" className="w-full">
-            <SelectValue placeholder="Выберите режим" />
+            <SelectValue placeholder={"Select mode"} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="replace">Заменить значение</SelectItem>
-            <SelectItem value="append">Добавить к существующему</SelectItem>
+            <SelectItem value="replace">Replace value</SelectItem>
+            <SelectItem value="append">Add to existing</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -131,8 +131,8 @@ export function SaveAnswerProperties({
         <div className="space-y-2">
           <PropertyCheckbox
             id="saveMediaMetadata"
-            label="Сохранить метаданные медиа"
-            description="Дополнительные переменные с информацией о файле"
+            label={"Save media metadata"}
+            description={"Additional variables with file information"}
             checked={saveMediaMetadata}
             onChange={(checked) =>
               onNodeUpdate(selectedNode.id, { saveMediaMetadata: checked })

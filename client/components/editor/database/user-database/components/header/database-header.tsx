@@ -30,7 +30,7 @@ export function DatabaseHeader({ projectName: _projectName, onRefresh }: Databas
         </div>
         <div>
           <h2 className="text-base font-semibold leading-none">Users</h2>
-          <p className="text-xs text-muted-foreground mt-0.5">База данных бота</p>
+          <p className="text-xs text-muted-foreground mt-0.5">Bot database</p>
         </div>
       </div>
       {onRefresh && (
@@ -39,7 +39,7 @@ export function DatabaseHeader({ projectName: _projectName, onRefresh }: Databas
           size="sm"
           onClick={onRefresh}
           className="h-8 px-2 text-muted-foreground hover:text-foreground"
-          title="Обновить данные"
+          title={"Update data"}
         >
           <RefreshCw className="w-4 h-4 mr-1" />
           <span className="text-xs">Refresh</span>

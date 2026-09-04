@@ -44,7 +44,7 @@ export function BroadcastBubbleActions({
           size="icon"
           className="h-6 w-6 shrink-0 text-muted-foreground hover:bg-blue-500/10 hover:text-blue-500"
           onClick={onStartEdit}
-          title="Редактировать рассылку"
+          title={"Edit newsletter"}
         >
           <Pencil className="h-3 w-3" />
         </Button>
@@ -56,7 +56,7 @@ export function BroadcastBubbleActions({
           className="h-6 w-6 shrink-0 text-muted-foreground hover:bg-destructive/10 hover:text-destructive"
           onClick={onDelete}
           disabled={isDeleting}
-          title="Удалить рассылку"
+          title={"Delete newsletter"}
         >
           {isDeleting ? <Loader2 className="h-3 w-3 animate-spin" /> : <Trash2 className="h-3 w-3" />}
         </Button>

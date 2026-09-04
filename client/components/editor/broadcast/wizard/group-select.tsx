@@ -72,14 +72,14 @@ export function GroupSelect({ projectId, tokenId, selectedGroupIds, onChangeGrou
   }, [availableGroups.length, tokenId]);
 
   if (isLoading) {
-    return <div className="text-sm text-muted-foreground py-2">Загрузка групп...</div>;
+    return <div className="text-sm text-muted-foreground py-2">Loading groups...</div>;
   }
 
   if (availableGroups.length === 0) {
     return (
       <div className="flex flex-col items-center gap-2 py-3 text-muted-foreground">
         <Inbox className="w-7 h-7 opacity-40" />
-        <span className="text-sm">Нет групп у этого бота</span>
+        <span className="text-sm">This bot has no groups</span>
       </div>
     );
   }
@@ -97,7 +97,7 @@ export function GroupSelect({ projectId, tokenId, selectedGroupIds, onChangeGrou
           }
         />
         <Label htmlFor={`select-all-groups-${tokenId}`} className="cursor-pointer text-sm font-semibold">
-          Все группы ({availableGroups.length})
+          All groups ({availableGroups.length})
         </Label>
       </div>
 

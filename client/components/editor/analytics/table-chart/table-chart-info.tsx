@@ -23,33 +23,33 @@ export function TableChartInfo(): React.JSX.Element {
         data-testid="table-chart-info-trigger"
       >
         <ChevronDown className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} />
-        Что это за график?
+        What kind of graph is this?
       </CollapsibleTrigger>
       <CollapsibleContent className="pt-1.5">
         <div className="text-[11px] leading-relaxed text-muted-foreground/80 space-y-1.5">
           <p>
-            График строится на основе ваших <b>пользовательских таблиц</b> проекта —
-            тех, что вы создаёте во вкладке «Таблицы». Вы сами выбираете, какие
-            данные и как показать.
+            The schedule is based on your <b>user tables</b> project -
+            those that you create in the “Tables” tab. You choose which ones
+            data and how to show it.
           </p>
           <ul className="list-disc pl-4 space-y-1">
             <li>
-              <b>Категория (X)</b> — колонка, по значениям которой группируются строки.
+              <b>Category (X)</b> — a column by whose values ​​rows are grouped.
             </li>
             <li>
-              <b>Значение (Y)</b> — колонка, числа из которой агрегируются внутри группы.
+              <b>Value (Y)</b> — a column from which numbers are aggregated within the group.
             </li>
             <li>
-              <b>Агрегации:</b> «Количество» (число строк в группе), «Сумма», «Среднее»,
-              «Минимум», «Максимум» — для числовой колонки. Для нечисловой колонки
-              доступно только «Количество».
+              <b>Aggregations:</b> “Count” (number of rows in the group), “Sum”, “Average”,
+              “Minimum”, “Maximum” - for a numerical column. For a non-numeric column
+              Only "Quantity" is available.
             </li>
             <li>
-              <b>Типы графика:</b> «Столбцы», «Линия», «Круговая».
+              <b>Chart types:</b> “Columns”, “Line”, “Circle”.
             </li>
           </ul>
           <p className="text-muted-foreground/60">
-            Показываются топ-50 категорий, данные обновляются автоматически.
+            The top 50 categories are shown and the data is updated automatically.
           </p>
         </div>
       </CollapsibleContent>

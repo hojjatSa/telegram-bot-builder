@@ -32,13 +32,13 @@ export function FileStoragePagination({
 
   return (
     <div className="flex items-center justify-between px-4 py-2 border-t text-xs text-muted-foreground">
-      <span>{total} файлов • стр. {page}/{totalPages}</span>
+      <span>{total} files • page {page}/{totalPages}</span>
       <div className="flex gap-1">
         <Button variant="ghost" size="sm" disabled={page <= 1} onClick={() => onPageChange(page - 1)}>
           Back
         </Button>
         <Button variant="ghost" size="sm" disabled={page >= totalPages} onClick={() => onPageChange(page + 1)}>
-          Вперёд
+          Forward
         </Button>
       </div>
     </div>

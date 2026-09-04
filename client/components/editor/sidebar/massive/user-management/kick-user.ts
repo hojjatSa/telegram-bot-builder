@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const kickUser: ComponentDefinition = {
   id: 'kick-user',
   name: 'Kick User',
-  description: 'Удалить участника из группы',
+  description: "Remove a member from a group",
   icon: 'fas fa-user-times',
   color: 'bg-red-100 text-red-600',
   type: 'kick_user',

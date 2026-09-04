@@ -80,12 +80,12 @@ export function BroadcastPanel({ projectId, selectedTokenId, onSelectToken, allP
       {/* Шапка с градиентом */}
       <TabHeader
         icon={<Radio className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />}
-        title="Рассылки"
+        title={"Newsletters"}
         actions={
           <Button size="sm" className="gap-1.5" onClick={() => setModalOpen(true)}>
             <Plus className="h-4 w-4" />
             <span className="hidden sm:inline">New Broadcast</span>
-            <span className="sm:hidden">Новая</span>
+            <span className="sm:hidden">New</span>
           </Button>
         }
       >
@@ -108,8 +108,8 @@ export function BroadcastPanel({ projectId, selectedTokenId, onSelectToken, allP
 
       {/* Баннер устаревшей вкладки */}
       <div className="mx-4 sm:mx-6 mt-3 px-3 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200">
-        <span className="font-medium">Устаревшая вкладка.</span>{' '}
-        Рассылка теперь доступна в диалоге пользователя как отдельная панель. Функциональность этой вкладки будет перенесена туда.
+        <span className="font-medium">Outdated tab.</span>{' '}
+        The newsletter is now available in the user dialog as a separate panel. The functionality of this tab will be moved there.
       </div>
 
       {/* Split layout */}

@@ -125,7 +125,7 @@ export function FileStorageHeader(props: FileStorageHeaderProps): React.JSX.Elem
         <HeaderSelectors {...props} />
       </TabHeader>
       <p className={HEADER_SUBTITLE_CLASS}>
-        Медиафайлы проекта — загрузка, фильтры по категориям и хранилищам, привязка к ботам и нодам.
+        Project media files - downloading, filters by category and storage, linking to bots and nodes.
       </p>
     </div>
   );

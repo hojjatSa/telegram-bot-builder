@@ -72,11 +72,11 @@ export function ProjectBotBulkActions({
           className="h-7 px-1.5 sm:px-2 text-xs text-muted-foreground"
           onClick={onRestartAll}
           disabled={isRestartingAll || isStartingOffline}
-          aria-label="Перезапустить всех запущенных ботов проекта"
+          aria-label={"Restart all running bots of the project"}
         >
           <RefreshCw className={`w-3 h-3 sm:mr-1 ${isRestartingAll ? 'animate-spin' : ''}`} />
           <span className="hidden sm:inline">
-            {isRestartingAll ? 'Перезапуск...' : 'Перезапустить'}
+            {isRestartingAll ? "Restart..." : "Restart"}
           </span>
         </Button>
         <Button
@@ -85,7 +85,7 @@ export function ProjectBotBulkActions({
           className="h-7 px-1.5 sm:px-2 text-xs text-muted-foreground"
           onClick={() => setConfirmOpen(true)}
           disabled={offlineCount === 0 || isStartingOffline || isRestartingAll}
-          aria-label="Запустить офлайн-ботов проекта"
+          aria-label={"Launch offline bots of the project"}
         >
           <Play className={`w-3 h-3 sm:mr-1 ${isStartingOffline ? 'animate-pulse' : ''}`} />
           <span className="hidden sm:inline">
@@ -93,7 +93,7 @@ export function ProjectBotBulkActions({
               ? (progressLabel ? `Запуск ${progressLabel}` : 'Starting...')
               : offlineCount > 0
                 ? `Запустить офлайн (${offlineCount})`
-                : 'Запустить офлайн'}
+                : "Start offline"}
           </span>
         </Button>
       </div>

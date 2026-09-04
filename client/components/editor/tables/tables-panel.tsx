@@ -56,7 +56,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
               type="button"
               onClick={() => queryClient.invalidateQueries({ queryKey: ['bot-tables'] })}
               className="p-2 rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-              title="Обновить данные таблиц"
+              title={"Update table data"}
             >
               <RefreshCw className="h-4 w-4" />
             </button>
@@ -103,7 +103,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
             readOnly={selectedTable.id.startsWith('_system_')}
             isContentTable={selectedTable.name === '_content'}
             systemInfo={selectedTable.id.startsWith('_system_')
-              ? `Данные токена #${selectedTokenId ?? 'все'} • проект #${projectId}`
+              ? `Данные токена #${selectedTokenId ?? "All"} • проект #${projectId}`
               : undefined
             }
             onAddColumn={(name) => addColumn(selectedTable.id, name)}
@@ -121,7 +121,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
           <div className="flex-1 flex items-center justify-center">
             <div className="text-center">
               <Table2 className="h-12 w-12 text-muted-foreground/30 mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground">Выберите таблицу или создайте новую</p>
+              <p className="text-sm text-muted-foreground">Select a table or create a new one</p>
             </div>
           </div>
         )}
@@ -147,7 +147,7 @@ export function TablesPanel({ projectId, allProjects, onProjectChange, selectedT
                 readOnly={selectedTable.id.startsWith('_system_')}
                 isContentTable={selectedTable.name === '_content'}
                 systemInfo={selectedTable.id.startsWith('_system_')
-                  ? `Данные токена #${selectedTokenId ?? 'все'} • проект #${projectId}`
+                  ? `Данные токена #${selectedTokenId ?? "All"} • проект #${projectId}`
                   : undefined
                 }
                 onAddColumn={(name) => addColumn(selectedTable.id, name)}

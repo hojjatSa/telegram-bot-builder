@@ -61,7 +61,7 @@ export function useAdminIds(projectId: number): UseAdminIdsResult {
       await apiRequest('PUT', `/api/projects/${projectId}/admin-ids`, {
         adminIds: joinIds(ids),
       });
-      toast({ title: 'Saved', description: 'Список администраторов обновлён' });
+      toast({ title: 'Saved', description: "The list of administrators has been updated" });
       setIsSaved(true);
       // Re-fetch to confirm saved state
       apiRequest('GET', `/api/projects/${projectId}/admin-ids`)
@@ -73,7 +73,7 @@ export function useAdminIds(projectId: number): UseAdminIdsResult {
       // Reset saved indicator after 2 seconds
       setTimeout(() => setIsSaved(false), 2000);
     } catch {
-      toast({ title: 'Error', description: 'Не удалось сохранить ADMIN_IDS', variant: 'destructive' });
+      toast({ title: 'Error', description: "Failed to save ADMIN_IDS", variant: 'destructive' });
     } finally {
       setIsSaving(false);
     }

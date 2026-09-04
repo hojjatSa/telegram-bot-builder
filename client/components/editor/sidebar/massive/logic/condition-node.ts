@@ -15,7 +15,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const conditionNode: ComponentDefinition = {
   id: 'condition-node',
   name: 'Condition',
-  description: 'Ветвление потока по значению переменной',
+  description: "Branching a thread based on the value of a variable",
   icon: 'fas fa-code-branch',
   color: 'bg-violet-100 text-violet-600',
   type: 'condition',
@@ -24,8 +24,8 @@ export const conditionNode: ComponentDefinition = {
     variable: '',
     /** Ветки условия */
     branches: [
-      { id: 'branch_filled', label: 'Да, заполнено', operator: 'filled', value: '' },
-      { id: 'else', label: 'Нет', operator: 'else', value: '' },
+      { id: 'branch_filled', label: "Yes, filled", operator: 'filled', value: '' },
+      { id: 'else', label: "No", operator: 'else', value: '' },
     ],
   },
 };

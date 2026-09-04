@@ -36,7 +36,7 @@ export function TextTriggerPreview({ node }: TextTriggerPreviewProps) {
     <div className="flex flex-col gap-1.5 min-h-[24px]">
       <div className="flex flex-wrap gap-1 items-center">
         {texts.length === 0 ? (
-          <span className="text-xs text-slate-400 italic">Нет текстов</span>
+          <span className="text-xs text-slate-400 italic">No texts</span>
         ) : (
           <>
             {visible.map((text, i) => (
@@ -56,7 +56,7 @@ export function TextTriggerPreview({ node }: TextTriggerPreviewProps) {
         )}
       </div>
       <span className="text-[9px] text-slate-500">
-        {matchType === 'exact' ? '= точное' : '≈ содержит'}
+        {matchType === 'exact' ? "= exact" : "≈ contains"}
       </span>
     </div>
   );

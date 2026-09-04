@@ -12,7 +12,7 @@ export function MobileEmptyState({ searchQuery }: { searchQuery: string }): Reac
   return (
     <div className="text-center py-8">
       <div className="text-muted-foreground">
-        {searchQuery ? 'Пользователи не найдены' : 'Пользователи еще не взаимодействовали с ботом'}
+        {searchQuery ? "No users found" : "Users have not yet interacted with the bot"}
       </div>
     </div>
   );

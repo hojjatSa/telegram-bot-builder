@@ -117,7 +117,7 @@ export function OutputPort({ portType, buttonId, topOffset, onPortMouseDown, onM
         boxShadow: `0 0 0 1px ${color}`,
       }}
       title={portType === 'keyboard-link'
-        ? 'Привязка клавиатуры к отдельному сообщению'
+        ? "Assigning a keyboard to a specific message"
         : `Соединение: ${portType}`}
     />
   );

@@ -47,12 +47,12 @@ export function AutoTransitionIndicator({ node, allNodes }: AutoTransitionIndica
         </div>
         <div className="flex-1">
           <div className="text-sm font-medium text-emerald-800 dark:text-emerald-200 mb-1">
-            Автопереход
+            Auto transition
           </div>
           <div className="text-xs text-emerald-600 dark:text-emerald-400">
             {targetNode && targetNode.data ? (
               <>
-                К узлу: <span className="font-semibold">{targetNodeName}</span>
+                To node: <span className="font-semibold">{targetNodeName}</span>
                 {targetNode.data.messageText && targetNode.data.messageText.length > 30 && '...'}
               </>
             ) : (

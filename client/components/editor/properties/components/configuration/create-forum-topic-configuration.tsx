@@ -65,21 +65,21 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
             onValueChange={(value) => update({ forumChatIdSource: value as ForumChatIdSource })}
           >
             <SelectTrigger className="bg-card/70 border border-teal-200/50 dark:border-teal-800/50">
-              <SelectValue placeholder="Источник ID группы" />
+              <SelectValue placeholder={"Group ID Source"} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="manual">Вручную</SelectItem>
-              <SelectItem value="variable">Из переменной</SelectItem>
+              <SelectItem value="manual">Manually</SelectItem>
+              <SelectItem value="variable">From variable</SelectItem>
             </SelectContent>
           </Select>
 
           {chatIdSource === 'manual' && (
             <div className="space-y-1">
-              <Label className="text-xs font-medium text-teal-700 dark:text-teal-300">ID или username группы</Label>
+              <Label className="text-xs font-medium text-teal-700 dark:text-teal-300">Group ID or username</Label>
               <input
                 value={data.forumChatId ?? ''}
                 onChange={(e) => update({ forumChatId: e.target.value })}
-                placeholder="2300967595 или @group_name"
+                placeholder={"2300967595 or @group_name"}
                 className="flex h-9 w-full rounded-md border border-teal-200/50 dark:border-teal-800/50 bg-white/60 dark:bg-slate-950/60 px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               />
             </div>
@@ -88,7 +88,7 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
           {chatIdSource === 'variable' && (
             <div className="space-y-1">
               {/* Поле выбора переменной для ID форум-группы */}
-              <Label className="text-xs font-medium text-teal-700 dark:text-teal-300">Имя переменной</Label>
+              <Label className="text-xs font-medium text-teal-700 dark:text-teal-300">Variable name</Label>
               <VariableNameInput
                 value={data.forumChatVariableName ?? ''}
                 availableVariables={textVariables}
@@ -106,18 +106,18 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
           <div className="w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
             <i className="fas fa-layer-group text-sky-600 dark:text-sky-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-sky-900 dark:text-sky-100">Топик</Label>
+          <Label className="text-sm font-semibold text-sky-900 dark:text-sky-100">Topic</Label>
         </div>
 
         <div className="space-y-3">
           <div className="space-y-1">
-            <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Название топика</Label>
+            <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Topic name</Label>
             {/* Input с кнопкой вставки переменной в формате {имя} */}
             <div className="flex items-center gap-1">
               <input
                 value={data.topicName ?? ''}
                 onChange={(e) => update({ topicName: e.target.value })}
-                placeholder="Топик {user_name}"
+                placeholder={"Topic {user_name}"}
                 className="flex h-9 flex-1 rounded-md border border-sky-200/50 dark:border-sky-800/50 bg-white/60 dark:bg-slate-950/60 px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               />
               <VariableSelector
@@ -129,24 +129,24 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
                     className="text-xs px-2.5 py-1 h-9 rounded-md border border-sky-300/60 dark:border-sky-700/60 bg-sky-50/60 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 hover:bg-sky-100/80 dark:hover:bg-sky-800/30 transition-colors whitespace-nowrap"
                     title="Insert variable"
                   >
-                    + Переменная
+                    + Variable
                   </button>
                 }
               />
             </div>
             <div className="text-xs text-sky-600/70 dark:text-sky-400/70">
-              Поддерживает <span className="font-mono bg-sky-100/60 dark:bg-sky-900/30 px-1 rounded">{'{переменные}'}</span>
+              Supports <span className="font-mono bg-sky-100/60 dark:bg-sky-900/30 px-1 rounded">{"{variables}"}</span>
             </div>
           </div>
 
           <div className="space-y-1">
-            <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Цвет иконки</Label>
+            <Label className="text-xs font-medium text-sky-700 dark:text-sky-300">Icon color</Label>
             <Select
               value={data.topicIconColor ?? '7322096'}
               onValueChange={(value) => update({ topicIconColor: value })}
             >
               <SelectTrigger className="bg-card/70 border border-sky-200/50 dark:border-sky-800/50">
-                <SelectValue placeholder="Выберите цвет" />
+                <SelectValue placeholder={"Select color"} />
               </SelectTrigger>
               <SelectContent>
                 {TOPIC_ICON_COLORS.map((color) => (
@@ -166,13 +166,13 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
           <div className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800/50 flex items-center justify-center">
             <i className="fas fa-save text-slate-600 dark:text-slate-400 text-xs"></i>
           </div>
-          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Сохранить ID топика</Label>
+          <Label className="text-sm font-semibold text-slate-900 dark:text-slate-100">Save topic ID</Label>
         </div>
 
         <div className="space-y-4">
           <div className="space-y-1">
             {/* Поле выбора переменной для сохранения thread_id */}
-            <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Переменная для thread_id</Label>
+            <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Variable for thread_id</Label>
             <VariableNameInput
               value={data.saveThreadIdTo ?? ''}
               availableVariables={textVariables}
@@ -180,17 +180,17 @@ export function CreateForumTopicConfiguration({ selectedNode, onNodeUpdate, getA
               placeholder="forum_thread_id"
             />
             <div className="text-xs text-slate-600/70 dark:text-slate-400/70">
-              Используй{' '}
-              <span className="font-mono bg-slate-100/60 dark:bg-slate-800/30 px-1 rounded">{'{имя_переменной}'}</span>{' '}
-              в узлах <span className="font-mono">forward_message</span> и <span className="font-mono">message</span>
+              Use{' '}
+              <span className="font-mono bg-slate-100/60 dark:bg-slate-800/30 px-1 rounded">{"{variable_name}"}</span>{' '}
+              in nodes <span className="font-mono">forward_message</span> And <span className="font-mono">message</span>
             </div>
           </div>
 
           <div className="flex items-center justify-between gap-3 p-3 rounded-lg bg-card/50 border border-slate-200/30 dark:border-slate-800/30">
             <div>
-              <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Не создавать повторно</Label>
+              <Label className="text-xs font-medium text-slate-700 dark:text-slate-300">Don't recreate</Label>
               <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                Пропустить, если переменная уже заполнена
+                Skip if variable is already filled
               </div>
             </div>
             <Switch

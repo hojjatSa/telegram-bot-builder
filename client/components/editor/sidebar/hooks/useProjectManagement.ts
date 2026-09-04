@@ -61,7 +61,7 @@ export function useProjectManagement(): UseProjectManagementResult {
         (old = []) => [...old, newProject]
       );
       toast({
-        title: '✅ Проект создан',
+        title: "✅ The project has been created",
         description: `Проект "${newProject.name}" успешно создан`,
       });
     },
@@ -86,14 +86,14 @@ export function useProjectManagement(): UseProjectManagementResult {
         (old = []) => old.filter(p => p.id !== deletedProject.id)
       );
       toast({
-        title: '✅ Проект удалён',
+        title: "✅ Project deleted",
         description: `Проект "${deletedProject.name}" удалён`,
       });
     },
     onError: () => {
       toast({
         title: '❌ Error',
-        description: 'Не удалось удалить проект',
+        description: "Failed to delete project",
         variant: 'destructive',
       });
     },
@@ -113,14 +113,14 @@ export function useProjectManagement(): UseProjectManagementResult {
         (old = []) => old.map(p => p.id === updatedProject.id ? updatedProject : p)
       );
       toast({
-        title: '✅ Проект переименован',
+        title: "✅ The project has been renamed",
         description: `Проект переименован в "${updatedProject.name}"`,
       });
     },
     onError: () => {
       toast({
         title: '❌ Error',
-        description: 'Не удалось переименовать проект',
+        description: "Failed to rename project",
         variant: 'destructive',
       });
     },

@@ -74,7 +74,7 @@ export function useStorageConfigForm(editing: StorageConfigDto | null): UseStora
 
   const runTest = async () => {
     if (!draft.configId) {
-      toast({ title: 'Сначала сохраните хранилище', description: 'Проверка доступна для сохранённых конфигов' });
+      toast({ title: "Save the repository first", description: "Checking is available for saved configs" });
       return;
     }
     setIsTesting(true);
@@ -91,7 +91,7 @@ export function useStorageConfigForm(editing: StorageConfigDto | null): UseStora
   const save = async (): Promise<boolean> => {
     const validationError = validateDraft(draft);
     if (validationError) {
-      toast({ variant: 'destructive', title: 'Проверьте поля', description: validationError });
+      toast({ variant: 'destructive', title: "Check the fields", description: validationError });
       return false;
     }
     setIsSaving(true);

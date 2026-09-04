@@ -276,14 +276,14 @@ const DraggableElement: React.FC<DraggableElementProps> = ({
             <button
               onClick={() => onToggleVisibility(element.id)}
               className="p-1 hover:bg-gray-600 rounded"
-              title="Переключить видимость"
+              title={"Toggle visibility"}
             >
               {element.visible ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
             </button>
             <button
               onClick={() => onToggleLock(element.id)}
               className="p-1 hover:bg-gray-600 rounded"
-              title="Заблокировать/разблокировать"
+              title={"Block/unblock"}
             >
               {element.locked ? <Lock className="w-3 h-3" /> : <Unlock className="w-3 h-3" />}
             </button>
@@ -309,7 +309,7 @@ const DraggableElement: React.FC<DraggableElementProps> = ({
         <div
           className="absolute bottom-0 right-0 w-4 h-4 bg-blue-500 cursor-se-resize rounded-tl-lg hover:bg-blue-600 transition-colors"
           onMouseDown={handleResizeStart}
-          title="Изменить размер"
+          title={"Resize"}
         />
       )}
     </div>
@@ -360,7 +360,7 @@ export const DraggableLayout: React.FC<DraggableLayoutProps> = ({
                   checked={config.previewMode}
                   onCheckedChange={(checked) => onConfigChange({ previewMode: checked })}
                 />
-                <Label htmlFor="preview-mode">Режим предпросмотра</Label>
+                <Label htmlFor="preview-mode">Preview mode</Label>
               </div>
               
               <div className="flex items-center gap-2">
@@ -369,7 +369,7 @@ export const DraggableLayout: React.FC<DraggableLayoutProps> = ({
                   checked={config.snapToGrid}
                   onCheckedChange={(checked) => onConfigChange({ snapToGrid: checked })}
                 />
-                <Label htmlFor="snap-to-grid">Привязка к сетке</Label>
+                <Label htmlFor="snap-to-grid">Snap to Grid</Label>
               </div>
               
               <div className="flex items-center gap-2">
@@ -378,7 +378,7 @@ export const DraggableLayout: React.FC<DraggableLayoutProps> = ({
                   checked={config.showGrid}
                   onCheckedChange={(checked) => onConfigChange({ showGrid: checked })}
                 />
-                <Label htmlFor="show-grid">Показать сетку</Label>
+                <Label htmlFor="show-grid">Show grid</Label>
               </div>
               
               <div className="flex items-center gap-2">
@@ -387,7 +387,7 @@ export const DraggableLayout: React.FC<DraggableLayoutProps> = ({
                   checked={config.lockElements}
                   onCheckedChange={(checked) => onConfigChange({ lockElements: checked })}
                 />
-                <Label htmlFor="lock-elements">Заблокировать все</Label>
+                <Label htmlFor="lock-elements">Block everything</Label>
               </div>
 
               <Button
@@ -406,7 +406,7 @@ export const DraggableLayout: React.FC<DraggableLayoutProps> = ({
                 }}
               >
                 <RotateCcw className="w-4 h-4 mr-2" />
-                Сбросить
+                Reset
               </Button>
             </div>
           </div>

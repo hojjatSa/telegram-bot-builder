@@ -71,7 +71,7 @@ export function BotEnvAddRow({ onSave, onCancel, isPending }: BotEnvAddRowProps)
         variant="ghost" size="icon"
         className="h-7 w-7 shrink-0"
         onClick={() => setIsSecret(!isSecret)}
-        title={isSecret ? 'Секрет (скрыто)' : 'Обычная (видна)'}
+        title={isSecret ? "Secret (hidden)" : "Normal (visible)"}
       >
         {isSecret
           ? <Lock className="h-3.5 w-3.5 text-amber-500" />

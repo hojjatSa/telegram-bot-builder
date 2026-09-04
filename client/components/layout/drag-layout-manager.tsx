@@ -225,7 +225,7 @@ const DropZone: React.FC<DropZoneProps> = ({ position, onDrop, isActive, childre
       {isOver && canDrop && (
         <div className="absolute inset-0 flex items-center justify-center bg-green-100 dark:bg-green-900/20 rounded-lg">
           <div className="text-green-700 dark:text-green-300 font-medium">
-            Отпустите для размещения
+            Release for placement
           </div>
         </div>
       )}
@@ -253,7 +253,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
       {
         id: 'header',
         type: 'header',
-        title: 'Заголовок',
+        title: "Heading",
         position: 'top',
         size: 10,
         visible: true,
@@ -381,7 +381,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
         {
           id: 'header',
           type: 'header',
-          title: 'Заголовок',
+          title: "Heading",
           position: 'top',
           size: 10,
           visible: true,
@@ -547,12 +547,12 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Layout className="w-5 h-5" />
-                Настройки макета
+                Layout Settings
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <Label htmlFor="grid-snap">Привязка к сетке</Label>
+                <Label htmlFor="grid-snap">Snap to Grid</Label>
                 <Switch
                   id="grid-snap"
                   checked={config.gridSnap}
@@ -561,7 +561,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
               </div>
               
               <div className="flex items-center justify-between">
-                <Label htmlFor="show-grid">Показать сетку</Label>
+                <Label htmlFor="show-grid">Show grid</Label>
                 <Switch
                   id="show-grid"
                   checked={config.showGrid}
@@ -570,7 +570,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
               </div>
               
               <div className="flex items-center justify-between">
-                <Label htmlFor="compact-mode">Компактный режим</Label>
+                <Label htmlFor="compact-mode">Compact mode</Label>
                 <Switch
                   id="compact-mode"
                   checked={config.compactMode}
@@ -581,7 +581,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
               <Separator />
               
               <div className="flex items-center justify-between">
-                <Label htmlFor="preview-mode">Режим предпросмотра</Label>
+                <Label htmlFor="preview-mode">Preview mode</Label>
                 <Switch
                   id="preview-mode"
                   checked={previewMode}
@@ -593,7 +593,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
 
           <Card>
             <CardHeader>
-              <CardTitle>Элементы макета</CardTitle>
+              <CardTitle>Layout elements</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
@@ -615,7 +615,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Предпросмотр макета</CardTitle>
+              <CardTitle>Layout preview</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="h-96 relative">
@@ -631,7 +631,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
                         isActive={config.elements.some(el => el.position === 'top')}
                       >
                         <div className="p-4 text-center text-sm text-gray-500">
-                          Верхняя область
+                          Upper area
                         </div>
                       </DropZone>
                     </div>
@@ -642,7 +642,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
                       isActive={config.elements.some(el => el.position === 'left')}
                     >
                       <div className="p-4 text-center text-sm text-gray-500">
-                        Левая
+                        Left
                       </div>
                     </DropZone>
                     
@@ -652,7 +652,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
                       isActive={config.elements.some(el => el.position === 'center')}
                     >
                       <div className="p-4 text-center text-sm text-gray-500">
-                        Центр
+                        Center
                       </div>
                     </DropZone>
                     
@@ -662,7 +662,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
                       isActive={config.elements.some(el => el.position === 'right')}
                     >
                       <div className="p-4 text-center text-sm text-gray-500">
-                        Правая
+                        Right
                       </div>
                     </DropZone>
                     
@@ -673,7 +673,7 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
                         isActive={config.elements.some(el => el.position === 'bottom')}
                       >
                         <div className="p-4 text-center text-sm text-gray-500">
-                          Нижняя область
+                          Lower area
                         </div>
                       </DropZone>
                     </div>
@@ -695,14 +695,14 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
           <DialogTrigger asChild>
             <Button variant="outline" size="sm" className="gap-2">
               <Layout className="w-4 h-4" />
-              Настроить макет
+              Customize Layout
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-7xl h-[80vh] overflow-auto">
             <DialogHeader>
-              <DialogTitle>Настройка макета интерфейса</DialogTitle>
+              <DialogTitle>Customizing the Interface Layout</DialogTitle>
               <DialogDescription className="sr-only">
-                Настройте расположение панелей интерфейса редактора
+                Customize the layout of editor interface panels
               </DialogDescription>
             </DialogHeader>
             
@@ -711,10 +711,10 @@ const DragLayoutManager: React.FC<DragLayoutManagerProps> = ({
             <div className="flex justify-end gap-2 mt-6">
               <Button variant="outline" onClick={handleReset}>
                 <RotateCcw className="w-4 h-4 mr-2" />
-                Сбросить
+                Reset
               </Button>
               <Button onClick={handleApply}>
-                Применить
+                Apply
               </Button>
             </div>
           </DialogContent>

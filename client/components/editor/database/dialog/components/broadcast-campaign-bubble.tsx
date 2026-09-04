@@ -116,7 +116,7 @@ export function BroadcastCampaignBubble({
             <div className="flex flex-col gap-1 min-w-[260px]">
               <CompactInlineEditor value={editText} onChange={setEditText} placeholder="Broadcast message..." />
               <p className="text-[10px] text-muted-foreground">
-                Текст изменится у получателей всех {botCount} {pluralizeBots(botCount)}
+                The text will change for all recipients {botCount} {pluralizeBots(botCount)}
               </p>
               <div className="flex gap-1 justify-end">
                 <Button

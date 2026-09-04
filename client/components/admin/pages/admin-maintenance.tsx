@@ -30,7 +30,7 @@ export function AdminMaintenancePage() {
   const refreshTemplates = useMutation({
     mutationFn: () => runAdminAction('POST', '/admin/api/templates/refresh'),
     onSuccess: (data) => {
-      toast({ title: 'Шаблоны обновлены', description: data.message });
+      toast({ title: "Templates updated", description: data.message });
     },
     onError: (error: Error) => {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
@@ -40,7 +40,7 @@ export function AdminMaintenancePage() {
   const recreateTemplates = useMutation({
     mutationFn: () => runAdminAction('POST', '/admin/api/templates/recreate'),
     onSuccess: (data) => {
-      toast({ title: 'Шаблоны пересозданы', description: data.message });
+      toast({ title: "Templates recreated", description: data.message });
     },
     onError: (error: Error) => {
       toast({ title: 'Error', description: error.message, variant: 'destructive' });
@@ -60,15 +60,15 @@ export function AdminMaintenancePage() {
   return (
     <div className="max-w-3xl space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Обслуживание</h1>
-        <p className="text-muted-foreground mt-1">Служебные операции платформы</p>
+        <h1 className="text-2xl font-bold">Service</h1>
+        <p className="text-muted-foreground mt-1">Platform service operations</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Заготовки сценариев</CardTitle>
+          <CardTitle>Script templates</CardTitle>
           <CardDescription>
-            Обновление или пересоздание системных шаблонов в базе данных
+            Updating or re-creating system templates in a database
           </CardDescription>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-3">
@@ -83,7 +83,7 @@ export function AdminMaintenancePage() {
             ) : (
               <RefreshCw className="h-4 w-4" />
             )}
-            Обновить шаблоны
+            Update templates
           </Button>
           <Button
             variant="outline"
@@ -96,16 +96,16 @@ export function AdminMaintenancePage() {
             ) : (
               <RefreshCw className="h-4 w-4" />
             )}
-            Пересоздать шаблоны
+            Recreate templates
           </Button>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Папки ботов</CardTitle>
+          <CardTitle>Bot folders</CardTitle>
           <CardDescription>
-            Удаление осиротевших папок в каталоге bots/ без проекта в базе данных
+            Deleting orphaned folders in the bots/ directory without a project in the database
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -120,7 +120,7 @@ export function AdminMaintenancePage() {
             ) : (
               <Trash2 className="h-4 w-4" />
             )}
-            Очистить осиротевшие папки
+            Clean up orphaned folders
           </Button>
         </CardContent>
       </Card>

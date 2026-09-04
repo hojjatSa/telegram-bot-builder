@@ -32,7 +32,7 @@ export function DesktopTogglePropertiesButton({ propertiesVisible, onClick }: De
           ? 'bg-gradient-to-br from-pink-600 to-pink-500 text-white shadow-md shadow-pink-500/30 hover:shadow-lg hover:shadow-pink-500/40'
           : 'bg-slate-500/5 dark:bg-slate-700/15 hover:bg-slate-300/40 dark:hover:bg-slate-600/50 text-slate-600 dark:text-slate-400'
       )}
-      title={propertiesVisible ? 'Скрыть панель свойств' : 'Показать панель свойств'}
+      title={propertiesVisible ? "Hide Properties Panel" : "Show properties panel"}
       data-testid="button-toggle-properties"
     >
       <Sliders className="w-3.5 h-3.5" />

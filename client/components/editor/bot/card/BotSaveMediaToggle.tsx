@@ -88,7 +88,7 @@ export function BotSaveMediaToggle({
       setLocalEnabled(saveIncomingMedia === 1);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить настройку сохранения медиа',
+        description: "Failed to update media save setting",
         variant: 'destructive',
       });
     },

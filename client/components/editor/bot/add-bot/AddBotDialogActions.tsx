@@ -68,7 +68,7 @@ export function AddBotDialogActions({
         className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-200 text-sm sm:text-base"
         data-testid="button-add-bot"
       >
-        {isParsingBot ? 'Проверка...' : createBotMutation.isPending ? 'Добавление...' : 'Добавить бота'}
+        {isParsingBot ? "Examination..." : createBotMutation.isPending ? "Adding..." : "Add a bot"}
       </Button>
     </div>
   );

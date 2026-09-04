@@ -52,15 +52,15 @@ export function useDeleteUser(params: UseDeleteUserParams) {
       }, 100);
 
       toast({
-        title: 'Пользователь удалён',
-        description: 'Данные пользователя успешно удалены',
+        title: "User deleted",
+        description: "User data successfully deleted",
       });
     },
     onError: (error) => {
       console.error('User deletion failed:', error);
       toast({
         title: 'Delete failed',
-        description: 'Не удалось удалить пользователя. Проверьте консоль для подробностей.',
+        description: "Failed to delete user. Check your console for details.",
         variant: 'destructive',
       });
     },

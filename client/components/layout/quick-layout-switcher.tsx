@@ -56,7 +56,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'default',
     name: 'Стандартный',
-    description: 'Заголовок сверху, боковая панель слева, свойства справа',
+    description: "Header on top, sidebar on left, properties on right",
     icon: <Monitor className="w-5 h-5" />,
     config: {
       headerPosition: 'top',
@@ -80,7 +80,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'header-bottom',
     name: 'Заголовок снизу',
-    description: 'Необычный макет с заголовком внизу экрана',
+    description: "Unusual layout with a title at the bottom of the screen",
     icon: <ArrowDown className="w-5 h-5" />,
     config: {
       headerPosition: 'bottom',
@@ -104,7 +104,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'sidebar-right',
     name: 'Боковая панель справа',
-    description: 'Боковая панель справа, свойства слева',
+    description: "Sidebar on the right, properties on the left",
     icon: <ArrowRight className="w-5 h-5" />,
     config: {
       headerPosition: 'top',
@@ -128,7 +128,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'header-left',
     name: 'Заголовок слева',
-    description: 'Вертикальный заголовок слева, компактный макет',
+    description: "Vertical left header, compact layout",
     icon: <ArrowLeft className="w-5 h-5" />,
     config: {
       headerPosition: 'left',
@@ -152,7 +152,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'compact',
     name: 'Компактный',
-    description: 'Минимальные размеры для больших экранов',
+    description: "Minimum sizes for large screens",
     icon: <Tablet className="w-5 h-5" />,
     config: {
       headerPosition: 'top',
@@ -176,7 +176,7 @@ const LAYOUT_PRESETS: QuickLayoutPreset[] = [
   {
     id: 'mobile',
     name: 'Мобильный',
-    description: 'Оптимизированный для мобильных устройств',
+    description: "Optimized for mobile devices",
     icon: <Smartphone className="w-5 h-5" />,
     config: {
       headerPosition: 'top',
@@ -257,23 +257,23 @@ const QuickLayoutSwitcher: React.FC<QuickLayoutSwitcherProps> = ({
       <DialogTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
           <Layout className="w-4 h-4" />
-          Быстрая настройка
+          Quick setup
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-4xl">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Grid className="w-5 h-5" />
-            Быстрая настройка макета
+            Quick layout customization
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Выберите готовый макет для быстрой настройки интерфейса
+            Choose a ready-made layout to quickly customize the interface
           </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4">
           <p className="text-sm text-muted-foreground">
-            Выберите готовый макет для быстрой настройки интерфейса
+            Choose a ready-made layout to quickly customize the interface
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -295,7 +295,7 @@ const QuickLayoutSwitcher: React.FC<QuickLayoutSwitcherProps> = ({
                     </CardTitle>
                     {selectedPreset === preset.id && (
                       <Badge variant="default" className="text-xs">
-                        Выбран
+                        Selected
                       </Badge>
                     )}
                   </div>
@@ -308,7 +308,7 @@ const QuickLayoutSwitcher: React.FC<QuickLayoutSwitcherProps> = ({
                     
                     <div className="space-y-2">
                       <div className="text-xs font-medium text-muted-foreground">
-                        Предпросмотр:
+                        Preview:
                       </div>
                       {preset.preview}
                     </div>
@@ -317,15 +317,15 @@ const QuickLayoutSwitcher: React.FC<QuickLayoutSwitcherProps> = ({
                     
                     <div className="space-y-1 text-xs text-muted-foreground">
                       <div className="flex justify-between">
-                        <span>Заголовок:</span>
+                        <span>Heading:</span>
                         <span className="capitalize">{preset.config.headerPosition}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Боковая панель:</span>
+                        <span>Sidebar:</span>
                         <span className="capitalize">{preset.config.sidebarPosition}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Свойства:</span>
+                        <span>Properties:</span>
                         <span className="capitalize">{preset.config.propertiesPosition}</span>
                       </div>
                     </div>
@@ -340,10 +340,10 @@ const QuickLayoutSwitcher: React.FC<QuickLayoutSwitcherProps> = ({
               <Layout className="w-5 h-5 text-blue-600 mt-0.5" />
               <div>
                 <h4 className="font-medium text-blue-900 dark:text-blue-100">
-                  Совет по использованию
+                  Tips for use
                 </h4>
                 <p className="text-sm text-blue-700 dark:text-blue-300 mt-1">
-                  Выберите макет и нажмите на него для применения. Вы можете в любое время вернуться к настройкам и выбрать другой вариант.
+                  Select a layout and click on it to apply. You can return to settings at any time and select a different option.
                 </p>
               </div>
             </div>

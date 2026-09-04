@@ -79,7 +79,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
         <CompactInlineEditor
           value={formData.messageText}
           onChange={(val) => onChange({ messageText: val })}
-          placeholder="Введите текст рассылки..."
+          placeholder={"Enter your newsletter text..."}
           showStats
         />
         <BroadcastValidationAlerts validation={validation} showTextCounter showMessages={false} />
@@ -104,7 +104,7 @@ export function StepMessage({ projectId, formData, onChange, onNext, onBack }: S
 
       {/* Прикрепление медиафайлов — переиспользуем MultiMediaSelector из панели свойств */}
       <div className="space-y-2">
-        <p className="text-sm font-medium">Медиафайл (необязательно)</p>
+        <p className="text-sm font-medium">Media file (optional)</p>
         <div className="rounded-xl border border-pink-200/40 dark:border-pink-800/40 bg-gradient-to-br from-pink-50/40 to-rose-50/20 dark:from-pink-950/30 dark:to-rose-900/20 p-3">
           <MultiMediaSelector
             projectId={projectId}

@@ -86,12 +86,12 @@ export function VersionRow({ version, projectId, versionNumber, isLatest, isRest
             <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 mt-0.5">
               {isManual && (
                 <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 shrink-0 whitespace-nowrap">
-                  чекпоинт
+                  checkpoint
                 </span>
               )}
               {isLatest && (
                 <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0 whitespace-nowrap">
-                  последняя
+                  last
                 </span>
               )}
               <span className="text-xs text-muted-foreground whitespace-nowrap shrink-0">
@@ -112,7 +112,7 @@ export function VersionRow({ version, projectId, versionNumber, isLatest, isRest
               size="icon"
               className="h-8 w-8"
               onClick={() => setShowDiff((v) => !v)}
-              title="Сравнить с текущим"
+              title={"Compare with current"}
             >
               <GitCompare className="h-3.5 w-3.5" />
             </Button>
@@ -126,7 +126,7 @@ export function VersionRow({ version, projectId, versionNumber, isLatest, isRest
             title={compact ? 'Restore' : undefined}
           >
             <RotateCcw className={compact ? 'h-3.5 w-3.5' : 'h-3.5 w-3.5 mr-1.5'} />
-            {!compact && (isRestoring ? 'Откат…' : 'Restore')}
+            {!compact && (isRestoring ? "Rollback..." : 'Restore')}
           </Button>
         </div>
       </div>

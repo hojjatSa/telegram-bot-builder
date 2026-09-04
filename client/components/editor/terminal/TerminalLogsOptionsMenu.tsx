@@ -69,11 +69,11 @@ export function TerminalLogsOptionsMenu({
       <DropdownMenuTrigger asChild>
         <Button type="button" variant="outline" size="sm" className="h-8 gap-1.5 text-xs shrink-0">
           <MoreHorizontal className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">Опции</span>
+          <span className="hidden sm:inline">Options</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-44">
-        <DropdownMenuLabel className="text-xs">Фильтр</DropdownMenuLabel>
+        <DropdownMenuLabel className="text-xs">Filter</DropdownMenuLabel>
         {FILTERS.map(({ label, value }) => (
           <DropdownMenuItem key={value} onClick={() => onFilterChange(value)}>
             {label}{filter === value ? ' ✓' : ''}
@@ -99,7 +99,7 @@ export function TerminalLogsOptionsMenu({
           <>
             <DropdownMenuSeparator />
             <DropdownMenuLabel className="text-xs">Copy</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => onCopy('text')}>Текст</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onCopy('text')}>Text</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onCopy('json')}>JSON</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onCopy('csv')}>CSV</DropdownMenuItem>
           </>
@@ -108,7 +108,7 @@ export function TerminalLogsOptionsMenu({
           <>
             <DropdownMenuSeparator />
             <DropdownMenuLabel className="text-xs">Download</DropdownMenuLabel>
-            <DropdownMenuItem onClick={() => onSave('text')}>Текст</DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onSave('text')}>Text</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onSave('json')}>JSON</DropdownMenuItem>
             <DropdownMenuItem onClick={() => onSave('csv')}>CSV</DropdownMenuItem>
           </>

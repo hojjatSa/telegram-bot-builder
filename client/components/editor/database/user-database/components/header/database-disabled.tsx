@@ -21,15 +21,15 @@ export function DatabaseDisabled(): React.JSX.Element {
         </div>
         <div>
           <h3 className="text-xl font-bold text-red-900 dark:text-red-100 mb-2">
-            База данных выключена
+            Database disabled
           </h3>
           <p className="text-red-700 dark:text-red-300 text-sm">
-            Включите базу данных с помощью переключателя выше, чтобы начать сохранять данные пользователей и просматривать статистику.
+            Enable the database using the switch above to start saving user data and viewing statistics.
           </p>
         </div>
         <div className="pt-2">
           <p className="text-xs text-red-600/80 dark:text-red-400/80">
-            Пока база данных выключена, бот продолжает работать, но данные пользователей не сохраняются.
+            While the database is turned off, the bot continues to work, but user data is not saved.
           </p>
         </div>
       </div>

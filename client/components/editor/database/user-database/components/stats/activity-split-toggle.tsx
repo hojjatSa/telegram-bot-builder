@@ -26,8 +26,8 @@ export interface ActivitySplitToggleProps {
  * Конфигурация кнопок переключателя
  */
 const MODES: Array<{ mode: ActivitySplitMode; title: string; Icon: React.ElementType }> = [
-  { mode: 'total', title: 'Все сообщения',              Icon: MessageSquare  },
-  { mode: 'split', title: 'Входящие и исходящие',       Icon: ArrowLeftRight },
+  { mode: 'total', title: "All messages",              Icon: MessageSquare  },
+  { mode: 'split', title: "Incoming and outgoing",       Icon: ArrowLeftRight },
 ];
 
 /**

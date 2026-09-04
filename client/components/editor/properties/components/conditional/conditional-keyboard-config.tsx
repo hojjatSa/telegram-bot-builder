@@ -54,7 +54,7 @@ export function ConditionalKeyboardConfig({
     <div className="space-y-3 border-t border-purple-200/30 dark:border-purple-800/30 pt-4">
       <div className="flex flex-col gap-3">
         <Label className="text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wide">
-          <i className="fas fa-keyboard mr-1.5"></i>Кнопки для условного сообщения
+          <i className="fas fa-keyboard mr-1.5"></i>Buttons for conditional message
         </Label>
         <KeyboardTypeToggles keyboardType={keyboardType} onKeyboardTypeChange={(v) => updateCondition(condition, selectedNode, { keyboardType: v }, onNodeUpdate)} />
       </div>
@@ -65,11 +65,11 @@ export function ConditionalKeyboardConfig({
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 min-w-0">
               <div className="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
-              <span className="text-sm font-semibold text-purple-700 dark:text-purple-300 uppercase truncate">Кнопки ({(condition.buttons || []).length})</span>
+              <span className="text-sm font-semibold text-purple-700 dark:text-purple-300 uppercase truncate">Buttons ({(condition.buttons || []).length})</span>
             </div>
-            <UIButton size="sm" variant="default" onClick={handleAddButton} title="Добавить кнопку"
+            <UIButton size="sm" variant="default" onClick={handleAddButton} title={"Add a button"}
               className="text-xs bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 dark:from-purple-500 dark:to-purple-600 h-8 flex-shrink-0">
-              <i className="fas fa-plus"></i><span className="hidden sm:inline ml-1.5">Добавить кнопку</span>
+              <i className="fas fa-plus"></i><span className="hidden sm:inline ml-1.5">Add a button</span>
             </UIButton>
           </div>
           <ConditionalButtonsList condition={condition} selectedNode={selectedNode} getAllNodesFromAllSheets={getAllNodesFromAllSheets}

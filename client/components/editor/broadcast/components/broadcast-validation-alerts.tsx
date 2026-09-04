@@ -38,8 +38,8 @@ export function BroadcastValidationAlerts({
     <div className="space-y-2">
       {showTextCounter && (
         <p className={`text-xs text-right ${isOverLimit ? 'text-destructive font-medium' : 'text-muted-foreground'}`}>
-          {plainTextLength} / {textLimit} символов
-          {mediaCount > 0 ? ' (подпись к медиа)' : ''}
+          {plainTextLength} / {textLimit} characters
+          {mediaCount > 0 ? "(media caption)" : ''}
           {mediaCount > 0 && ` · файлов: ${mediaCount}`}
           {buttonCount > 0 && ` · кнопок: ${buttonCount}`}
         </p>

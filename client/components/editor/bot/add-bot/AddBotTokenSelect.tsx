@@ -50,7 +50,7 @@ export function AddBotTokenSelect({ tokens, selectedTokenId, onSelect }: AddBotT
   return (
     <div className="space-y-2">
       <Label className="text-sm sm:text-base font-semibold">
-        Выберите существующий токен
+        Select an existing token
       </Label>
       <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
         {tokens.map(token => {

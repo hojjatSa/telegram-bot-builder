@@ -50,7 +50,7 @@ export function MultiSelectionToolbar({
     <div className="absolute left-1/2 -translate-x-1/2 bottom-20 z-40 flex items-center gap-2 px-3 py-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/70 dark:border-slate-600/70 shadow-xl pointer-events-auto">
       {/* Счётчик выделенных узлов */}
       <span className="text-xs font-semibold text-slate-700 dark:text-slate-200 px-2">
-        {count} узлов
+        {count} nodes
       </span>
 
       <div className="h-5 w-px bg-slate-300/60 dark:bg-slate-600/60" />
@@ -59,7 +59,7 @@ export function MultiSelectionToolbar({
       <button
         onClick={onDelete}
         className="h-8 px-3 rounded-lg text-xs font-medium bg-red-50 hover:bg-red-100 dark:bg-red-500/10 dark:hover:bg-red-500/20 text-red-600 dark:text-red-400 transition-colors flex items-center gap-1.5"
-        title="Удалить выделенные узлы (Delete)"
+        title={"Delete selected nodes (Delete)"}
       >
         <i className="fas fa-trash text-xs" />
         Delete
@@ -69,7 +69,7 @@ export function MultiSelectionToolbar({
       <button
         onClick={onCopy}
         className="h-8 px-3 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 transition-colors flex items-center gap-1.5"
-        title="Копировать выделенные узлы в буфер (Ctrl+Shift+C)"
+        title={"Copy selected nodes to clipboard (Ctrl+Shift+C)"}
       >
         <i className="fas fa-clipboard text-xs" />
         Copy

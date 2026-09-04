@@ -20,7 +20,7 @@ export function PopularButtonsTooltip({ active, payload }: {
   return (
     <div className="bg-popover border rounded-md px-2 py-1.5 text-xs shadow-md max-w-[220px]">
       <div className="opacity-80 break-words mb-0.5">{item.label}</div>
-      <div className="font-bold tabular-nums">{item.count} нажатий</div>
+      <div className="font-bold tabular-nums">{item.count} clicks</div>
     </div>
   );
 }

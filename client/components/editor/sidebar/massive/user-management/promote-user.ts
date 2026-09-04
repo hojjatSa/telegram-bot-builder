@@ -8,7 +8,7 @@ import { ComponentDefinition } from "@shared/schema";
 export const promoteUser: ComponentDefinition = {
   id: 'promote-user',
   name: 'Promote Administrator',
-  description: 'Дать права администратора',
+  description: "Give administrator rights",
   icon: 'fas fa-crown',
   color: 'bg-yellow-100 text-yellow-600',
   type: 'promote_user',

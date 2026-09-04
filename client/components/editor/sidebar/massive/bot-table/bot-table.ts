@@ -9,7 +9,7 @@ import { ComponentDefinition } from '@shared/schema';
 export const botTableNode: ComponentDefinition = {
   id: 'bot-table-node',
   name: 'Table',
-  description: 'Чтение, запись и обновление данных в таблицах проекта',
+  description: "Reading, writing and updating data in project tables",
   icon: 'fas fa-table',
   color: 'bg-amber-100 text-amber-600',
   type: 'bot_table' as any,

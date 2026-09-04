@@ -36,7 +36,7 @@ export function DescriptionField({
         <div className="relative group">
           <i className="fas fa-info-circle text-blue-500 dark:text-blue-400 text-xs sm:text-sm cursor-help"></i>
           <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block w-full sm:w-48 max-w-xs sm:max-w-none p-2 text-xs bg-blue-900 dark:bg-slate-800 text-blue-100 dark:text-slate-200 rounded-lg shadow-lg z-50">
-            Используется для меню команд в @BotFather
+            Used for the command menu in @BotFather
             <div className="absolute left-3 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-blue-900 dark:border-t-slate-800"></div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export function DescriptionField({
       <Input
         value={descriptionValue}
         onChange={(e) => onNodeUpdate(selectedNodeId, { description: e.target.value })}
-        placeholder="Например: Начать работу с ботом"
+        placeholder={"For example: Get started with the bot"}
         className="text-sm border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200/50"
         data-testid="input-description"
       />

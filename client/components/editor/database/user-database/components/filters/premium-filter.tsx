@@ -37,7 +37,7 @@ export function PremiumFilter({ value, onChange }: PremiumFilterProps): React.JS
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="all">All users</SelectItem>
-        <SelectItem value="true">Только Premium</SelectItem>
+        <SelectItem value="true">Premium only</SelectItem>
         <SelectItem value="false">Standard</SelectItem>
       </SelectContent>
     </Select>

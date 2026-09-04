@@ -35,7 +35,7 @@ export function TagsSection({ user }: TagsSectionProps): React.JSX.Element | nul
       <div className="space-y-2 sm:space-y-3">
         <div className="flex items-center gap-1.5 sm:gap-2">
           <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
-          <Label className="text-xs sm:text-sm font-semibold">Теги</Label>
+          <Label className="text-xs sm:text-sm font-semibold">Tags</Label>
         </div>
         <div className="flex flex-wrap gap-1 sm:gap-1.5 pl-5 sm:pl-6">
           {user.tags.map((tag, index) => (

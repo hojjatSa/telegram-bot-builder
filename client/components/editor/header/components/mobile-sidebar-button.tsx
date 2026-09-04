@@ -29,7 +29,7 @@ export function MobileSidebarButton({ onClick, className }: MobileSidebarButtonP
         'transition-all duration-200 hover:shadow-md hover:shadow-blue-500/25',
         className
       )}
-      title="Открыть панель компонентов"
+      title={"Open Components Panel"}
       data-testid="button-mobile-components"
     >
       <Menu className="w-4 h-4 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors duration-200" />

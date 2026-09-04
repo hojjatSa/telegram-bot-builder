@@ -76,7 +76,7 @@ export function SaveMediaToggle({ projectId, tokenId, saveIncomingMedia }: SaveM
       setLocalEnabled(saveIncomingMedia === 1);
       toast({
         title: 'Error',
-        description: 'Не удалось обновить настройку сохранения медиа',
+        description: "Failed to update media save setting",
         variant: 'destructive',
       });
     },
@@ -94,7 +94,7 @@ export function SaveMediaToggle({ projectId, tokenId, saveIncomingMedia }: SaveM
           htmlFor={`save-media-db-${tokenId}`}
           className="text-sm font-medium cursor-pointer"
         >
-          {localEnabled ? 'Save incoming photos' : 'Фото не сохраняются'}
+          {localEnabled ? 'Save incoming photos' : "Photos are not saved"}
         </Label>
         <IncomingMediaStorageHint
           projectId={projectId}

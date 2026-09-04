@@ -90,7 +90,7 @@ export function FileCardPlaceholder({
           </Button>
         )}
         {file.fileId && (
-          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => onCopy(file.fileId!)} title="Копировать file_id">
+          <Button variant="ghost" size="icon" className="h-6 w-6" onClick={() => onCopy(file.fileId!)} title={"Copy file_id"}>
             <Copy className="h-3 w-3" />
           </Button>
         )}

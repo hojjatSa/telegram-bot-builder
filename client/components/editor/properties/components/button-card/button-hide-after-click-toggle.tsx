@@ -51,7 +51,7 @@ export function ButtonHideAfterClickToggle({
           </div>
           <div className="min-w-0 flex-1">
             <Label className="text-xs sm:text-sm font-semibold text-red-900 dark:text-red-100 cursor-pointer block">
-              Скрыть после использования
+              Hide after use
             </Label>
           </div>
         </div>

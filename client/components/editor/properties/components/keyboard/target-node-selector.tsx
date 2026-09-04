@@ -49,7 +49,7 @@ export function TargetNodeSelector({
 
   return (
     <div>
-      <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Выберите экран</Label>
+      <Label className="text-xs font-medium text-blue-700 dark:text-blue-300 mb-1 block">Select screen</Label>
       <Select value={option.target || ''} onValueChange={updateTarget}>
         <SelectTrigger className="text-xs bg-white/60 dark:bg-slate-950/60 border border-blue-300/40 dark:border-blue-700/40 hover:border-blue-400/60 focus:border-blue-500 focus:ring-blue-400/30">
           <SelectValue placeholder="⊘ Not selected" />
@@ -73,7 +73,7 @@ export function TargetNodeSelector({
       </Select>
       <Input value={option.target || ''} onChange={(e) => updateTarget(e.target.value)}
         className="text-xs border-blue-200 dark:border-blue-700 focus:border-blue-500 focus:ring-blue-200 mt-1"
-        placeholder="или введите ID экрана вручную" />
+        placeholder={"or enter screen ID manually"} />
     </div>
   );
 }
