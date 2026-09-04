@@ -12,6 +12,11 @@ import { startFlushTimer, flushBuffer } from "./botLogsBuffer";
 import { storage } from "../storages/storage";
 import { TerminalMessage } from "./TerminalMessage";
 import { applyWebSocketSession } from "../websocket/applyWebSocketSession";
+import {
+  getGolnoorUserAccess,
+  isGolnoorAccessControlEnabled,
+} from "../fork/access-control/service";
+import type { TelegramUserDB } from "@shared/schema";
 import "express-session";
 
 /**
@@ -61,6 +66,28 @@ export function initializeTerminalWebSocket(): WebSocketServer {
         return;
       }
 
+      const session = (request as { session?: { telegramUser?: TelegramUserDB } }).session;
+      const sessionUser = session?.telegramUser;
+      const userId = sessionUser?.id;
+
+      if (isGolnoorAccessControlEnabled()) {
+        if (userId == null) {
+          ws.close(4003, 'Authentication required');
+          return;
+        }
+        try {
+          const access = await getGolnoorUserAccess(Number(userId), { createIfMissing: true });
+          if (!access.allowed) {
+            ws.close(4003, 'Access denied');
+            return;
+          }
+        } catch (error) {
+          console.error('[Terminal WS] Access check failed:', error);
+          ws.close(1011, 'Access check failed');
+          return;
+        }
+      }
+
       const urlParams = new URLSearchParams(request.url?.split("?")[1]);
       const projectIdStr = urlParams.get("projectId");
       const tokenIdStr = urlParams.get("tokenId");
@@ -75,10 +102,8 @@ export function initializeTerminalWebSocket(): WebSocketServer {
       const tokenId = parseInt(tokenIdStr);
 
       // Режим подписки на все проекты: projectId=0
-      // В single-tenant режиме без авторизации используем глобальный ключ
+      // В single-tenant режиме без авторизации используем глобальный ключ только outside production access control.
       if (projectId === 0) {
-        const session = (request as any).session;
-        const userId: number | undefined = session?.telegramUser?.id;
         const allKey = userId ? `user_${userId}` : `user_global`;
         registerConnection(allKey, ws);
 
@@ -99,6 +124,17 @@ export function initializeTerminalWebSocket(): WebSocketServer {
           console.error(`[Terminal WS] Ошибка соединения подписки key=${allKey}:`, err);
           removeConnection(allKey, ws);
         });
+        return;
+      }
+
+      if (userId != null) {
+        const hasAccess = await storage.hasProjectAccess(projectId, userId);
+        if (!hasAccess) {
+          ws.close(4003, 'No access to project');
+          return;
+        }
+      } else if (isGolnoorAccessControlEnabled()) {
+        ws.close(4003, 'Authentication required');
         return;
       }
 
