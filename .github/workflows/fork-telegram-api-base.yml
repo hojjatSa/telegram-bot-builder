@@ -14,6 +14,10 @@ on:
       - 'lib/templates/config/**'
       - 'lib/templates/typed-renderer.ts'
       - 'lib/bot-generator.ts'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'requirements.txt'
+      - '.env.example'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/fork-telegram-api-base.yml'
@@ -30,6 +34,10 @@ on:
       - 'lib/templates/config/**'
       - 'lib/templates/typed-renderer.ts'
       - 'lib/bot-generator.ts'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'requirements.txt'
+      - '.env.example'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/fork-telegram-api-base.yml'
@@ -62,6 +70,29 @@ jobs:
 
       - name: Load fork server registry
         run: node --import tsx -e "import('./server/fork/index.ts')"
+
+      - name: Validate compose configuration
+        run: docker compose -f docker-compose.yml config >/dev/null
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
+          DATABASE_URL: postgresql://test:test@db:5432/test
+          PGHOST: db
+          PGPORT: '5432'
+          PGDATABASE: test
+          PGUSER: test
+          PGPASSWORD: test
+          PGSSLMODE: disable
+          SESSION_SECRET: test-test-test-test-test-test-test-test
+          ADMIN_API_KEY: test-test-test-test-test-test-test-test
+          NODE_ENV: production
+          PORT: '5000'
+          HOST: 0.0.0.0
+          REDIS_URL: redis://redis:6379
+          TELEGRAM_API_BASE_URL: https://example.invalid
+          TELEGRAM_PROXY_URL: ''
+          TELEGRAM_JWKS_URL: https://example.invalid/oauth/jwks
 
       - name: Build client
         run: npm run build:client
