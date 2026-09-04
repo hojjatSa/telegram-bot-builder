@@ -9,11 +9,17 @@ on:
       - 'server/utils/telegram-proxy.ts'
       - 'server/fork/**'
       - 'server/admin/setup-admin-routes.ts'
+      - 'server/routes/auth/handlers/telegramAuthHandler.ts'
+      - 'server/routes/auth/handlers/devLoginHandler.ts'
+      - 'server/routes/auth/handlers/meHandler.ts'
+      - 'server/telegram/auth-middleware.ts'
       - 'client/fork/**'
       - 'client/components/admin/pages/admin-overview.tsx'
+      - 'client/components/admin/pages/admin-users.tsx'
       - 'lib/templates/config/**'
       - 'lib/templates/typed-renderer.ts'
       - 'lib/bot-generator.ts'
+      - 'scripts/check-golnoor-access-control.mjs'
       - 'Dockerfile'
       - 'docker-compose.yml'
       - 'requirements.txt'
@@ -29,11 +35,17 @@ on:
       - 'server/utils/telegram-proxy.ts'
       - 'server/fork/**'
       - 'server/admin/setup-admin-routes.ts'
+      - 'server/routes/auth/handlers/telegramAuthHandler.ts'
+      - 'server/routes/auth/handlers/devLoginHandler.ts'
+      - 'server/routes/auth/handlers/meHandler.ts'
+      - 'server/telegram/auth-middleware.ts'
       - 'client/fork/**'
       - 'client/components/admin/pages/admin-overview.tsx'
+      - 'client/components/admin/pages/admin-users.tsx'
       - 'lib/templates/config/**'
       - 'lib/templates/typed-renderer.ts'
       - 'lib/bot-generator.ts'
+      - 'scripts/check-golnoor-access-control.mjs'
       - 'Dockerfile'
       - 'docker-compose.yml'
       - 'requirements.txt'
@@ -68,7 +80,11 @@ jobs:
           node --import tsx --test
           server/utils/telegram-api-base.test.ts
           server/fork/telegram-gateway/diagnostics.test.ts
+          server/fork/access-control/service.test.ts
           lib/templates/config/telegram-api-base-url.test.ts
+
+      - name: Guard fork access-control hooks
+        run: node scripts/check-golnoor-access-control.mjs
 
       - name: Load fork server registry
         run: node --import tsx -e "import('./server/fork/index.ts')"
@@ -95,6 +111,7 @@ jobs:
           TELEGRAM_API_BASE_URL: https://example.invalid
           TELEGRAM_PROXY_URL: ''
           TELEGRAM_JWKS_URL: https://example.invalid/oauth/jwks
+          GOLNOOR_ACCESS_CONTROL_ENABLED: 'true'
 
       - name: Build client
         run: npm run build:client
