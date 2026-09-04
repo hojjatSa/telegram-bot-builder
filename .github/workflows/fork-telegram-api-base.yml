@@ -12,11 +12,13 @@ on:
       - 'client/fork/**'
       - 'client/components/admin/pages/admin-overview.tsx'
       - 'lib/templates/config/**'
+      - 'lib/templates/typed-renderer.ts'
+      - 'lib/bot-generator.ts'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/fork-telegram-api-base.yml'
   push:
-    branches: [main]
+    branches: [golnoor]
     paths:
       - 'server/utils/telegram-api-base.ts'
       - 'server/utils/telegram-api-base.test.ts'
@@ -26,6 +28,8 @@ on:
       - 'client/fork/**'
       - 'client/components/admin/pages/admin-overview.tsx'
       - 'lib/templates/config/**'
+      - 'lib/templates/typed-renderer.ts'
+      - 'lib/bot-generator.ts'
       - 'package.json'
       - 'package-lock.json'
       - '.github/workflows/fork-telegram-api-base.yml'
