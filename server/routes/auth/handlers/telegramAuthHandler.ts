@@ -12,6 +12,10 @@ import { storage } from "../../../storages/storage";
 import { regenerateSession, saveSession } from "../utils/sessionUtils";
 import { verifyTelegramIdToken, getTelegramUserIdFromToken } from "../utils/telegramJwks";
 import { isStrictAuthMode } from "../utils/isStrictAuthMode";
+import {
+    accessDeniedPayload,
+    getGolnoorUserAccess,
+} from "../../../fork/access-control/service";
 
 /**
  * Обрабатывает данные авторизации от Telegram.
@@ -57,6 +61,9 @@ export async function handleTelegramAuth(req: Request, res: Response): Promise<v
             }
         }
 
+        // We intentionally create/update the verified Telegram account before the
+        // approval check. New users therefore appear in Admin > Accounts as
+        // pending, but no authenticated session is issued until an admin allows them.
         const userData = await storage.getTelegramUserOrCreate({
             id,
             firstName: first_name,
@@ -65,6 +72,13 @@ export async function handleTelegramAuth(req: Request, res: Response): Promise<v
             photoUrl: photo_url,
             authDate: auth_date ? parseInt(auth_date.toString()) : undefined,
         });
+
+        const access = await getGolnoorUserAccess(userData.id, { createIfMissing: true });
+        if (!access.allowed) {
+            const denied = accessDeniedPayload(access.status);
+            res.status(403).json({ success: false, ...denied });
+            return;
+        }
 
         if (!req.session) {
             res.status(500).json({ success: false, error: "Сессия не инициализирована" });
