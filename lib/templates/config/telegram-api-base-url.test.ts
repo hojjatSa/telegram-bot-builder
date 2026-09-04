@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { generateConfig } from './config.renderer';
+import { generateConfig } from '../typed-renderer';
 import { validParamsAllDisabled } from './config.fixture';
 
 describe('Telegram API base URL config extension', () => {
