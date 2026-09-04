@@ -9,6 +9,24 @@ const TRANSLATE_ENDPOINT = 'https://translate.googleapis.com/translate_a/single'
 const CONCURRENCY = 8;
 const REQUEST_TIMEOUT_MS = 8000;
 
+// Keep common/high-visibility UI labels deterministic instead of relying on
+// machine translation wording. The map only contains presentation copy.
+const EXACT_TRANSLATIONS = new Map([
+  ['Боты', 'Bots'],
+  ['бот', 'bot'],
+  ['бота', 'bots'],
+  ['ботов', 'bots'],
+  ['Перезапустить', 'Restart'],
+  ['Запустить офлайн', 'Start offline'],
+  ['Лист', 'Sheet'],
+  ['Лист 1', 'Sheet 1'],
+  ['Редактор', 'Editor'],
+  ['Сценарии', 'Scenarios'],
+  ['Мы в Telegram:', 'We are on Telegram:'],
+  ['Поиск компонентов...', 'Search components...'],
+  ['Поиск компонентов…', 'Search components…'],
+]);
+
 // Only keys that are overwhelmingly presentation/UI copy.
 // Do not include generic keys such as name, value, category or text because
 // they can participate in application behavior.
@@ -85,6 +103,35 @@ function propertyName(node, sourceFile) {
   return node.getText(sourceFile).replace(/^['"]|['"]$/g, '');
 }
 
+function isInsideRenderedJsxExpression(node, sourceFile) {
+  let current = node.parent;
+  while (current && !ts.isSourceFile(current)) {
+    // A static Cyrillic literal inside a JSX expression is presentation copy in
+    // this client. This covers ternaries such as title={online ? 'Restart' : ...}
+    // that the previous pass missed because the literal's direct parent was a
+    // ConditionalExpression rather than the JSX attribute/expression itself.
+    if (ts.isJsxExpression(current)) return true;
+
+    // Keep direct quoted JSX attributes restricted to known UI attributes.
+    if (ts.isJsxAttribute(current)) {
+      return UI_JSX_ATTRIBUTES.has(current.name.getText(sourceFile));
+    }
+
+    // Do not walk out of a function/class body looking for a distant JSX owner.
+    if (
+      ts.isFunctionDeclaration(current)
+      || ts.isFunctionExpression(current)
+      || ts.isArrowFunction(current)
+      || ts.isMethodDeclaration(current)
+      || ts.isClassDeclaration(current)
+    ) {
+      return false;
+    }
+    current = current.parent;
+  }
+  return false;
+}
+
 function isUiFacingString(node, sourceFile) {
   if (!CYRILLIC.test(node.text)) return false;
   const parent = node.parent;
@@ -94,6 +141,10 @@ function isUiFacingString(node, sourceFile) {
 
   if (ts.isJsxAttribute(parent)) {
     return UI_JSX_ATTRIBUTES.has(parent.name.getText(sourceFile));
+  }
+
+  if (isInsideRenderedJsxExpression(node, sourceFile)) {
+    return true;
   }
 
   if (ts.isPropertyAssignment(parent)) {
@@ -179,6 +230,9 @@ function restoreCodeTokens(input, tokens) {
 }
 
 async function translateOne(text) {
+  const exact = EXACT_TRANSLATIONS.get(text);
+  if (exact) return exact;
+
   const masked = maskCodeTokens(text);
   const url = `${TRANSLATE_ENDPOINT}?client=gtx&sl=ru&tl=en&dt=t&q=${encodeURIComponent(masked.value)}`;
   let lastError;
