@@ -41,5 +41,9 @@ jobs:
           tags: |
             ghcr.io/hojjatsa/telegram-bot-builder:golnoor
             ghcr.io/hojjatsa/telegram-bot-builder:latest-golnoor
+            ghcr.io/hojjatsa/telegram-bot-builder:sha-${{ github.sha }}
+          labels: |
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
