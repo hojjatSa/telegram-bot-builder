@@ -8,6 +8,12 @@ import type { Request, Response } from 'express';
 import { storage } from '../../../storages/storage';
 import { regenerateSession, saveSession } from '../utils/sessionUtils';
 import { isSkipAuthEnabled } from '../utils/isSkipAuthEnabled';
+import {
+  accessDeniedPayload,
+  ensureGolnoorAccessControlSchema,
+  getGolnoorUserAccess,
+  isGolnoorAccessControlEnabled,
+} from '../../../fork/access-control/service';
 
 /**
  * Обрабатывает dev-вход: создаёт/находит пользователя по Telegram ID,
@@ -32,11 +38,22 @@ export async function handleDevLogin(req: Request, res: Response): Promise<void>
       return;
     }
 
+    if (isGolnoorAccessControlEnabled()) {
+      await ensureGolnoorAccessControlSchema();
+    }
+
     const userData = await storage.getTelegramUserOrCreate({
       id: Number(id),
       firstName: String(firstName),
       username: username ? String(username) : undefined,
     });
+
+    const access = await getGolnoorUserAccess(userData.id, { createIfMissing: true });
+    if (!access.allowed) {
+      const denied = accessDeniedPayload(access.status);
+      res.status(403).json({ success: false, ...denied });
+      return;
+    }
 
     if (!req.session) {
       res.status(500).json({ success: false, error: 'Сессия не инициализирована' });
