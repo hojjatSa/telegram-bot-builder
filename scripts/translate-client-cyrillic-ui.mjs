@@ -9,8 +9,6 @@ const TRANSLATE_ENDPOINT = 'https://translate.googleapis.com/translate_a/single'
 const CONCURRENCY = 8;
 const REQUEST_TIMEOUT_MS = 8000;
 
-// Keep common/high-visibility UI labels deterministic instead of relying on
-// machine translation wording. The map only contains presentation copy.
 const EXACT_TRANSLATIONS = new Map([
   ['Боты', 'Bots'],
   ['бот', 'bot'],
@@ -27,48 +25,17 @@ const EXACT_TRANSLATIONS = new Map([
   ['Поиск компонентов…', 'Search components…'],
 ]);
 
-// Only keys that are overwhelmingly presentation/UI copy.
-// Do not include generic keys such as name, value, category or text because
-// they can participate in application behavior.
 const UI_PROPERTY_KEYS = new Set([
-  'label',
-  'title',
-  'subtitle',
-  'description',
-  'placeholder',
-  'tooltip',
-  'hint',
-  'helpText',
-  'caption',
-  'heading',
-  'emptyText',
-  'emptyMessage',
-  'errorMessage',
-  'successMessage',
-  'warningMessage',
-  'statusText',
-  'buttonText',
-  'confirmText',
-  'cancelText',
-  'ariaLabel',
-  'displayName',
-  'displayLabel',
-  'groupLabel',
-  'commandDescription',
-  'toastTitle',
-  'toastDescription',
+  'label', 'title', 'subtitle', 'description', 'placeholder', 'tooltip', 'hint',
+  'helpText', 'caption', 'heading', 'emptyText', 'emptyMessage', 'errorMessage',
+  'successMessage', 'warningMessage', 'statusText', 'buttonText', 'confirmText',
+  'cancelText', 'ariaLabel', 'displayName', 'displayLabel', 'groupLabel',
+  'commandDescription', 'toastTitle', 'toastDescription',
 ]);
 
 const UI_JSX_ATTRIBUTES = new Set([
-  'title',
-  'placeholder',
-  'aria-label',
-  'alt',
-  'label',
-  'description',
-  'tooltip',
-  'data-tooltip',
-  'data-title',
+  'title', 'placeholder', 'aria-label', 'alt', 'label', 'description', 'tooltip',
+  'data-tooltip', 'data-title',
 ]);
 
 const UI_VARIABLE_NAME = /(Label|Title|Subtitle|Description|Placeholder|Tooltip|Hint|HelpText|Caption|Heading|EmptyText|EmptyMessage|ErrorMessage|SuccessMessage|WarningMessage|StatusText|ButtonText|ConfirmText|CancelText|DisplayName|DisplayLabel)$/i;
@@ -84,49 +51,28 @@ function listSourceFiles(dir) {
   const result = [];
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      result.push(...listSourceFiles(full));
-      continue;
-    }
-    if (SOURCE_EXTENSIONS.has(path.extname(entry.name)) && !isExcludedFile(full)) {
-      result.push(full);
-    }
+    if (entry.isDirectory()) result.push(...listSourceFiles(full));
+    else if (SOURCE_EXTENSIONS.has(path.extname(entry.name)) && !isExcludedFile(full)) result.push(full);
   }
   return result;
 }
 
 function propertyName(node, sourceFile) {
   if (!node) return '';
-  if (ts.isIdentifier(node) || ts.isStringLiteral(node) || ts.isNumericLiteral(node)) {
-    return node.text;
-  }
+  if (ts.isIdentifier(node) || ts.isStringLiteral(node) || ts.isNumericLiteral(node)) return node.text;
   return node.getText(sourceFile).replace(/^['"]|['"]$/g, '');
 }
 
 function isInsideRenderedJsxExpression(node, sourceFile) {
   let current = node.parent;
   while (current && !ts.isSourceFile(current)) {
-    // A static Cyrillic literal inside a JSX expression is presentation copy in
-    // this client. This covers ternaries such as title={online ? 'Restart' : ...}
-    // that the previous pass missed because the literal's direct parent was a
-    // ConditionalExpression rather than the JSX attribute/expression itself.
     if (ts.isJsxExpression(current)) return true;
-
-    // Keep direct quoted JSX attributes restricted to known UI attributes.
-    if (ts.isJsxAttribute(current)) {
-      return UI_JSX_ATTRIBUTES.has(current.name.getText(sourceFile));
-    }
-
-    // Do not walk out of a function/class body looking for a distant JSX owner.
+    if (ts.isJsxAttribute(current)) return UI_JSX_ATTRIBUTES.has(current.name.getText(sourceFile));
     if (
-      ts.isFunctionDeclaration(current)
-      || ts.isFunctionExpression(current)
-      || ts.isArrowFunction(current)
-      || ts.isMethodDeclaration(current)
+      ts.isFunctionDeclaration(current) || ts.isFunctionExpression(current)
+      || ts.isArrowFunction(current) || ts.isMethodDeclaration(current)
       || ts.isClassDeclaration(current)
-    ) {
-      return false;
-    }
+    ) return false;
     current = current.parent;
   }
   return false;
@@ -135,62 +81,47 @@ function isInsideRenderedJsxExpression(node, sourceFile) {
 function isUiFacingString(node, sourceFile) {
   if (!CYRILLIC.test(node.text)) return false;
   const parent = node.parent;
-
   if (ts.isImportDeclaration(parent) || ts.isExportDeclaration(parent)) return false;
   if (ts.isPropertyAssignment(parent) && parent.name === node) return false;
-
-  if (ts.isJsxAttribute(parent)) {
-    return UI_JSX_ATTRIBUTES.has(parent.name.getText(sourceFile));
-  }
-
-  if (isInsideRenderedJsxExpression(node, sourceFile)) {
-    return true;
-  }
-
-  if (ts.isPropertyAssignment(parent)) {
-    return UI_PROPERTY_KEYS.has(propertyName(parent.name, sourceFile));
-  }
-
-  if (ts.isVariableDeclaration(parent)) {
-    return UI_VARIABLE_NAME.test(parent.name.getText(sourceFile));
-  }
-
+  if (ts.isJsxAttribute(parent)) return UI_JSX_ATTRIBUTES.has(parent.name.getText(sourceFile));
+  if (isInsideRenderedJsxExpression(node, sourceFile)) return true;
+  if (ts.isPropertyAssignment(parent)) return UI_PROPERTY_KEYS.has(propertyName(parent.name, sourceFile));
+  if (ts.isVariableDeclaration(parent)) return UI_VARIABLE_NAME.test(parent.name.getText(sourceFile));
   return false;
 }
 
 const candidates = [];
 const seenLocations = new Set();
-
 for (const file of listSourceFiles(ROOT)) {
   const source = fs.readFileSync(file, 'utf8');
-  const scriptKind = file.endsWith('.tsx') || file.endsWith('.jsx')
-    ? ts.ScriptKind.TSX
-    : ts.ScriptKind.TS;
+  const scriptKind = file.endsWith('.tsx') || file.endsWith('.jsx') ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
   const sourceFile = ts.createSourceFile(file, source, ts.ScriptTarget.Latest, true, scriptKind);
 
-  function addCandidate(start, end, text, kind) {
+  const addCandidate = (start, end, text, kind) => {
     const trimmed = text.trim();
     if (!trimmed || !CYRILLIC.test(trimmed)) return;
     const location = `${file}:${start}:${end}`;
     if (seenLocations.has(location)) return;
     seenLocations.add(location);
     candidates.push({ file, start, end, text, kind });
-  }
+  };
 
-  function visit(node) {
-    // Text literally rendered between JSX tags is presentation copy.
+  const visit = node => {
     if (ts.isJsxText(node) && CYRILLIC.test(node.getText(sourceFile))) {
       addCandidate(node.getStart(sourceFile), node.getEnd(), node.getText(sourceFile), 'jsx');
     } else if (
       (ts.isStringLiteral(node) || ts.isNoSubstitutionTemplateLiteral(node))
       && isUiFacingString(node, sourceFile)
     ) {
-      const kind = ts.isJsxAttribute(node.parent) ? 'jsx-attr' : 'string';
-      addCandidate(node.getStart(sourceFile), node.getEnd(), node.text, kind);
+      addCandidate(
+        node.getStart(sourceFile),
+        node.getEnd(),
+        node.text,
+        ts.isJsxAttribute(node.parent) ? 'jsx-attr' : 'string',
+      );
     }
     ts.forEachChild(node, visit);
-  }
-
+  };
   visit(sourceFile);
 }
 
@@ -209,7 +140,6 @@ function maskCodeTokens(input) {
     /\\[nrt'"`\\]/g,
     /<\/?[A-Za-z][^>]*>/g,
   ];
-
   let value = input;
   for (const pattern of patterns) {
     value = value.replace(pattern, match => {
@@ -223,9 +153,7 @@ function maskCodeTokens(input) {
 
 function restoreCodeTokens(input, tokens) {
   let value = input;
-  for (const [token, original] of tokens) {
-    value = value.split(token).join(original);
-  }
+  for (const [token, original] of tokens) value = value.split(token).join(original);
   return value;
 }
 
@@ -236,8 +164,7 @@ async function translateOne(text) {
   const masked = maskCodeTokens(text);
   const url = `${TRANSLATE_ENDPOINT}?client=gtx&sl=ru&tl=en&dt=t&q=${encodeURIComponent(masked.value)}`;
   let lastError;
-
-  for (let attempt = 1; attempt <= 3; attempt++) {
+  for (let attempt = 1; attempt <= 4; attempt++) {
     try {
       const response = await fetch(url, {
         headers: { 'User-Agent': 'Mozilla/5.0' },
@@ -252,10 +179,10 @@ async function translateOne(text) {
       return restoreCodeTokens(translated, masked.tokens);
     } catch (error) {
       lastError = error;
-      await new Promise(resolve => setTimeout(resolve, attempt * 350));
+      const isRateLimited = String(error?.message || error).includes('HTTP 429');
+      await new Promise(resolve => setTimeout(resolve, isRateLimited ? attempt * 2000 : attempt * 350));
     }
   }
-
   throw lastError;
 }
 
@@ -263,12 +190,10 @@ const translations = new Map();
 let cursor = 0;
 let completed = 0;
 let failures = 0;
-
 async function translationWorker() {
   while (true) {
     const index = cursor++;
     if (index >= uniqueTexts.length) return;
-
     const source = uniqueTexts[index];
     try {
       translations.set(source, await translateOne(source));
@@ -277,14 +202,12 @@ async function translationWorker() {
       translations.set(source, source);
       console.warn(`Skipped translation: ${source.slice(0, 100)} :: ${error?.message || error}`);
     }
-
     completed++;
     if (completed % 100 === 0 || completed === uniqueTexts.length) {
       console.log(`Translated ${completed}/${uniqueTexts.length}; failed=${failures}`);
     }
   }
 }
-
 await Promise.all(Array.from({ length: CONCURRENCY }, () => translationWorker()));
 
 const editsByFile = new Map();
@@ -295,13 +218,10 @@ for (const candidate of candidates) {
 
 let changedFiles = 0;
 let changedStrings = 0;
-
 for (const [file, edits] of editsByFile) {
   let source = fs.readFileSync(file, 'utf8');
-  const sorted = edits.sort((a, b) => b.start - a.start);
   let changed = false;
-
-  for (const edit of sorted) {
+  for (const edit of edits.sort((a, b) => b.start - a.start)) {
     const originalKey = edit.text.trim();
     let translated = translations.get(originalKey);
     if (!translated || translated === originalKey || CYRILLIC.test(translated)) continue;
@@ -309,10 +229,11 @@ for (const [file, edits] of editsByFile) {
     if (edit.kind === 'jsx') {
       const leading = edit.text.match(/^\s*/)?.[0] || '';
       const trailing = edit.text.match(/\s*$/)?.[0] || '';
-      translated = `${leading}${translated.trim()}${trailing}`;
+      // Machine translation can decode entities such as &lt; into a raw '<'.
+      // Raw '<' or '{' inside JSX text is syntax, not text, so escape it.
+      const safeText = translated.trim().replaceAll('<', '&lt;').replaceAll('{', '&#123;');
+      translated = `${leading}${safeText}${trailing}`;
     } else if (edit.kind === 'jsx-attr') {
-      // Quoted JSX attributes cannot use JavaScript backslash escaping.
-      // Use an expression container so quotes/newlines are encoded safely.
       translated = `{${JSON.stringify(translated)}}`;
     } else {
       translated = JSON.stringify(translated);
@@ -322,7 +243,6 @@ for (const [file, edits] of editsByFile) {
     changed = true;
     changedStrings++;
   }
-
   if (changed) {
     fs.writeFileSync(file, source, 'utf8');
     changedFiles++;
