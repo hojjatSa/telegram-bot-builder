@@ -1,12 +1,9 @@
-# Деплой на VPS: сборка образа в GitHub Actions (не на проде),
-# push в GHCR, затем на сервере только pull + up.
-# Хост/ключ — в GitHub Secrets. На сервере ключ restricted:
-# всегда запускает /usr/local/sbin/bot-builder-gh-deploy.sh
-name: Deploy VPS
+# Legacy VPS deployment workflow.
+# Golnoor production is deployed by Coolify, so this workflow is intentionally manual-only
+# to avoid duplicate image builds and failed SSH deploy attempts on every push.
+name: Deploy VPS (manual legacy)
 
 on:
-  push:
-    branches: [golnoor]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +16,6 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  # Fork-owned image. Keep lowercase for OCI/GHCR compatibility.
   IMAGE_NAME: hojjatsa/telegram-bot-builder
 
 jobs:
@@ -61,7 +57,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      # Чтобы VPS мог pull без PAT (публичный пакет / без интерактива)
       - name: Make GHCR package public
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -85,8 +80,6 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
-          # На сервере command= в authorized_keys игнорирует эту строку
-          # и всегда гоняет bot-builder-gh-deploy.sh (pull + up, без build)
           script: true
           command_timeout: 15m
           debug: false
