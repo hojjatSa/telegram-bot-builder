@@ -15,13 +15,13 @@ import type {
 import type { UniversalHandlersTemplateParams } from './universal-handlers/universal-handlers.params';
 import {
   importsParamsSchema,
-  configParamsSchema,
   headerParamsSchema,
   databaseParamsSchema,
   utilsParamsSchema,
   mainParamsSchema,
 } from './schemas';
 import { renderPartialTemplate } from './template-renderer';
+import { generateConfig as generateConfigFromRenderer } from './config/config.renderer';
 
 function hasSkipDataCollectionButtons(nodes: any[] = []): boolean {
   const hasSkip = (buttons: any[] | undefined) =>
@@ -73,8 +73,7 @@ export function generateHeader(params: HeaderTemplateParams): string {
  * @returns Сгенерированный Python код конфигурации
  */
 export function generateConfig(params: ConfigTemplateParams): string {
-  const validated = configParamsSchema.parse(params);
-  return renderPartialTemplate('config/config.py.jinja2', validated);
+  return generateConfigFromRenderer(params);
 }
 
 // ============================================================================
