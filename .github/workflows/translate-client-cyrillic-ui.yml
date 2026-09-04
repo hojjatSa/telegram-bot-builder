@@ -1,6 +1,5 @@
 name: Translate Client Cyrillic UI
 
-# Rerun after high-traffic editor translations were manually polished.
 on:
   push:
     branches:
@@ -13,10 +12,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: translate-client-cyrillic-ui-golnoor
+  cancel-in-progress: true
+
 jobs:
   translate:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 35
     steps:
       - name: Checkout Golnoor branch
         uses: actions/checkout@v5
@@ -25,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install dependencies
-        run: npm ci --ignore-scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
 
       - name: Translate UI-facing Cyrillic strings
         run: node scripts/translate-client-cyrillic-ui.mjs
@@ -44,4 +47,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add client
           git commit -m "feat(i18n): translate remaining client Cyrillic UI"
+          git pull --rebase origin golnoor
           git push origin HEAD:golnoor
