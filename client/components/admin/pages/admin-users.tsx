@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { usePlatformUsers } from '../hooks/use-platform-users';
 import { PlatformUsersPager } from '../users/platform-users-pager';
 import { PlatformUsersTable } from '../users/platform-users-table';
+import { AdminAccessControlPanel } from '@/fork/access-control/AdminAccessControlPanel';
 
 const DEFAULT_PER_PAGE = 25;
 
@@ -39,6 +40,8 @@ export function AdminUsersPage() {
           Everyone who has signed in to the builder through Telegram
         </p>
       </div>
+
+      <AdminAccessControlPanel />
 
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
